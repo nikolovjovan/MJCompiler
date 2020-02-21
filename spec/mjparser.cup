@@ -1,0 +1,56 @@
+package rs.ac.bg.etf.pp1;
+
+import java_cup.runtime.*;
+import org.apache.log4j.*;
+import rs.ac.bg.etf.pp1.ast.*;
+
+parser code {:
+
+    Logger log = Logger.getLogger(getClass());
+
+    public void report_fatal_error(String message, Object info) throws java.lang.Exception {
+        done_parsing();
+        report_error(message, info);
+    }
+
+    public void syntax_error(Symbol cur_token) {
+        report_error("\nSyntax error", cur_token);
+    }
+
+    public void unrecovered_syntax_error(Symbol cur_token) throws java.lang.Exception {
+        report_fatal_error("Fatal error, recovery impossible", cur_token);
+    }
+
+    public void report_error(String message, Object info) {
+        StringBuilder msg = new StringBuilder(message);
+        if (info instanceof Symbol)
+            msg.append(" at line ").append(((Symbol) info).left);
+        log.error(msg.toString());
+    }
+
+:}
+
+scan with {:
+    Symbol s = this.getScanner().next_token();
+    if (s != null && s.value != null)
+        log.info(s.toString() + " " + s.value.toString());
+    return s;
+:}
+
+terminal String IDENT;
+terminal Integer NUM;
+terminal Character CHAR;
+terminal Boolean BOOL;
+
+terminal PROGRAM, BREAK, CLASS, ABSTRACT, ELSE, CONST, IF, NEW, PRINT, READ, RETURN, VOID, FOR, EXTENDS, CONTINUE;
+terminal FOREACH, PUBLIC, PROTECTED, PRIVATE;
+
+terminal ADD, SUB, MUL, DIV, MOD, EQL, NEQ, GRT, GEQ, LSS, LEQ, AND, OR, ASSIGN, INC, DEC;
+terminal ADD_ASSIGN, SUB_ASSIGN, MUL_ASSIGN, DIV_ASSIGN, MOD_ASSIGN;
+terminal LPAREN, RPAREN, LBRACK, RBRACK, LBRACE, RBRACE, SEMICOLON, COMMA, DOT;
+
+/* Remove this */
+nonterminal Temp;
+
+/* Remove this */
+Temp ::= PROGRAM;
