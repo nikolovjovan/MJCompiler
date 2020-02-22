@@ -4,24 +4,35 @@ import java_cup.runtime.*;
 
 %%
 
+%public
+%class MJLexer
+
 %cup
 %line
 %column
 
 %{
+    private String fileName;
     private int errorLine, errorColumn;
-    StringBuilder errorSymbol = null;
-
-    private Symbol new_symbol(int type) {
-        return new Symbol(type, yyline + 1, yycolumn + 1);
-    }
+    private StringBuilder errorSymbol = null;
 
     private Symbol new_symbol(int type, Object value) {
         return new Symbol(type, yyline + 1, yycolumn + 1, value);
     }
+
+    private Symbol new_symbol(int type) {
+        return new_symbol(type, yytext());
+    }
+
+    private void print_error(int line, int column, String message) {
+        System.err.println(fileName + ":" + line + ":" + column + ": " + message);
+    }
 %}
 
+%ctorarg String fileName
+
 %init{
+    this.fileName = fileName;
     errorSymbol = new StringBuilder();
 %init}
 
@@ -49,14 +60,6 @@ bool            = true|false
 %%
 
 <YYINITIAL> {
-
-    {blank}     { /* ignore */ }
-    {comment}   { /* ignore */ }
-
-    {ident}     { return new_symbol(sym.IDENT, yytext()); }
-    {num}       { return new_symbol(sym.NUM, new Integer(yytext())); }
-    {char}      { return new_symbol(sym.CHAR, new Character(yytext().charAt(1))); }
-    {bool}      { return new_symbol(sym.BOOL, new Boolean(yytext())); }
 
     "program"   { return new_symbol(sym.PROGRAM); }
     "break"     { return new_symbol(sym.BREAK); }
@@ -109,6 +112,21 @@ bool            = true|false
     ","         { return new_symbol(sym.COMMA); }
     "."         { return new_symbol(sym.DOT); }
 
+    {blank}     { /* ignore */ }
+    {comment}   { /* ignore */ }
+
+    {num}       {
+        try {
+            Integer value = new Integer(yytext());
+            return new_symbol(sym.NUM, value);
+        } catch (NumberFormatException e) {
+            print_error(yyline + 1, yycolumn + 1, "Failed to parse integer: '" + yytext() + "'");
+        }
+    }
+    {char}      { return new_symbol(sym.CHAR, new Character(yytext().charAt(1))); }
+    {bool}      { return new_symbol(sym.BOOL, new Boolean(yytext())); }
+    {ident}     { return new_symbol(sym.IDENT, yytext()); }
+
     .   {
         errorLine = yyline + 1;
         errorColumn = yycolumn + 1;
@@ -122,7 +140,7 @@ bool            = true|false
 <ERROR> {
     {safeChar}    {
         yybegin(YYINITIAL);
-        System.err.println("Invalid symbol: '" + errorSymbol + "' at " + errorColumn + ":" + errorLine + "!");
+        print_error(errorLine, errorColumn, "Invalid symbol: '" + errorSymbol + "'");
     }
     .   {
         errorSymbol.append(yytext());

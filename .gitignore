@@ -28,6 +28,7 @@ out/
 
 # Log file
 *.log
+logs/
 
 # Package files
 *.jar

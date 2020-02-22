@@ -1,59 +1,117 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="MJCompiler" default="compile" basedir=".">
+<project name="MJCompiler" default="test" basedir=".">
 
-    <property name="mjcompiler.output.dir" value="${basedir}/out/production/MJCompiler"/>
-    <property name="mjcompiler.testoutput.dir" value="${basedir}/out/test/MJCompiler"/>
+    <property name="output.dir" value="${basedir}/out/production/MJCompiler" />
+    <property name="test.output.dir" value="${basedir}/out/test/MJCompiler" />
 
-    <target name="delete">
-        <delete>
-            <fileset dir="src/rs/ac/bg/etf/pp1">
-                <exclude name="util/Log4JUtils.java" />
-            </fileset>
-        </delete>
-        <delete>
-            <fileset dir="spec">
-                <exclude name="mjlexer.flex" />
-                <exclude name="mjparser.cup" />
-            </fileset>
+    <property name="config.dir" value="config" />
+    <property name="spec.dir" value="spec" />
+    <property name="source.dir" value="src/main/java" />
+    <property name="test.source.dir" value="src/test/java" />
+
+    <path id="library.cup_v10k.classpath">
+        <pathelement location="${basedir}/lib/cup_v10k.jar" />
+    </path>
+
+    <path id="library.log4j-1.2.17.classpath">
+        <pathelement location="${basedir}/lib/log4j-1.2.17.jar" />
+    </path>
+
+    <path id="sourcepath">
+        <dirset dir="${basedir}">
+            <include name="src/main/java" />
+        </dirset>
+    </path>
+
+    <path id="test.sourcepath">
+        <dirset dir="${basedir}">
+            <include name="src/test/java" />
+        </dirset>
+    </path>
+
+    <path id="classpath">
+        <pathelement location="${config.dir}" />
+        <pathelement location="${output.dir}" />
+        <pathelement location="${test.output.dir}" />
+        <path refid="library.log4j-1.2.17.classpath" />
+        <path refid="library.cup_v10k.classpath" />
+    </path>
+
+    <target name="clean.logs">
+        <delete includeemptydirs="true" dir="${basedir}/logs" />
+    </target>
+
+    <target name="clean.output">
+        <delete includeemptydirs="true" dir="${basedir}/out" />
+    </target>
+
+    <target name="clean.lexer">
+        <delete file="${source.dir}/rs/ac/bg/etf/pp1/MJLexer.java" />
+    </target>
+
+    <target name="clean.parser">
+        <delete includeemptydirs="true">
+            <fileset dir="${source.dir}/rs/ac/bg/etf/pp1/ast" erroronmissingdir="false" />
+            <filelist dir="${source.dir}/rs/ac/bg/etf/pp1">
+                <file name="MJParser.java" />
+                <file name="sym.java" />
+            </filelist>
+            <filelist dir="${spec.dir}">
+                <file name="mjparser_astbuild.cup" />
+            </filelist>
         </delete>
     </target>
 
-    <target name="lexerGen" depends="delete">
+    <target name="clean.all" depends="clean.logs,clean.output,clean.lexer,clean.parser" />
+
+    <target name="generate.lexer" depends="clean.lexer">
         <java jar="lib/JFlex.jar" fork="true">
             <arg value="-d" />
-            <arg value="./src/rs/ac/bg/etf/pp1" />
-            <arg value="spec/mjlexer.flex" />
+            <arg value="${source.dir}/rs/ac/bg/etf/pp1" />
+            <arg value="${spec.dir}/mjlexer.flex" />
         </java>
     </target>
 
-    <target name="parserGen" depends="lexerGen">
+    <target name="generate.parser" depends="clean.parser">
         <java jar="lib/cup_v10k.jar" fork="true">
             <arg value="-destdir" />
-            <arg value="src/rs/ac/bg/etf/pp1" />
+            <arg value="${source.dir}/rs/ac/bg/etf/pp1" />
             <arg value="-ast" />
-            <arg value="src.rs.ac.bg.etf.pp1.ast" />
+            <arg value="src.main.java.rs.ac.bg.etf.pp1.ast" />
             <arg value="-parser" />
             <arg value="MJParser" />
             <arg value="-dump_states" />
             <arg value="-buildtree" />
-            <arg value="spec/mjparser.cup" />
+            <arg value="${spec.dir}/mjparser.cup" />
         </java>
-    </target>
-
-    <target name="repackage" depends="parserGen">
         <!-- Replaces all of the references to the old package name in files in the "src" directory -->
-        <replace dir="src" value="rs.ac.bg.etf.pp1.ast" token="src.rs.ac.bg.etf.pp1.ast" summary="true" />
+        <replace dir="${source.dir}" value="rs.ac.bg.etf.pp1.ast" token="src.main.java.rs.ac.bg.etf.pp1.ast" summary="true" />
     </target>
 
-    <target name="compile" depends="repackage">
-        <mkdir dir="${mjcompiler.output.dir}"/>
-        <javac destdir="${mjcompiler.output.dir}" srcdir="src/rs/ac/bg/etf/pp1" includeantruntime="false">
-            <classpath>
-                <pathelement path="lib/JFlex.jar" />
-                <pathelement path="lib/cup_v10k.jar" />
-                <pathelement path="lib/log4j-1.2.17.jar" />
-            </classpath>
+    <target name="generate.all" depends="generate.lexer,generate.parser" />
+
+    <target name="compile.production" depends="generate.all">
+        <mkdir dir="${output.dir}" />
+        <javac destdir="${output.dir}" includeantruntime="false">
+            <src refid="sourcepath" />
+            <classpath refid="classpath" />
         </javac>
+    </target>
+
+    <target name="compile.tests" depends="generate.all">
+        <mkdir dir="${test.output.dir}" />
+        <javac destdir="${test.output.dir}" includeantruntime="false">
+            <src refid="test.sourcepath" />
+            <classpath refid="classpath" />
+        </javac>
+    </target>
+
+    <target name="all" depends="compile.production,compile.tests" />
+
+    <target name="test" depends="all">
+        <java classname="rs.ac.bg.etf.pp1.MJTestRunner" fork="true">
+            <classpath refid="classpath" />
+        </java>
     </target>
 
 </project>
