@@ -14,6 +14,7 @@ public class MJTestRunner {
     public static void main(String[] args) {
         Logger log = Logger.getLogger(MJTestRunner.class);
         MJLexerTest.testLexer(log);
+        MJParserTest.testParser(log);
     }
 
 }

@@ -42,20 +42,20 @@ import java_cup.runtime.*;
 
 %xstate ERROR
 
-newLine         = \n|\r\n
-blank           = \040|\b|\t|\f|{newLine}
+NewLine         = \n|\r\n
+Blank           = \040|\b|\t|\f|{NewLine}
 
-digit           = [0-9]
-letter          = [a-zA-Z]
+Digit           = [0-9]
+Letter          = [a-zA-Z]
 
-printableChar   = [\040-\176]
-safeChar        = {blank}|";"
+PrintableChar   = [\040-\176]
+SafeChar        = {Blank}|";"
 
-comment         = "//" [^\r\n]* {newLine}?
-ident           = {letter}({letter}|{digit}|_)*
-num             = {digit}+
-char            = '{printableChar}'
-bool            = true|false
+Comment         = "//" [^\r\n]* {NewLine}?
+Ident           = {Letter}({Letter}|{Digit}|_)*
+Int             = {Digit}+
+Char            = '{PrintableChar}'
+Bool            = true|false
 
 %%
 
@@ -81,11 +81,11 @@ bool            = true|false
     "protected" { return new_symbol(sym.PROTECTED); }
     "private"   { return new_symbol(sym.PRIVATE); }
 
-    "+"         { return new_symbol(sym.ADD); }
-    "-"         { return new_symbol(sym.SUB); }
-    "*"         { return new_symbol(sym.MUL); }
-    "/"         { return new_symbol(sym.DIV); }
-    "%"         { return new_symbol(sym.MOD); }
+    "+"         { return new_symbol(sym.PLUS); }
+    "-"         { return new_symbol(sym.MINUS); }
+    "*"         { return new_symbol(sym.ASTERISK); }
+    "/"         { return new_symbol(sym.SLASH); }
+    "%"         { return new_symbol(sym.PERCENT); }
     "=="        { return new_symbol(sym.EQL); }
     "!="        { return new_symbol(sym.NEQ); }
     ">"         { return new_symbol(sym.GRT); }
@@ -95,37 +95,39 @@ bool            = true|false
     "&&"        { return new_symbol(sym.AND); }
     "||"        { return new_symbol(sym.OR); }
     "="         { return new_symbol(sym.ASSIGN); }
-    "++"        { return new_symbol(sym.INC); }
-    "--"        { return new_symbol(sym.DEC); }
-    "+="        { return new_symbol(sym.ADD_ASSIGN); }
-    "-="        { return new_symbol(sym.SUB_ASSIGN); }
-    "*="        { return new_symbol(sym.MUL_ASSIGN); }
-    "/="        { return new_symbol(sym.DIV_ASSIGN); }
-    "%="        { return new_symbol(sym.MOD_ASSIGN); }
+    "++"        { return new_symbol(sym.PLUSPLUS); }
+    "--"        { return new_symbol(sym.MINUSMINUS); }
+    "+="        { return new_symbol(sym.PLUS_ASSIGN); }
+    "-="        { return new_symbol(sym.MINUS_ASSIGN); }
+    "*="        { return new_symbol(sym.ASTERISK_ASSIGN); }
+    "/="        { return new_symbol(sym.SLASH_ASSIGN); }
+    "%="        { return new_symbol(sym.PERCENT_ASSIGN); }
+
     "("         { return new_symbol(sym.LPAREN); }
     ")"         { return new_symbol(sym.RPAREN); }
     "["         { return new_symbol(sym.LBRACK); }
     "]"         { return new_symbol(sym.RBRACK); }
     "{"         { return new_symbol(sym.LBRACE); }
     "}"         { return new_symbol(sym.RBRACE); }
+    ":"         { return new_symbol(sym.COLON); }
     ";"         { return new_symbol(sym.SEMICOLON); }
     ","         { return new_symbol(sym.COMMA); }
     "."         { return new_symbol(sym.DOT); }
 
-    {blank}     { /* ignore */ }
-    {comment}   { /* ignore */ }
+    {Blank}     { /* ignore */ }
+    {Comment}   { /* ignore */ }
 
-    {num}       {
+    {Int}       {
         try {
             Integer value = new Integer(yytext());
-            return new_symbol(sym.NUM, value);
+            return new_symbol(sym.INT, value);
         } catch (NumberFormatException e) {
             print_error(yyline + 1, yycolumn + 1, "Failed to parse integer: '" + yytext() + "'");
         }
     }
-    {char}      { return new_symbol(sym.CHAR, new Character(yytext().charAt(1))); }
-    {bool}      { return new_symbol(sym.BOOL, new Boolean(yytext())); }
-    {ident}     { return new_symbol(sym.IDENT, yytext()); }
+    {Char}      { return new_symbol(sym.CHAR, new Character(yytext().charAt(1))); }
+    {Bool}      { return new_symbol(sym.BOOL, new Boolean(yytext())); }
+    {Ident}     { return new_symbol(sym.IDENT, yytext()); }
 
     .   {
         errorLine = yyline + 1;
@@ -138,7 +140,7 @@ bool            = true|false
 }
 
 <ERROR> {
-    {safeChar}    {
+    {SafeChar}    {
         yybegin(YYINITIAL);
         print_error(errorLine, errorColumn, "Invalid symbol: '" + errorSymbol + "'");
     }

@@ -5,7 +5,6 @@ import org.apache.log4j.*;
 import rs.ac.bg.etf.pp1.ast.*;
 
 parser code {:
-
     Logger log = Logger.getLogger(getClass());
 
     public void report_fatal_error(String message, Object info) throws java.lang.Exception {
@@ -27,7 +26,6 @@ parser code {:
             msg.append(" at line ").append(((Symbol) info).left);
         log.error(msg.toString());
     }
-
 :}
 
 scan with {:
@@ -37,20 +35,345 @@ scan with {:
     return s;
 :}
 
-terminal String IDENT;
-terminal Integer NUM;
+terminal PROGRAM, BREAK, CLASS, ABSTRACT, ELSE, CONST, IF, NEW, PRINT, READ, RETURN, VOID, FOR, EXTENDS, CONTINUE,
+         FOREACH, PUBLIC, PROTECTED, PRIVATE;
+
+terminal PLUS, MINUS, ASTERISK, SLASH, PERCENT, EQL, NEQ, GRT, GEQ, LSS, LEQ, AND, OR, ASSIGN, PLUSPLUS, MINUSMINUS,
+         PLUS_ASSIGN, MINUS_ASSIGN, ASTERISK_ASSIGN, SLASH_ASSIGN, PERCENT_ASSIGN;
+
+terminal LPAREN, RPAREN, LBRACK, RBRACK, LBRACE, RBRACE, COLON, SEMICOLON, COMMA, DOT;
+
+terminal Integer INT;
 terminal Character CHAR;
 terminal Boolean BOOL;
+terminal String IDENT;
 
-terminal PROGRAM, BREAK, CLASS, ABSTRACT, ELSE, CONST, IF, NEW, PRINT, READ, RETURN, VOID, FOR, EXTENDS, CONTINUE;
-terminal FOREACH, PUBLIC, PROTECTED, PRIVATE;
+/* Main non-terminals */
+nonterminal Program, Type, OptProgramDeclList, ProgramDecl, OptMethodDeclList;
 
-terminal ADD, SUB, MUL, DIV, MOD, EQL, NEQ, GRT, GEQ, LSS, LEQ, AND, OR, ASSIGN, INC, DEC;
-terminal ADD_ASSIGN, SUB_ASSIGN, MUL_ASSIGN, DIV_ASSIGN, MOD_ASSIGN;
-terminal LPAREN, RPAREN, LBRACK, RBRACK, LBRACE, RBRACE, SEMICOLON, COMMA, DOT;
+/* Const Declarations */
+nonterminal ConstDecl, ConstAssignmentList, ConstAssignment, ConstValue;
 
-/* Remove this */
-nonterminal Temp;
+/* Var Declarations */
+nonterminal VarDecl, VarList, Var, OptArrayBrackets;
 
-/* Remove this */
-Temp ::= PROGRAM;
+/* Class Declarations */
+nonterminal ClassDecl, AccessModifier, OptClassBaseType, OptClassVarDeclList, ClassVarDecl,
+            OptClassMethodDeclList, ClassMethodDeclList, ClassMethodDecl;
+
+/* Abstract Class Declarations */
+nonterminal AbstractClassDecl, OptAbstractClassMethodDeclList, AbstractClassMethodDeclList, AbstractClassMethodDecl;
+
+/* Method Declarations */
+nonterminal MethodDecl, AbstractMethodDecl, RetType;
+
+/* Formal Parameters */
+nonterminal OptFormalParamList, FormalParamList, FormalParam;
+
+/* Variable Declarations */
+nonterminal OptVarDeclList;
+
+/* Statement-related non-terminals */
+nonterminal OptStatementList, Statement, OptDesignatorStatement, DesignatorStatement, OptElseStatement, OptIntConst;
+
+/* Designator-related non-terminals */
+nonterminal Designator, OptDesignatorPartList, DesignatorPart;
+
+/* Expression-related non-terminals */
+nonterminal OptExpr, Expr, OptSign;
+
+/* Actual Parameters */
+nonterminal OptActualParamList, ActualParamList, ActualParam;
+
+/* Relational Operators */
+nonterminal OptCondition, Condition, CondTerm, CondFact, Relop;
+
+/* Additive Operators */
+nonterminal OptAddopExprList, Addop, AddopLeft, AddopRight;
+
+/* Multiplicative Operators */
+nonterminal Term, Factor, OptMulopExprList, Mulop, MulopLeft, MulopRight;
+
+/* Assignment Operators */
+nonterminal Assignop;
+
+/* Precedence for ELSE terminal for if-else statement */
+precedence left ELSE;
+
+/* Main non-terminals */
+
+Program ::= (Program) PROGRAM IDENT:programName OptProgramDeclList LBRACE OptMethodDeclList RBRACE;
+
+Type ::= (Type) IDENT:type;
+
+OptProgramDeclList ::= (ProgramDeclarations) OptProgramDeclList ProgramDecl
+                     | (NoProgramDeclarations) /* epsilon */
+                     ;
+
+ProgramDecl ::= (ProgramConstDeclaration) ConstDecl
+              | (ProgramVarDeclaration) VarDecl
+              | (ProgramClassDeclaration) ClassDecl
+              | (ProgramAbstractClassDeclaration) AbstractClassDecl
+              ;
+
+OptMethodDeclList ::= (MethodDeclarations) OptMethodDeclList MethodDecl
+                    | (NoMethodDeclarations) /* epsilon */
+                    ;
+
+/* Const Declarations */
+
+ConstDecl ::= (ConstDeclaration) CONST Type:constType ConstAssignmentList SEMICOLON;
+
+ConstAssignmentList ::= (ConstAssignments) ConstAssignmentList COMMA ConstAssignment
+                      | (SingleConstAssignment) ConstAssignment
+                      ;
+
+ConstAssignment ::= (ConstAssignment) IDENT:constName ASSIGN ConstValue:constValue;
+
+ConstValue ::= (ConstInt) INT:intValue
+             | (ConstChar) CHAR:charValue
+             | (ConstBool) BOOL:boolValue
+             ;
+
+/* Var Declarations */
+
+VarDecl ::= (VarDeclaration) Type:varType VarList SEMICOLON;
+
+VarList ::= (Variables) VarList COMMA Var
+          | (SingleVariable) Var
+          ;
+
+Var ::= (Variable) IDENT:varName OptArrayBrackets
+      ;
+
+OptArrayBrackets ::= (ArrayBrackets) LBRACK RBRACK
+                   | (NoArrayBrackets) /* epsilon */
+                   ;
+
+/* Class Declarations */
+
+ClassDecl ::= (ClassDeclaration) CLASS IDENT:className OptClassBaseType LBRACE OptClassVarDeclList OptClassMethodDeclList RBRACE;
+
+AccessModifier ::= (PublicAccess) PUBLIC
+                 | (ProtectedAccess) PROTECTED
+                 | (PrivateAccess) PRIVATE
+                 ;
+
+OptClassBaseType ::= (ClassBaseType) EXTENDS Type:baseType
+                   | (NoClassBaseType) /* epsilon */
+                   ;
+
+OptClassVarDeclList ::= (ClassVariables) OptClassVarDeclList ClassVarDecl
+                      | (NoClassVariables) /* epsilon */
+                      ;
+
+ClassVarDecl ::= (ClassVariable) AccessModifier:access VarDecl;
+
+OptClassMethodDeclList ::= (ClassMethods) LBRACE ClassMethodDeclList RBRACE
+                         | (NoClassMethods) /* epsilon */
+                         ;
+
+ClassMethodDeclList ::= (MultipleClassMethods) ClassMethodDeclList ClassMethodDecl
+                      | (SingleClassMethod) ClassMethodDecl
+                      ;
+
+ClassMethodDecl ::= (ClassMethodDeclaration) AccessModifier:access MethodDecl:method;
+
+/* Abstract Class Declarations */
+
+AbstractClassDecl ::= (AbstractClassDeclaration) ABSTRACT CLASS IDENT:className OptClassBaseType LBRACE OptClassVarDeclList OptAbstractClassMethodDeclList RBRACE;
+
+OptAbstractClassMethodDeclList ::= (AbstractClassMethods) LBRACE AbstractClassMethodDeclList RBRACE
+                                 | (NoAbstractClassMethods) /* epsilon */
+                                 ;
+
+AbstractClassMethodDeclList ::= (MultipleAbstractClassMethods) AbstractClassMethodDeclList AbstractClassMethodDecl
+                              | (SingleAbstractClassMethod) AbstractClassMethodDecl
+                              ;
+
+AbstractClassMethodDecl ::= (AbstractClassMethodDeclaration) AccessModifier:access MethodDecl:method
+                          | (AbstractClassAbstractMethodDeclaration) AccessModifier:access AbstractClassMethodDecl:abstractMethod
+                          ;
+
+/* Method Declarations */
+
+MethodDecl ::= (MethodDeclaration) RetType:returnType IDENT:methodName LPAREN OptFormalParamList RPAREN OptVarDeclList LBRACE OptStatementList RBRACE;
+
+AbstractMethodDecl ::= (AbstractMethodDeclaration) ABSTRACT RetType:returnType IDENT:methodName LPAREN OptFormalParamList RPAREN SEMICOLON;
+
+RetType ::= (ReturnType) Type:returnType
+          | (ReturnVoid) VOID
+          ;
+
+/* Formal Parameters */
+
+OptFormalParamList ::= (FormalParameters) FormalParamList
+                     | (NoFormalParameters) /* epsilon */
+                     ;
+
+FormalParamList ::= (MultipleFormalParameters) FormalParamList COMMA FormalParam
+                  | (SingleFormalParameter) FormalParam
+                  ;
+
+FormalParam ::= (FormalParameter) Type:paramType Var:param;
+
+/* Variable Declarations */
+
+OptVarDeclList ::= (VarDeclarations) OptVarDeclList VarDecl
+                 | (NoVarDeclarations) /* epsilon */
+                 ;
+
+/* Statement-related non-terminals */
+
+OptStatementList ::= (Statements) OptStatementList Statement
+                   | (NoStatements) /* epsilon */
+                   ;
+
+Statement ::= (SingleStatement) DesignatorStatement SEMICOLON
+            | (IfOptElseStatement) IF LPAREN Condition:ifCondition RPAREN Statement:ifStatement OptElseStatement
+            | (ForStatement) FOR LPAREN OptDesignatorStatement:initStatement SEMICOLON OptCondition:forCondition SEMICOLON OptDesignatorStatement:updateStatement RPAREN Statement:forStatement
+            | (ForEachStatement) FOREACH LPAREN IDENT:varName COLON Designator:designator RPAREN Statement:forEachStatement
+            | (BreakStatement) BREAK SEMICOLON
+            | (ContinueStatement) CONTINUE SEMICOLON
+            | (ReturnStatement) RETURN OptExpr:returnValue SEMICOLON
+            | (ReadStatement) READ LPAREN Designator:result RPAREN SEMICOLON
+            | (PrintStatement) PRINT LPAREN Expr:printExpr OptIntConst RPAREN SEMICOLON
+            | (StatementBlock) LBRACE OptStatementList RBRACE
+            ;
+
+OptDesignatorStatement ::= (SingleDesignatorStatement) DesignatorStatement
+                         | (NoDesignatorStatement) /* epsilon */
+                         ;
+
+DesignatorStatement ::= (MethodCall) Designator:methodName LPAREN OptActualParamList:methodParams RPAREN
+                      | (Assignment) Designator:result Assignop:op Expr:expr
+                      | (Postf) Designator:result PLUSPLUS
+                      | (VariableDecrement) Designator:result MINUSMINUS
+                      ;
+
+OptElseStatement ::= (ElseStatement) ELSE Statement:elseStatement
+                   | (NoElseStatment) /* epsilon */
+                   ;
+
+OptIntConst ::= (SingleIntConst) COMMA INT:value
+              | (NoIntConst) /* epsilon */
+              ;
+
+/* Designator-related non-terminals */
+
+Designator ::= (Designator) IDENT OptDesignatorPartList;
+
+OptDesignatorPartList ::= (DesignatorParts) OptDesignatorPartList DesignatorPart
+                        | (NoDesignatorParts) /* epsilon */
+                        ;
+
+DesignatorPart ::= (FieldAccess) DOT IDENT:fieldName
+                 | (ArrayAccess) LBRACK Expr:indexExpression RBRACK
+                 ;
+
+/* Expression-related non-terminals */
+
+OptExpr ::= (SingleExpression) Expr
+          | (NoExpression) /* epsilon */
+          ;
+
+Expr ::= (Expression) OptSign Term OptAddopExprList;
+
+OptSign ::= (Negative) MINUS
+          | (ExplicitlyPositive) PLUS
+          | (ImplicitlyPositive) /* epsilon */
+          ;
+
+/* Actual Parameters */
+
+OptActualParamList ::= (ActualParameters) ActualParamList
+                     | (NoActualParameters) /* epsilon */
+                     ;
+
+ActualParamList ::= (MultipleActualParameters) ActualParamList COMMA ActualParam
+                  | (SingleActualParameter) ActualParam
+                  ;
+
+ActualParam ::= (ActualParameter) Expr:expr;
+
+
+/* Relational Operators */
+
+OptCondition ::= (SingleCondition) Condition
+               | (NoCondition) /* epsilon */
+               ;
+
+Condition ::= (MultipleConditionTerms) Condition OR CondTerm
+            | (SingleConditionTerm) CondTerm
+            ;
+
+CondTerm ::= (MultipleConditionFacts) CondTerm AND CondFact
+           | (SingleConditionFact) CondFact
+           ;
+
+CondFact ::= (SimpleExpression) Expr:expr
+           | (RelationalExpression) Expr:leftExpr Relop:op Expr:rightExpr
+           ;
+
+Relop ::= (EqualityOperator) EQL
+        | (InequalityOperator) NEQ
+        | (GreaterThanOperator) GRT
+        | (GreaterOrEqualOperator) GEQ
+        | (LessThanOperator) LSS
+        | (LessOrEqualOperator) LEQ
+        ;
+
+/* Additive Operators */
+
+OptAddopExprList ::= (AddopExpressions) OptAddopExprList:list Addop:op Term:term
+                   | (NoAddopExpressions) /* epsilon */
+                   ;
+
+Addop ::= (AddLeftOperator) AddopLeft
+        | (AddRightOperator) AddopRight
+        ;
+
+AddopLeft ::= (Add) PLUS
+            | (Sub) MINUS
+            ;
+
+AddopRight ::= (AddAssign) PLUS_ASSIGN
+             | (SubAssign) MINUS_ASSIGN
+             ;
+
+/* Multiplicative Operators */
+
+Term ::= (Term) Factor OptMulopExprList;
+
+Factor ::= (DesignatorFactor) Designator
+         | (FunctionCallFactor) Designator LPAREN OptActualParamList RPAREN
+         | (ConstantFactor) ConstValue
+         | (ObjectAllocateFactor) NEW Type:objectType
+         | (ArrayAllocateFactor) NEW Type:objectType LBRACK Expr:arrayExpr RBRACK
+         | (ParenthesesExpressionFactor) LPAREN Expr:expr RPAREN
+         ;
+
+OptMulopExprList ::= (MulopExpressions) OptMulopExprList:list Mulop:op Factor:factor
+                   | (NoMulopExpressions) /* epsilon */
+                   ;
+
+Mulop ::= (MulLeftOperator) MulopLeft
+        | (MulRightOperator) MulopRight
+        ;
+
+MulopLeft ::= (Mul) ASTERISK
+            | (Div) SLASH
+            | (Mod) PERCENT
+            ;
+
+MulopRight ::= (MulAssign) ASTERISK_ASSIGN
+             | (DivAssign) SLASH_ASSIGN
+             | (ModAssign) PERCENT_ASSIGN
+             ;
+
+/* Assignment Operators */
+
+Assignop ::= (AssignOperator) ASSIGN
+           | (AddAssignOperator) AddopRight
+           | (MulAssignOperator) MulopRight
+           ;
