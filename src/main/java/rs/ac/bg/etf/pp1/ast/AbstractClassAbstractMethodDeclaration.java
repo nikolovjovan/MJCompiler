@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 2/2/2020 21:26:27
+// 7/2/2020 13:23:6
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -8,13 +8,13 @@ package rs.ac.bg.etf.pp1.ast;
 public class AbstractClassAbstractMethodDeclaration extends AbstractClassMethodDecl {
 
     private AccessModifier AccessModifier;
-    private AbstractClassMethodDecl AbstractClassMethodDecl;
+    private AbstractMethodDecl AbstractMethodDecl;
 
-    public AbstractClassAbstractMethodDeclaration (AccessModifier AccessModifier, AbstractClassMethodDecl AbstractClassMethodDecl) {
+    public AbstractClassAbstractMethodDeclaration (AccessModifier AccessModifier, AbstractMethodDecl AbstractMethodDecl) {
         this.AccessModifier=AccessModifier;
         if(AccessModifier!=null) AccessModifier.setParent(this);
-        this.AbstractClassMethodDecl=AbstractClassMethodDecl;
-        if(AbstractClassMethodDecl!=null) AbstractClassMethodDecl.setParent(this);
+        this.AbstractMethodDecl=AbstractMethodDecl;
+        if(AbstractMethodDecl!=null) AbstractMethodDecl.setParent(this);
     }
 
     public AccessModifier getAccessModifier() {
@@ -25,12 +25,12 @@ public class AbstractClassAbstractMethodDeclaration extends AbstractClassMethodD
         this.AccessModifier=AccessModifier;
     }
 
-    public AbstractClassMethodDecl getAbstractClassMethodDecl() {
-        return AbstractClassMethodDecl;
+    public AbstractMethodDecl getAbstractMethodDecl() {
+        return AbstractMethodDecl;
     }
 
-    public void setAbstractClassMethodDecl(AbstractClassMethodDecl AbstractClassMethodDecl) {
-        this.AbstractClassMethodDecl=AbstractClassMethodDecl;
+    public void setAbstractMethodDecl(AbstractMethodDecl AbstractMethodDecl) {
+        this.AbstractMethodDecl=AbstractMethodDecl;
     }
 
     public void accept(Visitor visitor) {
@@ -39,18 +39,18 @@ public class AbstractClassAbstractMethodDeclaration extends AbstractClassMethodD
 
     public void childrenAccept(Visitor visitor) {
         if(AccessModifier!=null) AccessModifier.accept(visitor);
-        if(AbstractClassMethodDecl!=null) AbstractClassMethodDecl.accept(visitor);
+        if(AbstractMethodDecl!=null) AbstractMethodDecl.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
         if(AccessModifier!=null) AccessModifier.traverseTopDown(visitor);
-        if(AbstractClassMethodDecl!=null) AbstractClassMethodDecl.traverseTopDown(visitor);
+        if(AbstractMethodDecl!=null) AbstractMethodDecl.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
         if(AccessModifier!=null) AccessModifier.traverseBottomUp(visitor);
-        if(AbstractClassMethodDecl!=null) AbstractClassMethodDecl.traverseBottomUp(visitor);
+        if(AbstractMethodDecl!=null) AbstractMethodDecl.traverseBottomUp(visitor);
         accept(visitor);
     }
 
@@ -65,8 +65,8 @@ public class AbstractClassAbstractMethodDeclaration extends AbstractClassMethodD
             buffer.append(tab+"  null");
         buffer.append("\n");
 
-        if(AbstractClassMethodDecl!=null)
-            buffer.append(AbstractClassMethodDecl.toString("  "+tab));
+        if(AbstractMethodDecl!=null)
+            buffer.append(AbstractMethodDecl.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="MJCompiler" default="test" basedir=".">
+<project name="MJCompiler" default="test.all" basedir=".">
 
     <property name="output.dir" value="${basedir}/out/production/MJCompiler" />
     <property name="test.output.dir" value="${basedir}/out/test/MJCompiler" />
@@ -64,7 +64,7 @@
 
     <target name="clean.all" depends="clean.logs,clean.output,clean.lexer,clean.parser" />
 
-    <target name="generate.lexer" depends="clean.lexer">
+    <target name="generate.lexer">
         <java jar="lib/JFlex.jar" fork="true">
             <arg value="-d" />
             <arg value="${source.dir}/rs/ac/bg/etf/pp1" />
@@ -72,7 +72,7 @@
         </java>
     </target>
 
-    <target name="generate.parser" depends="clean.parser">
+    <target name="generate.parser">
         <java jar="lib/cup_v10k.jar" fork="true">
             <arg value="-destdir" />
             <arg value="${source.dir}/rs/ac/bg/etf/pp1" />
@@ -90,7 +90,7 @@
 
     <target name="generate.all" depends="generate.lexer,generate.parser" />
 
-    <target name="compile.production" depends="generate.all">
+    <target name="compile.production">
         <mkdir dir="${output.dir}" />
         <javac destdir="${output.dir}" includeantruntime="false">
             <src refid="sourcepath" />
@@ -98,7 +98,7 @@
         </javac>
     </target>
 
-    <target name="compile.tests" depends="generate.all">
+    <target name="compile.tests">
         <mkdir dir="${test.output.dir}" />
         <javac destdir="${test.output.dir}" includeantruntime="false">
             <src refid="test.sourcepath" />
@@ -106,9 +106,23 @@
         </javac>
     </target>
 
-    <target name="all" depends="compile.production,compile.tests" />
+    <target name="compile.all" depends="compile.production,compile.tests" />
 
-    <target name="test" depends="all">
+    <target name="test.lexer">
+        <java classname="rs.ac.bg.etf.pp1.MJTestRunner" fork="true">
+            <classpath refid="classpath" />
+            <arg value="lexer" />
+        </java>
+    </target>
+
+    <target name="test.parser">
+        <java classname="rs.ac.bg.etf.pp1.MJTestRunner" fork="true">
+            <classpath refid="classpath" />
+            <arg value="parser" />
+        </java>
+    </target>
+
+    <target name="test.all">
         <java classname="rs.ac.bg.etf.pp1.MJTestRunner" fork="true">
             <classpath refid="classpath" />
         </java>

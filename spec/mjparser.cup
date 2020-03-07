@@ -5,44 +5,56 @@ import org.apache.log4j.*;
 import rs.ac.bg.etf.pp1.ast.*;
 
 parser code {:
-    Logger log = Logger.getLogger(getClass());
+    private Logger log = Logger.getLogger(getClass());
 
-    public void report_fatal_error(String message, Object info) throws java.lang.Exception {
-        done_parsing();
-        report_error(message, info);
-    }
-
-    public void syntax_error(Symbol cur_token) {
-        report_error("\nSyntax error", cur_token);
-    }
-
-    public void unrecovered_syntax_error(Symbol cur_token) throws java.lang.Exception {
-        report_fatal_error("Fatal error, recovery impossible", cur_token);
+    private String format_message(String message, Object info) {
+        if (info instanceof Symbol) {
+            StringBuilder msg = new StringBuilder();
+            String fileName = ((MJLexer) getScanner()).fileName;
+            Symbol sym = ((Symbol) info);
+            msg.append(fileName).append(':').append(sym.left).append(':').append(sym.right).append(": ").append(message);
+            return msg.toString();
+        }
+        return message;
     }
 
     public void report_error(String message, Object info) {
-        StringBuilder msg = new StringBuilder(message);
-        if (info instanceof Symbol)
-            msg.append(" at line ").append(((Symbol) info).left);
-        log.error(msg.toString());
+        log.error(format_message(message, info));
+    }
+
+    public void report_fatal_error(String message, Object info) {
+        done_parsing();
+        log.fatal(format_message(message, info));
+    }
+
+    public void syntax_error(Symbol cur_token) {
+        report_error("Syntax error!", cur_token);
+    }
+
+    public void unrecovered_syntax_error(Symbol cur_token) {
+        report_fatal_error("Unrecovered syntax error! Recovery impossible!", cur_token);
     }
 :}
 
 scan with {:
-    Symbol s = this.getScanner().next_token();
+    Symbol s = getScanner().next_token();
     if (s != null && s.value != null)
-        log.info(s.toString() + " " + s.value.toString());
+        log.info(s.toString() + (s.value != null ? " " + s.value.toString() : ""));
     return s;
 :}
 
+/* Keywords */
 terminal PROGRAM, BREAK, CLASS, ABSTRACT, ELSE, CONST, IF, NEW, PRINT, READ, RETURN, VOID, FOR, EXTENDS, CONTINUE,
          FOREACH, PUBLIC, PROTECTED, PRIVATE;
 
+/* Operators */
 terminal PLUS, MINUS, ASTERISK, SLASH, PERCENT, EQL, NEQ, GRT, GEQ, LSS, LEQ, AND, OR, ASSIGN, PLUSPLUS, MINUSMINUS,
          PLUS_ASSIGN, MINUS_ASSIGN, ASTERISK_ASSIGN, SLASH_ASSIGN, PERCENT_ASSIGN;
 
+/* Punctuation symbols */
 terminal LPAREN, RPAREN, LBRACK, RBRACK, LBRACE, RBRACE, COLON, SEMICOLON, COMMA, DOT;
 
+/* Types and identifier */
 terminal Integer INT;
 terminal Character CHAR;
 terminal Boolean BOOL;
@@ -192,7 +204,7 @@ AbstractClassMethodDeclList ::= (MultipleAbstractClassMethods) AbstractClassMeth
                               ;
 
 AbstractClassMethodDecl ::= (AbstractClassMethodDeclaration) AccessModifier:access MethodDecl:method
-                          | (AbstractClassAbstractMethodDeclaration) AccessModifier:access AbstractClassMethodDecl:abstractMethod
+                          | (AbstractClassAbstractMethodDeclaration) AccessModifier:access AbstractMethodDecl:abstractMethod
                           ;
 
 /* Method Declarations */
@@ -261,7 +273,7 @@ OptIntConst ::= (SingleIntConst) COMMA INT:value
 
 /* Designator-related non-terminals */
 
-Designator ::= (Designator) IDENT OptDesignatorPartList;
+Designator ::= (Designator) IDENT:name OptDesignatorPartList;
 
 OptDesignatorPartList ::= (DesignatorParts) OptDesignatorPartList DesignatorPart
                         | (NoDesignatorParts) /* epsilon */
@@ -311,8 +323,8 @@ CondTerm ::= (MultipleConditionFacts) CondTerm AND CondFact
            | (SingleConditionFact) CondFact
            ;
 
-CondFact ::= (SimpleExpression) Expr:expr
-           | (RelationalExpression) Expr:leftExpr Relop:op Expr:rightExpr
+CondFact ::= (SimpleFact) Expr:expr
+           | (ComplexFact) Expr:leftExpr Relop:op Expr:rightExpr
            ;
 
 Relop ::= (EqualityOperator) EQL

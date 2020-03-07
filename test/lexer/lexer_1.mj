@@ -1,3 +1,4 @@
+// Tests all lexer symbols and some invalid symbols
 program
 break
 class
@@ -44,13 +45,14 @@ private
 ]
 {
 }
+:
 ;
 ,
 .
 UpperCase_Identifier_0123456789
 lowerCase_Identifier_0123456789
 0123456789
-9876543210
+9876543210 // exceeds integer
 +22
 -22
 'a'
@@ -58,4 +60,4 @@ a = '' // this should not work
 a = 'abc' // neither should this
 true
 false
-£╜♀ // this should be an error
+£╜♀ // invalid symbol

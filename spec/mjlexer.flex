@@ -1,6 +1,7 @@
 package rs.ac.bg.etf.pp1;
 
 import java_cup.runtime.*;
+import org.apache.log4j.*;
 
 %%
 
@@ -12,7 +13,9 @@ import java_cup.runtime.*;
 %column
 
 %{
-    private String fileName;
+    String fileName;
+    private Logger log = Logger.getLogger(getClass());
+
     private int errorLine, errorColumn;
     private StringBuilder errorSymbol = null;
 
@@ -26,6 +29,7 @@ import java_cup.runtime.*;
 
     private void print_error(int line, int column, String message) {
         System.err.println(fileName + ":" + line + ":" + column + ": " + message);
+        log.error(fileName + ":" + line + ":" + column + ": " + message);
     }
 %}
 

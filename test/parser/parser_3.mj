@@ -1,0 +1,41 @@
+// program function definition test
+program func
+{
+    int f1() {
+
+    }
+
+    char f2(int a, int b) {
+        return a - b;
+    }
+
+    bool f3(int a, int b) {
+        if (a == b) return true;
+        return false;
+    }
+
+    void f4()
+        int var1;
+    {
+
+    }
+
+    char f5(int p1)
+        int var1[];
+        char var2;
+    {
+
+    }
+
+    void f6(int p1, char p2)
+        int var1, var2;
+        char var3, var4[];
+        bool var5;
+    {
+
+    }
+
+    int main() {
+        return 0;
+    }
+}

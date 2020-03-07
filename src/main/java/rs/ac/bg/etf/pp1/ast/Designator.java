@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 2/2/2020 21:26:27
+// 7/2/2020 13:23:6
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -9,21 +9,21 @@ public class Designator implements SyntaxNode {
 
     private SyntaxNode parent;
     private int line;
-    private String I1;
+    private String name;
     private OptDesignatorPartList OptDesignatorPartList;
 
-    public Designator (String I1, OptDesignatorPartList OptDesignatorPartList) {
-        this.I1=I1;
+    public Designator (String name, OptDesignatorPartList OptDesignatorPartList) {
+        this.name=name;
         this.OptDesignatorPartList=OptDesignatorPartList;
         if(OptDesignatorPartList!=null) OptDesignatorPartList.setParent(this);
     }
 
-    public String getI1() {
-        return I1;
+    public String getName() {
+        return name;
     }
 
-    public void setI1(String I1) {
-        this.I1=I1;
+    public void setName(String name) {
+        this.name=name;
     }
 
     public OptDesignatorPartList getOptDesignatorPartList() {
@@ -73,7 +73,7 @@ public class Designator implements SyntaxNode {
         buffer.append(tab);
         buffer.append("Designator(\n");
 
-        buffer.append(" "+tab+I1);
+        buffer.append(" "+tab+name);
         buffer.append("\n");
 
         if(OptDesignatorPartList!=null)

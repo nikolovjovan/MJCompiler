@@ -5,44 +5,56 @@ import org.apache.log4j.*;
 import rs.ac.bg.etf.pp1.ast.*;
 
 parser code {:
-    Logger log = Logger.getLogger(getClass());
+    private Logger log = Logger.getLogger(getClass());
 
-    public void report_fatal_error(String message, Object info) throws java.lang.Exception {
-        done_parsing();
-        report_error(message, info);
-    }
-
-    public void syntax_error(Symbol cur_token) {
-        report_error("\nSyntax error", cur_token);
-    }
-
-    public void unrecovered_syntax_error(Symbol cur_token) throws java.lang.Exception {
-        report_fatal_error("Fatal error, recovery impossible", cur_token);
+    private String format_message(String message, Object info) {
+        if (info instanceof Symbol) {
+            StringBuilder msg = new StringBuilder();
+            String fileName = ((MJLexer) getScanner()).fileName;
+            Symbol sym = ((Symbol) info);
+            msg.append(fileName).append(':').append(sym.left).append(':').append(sym.right).append(": ").append(message);
+            return msg.toString();
+        }
+        return message;
     }
 
     public void report_error(String message, Object info) {
-        StringBuilder msg = new StringBuilder(message);
-        if (info instanceof Symbol)
-            msg.append(" at line ").append(((Symbol) info).left);
-        log.error(msg.toString());
+        log.error(format_message(message, info));
+    }
+
+    public void report_fatal_error(String message, Object info) {
+        done_parsing();
+        log.fatal(format_message(message, info));
+    }
+
+    public void syntax_error(Symbol cur_token) {
+        report_error("Syntax error!", cur_token);
+    }
+
+    public void unrecovered_syntax_error(Symbol cur_token) {
+        report_fatal_error("Unrecovered syntax error! Recovery impossible!", cur_token);
     }
 :}
 
 scan with {:
-    Symbol s = this.getScanner().next_token();
+    Symbol s = getScanner().next_token();
     if (s != null && s.value != null)
-        log.info(s.toString() + " " + s.value.toString());
+        log.info(s.toString() + (s.value != null ? " " + s.value.toString() : ""));
     return s;
 :}
 
+/* Keywords */
 terminal PROGRAM, BREAK, CLASS, ABSTRACT, ELSE, CONST, IF, NEW, PRINT, READ, RETURN, VOID, FOR, EXTENDS, CONTINUE,
          FOREACH, PUBLIC, PROTECTED, PRIVATE;
 
+/* Operators */
 terminal PLUS, MINUS, ASTERISK, SLASH, PERCENT, EQL, NEQ, GRT, GEQ, LSS, LEQ, AND, OR, ASSIGN, PLUSPLUS, MINUSMINUS,
          PLUS_ASSIGN, MINUS_ASSIGN, ASTERISK_ASSIGN, SLASH_ASSIGN, PERCENT_ASSIGN;
 
+/* Punctuation symbols */
 terminal LPAREN, RPAREN, LBRACK, RBRACK, LBRACE, RBRACE, COLON, SEMICOLON, COMMA, DOT;
 
+/* Types and identifier */
 terminal Integer INT;
 terminal Character CHAR;
 terminal Boolean BOOL;
@@ -239,7 +251,7 @@ AbstractClassMethodDeclList ::= (MultipleAbstractClassMethods) AbstractClassMeth
                               ;
 
 AbstractClassMethodDecl ::= (AbstractClassMethodDeclaration) AccessModifier:access MethodDecl:method {: RESULT=new AbstractClassMethodDeclaration(access, method); RESULT.setLine(accessleft); :}
-                          | (AbstractClassAbstractMethodDeclaration) AccessModifier:access AbstractClassMethodDecl:abstractMethod {: RESULT=new AbstractClassAbstractMethodDeclaration(access, abstractMethod); RESULT.setLine(accessleft); :}
+                          | (AbstractClassAbstractMethodDeclaration) AccessModifier:access AbstractMethodDecl:abstractMethod {: RESULT=new AbstractClassAbstractMethodDeclaration(access, abstractMethod); RESULT.setLine(accessleft); :}
                           ;
 
 /* Method Declarations */
@@ -308,7 +320,7 @@ OptIntConst ::= (SingleIntConst) COMMA INT:value {: RESULT=new SingleIntConst(va
 
 /* Designator-related non-terminals */
 
-Designator ::= (Designator) IDENT:I1 OptDesignatorPartList:O2 {: RESULT=new Designator(I1, O2); RESULT.setLine(I1left); :};
+Designator ::= (Designator) IDENT:name OptDesignatorPartList:O1 {: RESULT=new Designator(name, O1); RESULT.setLine(nameleft); :};
 
 OptDesignatorPartList ::= (DesignatorParts) OptDesignatorPartList:O1 DesignatorPart:D2 {: RESULT=new DesignatorParts(O1, D2); RESULT.setLine(O1left); :}
                         | (NoDesignatorParts) {: RESULT=new NoDesignatorParts(); :} /* epsilon */
@@ -358,8 +370,8 @@ CondTerm ::= (MultipleConditionFacts) CondTerm:C1 AND CondFact:C2 {: RESULT=new 
            | (SingleConditionFact) CondFact:C1 {: RESULT=new SingleConditionFact(C1); RESULT.setLine(C1left); :}
            ;
 
-CondFact ::= (SimpleExpression) Expr:expr {: RESULT=new SimpleExpression(expr); RESULT.setLine(exprleft); :}
-           | (RelationalExpression) Expr:leftExpr Relop:op Expr:rightExpr {: RESULT=new RelationalExpression(leftExpr, op, rightExpr); RESULT.setLine(leftExprleft); :}
+CondFact ::= (SimpleFact) Expr:expr {: RESULT=new SimpleFact(expr); RESULT.setLine(exprleft); :}
+           | (ComplexFact) Expr:leftExpr Relop:op Expr:rightExpr {: RESULT=new ComplexFact(leftExpr, op, rightExpr); RESULT.setLine(leftExprleft); :}
            ;
 
 Relop ::= (EqualityOperator) EQL {: RESULT=new EqualityOperator(); :}

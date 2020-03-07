@@ -5,48 +5,22 @@ import org.apache.log4j.Logger;
 
 import java.io.*;
 
-public class MJLexerTest {
+public class MJLexerTest extends MJTest {
 
-    private static String testDir = "test/lexer";
+    public static MJLexerTest INSTANCE = new MJLexerTest();
 
-    public static void testLexer(Logger log) {
-        File directory = new File(testDir);
-        File[] testInputs = null;
+    private MJLexerTest() {}
 
-        boolean testsFound = true;
+    @Override
+    protected String testName() { return "lexer"; }
 
-        if (directory.exists()) {
-            testInputs = directory.listFiles(((dir, name) -> name.toLowerCase().endsWith(".mj")));
-            if (testInputs == null || testInputs.length == 0) testsFound = false;
-        } else testsFound = false;
-
-        if (!testsFound) {
-            log.warn("No lexer tests found in '" + testDir + "'!");
-            return;
-        }
-
-        Reader br = null;
-        try {
-            for (File inputFile : testInputs) {
-                log.info("Testing lexer with input file '" + testDir + "/" + inputFile.getName() + "'.");
-                br = new BufferedReader(new FileReader(inputFile));
-                MJLexer lexer = new MJLexer(br, inputFile.getName());
-                Symbol currToken;
-                while ((currToken = lexer.next_token()).sym != sym.EOF) {
-                    if (currToken != null) {
-                        log.info(currToken.toString() + (currToken.value != null ? " " + currToken.value.toString() : ""));
-                    }
-                }
-            }
-        } catch (IOException e) {
-            log.error(e.getMessage(), e);
-        } finally {
-            if (br != null) {
-                try {
-                    br.close();
-                } catch (IOException e) {
-                    log.error(e.getMessage(), e);
-                }
+    @Override
+    protected void processTestFile(String fileName, Reader r, Logger log) throws Exception {
+        MJLexer lexer = new MJLexer(r, fileName);
+        Symbol currToken;
+        while ((currToken = lexer.next_token()).sym != sym.EOF) {
+            if (currToken != null) {
+                log.info(currToken.toString() + (currToken.value != null ? " " + currToken.value.toString() : ""));
             }
         }
     }

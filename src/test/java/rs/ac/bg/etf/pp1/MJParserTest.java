@@ -1,53 +1,24 @@
 package rs.ac.bg.etf.pp1;
 
-import java_cup.runtime.Symbol;
 import org.apache.log4j.Logger;
+import rs.ac.bg.etf.pp1.ast.Program;
 
 import java.io.*;
 
-public class MJParserTest {
+public class MJParserTest extends MJTest {
 
-    private static String testDir = "test/parser";
+    public static MJParserTest INSTANCE = new MJParserTest();
 
-    public static void testParser(Logger log) {
-        File directory = new File(testDir);
-        File[] testInputs = null;
+    private MJParserTest() {}
 
-        boolean testsFound = true;
+    @Override
+    protected String testName() { return "parser"; }
 
-        if (directory.exists()) {
-            testInputs = directory.listFiles(((dir, name) -> name.toLowerCase().endsWith(".mj")));
-            if (testInputs == null || testInputs.length == 0) testsFound = false;
-        } else testsFound = false;
-
-        if (!testsFound) {
-            log.warn("No parser tests found in '" + testDir + "'!");
-            return;
-        }
-
-        Reader br = null;
-        try {
-            for (File inputFile : testInputs) {
-                log.info("Testing parser with input file '" + testDir + "/" + inputFile.getName() + "'.");
-                br = new BufferedReader(new FileReader(inputFile));
-                MJLexer lexer = new MJLexer(br, inputFile.getName());
-                Symbol currToken;
-                while ((currToken = lexer.next_token()).sym != sym.EOF) {
-                    if (currToken != null) {
-                        log.info(currToken.toString() + (currToken.value != null ? " " + currToken.value.toString() : ""));
-                    }
-                }
-            }
-        } catch (IOException e) {
-            log.error(e.getMessage(), e);
-        } finally {
-            if (br != null) {
-                try {
-                    br.close();
-                } catch (IOException e) {
-                    log.error(e.getMessage(), e);
-                }
-            }
-        }
+    @Override
+    protected void processTestFile(String fileName, Reader r, Logger log) throws Exception {
+        MJLexer lexer = new MJLexer(r, fileName);
+        MJParser parser = new MJParser(lexer);
+        Program prog = (Program) parser.parse().value;
+        log.info("Abstract syntax tree: " + prog.toString(""));
     }
 }
