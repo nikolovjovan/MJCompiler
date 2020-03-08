@@ -1,15 +1,15 @@
 // generated with ast extension for cup
 // version 0.8
-// 7/2/2020 13:23:6
+// 8/2/2020 22:52:21
 
 
 package rs.ac.bg.etf.pp1.ast;
 
-public class ClassMethods extends OptClassMethodDeclList {
+public class ClassMethodDeclarations extends OptClassMethodDeclList {
 
     private ClassMethodDeclList ClassMethodDeclList;
 
-    public ClassMethods (ClassMethodDeclList ClassMethodDeclList) {
+    public ClassMethodDeclarations (ClassMethodDeclList ClassMethodDeclList) {
         this.ClassMethodDeclList=ClassMethodDeclList;
         if(ClassMethodDeclList!=null) ClassMethodDeclList.setParent(this);
     }
@@ -43,7 +43,7 @@ public class ClassMethods extends OptClassMethodDeclList {
     public String toString(String tab) {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
-        buffer.append("ClassMethods(\n");
+        buffer.append("ClassMethodDeclarations(\n");
 
         if(ClassMethodDeclList!=null)
             buffer.append(ClassMethodDeclList.toString("  "+tab));
@@ -52,7 +52,7 @@ public class ClassMethods extends OptClassMethodDeclList {
         buffer.append("\n");
 
         buffer.append(tab);
-        buffer.append(") [ClassMethods]");
+        buffer.append(") [ClassMethodDeclarations]");
         return buffer.toString();
     }
 }

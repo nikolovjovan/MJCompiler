@@ -1,15 +1,15 @@
 // generated with ast extension for cup
 // version 0.8
-// 7/2/2020 13:23:6
+// 8/2/2020 22:52:21
 
 
 package rs.ac.bg.etf.pp1.ast;
 
-public class Postf extends DesignatorStatement {
+public class VariableIncrement extends DesignatorStatement {
 
     private Designator Designator;
 
-    public Postf (Designator Designator) {
+    public VariableIncrement (Designator Designator) {
         this.Designator=Designator;
         if(Designator!=null) Designator.setParent(this);
     }
@@ -43,7 +43,7 @@ public class Postf extends DesignatorStatement {
     public String toString(String tab) {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
-        buffer.append("Postf(\n");
+        buffer.append("VariableIncrement(\n");
 
         if(Designator!=null)
             buffer.append(Designator.toString("  "+tab));
@@ -52,7 +52,7 @@ public class Postf extends DesignatorStatement {
         buffer.append("\n");
 
         buffer.append(tab);
-        buffer.append(") [Postf]");
+        buffer.append(") [VariableIncrement]");
         return buffer.toString();
     }
 }

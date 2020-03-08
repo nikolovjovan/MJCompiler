@@ -1,13 +1,13 @@
 // generated with ast extension for cup
 // version 0.8
-// 7/2/2020 13:23:6
+// 8/2/2020 22:52:21
 
 
 package rs.ac.bg.etf.pp1.ast;
 
-public class NoIntConst extends OptIntConst {
+public class ErrorLocalVariable extends LocalVar {
 
-    public NoIntConst () {
+    public ErrorLocalVariable () {
     }
 
     public void accept(Visitor visitor) {
@@ -28,10 +28,10 @@ public class NoIntConst extends OptIntConst {
     public String toString(String tab) {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
-        buffer.append("NoIntConst(\n");
+        buffer.append("ErrorLocalVariable(\n");
 
         buffer.append(tab);
-        buffer.append(") [NoIntConst]");
+        buffer.append(") [ErrorLocalVariable]");
         return buffer.toString();
     }
 }

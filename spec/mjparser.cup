@@ -5,35 +5,58 @@ import org.apache.log4j.*;
 import rs.ac.bg.etf.pp1.ast.*;
 
 parser code {:
-    private Logger log = Logger.getLogger(getClass());
+    Logger log = Logger.getLogger(getClass());
+    int errorCount = 0;
 
-    private String format_message(String message, Object info) {
-        if (info instanceof Symbol) {
-            StringBuilder msg = new StringBuilder();
-            String fileName = ((MJLexer) getScanner()).fileName;
-            Symbol sym = ((Symbol) info);
-            msg.append(fileName).append(':').append(sym.left).append(':').append(sym.right).append(": ").append(message);
-            return msg.toString();
+    private String format_message(String message, int left, int right) {
+        StringBuilder info = new StringBuilder(((MJLexer) getScanner()).fileName);
+        info.append(':');
+        if (left > 0) {
+            errorCount++;
+            info.append(left).append(':');
+            if (right > 0) info.append(right).append(':');
+            return info.append(' ').append(message).toString();
         }
         return message;
     }
 
-    public void report_error(String message, Object info) {
-        log.error(format_message(message, info));
+    private String format_message(String message, Object info) {
+        if (info instanceof Symbol) {
+            Symbol sym = (Symbol) info;
+            return format_message(message, sym.left, sym.right);
+        }
+        return format_message(message, -1, -1);
     }
 
-    public void report_fatal_error(String message, Object info) {
+    public void report_error(String message, int left, int right) {
+        String formattedMessage = format_message(message, left, right);
+        log.error(formattedMessage);
+        System.err.println(formattedMessage);
+    }
+
+    public void report_error(String message, Object info) {
+        String formattedMessage = format_message(message, info);
+        log.error(formattedMessage);
+        System.err.println(formattedMessage);
+    }
+
+    public void report_fatal_error(String message, Object info) throws Exception {
         done_parsing();
-        log.fatal(format_message(message, info));
+        String formattedMessage = format_message(message, info);
+        log.fatal(formattedMessage);
+        System.err.println(formattedMessage);
+        throw new Exception("Cannot recover from previous error(s)!");
     }
 
     public void syntax_error(Symbol cur_token) {
         report_error("Syntax error!", cur_token);
     }
 
-    public void unrecovered_syntax_error(Symbol cur_token) {
+    public void unrecovered_syntax_error(Symbol cur_token) throws Exception {
         report_fatal_error("Unrecovered syntax error! Recovery impossible!", cur_token);
     }
+
+    public int getErrorCount() { return errorCount; }
 :}
 
 scan with {:
@@ -66,15 +89,23 @@ nonterminal Program, Type, OptProgramDeclList, ProgramDecl, OptMethodDeclList;
 /* Const Declarations */
 nonterminal ConstDecl, ConstAssignmentList, ConstAssignment, ConstValue;
 
-/* Var Declarations */
+/* Global Var Declarations */
 nonterminal VarDecl, VarList, Var, OptArrayBrackets;
 
 /* Class Declarations */
-nonterminal ClassDecl, AccessModifier, OptClassBaseType, OptClassVarDeclList, ClassVarDecl,
-            OptClassMethodDeclList, ClassMethodDeclList, ClassMethodDecl;
+nonterminal ClassDecl, AccessModifier, OptClassBaseType;
+
+/* Class Var Declarations */
+nonterminal OptClassVarDeclList, ClassVarDecl, ClassVarList, ClassVar;
+
+/* Class Method Declarations */
+nonterminal OptClassMethodDeclList, ClassMethodDeclList, ClassMethodDecl;
 
 /* Abstract Class Declarations */
-nonterminal AbstractClassDecl, OptAbstractClassMethodDeclList, AbstractClassMethodDeclList, AbstractClassMethodDecl;
+nonterminal AbstractClassDecl;
+
+/* Abstract Class Method Declarations */
+nonterminal OptAbstractClassMethodDeclList, AbstractClassMethodDeclList, AbstractClassMethodDecl;
 
 /* Method Declarations */
 nonterminal MethodDecl, AbstractMethodDecl, RetType;
@@ -82,11 +113,11 @@ nonterminal MethodDecl, AbstractMethodDecl, RetType;
 /* Formal Parameters */
 nonterminal OptFormalParamList, FormalParamList, FormalParam;
 
-/* Variable Declarations */
-nonterminal OptVarDeclList;
+/* Local Var Declarations */
+nonterminal OptLocalVarDeclList, LocalVarDecl, LocalVarList, LocalVar;
 
 /* Statement-related non-terminals */
-nonterminal OptStatementList, Statement, OptDesignatorStatement, DesignatorStatement, OptElseStatement, OptIntConst;
+nonterminal OptStatementList, Statement, OptDesignatorStatement, DesignatorStatement, OptElseStatement, PrintExpr, AssignExpr;
 
 /* Designator-related non-terminals */
 nonterminal Designator, OptDesignatorPartList, DesignatorPart;
@@ -98,7 +129,7 @@ nonterminal OptExpr, Expr, OptSign;
 nonterminal OptActualParamList, ActualParamList, ActualParam;
 
 /* Relational Operators */
-nonterminal OptCondition, Condition, CondTerm, CondFact, Relop;
+nonterminal ForCondition, Condition, CondTerm, CondFact, Relop;
 
 /* Additive Operators */
 nonterminal OptAddopExprList, Addop, AddopLeft, AddopRight;
@@ -155,8 +186,7 @@ VarList ::= (Variables) VarList COMMA Var
           | (SingleVariable) Var
           ;
 
-Var ::= (Variable) IDENT:varName OptArrayBrackets
-      ;
+Var ::= (Variable) IDENT:varName OptArrayBrackets;
 
 OptArrayBrackets ::= (ArrayBrackets) LBRACK RBRACK
                    | (NoArrayBrackets) /* epsilon */
@@ -173,20 +203,32 @@ AccessModifier ::= (PublicAccess) PUBLIC
 
 OptClassBaseType ::= (ClassBaseType) EXTENDS Type:baseType
                    | (NoClassBaseType) /* epsilon */
+                   | (ErrorClassBaseTypeAfterExtends) EXTENDS error {: parser.report_error("Invalid class base type declaration!", null); :}
+                   | (ErrorClassBaseTypeBeforeExtends) error {: parser.report_error("Invalid class base type declaration!", null); :}
                    ;
 
-OptClassVarDeclList ::= (ClassVariables) OptClassVarDeclList ClassVarDecl
-                      | (NoClassVariables) /* epsilon */
+/* Class Var Declarations */
+
+OptClassVarDeclList ::= (ClassVarDeclarations) OptClassVarDeclList ClassVarDecl
+                      | (NoClassVarDeclarations) /* epsilon */
                       ;
 
-ClassVarDecl ::= (ClassVariable) AccessModifier:access VarDecl;
+ClassVarDecl ::= (ClassVarDeclaration) AccessModifier:access Type:varType ClassVarList SEMICOLON;
 
-OptClassMethodDeclList ::= (ClassMethods) LBRACE ClassMethodDeclList RBRACE
-                         | (NoClassMethods) /* epsilon */
+ClassVarList ::= (ClassVariables) ClassVarList COMMA ClassVar
+               | (SingleClassVariable) ClassVar
+               ;
+
+ClassVar ::= (ClassVariable) IDENT:varName OptArrayBrackets;
+
+/* Class Method Declarations */
+
+OptClassMethodDeclList ::= (ClassMethodDeclarations) LBRACE ClassMethodDeclList RBRACE
+                         | (NoClassMethodDeclarations) /* epsilon */
                          ;
 
-ClassMethodDeclList ::= (MultipleClassMethods) ClassMethodDeclList ClassMethodDecl
-                      | (SingleClassMethod) ClassMethodDecl
+ClassMethodDeclList ::= (MultipleClassMethodDeclarations) ClassMethodDeclList ClassMethodDecl
+                      | (SingleClassMethodDeclaration) ClassMethodDecl
                       ;
 
 ClassMethodDecl ::= (ClassMethodDeclaration) AccessModifier:access MethodDecl:method;
@@ -194,6 +236,8 @@ ClassMethodDecl ::= (ClassMethodDeclaration) AccessModifier:access MethodDecl:me
 /* Abstract Class Declarations */
 
 AbstractClassDecl ::= (AbstractClassDeclaration) ABSTRACT CLASS IDENT:className OptClassBaseType LBRACE OptClassVarDeclList OptAbstractClassMethodDeclList RBRACE;
+
+/* Abstract Class Method Declarations */
 
 OptAbstractClassMethodDeclList ::= (AbstractClassMethods) LBRACE AbstractClassMethodDeclList RBRACE
                                  | (NoAbstractClassMethods) /* epsilon */
@@ -205,11 +249,12 @@ AbstractClassMethodDeclList ::= (MultipleAbstractClassMethods) AbstractClassMeth
 
 AbstractClassMethodDecl ::= (AbstractClassMethodDeclaration) AccessModifier:access MethodDecl:method
                           | (AbstractClassAbstractMethodDeclaration) AccessModifier:access AbstractMethodDecl:abstractMethod
+                          | (ErrorAbstractClassMethodDeclaration) error SEMICOLON {: parser.report_error("Invalid abstract class method declaration!", null); :}
                           ;
 
 /* Method Declarations */
 
-MethodDecl ::= (MethodDeclaration) RetType:returnType IDENT:methodName LPAREN OptFormalParamList RPAREN OptVarDeclList LBRACE OptStatementList RBRACE;
+MethodDecl ::= (MethodDeclaration) RetType:returnType IDENT:methodName LPAREN OptFormalParamList RPAREN OptLocalVarDeclList LBRACE OptStatementList RBRACE;
 
 AbstractMethodDecl ::= (AbstractMethodDeclaration) ABSTRACT RetType:returnType IDENT:methodName LPAREN OptFormalParamList RPAREN SEMICOLON;
 
@@ -227,13 +272,28 @@ FormalParamList ::= (MultipleFormalParameters) FormalParamList COMMA FormalParam
                   | (SingleFormalParameter) FormalParam
                   ;
 
-FormalParam ::= (FormalParameter) Type:paramType Var:param;
+FormalParam ::= (FormalParameter) Type:paramType IDENT:paramName OptArrayBrackets
+              | (ErrorFormalParameter) error {: parser.report_error("Invalid formal parameter!", null); :}
+              ;
 
-/* Variable Declarations */
+/* Local Var Declarations */
 
-OptVarDeclList ::= (VarDeclarations) OptVarDeclList VarDecl
-                 | (NoVarDeclarations) /* epsilon */
-                 ;
+OptLocalVarDeclList ::= (LocalVarDeclarations) OptLocalVarDeclList LocalVarDecl
+                      | (NoLocalVarDeclarations) /* epsilon */
+                      ;
+
+LocalVarDecl ::= (LocalVarDeclaration) Type:varType LocalVarList SEMICOLON
+               | (ErrorLocalVarDeclaration) error SEMICOLON {: parser.report_error("Invalid local variable declaration!", null); :}
+               ;
+
+LocalVarList ::= (LocalVariables) LocalVarList COMMA LocalVar
+               | (SingleLocalVariable) LocalVar
+               ;
+
+LocalVar ::= (LocalVariable) IDENT:varName OptArrayBrackets
+           | (ErrorLocalVariable) error {: parser.report_error("Invalid local variable declaration!", null); :}
+           ;
+
 
 /* Statement-related non-terminals */
 
@@ -243,13 +303,13 @@ OptStatementList ::= (Statements) OptStatementList Statement
 
 Statement ::= (SingleStatement) DesignatorStatement SEMICOLON
             | (IfOptElseStatement) IF LPAREN Condition:ifCondition RPAREN Statement:ifStatement OptElseStatement
-            | (ForStatement) FOR LPAREN OptDesignatorStatement:initStatement SEMICOLON OptCondition:forCondition SEMICOLON OptDesignatorStatement:updateStatement RPAREN Statement:forStatement
+            | (ForStatement) FOR LPAREN OptDesignatorStatement:initStatement SEMICOLON ForCondition:forCondition SEMICOLON OptDesignatorStatement:updateStatement RPAREN Statement:forStatement
             | (ForEachStatement) FOREACH LPAREN IDENT:varName COLON Designator:designator RPAREN Statement:forEachStatement
             | (BreakStatement) BREAK SEMICOLON
             | (ContinueStatement) CONTINUE SEMICOLON
             | (ReturnStatement) RETURN OptExpr:returnValue SEMICOLON
             | (ReadStatement) READ LPAREN Designator:result RPAREN SEMICOLON
-            | (PrintStatement) PRINT LPAREN Expr:printExpr OptIntConst RPAREN SEMICOLON
+            | (PrintStatement) PRINT LPAREN PrintExpr RPAREN SEMICOLON
             | (StatementBlock) LBRACE OptStatementList RBRACE
             ;
 
@@ -258,8 +318,8 @@ OptDesignatorStatement ::= (SingleDesignatorStatement) DesignatorStatement
                          ;
 
 DesignatorStatement ::= (MethodCall) Designator:methodName LPAREN OptActualParamList:methodParams RPAREN
-                      | (Assignment) Designator:result Assignop:op Expr:expr
-                      | (Postf) Designator:result PLUSPLUS
+                      | (Assignment) Designator:result AssignExpr:assignExpr
+                      | (VariableIncrement) Designator:result PLUSPLUS
                       | (VariableDecrement) Designator:result MINUSMINUS
                       ;
 
@@ -267,9 +327,13 @@ OptElseStatement ::= (ElseStatement) ELSE Statement:elseStatement
                    | (NoElseStatment) /* epsilon */
                    ;
 
-OptIntConst ::= (SingleIntConst) COMMA INT:value
-              | (NoIntConst) /* epsilon */
-              ;
+PrintExpr ::= (PrintOnlyExpression) Expr:printExpr
+            | (PrintExpressionAndConst) Expr:printExpr COMMA INT:constValue
+            ;
+
+AssignExpr ::= (AssignmentExpression) Assignop:op Expr:expr
+             | (ErrorAssignmentExpression) error {: parser.report_error("Invalid assignment expression!", null); :}
+             ;
 
 /* Designator-related non-terminals */
 
@@ -311,8 +375,9 @@ ActualParam ::= (ActualParameter) Expr:expr;
 
 /* Relational Operators */
 
-OptCondition ::= (SingleCondition) Condition
+ForCondition ::= (SingleCondition) Condition
                | (NoCondition) /* epsilon */
+               | (ErrorCondition) error {: parser.report_error("Invalid for statement condition!", null); :}
                ;
 
 Condition ::= (MultipleConditionTerms) Condition OR CondTerm

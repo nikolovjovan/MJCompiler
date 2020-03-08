@@ -1,24 +1,13 @@
 // generated with ast extension for cup
 // version 0.8
-// 7/2/2020 13:23:6
+// 8/2/2020 22:52:21
 
 
 package rs.ac.bg.etf.pp1.ast;
 
-public class SingleIntConst extends OptIntConst {
+public class NoLocalVarDeclarations extends OptLocalVarDeclList {
 
-    private Integer value;
-
-    public SingleIntConst (Integer value) {
-        this.value=value;
-    }
-
-    public Integer getValue() {
-        return value;
-    }
-
-    public void setValue(Integer value) {
-        this.value=value;
+    public NoLocalVarDeclarations () {
     }
 
     public void accept(Visitor visitor) {
@@ -39,13 +28,10 @@ public class SingleIntConst extends OptIntConst {
     public String toString(String tab) {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
-        buffer.append("SingleIntConst(\n");
-
-        buffer.append(" "+tab+value);
-        buffer.append("\n");
+        buffer.append("NoLocalVarDeclarations(\n");
 
         buffer.append(tab);
-        buffer.append(") [SingleIntConst]");
+        buffer.append(") [NoLocalVarDeclarations]");
         return buffer.toString();
     }
 }

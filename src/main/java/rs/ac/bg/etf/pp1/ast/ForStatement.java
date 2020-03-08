@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 7/2/2020 13:23:6
+// 8/2/2020 22:52:21
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -8,15 +8,15 @@ package rs.ac.bg.etf.pp1.ast;
 public class ForStatement extends Statement {
 
     private OptDesignatorStatement OptDesignatorStatement;
-    private OptCondition OptCondition;
+    private ForCondition ForCondition;
     private OptDesignatorStatement OptDesignatorStatement1;
     private Statement Statement;
 
-    public ForStatement (OptDesignatorStatement OptDesignatorStatement, OptCondition OptCondition, OptDesignatorStatement OptDesignatorStatement1, Statement Statement) {
+    public ForStatement (OptDesignatorStatement OptDesignatorStatement, ForCondition ForCondition, OptDesignatorStatement OptDesignatorStatement1, Statement Statement) {
         this.OptDesignatorStatement=OptDesignatorStatement;
         if(OptDesignatorStatement!=null) OptDesignatorStatement.setParent(this);
-        this.OptCondition=OptCondition;
-        if(OptCondition!=null) OptCondition.setParent(this);
+        this.ForCondition=ForCondition;
+        if(ForCondition!=null) ForCondition.setParent(this);
         this.OptDesignatorStatement1=OptDesignatorStatement1;
         if(OptDesignatorStatement1!=null) OptDesignatorStatement1.setParent(this);
         this.Statement=Statement;
@@ -31,12 +31,12 @@ public class ForStatement extends Statement {
         this.OptDesignatorStatement=OptDesignatorStatement;
     }
 
-    public OptCondition getOptCondition() {
-        return OptCondition;
+    public ForCondition getForCondition() {
+        return ForCondition;
     }
 
-    public void setOptCondition(OptCondition OptCondition) {
-        this.OptCondition=OptCondition;
+    public void setForCondition(ForCondition ForCondition) {
+        this.ForCondition=ForCondition;
     }
 
     public OptDesignatorStatement getOptDesignatorStatement1() {
@@ -61,7 +61,7 @@ public class ForStatement extends Statement {
 
     public void childrenAccept(Visitor visitor) {
         if(OptDesignatorStatement!=null) OptDesignatorStatement.accept(visitor);
-        if(OptCondition!=null) OptCondition.accept(visitor);
+        if(ForCondition!=null) ForCondition.accept(visitor);
         if(OptDesignatorStatement1!=null) OptDesignatorStatement1.accept(visitor);
         if(Statement!=null) Statement.accept(visitor);
     }
@@ -69,14 +69,14 @@ public class ForStatement extends Statement {
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
         if(OptDesignatorStatement!=null) OptDesignatorStatement.traverseTopDown(visitor);
-        if(OptCondition!=null) OptCondition.traverseTopDown(visitor);
+        if(ForCondition!=null) ForCondition.traverseTopDown(visitor);
         if(OptDesignatorStatement1!=null) OptDesignatorStatement1.traverseTopDown(visitor);
         if(Statement!=null) Statement.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
         if(OptDesignatorStatement!=null) OptDesignatorStatement.traverseBottomUp(visitor);
-        if(OptCondition!=null) OptCondition.traverseBottomUp(visitor);
+        if(ForCondition!=null) ForCondition.traverseBottomUp(visitor);
         if(OptDesignatorStatement1!=null) OptDesignatorStatement1.traverseBottomUp(visitor);
         if(Statement!=null) Statement.traverseBottomUp(visitor);
         accept(visitor);
@@ -93,8 +93,8 @@ public class ForStatement extends Statement {
             buffer.append(tab+"  null");
         buffer.append("\n");
 
-        if(OptCondition!=null)
-            buffer.append(OptCondition.toString("  "+tab));
+        if(ForCondition!=null)
+            buffer.append(ForCondition.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");

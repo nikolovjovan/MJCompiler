@@ -1,15 +1,15 @@
 // generated with ast extension for cup
 // version 0.8
-// 7/2/2020 13:23:6
+// 8/2/2020 22:52:21
 
 
 package rs.ac.bg.etf.pp1.ast;
 
-public class SingleClassMethod extends ClassMethodDeclList {
+public class SingleClassMethodDeclaration extends ClassMethodDeclList {
 
     private ClassMethodDecl ClassMethodDecl;
 
-    public SingleClassMethod (ClassMethodDecl ClassMethodDecl) {
+    public SingleClassMethodDeclaration (ClassMethodDecl ClassMethodDecl) {
         this.ClassMethodDecl=ClassMethodDecl;
         if(ClassMethodDecl!=null) ClassMethodDecl.setParent(this);
     }
@@ -43,7 +43,7 @@ public class SingleClassMethod extends ClassMethodDeclList {
     public String toString(String tab) {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
-        buffer.append("SingleClassMethod(\n");
+        buffer.append("SingleClassMethodDeclaration(\n");
 
         if(ClassMethodDecl!=null)
             buffer.append(ClassMethodDecl.toString("  "+tab));
@@ -52,7 +52,7 @@ public class SingleClassMethod extends ClassMethodDeclList {
         buffer.append("\n");
 
         buffer.append(tab);
-        buffer.append(") [SingleClassMethod]");
+        buffer.append(") [SingleClassMethodDeclaration]");
         return buffer.toString();
     }
 }

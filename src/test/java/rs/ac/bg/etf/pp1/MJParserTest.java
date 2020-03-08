@@ -20,5 +20,10 @@ public class MJParserTest extends MJTest {
         MJParser parser = new MJParser(lexer);
         Program prog = (Program) parser.parse().value;
         log.info("Abstract syntax tree: " + prog.toString(""));
+        if (parser.getErrorCount() == 0) {
+            System.out.println("Syntax analysis completed without errors!");
+        } else {
+            System.err.println("Syntax analysis completed with " + parser.getErrorCount() + " errors!");
+        }
     }
 }

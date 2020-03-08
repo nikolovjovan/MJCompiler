@@ -1,13 +1,13 @@
 // generated with ast extension for cup
 // version 0.8
-// 7/2/2020 13:23:6
+// 8/2/2020 22:52:21
 
 
 package rs.ac.bg.etf.pp1.ast;
 
-public class NoClassMethods extends OptClassMethodDeclList {
+public class ErrorLocalVarDeclaration extends LocalVarDecl {
 
-    public NoClassMethods () {
+    public ErrorLocalVarDeclaration () {
     }
 
     public void accept(Visitor visitor) {
@@ -28,10 +28,10 @@ public class NoClassMethods extends OptClassMethodDeclList {
     public String toString(String tab) {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
-        buffer.append("NoClassMethods(\n");
+        buffer.append("ErrorLocalVarDeclaration(\n");
 
         buffer.append(tab);
-        buffer.append(") [NoClassMethods]");
+        buffer.append(") [ErrorLocalVarDeclaration]");
         return buffer.toString();
     }
 }

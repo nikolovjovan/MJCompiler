@@ -1,28 +1,30 @@
 // generated with ast extension for cup
 // version 0.8
-// 7/2/2020 13:23:6
+// 8/2/2020 22:52:21
 
 
 package rs.ac.bg.etf.pp1.ast;
 
 public interface Visitor { 
 
-    public void visit(OptCondition OptCondition);
     public void visit(AbstractClassMethodDecl AbstractClassMethodDecl);
     public void visit(Mulop Mulop);
     public void visit(OptClassMethodDeclList OptClassMethodDeclList);
     public void visit(OptFormalParamList OptFormalParamList);
     public void visit(MethodDecl MethodDecl);
     public void visit(OptArrayBrackets OptArrayBrackets);
+    public void visit(OptLocalVarDeclList OptLocalVarDeclList);
     public void visit(Relop Relop);
     public void visit(Assignop Assignop);
+    public void visit(LocalVarList LocalVarList);
     public void visit(Var Var);
     public void visit(ClassMethodDeclList ClassMethodDeclList);
     public void visit(ClassVarDecl ClassVarDecl);
     public void visit(ProgramDecl ProgramDecl);
     public void visit(Addop Addop);
-    public void visit(OptVarDeclList OptVarDeclList);
+    public void visit(LocalVar LocalVar);
     public void visit(OptStatementList OptStatementList);
+    public void visit(ForCondition ForCondition);
     public void visit(Factor Factor);
     public void visit(CondTerm CondTerm);
     public void visit(VarList VarList);
@@ -34,13 +36,16 @@ public interface Visitor {
     public void visit(RetType RetType);
     public void visit(Condition Condition);
     public void visit(OptAddopExprList OptAddopExprList);
+    public void visit(AssignExpr AssignExpr);
     public void visit(ConstValue ConstValue);
     public void visit(OptProgramDeclList OptProgramDeclList);
     public void visit(OptClassVarDeclList OptClassVarDeclList);
+    public void visit(ClassVar ClassVar);
     public void visit(OptMulopExprList OptMulopExprList);
     public void visit(AddopRight AddopRight);
     public void visit(ActualParamList ActualParamList);
     public void visit(OptDesignatorStatement OptDesignatorStatement);
+    public void visit(LocalVarDecl LocalVarDecl);
     public void visit(OptAbstractClassMethodDeclList OptAbstractClassMethodDeclList);
     public void visit(DesignatorPart DesignatorPart);
     public void visit(OptElseStatement OptElseStatement);
@@ -51,8 +56,8 @@ public interface Visitor {
     public void visit(DesignatorStatement DesignatorStatement);
     public void visit(AbstractClassDecl AbstractClassDecl);
     public void visit(OptDesignatorPartList OptDesignatorPartList);
+    public void visit(ClassVarList ClassVarList);
     public void visit(OptMethodDeclList OptMethodDeclList);
-    public void visit(OptIntConst OptIntConst);
     public void visit(Statement Statement);
     public void visit(VarDecl VarDecl);
     public void visit(MulopLeft MulopLeft);
@@ -65,6 +70,7 @@ public interface Visitor {
     public void visit(OptExpr OptExpr);
     public void visit(AbstractClassMethodDeclList AbstractClassMethodDeclList);
     public void visit(ClassMethodDecl ClassMethodDecl);
+    public void visit(PrintExpr PrintExpr);
     public void visit(MulAssignOperator MulAssignOperator);
     public void visit(AddAssignOperator AddAssignOperator);
     public void visit(AssignOperator AssignOperator);
@@ -105,6 +111,7 @@ public interface Visitor {
     public void visit(MultipleConditionFacts MultipleConditionFacts);
     public void visit(SingleConditionTerm SingleConditionTerm);
     public void visit(MultipleConditionTerms MultipleConditionTerms);
+    public void visit(ErrorCondition ErrorCondition);
     public void visit(NoCondition NoCondition);
     public void visit(SingleCondition SingleCondition);
     public void visit(ActualParameter ActualParameter);
@@ -123,12 +130,14 @@ public interface Visitor {
     public void visit(NoDesignatorParts NoDesignatorParts);
     public void visit(DesignatorParts DesignatorParts);
     public void visit(Designator Designator);
-    public void visit(NoIntConst NoIntConst);
-    public void visit(SingleIntConst SingleIntConst);
+    public void visit(ErrorAssignmentExpression ErrorAssignmentExpression);
+    public void visit(AssignmentExpression AssignmentExpression);
+    public void visit(PrintExpressionAndConst PrintExpressionAndConst);
+    public void visit(PrintOnlyExpression PrintOnlyExpression);
     public void visit(NoElseStatment NoElseStatment);
     public void visit(ElseStatement ElseStatement);
     public void visit(VariableDecrement VariableDecrement);
-    public void visit(Postf Postf);
+    public void visit(VariableIncrement VariableIncrement);
     public void visit(Assignment Assignment);
     public void visit(MethodCall MethodCall);
     public void visit(NoDesignatorStatement NoDesignatorStatement);
@@ -145,8 +154,15 @@ public interface Visitor {
     public void visit(SingleStatement SingleStatement);
     public void visit(NoStatements NoStatements);
     public void visit(Statements Statements);
-    public void visit(NoVarDeclarations NoVarDeclarations);
-    public void visit(VarDeclarations VarDeclarations);
+    public void visit(ErrorLocalVariable ErrorLocalVariable);
+    public void visit(LocalVariable LocalVariable);
+    public void visit(SingleLocalVariable SingleLocalVariable);
+    public void visit(LocalVariables LocalVariables);
+    public void visit(ErrorLocalVarDeclaration ErrorLocalVarDeclaration);
+    public void visit(LocalVarDeclaration LocalVarDeclaration);
+    public void visit(NoLocalVarDeclarations NoLocalVarDeclarations);
+    public void visit(LocalVarDeclarations LocalVarDeclarations);
+    public void visit(ErrorFormalParameter ErrorFormalParameter);
     public void visit(FormalParameter FormalParameter);
     public void visit(SingleFormalParameter SingleFormalParameter);
     public void visit(MultipleFormalParameters MultipleFormalParameters);
@@ -156,6 +172,7 @@ public interface Visitor {
     public void visit(ReturnType ReturnType);
     public void visit(AbstractMethodDeclaration AbstractMethodDeclaration);
     public void visit(MethodDeclaration MethodDeclaration);
+    public void visit(ErrorAbstractClassMethodDeclaration ErrorAbstractClassMethodDeclaration);
     public void visit(AbstractClassAbstractMethodDeclaration AbstractClassAbstractMethodDeclaration);
     public void visit(AbstractClassMethodDeclaration AbstractClassMethodDeclaration);
     public void visit(SingleAbstractClassMethod SingleAbstractClassMethod);
@@ -164,13 +181,18 @@ public interface Visitor {
     public void visit(AbstractClassMethods AbstractClassMethods);
     public void visit(AbstractClassDeclaration AbstractClassDeclaration);
     public void visit(ClassMethodDeclaration ClassMethodDeclaration);
-    public void visit(SingleClassMethod SingleClassMethod);
-    public void visit(MultipleClassMethods MultipleClassMethods);
-    public void visit(NoClassMethods NoClassMethods);
-    public void visit(ClassMethods ClassMethods);
+    public void visit(SingleClassMethodDeclaration SingleClassMethodDeclaration);
+    public void visit(MultipleClassMethodDeclarations MultipleClassMethodDeclarations);
+    public void visit(NoClassMethodDeclarations NoClassMethodDeclarations);
+    public void visit(ClassMethodDeclarations ClassMethodDeclarations);
     public void visit(ClassVariable ClassVariable);
-    public void visit(NoClassVariables NoClassVariables);
+    public void visit(SingleClassVariable SingleClassVariable);
     public void visit(ClassVariables ClassVariables);
+    public void visit(ClassVarDeclaration ClassVarDeclaration);
+    public void visit(NoClassVarDeclarations NoClassVarDeclarations);
+    public void visit(ClassVarDeclarations ClassVarDeclarations);
+    public void visit(ErrorClassBaseTypeBeforeExtends ErrorClassBaseTypeBeforeExtends);
+    public void visit(ErrorClassBaseTypeAfterExtends ErrorClassBaseTypeAfterExtends);
     public void visit(NoClassBaseType NoClassBaseType);
     public void visit(ClassBaseType ClassBaseType);
     public void visit(PrivateAccess PrivateAccess);

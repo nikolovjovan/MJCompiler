@@ -64,7 +64,7 @@
 
     <target name="clean.all" depends="clean.logs,clean.output,clean.lexer,clean.parser" />
 
-    <target name="generate.lexer">
+    <target name="generate.lexer" depends="clean.lexer">
         <java jar="lib/JFlex.jar" fork="true">
             <arg value="-d" />
             <arg value="${source.dir}/rs/ac/bg/etf/pp1" />
@@ -72,7 +72,7 @@
         </java>
     </target>
 
-    <target name="generate.parser">
+    <target name="generate.parser" depends="clean.parser">
         <java jar="lib/cup_v10k.jar" fork="true">
             <arg value="-destdir" />
             <arg value="${source.dir}/rs/ac/bg/etf/pp1" />

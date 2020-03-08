@@ -1,36 +1,35 @@
 // generated with ast extension for cup
 // version 0.8
-// 7/2/2020 13:23:6
+// 8/2/2020 22:52:21
 
 
 package rs.ac.bg.etf.pp1.ast;
 
-public class ClassVariable extends ClassVarDecl {
+public class ClassVariable extends ClassVar {
 
-    private AccessModifier AccessModifier;
-    private VarDecl VarDecl;
+    private String varName;
+    private OptArrayBrackets OptArrayBrackets;
 
-    public ClassVariable (AccessModifier AccessModifier, VarDecl VarDecl) {
-        this.AccessModifier=AccessModifier;
-        if(AccessModifier!=null) AccessModifier.setParent(this);
-        this.VarDecl=VarDecl;
-        if(VarDecl!=null) VarDecl.setParent(this);
+    public ClassVariable (String varName, OptArrayBrackets OptArrayBrackets) {
+        this.varName=varName;
+        this.OptArrayBrackets=OptArrayBrackets;
+        if(OptArrayBrackets!=null) OptArrayBrackets.setParent(this);
     }
 
-    public AccessModifier getAccessModifier() {
-        return AccessModifier;
+    public String getVarName() {
+        return varName;
     }
 
-    public void setAccessModifier(AccessModifier AccessModifier) {
-        this.AccessModifier=AccessModifier;
+    public void setVarName(String varName) {
+        this.varName=varName;
     }
 
-    public VarDecl getVarDecl() {
-        return VarDecl;
+    public OptArrayBrackets getOptArrayBrackets() {
+        return OptArrayBrackets;
     }
 
-    public void setVarDecl(VarDecl VarDecl) {
-        this.VarDecl=VarDecl;
+    public void setOptArrayBrackets(OptArrayBrackets OptArrayBrackets) {
+        this.OptArrayBrackets=OptArrayBrackets;
     }
 
     public void accept(Visitor visitor) {
@@ -38,19 +37,16 @@ public class ClassVariable extends ClassVarDecl {
     }
 
     public void childrenAccept(Visitor visitor) {
-        if(AccessModifier!=null) AccessModifier.accept(visitor);
-        if(VarDecl!=null) VarDecl.accept(visitor);
+        if(OptArrayBrackets!=null) OptArrayBrackets.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
-        if(AccessModifier!=null) AccessModifier.traverseTopDown(visitor);
-        if(VarDecl!=null) VarDecl.traverseTopDown(visitor);
+        if(OptArrayBrackets!=null) OptArrayBrackets.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
-        if(AccessModifier!=null) AccessModifier.traverseBottomUp(visitor);
-        if(VarDecl!=null) VarDecl.traverseBottomUp(visitor);
+        if(OptArrayBrackets!=null) OptArrayBrackets.traverseBottomUp(visitor);
         accept(visitor);
     }
 
@@ -59,14 +55,11 @@ public class ClassVariable extends ClassVarDecl {
         buffer.append(tab);
         buffer.append("ClassVariable(\n");
 
-        if(AccessModifier!=null)
-            buffer.append(AccessModifier.toString("  "+tab));
-        else
-            buffer.append(tab+"  null");
+        buffer.append(" "+tab+varName);
         buffer.append("\n");
 
-        if(VarDecl!=null)
-            buffer.append(VarDecl.toString("  "+tab));
+        if(OptArrayBrackets!=null)
+            buffer.append(OptArrayBrackets.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");

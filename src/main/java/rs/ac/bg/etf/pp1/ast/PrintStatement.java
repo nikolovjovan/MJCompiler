@@ -1,36 +1,25 @@
 // generated with ast extension for cup
 // version 0.8
-// 7/2/2020 13:23:6
+// 8/2/2020 22:52:21
 
 
 package rs.ac.bg.etf.pp1.ast;
 
 public class PrintStatement extends Statement {
 
-    private Expr Expr;
-    private OptIntConst OptIntConst;
+    private PrintExpr PrintExpr;
 
-    public PrintStatement (Expr Expr, OptIntConst OptIntConst) {
-        this.Expr=Expr;
-        if(Expr!=null) Expr.setParent(this);
-        this.OptIntConst=OptIntConst;
-        if(OptIntConst!=null) OptIntConst.setParent(this);
+    public PrintStatement (PrintExpr PrintExpr) {
+        this.PrintExpr=PrintExpr;
+        if(PrintExpr!=null) PrintExpr.setParent(this);
     }
 
-    public Expr getExpr() {
-        return Expr;
+    public PrintExpr getPrintExpr() {
+        return PrintExpr;
     }
 
-    public void setExpr(Expr Expr) {
-        this.Expr=Expr;
-    }
-
-    public OptIntConst getOptIntConst() {
-        return OptIntConst;
-    }
-
-    public void setOptIntConst(OptIntConst OptIntConst) {
-        this.OptIntConst=OptIntConst;
+    public void setPrintExpr(PrintExpr PrintExpr) {
+        this.PrintExpr=PrintExpr;
     }
 
     public void accept(Visitor visitor) {
@@ -38,19 +27,16 @@ public class PrintStatement extends Statement {
     }
 
     public void childrenAccept(Visitor visitor) {
-        if(Expr!=null) Expr.accept(visitor);
-        if(OptIntConst!=null) OptIntConst.accept(visitor);
+        if(PrintExpr!=null) PrintExpr.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
-        if(Expr!=null) Expr.traverseTopDown(visitor);
-        if(OptIntConst!=null) OptIntConst.traverseTopDown(visitor);
+        if(PrintExpr!=null) PrintExpr.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
-        if(Expr!=null) Expr.traverseBottomUp(visitor);
-        if(OptIntConst!=null) OptIntConst.traverseBottomUp(visitor);
+        if(PrintExpr!=null) PrintExpr.traverseBottomUp(visitor);
         accept(visitor);
     }
 
@@ -59,14 +45,8 @@ public class PrintStatement extends Statement {
         buffer.append(tab);
         buffer.append("PrintStatement(\n");
 
-        if(Expr!=null)
-            buffer.append(Expr.toString("  "+tab));
-        else
-            buffer.append(tab+"  null");
-        buffer.append("\n");
-
-        if(OptIntConst!=null)
-            buffer.append(OptIntConst.toString("  "+tab));
+        if(PrintExpr!=null)
+            buffer.append(PrintExpr.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");

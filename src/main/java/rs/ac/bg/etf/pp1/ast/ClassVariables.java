@@ -1,36 +1,36 @@
 // generated with ast extension for cup
 // version 0.8
-// 7/2/2020 13:23:6
+// 8/2/2020 22:52:21
 
 
 package rs.ac.bg.etf.pp1.ast;
 
-public class ClassVariables extends OptClassVarDeclList {
+public class ClassVariables extends ClassVarList {
 
-    private OptClassVarDeclList OptClassVarDeclList;
-    private ClassVarDecl ClassVarDecl;
+    private ClassVarList ClassVarList;
+    private ClassVar ClassVar;
 
-    public ClassVariables (OptClassVarDeclList OptClassVarDeclList, ClassVarDecl ClassVarDecl) {
-        this.OptClassVarDeclList=OptClassVarDeclList;
-        if(OptClassVarDeclList!=null) OptClassVarDeclList.setParent(this);
-        this.ClassVarDecl=ClassVarDecl;
-        if(ClassVarDecl!=null) ClassVarDecl.setParent(this);
+    public ClassVariables (ClassVarList ClassVarList, ClassVar ClassVar) {
+        this.ClassVarList=ClassVarList;
+        if(ClassVarList!=null) ClassVarList.setParent(this);
+        this.ClassVar=ClassVar;
+        if(ClassVar!=null) ClassVar.setParent(this);
     }
 
-    public OptClassVarDeclList getOptClassVarDeclList() {
-        return OptClassVarDeclList;
+    public ClassVarList getClassVarList() {
+        return ClassVarList;
     }
 
-    public void setOptClassVarDeclList(OptClassVarDeclList OptClassVarDeclList) {
-        this.OptClassVarDeclList=OptClassVarDeclList;
+    public void setClassVarList(ClassVarList ClassVarList) {
+        this.ClassVarList=ClassVarList;
     }
 
-    public ClassVarDecl getClassVarDecl() {
-        return ClassVarDecl;
+    public ClassVar getClassVar() {
+        return ClassVar;
     }
 
-    public void setClassVarDecl(ClassVarDecl ClassVarDecl) {
-        this.ClassVarDecl=ClassVarDecl;
+    public void setClassVar(ClassVar ClassVar) {
+        this.ClassVar=ClassVar;
     }
 
     public void accept(Visitor visitor) {
@@ -38,19 +38,19 @@ public class ClassVariables extends OptClassVarDeclList {
     }
 
     public void childrenAccept(Visitor visitor) {
-        if(OptClassVarDeclList!=null) OptClassVarDeclList.accept(visitor);
-        if(ClassVarDecl!=null) ClassVarDecl.accept(visitor);
+        if(ClassVarList!=null) ClassVarList.accept(visitor);
+        if(ClassVar!=null) ClassVar.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
-        if(OptClassVarDeclList!=null) OptClassVarDeclList.traverseTopDown(visitor);
-        if(ClassVarDecl!=null) ClassVarDecl.traverseTopDown(visitor);
+        if(ClassVarList!=null) ClassVarList.traverseTopDown(visitor);
+        if(ClassVar!=null) ClassVar.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
-        if(OptClassVarDeclList!=null) OptClassVarDeclList.traverseBottomUp(visitor);
-        if(ClassVarDecl!=null) ClassVarDecl.traverseBottomUp(visitor);
+        if(ClassVarList!=null) ClassVarList.traverseBottomUp(visitor);
+        if(ClassVar!=null) ClassVar.traverseBottomUp(visitor);
         accept(visitor);
     }
 
@@ -59,14 +59,14 @@ public class ClassVariables extends OptClassVarDeclList {
         buffer.append(tab);
         buffer.append("ClassVariables(\n");
 
-        if(OptClassVarDeclList!=null)
-            buffer.append(OptClassVarDeclList.toString("  "+tab));
+        if(ClassVarList!=null)
+            buffer.append(ClassVarList.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");
 
-        if(ClassVarDecl!=null)
-            buffer.append(ClassVarDecl.toString("  "+tab));
+        if(ClassVar!=null)
+            buffer.append(ClassVar.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");

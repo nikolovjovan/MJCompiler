@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 7/2/2020 13:23:6
+// 8/2/2020 22:52:21
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -10,17 +10,17 @@ public class MethodDeclaration extends MethodDecl {
     private RetType RetType;
     private String methodName;
     private OptFormalParamList OptFormalParamList;
-    private OptVarDeclList OptVarDeclList;
+    private OptLocalVarDeclList OptLocalVarDeclList;
     private OptStatementList OptStatementList;
 
-    public MethodDeclaration (RetType RetType, String methodName, OptFormalParamList OptFormalParamList, OptVarDeclList OptVarDeclList, OptStatementList OptStatementList) {
+    public MethodDeclaration (RetType RetType, String methodName, OptFormalParamList OptFormalParamList, OptLocalVarDeclList OptLocalVarDeclList, OptStatementList OptStatementList) {
         this.RetType=RetType;
         if(RetType!=null) RetType.setParent(this);
         this.methodName=methodName;
         this.OptFormalParamList=OptFormalParamList;
         if(OptFormalParamList!=null) OptFormalParamList.setParent(this);
-        this.OptVarDeclList=OptVarDeclList;
-        if(OptVarDeclList!=null) OptVarDeclList.setParent(this);
+        this.OptLocalVarDeclList=OptLocalVarDeclList;
+        if(OptLocalVarDeclList!=null) OptLocalVarDeclList.setParent(this);
         this.OptStatementList=OptStatementList;
         if(OptStatementList!=null) OptStatementList.setParent(this);
     }
@@ -49,12 +49,12 @@ public class MethodDeclaration extends MethodDecl {
         this.OptFormalParamList=OptFormalParamList;
     }
 
-    public OptVarDeclList getOptVarDeclList() {
-        return OptVarDeclList;
+    public OptLocalVarDeclList getOptLocalVarDeclList() {
+        return OptLocalVarDeclList;
     }
 
-    public void setOptVarDeclList(OptVarDeclList OptVarDeclList) {
-        this.OptVarDeclList=OptVarDeclList;
+    public void setOptLocalVarDeclList(OptLocalVarDeclList OptLocalVarDeclList) {
+        this.OptLocalVarDeclList=OptLocalVarDeclList;
     }
 
     public OptStatementList getOptStatementList() {
@@ -72,7 +72,7 @@ public class MethodDeclaration extends MethodDecl {
     public void childrenAccept(Visitor visitor) {
         if(RetType!=null) RetType.accept(visitor);
         if(OptFormalParamList!=null) OptFormalParamList.accept(visitor);
-        if(OptVarDeclList!=null) OptVarDeclList.accept(visitor);
+        if(OptLocalVarDeclList!=null) OptLocalVarDeclList.accept(visitor);
         if(OptStatementList!=null) OptStatementList.accept(visitor);
     }
 
@@ -80,14 +80,14 @@ public class MethodDeclaration extends MethodDecl {
         accept(visitor);
         if(RetType!=null) RetType.traverseTopDown(visitor);
         if(OptFormalParamList!=null) OptFormalParamList.traverseTopDown(visitor);
-        if(OptVarDeclList!=null) OptVarDeclList.traverseTopDown(visitor);
+        if(OptLocalVarDeclList!=null) OptLocalVarDeclList.traverseTopDown(visitor);
         if(OptStatementList!=null) OptStatementList.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
         if(RetType!=null) RetType.traverseBottomUp(visitor);
         if(OptFormalParamList!=null) OptFormalParamList.traverseBottomUp(visitor);
-        if(OptVarDeclList!=null) OptVarDeclList.traverseBottomUp(visitor);
+        if(OptLocalVarDeclList!=null) OptLocalVarDeclList.traverseBottomUp(visitor);
         if(OptStatementList!=null) OptStatementList.traverseBottomUp(visitor);
         accept(visitor);
     }
@@ -112,8 +112,8 @@ public class MethodDeclaration extends MethodDecl {
             buffer.append(tab+"  null");
         buffer.append("\n");
 
-        if(OptVarDeclList!=null)
-            buffer.append(OptVarDeclList.toString("  "+tab));
+        if(OptLocalVarDeclList!=null)
+            buffer.append(OptLocalVarDeclList.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");

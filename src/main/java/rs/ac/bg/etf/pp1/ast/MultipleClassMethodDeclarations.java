@@ -1,16 +1,16 @@
 // generated with ast extension for cup
 // version 0.8
-// 7/2/2020 13:23:6
+// 8/2/2020 22:52:21
 
 
 package rs.ac.bg.etf.pp1.ast;
 
-public class MultipleClassMethods extends ClassMethodDeclList {
+public class MultipleClassMethodDeclarations extends ClassMethodDeclList {
 
     private ClassMethodDeclList ClassMethodDeclList;
     private ClassMethodDecl ClassMethodDecl;
 
-    public MultipleClassMethods (ClassMethodDeclList ClassMethodDeclList, ClassMethodDecl ClassMethodDecl) {
+    public MultipleClassMethodDeclarations (ClassMethodDeclList ClassMethodDeclList, ClassMethodDecl ClassMethodDecl) {
         this.ClassMethodDeclList=ClassMethodDeclList;
         if(ClassMethodDeclList!=null) ClassMethodDeclList.setParent(this);
         this.ClassMethodDecl=ClassMethodDecl;
@@ -57,7 +57,7 @@ public class MultipleClassMethods extends ClassMethodDeclList {
     public String toString(String tab) {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
-        buffer.append("MultipleClassMethods(\n");
+        buffer.append("MultipleClassMethodDeclarations(\n");
 
         if(ClassMethodDeclList!=null)
             buffer.append(ClassMethodDeclList.toString("  "+tab));
@@ -72,7 +72,7 @@ public class MultipleClassMethods extends ClassMethodDeclList {
         buffer.append("\n");
 
         buffer.append(tab);
-        buffer.append(") [MultipleClassMethods]");
+        buffer.append(") [MultipleClassMethodDeclarations]");
         return buffer.toString();
     }
 }

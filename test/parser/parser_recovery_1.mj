@@ -1,0 +1,22 @@
+// level A error recovery test
+program error_a
+    // this fails since level A specifies variable declaration error recovery for local variables only
+    // int a, 3x, b, d, 6b, c;
+{
+    void main()
+        int 3z;
+        int p;
+        int q;
+        int 7x, a, p, 4v, g;
+        int a, 3x, b, d, 6b, c;
+        int c, d, 6x;
+        int x, y;
+    {
+        x = x = 5;
+        x -= y +;
+        x = ;
+        x = +;
+        x = + y; // this is not an invalid assignment, just a test for explicit plus sign
+        x = if (x == y) x = 2;
+    }
+}
