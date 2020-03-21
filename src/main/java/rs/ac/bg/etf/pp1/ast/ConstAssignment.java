@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 8/2/2020 22:52:21
+// 20/2/2020 12:43:10
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -9,29 +9,29 @@ public class ConstAssignment implements SyntaxNode {
 
     private SyntaxNode parent;
     private int line;
-    private String constName;
-    private ConstValue ConstValue;
+    private String name;
+    private Const Const;
 
-    public ConstAssignment (String constName, ConstValue ConstValue) {
-        this.constName=constName;
-        this.ConstValue=ConstValue;
-        if(ConstValue!=null) ConstValue.setParent(this);
+    public ConstAssignment (String name, Const Const) {
+        this.name=name;
+        this.Const=Const;
+        if(Const!=null) Const.setParent(this);
     }
 
-    public String getConstName() {
-        return constName;
+    public String getName() {
+        return name;
     }
 
-    public void setConstName(String constName) {
-        this.constName=constName;
+    public void setName(String name) {
+        this.name=name;
     }
 
-    public ConstValue getConstValue() {
-        return ConstValue;
+    public Const getConst() {
+        return Const;
     }
 
-    public void setConstValue(ConstValue ConstValue) {
-        this.ConstValue=ConstValue;
+    public void setConst(Const Const) {
+        this.Const=Const;
     }
 
     public SyntaxNode getParent() {
@@ -55,16 +55,16 @@ public class ConstAssignment implements SyntaxNode {
     }
 
     public void childrenAccept(Visitor visitor) {
-        if(ConstValue!=null) ConstValue.accept(visitor);
+        if(Const!=null) Const.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
-        if(ConstValue!=null) ConstValue.traverseTopDown(visitor);
+        if(Const!=null) Const.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
-        if(ConstValue!=null) ConstValue.traverseBottomUp(visitor);
+        if(Const!=null) Const.traverseBottomUp(visitor);
         accept(visitor);
     }
 
@@ -73,11 +73,11 @@ public class ConstAssignment implements SyntaxNode {
         buffer.append(tab);
         buffer.append("ConstAssignment(\n");
 
-        buffer.append(" "+tab+constName);
+        buffer.append(" "+tab+name);
         buffer.append("\n");
 
-        if(ConstValue!=null)
-            buffer.append(ConstValue.toString("  "+tab));
+        if(Const!=null)
+            buffer.append(Const.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");

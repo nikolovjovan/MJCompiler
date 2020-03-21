@@ -1,22 +1,20 @@
 // generated with ast extension for cup
 // version 0.8
-// 8/2/2020 22:52:21
+// 20/2/2020 12:43:10
 
 
 package rs.ac.bg.etf.pp1.ast;
 
 public class MethodDeclaration extends MethodDecl {
 
-    private RetType RetType;
-    private String methodName;
+    private MethodHeader MethodHeader;
     private OptFormalParamList OptFormalParamList;
     private OptLocalVarDeclList OptLocalVarDeclList;
     private OptStatementList OptStatementList;
 
-    public MethodDeclaration (RetType RetType, String methodName, OptFormalParamList OptFormalParamList, OptLocalVarDeclList OptLocalVarDeclList, OptStatementList OptStatementList) {
-        this.RetType=RetType;
-        if(RetType!=null) RetType.setParent(this);
-        this.methodName=methodName;
+    public MethodDeclaration (MethodHeader MethodHeader, OptFormalParamList OptFormalParamList, OptLocalVarDeclList OptLocalVarDeclList, OptStatementList OptStatementList) {
+        this.MethodHeader=MethodHeader;
+        if(MethodHeader!=null) MethodHeader.setParent(this);
         this.OptFormalParamList=OptFormalParamList;
         if(OptFormalParamList!=null) OptFormalParamList.setParent(this);
         this.OptLocalVarDeclList=OptLocalVarDeclList;
@@ -25,20 +23,12 @@ public class MethodDeclaration extends MethodDecl {
         if(OptStatementList!=null) OptStatementList.setParent(this);
     }
 
-    public RetType getRetType() {
-        return RetType;
+    public MethodHeader getMethodHeader() {
+        return MethodHeader;
     }
 
-    public void setRetType(RetType RetType) {
-        this.RetType=RetType;
-    }
-
-    public String getMethodName() {
-        return methodName;
-    }
-
-    public void setMethodName(String methodName) {
-        this.methodName=methodName;
+    public void setMethodHeader(MethodHeader MethodHeader) {
+        this.MethodHeader=MethodHeader;
     }
 
     public OptFormalParamList getOptFormalParamList() {
@@ -70,7 +60,7 @@ public class MethodDeclaration extends MethodDecl {
     }
 
     public void childrenAccept(Visitor visitor) {
-        if(RetType!=null) RetType.accept(visitor);
+        if(MethodHeader!=null) MethodHeader.accept(visitor);
         if(OptFormalParamList!=null) OptFormalParamList.accept(visitor);
         if(OptLocalVarDeclList!=null) OptLocalVarDeclList.accept(visitor);
         if(OptStatementList!=null) OptStatementList.accept(visitor);
@@ -78,14 +68,14 @@ public class MethodDeclaration extends MethodDecl {
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
-        if(RetType!=null) RetType.traverseTopDown(visitor);
+        if(MethodHeader!=null) MethodHeader.traverseTopDown(visitor);
         if(OptFormalParamList!=null) OptFormalParamList.traverseTopDown(visitor);
         if(OptLocalVarDeclList!=null) OptLocalVarDeclList.traverseTopDown(visitor);
         if(OptStatementList!=null) OptStatementList.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
-        if(RetType!=null) RetType.traverseBottomUp(visitor);
+        if(MethodHeader!=null) MethodHeader.traverseBottomUp(visitor);
         if(OptFormalParamList!=null) OptFormalParamList.traverseBottomUp(visitor);
         if(OptLocalVarDeclList!=null) OptLocalVarDeclList.traverseBottomUp(visitor);
         if(OptStatementList!=null) OptStatementList.traverseBottomUp(visitor);
@@ -97,13 +87,10 @@ public class MethodDeclaration extends MethodDecl {
         buffer.append(tab);
         buffer.append("MethodDeclaration(\n");
 
-        if(RetType!=null)
-            buffer.append(RetType.toString("  "+tab));
+        if(MethodHeader!=null)
+            buffer.append(MethodHeader.toString("  "+tab));
         else
             buffer.append(tab+"  null");
-        buffer.append("\n");
-
-        buffer.append(" "+tab+methodName);
         buffer.append("\n");
 
         if(OptFormalParamList!=null)

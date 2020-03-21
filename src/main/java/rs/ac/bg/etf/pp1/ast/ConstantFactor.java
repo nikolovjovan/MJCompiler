@@ -1,25 +1,25 @@
 // generated with ast extension for cup
 // version 0.8
-// 8/2/2020 22:52:21
+// 20/2/2020 12:43:10
 
 
 package rs.ac.bg.etf.pp1.ast;
 
 public class ConstantFactor extends Factor {
 
-    private ConstValue ConstValue;
+    private ConstFactor ConstFactor;
 
-    public ConstantFactor (ConstValue ConstValue) {
-        this.ConstValue=ConstValue;
-        if(ConstValue!=null) ConstValue.setParent(this);
+    public ConstantFactor (ConstFactor ConstFactor) {
+        this.ConstFactor=ConstFactor;
+        if(ConstFactor!=null) ConstFactor.setParent(this);
     }
 
-    public ConstValue getConstValue() {
-        return ConstValue;
+    public ConstFactor getConstFactor() {
+        return ConstFactor;
     }
 
-    public void setConstValue(ConstValue ConstValue) {
-        this.ConstValue=ConstValue;
+    public void setConstFactor(ConstFactor ConstFactor) {
+        this.ConstFactor=ConstFactor;
     }
 
     public void accept(Visitor visitor) {
@@ -27,16 +27,16 @@ public class ConstantFactor extends Factor {
     }
 
     public void childrenAccept(Visitor visitor) {
-        if(ConstValue!=null) ConstValue.accept(visitor);
+        if(ConstFactor!=null) ConstFactor.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
-        if(ConstValue!=null) ConstValue.traverseTopDown(visitor);
+        if(ConstFactor!=null) ConstFactor.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
-        if(ConstValue!=null) ConstValue.traverseBottomUp(visitor);
+        if(ConstFactor!=null) ConstFactor.traverseBottomUp(visitor);
         accept(visitor);
     }
 
@@ -45,8 +45,8 @@ public class ConstantFactor extends Factor {
         buffer.append(tab);
         buffer.append("ConstantFactor(\n");
 
-        if(ConstValue!=null)
-            buffer.append(ConstValue.toString("  "+tab));
+        if(ConstFactor!=null)
+            buffer.append(ConstFactor.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");

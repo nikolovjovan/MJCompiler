@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 8/2/2020 22:52:21
+// 20/2/2020 12:43:10
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -9,24 +9,27 @@ public class Program implements SyntaxNode {
 
     private SyntaxNode parent;
     private int line;
-    private String programName;
+    public rs.etf.pp1.symboltable.concepts.Obj obj = null;
+
+    private ProgramName ProgramName;
     private OptProgramDeclList OptProgramDeclList;
     private OptMethodDeclList OptMethodDeclList;
 
-    public Program (String programName, OptProgramDeclList OptProgramDeclList, OptMethodDeclList OptMethodDeclList) {
-        this.programName=programName;
+    public Program (ProgramName ProgramName, OptProgramDeclList OptProgramDeclList, OptMethodDeclList OptMethodDeclList) {
+        this.ProgramName=ProgramName;
+        if(ProgramName!=null) ProgramName.setParent(this);
         this.OptProgramDeclList=OptProgramDeclList;
         if(OptProgramDeclList!=null) OptProgramDeclList.setParent(this);
         this.OptMethodDeclList=OptMethodDeclList;
         if(OptMethodDeclList!=null) OptMethodDeclList.setParent(this);
     }
 
-    public String getProgramName() {
-        return programName;
+    public ProgramName getProgramName() {
+        return ProgramName;
     }
 
-    public void setProgramName(String programName) {
-        this.programName=programName;
+    public void setProgramName(ProgramName ProgramName) {
+        this.ProgramName=ProgramName;
     }
 
     public OptProgramDeclList getOptProgramDeclList() {
@@ -66,17 +69,20 @@ public class Program implements SyntaxNode {
     }
 
     public void childrenAccept(Visitor visitor) {
+        if(ProgramName!=null) ProgramName.accept(visitor);
         if(OptProgramDeclList!=null) OptProgramDeclList.accept(visitor);
         if(OptMethodDeclList!=null) OptMethodDeclList.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
+        if(ProgramName!=null) ProgramName.traverseTopDown(visitor);
         if(OptProgramDeclList!=null) OptProgramDeclList.traverseTopDown(visitor);
         if(OptMethodDeclList!=null) OptMethodDeclList.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
+        if(ProgramName!=null) ProgramName.traverseBottomUp(visitor);
         if(OptProgramDeclList!=null) OptProgramDeclList.traverseBottomUp(visitor);
         if(OptMethodDeclList!=null) OptMethodDeclList.traverseBottomUp(visitor);
         accept(visitor);
@@ -87,7 +93,10 @@ public class Program implements SyntaxNode {
         buffer.append(tab);
         buffer.append("Program(\n");
 
-        buffer.append(" "+tab+programName);
+        if(ProgramName!=null)
+            buffer.append(ProgramName.toString("  "+tab));
+        else
+            buffer.append(tab+"  null");
         buffer.append("\n");
 
         if(OptProgramDeclList!=null)

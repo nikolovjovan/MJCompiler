@@ -1,41 +1,31 @@
 // generated with ast extension for cup
 // version 0.8
-// 8/2/2020 22:52:21
+// 20/2/2020 12:43:10
 
 
 package rs.ac.bg.etf.pp1.ast;
 
 public class ClassDeclaration extends ClassDecl {
 
-    private String className;
-    private OptClassBaseType OptClassBaseType;
+    private ClassHeader ClassHeader;
     private OptClassVarDeclList OptClassVarDeclList;
     private OptClassMethodDeclList OptClassMethodDeclList;
 
-    public ClassDeclaration (String className, OptClassBaseType OptClassBaseType, OptClassVarDeclList OptClassVarDeclList, OptClassMethodDeclList OptClassMethodDeclList) {
-        this.className=className;
-        this.OptClassBaseType=OptClassBaseType;
-        if(OptClassBaseType!=null) OptClassBaseType.setParent(this);
+    public ClassDeclaration (ClassHeader ClassHeader, OptClassVarDeclList OptClassVarDeclList, OptClassMethodDeclList OptClassMethodDeclList) {
+        this.ClassHeader=ClassHeader;
+        if(ClassHeader!=null) ClassHeader.setParent(this);
         this.OptClassVarDeclList=OptClassVarDeclList;
         if(OptClassVarDeclList!=null) OptClassVarDeclList.setParent(this);
         this.OptClassMethodDeclList=OptClassMethodDeclList;
         if(OptClassMethodDeclList!=null) OptClassMethodDeclList.setParent(this);
     }
 
-    public String getClassName() {
-        return className;
+    public ClassHeader getClassHeader() {
+        return ClassHeader;
     }
 
-    public void setClassName(String className) {
-        this.className=className;
-    }
-
-    public OptClassBaseType getOptClassBaseType() {
-        return OptClassBaseType;
-    }
-
-    public void setOptClassBaseType(OptClassBaseType OptClassBaseType) {
-        this.OptClassBaseType=OptClassBaseType;
+    public void setClassHeader(ClassHeader ClassHeader) {
+        this.ClassHeader=ClassHeader;
     }
 
     public OptClassVarDeclList getOptClassVarDeclList() {
@@ -59,20 +49,20 @@ public class ClassDeclaration extends ClassDecl {
     }
 
     public void childrenAccept(Visitor visitor) {
-        if(OptClassBaseType!=null) OptClassBaseType.accept(visitor);
+        if(ClassHeader!=null) ClassHeader.accept(visitor);
         if(OptClassVarDeclList!=null) OptClassVarDeclList.accept(visitor);
         if(OptClassMethodDeclList!=null) OptClassMethodDeclList.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
-        if(OptClassBaseType!=null) OptClassBaseType.traverseTopDown(visitor);
+        if(ClassHeader!=null) ClassHeader.traverseTopDown(visitor);
         if(OptClassVarDeclList!=null) OptClassVarDeclList.traverseTopDown(visitor);
         if(OptClassMethodDeclList!=null) OptClassMethodDeclList.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
-        if(OptClassBaseType!=null) OptClassBaseType.traverseBottomUp(visitor);
+        if(ClassHeader!=null) ClassHeader.traverseBottomUp(visitor);
         if(OptClassVarDeclList!=null) OptClassVarDeclList.traverseBottomUp(visitor);
         if(OptClassMethodDeclList!=null) OptClassMethodDeclList.traverseBottomUp(visitor);
         accept(visitor);
@@ -83,11 +73,8 @@ public class ClassDeclaration extends ClassDecl {
         buffer.append(tab);
         buffer.append("ClassDeclaration(\n");
 
-        buffer.append(" "+tab+className);
-        buffer.append("\n");
-
-        if(OptClassBaseType!=null)
-            buffer.append(OptClassBaseType.toString("  "+tab));
+        if(ClassHeader!=null)
+            buffer.append(ClassHeader.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");

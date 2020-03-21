@@ -1,24 +1,35 @@
 // generated with ast extension for cup
 // version 0.8
-// 8/2/2020 22:52:21
+// 20/2/2020 12:43:10
 
 
 package rs.ac.bg.etf.pp1.ast;
 
-public class ConstInt extends ConstValue {
+public class ConstInt extends Const {
 
-    private Integer intValue;
+    private OptSign OptSign;
+    private Integer value;
 
-    public ConstInt (Integer intValue) {
-        this.intValue=intValue;
+    public ConstInt (OptSign OptSign, Integer value) {
+        this.OptSign=OptSign;
+        if(OptSign!=null) OptSign.setParent(this);
+        this.value=value;
     }
 
-    public Integer getIntValue() {
-        return intValue;
+    public OptSign getOptSign() {
+        return OptSign;
     }
 
-    public void setIntValue(Integer intValue) {
-        this.intValue=intValue;
+    public void setOptSign(OptSign OptSign) {
+        this.OptSign=OptSign;
+    }
+
+    public Integer getValue() {
+        return value;
+    }
+
+    public void setValue(Integer value) {
+        this.value=value;
     }
 
     public void accept(Visitor visitor) {
@@ -26,13 +37,16 @@ public class ConstInt extends ConstValue {
     }
 
     public void childrenAccept(Visitor visitor) {
+        if(OptSign!=null) OptSign.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
+        if(OptSign!=null) OptSign.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
+        if(OptSign!=null) OptSign.traverseBottomUp(visitor);
         accept(visitor);
     }
 
@@ -41,7 +55,13 @@ public class ConstInt extends ConstValue {
         buffer.append(tab);
         buffer.append("ConstInt(\n");
 
-        buffer.append(" "+tab+intValue);
+        if(OptSign!=null)
+            buffer.append(OptSign.toString("  "+tab));
+        else
+            buffer.append(tab+"  null");
+        buffer.append("\n");
+
+        buffer.append(" "+tab+value);
         buffer.append("\n");
 
         buffer.append(tab);

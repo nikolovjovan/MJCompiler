@@ -9,15 +9,13 @@ parser code {:
     int errorCount = 0;
 
     private String format_message(String message, int left, int right) {
+        if (left <= 0) return message;
         StringBuilder info = new StringBuilder(((MJLexer) getScanner()).fileName);
         info.append(':');
-        if (left > 0) {
-            errorCount++;
-            info.append(left).append(':');
-            if (right > 0) info.append(right).append(':');
-            return info.append(' ').append(message).toString();
-        }
-        return message;
+        errorCount++;
+        info.append(left).append(':');
+        if (right > 0) info.append(right).append(':');
+        return info.append(' ').append(message).toString();
     }
 
     private String format_message(String message, Object info) {
@@ -84,8 +82,7 @@ terminal Boolean BOOL;
 terminal String IDENT;
 
 /* Main non-terminals */
-nonterminal Program Program;
-nonterminal Type Type;
+nonterminal rs.etf.pp1.symboltable.concepts.Obj Program, ProgramName, Type;
 nonterminal OptProgramDeclList OptProgramDeclList;
 nonterminal ProgramDecl ProgramDecl;
 nonterminal OptMethodDeclList OptMethodDeclList;
@@ -94,7 +91,8 @@ nonterminal OptMethodDeclList OptMethodDeclList;
 nonterminal ConstDecl ConstDecl;
 nonterminal ConstAssignmentList ConstAssignmentList;
 nonterminal ConstAssignment ConstAssignment;
-nonterminal ConstValue ConstValue;
+nonterminal Const Const;
+nonterminal OptSign OptSign;
 
 /* Global Var Declarations */
 nonterminal VarDecl VarDecl;
@@ -104,6 +102,7 @@ nonterminal OptArrayBrackets OptArrayBrackets;
 
 /* Class Declarations */
 nonterminal ClassDecl ClassDecl;
+nonterminal ClassHeader ClassHeader;
 nonterminal AccessModifier AccessModifier;
 nonterminal OptClassBaseType OptClassBaseType;
 
@@ -120,6 +119,7 @@ nonterminal ClassMethodDecl ClassMethodDecl;
 
 /* Abstract Class Declarations */
 nonterminal AbstractClassDecl AbstractClassDecl;
+nonterminal AbstractClassHeader AbstractClassHeader;
 
 /* Abstract Class Method Declarations */
 nonterminal OptAbstractClassMethodDeclList OptAbstractClassMethodDeclList;
@@ -129,7 +129,7 @@ nonterminal AbstractClassMethodDecl AbstractClassMethodDecl;
 /* Method Declarations */
 nonterminal MethodDecl MethodDecl;
 nonterminal AbstractMethodDecl AbstractMethodDecl;
-nonterminal RetType RetType;
+nonterminal rs.etf.pp1.symboltable.concepts.Obj MethodHeader, AbstractMethodHeader, RetType;
 
 /* Formal Parameters */
 nonterminal OptFormalParamList OptFormalParamList;
@@ -159,7 +159,6 @@ nonterminal DesignatorPart DesignatorPart;
 /* Expression-related non-terminals */
 nonterminal OptExpr OptExpr;
 nonterminal Expr Expr;
-nonterminal OptSign OptSign;
 
 /* Actual Parameters */
 nonterminal OptActualParamList OptActualParamList;
@@ -182,6 +181,7 @@ nonterminal AddopRight AddopRight;
 /* Multiplicative Operators */
 nonterminal Term Term;
 nonterminal Factor Factor;
+nonterminal ConstFactor ConstFactor;
 nonterminal OptMulopExprList OptMulopExprList;
 nonterminal Mulop Mulop;
 nonterminal MulopLeft MulopLeft;
@@ -195,9 +195,11 @@ precedence left ELSE;
 
 /* Main non-terminals */
 
-Program ::= (Program) PROGRAM IDENT:programName OptProgramDeclList:O1 LBRACE OptMethodDeclList:O2 RBRACE {: RESULT=new Program(programName, O1, O2); RESULT.setLine(programNameleft); :};
+Program ::= (Program) PROGRAM ProgramName:P1 OptProgramDeclList:O2 LBRACE OptMethodDeclList:O3 RBRACE {: RESULT=new Program(P1, O2, O3); RESULT.setLine(P1left); :};
 
-Type ::= (Type) IDENT:type {: RESULT=new Type(type); RESULT.setLine(typeleft); :};
+ProgramName ::= (ProgramName) IDENT:name {: RESULT=new ProgramName(name); RESULT.setLine(nameleft); :};
+
+Type ::= (Type) IDENT:name {: RESULT=new Type(name); RESULT.setLine(nameleft); :};
 
 OptProgramDeclList ::= (ProgramDeclarations) OptProgramDeclList:O1 ProgramDecl:P2 {: RESULT=new ProgramDeclarations(O1, P2); RESULT.setLine(O1left); :}
                      | (NoProgramDeclarations) {: RESULT=new NoProgramDeclarations(); :} /* epsilon */
@@ -215,28 +217,33 @@ OptMethodDeclList ::= (MethodDeclarations) OptMethodDeclList:O1 MethodDecl:M2 {:
 
 /* Const Declarations */
 
-ConstDecl ::= (ConstDeclaration) CONST Type:constType ConstAssignmentList:C1 SEMICOLON {: RESULT=new ConstDeclaration(constType, C1); RESULT.setLine(constTypeleft); :};
+ConstDecl ::= (ConstDeclaration) CONST Type:type ConstAssignmentList:C1 SEMICOLON {: RESULT=new ConstDeclaration(type, C1); RESULT.setLine(typeleft); :};
 
 ConstAssignmentList ::= (ConstAssignments) ConstAssignmentList:C1 COMMA ConstAssignment:C2 {: RESULT=new ConstAssignments(C1, C2); RESULT.setLine(C1left); :}
                       | (SingleConstAssignment) ConstAssignment:C1 {: RESULT=new SingleConstAssignment(C1); RESULT.setLine(C1left); :}
                       ;
 
-ConstAssignment ::= (ConstAssignment) IDENT:constName ASSIGN ConstValue:constValue {: RESULT=new ConstAssignment(constName, constValue); RESULT.setLine(constNameleft); :};
+ConstAssignment ::= (ConstAssignment) IDENT:name ASSIGN Const:value {: RESULT=new ConstAssignment(name, value); RESULT.setLine(nameleft); :};
 
-ConstValue ::= (ConstInt) INT:intValue {: RESULT=new ConstInt(intValue); RESULT.setLine(intValueleft); :}
-             | (ConstChar) CHAR:charValue {: RESULT=new ConstChar(charValue); RESULT.setLine(charValueleft); :}
-             | (ConstBool) BOOL:boolValue {: RESULT=new ConstBool(boolValue); RESULT.setLine(boolValueleft); :}
-             ;
+Const ::= (ConstInt) OptSign:sign INT:value {: RESULT=new ConstInt(sign, value); RESULT.setLine(signleft); :}
+        | (ConstChar) CHAR:value {: RESULT=new ConstChar(value); RESULT.setLine(valueleft); :}
+        | (ConstBool) BOOL:value {: RESULT=new ConstBool(value); RESULT.setLine(valueleft); :}
+        ;
+
+OptSign ::= (Negative) MINUS {: RESULT=new Negative(); :}
+          | (ExplicitlyPositive) PLUS {: RESULT=new ExplicitlyPositive(); :}
+          | (ImplicitlyPositive) {: RESULT=new ImplicitlyPositive(); :} /* epsilon */
+          ;
 
 /* Var Declarations */
 
-VarDecl ::= (VarDeclaration) Type:varType VarList:V1 SEMICOLON {: RESULT=new VarDeclaration(varType, V1); RESULT.setLine(varTypeleft); :};
+VarDecl ::= (VarDeclaration) Type:type VarList:V1 SEMICOLON {: RESULT=new VarDeclaration(type, V1); RESULT.setLine(typeleft); :};
 
 VarList ::= (Variables) VarList:V1 COMMA Var:V2 {: RESULT=new Variables(V1, V2); RESULT.setLine(V1left); :}
           | (SingleVariable) Var:V1 {: RESULT=new SingleVariable(V1); RESULT.setLine(V1left); :}
           ;
 
-Var ::= (Variable) IDENT:varName OptArrayBrackets:O1 {: RESULT=new Variable(varName, O1); RESULT.setLine(varNameleft); :};
+Var ::= (Variable) IDENT:name OptArrayBrackets:O1 {: RESULT=new Variable(name, O1); RESULT.setLine(nameleft); :};
 
 OptArrayBrackets ::= (ArrayBrackets) LBRACK RBRACK {: RESULT=new ArrayBrackets(); :}
                    | (NoArrayBrackets) {: RESULT=new NoArrayBrackets(); :} /* epsilon */
@@ -244,14 +251,16 @@ OptArrayBrackets ::= (ArrayBrackets) LBRACK RBRACK {: RESULT=new ArrayBrackets()
 
 /* Class Declarations */
 
-ClassDecl ::= (ClassDeclaration) CLASS IDENT:className OptClassBaseType:O1 LBRACE OptClassVarDeclList:O2 OptClassMethodDeclList:O3 RBRACE {: RESULT=new ClassDeclaration(className, O1, O2, O3); RESULT.setLine(classNameleft); :};
+ClassDecl ::= (ClassDeclaration) ClassHeader:C1 LBRACE OptClassVarDeclList:O2 OptClassMethodDeclList:O3 RBRACE {: RESULT=new ClassDeclaration(C1, O2, O3); RESULT.setLine(C1left); :};
+
+ClassHeader ::= (ClassHeader) CLASS IDENT:name OptClassBaseType:O1 {: RESULT=new ClassHeader(name, O1); RESULT.setLine(nameleft); :};
 
 AccessModifier ::= (PublicAccess) PUBLIC {: RESULT=new PublicAccess(); :}
                  | (ProtectedAccess) PROTECTED {: RESULT=new ProtectedAccess(); :}
                  | (PrivateAccess) PRIVATE {: RESULT=new PrivateAccess(); :}
                  ;
 
-OptClassBaseType ::= (ClassBaseType) EXTENDS Type:baseType {: RESULT=new ClassBaseType(baseType); RESULT.setLine(baseTypeleft); :}
+OptClassBaseType ::= (ClassBaseType) EXTENDS Type:type {: RESULT=new ClassBaseType(type); RESULT.setLine(typeleft); :}
                    | (NoClassBaseType) {: RESULT=new NoClassBaseType(); :} /* epsilon */
                    | (ErrorClassBaseTypeAfterExtends) EXTENDS error {: parser.report_error("Invalid class base type declaration!", null); :} {: RESULT=new ErrorClassBaseTypeAfterExtends(); :}
                    | (ErrorClassBaseTypeBeforeExtends) error {: parser.report_error("Invalid class base type declaration!", null); :} {: RESULT=new ErrorClassBaseTypeBeforeExtends(); :}
@@ -263,13 +272,13 @@ OptClassVarDeclList ::= (ClassVarDeclarations) OptClassVarDeclList:O1 ClassVarDe
                       | (NoClassVarDeclarations) {: RESULT=new NoClassVarDeclarations(); :} /* epsilon */
                       ;
 
-ClassVarDecl ::= (ClassVarDeclaration) AccessModifier:access Type:varType ClassVarList:C1 SEMICOLON {: RESULT=new ClassVarDeclaration(access, varType, C1); RESULT.setLine(accessleft); :};
+ClassVarDecl ::= (ClassVarDeclaration) AccessModifier:access Type:type ClassVarList:C1 SEMICOLON {: RESULT=new ClassVarDeclaration(access, type, C1); RESULT.setLine(accessleft); :};
 
 ClassVarList ::= (ClassVariables) ClassVarList:C1 COMMA ClassVar:C2 {: RESULT=new ClassVariables(C1, C2); RESULT.setLine(C1left); :}
                | (SingleClassVariable) ClassVar:C1 {: RESULT=new SingleClassVariable(C1); RESULT.setLine(C1left); :}
                ;
 
-ClassVar ::= (ClassVariable) IDENT:varName OptArrayBrackets:O1 {: RESULT=new ClassVariable(varName, O1); RESULT.setLine(varNameleft); :};
+ClassVar ::= (ClassVariable) IDENT:name OptArrayBrackets:O1 {: RESULT=new ClassVariable(name, O1); RESULT.setLine(nameleft); :};
 
 /* Class Method Declarations */
 
@@ -285,7 +294,9 @@ ClassMethodDecl ::= (ClassMethodDeclaration) AccessModifier:access MethodDecl:me
 
 /* Abstract Class Declarations */
 
-AbstractClassDecl ::= (AbstractClassDeclaration) ABSTRACT CLASS IDENT:className OptClassBaseType:O1 LBRACE OptClassVarDeclList:O2 OptAbstractClassMethodDeclList:O3 RBRACE {: RESULT=new AbstractClassDeclaration(className, O1, O2, O3); RESULT.setLine(classNameleft); :};
+AbstractClassDecl ::= (AbstractClassDeclaration) AbstractClassHeader:A1 LBRACE OptClassVarDeclList:O2 OptAbstractClassMethodDeclList:O3 RBRACE {: RESULT=new AbstractClassDeclaration(A1, O2, O3); RESULT.setLine(A1left); :};
+
+AbstractClassHeader ::= (AbstractClassHeader) ABSTRACT CLASS IDENT:name OptClassBaseType:O1 {: RESULT=new AbstractClassHeader(name, O1); RESULT.setLine(nameleft); :};
 
 /* Abstract Class Method Declarations */
 
@@ -304,11 +315,15 @@ AbstractClassMethodDecl ::= (AbstractClassMethodDeclaration) AccessModifier:acce
 
 /* Method Declarations */
 
-MethodDecl ::= (MethodDeclaration) RetType:returnType IDENT:methodName LPAREN OptFormalParamList:O1 RPAREN OptLocalVarDeclList:O2 LBRACE OptStatementList:O3 RBRACE {: RESULT=new MethodDeclaration(returnType, methodName, O1, O2, O3); RESULT.setLine(returnTypeleft); :};
+MethodDecl ::= (MethodDeclaration) MethodHeader:M1 LPAREN OptFormalParamList:O2 RPAREN OptLocalVarDeclList:O3 LBRACE OptStatementList:O4 RBRACE {: RESULT=new MethodDeclaration(M1, O2, O3, O4); RESULT.setLine(M1left); :};
 
-AbstractMethodDecl ::= (AbstractMethodDeclaration) ABSTRACT RetType:returnType IDENT:methodName LPAREN OptFormalParamList:O1 RPAREN SEMICOLON {: RESULT=new AbstractMethodDeclaration(returnType, methodName, O1); RESULT.setLine(returnTypeleft); :};
+MethodHeader ::= (MethodHeader) RetType:type IDENT:name {: RESULT=new MethodHeader(type, name); RESULT.setLine(typeleft); :};
 
-RetType ::= (ReturnType) Type:returnType {: RESULT=new ReturnType(returnType); RESULT.setLine(returnTypeleft); :}
+AbstractMethodDecl ::= (AbstractMethodDeclaration) AbstractMethodHeader:A1 LPAREN OptFormalParamList:O2 RPAREN SEMICOLON {: RESULT=new AbstractMethodDeclaration(A1, O2); RESULT.setLine(A1left); :};
+
+AbstractMethodHeader ::= (AbstractMethodHeader) ABSTRACT RetType:type IDENT:name {: RESULT=new AbstractMethodHeader(type, name); RESULT.setLine(typeleft); :};
+
+RetType ::= (ReturnType) Type:type {: RESULT=new ReturnType(type); RESULT.setLine(typeleft); :}
           | (ReturnVoid) VOID {: RESULT=new ReturnVoid(); :}
           ;
 
@@ -322,7 +337,7 @@ FormalParamList ::= (MultipleFormalParameters) FormalParamList:F1 COMMA FormalPa
                   | (SingleFormalParameter) FormalParam:F1 {: RESULT=new SingleFormalParameter(F1); RESULT.setLine(F1left); :}
                   ;
 
-FormalParam ::= (FormalParameter) Type:paramType IDENT:paramName OptArrayBrackets:O1 {: RESULT=new FormalParameter(paramType, paramName, O1); RESULT.setLine(paramTypeleft); :}
+FormalParam ::= (FormalParameter) Type:type IDENT:name OptArrayBrackets:O1 {: RESULT=new FormalParameter(type, name, O1); RESULT.setLine(typeleft); :}
               | (ErrorFormalParameter) error {: parser.report_error("Invalid formal parameter!", null); :} {: RESULT=new ErrorFormalParameter(); :}
               ;
 
@@ -332,7 +347,7 @@ OptLocalVarDeclList ::= (LocalVarDeclarations) OptLocalVarDeclList:O1 LocalVarDe
                       | (NoLocalVarDeclarations) {: RESULT=new NoLocalVarDeclarations(); :} /* epsilon */
                       ;
 
-LocalVarDecl ::= (LocalVarDeclaration) Type:varType LocalVarList:L1 SEMICOLON {: RESULT=new LocalVarDeclaration(varType, L1); RESULT.setLine(varTypeleft); :}
+LocalVarDecl ::= (LocalVarDeclaration) Type:type LocalVarList:L1 SEMICOLON {: RESULT=new LocalVarDeclaration(type, L1); RESULT.setLine(typeleft); :}
                | (ErrorLocalVarDeclaration) error SEMICOLON {: parser.report_error("Invalid local variable declaration!", null); :} {: RESULT=new ErrorLocalVarDeclaration(); :}
                ;
 
@@ -340,7 +355,7 @@ LocalVarList ::= (LocalVariables) LocalVarList:L1 COMMA LocalVar:L2 {: RESULT=ne
                | (SingleLocalVariable) LocalVar:L1 {: RESULT=new SingleLocalVariable(L1); RESULT.setLine(L1left); :}
                ;
 
-LocalVar ::= (LocalVariable) IDENT:varName OptArrayBrackets:O1 {: RESULT=new LocalVariable(varName, O1); RESULT.setLine(varNameleft); :}
+LocalVar ::= (LocalVariable) IDENT:name OptArrayBrackets:O1 {: RESULT=new LocalVariable(name, O1); RESULT.setLine(nameleft); :}
            | (ErrorLocalVariable) error {: parser.report_error("Invalid local variable declaration!", null); :} {: RESULT=new ErrorLocalVariable(); :}
            ;
 
@@ -354,7 +369,7 @@ OptStatementList ::= (Statements) OptStatementList:O1 Statement:S2 {: RESULT=new
 Statement ::= (SingleStatement) DesignatorStatement:D1 SEMICOLON {: RESULT=new SingleStatement(D1); RESULT.setLine(D1left); :}
             | (IfOptElseStatement) IF LPAREN Condition:ifCondition RPAREN Statement:ifStatement OptElseStatement:O1 {: RESULT=new IfOptElseStatement(ifCondition, ifStatement, O1); RESULT.setLine(ifConditionleft); :}
             | (ForStatement) FOR LPAREN OptDesignatorStatement:initStatement SEMICOLON ForCondition:forCondition SEMICOLON OptDesignatorStatement:updateStatement RPAREN Statement:forStatement {: RESULT=new ForStatement(initStatement, forCondition, updateStatement, forStatement); RESULT.setLine(initStatementleft); :}
-            | (ForEachStatement) FOREACH LPAREN IDENT:varName COLON Designator:designator RPAREN Statement:forEachStatement {: RESULT=new ForEachStatement(varName, designator, forEachStatement); RESULT.setLine(varNameleft); :}
+            | (ForEachStatement) FOREACH LPAREN IDENT:name COLON Designator:designator RPAREN Statement:forEachStatement {: RESULT=new ForEachStatement(name, designator, forEachStatement); RESULT.setLine(nameleft); :}
             | (BreakStatement) BREAK SEMICOLON {: RESULT=new BreakStatement(); :}
             | (ContinueStatement) CONTINUE SEMICOLON {: RESULT=new ContinueStatement(); :}
             | (ReturnStatement) RETURN OptExpr:returnValue SEMICOLON {: RESULT=new ReturnStatement(returnValue); RESULT.setLine(returnValueleft); :}
@@ -367,7 +382,7 @@ OptDesignatorStatement ::= (SingleDesignatorStatement) DesignatorStatement:D1 {:
                          | (NoDesignatorStatement) {: RESULT=new NoDesignatorStatement(); :} /* epsilon */
                          ;
 
-DesignatorStatement ::= (MethodCall) Designator:methodName LPAREN OptActualParamList:methodParams RPAREN {: RESULT=new MethodCall(methodName, methodParams); RESULT.setLine(methodNameleft); :}
+DesignatorStatement ::= (MethodCall) Designator:name LPAREN OptActualParamList:params RPAREN {: RESULT=new MethodCall(name, params); RESULT.setLine(nameleft); :}
                       | (Assignment) Designator:result AssignExpr:assignExpr {: RESULT=new Assignment(result, assignExpr); RESULT.setLine(resultleft); :}
                       | (VariableIncrement) Designator:result PLUSPLUS {: RESULT=new VariableIncrement(result); RESULT.setLine(resultleft); :}
                       | (VariableDecrement) Designator:result MINUSMINUS {: RESULT=new VariableDecrement(result); RESULT.setLine(resultleft); :}
@@ -393,7 +408,7 @@ OptDesignatorPartList ::= (DesignatorParts) OptDesignatorPartList:O1 DesignatorP
                         | (NoDesignatorParts) {: RESULT=new NoDesignatorParts(); :} /* epsilon */
                         ;
 
-DesignatorPart ::= (FieldAccess) DOT IDENT:fieldName {: RESULT=new FieldAccess(fieldName); RESULT.setLine(fieldNameleft); :}
+DesignatorPart ::= (FieldAccess) DOT IDENT:name {: RESULT=new FieldAccess(name); RESULT.setLine(nameleft); :}
                  | (ArrayAccess) LBRACK Expr:indexExpression RBRACK {: RESULT=new ArrayAccess(indexExpression); RESULT.setLine(indexExpressionleft); :}
                  ;
 
@@ -404,11 +419,6 @@ OptExpr ::= (SingleExpression) Expr:E1 {: RESULT=new SingleExpression(E1); RESUL
           ;
 
 Expr ::= (Expression) OptSign:O1 Term:T2 OptAddopExprList:O3 {: RESULT=new Expression(O1, T2, O3); RESULT.setLine(O1left); :};
-
-OptSign ::= (Negative) MINUS {: RESULT=new Negative(); :}
-          | (ExplicitlyPositive) PLUS {: RESULT=new ExplicitlyPositive(); :}
-          | (ImplicitlyPositive) {: RESULT=new ImplicitlyPositive(); :} /* epsilon */
-          ;
 
 /* Actual Parameters */
 
@@ -474,11 +484,16 @@ Term ::= (Term) Factor:F1 OptMulopExprList:O2 {: RESULT=new Term(F1, O2); RESULT
 
 Factor ::= (DesignatorFactor) Designator:D1 {: RESULT=new DesignatorFactor(D1); RESULT.setLine(D1left); :}
          | (FunctionCallFactor) Designator:D1 LPAREN OptActualParamList:O2 RPAREN {: RESULT=new FunctionCallFactor(D1, O2); RESULT.setLine(D1left); :}
-         | (ConstantFactor) ConstValue:C1 {: RESULT=new ConstantFactor(C1); RESULT.setLine(C1left); :}
+         | (ConstantFactor) ConstFactor:C1 {: RESULT=new ConstantFactor(C1); RESULT.setLine(C1left); :}
          | (ObjectAllocateFactor) NEW Type:objectType {: RESULT=new ObjectAllocateFactor(objectType); RESULT.setLine(objectTypeleft); :}
          | (ArrayAllocateFactor) NEW Type:objectType LBRACK Expr:arrayExpr RBRACK {: RESULT=new ArrayAllocateFactor(objectType, arrayExpr); RESULT.setLine(objectTypeleft); :}
          | (ParenthesesExpressionFactor) LPAREN Expr:expr RPAREN {: RESULT=new ParenthesesExpressionFactor(expr); RESULT.setLine(exprleft); :}
          ;
+
+ConstFactor ::= (ConstFactorInt) INT:value {: RESULT=new ConstFactorInt(value); RESULT.setLine(valueleft); :}
+              | (ConstFactorChar) CHAR:value {: RESULT=new ConstFactorChar(value); RESULT.setLine(valueleft); :}
+              | (ConstFactorBool) BOOL:value {: RESULT=new ConstFactorBool(value); RESULT.setLine(valueleft); :}
+              ;
 
 OptMulopExprList ::= (MulopExpressions) OptMulopExprList:list Mulop:op Factor:factor {: RESULT=new MulopExpressions(list, op, factor); RESULT.setLine(listleft); :}
                    | (NoMulopExpressions) {: RESULT=new NoMulopExpressions(); :} /* epsilon */

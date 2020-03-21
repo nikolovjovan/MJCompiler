@@ -1,0 +1,22 @@
+// level B symbol detection:
+// - global function call
+// - for loops
+// - formal argument usage
+program level_b_symbol_detection
+    int a, b, c;
+{
+    int sum(int a, int b) {
+        return a + b; // formal argument usage (a and b)
+    }
+
+    void main()
+        int i;
+    {
+        a = 2;
+        b = -5;
+        c = sum(a, b); // global function call
+        for (i = 0; i < c; i++) { // for loop
+            a += 5;
+        }
+    }
+}

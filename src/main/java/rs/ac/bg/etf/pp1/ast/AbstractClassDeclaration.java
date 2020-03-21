@@ -1,41 +1,31 @@
 // generated with ast extension for cup
 // version 0.8
-// 8/2/2020 22:52:21
+// 20/2/2020 12:43:10
 
 
 package rs.ac.bg.etf.pp1.ast;
 
 public class AbstractClassDeclaration extends AbstractClassDecl {
 
-    private String className;
-    private OptClassBaseType OptClassBaseType;
+    private AbstractClassHeader AbstractClassHeader;
     private OptClassVarDeclList OptClassVarDeclList;
     private OptAbstractClassMethodDeclList OptAbstractClassMethodDeclList;
 
-    public AbstractClassDeclaration (String className, OptClassBaseType OptClassBaseType, OptClassVarDeclList OptClassVarDeclList, OptAbstractClassMethodDeclList OptAbstractClassMethodDeclList) {
-        this.className=className;
-        this.OptClassBaseType=OptClassBaseType;
-        if(OptClassBaseType!=null) OptClassBaseType.setParent(this);
+    public AbstractClassDeclaration (AbstractClassHeader AbstractClassHeader, OptClassVarDeclList OptClassVarDeclList, OptAbstractClassMethodDeclList OptAbstractClassMethodDeclList) {
+        this.AbstractClassHeader=AbstractClassHeader;
+        if(AbstractClassHeader!=null) AbstractClassHeader.setParent(this);
         this.OptClassVarDeclList=OptClassVarDeclList;
         if(OptClassVarDeclList!=null) OptClassVarDeclList.setParent(this);
         this.OptAbstractClassMethodDeclList=OptAbstractClassMethodDeclList;
         if(OptAbstractClassMethodDeclList!=null) OptAbstractClassMethodDeclList.setParent(this);
     }
 
-    public String getClassName() {
-        return className;
+    public AbstractClassHeader getAbstractClassHeader() {
+        return AbstractClassHeader;
     }
 
-    public void setClassName(String className) {
-        this.className=className;
-    }
-
-    public OptClassBaseType getOptClassBaseType() {
-        return OptClassBaseType;
-    }
-
-    public void setOptClassBaseType(OptClassBaseType OptClassBaseType) {
-        this.OptClassBaseType=OptClassBaseType;
+    public void setAbstractClassHeader(AbstractClassHeader AbstractClassHeader) {
+        this.AbstractClassHeader=AbstractClassHeader;
     }
 
     public OptClassVarDeclList getOptClassVarDeclList() {
@@ -59,20 +49,20 @@ public class AbstractClassDeclaration extends AbstractClassDecl {
     }
 
     public void childrenAccept(Visitor visitor) {
-        if(OptClassBaseType!=null) OptClassBaseType.accept(visitor);
+        if(AbstractClassHeader!=null) AbstractClassHeader.accept(visitor);
         if(OptClassVarDeclList!=null) OptClassVarDeclList.accept(visitor);
         if(OptAbstractClassMethodDeclList!=null) OptAbstractClassMethodDeclList.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
-        if(OptClassBaseType!=null) OptClassBaseType.traverseTopDown(visitor);
+        if(AbstractClassHeader!=null) AbstractClassHeader.traverseTopDown(visitor);
         if(OptClassVarDeclList!=null) OptClassVarDeclList.traverseTopDown(visitor);
         if(OptAbstractClassMethodDeclList!=null) OptAbstractClassMethodDeclList.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
-        if(OptClassBaseType!=null) OptClassBaseType.traverseBottomUp(visitor);
+        if(AbstractClassHeader!=null) AbstractClassHeader.traverseBottomUp(visitor);
         if(OptClassVarDeclList!=null) OptClassVarDeclList.traverseBottomUp(visitor);
         if(OptAbstractClassMethodDeclList!=null) OptAbstractClassMethodDeclList.traverseBottomUp(visitor);
         accept(visitor);
@@ -83,11 +73,8 @@ public class AbstractClassDeclaration extends AbstractClassDecl {
         buffer.append(tab);
         buffer.append("AbstractClassDeclaration(\n");
 
-        buffer.append(" "+tab+className);
-        buffer.append("\n");
-
-        if(OptClassBaseType!=null)
-            buffer.append(OptClassBaseType.toString("  "+tab));
+        if(AbstractClassHeader!=null)
+            buffer.append(AbstractClassHeader.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");

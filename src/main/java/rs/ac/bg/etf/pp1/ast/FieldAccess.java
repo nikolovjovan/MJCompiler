@@ -1,24 +1,24 @@
 // generated with ast extension for cup
 // version 0.8
-// 8/2/2020 22:52:21
+// 20/2/2020 12:43:10
 
 
 package rs.ac.bg.etf.pp1.ast;
 
 public class FieldAccess extends DesignatorPart {
 
-    private String fieldName;
+    private String name;
 
-    public FieldAccess (String fieldName) {
-        this.fieldName=fieldName;
+    public FieldAccess (String name) {
+        this.name=name;
     }
 
-    public String getFieldName() {
-        return fieldName;
+    public String getName() {
+        return name;
     }
 
-    public void setFieldName(String fieldName) {
-        this.fieldName=fieldName;
+    public void setName(String name) {
+        this.name=name;
     }
 
     public void accept(Visitor visitor) {
@@ -41,7 +41,7 @@ public class FieldAccess extends DesignatorPart {
         buffer.append(tab);
         buffer.append("FieldAccess(\n");
 
-        buffer.append(" "+tab+fieldName);
+        buffer.append(" "+tab+name);
         buffer.append("\n");
 
         buffer.append(tab);

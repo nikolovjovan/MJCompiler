@@ -1,38 +1,28 @@
 // generated with ast extension for cup
 // version 0.8
-// 8/2/2020 22:52:21
+// 20/2/2020 12:43:10
 
 
 package rs.ac.bg.etf.pp1.ast;
 
 public class AbstractMethodDeclaration extends AbstractMethodDecl {
 
-    private RetType RetType;
-    private String methodName;
+    private AbstractMethodHeader AbstractMethodHeader;
     private OptFormalParamList OptFormalParamList;
 
-    public AbstractMethodDeclaration (RetType RetType, String methodName, OptFormalParamList OptFormalParamList) {
-        this.RetType=RetType;
-        if(RetType!=null) RetType.setParent(this);
-        this.methodName=methodName;
+    public AbstractMethodDeclaration (AbstractMethodHeader AbstractMethodHeader, OptFormalParamList OptFormalParamList) {
+        this.AbstractMethodHeader=AbstractMethodHeader;
+        if(AbstractMethodHeader!=null) AbstractMethodHeader.setParent(this);
         this.OptFormalParamList=OptFormalParamList;
         if(OptFormalParamList!=null) OptFormalParamList.setParent(this);
     }
 
-    public RetType getRetType() {
-        return RetType;
+    public AbstractMethodHeader getAbstractMethodHeader() {
+        return AbstractMethodHeader;
     }
 
-    public void setRetType(RetType RetType) {
-        this.RetType=RetType;
-    }
-
-    public String getMethodName() {
-        return methodName;
-    }
-
-    public void setMethodName(String methodName) {
-        this.methodName=methodName;
+    public void setAbstractMethodHeader(AbstractMethodHeader AbstractMethodHeader) {
+        this.AbstractMethodHeader=AbstractMethodHeader;
     }
 
     public OptFormalParamList getOptFormalParamList() {
@@ -48,18 +38,18 @@ public class AbstractMethodDeclaration extends AbstractMethodDecl {
     }
 
     public void childrenAccept(Visitor visitor) {
-        if(RetType!=null) RetType.accept(visitor);
+        if(AbstractMethodHeader!=null) AbstractMethodHeader.accept(visitor);
         if(OptFormalParamList!=null) OptFormalParamList.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
-        if(RetType!=null) RetType.traverseTopDown(visitor);
+        if(AbstractMethodHeader!=null) AbstractMethodHeader.traverseTopDown(visitor);
         if(OptFormalParamList!=null) OptFormalParamList.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
-        if(RetType!=null) RetType.traverseBottomUp(visitor);
+        if(AbstractMethodHeader!=null) AbstractMethodHeader.traverseBottomUp(visitor);
         if(OptFormalParamList!=null) OptFormalParamList.traverseBottomUp(visitor);
         accept(visitor);
     }
@@ -69,13 +59,10 @@ public class AbstractMethodDeclaration extends AbstractMethodDecl {
         buffer.append(tab);
         buffer.append("AbstractMethodDeclaration(\n");
 
-        if(RetType!=null)
-            buffer.append(RetType.toString("  "+tab));
+        if(AbstractMethodHeader!=null)
+            buffer.append(AbstractMethodHeader.toString("  "+tab));
         else
             buffer.append(tab+"  null");
-        buffer.append("\n");
-
-        buffer.append(" "+tab+methodName);
         buffer.append("\n");
 
         if(OptFormalParamList!=null)

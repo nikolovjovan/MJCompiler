@@ -34,6 +34,14 @@ public class MJTestRunner {
                     }
                     break;
                 }
+                case "semantic": {
+                    if (args.length > 1) {
+                        MJSemanticTest.INSTANCE.runTest(args[1]);
+                    } else {
+                        MJSemanticTest.INSTANCE.runAll();
+                    }
+                    break;
+                }
                 default: {
                     System.err.println("Invalid option '" + args[0] + "'!");
                     break;
@@ -42,6 +50,7 @@ public class MJTestRunner {
         } else { // run all tests
             MJLexerTest.INSTANCE.runAll();
             MJParserTest.INSTANCE.runAll();
+            MJSemanticTest.INSTANCE.runAll();
         }
     }
 

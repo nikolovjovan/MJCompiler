@@ -1,27 +1,27 @@
 // generated with ast extension for cup
 // version 0.8
-// 8/2/2020 22:52:21
+// 20/2/2020 12:43:10
 
 
 package rs.ac.bg.etf.pp1.ast;
 
 public class LocalVariable extends LocalVar {
 
-    private String varName;
+    private String name;
     private OptArrayBrackets OptArrayBrackets;
 
-    public LocalVariable (String varName, OptArrayBrackets OptArrayBrackets) {
-        this.varName=varName;
+    public LocalVariable (String name, OptArrayBrackets OptArrayBrackets) {
+        this.name=name;
         this.OptArrayBrackets=OptArrayBrackets;
         if(OptArrayBrackets!=null) OptArrayBrackets.setParent(this);
     }
 
-    public String getVarName() {
-        return varName;
+    public String getName() {
+        return name;
     }
 
-    public void setVarName(String varName) {
-        this.varName=varName;
+    public void setName(String name) {
+        this.name=name;
     }
 
     public OptArrayBrackets getOptArrayBrackets() {
@@ -55,7 +55,7 @@ public class LocalVariable extends LocalVar {
         buffer.append(tab);
         buffer.append("LocalVariable(\n");
 
-        buffer.append(" "+tab+varName);
+        buffer.append(" "+tab+name);
         buffer.append("\n");
 
         if(OptArrayBrackets!=null)
