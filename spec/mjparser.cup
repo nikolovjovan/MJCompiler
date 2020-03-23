@@ -1,67 +1,64 @@
 package rs.ac.bg.etf.pp1;
 
 import java_cup.runtime.*;
-import org.apache.log4j.*;
 import rs.ac.bg.etf.pp1.ast.*;
+import rs.ac.bg.etf.pp1.exceptions.MJParserException;
+import rs.ac.bg.etf.pp1.loggers.MJLogger.Level;
+import rs.ac.bg.etf.pp1.loggers.MJParserLogger;
+import rs.ac.bg.etf.pp1.loggers.MJParserLogger.MessageType;
 
 parser code {:
-    Logger log = Logger.getLogger(getClass());
-    int errorCount = 0;
+    private MJParserLogger logger = new MJParserLogger();
 
-    private String format_message(String message, int left, int right) {
-        if (left <= 0) return message;
-        StringBuilder info = new StringBuilder(((MJLexer) getScanner()).fileName);
-        info.append(':');
-        errorCount++;
-        info.append(left).append(':');
-        if (right > 0) info.append(right).append(':');
-        return info.append(' ').append(message).toString();
-    }
+    private int errorCount = 0;
 
-    private String format_message(String message, Object info) {
+    private void log(Level level, MessageType type, String message, Object info) {
+        int line = -1, column = -1;
         if (info instanceof Symbol) {
             Symbol sym = (Symbol) info;
-            return format_message(message, sym.left, sym.right);
+            line = sym.left;
+            column = sym.right;
         }
-        return format_message(message, -1, -1);
+        if (message != null) logger.log(level, line, column, type, message);
+        else logger.log(level, line, column, type);
+        if (level == Level.ERROR || level == Level.FATAL) errorCount++;
     }
 
-    public void report_error(String message, int left, int right) {
-        String formattedMessage = format_message(message, left, right);
-        log.error(formattedMessage);
-        System.err.println(formattedMessage);
-    }
-
-    public void report_error(String message, Object info) {
-        String formattedMessage = format_message(message, info);
-        log.error(formattedMessage);
-        System.err.println(formattedMessage);
-    }
-
-    public void report_fatal_error(String message, Object info) throws Exception {
+    private void log_fatal(MessageType type, String message, Object info) throws Exception {
+        log(Level.FATAL, type, message, info);
         done_parsing();
-        String formattedMessage = format_message(message, info);
-        log.fatal(formattedMessage);
-        System.err.println(formattedMessage);
-        throw new Exception("Cannot recover from previous error(s)!");
+        throw new MJParserException("Cannot recover from previous error(s)!");
     }
 
-    public void syntax_error(Symbol cur_token) {
-        report_error("Syntax error!", cur_token);
+    private void log_error(MessageType type, String message, Object info) {
+        log(Level.ERROR, type, message, info);
     }
 
-    public void unrecovered_syntax_error(Symbol cur_token) throws Exception {
-        report_fatal_error("Unrecovered syntax error! Recovery impossible!", cur_token);
+    void log_error(MessageType type) {
+        log(Level.ERROR, type, null, null);
     }
 
     public int getErrorCount() { return errorCount; }
-:}
 
-scan with {:
-    Symbol s = getScanner().next_token();
-    if (s != null && s.value != null)
-        log.info(s.toString() + (s.value != null ? " " + s.value.toString() : ""));
-    return s;
+    @Override
+    public void report_error(String message, Object info) {
+        log_error(MessageType.OTHER, message, info);
+    }
+
+    @Override
+    public void report_fatal_error(String message, Object info) throws Exception {
+        log_fatal(MessageType.OTHER, message, info);
+    }
+
+    @Override
+    public void syntax_error(Symbol cur_token) {
+        log_error(MessageType.SYNTAX_ERROR, null, cur_token);
+    }
+
+    @Override
+    public void unrecovered_syntax_error(Symbol cur_token) throws Exception {
+        log_fatal(MessageType.IRR_SYNTAX_ERROR, null, cur_token);
+    }
 :}
 
 /* Keywords */
@@ -107,7 +104,7 @@ nonterminal AbstractClassDecl, AbstractClassHeader;
 nonterminal OptAbstractClassMethodDeclList, AbstractClassMethodDeclList, AbstractClassMethodDecl;
 
 /* Method Declarations */
-nonterminal MethodDecl, AbstractMethodDecl;
+nonterminal MethodDecl, AbstractMethodDecl, MethodStatementListStart;
 nonterminal rs.etf.pp1.symboltable.concepts.Obj MethodHeader, AbstractMethodHeader, RetType;
 
 /* Formal Parameters */
@@ -117,13 +114,17 @@ nonterminal OptFormalParamList, FormalParamList, FormalParam;
 nonterminal OptLocalVarDeclList, LocalVarDecl, LocalVarList, LocalVar;
 
 /* Statement-related non-terminals */
-nonterminal OptStatementList, Statement, OptDesignatorStatement, DesignatorStatement, OptElseStatement, PrintExpr, AssignExpr;
+nonterminal OptStatementList, Statement, IfStatementHeader, ForStatementHeader, ForEachStatementHeader,
+            OptDesignatorStatement, DesignatorStatement, OptElseStatement, PrintExpr, AssignExpr;
+nonterminal rs.etf.pp1.symboltable.concepts.Obj MethodCallHeader;
 
 /* Designator-related non-terminals */
-nonterminal Designator, OptDesignatorPartList, DesignatorPart;
+nonterminal rs.etf.pp1.symboltable.concepts.Obj Designator;
+nonterminal OptDesignatorPartList, DesignatorPart;
 
 /* Expression-related non-terminals */
-nonterminal OptExpr, Expr;
+nonterminal OptExpr;
+nonterminal rs.etf.pp1.symboltable.concepts.Struct Expr;
 
 /* Actual Parameters */
 nonterminal OptActualParamList, ActualParamList, ActualParam;
@@ -212,8 +213,8 @@ AccessModifier ::= (PublicAccess) PUBLIC
 
 OptClassBaseType ::= (ClassBaseType) EXTENDS Type:type
                    | (NoClassBaseType) /* epsilon */
-                   | (ErrorClassBaseTypeAfterExtends) EXTENDS error {: parser.report_error("Invalid class base type declaration!", null); :}
-                   | (ErrorClassBaseTypeBeforeExtends) error {: parser.report_error("Invalid class base type declaration!", null); :}
+                   | (ErrorClassBaseTypeAfterExtends) EXTENDS error {: parser.log_error(MessageType.INV_CLS_BASE_TYPE); :}
+                   | (ErrorClassBaseTypeBeforeExtends) error {: parser.log_error(MessageType.INV_CLS_BASE_TYPE); :}
                    ;
 
 /* Class Var Declarations */
@@ -260,14 +261,16 @@ AbstractClassMethodDeclList ::= (MultipleAbstractClassMethods) AbstractClassMeth
 
 AbstractClassMethodDecl ::= (AbstractClassMethodDeclaration) AccessModifier:access MethodDecl:method
                           | (AbstractClassAbstractMethodDeclaration) AccessModifier:access AbstractMethodDecl:abstractMethod
-                          | (ErrorAbstractClassMethodDeclaration) error SEMICOLON {: parser.report_error("Invalid abstract class method declaration!", null); :}
+                          | (ErrorAbstractClassMethodDeclaration) error SEMICOLON {: parser.log_error(MessageType.INV_ABS_CLS_METH_DECL); :}
                           ;
 
 /* Method Declarations */
 
-MethodDecl ::= (MethodDeclaration) MethodHeader LPAREN OptFormalParamList RPAREN OptLocalVarDeclList LBRACE OptStatementList RBRACE;
+MethodDecl ::= (MethodDeclaration) MethodHeader LPAREN OptFormalParamList RPAREN OptLocalVarDeclList MethodStatementListStart OptStatementList RBRACE;
 
 MethodHeader ::= (MethodHeader) RetType:type IDENT:name;
+
+MethodStatementListStart ::= (MethodStatementListStart) LBRACE;
 
 AbstractMethodDecl ::= (AbstractMethodDeclaration) AbstractMethodHeader LPAREN OptFormalParamList RPAREN SEMICOLON;
 
@@ -288,7 +291,7 @@ FormalParamList ::= (MultipleFormalParameters) FormalParamList COMMA FormalParam
                   ;
 
 FormalParam ::= (FormalParameter) Type:type IDENT:name OptArrayBrackets
-              | (ErrorFormalParameter) error {: parser.report_error("Invalid formal parameter!", null); :}
+              | (ErrorFormalParameter) error {: parser.log_error(MessageType.INV_FORMAL_PARAM); :}
               ;
 
 /* Local Var Declarations */
@@ -298,7 +301,7 @@ OptLocalVarDeclList ::= (LocalVarDeclarations) OptLocalVarDeclList LocalVarDecl
                       ;
 
 LocalVarDecl ::= (LocalVarDeclaration) Type:type LocalVarList SEMICOLON
-               | (ErrorLocalVarDeclaration) error SEMICOLON {: parser.report_error("Invalid local variable declaration!", null); :}
+               | (ErrorLocalVarDeclaration) error SEMICOLON {: parser.log_error(MessageType.INV_LOCAL_VAR_DECL); :}
                ;
 
 LocalVarList ::= (LocalVariables) LocalVarList COMMA LocalVar
@@ -306,7 +309,7 @@ LocalVarList ::= (LocalVariables) LocalVarList COMMA LocalVar
                ;
 
 LocalVar ::= (LocalVariable) IDENT:name OptArrayBrackets
-           | (ErrorLocalVariable) error {: parser.report_error("Invalid local variable declaration!", null); :}
+           | (ErrorLocalVariable) error {: parser.log_error(MessageType.INV_LOCAL_VAR_DECL); :}
            ;
 
 
@@ -317,9 +320,9 @@ OptStatementList ::= (Statements) OptStatementList Statement
                    ;
 
 Statement ::= (SingleStatement) DesignatorStatement SEMICOLON
-            | (IfOptElseStatement) IF LPAREN Condition:ifCondition RPAREN Statement:ifStatement OptElseStatement
-            | (ForStatement) FOR LPAREN OptDesignatorStatement:initStatement SEMICOLON ForCondition:forCondition SEMICOLON OptDesignatorStatement:updateStatement RPAREN Statement:forStatement
-            | (ForEachStatement) FOREACH LPAREN IDENT:name COLON Designator:designator RPAREN Statement:forEachStatement
+            | (IfOptElseStatement) IfStatementHeader:ifHeader Statement:ifStatement OptElseStatement
+            | (ForStatement) ForStatementHeader:forHeader Statement:forStatement
+            | (ForEachStatement) ForEachStatementHeader:forEachHeader Statement:forEachStatement
             | (BreakStatement) BREAK SEMICOLON
             | (ContinueStatement) CONTINUE SEMICOLON
             | (ReturnStatement) RETURN OptExpr:returnValue SEMICOLON
@@ -328,11 +331,17 @@ Statement ::= (SingleStatement) DesignatorStatement SEMICOLON
             | (StatementBlock) LBRACE OptStatementList RBRACE
             ;
 
+IfStatementHeader ::= (IfStatementHeader) IF LPAREN Condition:ifCondition RPAREN;
+
+ForStatementHeader ::= (ForStatementHeader) FOR LPAREN OptDesignatorStatement:initStatement SEMICOLON ForCondition:forCondition SEMICOLON OptDesignatorStatement:updateStatement RPAREN;
+
+ForEachStatementHeader ::= (ForEachStatementHeader) FOREACH LPAREN IDENT:name COLON Designator:designator RPAREN;
+
 OptDesignatorStatement ::= (SingleDesignatorStatement) DesignatorStatement
                          | (NoDesignatorStatement) /* epsilon */
                          ;
 
-DesignatorStatement ::= (MethodCall) Designator:name LPAREN OptActualParamList:params RPAREN
+DesignatorStatement ::= (MethodCall) MethodCallHeader:header LPAREN OptActualParamList:params RPAREN
                       | (Assignment) Designator:result AssignExpr:assignExpr
                       | (VariableIncrement) Designator:result PLUSPLUS
                       | (VariableDecrement) Designator:result MINUSMINUS
@@ -346,8 +355,10 @@ PrintExpr ::= (PrintOnlyExpression) Expr:printExpr
             | (PrintExpressionAndConst) Expr:printExpr COMMA INT:constValue
             ;
 
+MethodCallHeader ::= (MethodCallHeader) Designator:methodName;
+
 AssignExpr ::= (AssignmentExpression) Assignop:op Expr:expr
-             | (ErrorAssignmentExpression) error {: parser.report_error("Invalid assignment expression!", null); :}
+             | (ErrorAssignmentExpression) error {: parser.log_error(MessageType.INV_ASSIGN_EXPR); :}
              ;
 
 /* Designator-related non-terminals */
@@ -387,7 +398,7 @@ ActualParam ::= (ActualParameter) Expr:expr;
 
 ForCondition ::= (SingleCondition) Condition
                | (NoCondition) /* epsilon */
-               | (ErrorCondition) error {: parser.report_error("Invalid for statement condition!", null); :}
+               | (ErrorCondition) error {: parser.log_error(MessageType.INV_FOR_STMT_COND); :}
                ;
 
 Condition ::= (MultipleConditionTerms) Condition OR CondTerm

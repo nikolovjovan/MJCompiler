@@ -1,6 +1,7 @@
 package rs.ac.bg.etf.pp1;
 
 import org.apache.log4j.Logger;
+import rs.ac.bg.etf.pp1.util.Log4JUtils;
 
 import java.io.*;
 
@@ -8,26 +9,32 @@ public abstract class MJTest {
 
     private static final String testBaseDir = "test/";
 
+    protected Logger log = Logger.getLogger(getClass());
+
     protected abstract String testName();
 
-    protected abstract void processTestFile(String fileName, Reader r, Logger log) throws Exception;
+    protected abstract void processTestFile(Reader r) throws Exception;
 
     public void runTest(String fileName) {
-        Logger log = Logger.getLogger(getClass());
-
         String testDir = testBaseDir + testName();
         File inputFile = new File(testDir + "/" + fileName);
 
         if (!inputFile.exists()) {
-            log.error("Input test file: '" + fileName + "' not found in '" + testDir + "'!");
+            System.err.println("Input test file: '" + fileName + "' not found in '" + testDir + "'!");
             return;
         }
+
+        Compiler.setDebugMode(true);
+        Compiler.setInputFileName(fileName);
+        Compiler.setOutputFileName(fileName.concat(".out"));
+
+        Log4JUtils.INSTANCE.prepareLogFile(Logger.getRootLogger());
 
         Reader br = null;
         try {
             log.info("Testing " + testName() + " with input file '" + testDir + "/" + inputFile.getName() + "'.");
             br = new BufferedReader(new FileReader(inputFile));
-            processTestFile(fileName, br, log);
+            processTestFile(br);
         } catch (Exception e) {
             log.error(e.getMessage(), e);
         } finally {
@@ -42,8 +49,6 @@ public abstract class MJTest {
     }
 
     public void runAll() {
-        Logger log = Logger.getLogger(getClass());
-
         String testDir = testBaseDir + testName();
         File directory = new File(testDir);
         File[] testInputs = null;
@@ -55,20 +60,20 @@ public abstract class MJTest {
         } else testsFound = false;
 
         if (!testsFound) {
-            log.warn("No " + testName() + " tests found in '" + testDir + "'!");
+            System.err.println("No " + testName() + " tests found in '" + testDir + "'!");
             return;
         }
 
-        log.info("Starting " + testName() + " testing...");
-        log.info("===========================================================================");
-
+        Compiler.setDebugMode(true);
         Reader br = null;
         try {
             for (File inputFile : testInputs) {
+                Compiler.setInputFileName(inputFile.getName());
+                Compiler.setOutputFileName(inputFile.getName().concat(".out"));
+                Log4JUtils.INSTANCE.prepareLogFile(Logger.getRootLogger());
                 log.info("Testing " + testName() + " with input file '" + testDir + "/" + inputFile.getName() + "'.");
                 br = new BufferedReader(new FileReader(inputFile));
-                processTestFile(inputFile.getName(), br, log);
-                log.info("===========================================================================");
+                processTestFile(br);
             }
         } catch (Exception e) {
             log.error(e.getMessage(), e);

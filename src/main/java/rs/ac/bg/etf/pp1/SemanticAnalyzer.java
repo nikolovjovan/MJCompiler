@@ -1,11 +1,13 @@
 package rs.ac.bg.etf.pp1;
 
-import org.apache.log4j.Logger;
 import rs.ac.bg.etf.pp1.ast.*;
+import rs.ac.bg.etf.pp1.loggers.MJSemanticAnalyzerLogger;
+import rs.ac.bg.etf.pp1.loggers.MJSemanticAnalyzerLogger.MessageType;
 import rs.ac.bg.etf.pp1.symboltable.*;
-import rs.ac.bg.etf.pp1.symboltable.MyTab.ScopeId;
+import rs.ac.bg.etf.pp1.symboltable.MJTab.ScopeId;
 import rs.ac.bg.etf.pp1.symboltable.concepts.*;
-import rs.ac.bg.etf.pp1.symboltable.concepts.MyObj.Access;
+import rs.ac.bg.etf.pp1.symboltable.concepts.MJObj.Access;
+import rs.ac.bg.etf.pp1.util.MJUtils;
 import rs.etf.pp1.symboltable.*;
 import rs.etf.pp1.symboltable.concepts.*;
 
@@ -13,6 +15,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 
     // TODO: Add symbol usage detection...
 
+    // TODO: Add member count checks...
     private static final int MAX_GLOBAL_VARIABLE_COUNT = 65536;
     private static final int MAX_CLASS_FIELD_COUNT = 65536;
     private static final int MAX_LOCAL_VARIABLE_COUNT = 256;
@@ -20,10 +23,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     private static final String MAIN = "main";
     private static final String THIS = "this";
 
-    private String fileName;
-
-    private Logger log = Logger.getLogger(getClass());
-    private boolean debugInfo = true;
+    private MJSemanticAnalyzerLogger logger = new MJSemanticAnalyzerLogger();
 
     private int errorCount = 0;
     private int constCount = 0;
@@ -43,11 +43,73 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     private Obj currentMethod = Tab.noObj;
     private boolean returnFound = false;
 
+    private int ifDepth = 0;
+    private int forDepth = 0;
+
+    /******************** Error / debug methods *******************************************************/
+
+    private int get_line_number(SyntaxNode info) {
+        if (info == null || info.getLine() <= 0) return -1;
+        return info.getLine();
+    }
+
+    private void log_debug(SyntaxNode info, Object... context) {
+        logger.debug(get_line_number(info), -1, context);
+    }
+
+    private void log_debug_node_visit(SyntaxNode info) {
+        logger.debug(get_line_number(info), -1, MessageType.NODE_VISIT, info.getClass().getSimpleName());
+    }
+
+    private void log_info(SyntaxNode info, Object... context) {
+        logger.info(get_line_number(info), -1, context);
+    }
+
+    private void log_warn(SyntaxNode info, Object... context) {
+        logger.warn(get_line_number(info), -1, context);
+    }
+
+    private void log_error(SyntaxNode info, Object... context) {
+        errorCount++;
+        logger.error(get_line_number(info), -1, context);
+    }
+
+    private boolean assert_inv_obj(SyntaxNode info, Obj obj, String objName) {
+        if (obj == null || obj == Tab.noObj) {
+            log_error(info, MessageType.INV_OBJ, objName);
+            return true;
+        }
+        return false;
+    }
+
+    private boolean assert_sym_in_use(SyntaxNode info, String symName) {
+        if (MJTab.find(symName) != Tab.noObj) {
+            log_error(info, MessageType.SYM_IN_USE, symName);
+            return true;
+        }
+        return false;
+    }
+
+    private boolean assert_sym_in_current_scope(SyntaxNode info, String symName) {
+        if (MJTab.currentScope.findSymbol(symName) != null) {
+            log_error(info, MessageType.SYM_IN_USE, symName);
+            return true;
+        }
+        return false;
+    }
+
+    private boolean assert_type_not_basic(SyntaxNode info, Struct type, String kindName) {
+        if (!MJUtils.is_type_basic(type)) {
+            log_error(info, MessageType.TYPE_NOT_BASIC, kindName);
+            return true;
+        }
+        return false;
+    }
+
     /******************** Public methods / constructors ***********************************************/
 
-    public SemanticAnalyzer(String fileName) {
-        MyTab.init();
-        this.fileName = fileName;
+    public SemanticAnalyzer() {
+        MJTab.init();
     }
 
     public int getErrorCount() { return errorCount; }
@@ -56,292 +118,203 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     public int getClassCount() { return classCount; }
     public int getMethodCount() { return methodCount; }
 
-    /******************** Error / debug methods *******************************************************/
-
-    private String format_message(String message, SyntaxNode info) {
-        if (info == null || info.getLine() <= 0) return message;
-        return fileName + ':' + info.getLine() + ": " + message;
-    }
-
-    private void report_error(String message, SyntaxNode info) {
-        errorCount++;
-        print_error(message, info);
-    }
-
-    private void report_info(String message, SyntaxNode info) {
-        debugInfo = true;
-        print_info(message, info);
-        debugInfo = false;
-    }
-
-    private void print_error(String message, SyntaxNode info) {
-        String formattedMessage = format_message(message, info);
-        log.error(formattedMessage);
-        System.err.println("ERROR: " + formattedMessage);
-    }
-
-    private void print_warning(String message, SyntaxNode info) {
-        String formattedMessage = format_message(message, info);
-        log.warn(formattedMessage);
-        System.out.println("WARNING: " + formattedMessage);
-    }
-
-    private void print_info(String message, SyntaxNode info) {
-        if (!debugInfo) return;
-        String formattedMessage = format_message(message, info);
-        log.info(formattedMessage);
-        System.out.println("INFO: " + formattedMessage);
-    }
-
     /******************** Helper methods **************************************************************/
 
-    private int getConstIntValue(ConstInt constInt) {
-        if (constInt.getOptSign() instanceof Negative) return -1 * constInt.getValue();
-        return constInt.getValue();
+    private void process_variable(SyntaxNode info, String name, boolean array) {
+        log_debug_node_visit(info);
+        // Type checking
+        if (assert_inv_obj(info, currentType, "Variable type")) return;
+        // Check if name is in use
+        if (assert_sym_in_current_scope(info, name)) return;
+        Obj newObj = MJTab.insert(MJTab.getCurrentScopeId() == ScopeId.CLASS ? Obj.Fld : Obj.Var, name, array ?
+                new MJStruct(Struct.Array, currentType.getType()) : currentType.getType());
+        newObj.setLevel(MJTab.getCurrentLevel());
+        ((MJObj) newObj).setAccess(currentAccess); // only relevant for class variables;
+        if (MJTab.getCurrentScopeId() == ScopeId.PROGRAM) varCount++;
+        // Log object definition
+        log_info(info, MessageType.DEF_OBJ, MJStruct.getTypeName(newObj.getType()) + " variable", newObj);
     }
 
-    private int process_variable(String name, boolean array, SyntaxNode info) {
-        if (currentType == Tab.noObj) {
-            report_error("Variable type is invalid!", info);
-            return 1;
-        }
-        if (MyTab.currentScope.findSymbol(name) != null) {
-            report_error("Symbol '" + name + "' is already in use!", info);
-            return 2;
-        }
-        /* TODO: Figure out if superclass fields can be hidden by redefining them...
-        Obj foundObj = MyTab.currentScope.findSymbol(name);
-        if (foundObj != null) {
-            if (foundObj.getKind() != Obj.Fld || MyTab.getCurrentScopeId() != ScopeId.CLASS) {
-                report_error("Symbol '" + name + "' is already in use!", info);
-                return 2;
-            }
-            print_info("Base class field redefinition for symbol '" + name + "'.", info);
-
-            return 0;
-        } */
-        Obj newVar = MyTab.insert(MyTab.getCurrentScopeId() == ScopeId.CLASS ? Obj.Fld : Obj.Var, name, array ? new MyStruct(Struct.Array, currentType.getType()) : currentType.getType());
-        if (newVar == null || newVar == Tab.noObj) {
-            report_error("Failed to insert a new object into symbol table for variable '" + name + "'!", info);
-            return 3;
-        }
-        if (MyTab.getCurrentScopeId() == ScopeId.PROGRAM) varCount++;
-        newVar.setLevel(MyTab.getCurrentLevel());
-        ((MyObj) newVar).setAccess(currentAccess); // only relevant for class variables;
-        report_info("Defined " + MyStruct.getTypeName(newVar.getType()) + " variable '" + name + "'. Object string: " + newVar, info);
-        return 0;
-    }
-
-    private int process_class_header(boolean abs, String name, OptClassBaseType optBaseType, SyntaxNode info) {
-        if (MyTab.currentScope.findSymbol(name) != null) {
-            report_error("Symbol '" + name + "' is already in use!", info);
-            return 1;
-        }
+    private void process_class_header(SyntaxNode info, boolean abs, String name, OptClassBaseType optBaseType) {
+        log_debug_node_visit(info);
+        // Check base type
         Struct baseType = Tab.noType;
         if (optBaseType instanceof ClassBaseType) {
             Type type = ((ClassBaseType) optBaseType).getType();
-            Obj typeObj = MyTab.currentScope.findSymbol(type.getName());
-            if (typeObj == Tab.noObj) {
-                report_error("Type '" + type.getName() + "' is not defined!", info);
-                return 2;
-            }
-            if (typeObj.getKind() != Obj.Type) {
-                report_error("'" + type.getName() + "' is not a type!", info);
-                return 3;
-            }
-            baseType = typeObj.getType();
-            if (baseType.getKind() != Struct.Class) {
-                report_error("'" + type.getName() + "' is not a class type!", info);
-                return 4;
-            }
+            Obj typeObj = MJTab.currentScope.findSymbol(type.getName());
+            if (typeObj == Tab.noObj) log_error(info, MessageType.SYM_NOT_DEF, type.getName(), Obj.Type);
+            else if (typeObj.getKind() != Obj.Type || typeObj.getType().getKind() != Struct.Class) log_error(info, MessageType.SYM_DEF_INV_KIND, null, type.getName(), "class type");
+            else baseType = typeObj.getType();
         }
-        currentClass = MyTab.insert(Obj.Type, name, new MyStruct(Struct.Class, baseType));
-        if (currentClass == null || currentClass == Tab.noObj) {
-            report_error("Failed to insert a new object into symbol table for class '" + name + "'!", info);
-            return 5;
+        // If symbol with same name is already defined, make a new obj outside symbol table to continue analysis
+        if (assert_sym_in_current_scope(info, name)) {
+            currentClass = new MJObj(Obj.Type, name, new MJStruct(Struct.Class, baseType));
+        } else {
+            currentClass = MJTab.insert(Obj.Type, name, new MJStruct(Struct.Class, baseType));
         }
-        ((MyObj) currentClass).setAbstract(abs);
+        ((MJObj) currentClass).setAbstract(abs);
         classCount++;
-        MyTab.openScope(ScopeId.CLASS);
+        MJTab.openScope(ScopeId.CLASS);
         if (baseType != Tab.noType) {
-            for (Obj o : baseType.getMembers()) {
-                // TODO: Figure out which members need to be copied into subclass...
-                if (!MyTab.currentScope.addToLocals(new MyObj(o))) {
-                    report_error("Failed to copy base type members into current scope!", info);
-                    return 6;
-                }
-            }
+            for (Obj o : baseType.getMembers()) MJTab.currentScope.addToLocals(new MJObj(o));
         }
-        return 0;
     }
 
-    private int process_class_declaration(SyntaxNode info) {
-        if (currentClass == Tab.noObj) {
-            report_error("Class obj not initialized but class declaration reached!", info);
-            return 1;
-        }
-        MyTab.chainLocalSymbols(currentClass.getType()); // set members
-        MyTab.closeScope(ScopeId.PROGRAM);
-        report_info("Defined class '" + currentClass.getName() + "'. Object string: " + currentClass, info);
+    private void process_class_declaration(SyntaxNode info) {
+        log_debug_node_visit(info);
+        // Add local symbols and close scope
+        MJTab.chainLocalSymbols(currentClass.getType()); // set members
+        MJTab.closeScope(ScopeId.PROGRAM);
+        // Log object definition
+        log_info(info, MessageType.DEF_OBJ, "class", currentClass);
         currentClass = Tab.noObj;
-        return 0;
     }
 
-    private int process_method_header(boolean abs, String name, RetType retType, SyntaxNode info) {
-        if (MyTab.currentScope.findSymbol(name) != null) {
-            report_error("Symbol '" + name + "' is already in use!", info);
-            return 1;
-        }
-        if (retType.obj == Tab.noObj) {
-            report_error("Method return type invalid!", info);
-            return 2;
-        }
-        currentMethod = MyTab.insert(Obj.Meth, name, retType.obj.getType());
-        if (currentMethod == null || currentMethod == Tab.noObj) {
-            report_error("Failed to insert a new object into symbol table for method '" + name + "'!", info);
-            return 3;
+    private void process_method_header(SyntaxNode info, boolean abs, String name, RetType retType) {
+        log_debug_node_visit(info);
+        // TODO: Figure out inheritance and method overriding...
+        Struct returnType = MJTab.voidType;
+        // Check return type
+        if (!assert_inv_obj(info, retType.obj, "return type")) returnType = retType.obj.getType();
+        // If symbol with same name is already defined, make a new obj outside symbol table to continue analysis
+        if (assert_sym_in_current_scope(info, name)) {
+            currentMethod = new MJObj(Obj.Meth, name, returnType);
+        } else {
+            currentMethod = MJTab.insert(Obj.Meth, name, returnType);
         }
         if (abs) {
-            if (currentClass == null || currentClass == Tab.noObj) {
-                report_error("Abstract method definition outside abstract class!", info);
-                return 4;
-            }
-            if (!((MyObj) currentClass).isAbstract()) {
-                report_error("Abstract method definition inside a concrete class!", info);
-                return 5;
-            }
-            ((MyObj) currentMethod).setAbstract(true); // set method to abstract
+            if (currentClass == null || currentClass == Tab.noObj) log_error(info, MessageType.OTHER, "Abstract method definition outside abstract class!");
+            else if (!((MJObj) currentClass).isAbstract()) log_error(info, MessageType.OTHER, "Abstract method definition inside a concrete class!");
+            ((MJObj) currentMethod).setAbstract(true);
         }
         if (currentClass == null || currentClass == Tab.noObj) methodCount++;
-        MyTab.openScope(MyTab.getCurrentScopeId() == ScopeId.PROGRAM ? ScopeId.GLOBAL_METHOD : ScopeId.CLASS_METHOD);
+        MJTab.openScope(MJTab.getCurrentScopeId() == ScopeId.PROGRAM ? ScopeId.GLOBAL_METHOD : ScopeId.CLASS_METHOD);
+        returnFound = false;
         currentFormalParamCount = 0;
-        if (MyTab.getCurrentScopeId() == ScopeId.CLASS_METHOD) { // insert 'this' as implicit formal param
-            MyTab.insert(Obj.Var, THIS, currentClass.getType());
+        if (MJTab.getCurrentScopeId() == ScopeId.CLASS_METHOD) {
+            // Insert 'this' as implicit first formal parameter
+            MJTab.insert(Obj.Var, THIS, currentClass.getType());
             currentFormalParamCount++;
         }
-        return 0;
     }
 
-    private int process_method_declaration(SyntaxNode info) {
-        if (currentMethod == Tab.noObj) {
-            report_error("Method obj not initialized but method declaration reached!", info);
-            return 1;
-        }
-        if (currentMethod.getType() != MyTab.voidType && !returnFound) {
-            // TODO: Make this throw a runtime exception instead of semantic error...
-            //       Possibly retain a report but do info/warn instead of error and don't fail semantic pass.
+    private void process_method_declaration(SyntaxNode info) {
+        log_debug_node_visit(info);
+        if (currentMethod.getType() != MJTab.voidType && !returnFound) {
+            // TODO: Make this throw a runtime exception...
             //       Instruction: 57: trap b (where b should be 1 for runtime error probably...)
-            /*report_error("Method return type is not 'void' but method does not contain a return statement!", info);
-            return 2;*/
-            print_warning("Method return type is not 'void' but method does not contain a return statement!", info);
+            log_warn(info, MessageType.OTHER, "Method return type is not 'void' but method does not contain a return statement!");
         }
-        MyTab.chainLocalSymbols(currentMethod);
-        MyTab.closeScope(MyTab.getCurrentScopeId() == ScopeId.GLOBAL_METHOD ? ScopeId.PROGRAM : ScopeId.CLASS);
+        MJTab.closeScope(MJTab.getCurrentScopeId() == ScopeId.GLOBAL_METHOD ? ScopeId.PROGRAM : ScopeId.CLASS);
         currentMethod.setLevel(currentFormalParamCount);
-        report_info("Defined method '" + currentMethod.getName() + "'. Object string: " + currentMethod, info);
+        // Log object definition
+        log_info(info, MessageType.DEF_OBJ, "method", currentMethod);
         currentMethod = null;
-        returnFound = false;
-        return 0;
     }
 
     /******************** Program *********************************************************************/
 
     @Override
     public void visit(ProgramName programName) {
-        programName.obj = MyTab.insert(Obj.Prog, programName.getName(), Tab.noType);
-        MyTab.openScope(ScopeId.PROGRAM);
-        print_info("Visited node 'ProgramName'.", programName);
+        log_debug_node_visit(programName);
+        // Production variables
+        String name = programName.getName();
+        // Insert object into symbol table
+        programName.obj = MJTab.currentScope.findSymbol(name);
+        if (programName.obj == null) {
+            programName.obj = MJTab.insert(Obj.Prog, name, Tab.noType);
+        } else {
+            log_error(programName, MessageType.SYM_DEF_INV_KIND, null, name, "valid program name");
+            // Create a new object outside symbol table to continue analysis
+            programName.obj = new MJObj(Obj.Prog, name, Tab.noType);
+        }
+        // Open program scope
+        MJTab.openScope(ScopeId.PROGRAM);
     }
 
     @Override
     public void visit(Program program) {
-        Obj main = MyTab.currentScope.findSymbol(MAIN);
-        if (main == null || main == Tab.noObj) {
-            report_error("Main method not defined!", program);
-            return;
-        }
-        if (main.getKind() != Obj.Meth) {
-            report_error("Symbol 'main' defined but is not a method!", program);
-            return;
-        }
-        if (main.getType() != MyTab.voidType || main.getLevel() != 0) {
-            report_error("Main method defined but is not a void type with zero arguments!", program);
-            return;
-        }
+        log_debug_node_visit(program);
+        // Add local symbols and close scope
         Obj programObj = program.getProgramName().obj;
-        MyTab.chainLocalSymbols(programObj);
-        MyTab.closeScope(ScopeId.UNIVERSE);
-        report_info("Defined program '" + programObj.getName() + "'. Object string: " + programObj, program);
-        print_info("Visited node 'Program'.", program);
+        MJTab.chainLocalSymbols(programObj);
+        // Check main method is defined and valid type
+        Obj mainObj = MJTab.currentScope.findSymbol(MAIN);
+        if (mainObj == null || mainObj == Tab.noObj) {
+            log_error(program, MessageType.SYM_NOT_DEF, "Main method");
+        } else if (mainObj.getKind() != Obj.Meth) {
+            log_error(program, MessageType.SYM_DEF_INV_KIND, null, MAIN, "method");
+        } else if (mainObj.getType() != MJTab.voidType || mainObj.getLevel() != 0) {
+            log_error(program, MessageType.SYM_DEF_INV_KIND, "Main method defined but", "void method with zero arguments");
+        } else { // Log object definition
+            log_info(program, MessageType.DEF_OBJ, "program", programObj);
+        }
+        // Close scope at the end in order to be able to find main
+        MJTab.closeScope(ScopeId.UNIVERSE);
     }
 
     /******************** Type ************************************************************************/
 
     @Override
     public void visit(Type type) {
-        Obj foundObj = MyTab.find(type.getName());
-        if (foundObj == Tab.noObj) {
-            report_error("Symbol '" + type.getName() + "' is not defined!", type);
+        log_debug_node_visit(type);
+        // Production variables
+        String name = type.getName();
+        // Search for defined type
+        type.obj = MJTab.find(name);
+        if (type.obj == Tab.noObj) {
+            log_error(type, MessageType.SYM_NOT_DEF, name, Obj.Type);
+            currentType = Tab.noObj;
+        } else if (type.obj.getKind() != Obj.Type) {
+            log_error(type, MessageType.SYM_DEF_INV_KIND, null, name, "type");
             type.obj = currentType = Tab.noObj;
-            return;
-        }
-        if (foundObj.getKind() != Obj.Type) {
-            report_error("'" + type.getName() + "' is not a type!", type);
-            type.obj = currentType = Tab.noObj;
-            return;
-        }
-        type.obj = currentType = foundObj;
-        print_info("Visited node 'Type'.", type);
+        } else currentType = type.obj;
     }
 
     /******************** Const ***********************************************************************/
 
     @Override
     public void visit(ConstAssignment constAssignment) {
-        if (currentType == Tab.noObj) {
-            report_error("Const type is invalid!", constAssignment);
-            return;
-        } else if (currentType.getType() != Tab.intType && currentType.getType() != Tab.charType && currentType.getType() != MyTab.boolType) {
-            report_error("Const must be of type 'int', 'char' or 'bool'!", constAssignment);
-            return;
-        }
+        log_debug_node_visit(constAssignment);
+        // Production variables
         String name = constAssignment.getName();
-        if (MyTab.currentScope.findSymbol(name) != null) {
-            report_error("Symbol '" + name + "' is already in use!", constAssignment);
-            return;
-        }
-        Const c = constAssignment.getConst();
-        Struct type;
-        int value;
-        if (c instanceof ConstInt) {
-            type = Tab.intType;
-            value = getConstIntValue((ConstInt) c);
-        } else if (c instanceof ConstChar) {
-            type = Tab.charType;
-            value = ((ConstChar) c).getValue();
+        Const value = constAssignment.getConst();
+        // Check if name is in use
+        if (assert_sym_in_use(constAssignment, name)) return;
+        // Type checking
+        if (assert_inv_obj(constAssignment, currentType, "Constant type")) return;
+        if (assert_type_not_basic(constAssignment, currentType.getType(), "Constant")) return;
+        // Get assigned value
+        Struct assignedType;
+        int assignedValue;
+        if (value instanceof ConstInt) {
+            assignedType = Tab.intType;
+            assignedValue = ((ConstInt) value).getValue();
+            if (((ConstInt) value).getOptSign() instanceof Negative) assignedValue *= -1;
+        } else if (value instanceof ConstChar) {
+            assignedType = Tab.charType;
+            assignedValue = ((ConstChar) value).getValue();
         } else {
-            type = MyTab.boolType;
-            value = ((ConstBool) c).getValue() ? 1 : 0;
+            assignedType = MJTab.boolType;
+            assignedValue = ((ConstBool) value).getValue() ? 1 : 0;
         }
-        if (type.equals(currentType.getType())) {
-            Obj newConst = MyTab.insert(Obj.Con, name, type);
-            newConst.setAdr(value);
-            if (newConst == Tab.noObj) {
-                report_error("Failed to insert a new object into symbol table for constant '" + name + "'!", constAssignment);
-                return;
-            }
-            constCount++;
-            report_info("Defined " + MyStruct.getTypeName(type) + " constant '" + name + "' with value: " + value + ". Object string: " + newConst, constAssignment);
-        } else {
-            report_error("Type mismatch of initial const value!", constAssignment);
-        }
-        print_info("Visited node 'ConstAssignment'.", constAssignment);
+        // Check if types match
+        if (!assignedType.equals(currentType.getType())) { log_error(constAssignment, MessageType.INCOMPATIBLE_TYPES, "Constant type", "type of initial value"); return; }
+        // Insert obj into symbol table
+        Obj newObj = MJTab.insert(Obj.Con, name, assignedType);
+        newObj.setAdr(assignedValue); // Set const value
+        constCount++;
+        // Log object definition
+        log_info(constAssignment, MessageType.DEF_OBJ, MJStruct.getTypeName(assignedType) + " constant", newObj);
     }
 
     /******************** Access modifier *************************************************************/
 
+    // TODO: THIS PROBABLY DOES NOT WORK! FIX IT BY IMPLEMENTING VISIT METHODS FOR EVERY TYPE!
     @Override
     public void visit(AccessModifier accessModifier) {
+        log_debug_node_visit(accessModifier);
+        // Set current access modifier
         if (accessModifier instanceof PublicAccess) {
             currentAccess = Access.PUBLIC;
         } else if (accessModifier instanceof ProtectedAccess) {
@@ -349,134 +322,245 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         } else {
             currentAccess = Access.PRIVATE;
         }
-        print_info("Current access modifier: " + currentAccess, accessModifier);
-        print_info("Visited node 'AccessModifier'.", accessModifier);
+        // Log current access modifier
+        log_debug(accessModifier, MessageType.CUR_ACC_MOD, accessModifier.toString());
     }
 
     /******************** Global variables ************************************************************/
 
     @Override
     public void visit(Variable variable) {
-        if (process_variable(variable.getName(), variable.getOptArrayBrackets() instanceof ArrayBrackets, variable) == 0) {
-            print_info("Visited node 'Variable'.", variable);
-        }
+        process_variable(variable, variable.getName(), variable.getOptArrayBrackets() instanceof ArrayBrackets);
     }
 
     /******************** Class variables *************************************************************/
 
     @Override
     public void visit(ClassVariable classVariable) {
-        if (process_variable(classVariable.getName(), classVariable.getOptArrayBrackets() instanceof ArrayBrackets, classVariable) == 0) {
-            print_info("Visited node 'ClassVariable'.", classVariable);
-        }
+        process_variable(classVariable, classVariable.getName(), classVariable.getOptArrayBrackets() instanceof ArrayBrackets);
     }
 
     /******************** Local variables *************************************************************/
 
     @Override
     public void visit(LocalVariable localVariable) {
-        if (process_variable(localVariable.getName(), localVariable.getOptArrayBrackets() instanceof ArrayBrackets, localVariable) == 0) {
-            print_info("Visited node 'LocalVariable'.", localVariable);
-        }
+        process_variable(localVariable, localVariable.getName(), localVariable.getOptArrayBrackets() instanceof ArrayBrackets);
     }
 
     /******************** Class ***********************************************************************/
 
     @Override
     public void visit(ClassHeader classHeader) {
-        if (process_class_header(false, classHeader.getName(), classHeader.getOptClassBaseType(), classHeader) == 0) {
-            print_info("Visited node 'ClassHeader'.", classHeader);
-        }
+        process_class_header(classHeader, false, classHeader.getName(), classHeader.getOptClassBaseType());
     }
 
     @Override
     public void visit(ClassDeclaration classDeclaration) {
-        if (process_class_declaration(classDeclaration) == 0) {
-            print_info("Visited node 'ClassDeclaration'.", classDeclaration);
-        }
+        process_class_declaration(classDeclaration);
     }
 
     /******************** Abstract class **************************************************************/
 
     @Override
     public void visit(AbstractClassHeader abstractClassHeader) {
-        if (process_class_header(true, abstractClassHeader.getName(), abstractClassHeader.getOptClassBaseType(), abstractClassHeader) == 0) {
-            print_info("Visited node 'AbstractClassHeader'.", abstractClassHeader);
-        }
+        process_class_header(abstractClassHeader,true, abstractClassHeader.getName(), abstractClassHeader.getOptClassBaseType());
     }
 
     @Override
     public void visit(AbstractClassDeclaration abstractClassDeclaration) {
-        if (process_class_declaration(abstractClassDeclaration) == 0) {
-            print_info("Visited node 'AbstractClassDeclaration'.", abstractClassDeclaration);
-        }
+        process_class_declaration(abstractClassDeclaration);
     }
 
     /******************** Return type *****************************************************************/
 
     @Override
     public void visit(ReturnType returnType) {
+        log_debug_node_visit(returnType);
         returnType.obj = returnType.getType().obj;
     }
 
     @Override
     public void visit(ReturnVoid returnVoid) {
-        returnVoid.obj = MyTab.voidObject;
+        log_debug_node_visit(returnVoid);
+        returnVoid.obj = MJTab.voidObject;
     }
 
     /******************** Method **********************************************************************/
 
     @Override
     public void visit(MethodHeader methodHeader) {
-        if (process_method_header(false, methodHeader.getName(), methodHeader.getRetType(), methodHeader) == 0) {
-            print_info("Visited node 'MethodHeader'.", methodHeader);
-        }
+        process_method_header(methodHeader, false, methodHeader.getName(), methodHeader.getRetType());
     }
 
     @Override
     public void visit(MethodDeclaration methodDeclaration) {
-        if (process_method_declaration(methodDeclaration) == 0) {
-            print_info("Visited node 'MethodDeclaration'.", methodDeclaration);
-        }
+        process_method_declaration(methodDeclaration);
     }
 
     /******************** Abstract method *************************************************************/
 
     @Override
     public void visit(AbstractMethodHeader abstractMethodHeader) {
-        if (process_method_header(true, abstractMethodHeader.getName(), abstractMethodHeader.getRetType(), abstractMethodHeader) == 0) {
-            print_info("Visited node 'AbstractMethodHeader'.", abstractMethodHeader);
-        }
+        process_method_header(abstractMethodHeader, true, abstractMethodHeader.getName(), abstractMethodHeader.getRetType());
     }
 
     @Override
     public void visit(AbstractMethodDeclaration abstractMethodDeclaration) {
-        if (process_method_declaration(abstractMethodDeclaration) == 0) {
-            print_info("Visited node 'AbstractMethodDeclaration'.", abstractMethodDeclaration);
-        }
+        process_method_declaration(abstractMethodDeclaration);
     }
 
     /******************** Formal parameters ***********************************************************/
 
     @Override
     public void visit(FormalParameter formalParameter) {
+        log_debug_node_visit(formalParameter);
+        // Production variables
         String name = formalParameter.getName();
-        if (currentType == Tab.noObj) {
-            report_error("Formal parameter type is invalid!", formalParameter);
-            return;
+        // Check if name is in use
+        if (assert_sym_in_current_scope(formalParameter, name)) return;
+        // Type checking
+        if (assert_inv_obj(formalParameter, currentType, "Formal parameter type")) return;
+        // Insert obj into symbol table
+        Obj newObj = MJTab.insert(Obj.Var, name, formalParameter.getOptArrayBrackets() instanceof ArrayBrackets ?
+                new MJStruct(Struct.Array, currentType.getType()) : currentType.getType());
+        newObj.setFpPos(currentFormalParamCount++);
+        // Log object definition
+        log_info(formalParameter, MessageType.DEF_OBJ, MJStruct.getTypeName(newObj.getType()) + " formal parameter", newObj);
+    }
+
+    @Override
+    public void visit(MethodStatementListStart methodStatementListStart) {
+        log_debug_node_visit(methodStatementListStart);
+        // TODO: Remove this check, shouldn't be needed
+        if (currentMethod == Tab.noObj) log_error(methodStatementListStart, MessageType.INV_OBJ_CHECK_REACHED, "Method obj", "method statements");
+        else {
+            // Add formal parameters and local variables before statements to allow recursion...
+            MJTab.chainLocalSymbols(currentMethod);
         }
-        if (MyTab.currentScope.findSymbol(name) != null) {
-            report_error("Symbol '" + name + "' is already in use!", formalParameter);
-            return;
+    }
+
+    /******************** Statements ******************************************************************/
+
+    @Override
+    public void visit(BreakStatement breakStatement) {
+        log_debug_node_visit(breakStatement);
+        if (forDepth == 0) log_error(breakStatement, MessageType.MISPLACED_BREAK);
+    }
+
+    @Override
+    public void visit(ContinueStatement continueStatement) {
+        log_debug_node_visit(continueStatement);
+        if (forDepth == 0) log_error(continueStatement, MessageType.MISPLACED_CONTINUE);
+    }
+
+    @Override
+    public void visit(ReadStatement readStatement) {
+        log_debug_node_visit(readStatement);
+        // Parameter semantic check
+        Obj designator = readStatement.getDesignator().obj;
+        if (designator == Tab.noObj) {
+            log_error(readStatement, MessageType.OTHER, "Designator object not initialized for read statement!");
+        } else if (designator.getKind() != Obj.Var && designator.getKind() != Obj.Elem && designator.getKind() != Obj.Fld) {
+            log_error(readStatement, MessageType.OTHER, "Read statement parameter must be either a variable, array element or class field!");
+        } else {
+            assert_type_not_basic(readStatement, designator.getType(), "Read statement parameter");
         }
-        Obj newFormalParam = MyTab.insert(Obj.Var, name, formalParameter.getOptArrayBrackets() instanceof ArrayBrackets ?
-                        new MyStruct(Struct.Array, currentType.getType()) : currentType.getType());
-        if (newFormalParam == null || newFormalParam == Tab.noObj) {
-            report_error("Failed to insert a new object into symbol table for formal parameter '" + name + "'!", formalParameter);
-            return;
+    }
+
+    @Override
+    public void visit(PrintStatement printStatement) {
+        log_debug_node_visit(printStatement);
+        // Parameter semantic check
+        PrintExpr ex = printStatement.getPrintExpr();
+        Struct type;
+        if (ex instanceof  PrintExpressionAndConst) type = ((PrintExpressionAndConst) ex).getExpr().struct;
+        else type = ((PrintOnlyExpression) ex).getExpr().struct;
+        assert_type_not_basic(printStatement, type, "Print statement parameter");
+    }
+
+    @Override
+    public void visit(ReturnStatement returnStatement) {
+        log_debug_node_visit(returnStatement);
+        if (currentMethod == Tab.noObj) log_error(returnStatement, MessageType.MISPLACED_RETURN);
+        else {
+            returnFound = true;
+            /* TODO: Uncomment this once Expr is done...
+            Struct retType = MJTab.voidType;
+            if (returnStatement.getOptExpr() instanceof SingleExpression) {
+                retType = ((SingleExpression) returnStatement.getOptExpr()).getExpr().struct;
+            }
+            if (!currentMethod.getType().compatibleWith(retType)) {
+                log_error(returnStatement, MessageType.INCOMPATIBLE_TYPES, "Return expression type", "method type");
+            }*/
         }
-        newFormalParam.setFpPos(currentFormalParamCount++);
-        report_info("Defined " + MyStruct.getTypeName(newFormalParam.getType()) + " formal parameter '" + name + "'. Object string: " + newFormalParam, formalParameter);
-        print_info("Visited node 'FormalParameter'.", formalParameter);
+    }
+
+    @Override
+    public void visit(IfStatementHeader ifStatementHeader) {
+        log_debug_node_visit(ifStatementHeader);
+        ifDepth++;
+    }
+
+    @Override
+    public void visit(IfOptElseStatement ifOptElseStatement) {
+        log_debug_node_visit(ifOptElseStatement);
+        ifDepth--;
+        if (ifDepth < 0) log_error(ifOptElseStatement, MessageType.INV_COMPILER_OBJ, "if depth", ifDepth);
+    }
+
+    @Override
+    public void visit(ForStatementHeader forStatementHeader) {
+        forDepth++;
+        log_debug_node_visit(forStatementHeader);
+    }
+
+    @Override
+    public void visit(ForStatement forStatement) {
+        log_debug_node_visit(forStatement);
+        forDepth--;
+        if (forDepth < 0) log_error(forStatement, MessageType.INV_COMPILER_OBJ, "for depth", forDepth);
+    }
+
+    @Override
+    public void visit(ForEachStatementHeader forEachStatementHeader) {
+        log_debug_node_visit(forEachStatementHeader);
+        // Production variables
+        String name = forEachStatementHeader.getName();
+        Obj designatorObj = forEachStatementHeader.getDesignator().obj;
+        // Iterator checks
+        Obj iteratorObj = MJTab.find(name);
+        boolean iteratorObjValid = iteratorObj != Tab.noObj;
+        if (!iteratorObjValid) log_error(forEachStatementHeader, MessageType.SYM_NOT_DEF, name, Obj.Var);
+        else if (iteratorObj.getKind() != Obj.Var) log_error(forEachStatementHeader, MessageType.SYM_DEF_INV_KIND, null, name, "local or global variable");
+        else if (((MJObj) iteratorObj).isReadOnly()) log_error(forEachStatementHeader, MessageType.ITERATOR_IN_USE, name);
+        // Array checks
+        boolean designatorObjValid = !assert_inv_obj(forEachStatementHeader, designatorObj, "Designator");
+        if (designatorObjValid && designatorObj.getType().getKind() != Struct.Array) {
+            log_error(forEachStatementHeader, MessageType.OTHER, "Designator is not an array!");
+            designatorObjValid = false;
+        }
+        // Type checks
+        if (iteratorObjValid && designatorObjValid && !iteratorObj.getType().equals(designatorObj.getType().getElemType())) {
+            log_error(forEachStatementHeader, MessageType.INCOMPATIBLE_TYPES, "Iterator type", "type of array element");
+        }
+        // Set iterator variable to read-only inside foreach statement
+        if (iteratorObjValid) ((MJObj) iteratorObj).setReadOnly(true);
+        forDepth++;
+    }
+
+    @Override
+    public void visit(ForEachStatement forEachStatement) {
+        log_debug_node_visit(forEachStatement);
+        forDepth--;
+        if (forDepth < 0) log_error(forEachStatement, MessageType.INV_COMPILER_OBJ, "for depth", forDepth);
+        Obj elem = MJTab.find(forEachStatement.getForEachStatementHeader().getName());
+        ((MJObj) elem).setReadOnly(false); // set element back to read-write as we exited foreach statement
+    }
+
+    /******************** Designator Statements *******************************************************/
+
+    @Override
+    public void visit(MethodCallHeader MethodCallHeader) {
+        super.visit(MethodCallHeader);
     }
 }

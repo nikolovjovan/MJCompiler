@@ -1,7 +1,8 @@
 package rs.ac.bg.etf.pp1;
 
-import java_cup.runtime.*;
-import org.apache.log4j.*;
+import java_cup.runtime.Symbol;
+import rs.ac.bg.etf.pp1.loggers.MJLexerLogger;
+import rs.ac.bg.etf.pp1.loggers.MJLexerLogger.MessageType;
 
 %%
 
@@ -13,32 +14,21 @@ import org.apache.log4j.*;
 %column
 
 %{
-    String fileName;
-    private Logger log = Logger.getLogger(getClass());
+    private MJLexerLogger logger = new MJLexerLogger();
 
     private int errorLine, errorColumn;
-    private StringBuilder errorSymbol = null;
+    private StringBuilder errorSymbol = new StringBuilder();
 
     private Symbol new_symbol(int type, Object value) {
-        return new Symbol(type, yyline + 1, yycolumn + 1, value);
+        Symbol newSym = new Symbol(type, yyline + 1, yycolumn + 1, value);
+        logger.debug(newSym.left, newSym.right, MessageType.SYMBOL_PRINT, newSym);
+        return newSym;
     }
 
     private Symbol new_symbol(int type) {
         return new_symbol(type, yytext());
     }
-
-    private void print_error(int line, int column, String message) {
-        System.err.println(fileName + ":" + line + ":" + column + ": " + message);
-        log.error(fileName + ":" + line + ":" + column + ": " + message);
-    }
 %}
-
-%ctorarg String fileName
-
-%init{
-    this.fileName = fileName;
-    errorSymbol = new StringBuilder();
-%init}
 
 %eofval{
     return new_symbol(sym.EOF);
@@ -122,13 +112,13 @@ Bool            = true|false
     {Comment}   { /* ignore */ }
 
     {Int}       {
-        try {
-            Integer value = new Integer(yytext());
-            return new_symbol(sym.INT, value);
-        } catch (NumberFormatException e) {
-            print_error(yyline + 1, yycolumn + 1, "Failed to parse integer: '" + yytext() + "'");
-        }
-    }
+                        try {
+                            Integer value = new Integer(yytext());
+                            return new_symbol(sym.INT, value);
+                        } catch (NumberFormatException e) {
+                            logger.error(yyline + 1, yycolumn + 1, MessageType.INT_PARSE_FAIL, yytext());
+                        }
+                    }
     {Char}      { return new_symbol(sym.CHAR, new Character(yytext().charAt(1))); }
     {Bool}      { return new_symbol(sym.BOOL, new Boolean(yytext())); }
     {Ident}     { return new_symbol(sym.IDENT, yytext()); }
@@ -145,9 +135,9 @@ Bool            = true|false
 
 <ERROR> {
     {SafeChar}    {
-        yybegin(YYINITIAL);
-        print_error(errorLine, errorColumn, "Invalid symbol: '" + errorSymbol + "'");
-    }
+                            yybegin(YYINITIAL);
+                            logger.error(errorLine, errorColumn, MessageType.INV_SYMBOL, errorSymbol.toString());
+                        }
     .   {
         errorSymbol.append(yytext());
     }

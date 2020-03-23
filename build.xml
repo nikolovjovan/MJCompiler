@@ -127,6 +127,13 @@
         </java>
     </target>
 
+    <target name="test.semantic">
+        <java classname="rs.ac.bg.etf.pp1.MJTestRunner" fork="true">
+            <classpath refid="classpath" />
+            <arg value="semantic" />
+        </java>
+    </target>
+
     <target name="test.all">
         <java classname="rs.ac.bg.etf.pp1.MJTestRunner" fork="true">
             <classpath refid="classpath" />

@@ -15,11 +15,11 @@ public class MJParserTest extends MJTest {
     protected String testName() { return "parser"; }
 
     @Override
-    protected void processTestFile(String fileName, Reader r, Logger log) throws Exception {
-        MJLexer lexer = new MJLexer(r, fileName);
+    protected void processTestFile(Reader r) throws Exception {
+        MJLexer lexer = new MJLexer(r);
         MJParser parser = new MJParser(lexer);
         Program prog = (Program) parser.parse().value;
-        log.info("Abstract syntax tree: " + prog.toString(""));
+        log.info("Abstract syntax tree:\n" + prog.toString(""));
         if (parser.getErrorCount() == 0) {
             System.out.println("Syntax analysis completed without errors!");
         } else {
