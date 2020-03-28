@@ -12,7 +12,7 @@ public class MJStruct extends Struct {
             case Struct.Int: return "int";
             case Struct.Char: return "char";
             case Struct.Bool: return "bool";
-            case Struct.Array: return getBasicTypeName(type.getElemType()) + " array";
+            case Struct.Array: return "array of " + getBasicTypeName(type.getElemType());
             case Struct.Class: return "class";
             default: return "unknown type";
         }

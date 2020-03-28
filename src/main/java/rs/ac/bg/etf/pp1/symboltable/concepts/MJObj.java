@@ -4,20 +4,7 @@ import rs.etf.pp1.symboltable.concepts.*;
 
 public class MJObj extends Obj {
 
-    public enum Access { PUBLIC, PROTECTED, PRIVATE }
-
-    public static String getKindName(int kind) {
-        switch (kind) {
-            case Obj.Con:   return "Constant";
-            case Obj.Var:   return "Variable ";
-            case Obj.Type:  return "Type ";
-            case Obj.Meth:  return "Method ";
-            case Obj.Fld:   return "Field ";
-            case Obj.Elem:  return "Element ";
-            case Obj.Prog:  return "Program ";
-            default:        return "Unknown kind";
-        }
-    }
+    public enum Access { DEFAULT, PUBLIC, PROTECTED, PRIVATE }
 
     private static String indentation;
     private static StringBuilder currentIndentation = new StringBuilder();
@@ -33,7 +20,7 @@ public class MJObj extends Obj {
     }
 
     private boolean abs = false;
-    private Access access = Access.PUBLIC;
+    private Access access = Access.DEFAULT;
     private boolean readOnly = false;
 
     public MJObj(Obj obj) {
@@ -81,17 +68,28 @@ public class MJObj extends Obj {
         MJObj.indentation = indentation;
         StringBuilder output = new StringBuilder();
         // kind
-        output.append(getKindName(getKind()));
+        switch (getKind()) {
+            case Obj.Con:  output.append("Constant "); break;
+            case Obj.Var:  output.append("Variable "); break;
+            case Obj.Type: output.append("Type "); break;
+            case Obj.Meth: output.append(abs ? "Abstract method " : "Method"); break;
+            case Obj.Fld:  output.append("Field "); break;
+            case Obj.Prog: output.append("Program "); break;
+        }
         // name
         output.append(" '").append(getName()).append("': ");
-        // field access
-
         // type
-        if (getKind() != Obj.Var  || !"this".equalsIgnoreCase(getName())) output.append(MJStruct.getTypeName(getType()));
+        if (getKind() != Obj.Var  || !"this".equalsIgnoreCase(getName())) {
+            // abstract class?
+            if (abs && getKind() == Obj.Type && getType().getKind() == Struct.Class) output.append("abstract ");
+            output.append(MJStruct.getBasicTypeName(getType()));
+        }
         // adr
         output.append(", ").append(getAdr());
         // level
-        output.append(", ").append(getLevel()).append(' ');
+        output.append(", ").append(getLevel());
+        // class access
+        if (access != Access.DEFAULT) output.append(", ").append(getAccess());
         // locals
         if (getKind() == Obj.Prog || getKind() == Obj.Meth) {
             output.append('\n');

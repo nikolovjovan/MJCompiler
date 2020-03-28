@@ -11,6 +11,9 @@ import rs.ac.bg.etf.pp1.util.MJUtils;
 import rs.etf.pp1.symboltable.*;
 import rs.etf.pp1.symboltable.concepts.*;
 
+import java.util.Collection;
+import java.util.List;
+
 public class SemanticAnalyzer extends VisitorAdaptor {
 
     // TODO: Add symbol usage detection...
@@ -45,6 +48,8 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 
     private int ifDepth = 0;
     private int forDepth = 0;
+
+    private ActualParametersStack actualParametersStack = new ActualParametersStack();
 
     /******************** Error / debug methods *******************************************************/
 
@@ -106,6 +111,14 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         return false;
     }
 
+    private boolean assert_is_not_assignable(SyntaxNode info, Obj obj) {
+        if (!MJUtils.is_assignable(obj)) {
+            log_error(info, MessageType.SYM_DEF_INV_KIND, null, obj.getName(), "variable, a class field or an array element");
+            return true;
+        }
+        return false;
+    }
+
     /******************** Public methods / constructors ***********************************************/
 
     public SemanticAnalyzer() {
@@ -120,6 +133,20 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 
     /******************** Helper methods **************************************************************/
 
+    private void process_access_modifier(SyntaxNode info) {
+        log_debug_node_visit(info);
+        // Set current access modifier
+        if (info instanceof PublicAccess) {
+            currentAccess = Access.PUBLIC;
+        } else if (info instanceof ProtectedAccess) {
+            currentAccess = Access.PROTECTED;
+        } else {
+            currentAccess = Access.PRIVATE;
+        }
+        // Log current access modifier
+        log_debug(info, MessageType.CUR_ACC_MOD, currentAccess.toString());
+    }
+
     private void process_variable(SyntaxNode info, String name, boolean array) {
         log_debug_node_visit(info);
         // Type checking
@@ -129,7 +156,9 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         Obj newObj = MJTab.insert(MJTab.getCurrentScopeId() == ScopeId.CLASS ? Obj.Fld : Obj.Var, name, array ?
                 new MJStruct(Struct.Array, currentType.getType()) : currentType.getType());
         newObj.setLevel(MJTab.getCurrentLevel());
-        ((MJObj) newObj).setAccess(currentAccess); // only relevant for class variables;
+        if (MJTab.getCurrentScopeId() == ScopeId.CLASS) {
+            ((MJObj) newObj).setAccess(currentAccess);
+        }
         if (MJTab.getCurrentScopeId() == ScopeId.PROGRAM) varCount++;
         // Log object definition
         log_info(info, MessageType.DEF_OBJ, MJStruct.getTypeName(newObj.getType()) + " variable", newObj);
@@ -187,7 +216,11 @@ public class SemanticAnalyzer extends VisitorAdaptor {
             else if (!((MJObj) currentClass).isAbstract()) log_error(info, MessageType.OTHER, "Abstract method definition inside a concrete class!");
             ((MJObj) currentMethod).setAbstract(true);
         }
-        if (currentClass == null || currentClass == Tab.noObj) methodCount++;
+        if (MJTab.getCurrentScopeId() == ScopeId.CLASS) {
+            ((MJObj) currentMethod).setAccess(currentAccess);
+        } else {
+            methodCount++; // global method count
+        }
         MJTab.openScope(MJTab.getCurrentScopeId() == ScopeId.PROGRAM ? ScopeId.GLOBAL_METHOD : ScopeId.CLASS_METHOD);
         returnFound = false;
         currentFormalParamCount = 0;
@@ -210,6 +243,17 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         // Log object definition
         log_info(info, MessageType.DEF_OBJ, "method", currentMethod);
         currentMethod = null;
+    }
+
+    private void process_variable_incdec(SyntaxNode info, Designator designator) {
+        log_debug_node_visit(info);
+        Obj dObj = designator.obj;
+        // Check if value can be assigned to designator
+        if (assert_is_not_assignable(info, dObj)) return;
+        // Type checks
+        if (dObj.getType() != Tab.intType) {
+            log_error(info, MessageType.INCOMPATIBLE_TYPES, MJStruct.getTypeName(dObj.getType()), MJStruct.getTypeName(Tab.intType));
+        }
     }
 
     /******************** Program *********************************************************************/
@@ -310,20 +354,19 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 
     /******************** Access modifier *************************************************************/
 
-    // TODO: THIS PROBABLY DOES NOT WORK! FIX IT BY IMPLEMENTING VISIT METHODS FOR EVERY TYPE!
     @Override
-    public void visit(AccessModifier accessModifier) {
-        log_debug_node_visit(accessModifier);
-        // Set current access modifier
-        if (accessModifier instanceof PublicAccess) {
-            currentAccess = Access.PUBLIC;
-        } else if (accessModifier instanceof ProtectedAccess) {
-            currentAccess = Access.PROTECTED;
-        } else {
-            currentAccess = Access.PRIVATE;
-        }
-        // Log current access modifier
-        log_debug(accessModifier, MessageType.CUR_ACC_MOD, accessModifier.toString());
+    public void visit(PublicAccess publicAccess) {
+        process_access_modifier(publicAccess);
+    }
+
+    @Override
+    public void visit(ProtectedAccess protectedAccess) {
+        process_access_modifier(protectedAccess);
+    }
+
+    @Override
+    public void visit(PrivateAccess privateAccess) {
+        process_access_modifier(privateAccess);
     }
 
     /******************** Global variables ************************************************************/
@@ -431,12 +474,8 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     @Override
     public void visit(MethodStatementListStart methodStatementListStart) {
         log_debug_node_visit(methodStatementListStart);
-        // TODO: Remove this check, shouldn't be needed
-        if (currentMethod == Tab.noObj) log_error(methodStatementListStart, MessageType.INV_OBJ_CHECK_REACHED, "Method obj", "method statements");
-        else {
-            // Add formal parameters and local variables before statements to allow recursion...
-            MJTab.chainLocalSymbols(currentMethod);
-        }
+        // Add formal parameters and local variables before statements to allow recursion...
+        MJTab.chainLocalSymbols(currentMethod);
     }
 
     /******************** Statements ******************************************************************/
@@ -472,10 +511,10 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         log_debug_node_visit(printStatement);
         // Parameter semantic check
         PrintExpr ex = printStatement.getPrintExpr();
-        Struct type;
-        if (ex instanceof  PrintExpressionAndConst) type = ((PrintExpressionAndConst) ex).getExpr().struct;
-        else type = ((PrintOnlyExpression) ex).getExpr().struct;
-        assert_type_not_basic(printStatement, type, "Print statement parameter");
+        Obj typeObj;
+        if (ex instanceof  PrintExpressionAndConst) typeObj = ((PrintExpressionAndConst) ex).getExpr().obj;
+        else typeObj = ((PrintOnlyExpression) ex).getExpr().obj;
+        assert_type_not_basic(printStatement, typeObj.getType(), "Print statement parameter");
     }
 
     @Override
@@ -560,7 +599,144 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     /******************** Designator Statements *******************************************************/
 
     @Override
-    public void visit(MethodCallHeader MethodCallHeader) {
-        super.visit(MethodCallHeader);
+    public void visit(AssignmentStatement assignmentStatement) {
+        log_debug_node_visit(assignmentStatement);
+        Obj dObj = assignmentStatement.getDesignator().obj;
+        Obj eObj = ((AssignmentExpression) assignmentStatement.getAssignExpr()).getExpr().obj;
+        // Check if value can be assigned to designator
+        if (assert_is_not_assignable(assignmentStatement, dObj)) return;
+        // Type checks
+        if (!eObj.getType().assignableTo(dObj.getType())) {
+            log_error(assignmentStatement, MessageType.INCOMPATIBLE_TYPES, MJStruct.getTypeName(eObj.getType()), MJStruct.getTypeName(dObj.getType()));
+        }
+    }
+
+    @Override
+    public void visit(VariableIncrementStatement variableIncrementStatement) {
+        process_variable_incdec(variableIncrementStatement, variableIncrementStatement.getDesignator());
+    }
+
+    @Override
+    public void visit(VariableDecrementStatement variableDecrementStatement) {
+        process_variable_incdec(variableDecrementStatement, variableDecrementStatement.getDesignator());
+    }
+
+    /******************** Method call *************************************************************/
+
+    @Override
+    public void visit(MethodCallHeader methodCallHeader) {
+        log_debug_node_visit(methodCallHeader);
+        methodCallHeader.obj = methodCallHeader.getDesignator().obj;
+        actualParametersStack.createParameters();
+    }
+
+    @Override
+    public void visit(MethodCall methodCall) {
+        log_debug_node_visit(methodCall);
+        Obj methodObj = methodCall.obj = methodCall.getMethodCallHeader().obj;
+
+        if (assert_inv_obj(methodCall, methodObj, "Method call designator")) return;
+
+        if (methodObj.getKind() != Obj.Meth) {
+            log_error(methodCall, MessageType.SYM_DEF_INV_KIND, null, methodObj.getName(), "method");
+            return;
+        }
+
+        List<Obj> actualParametersList = actualParametersStack.getParameters();
+
+        if (actualParametersList == null) {
+            log_error(methodCall, MessageType.OTHER, "Method call processing but method call header not found!");
+            return;
+        }
+
+        int formalParametersCount = methodObj.getLevel();
+
+        if (actualParametersList.size() != formalParametersCount) {
+            log_error(methodCall, MessageType.OTHER, "Wrong number of parameters!");
+            return;
+        }
+
+        Collection<Obj> locals = methodObj.getLocalSymbols();
+        int i = 0;
+        for (Obj currentParameter : locals) {
+            if (i >= formalParametersCount) break;
+            if (!actualParametersList.get(i).getType().assignableTo(currentParameter.getType())) {
+                log_error(methodCall, MessageType.INV_ACT_PARAM, i + 1);
+            }
+            i++;
+        }
+
+        log_info(methodCall, MessageType.OTHER, "Method call! Method name: '" + methodObj.getName() + "'.");
+    }
+
+    /******************** Actual parameters ***********************************************************/
+
+    @Override
+    public void visit(ActualParameter actualParameter) {
+        log_debug_node_visit(actualParameter);
+        Obj eObj = actualParameter.getExpr().obj;
+
+        if (assert_inv_obj(actualParameter, eObj, "Actual parameter expression")) return;
+
+        if (!actualParametersStack.insertActualParameter(eObj)) {
+            log_error(actualParameter, MessageType.OTHER, "Actual parameter processing but method call header not found!");
+        }
+    }
+
+    /******************** Designators *****************************************************************/
+
+    // TODO: Implement all designators
+
+    @Override
+    public void visit(DesignatorHeader designatorHeader) {
+        log_debug_node_visit(designatorHeader);
+
+        String name = designatorHeader.getName();
+
+        designatorHeader.obj = MJTab.find(name);
+        if (designatorHeader.obj == Tab.noObj) {
+            log_error(designatorHeader, MessageType.SYM_NOT_DEF, null, name);
+        }
+
+        if (MJTab.getCurrentScopeId() == ScopeId.CLASS_METHOD) {
+
+        } else { // ScopeId.GLOBAL_METHOD
+
+        }
+    }
+
+    @Override
+    public void visit(Designator designator) {
+        log_debug_node_visit(designator);
+
+        designator.obj = designator.getDesignatorHeader().obj;
+    }
+
+    /******************** Expressions *****************************************************************/
+
+    // TODO: Implement all this, this is only temporary for a test
+
+    @Override
+    public void visit(DesignatorFactor designatorFactor) {
+        log_debug_node_visit(designatorFactor);
+        designatorFactor.obj = designatorFactor.getDesignator().obj;
+    }
+
+    @Override
+    public void visit(MethodCallFactor methodCallFactor) {
+        log_debug_node_visit(methodCallFactor);
+        methodCallFactor.obj = methodCallFactor.getMethodCall().obj;
+    }
+
+    @Override
+    public void visit(Term term) {
+        log_debug_node_visit(term);
+        term.obj = term.getFactor().obj;
+    }
+
+    @Override
+    public void visit(Expression expression) {
+        log_debug_node_visit(expression);
+        expression.obj = expression.getTerm().obj;
     }
 }

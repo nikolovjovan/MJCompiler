@@ -41,11 +41,15 @@ program test
         bool local_var_d, local_var_e[];
     {
         local_var_a = a; // const usage
-        local_var_b = new int[c - a]; // const expr
-        for (i = 0; i < c - a; i++) {
-            if (i % 2 == 0) local_var_c = true;
-            else local_var_c = false;
-            local_var_b[i] = calc(local_var_a, local_var_b[i], local_var_c);
-        }
+        local_var_a = calc(local_var_a, local_var_a, local_var_d); // test method call
+// TODO: Uncomment all this code after expressions are all implemented...
+//        local_var_b = new int[c - a]; // const expr
+//        // break; // semantic error
+//        for (i = 0; i < c - a; i++) {
+//            if (i % 2 == 0) local_var_c = true;
+//            else local_var_c = false;
+//            local_var_b[i] = calc(local_var_a, local_var_b[i], local_var_c);
+//            continue;
+//        }
     }
 }

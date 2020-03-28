@@ -27,6 +27,7 @@ public class MJSemanticAnalyzerLogger extends MJLogger {
         MISPLACED_RETURN,       // Params:
         INV_COMPILER_OBJ,       // Params: String objectName, Object object
         ITERATOR_IN_USE,        // Params: String varName
+        INV_ACT_PARAM,          // Params: Integer index
         /* ANY OTHER MESSAGE */
         OTHER                   // Params: String message
     }
@@ -104,6 +105,10 @@ public class MJSemanticAnalyzerLogger extends MJLogger {
             case ITERATOR_IN_USE: {
                 String varName = get_next_context_object(String.class, context);
                 return varName == null ? invalidMessage : "Variable '" + varName + "' is already being used as a foreach iterator!";
+            }
+            case INV_ACT_PARAM: {
+                Integer index = get_next_context_object(Integer.class, context);
+                return index == null ? invalidMessage : "Actual parameter at position " + index + " is of wrong type!";
             }
             /* ANY OTHER MESSAGE */
             case OTHER: {

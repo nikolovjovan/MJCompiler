@@ -116,27 +116,29 @@ nonterminal OptLocalVarDeclList, LocalVarDecl, LocalVarList, LocalVar;
 /* Statement-related non-terminals */
 nonterminal OptStatementList, Statement, IfStatementHeader, ForStatementHeader, ForEachStatementHeader,
             OptDesignatorStatement, DesignatorStatement, OptElseStatement, PrintExpr, AssignExpr;
-nonterminal rs.etf.pp1.symboltable.concepts.Obj MethodCallHeader;
+nonterminal rs.etf.pp1.symboltable.concepts.Obj MethodCall, MethodCallHeader;
 
 /* Designator-related non-terminals */
-nonterminal rs.etf.pp1.symboltable.concepts.Obj Designator;
+nonterminal rs.etf.pp1.symboltable.concepts.Obj Designator, DesignatorHeader;
 nonterminal OptDesignatorPartList, DesignatorPart;
 
 /* Expression-related non-terminals */
 nonterminal OptExpr;
-nonterminal rs.etf.pp1.symboltable.concepts.Struct Expr;
+nonterminal rs.etf.pp1.symboltable.concepts.Obj Expr;
 
 /* Actual Parameters */
 nonterminal OptActualParamList, ActualParamList, ActualParam;
 
 /* Relational Operators */
-nonterminal ForCondition, Condition, CondTerm, CondFact, Relop;
+nonterminal rs.etf.pp1.symboltable.concepts.Obj Condition, CondTerm, CondFact;
+nonterminal ForCondition, Relop;
 
 /* Additive Operators */
 nonterminal OptAddopExprList, Addop, AddopLeft, AddopRight;
 
 /* Multiplicative Operators */
-nonterminal Term, Factor, ConstFactor, OptMulopExprList, Mulop, MulopLeft, MulopRight;
+nonterminal rs.etf.pp1.symboltable.concepts.Obj Term, Factor;
+nonterminal ConstFactor, OptMulopExprList, Mulop, MulopLeft, MulopRight;
 
 /* Assignment Operators */
 nonterminal Assignop;
@@ -341,10 +343,10 @@ OptDesignatorStatement ::= (SingleDesignatorStatement) DesignatorStatement
                          | (NoDesignatorStatement) /* epsilon */
                          ;
 
-DesignatorStatement ::= (MethodCall) MethodCallHeader:header LPAREN OptActualParamList:params RPAREN
-                      | (Assignment) Designator:result AssignExpr:assignExpr
-                      | (VariableIncrement) Designator:result PLUSPLUS
-                      | (VariableDecrement) Designator:result MINUSMINUS
+DesignatorStatement ::= (AssignmentStatement) Designator:result AssignExpr:assignExpr
+                      | (MethodCallStatement) MethodCall
+                      | (VariableIncrementStatement) Designator:result PLUSPLUS
+                      | (VariableDecrementStatement) Designator:result MINUSMINUS
                       ;
 
 OptElseStatement ::= (ElseStatement) ELSE Statement:elseStatement
@@ -355,15 +357,19 @@ PrintExpr ::= (PrintOnlyExpression) Expr:printExpr
             | (PrintExpressionAndConst) Expr:printExpr COMMA INT:constValue
             ;
 
-MethodCallHeader ::= (MethodCallHeader) Designator:methodName;
-
 AssignExpr ::= (AssignmentExpression) Assignop:op Expr:expr
              | (ErrorAssignmentExpression) error {: parser.log_error(MessageType.INV_ASSIGN_EXPR); :}
              ;
 
+MethodCall ::= (MethodCall) MethodCallHeader:methodName LPAREN OptActualParamList RPAREN;
+
+MethodCallHeader ::= (MethodCallHeader) Designator:methodName;
+
 /* Designator-related non-terminals */
 
-Designator ::= (Designator) IDENT:name OptDesignatorPartList;
+Designator ::= (Designator) DesignatorHeader OptDesignatorPartList;
+
+DesignatorHeader ::= (DesignatorHeader) IDENT:name;
 
 OptDesignatorPartList ::= (DesignatorParts) OptDesignatorPartList DesignatorPart
                         | (NoDesignatorParts) /* epsilon */
@@ -444,7 +450,7 @@ AddopRight ::= (AddAssign) PLUS_ASSIGN
 Term ::= (Term) Factor OptMulopExprList;
 
 Factor ::= (DesignatorFactor) Designator
-         | (FunctionCallFactor) Designator LPAREN OptActualParamList RPAREN
+         | (MethodCallFactor) MethodCall
          | (ConstantFactor) ConstFactor
          | (ObjectAllocateFactor) NEW Type:objectType
          | (ArrayAllocateFactor) NEW Type:objectType LBRACK Expr:arrayExpr RBRACK
