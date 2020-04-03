@@ -375,8 +375,8 @@ OptDesignatorPartList ::= (DesignatorParts) OptDesignatorPartList DesignatorPart
                         | (NoDesignatorParts) /* epsilon */
                         ;
 
-DesignatorPart ::= (FieldAccess) DOT IDENT:name
-                 | (ArrayAccess) LBRACK Expr:indexExpression RBRACK
+DesignatorPart ::= (MemberAccess) DOT IDENT:name
+                 | (ElementAccess) LBRACK Expr:indexExpression RBRACK
                  ;
 
 /* Expression-related non-terminals */

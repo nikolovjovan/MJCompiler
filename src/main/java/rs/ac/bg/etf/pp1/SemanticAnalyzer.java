@@ -425,7 +425,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     @Override
     public void visit(ReturnVoid returnVoid) {
         log_debug_node_visit(returnVoid);
-        returnVoid.obj = MJTab.voidObject;
+        returnVoid.obj = MJTab.voidObj;
     }
 
     /******************** Method **********************************************************************/
@@ -683,9 +683,139 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         }
     }
 
-    /******************** Designators *****************************************************************/
+    /******************** Conditions ******************************************************************/
 
-    // TODO: Implement all designators
+    @Override
+    public void visit(SimpleFact simpleFact) {
+        log_debug_node_visit(simpleFact);
+        simpleFact.obj = simpleFact.getExpr().obj;
+        // Check if type is boolean
+        if (!simpleFact.obj.getType().equals(MJTab.boolType)) {
+            log_error(simpleFact, MessageType.INCOMPATIBLE_TYPES, MJStruct.getTypeName(simpleFact.obj.getType()), MJStruct.getTypeName(MJTab.boolType));
+        }
+    }
+
+    @Override
+    public void visit(ComplexFact complexFact) {
+        log_debug_node_visit(complexFact);
+        Struct tl = complexFact.getExpr().obj.getType();
+        Struct tr = complexFact.getExpr().obj.getType();
+        // Check if types are compatible
+        if (!tl.compatibleWith(tr)) {
+            log_error(complexFact, MessageType.INCOMPATIBLE_TYPES, MJStruct.getTypeName(tl), MJStruct.getTypeName(tr));
+            return;
+        }
+        if (tl.getKind() == Struct.Array || tl.getKind() == Struct.Class) {
+            Relop rel = complexFact.getRelop();
+            // Convert rel to string
+            String op;
+            if (rel instanceof EqualityOperator) {
+                op = "==";
+            } else if (rel instanceof InequalityOperator) {
+                op = "!=";
+            } else if (rel instanceof GreaterThanOperator) {
+                op = ">";
+            } else if (rel instanceof GreaterOrEqualOperator) {
+                op = ">=";
+            } else if (rel instanceof LessThanOperator) {
+                op = "<";
+            } else {
+                op = "<=";
+            }
+            // Arrays and classes can only use '!=' or '==' relational operators
+            if (!(rel instanceof EqualityOperator) && !(rel instanceof InequalityOperator)) {
+                log_error(complexFact, MessageType.UNDEF_OP, op, MJStruct.getTypeName(tl), MJStruct.getTypeName(tr));
+            }
+        }
+    }
+
+    // TODO: Look into whether conditions need to be further evaluated
+
+    /******************** Expressions *****************************************************************/
+
+    //------------------- Factors --------------------------------------------------------------------//
+
+    @Override
+    public void visit(DesignatorFactor designatorFactor) {
+        log_debug_node_visit(designatorFactor);
+        designatorFactor.obj = designatorFactor.getDesignator().obj;
+    }
+
+    @Override
+    public void visit(MethodCallFactor methodCallFactor) {
+        log_debug_node_visit(methodCallFactor);
+        methodCallFactor.obj = methodCallFactor.getMethodCall().obj;
+    }
+
+    @Override
+    public void visit(ConstantFactor constantFactor) {
+        log_debug_node_visit(constantFactor);
+        ConstFactor cf = constantFactor.getConstFactor();
+        if (cf instanceof ConstFactorInt) {
+            constantFactor.obj = MJTab.intObj;
+        } else if (cf instanceof ConstFactorChar) {
+            constantFactor.obj = MJTab.charObj;
+        } else {
+            constantFactor.obj = MJTab.boolObj;
+        }
+    }
+
+    @Override
+    public void visit(ObjectAllocateFactor objectAllocateFactor) {
+        log_debug_node_visit(objectAllocateFactor);
+        Obj typeObj = objectAllocateFactor.getType().obj;
+        if (typeObj.getType().getKind() != Struct.Class || ((MJObj) typeObj).isAbstract()) {
+            log_error(objectAllocateFactor, MessageType.OTHER, "Object type must be a non-abstract class type!");
+            objectAllocateFactor.obj = Tab.noObj;
+        } else {
+            objectAllocateFactor.obj = new MJObj(Obj.Var, "", typeObj.getType());
+        }
+    }
+
+    @Override
+    public void visit(ArrayAllocateFactor arrayAllocateFactor) {
+        log_debug_node_visit(arrayAllocateFactor);
+        Obj typeObj = arrayAllocateFactor.getType().obj;
+        Obj exprObj = arrayAllocateFactor.getExpr().obj;
+        if (exprObj.getType() != Tab.intType) {
+            arrayAllocateFactor.obj = Tab.noObj;
+        } else {
+            arrayAllocateFactor.obj = new MJObj(Obj.Var, "", new MJStruct(Struct.Array, typeObj.getType()));
+        }
+    }
+
+    @Override
+    public void visit(ParenthesesExpressionFactor parenthesesExpressionFactor) {
+        log_debug_node_visit(parenthesesExpressionFactor);
+        parenthesesExpressionFactor.obj = parenthesesExpressionFactor.getExpr().obj;
+    }
+
+    @Override
+    public void visit(MulopExpressions mulopExpressions) {
+        log_debug_node_visit(mulopExpressions);
+    }
+
+    //------------------- Terms ----------------------------------------------------------------------//
+
+    @Override
+    public void visit(Term term) {
+        log_debug_node_visit(term);
+        term.obj = term.getFactor().obj;
+    }
+
+    @Override
+    public void visit(AddopExpressions addopExpressions) {
+        log_debug_node_visit(addopExpressions);
+
+    }
+
+    @Override
+    public void visit(Expression expression) {
+        log_debug_node_visit(expression);
+        expression.obj = expression.getTerm().obj;
+    }
+
+    /******************** Designators *****************************************************************/
 
     @Override
     public void visit(DesignatorHeader designatorHeader) {
@@ -706,37 +836,21 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     }
 
     @Override
+    public void visit(MemberAccess memberAccess) {
+        log_debug_node_visit(memberAccess);
+
+    }
+
+    @Override
+    public void visit(ElementAccess elementAccess) {
+        log_debug_node_visit(elementAccess);
+
+    }
+
+    @Override
     public void visit(Designator designator) {
         log_debug_node_visit(designator);
 
         designator.obj = designator.getDesignatorHeader().obj;
-    }
-
-    /******************** Expressions *****************************************************************/
-
-    // TODO: Implement all this, this is only temporary for a test
-
-    @Override
-    public void visit(DesignatorFactor designatorFactor) {
-        log_debug_node_visit(designatorFactor);
-        designatorFactor.obj = designatorFactor.getDesignator().obj;
-    }
-
-    @Override
-    public void visit(MethodCallFactor methodCallFactor) {
-        log_debug_node_visit(methodCallFactor);
-        methodCallFactor.obj = methodCallFactor.getMethodCall().obj;
-    }
-
-    @Override
-    public void visit(Term term) {
-        log_debug_node_visit(term);
-        term.obj = term.getFactor().obj;
-    }
-
-    @Override
-    public void visit(Expression expression) {
-        log_debug_node_visit(expression);
-        expression.obj = expression.getTerm().obj;
     }
 }

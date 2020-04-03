@@ -28,6 +28,7 @@ public class MJSemanticAnalyzerLogger extends MJLogger {
         INV_COMPILER_OBJ,       // Params: String objectName, Object object
         ITERATOR_IN_USE,        // Params: String varName
         INV_ACT_PARAM,          // Params: Integer index
+        UNDEF_OP,               // Params: String op, String type1Name, String type2Name
         /* ANY OTHER MESSAGE */
         OTHER                   // Params: String message
     }
@@ -109,6 +110,12 @@ public class MJSemanticAnalyzerLogger extends MJLogger {
             case INV_ACT_PARAM: {
                 Integer index = get_next_context_object(Integer.class, context);
                 return index == null ? invalidMessage : "Actual parameter at position " + index + " is of wrong type!";
+            }
+            case UNDEF_OP: {
+                String op = get_next_context_object(String.class, context);
+                String type1Name = get_next_context_object(String.class, context);
+                String type2Name = get_next_context_object(String.class, context);
+                return op == null || type1Name == null || type2Name == null ? invalidMessage : "Operator '" + op + "' is undefined for arguments of types '" + type1Name + "' and '" + type2Name + "'!";
             }
             /* ANY OTHER MESSAGE */
             case OTHER: {

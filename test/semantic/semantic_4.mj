@@ -39,9 +39,22 @@ program test
         int local_var_a, local_var_b[], i;
         char local_var_c;
         bool local_var_d, local_var_e[];
+        test_class obj;
     {
-        local_var_a = a; // const usage
+        local_var_a = a; // int const usage
+//        local_var_b = new int[5]; // array instantiation
+        local_var_c = d; // char const usage
+//        obj = new test_class; // class instantiation
+
+        local_var_obj.class_var_a; // class field access
+        local_var_obj.class_var_b[5]; // class array field element access
+        local_var_obj.class_var_c; // error: protected field access
+        local_var_obj.class_var_d; // error: private field access
+        local_var_obj.test_method(); // class method call
+
         local_var_a = calc(local_var_a, local_var_a, local_var_d); // test method call
+//        calc(); // invalid parameter count
+//        calc(local_var_a, local_var_d, local_var_a); // invalid argument type
 // TODO: Uncomment all this code after expressions are all implemented...
 //        local_var_b = new int[c - a]; // const expr
 //        // break; // semantic error

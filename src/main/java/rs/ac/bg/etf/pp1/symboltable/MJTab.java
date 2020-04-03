@@ -8,10 +8,13 @@ public class MJTab extends Tab {
 
     public enum ScopeId { UNIVERSE, PROGRAM, CLASS, GLOBAL_METHOD, CLASS_METHOD }
 
-    public static final Struct boolType = new MJStruct(Struct.Bool);
-    public static final Struct voidType = new MJStruct(Struct.None);
+    public static final Struct boolType = new Struct(Struct.Bool);
+    public static final Struct voidType = new Struct(Struct.None);
 
-    public static final Obj voidObject = new MJObj(MJObj.Var, "voidObject", voidType);
+    public static final Obj intObj = new Obj(Obj.Type, "int", intType);
+    public static final Obj charObj = new Obj(Obj.Type, "char", charType);
+    public static final Obj boolObj = new Obj(Obj.Type, "bool", boolType);
+    public static final Obj voidObj = new Obj(Obj.Var, "void", voidType);
 
     private static ScopeId currentScopeId = ScopeId.UNIVERSE;
 
@@ -20,9 +23,11 @@ public class MJTab extends Tab {
     private static int currentLevel = -1;
 
     public static void init() {
+        // TODO: Reimplement init, possibly replace all references to vanilla Tab with MJTab,
+        //       replace all Obj, Struct with MJObj, MJStruct...
         Tab.init();
-        Tab.currentScope.addToLocals(new Obj(Obj.Type, "bool", boolType));
-        Tab.currentScope.addToLocals(new Obj(Obj.Type, "void", voidType));
+        Tab.currentScope.addToLocals(boolObj);
+        Tab.currentScope.addToLocals(voidObj);
     }
 
     public static void openScope(ScopeId nextScopeId) {

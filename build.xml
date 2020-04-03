@@ -140,4 +140,22 @@
         </java>
     </target>
 
+    <target name="disassemble">
+        <java classname="rs.etf.pp1.mj.runtime.disasm">
+            <arg value="test/program.obj" />
+            <classpath>
+                <pathelement location="lib/mj-runtime-1.1.jar" />
+            </classpath>
+        </java>
+    </target>
+
+    <target name="run">
+        <java classname="rs.etf.pp1.mj.runtime.Run">
+            <arg value="test/program.obj" />
+            <classpath>
+                <pathelement location="lib/mj-runtime-1.1.jar" />
+            </classpath>
+        </java>
+    </target>
+
 </project>
