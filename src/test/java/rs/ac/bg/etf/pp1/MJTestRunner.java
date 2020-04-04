@@ -37,6 +37,14 @@ public class MJTestRunner {
                     }
                     break;
                 }
+                case "codegen": {
+                    if (args.length > 1) {
+                        MJCodeGenTest.INSTANCE.runTest(args[1]);
+                    } else {
+                        MJCodeGenTest.INSTANCE.runAll();
+                    }
+                    break;
+                }
                 default: {
                     System.err.println("Invalid option '" + args[0] + "'!");
                     break;
@@ -46,6 +54,7 @@ public class MJTestRunner {
             MJLexerTest.INSTANCE.runAll();
             MJParserTest.INSTANCE.runAll();
             MJSemanticTest.INSTANCE.runAll();
+            MJCodeGenTest.INSTANCE.runAll();
         }
     }
 

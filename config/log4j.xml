@@ -11,9 +11,9 @@
     </appender>-->
 
     <appender name="file" class="org.apache.log4j.DailyRollingFileAppender">
-        <param name="file" value="logs/mj.log"></param>
+        <param name="file" value="logs/mj.log" />
         <layout class="org.apache.log4j.PatternLayout">
-            <param name="ConversionPattern" value="%-5p %d{ABSOLUTE} - %m%n"></param>
+            <param name="ConversionPattern" value="%-5p %d{ABSOLUTE} - %m%n" />
         </layout>
     </appender>
 

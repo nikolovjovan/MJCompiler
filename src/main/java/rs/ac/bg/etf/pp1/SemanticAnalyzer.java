@@ -119,18 +119,6 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         return false;
     }
 
-    /******************** Public methods / constructors ***********************************************/
-
-    public SemanticAnalyzer() {
-        MJTab.init();
-    }
-
-    public int getErrorCount() { return errorCount; }
-    public int getConstCount() { return constCount; }
-    public int getVarCount() { return varCount; }
-    public int getClassCount() { return classCount; }
-    public int getMethodCount() { return methodCount; }
-
     /******************** Helper methods **************************************************************/
 
     private void process_access_modifier(SyntaxNode info) {
@@ -229,6 +217,11 @@ public class SemanticAnalyzer extends VisitorAdaptor {
             MJTab.insert(Obj.Var, THIS, currentClass.getType());
             currentFormalParamCount++;
         }
+        if (info instanceof MethodHeader) {
+            ((MethodHeader) info).obj = currentMethod;
+        } else {
+            ((AbstractMethodHeader) info).obj = currentMethod;
+        }
     }
 
     private void process_method_declaration(SyntaxNode info) {
@@ -255,6 +248,18 @@ public class SemanticAnalyzer extends VisitorAdaptor {
             log_error(info, MessageType.INCOMPATIBLE_TYPES, MJStruct.getTypeName(dObj.getType()), MJStruct.getTypeName(Tab.intType));
         }
     }
+
+    /******************** Public methods / constructors ***********************************************/
+
+    public SemanticAnalyzer() {
+        MJTab.init();
+    }
+
+    public int getErrorCount() { return errorCount; }
+    public int getConstCount() { return constCount; }
+    public int getVarCount() { return varCount; }
+    public int getClassCount() { return classCount; }
+    public int getMethodCount() { return methodCount; }
 
     /******************** Program *********************************************************************/
 

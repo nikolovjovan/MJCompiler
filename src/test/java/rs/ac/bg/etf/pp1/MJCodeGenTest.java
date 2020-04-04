@@ -2,17 +2,20 @@ package rs.ac.bg.etf.pp1;
 
 import rs.ac.bg.etf.pp1.ast.Program;
 import rs.ac.bg.etf.pp1.symboltable.MJTab;
+import rs.etf.pp1.mj.runtime.Code;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.Reader;
 
-public class MJSemanticTest extends MJTest {
+public class MJCodeGenTest extends MJTest {
 
-    public static MJSemanticTest INSTANCE = new MJSemanticTest();
+    public static MJCodeGenTest INSTANCE = new MJCodeGenTest();
 
-    private MJSemanticTest() {}
+    private MJCodeGenTest() {}
 
     @Override
-    protected String testName() { return "semantic"; }
+    protected String testName() { return "codegen"; }
 
     @Override
     protected void processTestFile(Reader r) throws Exception {
@@ -31,7 +34,18 @@ public class MJSemanticTest extends MJTest {
         MJTab.dump();
         if (analyzer.getErrorCount() == 0) {
             System.out.println("Semantic analysis completed without errors!");
-        } else {
+            File objFile = new File("test\\program.obj");
+            log.info("Generating bytecode file: " + objFile.getAbsolutePath());
+            if (objFile.exists()) {
+                objFile.delete();
+            }
+            CodeGenerator generator = new CodeGenerator();
+            prog.traverseBottomUp(generator);
+            Code.dataSize = analyzer.getVarCount();
+            Code.mainPc = generator.getMainPC();
+            Code.write(new FileOutputStream(objFile));
+            log.info("Compilation finished!");
+        } else  {
             System.err.println("Semantic analysis completed with " + analyzer.getErrorCount() + " errors!");
         }
     }
