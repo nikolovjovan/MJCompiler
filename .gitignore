@@ -30,6 +30,9 @@ out/
 *.log
 logs/
 
+# Compiled MikroJava program
+*.obj
+
 # Auto-generated source files
 spec/mjparser_astbuild.cup
 src/main/java/rs/ac/bg/etf/pp1/ast/

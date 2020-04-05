@@ -3,7 +3,7 @@ package rs.ac.bg.etf.pp1;
 import org.apache.log4j.Logger;
 import org.apache.log4j.xml.DOMConfigurator;
 import rs.ac.bg.etf.pp1.ast.Program;
-import rs.ac.bg.etf.pp1.symboltable.MJTab;
+import rs.ac.bg.etf.pp1.symboltable.MJTable;
 import rs.ac.bg.etf.pp1.util.Log4JUtils;
 import rs.etf.pp1.mj.runtime.Code;
 
@@ -39,7 +39,7 @@ public class Compiler {
     }
 
     public static void tsdump() {
-        MJTab.dump();
+        MJTable.dump();
     }
 
     public static void main(String[] args) {

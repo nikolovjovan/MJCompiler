@@ -21,27 +21,27 @@ public class MJLexerLogger extends MJLogger {
     }
 
     @Override
-    protected String generate_message(Object... context) {
-        MessageType type = get_next_context_object(MessageType.class, context);
+    protected String generateMessage(Object... context) {
+        MessageType type = getNextContextObject(MessageType.class, context);
         if (type == null) return invalidMessage;
         switch (type) {
             /* DEBUG MESSAGES */
             case SYMBOL_PRINT: {
-                Symbol sym = get_next_context_object(Symbol.class, context);
+                Symbol sym = getNextContextObject(Symbol.class, context);
                 return sym == null ? invalidMessage : "Found symbol: '" + sym.toString() + "'" + (sym.value != null ? " with value: '" + sym.value + '\'' : "");
             }
             /* ERROR MESSAGES */
             case INT_PARSE_FAIL: {
-                String sym = get_next_context_object(String.class, context);
+                String sym = getNextContextObject(String.class, context);
                 return sym == null ? invalidMessage : "Failed to parse '" + sym + "' as integer!";
             }
             case INV_SYMBOL: {
-                String sym = get_next_context_object(String.class, context);
+                String sym = getNextContextObject(String.class, context);
                 return sym == null ? invalidMessage : "Invalid symbol '" + sym + "'!";
             }
             /* ANY OTHER MESSAGE */
             case OTHER: {
-                String message = get_next_context_object(String.class, context);
+                String message = getNextContextObject(String.class, context);
                 return message == null ? invalidMessage : message;
             }
             default: return "Unhandled lexer message type: '" + type.name() + "'.";

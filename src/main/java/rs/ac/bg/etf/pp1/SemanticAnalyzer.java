@@ -4,14 +4,11 @@ import rs.ac.bg.etf.pp1.ast.*;
 import rs.ac.bg.etf.pp1.loggers.MJSemanticAnalyzerLogger;
 import rs.ac.bg.etf.pp1.loggers.MJSemanticAnalyzerLogger.MessageType;
 import rs.ac.bg.etf.pp1.symboltable.*;
-import rs.ac.bg.etf.pp1.symboltable.MJTab.ScopeId;
 import rs.ac.bg.etf.pp1.symboltable.concepts.*;
-import rs.ac.bg.etf.pp1.symboltable.concepts.MJObj.Access;
+import rs.ac.bg.etf.pp1.symboltable.concepts.MJScope.ScopeID;
+import rs.ac.bg.etf.pp1.symboltable.concepts.MJSymbol.Access;
 import rs.ac.bg.etf.pp1.util.MJUtils;
-import rs.etf.pp1.symboltable.*;
-import rs.etf.pp1.symboltable.concepts.*;
 
-import java.util.Collection;
 import java.util.List;
 
 public class SemanticAnalyzer extends VisitorAdaptor {
@@ -38,12 +35,12 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     private int currentLocalVarCount = 0;
     private int currentClassFieldCount = 0;
 
-    private Obj currentType = Tab.noObj;
+    private MJSymbol currentTypeSym = MJTable.noSym;
 
-    private Obj currentClass = Tab.noObj;
+    private MJSymbol currentClassSym = MJTable.noSym;
     private Access currentAccess = Access.PUBLIC;
 
-    private Obj currentMethod = Tab.noObj;
+    private MJSymbol currentMethodSym = MJTable.noSym;
     private boolean returnFound = false;
 
     private int ifDepth = 0;
@@ -53,67 +50,67 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 
     /******************** Error / debug methods *******************************************************/
 
-    private int get_line_number(SyntaxNode info) {
+    private int getLineNumber(SyntaxNode info) {
         if (info == null || info.getLine() <= 0) return -1;
         return info.getLine();
     }
 
-    private void log_debug(SyntaxNode info, Object... context) {
-        logger.debug(get_line_number(info), -1, context);
+    private void logDebug(SyntaxNode info, Object... context) {
+        logger.debug(getLineNumber(info), -1, context);
     }
 
-    private void log_debug_node_visit(SyntaxNode info) {
-        logger.debug(get_line_number(info), -1, MessageType.NODE_VISIT, info.getClass().getSimpleName());
+    private void logDebugNodeVisit(SyntaxNode info) {
+        logger.debug(getLineNumber(info), -1, MessageType.NODE_VISIT, info.getClass().getSimpleName());
     }
 
-    private void log_info(SyntaxNode info, Object... context) {
-        logger.info(get_line_number(info), -1, context);
+    private void logInfo(SyntaxNode info, Object... context) {
+        logger.info(getLineNumber(info), -1, context);
     }
 
-    private void log_warn(SyntaxNode info, Object... context) {
-        logger.warn(get_line_number(info), -1, context);
+    private void logWarn(SyntaxNode info, Object... context) {
+        logger.warn(getLineNumber(info), -1, context);
     }
 
-    private void log_error(SyntaxNode info, Object... context) {
+    private void logError(SyntaxNode info, Object... context) {
         errorCount++;
-        logger.error(get_line_number(info), -1, context);
+        logger.error(getLineNumber(info), -1, context);
     }
 
-    private boolean assert_inv_obj(SyntaxNode info, Obj obj, String objName) {
-        if (obj == null || obj == Tab.noObj) {
-            log_error(info, MessageType.INV_OBJ, objName);
+    private boolean assertInvSym(SyntaxNode info, MJSymbol sym, String symName) {
+        if (sym == null || sym == MJTable.noSym) {
+            logError(info, MessageType.INV_SYM, symName);
             return true;
         }
         return false;
     }
 
-    private boolean assert_sym_in_use(SyntaxNode info, String symName) {
-        if (MJTab.find(symName) != Tab.noObj) {
-            log_error(info, MessageType.SYM_IN_USE, symName);
+    private boolean assertSymInUse(SyntaxNode info, String symName) {
+        if (MJTable.findSymbolInAnyScope(symName) != MJTable.noSym) {
+            logError(info, MessageType.SYM_IN_USE, symName);
             return true;
         }
         return false;
     }
 
-    private boolean assert_sym_in_current_scope(SyntaxNode info, String symName) {
-        if (MJTab.currentScope.findSymbol(symName) != null) {
-            log_error(info, MessageType.SYM_IN_USE, symName);
+    private boolean assertSymInCurrentScope(SyntaxNode info, String symName) {
+        if (MJTable.findSymbolInCurrentScope(symName) != MJTable.noSym) {
+            logError(info, MessageType.SYM_IN_USE, symName);
             return true;
         }
         return false;
     }
 
-    private boolean assert_type_not_basic(SyntaxNode info, Struct type, String kindName) {
-        if (!MJUtils.is_type_basic(type)) {
-            log_error(info, MessageType.TYPE_NOT_BASIC, kindName);
+    private boolean assertTypeNotBasic(SyntaxNode info, MJType type, String kindName) {
+        if (!MJUtils.isTypeBasic(type)) {
+            logError(info, MessageType.TYPE_NOT_BASIC, kindName);
             return true;
         }
         return false;
     }
 
-    private boolean assert_is_not_assignable(SyntaxNode info, Obj obj) {
-        if (!MJUtils.is_assignable(obj)) {
-            log_error(info, MessageType.SYM_DEF_INV_KIND, null, obj.getName(), "variable, a class field or an array element");
+    private boolean assertValueNotAssignableToDesignator(SyntaxNode info, MJSymbol designatorSym) {
+        if (!MJUtils.isValueAssignableToDesignator(designatorSym)) {
+            logError(info, MessageType.SYM_DEF_INV_KIND, null, designatorSym.getName(), "variable, a class field or an array element");
             return true;
         }
         return false;
@@ -121,8 +118,8 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 
     /******************** Helper methods **************************************************************/
 
-    private void process_access_modifier(SyntaxNode info) {
-        log_debug_node_visit(info);
+    private void processAccessModifier(SyntaxNode info) {
+        logDebugNodeVisit(info);
         // Set current access modifier
         if (info instanceof PublicAccess) {
             currentAccess = Access.PUBLIC;
@@ -132,127 +129,126 @@ public class SemanticAnalyzer extends VisitorAdaptor {
             currentAccess = Access.PRIVATE;
         }
         // Log current access modifier
-        log_debug(info, MessageType.CUR_ACC_MOD, currentAccess.toString());
+        logDebug(info, MessageType.CUR_ACC_MOD, currentAccess.toString());
     }
 
-    private void process_variable(SyntaxNode info, String name, boolean array) {
-        log_debug_node_visit(info);
+    private void processVariable(SyntaxNode info, String name, boolean array) {
+        logDebugNodeVisit(info);
         // Type checking
-        if (assert_inv_obj(info, currentType, "Variable type")) return;
+        if (assertInvSym(info, currentTypeSym, "Variable type")) return;
         // Check if name is in use
-        if (assert_sym_in_current_scope(info, name)) return;
-        Obj newObj = MJTab.insert(MJTab.getCurrentScopeId() == ScopeId.CLASS ? Obj.Fld : Obj.Var, name, array ?
-                new MJStruct(Struct.Array, currentType.getType()) : currentType.getType());
-        newObj.setLevel(MJTab.getCurrentLevel());
-        if (MJTab.getCurrentScopeId() == ScopeId.CLASS) {
-            ((MJObj) newObj).setAccess(currentAccess);
+        if (assertSymInCurrentScope(info, name)) return;
+        MJSymbol sym = MJTable.insert(MJTable.getCurrentScope().getId() == ScopeID.CLASS ? MJSymbol.Fld : MJSymbol.Var, name, array ?
+                new MJType(MJType.Array, currentTypeSym.getType()) : currentTypeSym.getType());
+        sym.setLevel(MJTable.getCurrentLevel());
+        if (MJTable.getCurrentScope().getId() == ScopeID.CLASS) {
+            sym.setAccess(currentAccess);
         }
-        if (MJTab.getCurrentScopeId() == ScopeId.PROGRAM) varCount++;
+        if (MJTable.getCurrentScope().getId() == ScopeID.PROGRAM) varCount++;
         // Log object definition
-        log_info(info, MessageType.DEF_OBJ, MJStruct.getTypeName(newObj.getType()) + " variable", newObj);
+        logInfo(info, MessageType.DEF_SYM, MJType.getTypeName(sym.getType()) + " variable", sym);
     }
 
-    private void process_class_header(SyntaxNode info, boolean abs, String name, OptClassBaseType optBaseType) {
-        log_debug_node_visit(info);
+    private void processClassHeader(SyntaxNode info, boolean abs, String name, OptClassBaseType optBaseType) {
+        logDebugNodeVisit(info);
         // Check base type
-        Struct baseType = Tab.noType;
+        MJType baseType = MJTable.noType;
         if (optBaseType instanceof ClassBaseType) {
             Type type = ((ClassBaseType) optBaseType).getType();
-            Obj typeObj = MJTab.currentScope.findSymbol(type.getName());
-            if (typeObj == Tab.noObj) log_error(info, MessageType.SYM_NOT_DEF, type.getName(), Obj.Type);
-            else if (typeObj.getKind() != Obj.Type || typeObj.getType().getKind() != Struct.Class) log_error(info, MessageType.SYM_DEF_INV_KIND, null, type.getName(), "class type");
-            else baseType = typeObj.getType();
+            MJSymbol typeSym = MJTable.findSymbolInCurrentScope(type.getName());
+            if (typeSym == MJTable.noSym) logError(info, MessageType.SYM_NOT_DEF, type.getName(), MJSymbol.Type);
+            else if (typeSym.getKind() != MJSymbol.Type || typeSym.getType().getKind() != MJType.Class) logError(info, MessageType.SYM_DEF_INV_KIND, null, type.getName(), "class type");
+            else baseType = typeSym.getType();
         }
         // If symbol with same name is already defined, make a new obj outside symbol table to continue analysis
-        if (assert_sym_in_current_scope(info, name)) {
-            currentClass = new MJObj(Obj.Type, name, new MJStruct(Struct.Class, baseType));
+        if (assertSymInCurrentScope(info, name)) {
+            currentClassSym = new MJSymbol(MJSymbol.Type, name, new MJType(MJType.Class, baseType));
         } else {
-            currentClass = MJTab.insert(Obj.Type, name, new MJStruct(Struct.Class, baseType));
+            currentClassSym = MJTable.insert(MJSymbol.Type, name, new MJType(MJType.Class, baseType));
         }
-        ((MJObj) currentClass).setAbstract(abs);
+        currentClassSym.setAbstract(abs);
         classCount++;
-        MJTab.openScope(ScopeId.CLASS);
-        if (baseType != Tab.noType) {
-            for (Obj o : baseType.getMembers()) MJTab.currentScope.addToLocals(new MJObj(o));
+        MJTable.openScope(ScopeID.CLASS);
+        if (baseType != MJTable.noType) {
+            for (MJSymbol sym : baseType.getMembersList()) MJTable.getCurrentScope().addToLocals(new MJSymbol(sym));
         }
     }
 
-    private void process_class_declaration(SyntaxNode info) {
-        log_debug_node_visit(info);
+    private void processClassDeclaration(SyntaxNode info) {
+        logDebugNodeVisit(info);
         // Add local symbols and close scope
-        MJTab.chainLocalSymbols(currentClass.getType()); // set members
-        MJTab.closeScope(ScopeId.PROGRAM);
+        MJTable.chainLocalSymbols(currentClassSym.getType()); // set members
+        MJTable.closeScope();
         // Log object definition
-        log_info(info, MessageType.DEF_OBJ, "class", currentClass);
-        currentClass = Tab.noObj;
+        logInfo(info, MessageType.DEF_SYM, "class", currentClassSym);
+        currentClassSym = MJTable.noSym;
     }
 
-    private void process_method_header(SyntaxNode info, boolean abs, String name, RetType retType) {
-        log_debug_node_visit(info);
+    private void processMethodHeader(SyntaxNode info, boolean abs, String name, RetType retType) {
+        logDebugNodeVisit(info);
         // TODO: Figure out inheritance and method overriding...
-        Struct returnType = MJTab.voidType;
+        MJType returnType = MJTable.voidType;
         // Check return type
-        if (!assert_inv_obj(info, retType.obj, "return type")) returnType = retType.obj.getType();
+        if (!assertInvSym(info, retType.mjsymbol, "return type")) returnType = retType.mjsymbol.getType();
         // If symbol with same name is already defined, make a new obj outside symbol table to continue analysis
-        if (assert_sym_in_current_scope(info, name)) {
-            currentMethod = new MJObj(Obj.Meth, name, returnType);
+        if (assertSymInCurrentScope(info, name)) {
+            currentMethodSym = new MJSymbol(MJSymbol.Meth, name, returnType);
         } else {
-            currentMethod = MJTab.insert(Obj.Meth, name, returnType);
+            currentMethodSym = MJTable.insert(MJSymbol.Meth, name, returnType);
         }
         if (abs) {
-            if (currentClass == null || currentClass == Tab.noObj) log_error(info, MessageType.OTHER, "Abstract method definition outside abstract class!");
-            else if (!((MJObj) currentClass).isAbstract()) log_error(info, MessageType.OTHER, "Abstract method definition inside a concrete class!");
-            ((MJObj) currentMethod).setAbstract(true);
+            if (currentClassSym == null || currentClassSym == MJTable.noSym) logError(info, MessageType.OTHER, "Abstract method definition outside abstract class!");
+            else if (!currentClassSym.isAbstract()) logError(info, MessageType.OTHER, "Abstract method definition inside a concrete class!");
+            currentMethodSym.setAbstract(true);
         }
-        if (MJTab.getCurrentScopeId() == ScopeId.CLASS) {
-            ((MJObj) currentMethod).setAccess(currentAccess);
+        if (MJTable.getCurrentScope().getId() == ScopeID.CLASS) {
+            currentMethodSym.setAccess(currentAccess);
         } else {
             methodCount++; // global method count
         }
-        MJTab.openScope(MJTab.getCurrentScopeId() == ScopeId.PROGRAM ? ScopeId.GLOBAL_METHOD : ScopeId.CLASS_METHOD);
+        MJTable.openScope(MJTable.getCurrentScope().getId() == ScopeID.PROGRAM ? ScopeID.GLOBAL_METHOD : ScopeID.CLASS_METHOD);
         returnFound = false;
         currentFormalParamCount = 0;
-        if (MJTab.getCurrentScopeId() == ScopeId.CLASS_METHOD) {
+        if (MJTable.getCurrentScope().getId() == ScopeID.CLASS_METHOD) {
             // Insert 'this' as implicit first formal parameter
-            MJTab.insert(Obj.Var, THIS, currentClass.getType());
+            MJTable.insert(MJSymbol.Var, THIS, currentClassSym.getType());
             currentFormalParamCount++;
         }
         if (info instanceof MethodHeader) {
-            ((MethodHeader) info).obj = currentMethod;
+            ((MethodHeader) info).mjsymbol = currentMethodSym;
         } else {
-            ((AbstractMethodHeader) info).obj = currentMethod;
+            ((AbstractMethodHeader) info).mjsymbol = currentMethodSym;
         }
     }
 
-    private void process_method_declaration(SyntaxNode info) {
-        log_debug_node_visit(info);
-        if (currentMethod.getType() != MJTab.voidType && !returnFound) {
+    private void processMethodDeclaration(SyntaxNode info) {
+        logDebugNodeVisit(info);
+        if (currentMethodSym.getType() != MJTable.voidType && !returnFound) {
             // TODO: Make this throw a runtime exception...
             //       Instruction: 57: trap b (where b should be 1 for runtime error probably...)
-            log_warn(info, MessageType.OTHER, "Method return type is not 'void' but method does not contain a return statement!");
+            logWarn(info, MessageType.OTHER, "Method return type is not 'void' but method does not contain a return statement!");
         }
-        MJTab.closeScope(MJTab.getCurrentScopeId() == ScopeId.GLOBAL_METHOD ? ScopeId.PROGRAM : ScopeId.CLASS);
-        currentMethod.setLevel(currentFormalParamCount);
+        MJTable.closeScope();
+        currentMethodSym.setLevel(currentFormalParamCount);
         // Log object definition
-        log_info(info, MessageType.DEF_OBJ, "method", currentMethod);
-        currentMethod = null;
+        logInfo(info, MessageType.DEF_SYM, "method", currentMethodSym);
+        currentMethodSym = null;
     }
 
-    private void process_variable_incdec(SyntaxNode info, Designator designator) {
-        log_debug_node_visit(info);
-        Obj dObj = designator.obj;
+    private void processVariableIncDec(SyntaxNode info, Designator designator) {
+        logDebugNodeVisit(info);
         // Check if value can be assigned to designator
-        if (assert_is_not_assignable(info, dObj)) return;
+        if (assertValueNotAssignableToDesignator(info, designator.mjsymbol)) return;
         // Type checks
-        if (dObj.getType() != Tab.intType) {
-            log_error(info, MessageType.INCOMPATIBLE_TYPES, MJStruct.getTypeName(dObj.getType()), MJStruct.getTypeName(Tab.intType));
+        if (designator.mjsymbol.getType() != MJTable.intType) {
+            logError(info, MessageType.INCOMPATIBLE_TYPES, MJType.getTypeName(designator.mjsymbol.getType()), MJType.getTypeName(MJTable.intType));
         }
     }
 
     /******************** Public methods / constructors ***********************************************/
 
     public SemanticAnalyzer() {
-        MJTab.init();
+        MJTable.init();
     }
 
     public int getErrorCount() { return errorCount; }
@@ -265,271 +261,270 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 
     @Override
     public void visit(ProgramName programName) {
-        log_debug_node_visit(programName);
+        logDebugNodeVisit(programName);
         // Production variables
         String name = programName.getName();
         // Insert object into symbol table
-        programName.obj = MJTab.currentScope.findSymbol(name);
-        if (programName.obj == null) {
-            programName.obj = MJTab.insert(Obj.Prog, name, Tab.noType);
+        if (MJTable.findSymbolInCurrentScope(name) == MJTable.noSym) {
+            programName.mjsymbol = MJTable.insert(MJSymbol.Prog, name, MJTable.noType);
         } else {
-            log_error(programName, MessageType.SYM_DEF_INV_KIND, null, name, "valid program name");
+            logError(programName, MessageType.SYM_DEF_INV_KIND, null, name, "valid program name");
             // Create a new object outside symbol table to continue analysis
-            programName.obj = new MJObj(Obj.Prog, name, Tab.noType);
+            programName.mjsymbol = new MJSymbol(MJSymbol.Prog, name, MJTable.noType);
         }
         // Open program scope
-        MJTab.openScope(ScopeId.PROGRAM);
+        MJTable.openScope(ScopeID.PROGRAM);
     }
 
     @Override
     public void visit(Program program) {
-        log_debug_node_visit(program);
+        logDebugNodeVisit(program);
         // Add local symbols and close scope
-        Obj programObj = program.getProgramName().obj;
-        MJTab.chainLocalSymbols(programObj);
+        MJSymbol programSym = program.getProgramName().mjsymbol;
+        MJTable.chainLocalSymbols(programSym);
         // Check main method is defined and valid type
-        Obj mainObj = MJTab.currentScope.findSymbol(MAIN);
-        if (mainObj == null || mainObj == Tab.noObj) {
-            log_error(program, MessageType.SYM_NOT_DEF, "Main method");
-        } else if (mainObj.getKind() != Obj.Meth) {
-            log_error(program, MessageType.SYM_DEF_INV_KIND, null, MAIN, "method");
-        } else if (mainObj.getType() != MJTab.voidType || mainObj.getLevel() != 0) {
-            log_error(program, MessageType.SYM_DEF_INV_KIND, "Main method defined but", "void method with zero arguments");
+        MJSymbol mainSym = MJTable.findSymbolInCurrentScope(MAIN);
+        if (mainSym == MJTable.noSym) {
+            logError(program, MessageType.SYM_NOT_DEF, "Main method");
+        } else if (mainSym.getKind() != MJSymbol.Meth) {
+            logError(program, MessageType.SYM_DEF_INV_KIND, null, MAIN, "method");
+        } else if (mainSym.getType() != MJTable.voidType || mainSym.getLevel() != 0) {
+            logError(program, MessageType.SYM_DEF_INV_KIND, "Main method defined but", "void method with zero arguments");
         } else { // Log object definition
-            log_info(program, MessageType.DEF_OBJ, "program", programObj);
+            logInfo(program, MessageType.DEF_SYM, "program", programSym);
         }
         // Close scope at the end in order to be able to find main
-        MJTab.closeScope(ScopeId.UNIVERSE);
+        MJTable.closeScope();
     }
 
     /******************** Type ************************************************************************/
 
     @Override
     public void visit(Type type) {
-        log_debug_node_visit(type);
+        logDebugNodeVisit(type);
         // Production variables
         String name = type.getName();
         // Search for defined type
-        type.obj = MJTab.find(name);
-        if (type.obj == Tab.noObj) {
-            log_error(type, MessageType.SYM_NOT_DEF, name, Obj.Type);
-            currentType = Tab.noObj;
-        } else if (type.obj.getKind() != Obj.Type) {
-            log_error(type, MessageType.SYM_DEF_INV_KIND, null, name, "type");
-            type.obj = currentType = Tab.noObj;
-        } else currentType = type.obj;
+        type.mjsymbol = MJTable.findSymbolInAnyScope(name);
+        if (type.mjsymbol == MJTable.noSym) {
+            logError(type, MessageType.SYM_NOT_DEF, name, MJSymbol.Type);
+        } else if (type.mjsymbol.getKind() != MJSymbol.Type) {
+            logError(type, MessageType.SYM_DEF_INV_KIND, null, name, "type");
+            type.mjsymbol = MJTable.noSym;
+        }
+        currentTypeSym = type.mjsymbol;
     }
 
     /******************** Const ***********************************************************************/
 
     @Override
     public void visit(ConstAssignment constAssignment) {
-        log_debug_node_visit(constAssignment);
+        logDebugNodeVisit(constAssignment);
         // Production variables
         String name = constAssignment.getName();
         Const value = constAssignment.getConst();
         // Check if name is in use
-        if (assert_sym_in_use(constAssignment, name)) return;
+        if (assertSymInUse(constAssignment, name)) return;
         // Type checking
-        if (assert_inv_obj(constAssignment, currentType, "Constant type")) return;
-        if (assert_type_not_basic(constAssignment, currentType.getType(), "Constant")) return;
+        if (assertInvSym(constAssignment, currentTypeSym, "Constant type")) return;
+        if (assertTypeNotBasic(constAssignment, currentTypeSym.getType(), "Constant")) return;
         // Get assigned value
-        Struct assignedType;
+        MJType assignedType;
         int assignedValue;
         if (value instanceof ConstInt) {
-            assignedType = Tab.intType;
+            assignedType = MJTable.intType;
             assignedValue = ((ConstInt) value).getValue();
             if (((ConstInt) value).getOptSign() instanceof Negative) assignedValue *= -1;
         } else if (value instanceof ConstChar) {
-            assignedType = Tab.charType;
+            assignedType = MJTable.charType;
             assignedValue = ((ConstChar) value).getValue();
         } else {
-            assignedType = MJTab.boolType;
+            assignedType = MJTable.boolType;
             assignedValue = ((ConstBool) value).getValue() ? 1 : 0;
         }
         // Check if types match
-        if (!assignedType.equals(currentType.getType())) { log_error(constAssignment, MessageType.INCOMPATIBLE_TYPES, "Constant type", "type of initial value"); return; }
+        if (!assignedType.equals(currentTypeSym.getType())) { logError(constAssignment, MessageType.INCOMPATIBLE_TYPES, "Constant type", "type of initial value"); return; }
         // Insert obj into symbol table
-        Obj newObj = MJTab.insert(Obj.Con, name, assignedType);
-        newObj.setAdr(assignedValue); // Set const value
+        MJSymbol sym = MJTable.insert(MJSymbol.Con, name, assignedType);
+        sym.setAdr(assignedValue); // Set const value
         constCount++;
         // Log object definition
-        log_info(constAssignment, MessageType.DEF_OBJ, MJStruct.getTypeName(assignedType) + " constant", newObj);
+        logInfo(constAssignment, MessageType.DEF_SYM, MJType.getTypeName(assignedType) + " constant", sym);
     }
 
     /******************** Access modifier *************************************************************/
 
     @Override
     public void visit(PublicAccess publicAccess) {
-        process_access_modifier(publicAccess);
+        processAccessModifier(publicAccess);
     }
 
     @Override
     public void visit(ProtectedAccess protectedAccess) {
-        process_access_modifier(protectedAccess);
+        processAccessModifier(protectedAccess);
     }
 
     @Override
     public void visit(PrivateAccess privateAccess) {
-        process_access_modifier(privateAccess);
+        processAccessModifier(privateAccess);
     }
 
     /******************** Global variables ************************************************************/
 
     @Override
     public void visit(Variable variable) {
-        process_variable(variable, variable.getName(), variable.getOptArrayBrackets() instanceof ArrayBrackets);
+        processVariable(variable, variable.getName(), variable.getOptArrayBrackets() instanceof ArrayBrackets);
     }
 
     /******************** Class variables *************************************************************/
 
     @Override
     public void visit(ClassVariable classVariable) {
-        process_variable(classVariable, classVariable.getName(), classVariable.getOptArrayBrackets() instanceof ArrayBrackets);
+        processVariable(classVariable, classVariable.getName(), classVariable.getOptArrayBrackets() instanceof ArrayBrackets);
     }
 
     /******************** Local variables *************************************************************/
 
     @Override
     public void visit(LocalVariable localVariable) {
-        process_variable(localVariable, localVariable.getName(), localVariable.getOptArrayBrackets() instanceof ArrayBrackets);
+        processVariable(localVariable, localVariable.getName(), localVariable.getOptArrayBrackets() instanceof ArrayBrackets);
     }
 
     /******************** Class ***********************************************************************/
 
     @Override
     public void visit(ClassHeader classHeader) {
-        process_class_header(classHeader, false, classHeader.getName(), classHeader.getOptClassBaseType());
+        processClassHeader(classHeader, false, classHeader.getName(), classHeader.getOptClassBaseType());
     }
 
     @Override
     public void visit(ClassDeclaration classDeclaration) {
-        process_class_declaration(classDeclaration);
+        processClassDeclaration(classDeclaration);
     }
 
     /******************** Abstract class **************************************************************/
 
     @Override
     public void visit(AbstractClassHeader abstractClassHeader) {
-        process_class_header(abstractClassHeader,true, abstractClassHeader.getName(), abstractClassHeader.getOptClassBaseType());
+        processClassHeader(abstractClassHeader,true, abstractClassHeader.getName(), abstractClassHeader.getOptClassBaseType());
     }
 
     @Override
     public void visit(AbstractClassDeclaration abstractClassDeclaration) {
-        process_class_declaration(abstractClassDeclaration);
+        processClassDeclaration(abstractClassDeclaration);
     }
 
     /******************** Return type *****************************************************************/
 
     @Override
     public void visit(ReturnType returnType) {
-        log_debug_node_visit(returnType);
-        returnType.obj = returnType.getType().obj;
+        logDebugNodeVisit(returnType);
+        returnType.mjsymbol = returnType.getType().mjsymbol;
     }
 
     @Override
     public void visit(ReturnVoid returnVoid) {
-        log_debug_node_visit(returnVoid);
-        returnVoid.obj = MJTab.voidObj;
+        logDebugNodeVisit(returnVoid);
+        returnVoid.mjsymbol = MJTable.voidTypeSym;
     }
 
     /******************** Method **********************************************************************/
 
     @Override
     public void visit(MethodHeader methodHeader) {
-        process_method_header(methodHeader, false, methodHeader.getName(), methodHeader.getRetType());
+        processMethodHeader(methodHeader, false, methodHeader.getName(), methodHeader.getRetType());
     }
 
     @Override
     public void visit(MethodDeclaration methodDeclaration) {
-        process_method_declaration(methodDeclaration);
+        processMethodDeclaration(methodDeclaration);
     }
 
     /******************** Abstract method *************************************************************/
 
     @Override
     public void visit(AbstractMethodHeader abstractMethodHeader) {
-        process_method_header(abstractMethodHeader, true, abstractMethodHeader.getName(), abstractMethodHeader.getRetType());
+        processMethodHeader(abstractMethodHeader, true, abstractMethodHeader.getName(), abstractMethodHeader.getRetType());
     }
 
     @Override
     public void visit(AbstractMethodDeclaration abstractMethodDeclaration) {
-        process_method_declaration(abstractMethodDeclaration);
+        processMethodDeclaration(abstractMethodDeclaration);
     }
 
     /******************** Formal parameters ***********************************************************/
 
     @Override
     public void visit(FormalParameter formalParameter) {
-        log_debug_node_visit(formalParameter);
+        logDebugNodeVisit(formalParameter);
         // Production variables
         String name = formalParameter.getName();
         // Check if name is in use
-        if (assert_sym_in_current_scope(formalParameter, name)) return;
+        if (assertSymInCurrentScope(formalParameter, name)) return;
         // Type checking
-        if (assert_inv_obj(formalParameter, currentType, "Formal parameter type")) return;
+        if (assertInvSym(formalParameter, currentTypeSym, "Formal parameter type")) return;
         // Insert obj into symbol table
-        Obj newObj = MJTab.insert(Obj.Var, name, formalParameter.getOptArrayBrackets() instanceof ArrayBrackets ?
-                new MJStruct(Struct.Array, currentType.getType()) : currentType.getType());
-        newObj.setFpPos(currentFormalParamCount++);
+        MJSymbol sym = MJTable.insert(MJSymbol.Var, name, formalParameter.getOptArrayBrackets() instanceof ArrayBrackets ?
+                new MJType(MJType.Array, currentTypeSym.getType()) : currentTypeSym.getType());
+        sym.setFpPos(currentFormalParamCount++);
         // Log object definition
-        log_info(formalParameter, MessageType.DEF_OBJ, MJStruct.getTypeName(newObj.getType()) + " formal parameter", newObj);
+        logInfo(formalParameter, MessageType.DEF_SYM, MJType.getTypeName(sym.getType()) + " formal parameter", sym);
     }
 
     @Override
     public void visit(MethodStatementListStart methodStatementListStart) {
-        log_debug_node_visit(methodStatementListStart);
+        logDebugNodeVisit(methodStatementListStart);
         // Add formal parameters and local variables before statements to allow recursion...
-        MJTab.chainLocalSymbols(currentMethod);
+        MJTable.chainLocalSymbols(currentMethodSym);
     }
 
     /******************** Statements ******************************************************************/
 
     @Override
     public void visit(BreakStatement breakStatement) {
-        log_debug_node_visit(breakStatement);
-        if (forDepth == 0) log_error(breakStatement, MessageType.MISPLACED_BREAK);
+        logDebugNodeVisit(breakStatement);
+        if (forDepth == 0) logError(breakStatement, MessageType.MISPLACED_BREAK);
     }
 
     @Override
     public void visit(ContinueStatement continueStatement) {
-        log_debug_node_visit(continueStatement);
-        if (forDepth == 0) log_error(continueStatement, MessageType.MISPLACED_CONTINUE);
+        logDebugNodeVisit(continueStatement);
+        if (forDepth == 0) logError(continueStatement, MessageType.MISPLACED_CONTINUE);
     }
 
     @Override
     public void visit(ReadStatement readStatement) {
-        log_debug_node_visit(readStatement);
+        logDebugNodeVisit(readStatement);
         // Parameter semantic check
-        Obj designator = readStatement.getDesignator().obj;
-        if (designator == Tab.noObj) {
-            log_error(readStatement, MessageType.OTHER, "Designator object not initialized for read statement!");
-        } else if (designator.getKind() != Obj.Var && designator.getKind() != Obj.Elem && designator.getKind() != Obj.Fld) {
-            log_error(readStatement, MessageType.OTHER, "Read statement parameter must be either a variable, array element or class field!");
+        MJSymbol designatorSym = readStatement.getDesignator().mjsymbol;
+        if (designatorSym == MJTable.noSym) {
+            logError(readStatement, MessageType.OTHER, "Designator object not initialized for read statement!");
+        } else if (designatorSym.getKind() != MJSymbol.Var && designatorSym.getKind() != MJSymbol.Elem && designatorSym.getKind() != MJSymbol.Fld) {
+            logError(readStatement, MessageType.OTHER, "Read statement parameter must be either a variable, array element or class field!");
         } else {
-            assert_type_not_basic(readStatement, designator.getType(), "Read statement parameter");
+            assertTypeNotBasic(readStatement, designatorSym.getType(), "Read statement parameter");
         }
     }
 
     @Override
     public void visit(PrintStatement printStatement) {
-        log_debug_node_visit(printStatement);
+        logDebugNodeVisit(printStatement);
         // Parameter semantic check
         PrintExpr ex = printStatement.getPrintExpr();
-        Obj typeObj;
-        if (ex instanceof  PrintExpressionAndConst) typeObj = ((PrintExpressionAndConst) ex).getExpr().obj;
-        else typeObj = ((PrintOnlyExpression) ex).getExpr().obj;
-        assert_type_not_basic(printStatement, typeObj.getType(), "Print statement parameter");
+        MJSymbol typeSym;
+        if (ex instanceof  PrintExpressionAndConst) typeSym = ((PrintExpressionAndConst) ex).getExpr().mjsymbol;
+        else typeSym = ((PrintOnlyExpression) ex).getExpr().mjsymbol;
+        assertTypeNotBasic(printStatement, typeSym.getType(), "Print statement parameter");
     }
 
     @Override
     public void visit(ReturnStatement returnStatement) {
-        log_debug_node_visit(returnStatement);
-        if (currentMethod == Tab.noObj) log_error(returnStatement, MessageType.MISPLACED_RETURN);
+        logDebugNodeVisit(returnStatement);
+        if (currentMethodSym == MJTable.noSym) logError(returnStatement, MessageType.MISPLACED_RETURN);
         else {
             returnFound = true;
             /* TODO: Uncomment this once Expr is done...
-            Struct retType = MJTab.voidType;
+            Struct retType = MJTable.voidType;
             if (returnStatement.getOptExpr() instanceof SingleExpression) {
                 retType = ((SingleExpression) returnStatement.getOptExpr()).getExpr().struct;
             }
@@ -541,150 +536,152 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 
     @Override
     public void visit(IfStatementHeader ifStatementHeader) {
-        log_debug_node_visit(ifStatementHeader);
+        logDebugNodeVisit(ifStatementHeader);
         ifDepth++;
     }
 
     @Override
     public void visit(IfOptElseStatement ifOptElseStatement) {
-        log_debug_node_visit(ifOptElseStatement);
+        logDebugNodeVisit(ifOptElseStatement);
         ifDepth--;
-        if (ifDepth < 0) log_error(ifOptElseStatement, MessageType.INV_COMPILER_OBJ, "if depth", ifDepth);
+        if (ifDepth < 0) logError(ifOptElseStatement, MessageType.INV_COMPILER_OBJ, "if depth", ifDepth);
     }
 
     @Override
     public void visit(ForStatementHeader forStatementHeader) {
         forDepth++;
-        log_debug_node_visit(forStatementHeader);
+        logDebugNodeVisit(forStatementHeader);
     }
 
     @Override
     public void visit(ForStatement forStatement) {
-        log_debug_node_visit(forStatement);
+        logDebugNodeVisit(forStatement);
         forDepth--;
-        if (forDepth < 0) log_error(forStatement, MessageType.INV_COMPILER_OBJ, "for depth", forDepth);
+        if (forDepth < 0) logError(forStatement, MessageType.INV_COMPILER_OBJ, "for depth", forDepth);
     }
 
     @Override
     public void visit(ForEachStatementHeader forEachStatementHeader) {
-        log_debug_node_visit(forEachStatementHeader);
+        logDebugNodeVisit(forEachStatementHeader);
         // Production variables
         String name = forEachStatementHeader.getName();
-        Obj designatorObj = forEachStatementHeader.getDesignator().obj;
+        MJSymbol designatorSym = forEachStatementHeader.getDesignator().mjsymbol;
         // Iterator checks
-        Obj iteratorObj = MJTab.find(name);
-        boolean iteratorObjValid = iteratorObj != Tab.noObj;
-        if (!iteratorObjValid) log_error(forEachStatementHeader, MessageType.SYM_NOT_DEF, name, Obj.Var);
-        else if (iteratorObj.getKind() != Obj.Var) log_error(forEachStatementHeader, MessageType.SYM_DEF_INV_KIND, null, name, "local or global variable");
-        else if (((MJObj) iteratorObj).isReadOnly()) log_error(forEachStatementHeader, MessageType.ITERATOR_IN_USE, name);
+        MJSymbol iteratorSym = MJTable.findSymbolInAnyScope(name);
+        boolean iteratorSymValid = iteratorSym != MJTable.noSym;
+        if (!iteratorSymValid) logError(forEachStatementHeader, MessageType.SYM_NOT_DEF, name, MJSymbol.Var);
+        else if (iteratorSym.getKind() != MJSymbol.Var) logError(forEachStatementHeader, MessageType.SYM_DEF_INV_KIND, null, name, "local or global variable");
+        else if (iteratorSym.isReadOnly()) logError(forEachStatementHeader, MessageType.ITERATOR_IN_USE, name);
         // Array checks
-        boolean designatorObjValid = !assert_inv_obj(forEachStatementHeader, designatorObj, "Designator");
-        if (designatorObjValid && designatorObj.getType().getKind() != Struct.Array) {
-            log_error(forEachStatementHeader, MessageType.OTHER, "Designator is not an array!");
-            designatorObjValid = false;
+        boolean designatorSymValid = !assertInvSym(forEachStatementHeader, designatorSym, "Designator");
+        if (designatorSymValid && designatorSym.getType().getKind() != MJType.Array) {
+            logError(forEachStatementHeader, MessageType.OTHER, "Designator is not an array!");
+            designatorSymValid = false;
         }
         // Type checks
-        if (iteratorObjValid && designatorObjValid && !iteratorObj.getType().equals(designatorObj.getType().getElemType())) {
-            log_error(forEachStatementHeader, MessageType.INCOMPATIBLE_TYPES, "Iterator type", "type of array element");
+        if (iteratorSymValid && designatorSymValid && !iteratorSym.getType().equals(designatorSym.getType().getElemType())) {
+            logError(forEachStatementHeader, MessageType.INCOMPATIBLE_TYPES, "Iterator type", "type of array element");
         }
         // Set iterator variable to read-only inside foreach statement
-        if (iteratorObjValid) ((MJObj) iteratorObj).setReadOnly(true);
+        if (iteratorSymValid) iteratorSym.setReadOnly(true);
         forDepth++;
     }
 
     @Override
     public void visit(ForEachStatement forEachStatement) {
-        log_debug_node_visit(forEachStatement);
+        logDebugNodeVisit(forEachStatement);
         forDepth--;
-        if (forDepth < 0) log_error(forEachStatement, MessageType.INV_COMPILER_OBJ, "for depth", forDepth);
-        Obj elem = MJTab.find(forEachStatement.getForEachStatementHeader().getName());
-        ((MJObj) elem).setReadOnly(false); // set element back to read-write as we exited foreach statement
+        if (forDepth < 0) logError(forEachStatement, MessageType.INV_COMPILER_OBJ, "for depth", forDepth);
+        MJSymbol iteratorSym = MJTable.findSymbolInAnyScope(forEachStatement.getForEachStatementHeader().getName());
+        if (iteratorSym != MJTable.noSym) {
+            iteratorSym.setReadOnly(false); // set element back to read-write as we exited foreach statement
+        }
     }
 
     /******************** Designator Statements *******************************************************/
 
     @Override
     public void visit(AssignmentStatement assignmentStatement) {
-        log_debug_node_visit(assignmentStatement);
-        Obj dObj = assignmentStatement.getDesignator().obj;
-        Obj eObj = ((AssignmentExpression) assignmentStatement.getAssignExpr()).getExpr().obj;
+        logDebugNodeVisit(assignmentStatement);
+        MJSymbol designatorSym = assignmentStatement.getDesignator().mjsymbol;
+        MJSymbol expressionSym = ((AssignmentExpression) assignmentStatement.getAssignExpr()).getExpr().mjsymbol;
         // Check if value can be assigned to designator
-        if (assert_is_not_assignable(assignmentStatement, dObj)) return;
+        if (assertValueNotAssignableToDesignator(assignmentStatement, designatorSym)) return;
         // Type checks
-        if (!eObj.getType().assignableTo(dObj.getType())) {
-            log_error(assignmentStatement, MessageType.INCOMPATIBLE_TYPES, MJStruct.getTypeName(eObj.getType()), MJStruct.getTypeName(dObj.getType()));
+        if (!expressionSym.getType().assignableTo(designatorSym.getType())) {
+            logError(assignmentStatement, MessageType.INCOMPATIBLE_TYPES, MJType.getTypeName(expressionSym.getType()), MJType.getTypeName(designatorSym.getType()));
         }
     }
 
     @Override
     public void visit(VariableIncrementStatement variableIncrementStatement) {
-        process_variable_incdec(variableIncrementStatement, variableIncrementStatement.getDesignator());
+        processVariableIncDec(variableIncrementStatement, variableIncrementStatement.getDesignator());
     }
 
     @Override
     public void visit(VariableDecrementStatement variableDecrementStatement) {
-        process_variable_incdec(variableDecrementStatement, variableDecrementStatement.getDesignator());
+        processVariableIncDec(variableDecrementStatement, variableDecrementStatement.getDesignator());
     }
 
     /******************** Method call *************************************************************/
 
     @Override
     public void visit(MethodCallHeader methodCallHeader) {
-        log_debug_node_visit(methodCallHeader);
-        methodCallHeader.obj = methodCallHeader.getDesignator().obj;
+        logDebugNodeVisit(methodCallHeader);
+        methodCallHeader.mjsymbol = methodCallHeader.getDesignator().mjsymbol;
         actualParametersStack.createParameters();
     }
 
     @Override
     public void visit(MethodCall methodCall) {
-        log_debug_node_visit(methodCall);
-        Obj methodObj = methodCall.obj = methodCall.getMethodCallHeader().obj;
+        logDebugNodeVisit(methodCall);
+        MJSymbol methodSym = methodCall.mjsymbol = methodCall.getMethodCallHeader().mjsymbol;
 
-        if (assert_inv_obj(methodCall, methodObj, "Method call designator")) return;
+        if (assertInvSym(methodCall, methodSym, "Method call designator")) return;
 
-        if (methodObj.getKind() != Obj.Meth) {
-            log_error(methodCall, MessageType.SYM_DEF_INV_KIND, null, methodObj.getName(), "method");
+        if (methodSym.getKind() != MJSymbol.Meth) {
+            logError(methodCall, MessageType.SYM_DEF_INV_KIND, null, methodSym.getName(), "method");
             return;
         }
 
-        List<Obj> actualParametersList = actualParametersStack.getParameters();
+        List<MJSymbol> actualParametersList = actualParametersStack.getParameters();
 
         if (actualParametersList == null) {
-            log_error(methodCall, MessageType.OTHER, "Method call processing but method call header not found!");
+            logError(methodCall, MessageType.OTHER, "Method call processing but method call header not found!");
             return;
         }
 
-        int formalParametersCount = methodObj.getLevel();
+        int formalParametersCount = methodSym.getLevel();
 
         if (actualParametersList.size() != formalParametersCount) {
-            log_error(methodCall, MessageType.OTHER, "Wrong number of parameters!");
+            logError(methodCall, MJSemanticAnalyzerLogger.MessageType.OTHER, "Wrong number of parameters!");
             return;
         }
 
-        Collection<Obj> locals = methodObj.getLocalSymbols();
+        List<MJSymbol> locals = methodSym.getLocalSymbolsList();
         int i = 0;
-        for (Obj currentParameter : locals) {
+        for (MJSymbol currentParameter : locals) {
             if (i >= formalParametersCount) break;
             if (!actualParametersList.get(i).getType().assignableTo(currentParameter.getType())) {
-                log_error(methodCall, MessageType.INV_ACT_PARAM, i + 1);
+                logError(methodCall, MJSemanticAnalyzerLogger.MessageType.INV_ACT_PARAM, i + 1);
             }
             i++;
         }
 
-        log_info(methodCall, MessageType.OTHER, "Method call! Method name: '" + methodObj.getName() + "'.");
+        logInfo(methodCall, MessageType.OTHER, "Method call! Method name: '" + methodSym.getName() + "'.");
     }
 
     /******************** Actual parameters ***********************************************************/
 
     @Override
     public void visit(ActualParameter actualParameter) {
-        log_debug_node_visit(actualParameter);
-        Obj eObj = actualParameter.getExpr().obj;
+        logDebugNodeVisit(actualParameter);
+        MJSymbol expressionSym = actualParameter.getExpr().mjsymbol;
 
-        if (assert_inv_obj(actualParameter, eObj, "Actual parameter expression")) return;
+        if (assertInvSym(actualParameter, expressionSym, "Actual parameter expression")) return;
 
-        if (!actualParametersStack.insertActualParameter(eObj)) {
-            log_error(actualParameter, MessageType.OTHER, "Actual parameter processing but method call header not found!");
+        if (!actualParametersStack.insertActualParameter(expressionSym)) {
+            logError(actualParameter, MessageType.OTHER, "Actual parameter processing but method call header not found!");
         }
     }
 
@@ -692,25 +689,25 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 
     @Override
     public void visit(SimpleFact simpleFact) {
-        log_debug_node_visit(simpleFact);
-        simpleFact.obj = simpleFact.getExpr().obj;
+        logDebugNodeVisit(simpleFact);
+        simpleFact.mjsymbol = simpleFact.getExpr().mjsymbol;
         // Check if type is boolean
-        if (!simpleFact.obj.getType().equals(MJTab.boolType)) {
-            log_error(simpleFact, MessageType.INCOMPATIBLE_TYPES, MJStruct.getTypeName(simpleFact.obj.getType()), MJStruct.getTypeName(MJTab.boolType));
+        if (!simpleFact.mjsymbol.getType().equals(MJTable.boolType)) {
+            logError(simpleFact, MessageType.INCOMPATIBLE_TYPES, MJType.getTypeName(simpleFact.mjsymbol.getType()), MJType.getTypeName(MJTable.boolType));
         }
     }
 
     @Override
     public void visit(ComplexFact complexFact) {
-        log_debug_node_visit(complexFact);
-        Struct tl = complexFact.getExpr().obj.getType();
-        Struct tr = complexFact.getExpr().obj.getType();
+        logDebugNodeVisit(complexFact);
+        MJType tl = complexFact.getExpr().mjsymbol.getType();
+        MJType tr = complexFact.getExpr().mjsymbol.getType();
         // Check if types are compatible
         if (!tl.compatibleWith(tr)) {
-            log_error(complexFact, MessageType.INCOMPATIBLE_TYPES, MJStruct.getTypeName(tl), MJStruct.getTypeName(tr));
+            logError(complexFact, MessageType.INCOMPATIBLE_TYPES, MJType.getTypeName(tl), MJType.getTypeName(tr));
             return;
         }
-        if (tl.getKind() == Struct.Array || tl.getKind() == Struct.Class) {
+        if (tl.getKind() == MJType.Array || tl.getKind() == MJType.Class) {
             Relop rel = complexFact.getRelop();
             // Convert rel to string
             String op;
@@ -729,7 +726,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
             }
             // Arrays and classes can only use '!=' or '==' relational operators
             if (!(rel instanceof EqualityOperator) && !(rel instanceof InequalityOperator)) {
-                log_error(complexFact, MessageType.UNDEF_OP, op, MJStruct.getTypeName(tl), MJStruct.getTypeName(tr));
+                logError(complexFact, MessageType.UNDEF_OP, op, MJType.getTypeName(tl), MJType.getTypeName(tr));
             }
         }
     }
@@ -742,120 +739,120 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 
     @Override
     public void visit(DesignatorFactor designatorFactor) {
-        log_debug_node_visit(designatorFactor);
-        designatorFactor.obj = designatorFactor.getDesignator().obj;
+        logDebugNodeVisit(designatorFactor);
+        designatorFactor.mjsymbol = designatorFactor.getDesignator().mjsymbol;
     }
 
     @Override
     public void visit(MethodCallFactor methodCallFactor) {
-        log_debug_node_visit(methodCallFactor);
-        methodCallFactor.obj = methodCallFactor.getMethodCall().obj;
+        logDebugNodeVisit(methodCallFactor);
+        methodCallFactor.mjsymbol = methodCallFactor.getMethodCall().mjsymbol;
     }
 
     @Override
     public void visit(ConstantFactor constantFactor) {
-        log_debug_node_visit(constantFactor);
+        logDebugNodeVisit(constantFactor);
         ConstFactor cf = constantFactor.getConstFactor();
         if (cf instanceof ConstFactorInt) {
-            constantFactor.obj = MJTab.intObj;
+            constantFactor.mjsymbol = MJTable.intTypeSym;
         } else if (cf instanceof ConstFactorChar) {
-            constantFactor.obj = MJTab.charObj;
+            constantFactor.mjsymbol = MJTable.charTypeSym;
         } else {
-            constantFactor.obj = MJTab.boolObj;
+            constantFactor.mjsymbol = MJTable.boolTypeSym;
         }
     }
 
     @Override
     public void visit(ObjectAllocateFactor objectAllocateFactor) {
-        log_debug_node_visit(objectAllocateFactor);
-        Obj typeObj = objectAllocateFactor.getType().obj;
-        if (typeObj.getType().getKind() != Struct.Class || ((MJObj) typeObj).isAbstract()) {
-            log_error(objectAllocateFactor, MessageType.OTHER, "Object type must be a non-abstract class type!");
-            objectAllocateFactor.obj = Tab.noObj;
+        logDebugNodeVisit(objectAllocateFactor);
+        MJSymbol typeSym = objectAllocateFactor.getType().mjsymbol;
+        if (typeSym.getType().getKind() != MJType.Class || typeSym.isAbstract()) {
+            logError(objectAllocateFactor, MessageType.OTHER, "Object type must be a non-abstract class type!");
+            objectAllocateFactor.mjsymbol = MJTable.noSym;
         } else {
-            objectAllocateFactor.obj = new MJObj(Obj.Var, "", typeObj.getType());
+            objectAllocateFactor.mjsymbol = new MJSymbol(MJSymbol.Var, "", typeSym.getType());
         }
     }
 
     @Override
     public void visit(ArrayAllocateFactor arrayAllocateFactor) {
-        log_debug_node_visit(arrayAllocateFactor);
-        Obj typeObj = arrayAllocateFactor.getType().obj;
-        Obj exprObj = arrayAllocateFactor.getExpr().obj;
-        if (exprObj.getType() != Tab.intType) {
-            arrayAllocateFactor.obj = Tab.noObj;
+        logDebugNodeVisit(arrayAllocateFactor);
+        MJSymbol typeSym = arrayAllocateFactor.getType().mjsymbol;
+        MJSymbol expressionSym = arrayAllocateFactor.getExpr().mjsymbol;
+        if (expressionSym.getType() != MJTable.intType) {
+            arrayAllocateFactor.mjsymbol = MJTable.noSym;
         } else {
-            arrayAllocateFactor.obj = new MJObj(Obj.Var, "", new MJStruct(Struct.Array, typeObj.getType()));
+            arrayAllocateFactor.mjsymbol = new MJSymbol(MJSymbol.Var, "", new MJType(MJType.Array, typeSym.getType()));
         }
     }
 
     @Override
     public void visit(ParenthesesExpressionFactor parenthesesExpressionFactor) {
-        log_debug_node_visit(parenthesesExpressionFactor);
-        parenthesesExpressionFactor.obj = parenthesesExpressionFactor.getExpr().obj;
+        logDebugNodeVisit(parenthesesExpressionFactor);
+        parenthesesExpressionFactor.mjsymbol = parenthesesExpressionFactor.getExpr().mjsymbol;
     }
 
     @Override
     public void visit(MulopExpressions mulopExpressions) {
-        log_debug_node_visit(mulopExpressions);
+        logDebugNodeVisit(mulopExpressions);
     }
 
     //------------------- Terms ----------------------------------------------------------------------//
 
     @Override
     public void visit(Term term) {
-        log_debug_node_visit(term);
-        term.obj = term.getFactor().obj;
+        logDebugNodeVisit(term);
+        term.mjsymbol = term.getFactor().mjsymbol;
     }
 
     @Override
     public void visit(AddopExpressions addopExpressions) {
-        log_debug_node_visit(addopExpressions);
+        logDebugNodeVisit(addopExpressions);
 
     }
 
     @Override
     public void visit(Expression expression) {
-        log_debug_node_visit(expression);
-        expression.obj = expression.getTerm().obj;
+        logDebugNodeVisit(expression);
+        expression.mjsymbol = expression.getTerm().mjsymbol;
     }
 
     /******************** Designators *****************************************************************/
 
     @Override
     public void visit(DesignatorHeader designatorHeader) {
-        log_debug_node_visit(designatorHeader);
+        logDebugNodeVisit(designatorHeader);
 
         String name = designatorHeader.getName();
 
-        designatorHeader.obj = MJTab.find(name);
-        if (designatorHeader.obj == Tab.noObj) {
-            log_error(designatorHeader, MessageType.SYM_NOT_DEF, null, name);
+        designatorHeader.mjsymbol = MJTable.findSymbolInAnyScope(name);
+        if (designatorHeader.mjsymbol == MJTable.noSym) {
+            logError(designatorHeader, MessageType.SYM_NOT_DEF, null, name);
         }
 
-        if (MJTab.getCurrentScopeId() == ScopeId.CLASS_METHOD) {
+        if (MJTable.getCurrentScope().getId() == ScopeID.CLASS_METHOD) {
 
-        } else { // ScopeId.GLOBAL_METHOD
+        } else { // ScopeID.GLOBAL_METHOD
 
         }
     }
 
     @Override
     public void visit(MemberAccess memberAccess) {
-        log_debug_node_visit(memberAccess);
+        logDebugNodeVisit(memberAccess);
 
     }
 
     @Override
     public void visit(ElementAccess elementAccess) {
-        log_debug_node_visit(elementAccess);
+        logDebugNodeVisit(elementAccess);
 
     }
 
     @Override
     public void visit(Designator designator) {
-        log_debug_node_visit(designator);
+        logDebugNodeVisit(designator);
 
-        designator.obj = designator.getDesignatorHeader().obj;
+        designator.mjsymbol = designator.getDesignatorHeader().mjsymbol;
     }
 }

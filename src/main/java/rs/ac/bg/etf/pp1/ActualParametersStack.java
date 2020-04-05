@@ -1,6 +1,6 @@
 package rs.ac.bg.etf.pp1;
 
-import rs.etf.pp1.symboltable.concepts.Obj;
+import rs.ac.bg.etf.pp1.symboltable.concepts.MJSymbol;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.Stack;
 public class ActualParametersStack {
 
     private class ActualMethodParameters {
-        ArrayList<Obj> parameters;
+        ArrayList<MJSymbol> parameters;
 
         public ActualMethodParameters() {
             parameters = new ArrayList<>();
@@ -23,7 +23,7 @@ public class ActualParametersStack {
         parametersStack = new Stack<>();
     }
 
-    public boolean insertActualParameter(Obj parameter) {
+    public boolean insertActualParameter(MJSymbol parameter) {
         if (currentParameters == null) {
             return false;
         }
@@ -38,12 +38,12 @@ public class ActualParametersStack {
         currentParameters = new ActualMethodParameters();
     }
 
-    public List<Obj> getParameters() {
+    public List<MJSymbol> getParameters() {
         if (currentParameters == null) {
             return null;
         }
 
-        List<Obj> parameters = currentParameters.parameters;
+        List<MJSymbol> parameters = currentParameters.parameters;
 
         if (parametersStack.isEmpty()) {
             currentParameters = null;

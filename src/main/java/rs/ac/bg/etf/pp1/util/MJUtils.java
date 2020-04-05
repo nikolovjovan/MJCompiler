@@ -1,17 +1,31 @@
 package rs.ac.bg.etf.pp1.util;
 
-import rs.ac.bg.etf.pp1.symboltable.MJTab;
-import rs.etf.pp1.symboltable.Tab;
+import rs.ac.bg.etf.pp1.symboltable.MJTable;
+import rs.ac.bg.etf.pp1.symboltable.concepts.MJSymbol;
+import rs.ac.bg.etf.pp1.symboltable.concepts.MJType;
 import rs.etf.pp1.symboltable.concepts.Obj;
-import rs.etf.pp1.symboltable.concepts.Struct;
+
+import java.util.*;
 
 public class MJUtils {
 
-    public static boolean is_type_basic(Struct type) {
-        return type == Tab.intType || type == Tab.charType || type == MJTab.boolType;
+    public static List<MJSymbol> collectionToList(Collection<Obj> objCollection) {
+        if (objCollection.isEmpty()) return Collections.emptyList();
+        List<MJSymbol> symbolList = new ArrayList<>();
+        for (Obj o : objCollection) {
+            if (o instanceof MJSymbol) {
+                symbolList.add((MJSymbol) o);
+            }
+        }
+        return symbolList;
+
     }
 
-    public static boolean is_assignable(Obj obj) {
-        return obj.getKind() == Obj.Var || obj.getKind() == Obj.Fld || obj.getKind() == Obj.Elem;
+    public static boolean isTypeBasic(MJType type) {
+        return type == MJTable.intType || type == MJTable.charType || type == MJTable.boolType;
+    }
+
+    public static boolean isValueAssignableToDesignator(MJSymbol sym) {
+        return sym.getKind() == MJSymbol.Var || sym.getKind() == MJSymbol.Fld || sym.getKind() == MJSymbol.Elem;
     }
 }

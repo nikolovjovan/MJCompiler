@@ -17,18 +17,18 @@ public abstract class MJLogger {
         this.messageHeader = messageHeader;
     }
 
-    protected abstract String generate_message(Object... context);
+    protected abstract String generateMessage(Object... context);
 
-    protected <TObject> TObject get_context_object(int index, Class<TObject> type, Object... context) {
+    protected <TObject> TObject getContextObject(int index, Class<TObject> type, Object... context) {
         if (context.length <= index || !(context[index].getClass().equals(type))) return null;
         return type.cast(context[index]);
     }
 
-    protected <TObject> TObject get_next_context_object(Class<TObject> type, Object... context) {
-        return get_context_object(contextIndex++, type, context);
+    protected <TObject> TObject getNextContextObject(Class<TObject> type, Object... context) {
+        return getContextObject(contextIndex++, type, context);
     }
 
-    protected String format_message(String message, int line, int column) {
+    protected String formatMessage(String message, int line, int column) {
         StringBuilder messageBuilder = new StringBuilder();
         if (line <= 0) return messageBuilder.append(messageHeader).append(message).toString();
         if (column <= 0) return messageBuilder.append(Compiler.getInputFileName()).append(':').append(line).append(": ").append(messageHeader).append(message).toString();
@@ -86,7 +86,7 @@ public abstract class MJLogger {
     }
 
     public final void log(Level level, int line, int column, Object... context) {
-        log(level, format_message(generate_message(context), line, column));
+        log(level, formatMessage(generateMessage(context), line, column));
         contextIndex = 0; // Reset context index for next generate_message call
     }
 

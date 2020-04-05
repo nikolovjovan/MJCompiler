@@ -18,24 +18,24 @@ public class MJCodeGeneratorLogger extends MJLogger {
     }
 
     @Override
-    protected String generate_message(Object... context) {
-        MessageType type = get_next_context_object(MessageType.class, context);
+    protected String generateMessage(Object... context) {
+        MessageType type = getNextContextObject(MessageType.class, context);
         if (type == null) return invalidMessage;
         switch (type) {
             /* DEBUG MESSAGES */
             case NODE_VISIT: {
-                String nodeName = get_next_context_object(String.class, context);
+                String nodeName = getNextContextObject(String.class, context);
                 return nodeName == null ? invalidMessage : "Visited node: '" + nodeName + "'.";
             }
             /* ERROR MESSAGES */
             case INV_PROG_SIZE: {
-                Integer actualSize = get_next_context_object(Integer.class, context);
-                Integer maxSize = get_next_context_object(Integer.class, context);
+                Integer actualSize = getNextContextObject(Integer.class, context);
+                Integer maxSize = getNextContextObject(Integer.class, context);
                 return actualSize == null || maxSize == null ? invalidMessage : "Program is too big! Size: " + actualSize + ", max size: " + maxSize + '!';
             }
             /* ANY OTHER MESSAGE */
             case OTHER: {
-                String message = get_next_context_object(String.class, context);
+                String message = getNextContextObject(String.class, context);
                 return message == null ? invalidMessage : message;
             }
             default: return "Unhandled semantic analyzer message type: '" + type.name() + "'.";

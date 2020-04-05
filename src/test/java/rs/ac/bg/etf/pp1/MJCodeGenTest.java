@@ -1,7 +1,7 @@
 package rs.ac.bg.etf.pp1;
 
 import rs.ac.bg.etf.pp1.ast.Program;
-import rs.ac.bg.etf.pp1.symboltable.MJTab;
+import rs.ac.bg.etf.pp1.symboltable.MJTable;
 import rs.etf.pp1.mj.runtime.Code;
 
 import java.io.File;
@@ -31,7 +31,7 @@ public class MJCodeGenTest extends MJTest {
         System.out.println("Starting semantic analysis...");
         SemanticAnalyzer analyzer = new SemanticAnalyzer();
         prog.traverseBottomUp(analyzer);
-        MJTab.dump();
+        MJTable.dump();
         if (analyzer.getErrorCount() == 0) {
             System.out.println("Semantic analysis completed without errors!");
             File objFile = new File("test\\program.obj");

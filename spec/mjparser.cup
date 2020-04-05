@@ -79,7 +79,7 @@ terminal Boolean BOOL;
 terminal String IDENT;
 
 /* Main non-terminals */
-nonterminal rs.etf.pp1.symboltable.concepts.Obj Program, ProgramName, Type;
+nonterminal rs.ac.bg.etf.pp1.symboltable.concepts.MJSymbol Program, ProgramName, Type;
 nonterminal OptProgramDeclList, ProgramDecl, OptMethodDeclList;
 
 /* Const Declarations */
@@ -105,7 +105,7 @@ nonterminal OptAbstractClassMethodDeclList, AbstractClassMethodDeclList, Abstrac
 
 /* Method Declarations */
 nonterminal MethodDecl, AbstractMethodDecl, MethodStatementListStart;
-nonterminal rs.etf.pp1.symboltable.concepts.Obj MethodHeader, AbstractMethodHeader, RetType;
+nonterminal rs.ac.bg.etf.pp1.symboltable.concepts.MJSymbol MethodHeader, AbstractMethodHeader, RetType;
 
 /* Formal Parameters */
 nonterminal OptFormalParamList, FormalParamList, FormalParam;
@@ -116,28 +116,28 @@ nonterminal OptLocalVarDeclList, LocalVarDecl, LocalVarList, LocalVar;
 /* Statement-related non-terminals */
 nonterminal OptStatementList, Statement, IfStatementHeader, ForStatementHeader, ForEachStatementHeader,
             OptDesignatorStatement, DesignatorStatement, OptElseStatement, PrintExpr, AssignExpr;
-nonterminal rs.etf.pp1.symboltable.concepts.Obj MethodCall, MethodCallHeader;
+nonterminal rs.ac.bg.etf.pp1.symboltable.concepts.MJSymbol MethodCall, MethodCallHeader;
 
 /* Designator-related non-terminals */
-nonterminal rs.etf.pp1.symboltable.concepts.Obj Designator, DesignatorHeader;
+nonterminal rs.ac.bg.etf.pp1.symboltable.concepts.MJSymbol Designator, DesignatorHeader;
 nonterminal OptDesignatorPartList, DesignatorPart;
 
 /* Expression-related non-terminals */
 nonterminal OptExpr;
-nonterminal rs.etf.pp1.symboltable.concepts.Obj Expr;
+nonterminal rs.ac.bg.etf.pp1.symboltable.concepts.MJSymbol Expr;
 
 /* Actual Parameters */
 nonterminal OptActualParamList, ActualParamList, ActualParam;
 
 /* Relational Operators */
-nonterminal rs.etf.pp1.symboltable.concepts.Obj Condition, CondTerm, CondFact;
+nonterminal rs.ac.bg.etf.pp1.symboltable.concepts.MJSymbol Condition, CondTerm, CondFact;
 nonterminal ForCondition, Relop;
 
 /* Additive Operators */
 nonterminal OptAddopExprList, Addop, AddopLeft, AddopRight;
 
 /* Multiplicative Operators */
-nonterminal rs.etf.pp1.symboltable.concepts.Obj Term, Factor;
+nonterminal rs.ac.bg.etf.pp1.symboltable.concepts.MJSymbol Term, Factor;
 nonterminal ConstFactor, OptMulopExprList, Mulop, MulopLeft, MulopRight;
 
 /* Assignment Operators */

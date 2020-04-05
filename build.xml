@@ -42,6 +42,10 @@
         <path refid="library.symboltable-1-1.classpath" />
     </path>
 
+    <target name="clean.test">
+        <delete file="${basedir}/test/program.obj" />
+    </target>
+
     <target name="clean.logs">
         <delete includeemptydirs="true" dir="${basedir}/logs" />
     </target>
@@ -67,7 +71,7 @@
         </delete>
     </target>
 
-    <target name="clean.all" depends="clean.logs,clean.output,clean.lexer,clean.parser" />
+    <target name="clean.all" depends="clean.test,clean.logs,clean.output,clean.lexer,clean.parser" />
 
     <target name="generate.lexer" depends="clean.lexer">
         <java jar="lib/JFlex.jar" fork="true">
@@ -151,6 +155,16 @@
 
     <target name="run">
         <java classname="rs.etf.pp1.mj.runtime.Run">
+            <arg value="test/program.obj" />
+            <classpath>
+                <pathelement location="lib/mj-runtime-1.1.jar" />
+            </classpath>
+        </java>
+    </target>
+
+    <target name="debug">
+        <java classname="rs.etf.pp1.mj.runtime.Run">
+            <arg value="-debug" />
             <arg value="test/program.obj" />
             <classpath>
                 <pathelement location="lib/mj-runtime-1.1.jar" />
