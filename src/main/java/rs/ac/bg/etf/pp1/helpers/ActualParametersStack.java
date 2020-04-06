@@ -1,4 +1,4 @@
-package rs.ac.bg.etf.pp1;
+package rs.ac.bg.etf.pp1.helpers;
 
 import rs.ac.bg.etf.pp1.symboltable.concepts.MJSymbol;
 
@@ -8,7 +8,7 @@ import java.util.Stack;
 
 public class ActualParametersStack {
 
-    private class ActualMethodParameters {
+    private static class ActualMethodParameters {
         ArrayList<MJSymbol> parameters;
 
         public ActualMethodParameters() {

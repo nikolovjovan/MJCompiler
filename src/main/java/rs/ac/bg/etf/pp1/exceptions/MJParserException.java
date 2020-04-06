@@ -2,9 +2,7 @@ package rs.ac.bg.etf.pp1.exceptions;
 
 public class MJParserException extends MJCompilerException {
 
-    public MJParserException() {
-        super();
-    }
+    public MJParserException() { super(); }
 
     public MJParserException(String message) {
         super(message);

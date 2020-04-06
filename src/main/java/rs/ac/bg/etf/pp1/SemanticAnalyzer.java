@@ -1,6 +1,7 @@
 package rs.ac.bg.etf.pp1;
 
 import rs.ac.bg.etf.pp1.ast.*;
+import rs.ac.bg.etf.pp1.helpers.ActualParametersStack;
 import rs.ac.bg.etf.pp1.loggers.MJSemanticAnalyzerLogger;
 import rs.ac.bg.etf.pp1.loggers.MJSemanticAnalyzerLogger.MessageType;
 import rs.ac.bg.etf.pp1.symboltable.*;
@@ -14,6 +15,12 @@ import java.util.List;
 public class SemanticAnalyzer extends VisitorAdaptor {
 
     // TODO: Add symbol usage detection...
+
+    // TODO: Check for any inconsistencies for using MJTable.noSym! Make sure every production's mjsymbol field
+    //       has value of MJTable.noSym if it is invalid!
+
+    // TODO: Add visit methods for all error productions to allow analysis to continue even though there may be
+    //       syntax errors!
 
     // TODO: Add member count checks...
     private static final int MAX_GLOBAL_VARIABLE_COUNT = 65536;
