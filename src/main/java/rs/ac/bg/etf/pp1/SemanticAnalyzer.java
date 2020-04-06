@@ -22,10 +22,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     // TODO: Add visit methods for all error productions to allow analysis to continue even though there may be
     //       syntax errors!
 
-    // TODO: Add member count checks...
-    private static final int MAX_GLOBAL_VARIABLE_COUNT = 65536;
-    private static final int MAX_CLASS_FIELD_COUNT = 65536;
-    private static final int MAX_LOCAL_VARIABLE_COUNT = 256;
+    // TODO: Add member count checks using MJCode constants...
 
     private static final String MAIN = "main";
     private static final String THIS = "this";
@@ -57,34 +54,29 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 
     /******************** Error / debug methods *******************************************************/
 
-    private int getLineNumber(SyntaxNode info) {
-        if (info == null || info.getLine() <= 0) return -1;
-        return info.getLine();
-    }
-
     private void logDebug(SyntaxNode info, Object... context) {
-        logger.debug(getLineNumber(info), -1, context);
+        logger.debug(MJUtils.getLineNumber(info), -1, context);
     }
 
     private void logDebugNodeVisit(SyntaxNode info) {
-        logger.debug(getLineNumber(info), -1, MessageType.NODE_VISIT, info.getClass().getSimpleName());
+        logger.debug(MJUtils.getLineNumber(info), -1, MessageType.NODE_VISIT, info.getClass().getSimpleName());
     }
 
     private void logInfo(SyntaxNode info, Object... context) {
-        logger.info(getLineNumber(info), -1, context);
+        logger.info(MJUtils.getLineNumber(info), -1, context);
     }
 
     private void logWarn(SyntaxNode info, Object... context) {
-        logger.warn(getLineNumber(info), -1, context);
+        logger.warn(MJUtils.getLineNumber(info), -1, context);
     }
 
     private void logError(SyntaxNode info, Object... context) {
         errorCount++;
-        logger.error(getLineNumber(info), -1, context);
+        logger.error(MJUtils.getLineNumber(info), -1, context);
     }
 
     private boolean assertInvSym(SyntaxNode info, MJSymbol sym, String symName) {
-        if (sym == null || sym == MJTable.noSym) {
+        if (!MJUtils.isSymbolValid(sym)) {
             logError(info, MessageType.INV_SYM, symName);
             return true;
         }
@@ -115,9 +107,9 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         return false;
     }
 
-    private boolean assertValueNotAssignableToDesignator(SyntaxNode info, MJSymbol designatorSym) {
-        if (!MJUtils.isValueAssignableToDesignator(designatorSym)) {
-            logError(info, MessageType.SYM_DEF_INV_KIND, null, designatorSym.getName(), "variable, a class field or an array element");
+    private boolean assertValueNotAssignableToSymbol(SyntaxNode info, MJSymbol sym) {
+        if (!MJUtils.isValueAssignableToSymbol(sym)) {
+            logError(info, MessageType.SYM_DEF_INV_KIND, null, sym.getName(), "variable, a class field or an array element");
             return true;
         }
         return false;
@@ -150,6 +142,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         sym.setLevel(MJTable.getCurrentLevel());
         if (MJTable.getCurrentScope().getId() == ScopeID.CLASS) {
             sym.setAccess(currentAccess);
+            sym.setParent(currentClassSym);
         }
         if (MJTable.getCurrentScope().getId() == ScopeID.PROGRAM) varCount++;
         // Log object definition
@@ -163,7 +156,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         if (optBaseType instanceof ClassBaseType) {
             Type type = ((ClassBaseType) optBaseType).getType();
             MJSymbol typeSym = MJTable.findSymbolInCurrentScope(type.getName());
-            if (typeSym == MJTable.noSym) logError(info, MessageType.SYM_NOT_DEF, type.getName(), MJSymbol.Type);
+            if (!MJUtils.isSymbolValid(typeSym)) logError(info, MessageType.SYM_NOT_DEF, type.getName(), MJSymbol.Type);
             else if (typeSym.getKind() != MJSymbol.Type || typeSym.getType().getKind() != MJType.Class) logError(info, MessageType.SYM_DEF_INV_KIND, null, type.getName(), "class type");
             else baseType = typeSym.getType();
         }
@@ -176,6 +169,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         currentClassSym.setAbstract(abs);
         classCount++;
         MJTable.openScope(ScopeID.CLASS);
+        // Copy base type members to current scope
         if (baseType != MJTable.noType) {
             for (MJSymbol sym : baseType.getMembersList()) MJTable.getCurrentScope().addToLocals(new MJSymbol(sym));
         }
@@ -193,10 +187,10 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 
     private void processMethodHeader(SyntaxNode info, boolean abs, String name, RetType retType) {
         logDebugNodeVisit(info);
-        // TODO: Figure out inheritance and method overriding...
         MJType returnType = MJTable.voidType;
         // Check return type
         if (!assertInvSym(info, retType.mjsymbol, "return type")) returnType = retType.mjsymbol.getType();
+        // TODO: Figure out inheritance and method overriding...
         // If symbol with same name is already defined, make a new obj outside symbol table to continue analysis
         if (assertSymInCurrentScope(info, name)) {
             currentMethodSym = new MJSymbol(MJSymbol.Meth, name, returnType);
@@ -204,12 +198,13 @@ public class SemanticAnalyzer extends VisitorAdaptor {
             currentMethodSym = MJTable.insert(MJSymbol.Meth, name, returnType);
         }
         if (abs) {
-            if (currentClassSym == null || currentClassSym == MJTable.noSym) logError(info, MessageType.OTHER, "Abstract method definition outside abstract class!");
+            if (!MJUtils.isSymbolValid(currentClassSym)) logError(info, MessageType.OTHER, "Abstract method definition outside abstract class!");
             else if (!currentClassSym.isAbstract()) logError(info, MessageType.OTHER, "Abstract method definition inside a concrete class!");
             currentMethodSym.setAbstract(true);
         }
         if (MJTable.getCurrentScope().getId() == ScopeID.CLASS) {
             currentMethodSym.setAccess(currentAccess);
+            currentMethodSym.setParent(currentClassSym);
         } else {
             methodCount++; // global method count
         }
@@ -245,7 +240,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     private void processVariableIncDec(SyntaxNode info, Designator designator) {
         logDebugNodeVisit(info);
         // Check if value can be assigned to designator
-        if (assertValueNotAssignableToDesignator(info, designator.mjsymbol)) return;
+        if (assertValueNotAssignableToSymbol(info, designator.mjsymbol)) return;
         // Type checks
         if (designator.mjsymbol.getType() != MJTable.intType) {
             logError(info, MessageType.INCOMPATIBLE_TYPES, MJType.getTypeName(designator.mjsymbol.getType()), MJType.getTypeName(MJTable.intType));
@@ -613,7 +608,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         MJSymbol designatorSym = assignmentStatement.getDesignator().mjsymbol;
         MJSymbol expressionSym = ((AssignmentExpression) assignmentStatement.getAssignExpr()).getExpr().mjsymbol;
         // Check if value can be assigned to designator
-        if (assertValueNotAssignableToDesignator(assignmentStatement, designatorSym)) return;
+        if (assertValueNotAssignableToSymbol(assignmentStatement, designatorSym)) return;
         // Type checks
         if (!expressionSym.getType().assignableTo(designatorSym.getType())) {
             logError(assignmentStatement, MessageType.INCOMPATIBLE_TYPES, MJType.getTypeName(expressionSym.getType()), MJType.getTypeName(designatorSym.getType()));
@@ -753,7 +748,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     @Override
     public void visit(MethodCallFactor methodCallFactor) {
         logDebugNodeVisit(methodCallFactor);
-        methodCallFactor.mjsymbol = methodCallFactor.getMethodCall().mjsymbol;
+        methodCallFactor.mjsymbol = new MJSymbol(methodCallFactor.getMethodCall().mjsymbol);
     }
 
     @Override

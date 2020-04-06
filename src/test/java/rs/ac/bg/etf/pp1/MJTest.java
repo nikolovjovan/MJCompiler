@@ -26,7 +26,7 @@ public abstract class MJTest {
 
         Compiler.setDebugMode(true);
         Compiler.setInputFileName(fileName);
-        Compiler.setOutputFileName(fileName.concat(".out"));
+        Compiler.setOutputFileName(testBaseDir + "/program.obj");
 
         Log4JUtils.INSTANCE.prepareLogFile(Logger.getRootLogger());
 

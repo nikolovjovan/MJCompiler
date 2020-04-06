@@ -42,7 +42,7 @@
         <path refid="library.symboltable-1-1.classpath" />
     </path>
 
-    <target name="clean.test">
+    <target name="clean.obj">
         <delete file="${basedir}/test/program.obj" />
     </target>
 
@@ -50,7 +50,7 @@
         <delete includeemptydirs="true" dir="${basedir}/logs" />
     </target>
 
-    <target name="clean.output">
+    <target name="clean.build">
         <delete includeemptydirs="true" dir="${basedir}/out" />
     </target>
 
@@ -71,7 +71,7 @@
         </delete>
     </target>
 
-    <target name="clean.all" depends="clean.test,clean.logs,clean.output,clean.lexer,clean.parser" />
+    <target name="clean.all" depends="clean.obj,clean.logs,clean.build,clean.lexer,clean.parser" />
 
     <target name="generate.lexer" depends="clean.lexer">
         <java jar="lib/JFlex.jar" fork="true">

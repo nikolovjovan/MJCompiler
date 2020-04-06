@@ -136,19 +136,24 @@ public class MJSymbol extends Obj {
 
     public List<MJSymbol> getLocalSymbolsList() { return MJUtils.collectionToList(getLocalSymbols()); }
 
+    public String getKindName() {
+        switch (getKind()) {
+            case Con:   return "Constant";
+            case Var:   return "Variable";
+            case Type:  return "Type";
+            case Meth:  return abstract_ ? "Abstract method" : "Method";
+            case Fld:   return "Field";
+            case Prog:  return "Program";
+            default:    return "Unknown kind";
+        }
+    }
+
     public String toString(String indentation) {
         MJSymbol.indentation = indentation;
         boolean inline = indentation.length() == 0;
         StringBuilder output = new StringBuilder();
         // kind
-        switch (getKind()) {
-            case Con:  output.append("Constant "); break;
-            case Var:  output.append("Variable "); break;
-            case Type: output.append("Type "); break;
-            case Meth: output.append(abstract_ ? "Abstract method " : "Method"); break;
-            case Fld:  output.append("Field "); break;
-            case Prog: output.append("Program "); break;
-        }
+        output.append(getKindName());
         // name
         output.append(" '").append(getName()).append("': ");
         // type

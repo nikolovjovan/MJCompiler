@@ -6,10 +6,9 @@ import rs.ac.bg.etf.pp1.loggers.MJCodeGeneratorLogger.MessageType;
 import rs.ac.bg.etf.pp1.mj.runtime.MJCode;
 import rs.ac.bg.etf.pp1.symboltable.MJTable;
 import rs.ac.bg.etf.pp1.symboltable.concepts.MJSymbol;
+import rs.ac.bg.etf.pp1.util.MJUtils;
 
 public class CodeGenerator extends VisitorAdaptor {
-
-    private static final int MAX_CODE_SIZE = 8192;
 
     private static final String MAIN = "main";
 
@@ -26,22 +25,22 @@ public class CodeGenerator extends VisitorAdaptor {
 
     /******************** Error / debug methods *******************************************************/
 
-    private int getLineNumber(SyntaxNode info) {
-        if (info == null || info.getLine() <= 0) return -1;
-        return info.getLine();
-    }
-
     private void logDebug(SyntaxNode info, Object... context) {
-        logger.debug(getLineNumber(info), -1, context);
+        logger.debug(MJUtils.getLineNumber(info), -1, context);
     }
 
     private void logDebugNodeVisit(SyntaxNode info) {
-        logger.debug(getLineNumber(info), -1, MessageType.NODE_VISIT, info.getClass().getSimpleName());
+        logger.debug(MJUtils.getLineNumber(info), -1, MessageType.NODE_VISIT, info.getClass().getSimpleName());
+        // Set current node in MJCode to allow it to use logError
+        MJCode.setCurrentNode(info);
     }
 
-    private void logError(SyntaxNode info, Object... context) {
+    // This method is public to allow MJCode to access it and log error messages!
+    // Ugly I know but it seems the most reasonable solution while still using base classes and not reimplementing them.
+    // Ideally I would never use the ugly code found in provided libraries, but since I must, this is my solution.
+    public void logError(SyntaxNode info, Object... context) {
         errorCount++;
-        logger.error(getLineNumber(info), -1, context);
+        logger.error(MJUtils.getLineNumber(info), -1, context);
     }
 
     /******************** Helper methods **************************************************************/
@@ -50,6 +49,8 @@ public class CodeGenerator extends VisitorAdaptor {
 
     @Override
     public void visit(ProgramName programName) {
+        // Set generator in MJCode to allow it to use logError
+        MJCode.setGenerator(this);
         logDebugNodeVisit(programName);
         // Generate code for predeclared method: chr
         MJTable.chrMethodSym.setAdr(MJCode.pc);
@@ -66,8 +67,8 @@ public class CodeGenerator extends VisitorAdaptor {
     @Override
     public void visit(Program program) {
         logDebugNodeVisit(program);
-        if (MJCode.pc >= MAX_CODE_SIZE) {
-            logError(program, MessageType.INV_PROG_SIZE, MJCode.pc, MAX_CODE_SIZE);
+        if (MJCode.pc >= MJCode.MAX_CODE_SIZE) {
+            logError(program, MessageType.INV_PROG_SIZE, MJCode.pc, MJCode.MAX_CODE_SIZE);
         }
     }
 
@@ -98,50 +99,73 @@ public class CodeGenerator extends VisitorAdaptor {
     /******************** Statements ******************************************************************/
 
     @Override
+    public void visit(ReadStatement readStatement) {
+        logDebugNodeVisit(readStatement);
+        MJSymbol designatorSym = readStatement.getDesignator().mjsymbol;
+        if (designatorSym.getType() == MJTable.charType) {
+            MJCode.put(MJCode.bread);
+        } else {
+            MJCode.put(MJCode.read);
+        }
+        MJCode.store(designatorSym);
+    }
+
+    @Override
     public void visit(PrintStatement printStatement) {
         logDebugNodeVisit(printStatement);
         PrintExpr printExpr = printStatement.getPrintExpr();
 
-        MJSymbol typeSymbol;
-        int repetition = 1;
-        int width = 5;
-        int instruction = MJCode.print;
+        MJSymbol typeSym;
+        int width = 0;
 
         if (printExpr instanceof PrintOnlyExpression) {
-            typeSymbol = ((PrintOnlyExpression) printExpr).getExpr().mjsymbol;
+            typeSym = ((PrintOnlyExpression) printExpr).getExpr().mjsymbol;
         } else {
-            typeSymbol = ((PrintExpressionAndConst) printExpr).getExpr().mjsymbol;
-            repetition = ((PrintExpressionAndConst) printExpr).getConstValue();
+            typeSym = ((PrintExpressionAndConst) printExpr).getExpr().mjsymbol;
+            width = ((PrintExpressionAndConst) printExpr).getConstValue();
         }
 
-        if (typeSymbol.getType() == MJTable.charType) {
-            width = 1; // char print size
-            instruction = MJCode.bprint;
+        MJCode.loadConst(width);
+        MJCode.put(typeSym.getType() == MJTable.charType ? MJCode.bprint : MJCode.print);
+    }
+
+    /******************** Designator Statements *******************************************************/
+
+    @Override
+    public void visit(AssignmentStatement assignmentStatement) {
+        logDebugNodeVisit(assignmentStatement);
+        MJCode.store(assignmentStatement.getDesignator().mjsymbol);
+    }
+
+    @Override
+    public void visit(VariableIncrementStatement variableIncrementStatement) {
+        logDebugNodeVisit(variableIncrementStatement);
+        MJSymbol designatorSym = variableIncrementStatement.getDesignator().mjsymbol;
+        if (designatorSym.getKind() == MJSymbol.Var && designatorSym.getLevel() == 1) { // local variables
+            MJCode.put(MJCode.inc);
+            MJCode.put(designatorSym.getAdr());
+            MJCode.put(1);
+        } else {
+            MJCode.load(designatorSym);
+            MJCode.loadConst(1);
+            MJCode.put(MJCode.add);
+            MJCode.store(designatorSym);
         }
+    }
 
-        if (repetition == 1) {
-            MJCode.loadConst(width);
-            MJCode.put(instruction);
-        } else if (repetition > 1) {
-            MJCode.loadConst(repetition);
-
-            int loopStart = MJCode.pc;
-
-            MJCode.put(MJCode.dup2);
-            MJCode.put(MJCode.pop);
-            MJCode.loadConst(width);
-            MJCode.put(instruction);
-
+    @Override
+    public void visit(VariableDecrementStatement variableDecrementStatement) {
+        logDebugNodeVisit(variableDecrementStatement);
+        MJSymbol designatorSym = variableDecrementStatement.getDesignator().mjsymbol;
+        if (designatorSym.getKind() == MJSymbol.Var && designatorSym.getLevel() == 1) { // local variables
+            MJCode.put(MJCode.inc);
+            MJCode.put(designatorSym.getAdr());
+            MJCode.put(-1);
+        } else {
+            MJCode.load(designatorSym);
             MJCode.loadConst(1);
             MJCode.put(MJCode.sub);
-
-            MJCode.put(MJCode.dup);
-            MJCode.loadConst(0);
-            MJCode.put(MJCode.jne);
-            MJCode.put2(loopStart - MJCode.pc + 1);
-
-            MJCode.put(MJCode.pop);
-            MJCode.put(MJCode.pop);
+            MJCode.store(designatorSym);
         }
     }
 
@@ -160,6 +184,15 @@ public class CodeGenerator extends VisitorAdaptor {
     //------------------- Factors --------------------------------------------------------------------//
 
     @Override
+    public void visit(DesignatorFactor designatorFactor) {
+        logDebugNodeVisit(designatorFactor);
+        // TODO: Remove this check once semantic analysis ensures designator symbol is valid
+        if (MJUtils.isSymbolValid(designatorFactor.mjsymbol)) {
+            MJCode.load(designatorFactor.mjsymbol);
+        }
+    }
+
+    @Override
     public void visit(ConstantFactor constantFactor) {
         logDebugNodeVisit(constantFactor);
         ConstFactor cf = constantFactor.getConstFactor();
@@ -172,15 +205,5 @@ public class CodeGenerator extends VisitorAdaptor {
             value = ((ConstFactorBool) cf).getValue() ? 1 : 0;
         }
         MJCode.load(new MJSymbol(MJSymbol.Con, null, MJTable.charType, value, 0));
-    }
-
-    /******************** Designators *****************************************************************/
-
-    @Override
-    public void visit(Designator designator) {
-        logDebugNodeVisit(designator);
-        if (designator.mjsymbol != null && designator.mjsymbol != MJTable.noSym) {
-            MJCode.load(designator.mjsymbol);
-        }
     }
 }

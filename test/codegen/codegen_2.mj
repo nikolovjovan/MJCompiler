@@ -1,0 +1,40 @@
+// level A code generation:
+// - assignment, variable increment, variable decrement designator statements
+// - designator statement, read and print statements
+// - expressions, terms, all factors except method call w/ arguments (only w/o)
+// - array access designator
+// - global/local variables (int, char, bool or array of int, char or bool)
+// - global constants
+program level_a_code_generation
+    const int N = 25;
+    char c;
+    int x, y;
+{
+    void main()
+        int a, b;
+    {
+        c = chr(65);
+        print(c);
+        print(eol);
+        print(ord('C'));
+        print(eol);
+        read(a);
+        b = a;
+        b++;
+        a--;
+        print(a);
+        print(' ');
+        print(b);
+        print(eol);
+        x = N;
+        y = x;
+        x--;
+        y++;
+        print(x);
+        print(' ');
+        print(y);
+        print(eol);
+        // TODO: add expressions
+        // TODO: add arrays
+    }
+}
