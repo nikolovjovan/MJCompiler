@@ -14,7 +14,7 @@ import java.io.*;
 
 public class Compiler {
 
-    private static Logger log = Logger.getLogger(Compiler.class);
+    private static Logger logger = Logger.getLogger(Compiler.class);
 
     private static boolean debugMode;
     private static String inputFileName, outputFileName;
@@ -52,7 +52,7 @@ public class Compiler {
         MJParser parser = new MJParser(lexer);
 
         Program prog = (Program) parser.parse().value;
-        log.info("Abstract syntax tree: " + prog.toString(""));
+        logger.info("Abstract syntax tree: " + prog.toString(""));
 
         if (parser.getErrorCount() == 0) {
             System.out.println("Syntax analysis completed without errors!");
@@ -69,7 +69,7 @@ public class Compiler {
             System.out.println("Semantic analysis completed without errors!");
 
             File outputFile = new File(outputFileName);
-            log.info("Generating bytecode file: " + outputFile.getAbsolutePath());
+            logger.info("Generating bytecode file: " + outputFile.getAbsolutePath());
             if (outputFile.exists()) {
                 outputFile.delete();
             }
@@ -88,25 +88,25 @@ public class Compiler {
                 throw new MJCodeGeneratorException("Code generation failed with " + generator.getErrorCount() + " error(s)!");
             }
 
-            log.info("Compilation finished!");
+            logger.info("Compilation finished!");
         } else {
             throw new MJSemanticAnalyzerException("Semantic analysis failed with " + analyzer.getErrorCount() + " error(s)!");
         }
     }
 
     public static void main(String[] args) {
-        DOMConfigurator.configure(Log4JUtils.INSTANCE.findLoggerConfigFile());
+        DOMConfigurator.configure(Log4JUtils.INSTANCE.getLoggerConfigFileName());
 
         if (!CLIUtils.parseCLIArgs(args)) return;
         File inputFile = new File(inputFileName);
 
         Log4JUtils.INSTANCE.prepareLogFile(Logger.getRootLogger());
 
-        log.info("Compiling source file: " + inputFile.getAbsolutePath());
+        logger.info("Compiling source file: " + inputFile.getAbsolutePath());
         try (BufferedReader br = new BufferedReader(new FileReader(inputFile))) {
             compile(br);
         } catch (Exception e) {
-            log.error("Failed to compile source file: '" + inputFile.getAbsolutePath() + "'!", e);
+            logger.error("Failed to compile source file: '" + inputFile.getAbsolutePath() + "'!", e);
             System.err.println("Compilation failed!");
             e.printStackTrace(System.err);
         }

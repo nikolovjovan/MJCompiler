@@ -1,15 +1,12 @@
 package rs.ac.bg.etf.pp1.loggers;
 
+import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import rs.ac.bg.etf.pp1.Compiler;
 
 public abstract class MJLogger {
 
-    public enum Level {
-        DEBUG, INFO, WARN, ERROR, FATAL
-    }
-
-    protected final Logger log = Logger.getLogger(getClass());
+    protected final Logger logger = Logger.getLogger(getClass());
     protected String messageHeader;
     protected int contextIndex = 0;
 
@@ -20,7 +17,7 @@ public abstract class MJLogger {
     protected abstract String generateMessage(Object... context);
 
     protected <TObject> TObject getContextObject(int index, Class<TObject> type, Object... context) {
-        if (context.length <= index || !(context[index].getClass().equals(type))) return null;
+        if (context.length <= index || context[index] == null || !(context[index].getClass().equals(type))) return null;
         return type.cast(context[index]);
     }
 
@@ -35,58 +32,8 @@ public abstract class MJLogger {
         return messageBuilder.append(Compiler.getInputFileName()).append(':').append(line).append(':').append(column).append(": ").append(messageHeader).append(message).toString();
     }
 
-    public final void log(Level level, String message) {
-        switch (level) {
-            case DEBUG: {
-                if (!Compiler.isDebugMode()) return;
-                log.debug(message);
-                System.out.println("DEBUG: ".concat(message));
-                return;
-            }
-            case INFO: {
-                log.info(message);
-                System.out.println("INFO: ".concat(message));
-                return;
-            }
-            case WARN: {
-                log.warn(message);
-                System.out.println("WARN: ".concat(message));
-                return;
-            }
-            case ERROR: {
-                log.error(message);
-                System.err.println("ERROR: ".concat(message));
-                return;
-            }
-            case FATAL: {
-                log.fatal(message);
-                System.err.println("FATAL: ".concat(message));
-            }
-        }
-    }
-
-    public final void debug(String message) {
-        log(Level.DEBUG, message);
-    }
-
-    public final void info(String message) {
-        log(Level.INFO, message);
-    }
-
-    public final void warn(String message) {
-        log(Level.WARN, message);
-    }
-
-    public final void error(String message) {
-        log(Level.ERROR, message);
-    }
-
-    public final void fatal(String message) {
-        log(Level.FATAL, message);
-    }
-
     public final void log(Level level, int line, int column, Object... context) {
-        log(level, formatMessage(generateMessage(context), line, column));
+        logger.log(level, formatMessage(generateMessage(context), line, column));
         contextIndex = 0; // Reset context index for next generate_message call
     }
 

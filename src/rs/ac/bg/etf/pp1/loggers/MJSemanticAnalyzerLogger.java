@@ -29,6 +29,7 @@ public class MJSemanticAnalyzerLogger extends MJLogger {
         ITERATOR_IN_USE,        // Params: String varName
         INV_ACT_PARAM,          // Params: Integer index
         UNDEF_OP,               // Params: String op, String type1Name, String type2Name
+        UNIMPL_METHOD,          // Params: String className, String methodName
         /* ANY OTHER MESSAGE */
         OTHER                   // Params: String message
     }
@@ -116,6 +117,11 @@ public class MJSemanticAnalyzerLogger extends MJLogger {
                 String type1Name = getNextContextObject(String.class, context);
                 String type2Name = getNextContextObject(String.class, context);
                 return op == null || type1Name == null || type2Name == null ? invalidMessage : "Operator '" + op + "' is undefined for arguments of types '" + type1Name + "' and '" + type2Name + "'!";
+            }
+            case UNIMPL_METHOD: {
+                String className = getNextContextObject(String.class, context);
+                String methodName = getNextContextObject(String.class, context);
+                return className == null || methodName == null ? invalidMessage : "Non-abstract class '" + className + "' must implement abstract method '" + methodName + "'!";
             }
             /* ANY OTHER MESSAGE */
             case OTHER: {

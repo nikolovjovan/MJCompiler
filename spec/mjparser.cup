@@ -1,64 +1,64 @@
 package rs.ac.bg.etf.pp1;
 
 import java_cup.runtime.*;
+import org.apache.log4j.Level;
 import rs.ac.bg.etf.pp1.ast.*;
 import rs.ac.bg.etf.pp1.exceptions.MJParserException;
-import rs.ac.bg.etf.pp1.loggers.MJLogger.Level;
 import rs.ac.bg.etf.pp1.loggers.MJParserLogger;
 import rs.ac.bg.etf.pp1.loggers.MJParserLogger.MessageType;
 
 parser code {:
-    private MJParserLogger logger = new MJParserLogger();
+  private MJParserLogger logger = new MJParserLogger();
 
-    private int errorCount = 0;
+  private int errorCount = 0;
 
-    private void log(Level level, MessageType type, String message, Object info) {
-        int line = -1, column = -1;
-        if (info instanceof Symbol) {
-            Symbol sym = (Symbol) info;
-            line = sym.left;
-            column = sym.right;
-        }
-        if (message != null) logger.log(level, line, column, type, message);
-        else logger.log(level, line, column, type);
-        if (level == Level.ERROR || level == Level.FATAL) errorCount++;
+  private void log(Level level, MessageType type, String message, Object info) {
+    int line = -1, column = -1;
+    if (info instanceof Symbol) {
+      Symbol sym = (Symbol) info;
+      line = sym.left;
+      column = sym.right;
     }
+    if (message != null) logger.log(level, line, column, type, message);
+    else logger.log(level, line, column, type);
+    if (level == Level.ERROR || level == Level.FATAL) errorCount++;
+  }
 
-    private void log_fatal(MessageType type, String message, Object info) throws Exception {
-        log(Level.FATAL, type, message, info);
-        done_parsing();
-        throw new MJParserException("Cannot recover from previous error(s)!");
-    }
+  private void log_fatal(MessageType type, String message, Object info) throws Exception {
+    log(Level.FATAL, type, message, info);
+    done_parsing();
+    throw new MJParserException("Cannot recover from previous error(s)!");
+  }
 
-    private void log_error(MessageType type, String message, Object info) {
-        log(Level.ERROR, type, message, info);
-    }
+  private void log_error(MessageType type, String message, Object info) {
+    log(Level.ERROR, type, message, info);
+  }
 
-    void log_error(MessageType type) {
-        log(Level.ERROR, type, null, null);
-    }
+  void log_error(MessageType type) {
+    log(Level.ERROR, type, null, null);
+  }
 
-    public int getErrorCount() { return errorCount; }
+  public int getErrorCount() { return errorCount; }
 
-    @Override
-    public void report_error(String message, Object info) {
-        log_error(MessageType.OTHER, message, info);
-    }
+  @Override
+  public void report_error(String message, Object info) {
+    log_error(MessageType.OTHER, message, info);
+  }
 
-    @Override
-    public void report_fatal_error(String message, Object info) throws Exception {
-        log_fatal(MessageType.OTHER, message, info);
-    }
+  @Override
+  public void report_fatal_error(String message, Object info) throws Exception {
+    log_fatal(MessageType.OTHER, message, info);
+  }
 
-    @Override
-    public void syntax_error(Symbol cur_token) {
-        log_error(MessageType.SYNTAX_ERROR, null, cur_token);
-    }
+  @Override
+  public void syntax_error(Symbol cur_token) {
+    log_error(MessageType.SYNTAX_ERROR, null, cur_token);
+  }
 
-    @Override
-    public void unrecovered_syntax_error(Symbol cur_token) throws Exception {
-        log_fatal(MessageType.IRR_SYNTAX_ERROR, null, cur_token);
-    }
+  @Override
+  public void unrecovered_syntax_error(Symbol cur_token) throws Exception {
+    log_fatal(MessageType.IRR_SYNTAX_ERROR, null, cur_token);
+  }
 :}
 
 /* Keywords */
@@ -119,8 +119,8 @@ nonterminal OptStatementList, Statement, IfStatementHeader, ForStatementHeader, 
 nonterminal rs.ac.bg.etf.pp1.symboltable.concepts.MJSymbol MethodCall, MethodCallHeader;
 
 /* Designator-related non-terminals */
-nonterminal rs.ac.bg.etf.pp1.symboltable.concepts.MJSymbol Designator, DesignatorHeader;
-nonterminal OptDesignatorPartList, DesignatorPart;
+nonterminal rs.ac.bg.etf.pp1.symboltable.concepts.MJSymbol Designator, DesignatorHeader, OptDesignatorPartList;
+nonterminal DesignatorPart;
 
 /* Expression-related non-terminals */
 nonterminal OptExpr;

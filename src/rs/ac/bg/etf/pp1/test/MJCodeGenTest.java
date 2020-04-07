@@ -1,7 +1,9 @@
-package rs.ac.bg.etf.pp1;
+package rs.ac.bg.etf.pp1.test;
 
+import rs.ac.bg.etf.pp1.Compiler;
 import rs.ac.bg.etf.pp1.exceptions.MJCodeGeneratorException;
 import rs.ac.bg.etf.pp1.exceptions.MJSemanticAnalyzerException;
+
 import java.io.Reader;
 
 public class MJCodeGenTest extends MJTest {
@@ -18,7 +20,7 @@ public class MJCodeGenTest extends MJTest {
         try {
             Compiler.compile(r);
         } catch (MJSemanticAnalyzerException | MJCodeGeneratorException e) {
-            log.error("Test FAILED!");
+            logger.error("Test FAILED!");
             System.err.println("Compilation failed!");
             e.printStackTrace(System.err);
         }

@@ -1,8 +1,10 @@
-package rs.ac.bg.etf.pp1;
+package rs.ac.bg.etf.pp1.test;
 
 import java_cup.runtime.Symbol;
+import rs.ac.bg.etf.pp1.MJLexer;
+import rs.ac.bg.etf.pp1.sym;
 
-import java.io.*;
+import java.io.Reader;
 
 public class MJLexerTest extends MJTest {
 

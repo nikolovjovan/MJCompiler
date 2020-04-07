@@ -11,8 +11,8 @@ public class Log4JUtils {
 
     public static Log4JUtils INSTANCE = new Log4JUtils();
 
-    public URL findLoggerConfigFile() {
-        return Thread.currentThread().getContextClassLoader().getResource("log4j.xml");
+    public String getLoggerConfigFileName() {
+        return "config/log4j.xml";
     }
 
     public void prepareLogFile(Logger root) {

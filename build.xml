@@ -2,12 +2,10 @@
 <project name="MJCompiler" default="test.all" basedir=".">
 
     <property name="output.dir" value="${basedir}/out/production/MJCompiler" />
-    <property name="test.output.dir" value="${basedir}/out/test/MJCompiler" />
 
     <property name="config.dir" value="config" />
     <property name="spec.dir" value="spec" />
-    <property name="source.dir" value="src/main/java" />
-    <property name="test.source.dir" value="src/test/java" />
+    <property name="source.dir" value="src" />
 
     <path id="library.cup_v10k.classpath">
         <pathelement location="${basedir}/lib/cup_v10k.jar" />
@@ -21,25 +19,23 @@
         <pathelement location="${basedir}/lib/symboltable-1-1.jar" />
     </path>
 
-    <path id="sourcepath">
-        <dirset dir="${basedir}">
-            <include name="src/main/java" />
-        </dirset>
+    <path id="library.mj-runtime-1.1.classpath">
+        <pathelement location="${basedir}/lib/mj-runtime-1.1.jar" />
     </path>
 
-    <path id="test.sourcepath">
+    <path id="sourcepath">
         <dirset dir="${basedir}">
-            <include name="src/test/java" />
+            <include name="${source.dir}" />
         </dirset>
     </path>
 
     <path id="classpath">
         <pathelement location="${config.dir}" />
         <pathelement location="${output.dir}" />
-        <pathelement location="${test.output.dir}" />
         <path refid="library.log4j-1.2.17.classpath" />
         <path refid="library.cup_v10k.classpath" />
         <path refid="library.symboltable-1-1.classpath" />
+        <path refid="library.mj-runtime-1.1.classpath" />
     </path>
 
     <target name="clean.obj">
@@ -86,20 +82,20 @@
             <arg value="-destdir" />
             <arg value="${source.dir}/rs/ac/bg/etf/pp1" />
             <arg value="-ast" />
-            <arg value="src.main.java.rs.ac.bg.etf.pp1.ast" />
+            <arg value="src.rs.ac.bg.etf.pp1.ast" />
             <arg value="-parser" />
             <arg value="MJParser" />
-            <arg value="-dump_states" />
+<!--            <arg value="-dump_states" />-->
             <arg value="-buildtree" />
             <arg value="${spec.dir}/mjparser.cup" />
         </java>
         <!-- Replaces all of the references to the old package name in files in the "src" directory -->
-        <replace dir="${source.dir}" value="rs.ac.bg.etf.pp1.ast" token="src.main.java.rs.ac.bg.etf.pp1.ast" summary="true" />
+        <replace dir="${source.dir}" value="rs.ac.bg.etf.pp1.ast" token="src.rs.ac.bg.etf.pp1.ast" summary="true" />
     </target>
 
     <target name="generate.all" depends="generate.lexer,generate.parser" />
 
-    <target name="compile.production">
+    <target name="build">
         <mkdir dir="${output.dir}" />
         <javac destdir="${output.dir}" includeantruntime="false">
             <src refid="sourcepath" />
@@ -107,39 +103,36 @@
         </javac>
     </target>
 
-    <target name="compile.tests">
-        <mkdir dir="${test.output.dir}" />
-        <javac destdir="${test.output.dir}" includeantruntime="false">
-            <src refid="test.sourcepath" />
-            <classpath refid="classpath" />
-        </javac>
-    </target>
-
-    <target name="compile.all" depends="compile.production,compile.tests" />
-
     <target name="test.lexer">
-        <java classname="rs.ac.bg.etf.pp1.MJTestRunner" fork="true">
+        <java classname="rs.ac.bg.etf.pp1.test.MJTestRunner" fork="true">
             <classpath refid="classpath" />
             <arg value="lexer" />
         </java>
     </target>
 
     <target name="test.parser">
-        <java classname="rs.ac.bg.etf.pp1.MJTestRunner" fork="true">
+        <java classname="rs.ac.bg.etf.pp1.test.MJTestRunner" fork="true">
             <classpath refid="classpath" />
             <arg value="parser" />
         </java>
     </target>
 
     <target name="test.semantic">
-        <java classname="rs.ac.bg.etf.pp1.MJTestRunner" fork="true">
+        <java classname="rs.ac.bg.etf.pp1.test.MJTestRunner" fork="true">
             <classpath refid="classpath" />
             <arg value="semantic" />
         </java>
     </target>
 
+    <target name="test.codegen">
+        <java classname="rs.ac.bg.etf.pp1.test.MJTestRunner" fork="true">
+            <classpath refid="classpath" />
+            <arg value="codegen" />
+        </java>
+    </target>
+
     <target name="test.all">
-        <java classname="rs.ac.bg.etf.pp1.MJTestRunner" fork="true">
+        <java classname="rs.ac.bg.etf.pp1.test.MJTestRunner" fork="true">
             <classpath refid="classpath" />
         </java>
     </target>

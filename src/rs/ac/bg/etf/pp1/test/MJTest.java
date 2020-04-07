@@ -1,6 +1,7 @@
-package rs.ac.bg.etf.pp1;
+package rs.ac.bg.etf.pp1.test;
 
 import org.apache.log4j.Logger;
+import rs.ac.bg.etf.pp1.Compiler;
 import rs.ac.bg.etf.pp1.util.Log4JUtils;
 
 import java.io.*;
@@ -9,7 +10,7 @@ public abstract class MJTest {
 
     private static final String testBaseDir = "test/";
 
-    protected Logger log = Logger.getLogger(getClass());
+    protected Logger logger = Logger.getLogger(getClass());
 
     protected abstract String testName();
 
@@ -32,17 +33,22 @@ public abstract class MJTest {
 
         Reader br = null;
         try {
-            log.info("Testing " + testName() + " with input file '" + testDir + "/" + inputFile.getName() + "'.");
+            String testMessage = "Testing " + testName() + " with input file '" + testDir + "/" + inputFile.getName() + "'.";
+            logger.info(testMessage);
+            System.out.println(testMessage);
             br = new BufferedReader(new FileReader(inputFile));
             processTestFile(br);
         } catch (Exception e) {
-            log.error(e.getMessage(), e);
+            logger.error(e.getMessage(), e);
+            System.err.println("Test failed!");
         } finally {
             if (br != null) {
                 try {
                     br.close();
+                    System.out.println("Test finished!");
                 } catch (IOException e) {
-                    log.error(e.getMessage(), e);
+                    logger.error(e.getMessage(), e);
+                    System.err.println("Test failed!");
                 }
             }
         }
@@ -71,18 +77,23 @@ public abstract class MJTest {
                 Compiler.setInputFileName(inputFile.getName());
                 Compiler.setOutputFileName(inputFile.getName().concat(".out"));
                 Log4JUtils.INSTANCE.prepareLogFile(Logger.getRootLogger());
-                log.info("Testing " + testName() + " with input file '" + testDir + "/" + inputFile.getName() + "'.");
+                String testMessage = "Testing " + testName() + " with input file '" + testDir + "/" + inputFile.getName() + "'.";
+                logger.info(testMessage);
+                System.out.println(testMessage);
                 br = new BufferedReader(new FileReader(inputFile));
                 processTestFile(br);
+                System.out.println("Test finished!");
             }
         } catch (Exception e) {
-            log.error(e.getMessage(), e);
+            logger.error(e.getMessage(), e);
+            System.err.println("Test failed!");
         } finally {
             if (br != null) {
                 try {
                     br.close();
                 } catch (IOException e) {
-                    log.error(e.getMessage(), e);
+                    logger.error(e.getMessage(), e);
+                    System.err.println("Test failed!");
                 }
             }
         }

@@ -1,4 +1,4 @@
-package rs.ac.bg.etf.pp1;
+package rs.ac.bg.etf.pp1.test;
 
 import org.apache.log4j.xml.DOMConfigurator;
 import rs.ac.bg.etf.pp1.util.Log4JUtils;
@@ -6,7 +6,7 @@ import rs.ac.bg.etf.pp1.util.Log4JUtils;
 public class MJTestRunner {
 
     public static void main(String[] args) {
-        DOMConfigurator.configure(Log4JUtils.INSTANCE.findLoggerConfigFile());
+        DOMConfigurator.configure(Log4JUtils.INSTANCE.getLoggerConfigFileName());
         if (args.length > 2) {
             System.err.println("Invalid number of arguments: " + args.length + "!");
             return;

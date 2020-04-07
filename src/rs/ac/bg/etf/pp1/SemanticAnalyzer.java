@@ -26,6 +26,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 
     private static final String MAIN = "main";
     private static final String THIS = "this";
+    private static final String VMT_POINTER = "$vmt_pointer";
 
     private MJSemanticAnalyzerLogger logger = new MJSemanticAnalyzerLogger();
 
@@ -154,11 +155,12 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         // Check base type
         MJType baseType = MJTable.noType;
         if (optBaseType instanceof ClassBaseType) {
-            Type type = ((ClassBaseType) optBaseType).getType();
-            MJSymbol typeSym = MJTable.findSymbolInCurrentScope(type.getName());
-            if (!MJUtils.isSymbolValid(typeSym)) logError(info, MessageType.SYM_NOT_DEF, type.getName(), MJSymbol.Type);
-            else if (typeSym.getKind() != MJSymbol.Type || typeSym.getType().getKind() != MJType.Class) logError(info, MessageType.SYM_DEF_INV_KIND, null, type.getName(), "class type");
-            else baseType = typeSym.getType();
+            MJSymbol typeSym = ((ClassBaseType) optBaseType).getType().mjsymbol;
+            if (typeSym.getType().getKind() != MJType.Class) {
+                logError(info, MessageType.SYM_DEF_INV_KIND, null, typeSym.getName(), "class type");
+            } else {
+                baseType = typeSym.getType();
+            }
         }
         // If symbol with same name is already defined, make a new obj outside symbol table to continue analysis
         if (assertSymInCurrentScope(info, name)) {
@@ -169,9 +171,14 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         currentClassSym.setAbstract(abs);
         classCount++;
         MJTable.openScope(ScopeID.CLASS);
-        // Copy base type members to current scope
         if (baseType != MJTable.noType) {
-            for (MJSymbol sym : baseType.getMembersList()) MJTable.getCurrentScope().addToLocals(new MJSymbol(sym));
+            // Copy base type members to current scope
+            for (MJSymbol sym : baseType.getMembersList()) {
+                MJTable.getCurrentScope().addToLocals(new MJSymbol(sym));
+            }
+        } else {
+            // Insert VMT_POINTER as first field
+            MJTable.insert(MJSymbol.Fld, VMT_POINTER, MJTable.intType);
         }
     }
 
@@ -180,6 +187,14 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         // Add local symbols and close scope
         MJTable.chainLocalSymbols(currentClassSym.getType()); // set members
         MJTable.closeScope();
+        // Non-abstract class must implement all abstract methods
+        if (!currentClassSym.isAbstract()) {
+            for (MJSymbol sym : currentClassSym.getType().getMembersList()) {
+                if (sym.getKind() == MJSymbol.Meth && sym.isAbstract()) {
+                    logError(info, MessageType.UNIMPL_METHOD, currentClassSym.getName(), sym.getName());
+                }
+            }
+        }
         // Log object definition
         logInfo(info, MessageType.DEF_SYM, "class", currentClassSym);
         currentClassSym = MJTable.noSym;
@@ -827,6 +842,8 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 
         String name = designatorHeader.getName();
 
+//        System.out.print(name);
+
         designatorHeader.mjsymbol = MJTable.findSymbolInAnyScope(name);
         if (designatorHeader.mjsymbol == MJTable.noSym) {
             logError(designatorHeader, MessageType.SYM_NOT_DEF, null, name);
@@ -840,21 +857,43 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     }
 
     @Override
+    public void visit(NoDesignatorParts noDesignatorParts) {
+        logDebugNodeVisit(noDesignatorParts);
+//        System.out.println(noDesignatorParts.getParent());
+    }
+
+    @Override
+    public void visit(DesignatorParts designatorParts) {
+        logDebugNodeVisit(designatorParts);
+//        System.out.println(designatorParts.getParent());
+//        DesignatorPart part = designatorParts.getDesignatorPart();
+//        if (part instanceof MemberAccess) {
+//            System.out.print('.' + ((MemberAccess) part).getName());
+//        } else {
+//            System.out.print('[' + ((ElementAccess) part).getExpr().mjsymbol.toString("") + ']');
+//        }
+    }
+
+    /*@Override
     public void visit(MemberAccess memberAccess) {
         logDebugNodeVisit(memberAccess);
 
+        System.out.print('.' + memberAccess.getName());
     }
 
     @Override
     public void visit(ElementAccess elementAccess) {
         logDebugNodeVisit(elementAccess);
 
-    }
+        System.out.print('[' + elementAccess.getExpr().mjsymbol.toString("") + ']');
+    }*/
 
     @Override
     public void visit(Designator designator) {
         logDebugNodeVisit(designator);
 
         designator.mjsymbol = designator.getDesignatorHeader().mjsymbol;
+
+//        System.out.println();
     }
 }

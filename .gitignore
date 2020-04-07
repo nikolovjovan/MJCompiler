@@ -4,6 +4,7 @@
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
+.idea/**/codeStyles
 
 # Generated files
 .idea/**/contentModel.xml
@@ -35,10 +36,10 @@ logs/
 
 # Auto-generated source files
 spec/mjparser_astbuild.cup
-src/main/java/rs/ac/bg/etf/pp1/ast/
-src/main/java/rs/ac/bg/etf/pp1/MJLexer.java
-src/main/java/rs/ac/bg/etf/pp1/MJParser.java
-src/main/java/rs/ac/bg/etf/pp1/sym.java
+src/rs/ac/bg/etf/pp1/ast/
+src/rs/ac/bg/etf/pp1/MJLexer.java
+src/rs/ac/bg/etf/pp1/MJParser.java
+src/rs/ac/bg/etf/pp1/sym.java
 
 # Package files
 *.jar
