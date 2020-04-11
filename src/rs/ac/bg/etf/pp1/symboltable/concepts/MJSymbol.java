@@ -55,21 +55,23 @@ public class MJSymbol extends Obj {
 
     /******************** Constructors ****************************************************************/
 
-    public MJSymbol(MJSymbol obj) {
-        super(obj.getKind(), obj.getName(), obj.getType(), obj.getAdr(), obj.getLevel());
-        parent = obj.parent;
-        abstract_ = obj.abstract_;
-        access = obj.access;
-        readOnly = obj.readOnly;
+    public MJSymbol(int kind, String name, MJType type, int adr, int level) {
+        super(kind, name, type, adr, level);
     }
 
     public MJSymbol(int kind, String name, MJType type) {
         super(kind, name, type);
     }
 
-    public MJSymbol(int kind, String name, MJType type, int adr, int level) {
-        super(kind, name, type, adr, level);
+    public MJSymbol(MJSymbol obj, int kind) {
+        super(kind, obj.getName(), obj.getType(), obj.getAdr(), obj.getLevel());
+        parent = obj.parent;
+        abstract_ = obj.abstract_;
+        access = obj.access;
+        readOnly = obj.readOnly;
     }
+
+    public MJSymbol(MJSymbol obj) { this(obj, obj.getKind()); }
 
     /******************** Method overrides ************************************************************/
 
@@ -143,6 +145,7 @@ public class MJSymbol extends Obj {
             case Type:  return "Type";
             case Meth:  return abstract_ ? "Abstract method" : "Method";
             case Fld:   return "Field";
+            case Elem:  return "Array element";
             case Prog:  return "Program";
             default:    return "Unknown kind";
         }

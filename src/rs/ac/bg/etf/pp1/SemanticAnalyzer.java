@@ -2,6 +2,7 @@ package rs.ac.bg.etf.pp1;
 
 import rs.ac.bg.etf.pp1.ast.*;
 import rs.ac.bg.etf.pp1.helpers.ActualParametersStack;
+import rs.ac.bg.etf.pp1.helpers.MJConstants;
 import rs.ac.bg.etf.pp1.loggers.MJSemanticAnalyzerLogger;
 import rs.ac.bg.etf.pp1.loggers.MJSemanticAnalyzerLogger.MessageType;
 import rs.ac.bg.etf.pp1.symboltable.*;
@@ -19,14 +20,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     // TODO: Check for any inconsistencies for using MJTable.noSym! Make sure every production's mjsymbol field
     //       has value of MJTable.noSym if it is invalid!
 
-    // TODO: Add visit methods for all error productions to allow analysis to continue even though there may be
-    //       syntax errors!
-
     // TODO: Add member count checks using MJCode constants...
-
-    private static final String MAIN = "main";
-    private static final String THIS = "this";
-    private static final String VMT_POINTER = "$vmt_pointer";
 
     private MJSemanticAnalyzerLogger logger = new MJSemanticAnalyzerLogger();
 
@@ -47,6 +41,8 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 
     private MJSymbol currentMethodSym = MJTable.noSym;
     private boolean returnFound = false;
+
+    private String currentDesignatorName = "";
 
     private int ifDepth = 0;
     private int forDepth = 0;
@@ -85,7 +81,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     }
 
     private boolean assertSymInUse(SyntaxNode info, String symName) {
-        if (MJTable.findSymbolInAnyScope(symName) != MJTable.noSym) {
+        if (MJUtils.isSymbolValid(MJTable.findSymbolInAnyScope(symName))) {
             logError(info, MessageType.SYM_IN_USE, symName);
             return true;
         }
@@ -93,7 +89,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     }
 
     private boolean assertSymInCurrentScope(SyntaxNode info, String symName) {
-        if (MJTable.findSymbolInCurrentScope(symName) != MJTable.noSym) {
+        if (MJUtils.isSymbolValid(MJTable.findSymbolInCurrentScope(symName))) {
             logError(info, MessageType.SYM_IN_USE, symName);
             return true;
         }
@@ -110,7 +106,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 
     private boolean assertValueNotAssignableToSymbol(SyntaxNode info, MJSymbol sym) {
         if (!MJUtils.isValueAssignableToSymbol(sym)) {
-            logError(info, MessageType.SYM_DEF_INV_KIND, null, sym.getName(), "variable, a class field or an array element");
+            logError(info, MessageType.SYM_DEF_INV_KIND, null, sym.getName(), "a variable, a class field or an array element");
             return true;
         }
         return false;
@@ -121,9 +117,9 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     private void processAccessModifier(SyntaxNode info) {
         logDebugNodeVisit(info);
         // Set current access modifier
-        if (info instanceof PublicAccess) {
+        if (info instanceof PublicAccessModifier) {
             currentAccess = Access.PUBLIC;
-        } else if (info instanceof ProtectedAccess) {
+        } else if (info instanceof ProtectedAccessModifier) {
             currentAccess = Access.PROTECTED;
         } else {
             currentAccess = Access.PRIVATE;
@@ -157,7 +153,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         if (optBaseType instanceof ClassBaseType) {
             MJSymbol typeSym = ((ClassBaseType) optBaseType).getType().mjsymbol;
             if (typeSym.getType().getKind() != MJType.Class) {
-                logError(info, MessageType.SYM_DEF_INV_KIND, null, typeSym.getName(), "class type");
+                logError(info, MessageType.SYM_DEF_INV_KIND, null, typeSym.getName(), "a class");
             } else {
                 baseType = typeSym.getType();
             }
@@ -171,14 +167,14 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         currentClassSym.setAbstract(abs);
         classCount++;
         MJTable.openScope(ScopeID.CLASS);
-        if (baseType != MJTable.noType) {
+        if (MJUtils.isTypeValid(baseType)) {
             // Copy base type members to current scope
             for (MJSymbol sym : baseType.getMembersList()) {
                 MJTable.getCurrentScope().addToLocals(new MJSymbol(sym));
             }
         } else {
             // Insert VMT_POINTER as first field
-            MJTable.insert(MJSymbol.Fld, VMT_POINTER, MJTable.intType);
+            MJTable.insert(MJSymbol.Fld, MJConstants.VMT_POINTER, MJTable.intType);
         }
     }
 
@@ -204,7 +200,9 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         logDebugNodeVisit(info);
         MJType returnType = MJTable.voidType;
         // Check return type
-        if (!assertInvSym(info, retType.mjsymbol, "return type")) returnType = retType.mjsymbol.getType();
+        if (!assertInvSym(info, retType.mjsymbol, "return type")) {
+            returnType = retType.mjsymbol.getType();
+        }
         // TODO: Figure out inheritance and method overriding...
         // If symbol with same name is already defined, make a new obj outside symbol table to continue analysis
         if (assertSymInCurrentScope(info, name)) {
@@ -228,7 +226,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         currentFormalParamCount = 0;
         if (MJTable.getCurrentScope().getId() == ScopeID.CLASS_METHOD) {
             // Insert 'this' as implicit first formal parameter
-            MJTable.insert(MJSymbol.Var, THIS, currentClassSym.getType());
+            MJTable.insert(MJSymbol.Var, MJConstants.THIS, currentClassSym.getType());
             currentFormalParamCount++;
         }
         if (info instanceof MethodHeader) {
@@ -277,17 +275,17 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     /******************** Program *********************************************************************/
 
     @Override
-    public void visit(ProgramName programName) {
-        logDebugNodeVisit(programName);
+    public void visit(ProgramHeader programHeader) {
+        logDebugNodeVisit(programHeader);
         // Production variables
-        String name = programName.getName();
-        // Insert object into symbol table
-        if (MJTable.findSymbolInCurrentScope(name) == MJTable.noSym) {
-            programName.mjsymbol = MJTable.insert(MJSymbol.Prog, name, MJTable.noType);
-        } else {
-            logError(programName, MessageType.SYM_DEF_INV_KIND, null, name, "valid program name");
+        String name = programHeader.getName();
+        if (MJUtils.isSymbolValid(MJTable.findSymbolInCurrentScope(name))) {
+            logError(programHeader, MessageType.SYM_DEF_INV_KIND, null, name, "a valid program name");
             // Create a new object outside symbol table to continue analysis
-            programName.mjsymbol = new MJSymbol(MJSymbol.Prog, name, MJTable.noType);
+            programHeader.mjsymbol = new MJSymbol(MJSymbol.Prog, name, MJTable.noType);
+        } else {
+            // Insert object into symbol table
+            programHeader.mjsymbol = MJTable.insert(MJSymbol.Prog, name, MJTable.noType);
         }
         // Open program scope
         MJTable.openScope(ScopeID.PROGRAM);
@@ -297,16 +295,16 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     public void visit(Program program) {
         logDebugNodeVisit(program);
         // Add local symbols and close scope
-        MJSymbol programSym = program.getProgramName().mjsymbol;
+        MJSymbol programSym = program.getProgramHeader().mjsymbol;
         MJTable.chainLocalSymbols(programSym);
         // Check main method is defined and valid type
-        MJSymbol mainSym = MJTable.findSymbolInCurrentScope(MAIN);
-        if (mainSym == MJTable.noSym) {
+        MJSymbol mainSym = MJTable.findSymbolInCurrentScope(MJConstants.MAIN);
+        if (!MJUtils.isSymbolValid(mainSym)) {
             logError(program, MessageType.SYM_NOT_DEF, "Main method");
         } else if (mainSym.getKind() != MJSymbol.Meth) {
-            logError(program, MessageType.SYM_DEF_INV_KIND, null, MAIN, "method");
+            logError(program, MessageType.SYM_DEF_INV_KIND, null, MJConstants.MAIN, "a method");
         } else if (mainSym.getType() != MJTable.voidType || mainSym.getLevel() != 0) {
-            logError(program, MessageType.SYM_DEF_INV_KIND, "Main method defined but", "void method with zero arguments");
+            logError(program, MessageType.SYM_DEF_INV_KIND, "Main method defined but", "a void method with zero arguments");
         } else { // Log object definition
             logInfo(program, MessageType.DEF_SYM, "program", programSym);
         }
@@ -323,10 +321,10 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         String name = type.getName();
         // Search for defined type
         type.mjsymbol = MJTable.findSymbolInAnyScope(name);
-        if (type.mjsymbol == MJTable.noSym) {
+        if (!MJUtils.isSymbolValid(type.mjsymbol)) {
             logError(type, MessageType.SYM_NOT_DEF, name, MJSymbol.Type);
         } else if (type.mjsymbol.getKind() != MJSymbol.Type) {
-            logError(type, MessageType.SYM_DEF_INV_KIND, null, name, "type");
+            logError(type, MessageType.SYM_DEF_INV_KIND, null, name, "a type");
             type.mjsymbol = MJTable.noSym;
         }
         currentTypeSym = type.mjsymbol;
@@ -348,19 +346,22 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         // Get assigned value
         MJType assignedType;
         int assignedValue;
-        if (value instanceof ConstInt) {
+        if (value instanceof IntConst) {
             assignedType = MJTable.intType;
-            assignedValue = ((ConstInt) value).getValue();
-            if (((ConstInt) value).getOptSign() instanceof Negative) assignedValue *= -1;
-        } else if (value instanceof ConstChar) {
+            assignedValue = ((IntConst) value).getValue();
+            if (((IntConst) value).getOptSign() instanceof MinusSign) assignedValue *= -1;
+        } else if (value instanceof CharConst) {
             assignedType = MJTable.charType;
-            assignedValue = ((ConstChar) value).getValue();
+            assignedValue = ((CharConst) value).getValue();
         } else {
             assignedType = MJTable.boolType;
-            assignedValue = ((ConstBool) value).getValue() ? 1 : 0;
+            assignedValue = ((BoolConst) value).getValue() ? 1 : 0;
         }
         // Check if types match
-        if (!assignedType.equals(currentTypeSym.getType())) { logError(constAssignment, MessageType.INCOMPATIBLE_TYPES, "Constant type", "type of initial value"); return; }
+        if (!assignedType.equals(currentTypeSym.getType())) {
+            logError(constAssignment, MessageType.INCOMPATIBLE_TYPES, "Constant type", "type of initial value");
+            return;
+        }
         // Insert obj into symbol table
         MJSymbol sym = MJTable.insert(MJSymbol.Con, name, assignedType);
         sym.setAdr(assignedValue); // Set const value
@@ -372,18 +373,18 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     /******************** Access modifier *************************************************************/
 
     @Override
-    public void visit(PublicAccess publicAccess) {
-        processAccessModifier(publicAccess);
+    public void visit(PublicAccessModifier publicAccessModifier) {
+        processAccessModifier(publicAccessModifier);
     }
 
     @Override
-    public void visit(ProtectedAccess protectedAccess) {
-        processAccessModifier(protectedAccess);
+    public void visit(ProtectedAccessModifier protectedAccessModifier) {
+        processAccessModifier(protectedAccessModifier);
     }
 
     @Override
-    public void visit(PrivateAccess privateAccess) {
-        processAccessModifier(privateAccess);
+    public void visit(PrivateAccessModifier privateAccessModifier) {
+        processAccessModifier(privateAccessModifier);
     }
 
     /******************** Global variables ************************************************************/
@@ -412,6 +413,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     @Override
     public void visit(ClassHeader classHeader) {
         processClassHeader(classHeader, false, classHeader.getName(), classHeader.getOptClassBaseType());
+        classHeader.mjsymbol = currentClassSym;
     }
 
     @Override
@@ -423,7 +425,8 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 
     @Override
     public void visit(AbstractClassHeader abstractClassHeader) {
-        processClassHeader(abstractClassHeader,true, abstractClassHeader.getName(), abstractClassHeader.getOptClassBaseType());
+        processClassHeader(abstractClassHeader, true, abstractClassHeader.getName(), abstractClassHeader.getOptClassBaseType());
+        abstractClassHeader.mjsymbol = currentClassSym;
     }
 
     @Override
@@ -514,7 +517,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         logDebugNodeVisit(readStatement);
         // Parameter semantic check
         MJSymbol designatorSym = readStatement.getDesignator().mjsymbol;
-        if (designatorSym == MJTable.noSym) {
+        if (!MJUtils.isSymbolValid(designatorSym)) {
             logError(readStatement, MessageType.OTHER, "Designator object not initialized for read statement!");
         } else if (designatorSym.getKind() != MJSymbol.Var && designatorSym.getKind() != MJSymbol.Elem && designatorSym.getKind() != MJSymbol.Fld) {
             logError(readStatement, MessageType.OTHER, "Read statement parameter must be either a variable, array element or class field!");
@@ -527,27 +530,24 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     public void visit(PrintStatement printStatement) {
         logDebugNodeVisit(printStatement);
         // Parameter semantic check
-        PrintExpr ex = printStatement.getPrintExpr();
-        MJSymbol typeSym;
-        if (ex instanceof  PrintExpressionAndConst) typeSym = ((PrintExpressionAndConst) ex).getExpr().mjsymbol;
-        else typeSym = ((PrintOnlyExpression) ex).getExpr().mjsymbol;
-        assertTypeNotBasic(printStatement, typeSym.getType(), "Print statement parameter");
+        assertTypeNotBasic(printStatement, printStatement.getExpr().mjsymbol.getType(), "Print statement parameter");
     }
 
     @Override
     public void visit(ReturnStatement returnStatement) {
         logDebugNodeVisit(returnStatement);
-        if (currentMethodSym == MJTable.noSym) logError(returnStatement, MessageType.MISPLACED_RETURN);
-        else {
+        if (MJUtils.isSymbolValid(currentMethodSym)) {
             returnFound = true;
             /* TODO: Uncomment this once Expr is done...
             Struct retType = MJTable.voidType;
             if (returnStatement.getOptExpr() instanceof SingleExpression) {
                 retType = ((SingleExpression) returnStatement.getOptExpr()).getExpr().struct;
             }
-            if (!currentMethod.getType().compatibleWith(retType)) {
+            if (!retType.assignableTo(currentMethod.getType())) {
                 log_error(returnStatement, MessageType.INCOMPATIBLE_TYPES, "Return expression type", "method type");
             }*/
+        } else {
+            logError(returnStatement, MessageType.MISPLACED_RETURN);
         }
     }
 
@@ -585,9 +585,9 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         MJSymbol designatorSym = forEachStatementHeader.getDesignator().mjsymbol;
         // Iterator checks
         MJSymbol iteratorSym = MJTable.findSymbolInAnyScope(name);
-        boolean iteratorSymValid = iteratorSym != MJTable.noSym;
+        boolean iteratorSymValid = MJUtils.isSymbolValid(iteratorSym);
         if (!iteratorSymValid) logError(forEachStatementHeader, MessageType.SYM_NOT_DEF, name, MJSymbol.Var);
-        else if (iteratorSym.getKind() != MJSymbol.Var) logError(forEachStatementHeader, MessageType.SYM_DEF_INV_KIND, null, name, "local or global variable");
+        else if (iteratorSym.getKind() != MJSymbol.Var) logError(forEachStatementHeader, MessageType.SYM_DEF_INV_KIND, null, name, "a local or global variable");
         else if (iteratorSym.isReadOnly()) logError(forEachStatementHeader, MessageType.ITERATOR_IN_USE, name);
         // Array checks
         boolean designatorSymValid = !assertInvSym(forEachStatementHeader, designatorSym, "Designator");
@@ -610,7 +610,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         forDepth--;
         if (forDepth < 0) logError(forEachStatement, MessageType.INV_COMPILER_OBJ, "for depth", forDepth);
         MJSymbol iteratorSym = MJTable.findSymbolInAnyScope(forEachStatement.getForEachStatementHeader().getName());
-        if (iteratorSym != MJTable.noSym) {
+        if (MJUtils.isSymbolValid(iteratorSym)) {
             iteratorSym.setReadOnly(false); // set element back to read-write as we exited foreach statement
         }
     }
@@ -618,26 +618,26 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     /******************** Designator Statements *******************************************************/
 
     @Override
-    public void visit(AssignmentStatement assignmentStatement) {
-        logDebugNodeVisit(assignmentStatement);
-        MJSymbol designatorSym = assignmentStatement.getDesignator().mjsymbol;
-        MJSymbol expressionSym = ((AssignmentExpression) assignmentStatement.getAssignExpr()).getExpr().mjsymbol;
+    public void visit(AssignmentDesignatorStatement assignmentDesignatorStatement) {
+        logDebugNodeVisit(assignmentDesignatorStatement);
+        MJSymbol designatorSym = assignmentDesignatorStatement.getDesignator().mjsymbol;
+        MJSymbol expressionSym = ((AssignmentStatementFooter) assignmentDesignatorStatement.getAssignStatementFooter()).getExpr().mjsymbol;
         // Check if value can be assigned to designator
-        if (assertValueNotAssignableToSymbol(assignmentStatement, designatorSym)) return;
+        if (assertValueNotAssignableToSymbol(assignmentDesignatorStatement, designatorSym)) return;
         // Type checks
         if (!expressionSym.getType().assignableTo(designatorSym.getType())) {
-            logError(assignmentStatement, MessageType.INCOMPATIBLE_TYPES, MJType.getTypeName(expressionSym.getType()), MJType.getTypeName(designatorSym.getType()));
+            logError(assignmentDesignatorStatement, MessageType.INCOMPATIBLE_TYPES, MJType.getTypeName(expressionSym.getType()), MJType.getTypeName(designatorSym.getType()));
         }
     }
 
     @Override
-    public void visit(VariableIncrementStatement variableIncrementStatement) {
-        processVariableIncDec(variableIncrementStatement, variableIncrementStatement.getDesignator());
+    public void visit(IncrementDesignatorStatement incrementDesignatorStatement) {
+        processVariableIncDec(incrementDesignatorStatement, incrementDesignatorStatement.getDesignator());
     }
 
     @Override
-    public void visit(VariableDecrementStatement variableDecrementStatement) {
-        processVariableIncDec(variableDecrementStatement, variableDecrementStatement.getDesignator());
+    public void visit(DecrementDesignatorStatement decrementDesignatorStatement) {
+        processVariableIncDec(decrementDesignatorStatement, decrementDesignatorStatement.getDesignator());
     }
 
     /******************** Method call *************************************************************/
@@ -657,7 +657,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         if (assertInvSym(methodCall, methodSym, "Method call designator")) return;
 
         if (methodSym.getKind() != MJSymbol.Meth) {
-            logError(methodCall, MessageType.SYM_DEF_INV_KIND, null, methodSym.getName(), "method");
+            logError(methodCall, MessageType.SYM_DEF_INV_KIND, null, methodSym.getName(), "a method");
             return;
         }
 
@@ -705,52 +705,99 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     /******************** Conditions ******************************************************************/
 
     @Override
-    public void visit(SimpleFact simpleFact) {
-        logDebugNodeVisit(simpleFact);
-        simpleFact.mjsymbol = simpleFact.getExpr().mjsymbol;
+    public void visit(SimpleConditionFact simpleConditionFact) {
+        logDebugNodeVisit(simpleConditionFact);
+        simpleConditionFact.mjsymbol = simpleConditionFact.getExpr().mjsymbol;
         // Check if type is boolean
-        if (!simpleFact.mjsymbol.getType().equals(MJTable.boolType)) {
-            logError(simpleFact, MessageType.INCOMPATIBLE_TYPES, MJType.getTypeName(simpleFact.mjsymbol.getType()), MJType.getTypeName(MJTable.boolType));
+        if (!simpleConditionFact.mjsymbol.getType().equals(MJTable.boolType)) {
+            logError(simpleConditionFact, MessageType.INCOMPATIBLE_TYPES, MJType.getTypeName(simpleConditionFact.mjsymbol.getType()), MJType.getTypeName(MJTable.boolType));
         }
     }
 
     @Override
-    public void visit(ComplexFact complexFact) {
-        logDebugNodeVisit(complexFact);
-        MJType tl = complexFact.getExpr().mjsymbol.getType();
-        MJType tr = complexFact.getExpr().mjsymbol.getType();
+    public void visit(ComplexConditionFact complexConditionFact) {
+        logDebugNodeVisit(complexConditionFact);
+        MJType tl = complexConditionFact.getExpr().mjsymbol.getType();
+        MJType tr = complexConditionFact.getExpr().mjsymbol.getType();
         // Check if types are compatible
         if (!tl.compatibleWith(tr)) {
-            logError(complexFact, MessageType.INCOMPATIBLE_TYPES, MJType.getTypeName(tl), MJType.getTypeName(tr));
+            logError(complexConditionFact, MessageType.INCOMPATIBLE_TYPES, MJType.getTypeName(tl), MJType.getTypeName(tr));
             return;
         }
         if (tl.getKind() == MJType.Array || tl.getKind() == MJType.Class) {
-            Relop rel = complexFact.getRelop();
+            Relop rel = complexConditionFact.getRelop();
             // Convert rel to string
             String op;
-            if (rel instanceof EqualityOperator) {
+            if (rel instanceof EqOperator) {
                 op = "==";
-            } else if (rel instanceof InequalityOperator) {
+            } else if (rel instanceof NeqOperator) {
                 op = "!=";
-            } else if (rel instanceof GreaterThanOperator) {
+            } else if (rel instanceof GrtOperator) {
                 op = ">";
-            } else if (rel instanceof GreaterOrEqualOperator) {
+            } else if (rel instanceof GeqOperator) {
                 op = ">=";
-            } else if (rel instanceof LessThanOperator) {
+            } else if (rel instanceof LssOperator) {
                 op = "<";
             } else {
                 op = "<=";
             }
-            // Arrays and classes can only use '!=' or '==' relational operators
-            if (!(rel instanceof EqualityOperator) && !(rel instanceof InequalityOperator)) {
-                logError(complexFact, MessageType.UNDEF_OP, op, MJType.getTypeName(tl), MJType.getTypeName(tr));
+            // Reference types (arrays and class objects) can only use '!=' or '==' relational operators
+            if (!(rel instanceof EqOperator) && !(rel instanceof NeqOperator)) {
+                logError(complexConditionFact, MessageType.UNDEF_OP, op, MJType.getTypeName(tl), MJType.getTypeName(tr));
             }
         }
     }
 
-    // TODO: Look into whether conditions need to be further evaluated
-
     /******************** Expressions *****************************************************************/
+
+    //------------------- Expressions ----------------------------------------------------------------//
+
+    @Override
+    public void visit(AssignmentExpression assignmentExpression) {
+        logDebugNodeVisit(assignmentExpression);
+        // TODO: Implement method
+    }
+
+    @Override
+    public void visit(LeftExpression leftExpression) {
+        logDebugNodeVisit(leftExpression);
+        // Propagate inner symbol
+        leftExpression.mjsymbol = leftExpression.getLeftExpr().mjsymbol;
+    }
+
+    @Override
+    public void visit(MultipleTermsExpression multipleTermsExpression) {
+        logDebugNodeVisit(multipleTermsExpression);
+        // TODO: Implement method
+    }
+
+    @Override
+    public void visit(SingleTermExpression singleTermExpression) {
+        logDebugNodeVisit(singleTermExpression);
+        OptSign sign = singleTermExpression.getOptSign();
+        if (sign instanceof MinusSign) {
+            // Cannot assign a value to negative symbol, so change symbol kind to MJSymbol.Con
+            singleTermExpression.mjsymbol = new MJSymbol(singleTermExpression.getTerm().mjsymbol, MJSymbol.Con);
+        } else {
+            // Propagate inner symbol
+            singleTermExpression.mjsymbol = singleTermExpression.getTerm().mjsymbol;
+        }
+    }
+
+    //------------------- Terms ----------------------------------------------------------------------//
+
+    @Override
+    public void visit(MultipleFactorsTerm multipleFactorsTerm) {
+        logDebugNodeVisit(multipleFactorsTerm);
+        // TODO: Implement method
+    }
+
+    @Override
+    public void visit(SingleFactorTerm singleFactorTerm) {
+        logDebugNodeVisit(singleFactorTerm);
+        // Propagate inner symbol
+        singleFactorTerm.mjsymbol = singleFactorTerm.getFactor().mjsymbol;
+    }
 
     //------------------- Factors --------------------------------------------------------------------//
 
@@ -763,137 +810,143 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     @Override
     public void visit(MethodCallFactor methodCallFactor) {
         logDebugNodeVisit(methodCallFactor);
-        methodCallFactor.mjsymbol = new MJSymbol(methodCallFactor.getMethodCall().mjsymbol);
+        // Make a copy of method return type symbol with kind = MJSymbol.Con to prevent assignment
+        methodCallFactor.mjsymbol = new MJSymbol(methodCallFactor.getMethodCall().mjsymbol, MJSymbol.Con);
     }
 
     @Override
     public void visit(ConstantFactor constantFactor) {
         logDebugNodeVisit(constantFactor);
+        String name;
+        MJType type;
+        int adr;
         ConstFactor cf = constantFactor.getConstFactor();
-        if (cf instanceof ConstFactorInt) {
-            constantFactor.mjsymbol = MJTable.intTypeSym;
-        } else if (cf instanceof ConstFactorChar) {
-            constantFactor.mjsymbol = MJTable.charTypeSym;
+        if (cf instanceof IntConstantFactor) {
+            Integer value = ((IntConstantFactor) cf).getValue();
+            name = String.valueOf(value);
+            type = MJTable.intType;
+            adr = value;
+        } else if (cf instanceof CharConstantFactor) {
+            Character value = ((CharConstantFactor) cf).getValue();
+            name = String.valueOf(value);
+            type = MJTable.charType;
+            adr = value;
         } else {
-            constantFactor.mjsymbol = MJTable.boolTypeSym;
+            Boolean value = ((BoolConstantFactor) cf).getValue();
+            name = String.valueOf(value);
+            type = MJTable.boolType;
+            adr = value ? 1 : 0;
+        }
+        // Make a new symbol with actual value as it will be used by code generator
+        constantFactor.mjsymbol = new MJSymbol(MJSymbol.Con, name, type, adr, 0);
+    }
+
+    @Override
+    public void visit(AllocatorFactor allocatorFactor) {
+        logDebugNodeVisit(allocatorFactor);
+        MJSymbol typeSym = allocatorFactor.getType().mjsymbol;
+        OptArrayIndexer arraySize = allocatorFactor.getOptArrayIndexer();
+        if (arraySize instanceof SingleArrayIndexer) { // array allocator
+            MJSymbol expressionSym = ((SingleArrayIndexer) arraySize).getArrayIndexer().getExpr().mjsymbol;
+            if (expressionSym.getType() != MJTable.intType) {
+                logError(allocatorFactor, MessageType.OTHER, "Array size expression must be int type!");
+                allocatorFactor.mjsymbol = MJTable.noSym;
+            } else {
+                allocatorFactor.mjsymbol = new MJSymbol(MJSymbol.Con, "", new MJType(MJType.Array, typeSym.getType()));
+            }
+        } else { // object allocator
+            if (typeSym.getType().getKind() != MJType.Class || typeSym.isAbstract()) {
+                logError(allocatorFactor, MessageType.OTHER, "Object type must be a non-abstract class type!");
+                allocatorFactor.mjsymbol = MJTable.noSym;
+            } else {
+                allocatorFactor.mjsymbol = new MJSymbol(MJSymbol.Con, "", typeSym.getType());
+            }
         }
     }
 
     @Override
-    public void visit(ObjectAllocateFactor objectAllocateFactor) {
-        logDebugNodeVisit(objectAllocateFactor);
-        MJSymbol typeSym = objectAllocateFactor.getType().mjsymbol;
-        if (typeSym.getType().getKind() != MJType.Class || typeSym.isAbstract()) {
-            logError(objectAllocateFactor, MessageType.OTHER, "Object type must be a non-abstract class type!");
-            objectAllocateFactor.mjsymbol = MJTable.noSym;
-        } else {
-            objectAllocateFactor.mjsymbol = new MJSymbol(MJSymbol.Var, "", typeSym.getType());
-        }
-    }
-
-    @Override
-    public void visit(ArrayAllocateFactor arrayAllocateFactor) {
-        logDebugNodeVisit(arrayAllocateFactor);
-        MJSymbol typeSym = arrayAllocateFactor.getType().mjsymbol;
-        MJSymbol expressionSym = arrayAllocateFactor.getExpr().mjsymbol;
-        if (expressionSym.getType() != MJTable.intType) {
-            arrayAllocateFactor.mjsymbol = MJTable.noSym;
-        } else {
-            arrayAllocateFactor.mjsymbol = new MJSymbol(MJSymbol.Var, "", new MJType(MJType.Array, typeSym.getType()));
-        }
-    }
-
-    @Override
-    public void visit(ParenthesesExpressionFactor parenthesesExpressionFactor) {
-        logDebugNodeVisit(parenthesesExpressionFactor);
-        parenthesesExpressionFactor.mjsymbol = parenthesesExpressionFactor.getExpr().mjsymbol;
-    }
-
-    @Override
-    public void visit(MulopExpressions mulopExpressions) {
-        logDebugNodeVisit(mulopExpressions);
-    }
-
-    //------------------- Terms ----------------------------------------------------------------------//
-
-    @Override
-    public void visit(Term term) {
-        logDebugNodeVisit(term);
-        term.mjsymbol = term.getFactor().mjsymbol;
-    }
-
-    @Override
-    public void visit(AddopExpressions addopExpressions) {
-        logDebugNodeVisit(addopExpressions);
-
-    }
-
-    @Override
-    public void visit(Expression expression) {
-        logDebugNodeVisit(expression);
-        expression.mjsymbol = expression.getTerm().mjsymbol;
+    public void visit(InnerExpressionFactor innerExpressionFactor) {
+        logDebugNodeVisit(innerExpressionFactor);
+        innerExpressionFactor.mjsymbol = innerExpressionFactor.getExpr().mjsymbol;
     }
 
     /******************** Designators *****************************************************************/
 
     @Override
-    public void visit(DesignatorHeader designatorHeader) {
-        logDebugNodeVisit(designatorHeader);
-
-        String name = designatorHeader.getName();
-
-//        System.out.print(name);
-
-        designatorHeader.mjsymbol = MJTable.findSymbolInAnyScope(name);
-        if (designatorHeader.mjsymbol == MJTable.noSym) {
-            logError(designatorHeader, MessageType.SYM_NOT_DEF, null, name);
-        }
-
-        if (MJTable.getCurrentScope().getId() == ScopeID.CLASS_METHOD) {
-
-        } else { // ScopeID.GLOBAL_METHOD
-
+    public void visit(IdentifierDesignator simpleDesignator) {
+        logDebugNodeVisit(simpleDesignator);
+        simpleDesignator.mjsymbol = MJTable.noSym;
+        currentDesignatorName = "";
+        String name = simpleDesignator.getName();
+        MJSymbol sym = MJTable.findSymbolInAnyScope(name);
+        if (!MJUtils.isSymbolValid(sym)) {
+            logError(simpleDesignator, MessageType.SYM_NOT_DEF, null, name);
+        } else if (MJUtils.isSymbolValid(currentClassSym) && !MJUtils.isSymbolAccessibleInClassMethod(currentClassSym, sym) ||
+                !MJUtils.isSymbolAccessibleInGlobalMethod(sym)) {
+            logError(simpleDesignator, MessageType.INACCESSIBLE_SYM, name);
+        } else {
+            simpleDesignator.mjsymbol = sym;
+            currentDesignatorName = name;
         }
     }
 
     @Override
-    public void visit(NoDesignatorParts noDesignatorParts) {
-        logDebugNodeVisit(noDesignatorParts);
-//        System.out.println(noDesignatorParts.getParent());
+    public void visit(MemberAccessDesignator memberAccessDesignator) {
+        logDebugNodeVisit(memberAccessDesignator);
+        MJSymbol parentSym = memberAccessDesignator.getDesignator().mjsymbol;
+        if (!MJUtils.isSymbolValid(parentSym)) return;
+        if (!MJUtils.isValueAssignableToSymbol(parentSym)) {
+            logError(memberAccessDesignator, MessageType.SYM_DEF_INV_KIND, "Designator", currentDesignatorName, "a variable, a field or an array element");
+            memberAccessDesignator.mjsymbol = MJTable.noSym;
+            return;
+        }
+        if (parentSym.getType().getKind() != MJType.Class) {
+            logError(memberAccessDesignator, MessageType.SYM_DEF_INV_KIND, "Designator", currentDesignatorName, "a class instance");
+            memberAccessDesignator.mjsymbol = MJTable.noSym;
+            return;
+        }
+        String name = memberAccessDesignator.getName();
+        MJSymbol memberSym = (MJSymbol) parentSym.getType().getMembersTable().searchKey(name);
+        if (!MJUtils.isSymbolValid(memberSym) && MJUtils.isSymbolValid(currentClassSym) &&
+                parentSym.getType().equals(currentClassSym.getType())) {
+            memberSym = MJTable.getCurrentScope().getOuter().findSymbol(name);
+        }
+        if (!MJUtils.isSymbolValid(memberSym)) {
+            logError(memberAccessDesignator, MessageType.OTHER, "Designator '" + currentDesignatorName + "' has no member named '" + name + "'!");
+            memberAccessDesignator.mjsymbol = MJTable.noSym;
+        } else if (MJUtils.isSymbolValid(currentClassSym) && !MJUtils.isSymbolAccessibleInClassMethod(currentClassSym, memberSym) ||
+                !MJUtils.isSymbolAccessibleInGlobalMethod(memberSym)) {
+            logError(memberAccessDesignator, MessageType.INACCESSIBLE_SYM, currentDesignatorName + '.' + name);
+            memberAccessDesignator.mjsymbol = MJTable.noSym;
+        } else {
+            memberAccessDesignator.mjsymbol = memberSym;
+            currentDesignatorName += '.' + name;
+        }
     }
 
     @Override
-    public void visit(DesignatorParts designatorParts) {
-        logDebugNodeVisit(designatorParts);
-//        System.out.println(designatorParts.getParent());
-//        DesignatorPart part = designatorParts.getDesignatorPart();
-//        if (part instanceof MemberAccess) {
-//            System.out.print('.' + ((MemberAccess) part).getName());
-//        } else {
-//            System.out.print('[' + ((ElementAccess) part).getExpr().mjsymbol.toString("") + ']');
-//        }
-    }
-
-    /*@Override
-    public void visit(MemberAccess memberAccess) {
-        logDebugNodeVisit(memberAccess);
-
-        System.out.print('.' + memberAccess.getName());
-    }
-
-    @Override
-    public void visit(ElementAccess elementAccess) {
-        logDebugNodeVisit(elementAccess);
-
-        System.out.print('[' + elementAccess.getExpr().mjsymbol.toString("") + ']');
-    }*/
-
-    @Override
-    public void visit(Designator designator) {
-        logDebugNodeVisit(designator);
-
-        designator.mjsymbol = designator.getDesignatorHeader().mjsymbol;
-
-//        System.out.println();
+    public void visit(ElementAccessDesignator elementAccessDesignator) {
+        logDebugNodeVisit(elementAccessDesignator);
+        MJSymbol parentSym = elementAccessDesignator.getDesignator().mjsymbol;
+        if (!MJUtils.isSymbolValid(parentSym)) return;
+        if (!MJUtils.isValueAssignableToSymbol(parentSym)) {
+            logError(elementAccessDesignator, MessageType.SYM_DEF_INV_KIND, "Designator", currentDesignatorName, "a variable, a field or an array element");
+            elementAccessDesignator.mjsymbol = MJTable.noSym;
+            return;
+        }
+        if (parentSym.getType().getKind() != MJType.Array) {
+            logError(elementAccessDesignator, MessageType.SYM_DEF_INV_KIND, "Designator", currentDesignatorName, "an array");
+            elementAccessDesignator.mjsymbol = MJTable.noSym;
+            return;
+        }
+        MJSymbol exprSym = elementAccessDesignator.getArrayIndexer().getExpr().mjsymbol;
+        if (exprSym.getType() != MJTable.intType) {
+            logError(elementAccessDesignator, MessageType.OTHER, "Array index expression must be int type!");
+            elementAccessDesignator.mjsymbol = MJTable.noSym;
+            return;
+        }
+        currentDesignatorName += "[<expr>]";
+        elementAccessDesignator.mjsymbol = new MJSymbol(MJSymbol.Elem, currentDesignatorName, parentSym.getType().getElemType());
+        // No need to check array element visibility
     }
 }

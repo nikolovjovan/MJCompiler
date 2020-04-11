@@ -11,7 +11,7 @@ public class MJParserLogger extends MJLogger {
         INV_ABS_CLS_METH_DECL,  // Params:
         INV_FORMAL_PARAM,       // Params:
         INV_LOCAL_VAR_DECL,     // Params:
-        INV_ASSIGN_EXPR,        // Params:
+        INV_ASSIGN_STMT_FTR,    // Params:
         INV_FOR_STMT_COND,      // Params:
         /* FATAL MESSAGES */
         IRR_SYNTAX_ERROR,       // Params:
@@ -34,7 +34,7 @@ public class MJParserLogger extends MJLogger {
             case INV_ABS_CLS_METH_DECL: return "Invalid abstract class method declaration! Parsing continued...";
             case INV_FORMAL_PARAM:      return "Invalid formal parameter! Parsing continued...";
             case INV_LOCAL_VAR_DECL:    return "Invalid local variable declaration! Parsing continued...";
-            case INV_ASSIGN_EXPR:       return "Invalid assignment expression! Parsing continued...";
+            case INV_ASSIGN_STMT_FTR:   return "Invalid assignment statement! Parsing continued...";
             case INV_FOR_STMT_COND:     return "Invalid for statement condition! Parsing continued...";
             /* FATAL MESSAGES */
             case IRR_SYNTAX_ERROR:      return "Irrecoverable syntax error! Parsing aborted!";

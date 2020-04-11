@@ -1,11 +1,13 @@
 package rs.ac.bg.etf.pp1;
 
 import rs.ac.bg.etf.pp1.ast.*;
+import rs.ac.bg.etf.pp1.helpers.MJConstants;
 import rs.ac.bg.etf.pp1.loggers.MJCodeGeneratorLogger;
 import rs.ac.bg.etf.pp1.loggers.MJCodeGeneratorLogger.MessageType;
 import rs.ac.bg.etf.pp1.mj.runtime.MJCode;
 import rs.ac.bg.etf.pp1.symboltable.MJTable;
 import rs.ac.bg.etf.pp1.symboltable.concepts.MJSymbol;
+import rs.ac.bg.etf.pp1.symboltable.concepts.MJType;
 import rs.ac.bg.etf.pp1.util.MJUtils;
 
 public class CodeGenerator extends VisitorAdaptor {
@@ -16,6 +18,9 @@ public class CodeGenerator extends VisitorAdaptor {
 
     private int errorCount = 0;
     private int mainPC;
+
+    private MJSymbol currentClassSym = MJTable.noSym;
+    private MJSymbol thisObjectSym = MJTable.noSym;
 
     /******************** Public methods / constructors ***********************************************/
 
@@ -48,10 +53,10 @@ public class CodeGenerator extends VisitorAdaptor {
     /******************** Program *********************************************************************/
 
     @Override
-    public void visit(ProgramName programName) {
+    public void visit(ProgramHeader programHeader) {
         // Set generator in MJCode to allow it to use logError
         MJCode.setGenerator(this);
-        logDebugNodeVisit(programName);
+        logDebugNodeVisit(programHeader);
         // Generate code for predeclared method: chr
         MJTable.chrMethodSym.setAdr(MJCode.pc);
         MJCode.put(MJCode.return_);
@@ -67,9 +72,37 @@ public class CodeGenerator extends VisitorAdaptor {
     @Override
     public void visit(Program program) {
         logDebugNodeVisit(program);
-        if (MJCode.pc >= MJCode.MAX_CODE_SIZE) {
-            logError(program, MessageType.INV_PROG_SIZE, MJCode.pc, MJCode.MAX_CODE_SIZE);
+        if (MJCode.pc >= MJConstants.MAX_CODE_SIZE) {
+            logError(program, MessageType.INV_PROG_SIZE, MJCode.pc, MJConstants.MAX_CODE_SIZE);
         }
+    }
+
+    /******************** Class ***********************************************************************/
+
+    @Override
+    public void visit(ClassHeader classHeader) {
+        logDebugNodeVisit(classHeader);
+        currentClassSym = classHeader.mjsymbol;
+    }
+
+    @Override
+    public void visit(ClassDeclaration classDeclaration) {
+        logDebugNodeVisit(classDeclaration);
+        currentClassSym = MJTable.noSym;
+    }
+
+    /******************** Abstract class **************************************************************/
+
+    @Override
+    public void visit(AbstractClassHeader abstractClassHeader) {
+        logDebugNodeVisit(abstractClassHeader);
+        currentClassSym = abstractClassHeader.mjsymbol;
+    }
+
+    @Override
+    public void visit(AbstractClassDeclaration abstractClassDeclaration) {
+        logDebugNodeVisit(abstractClassDeclaration);
+        currentClassSym = MJTable.noSym;
     }
 
     /******************** Method **********************************************************************/
@@ -91,6 +124,7 @@ public class CodeGenerator extends VisitorAdaptor {
     @Override
     public void visit(MethodDeclaration methodDeclaration) {
         logDebugNodeVisit(methodDeclaration);
+        // TODO: Add trap 1
         // Generate exit
         MJCode.put(MJCode.exit);
         MJCode.put(MJCode.return_);
@@ -113,34 +147,27 @@ public class CodeGenerator extends VisitorAdaptor {
     @Override
     public void visit(PrintStatement printStatement) {
         logDebugNodeVisit(printStatement);
-        PrintExpr printExpr = printStatement.getPrintExpr();
-
-        MJSymbol typeSym;
+        OptPrintWidth optPrintWidth = printStatement.getOptPrintWidth();
         int width = 0;
-
-        if (printExpr instanceof PrintOnlyExpression) {
-            typeSym = ((PrintOnlyExpression) printExpr).getExpr().mjsymbol;
-        } else {
-            typeSym = ((PrintExpressionAndConst) printExpr).getExpr().mjsymbol;
-            width = ((PrintExpressionAndConst) printExpr).getConstValue();
+        if (optPrintWidth instanceof PrintWidth) {
+            width = ((PrintWidth) optPrintWidth).getWidth();
         }
-
         MJCode.loadConst(width);
-        MJCode.put(typeSym.getType() == MJTable.charType ? MJCode.bprint : MJCode.print);
+        MJCode.put(printStatement.getExpr().mjsymbol.getType() == MJTable.charType ? MJCode.bprint : MJCode.print);
     }
 
     /******************** Designator Statements *******************************************************/
 
     @Override
-    public void visit(AssignmentStatement assignmentStatement) {
-        logDebugNodeVisit(assignmentStatement);
-        MJCode.store(assignmentStatement.getDesignator().mjsymbol);
+    public void visit(AssignmentDesignatorStatement assignmentDesignatorStatement) {
+        logDebugNodeVisit(assignmentDesignatorStatement);
+        MJCode.store(assignmentDesignatorStatement.getDesignator().mjsymbol);
     }
 
     @Override
-    public void visit(VariableIncrementStatement variableIncrementStatement) {
-        logDebugNodeVisit(variableIncrementStatement);
-        MJSymbol designatorSym = variableIncrementStatement.getDesignator().mjsymbol;
+    public void visit(IncrementDesignatorStatement incrementDesignatorStatement) {
+        logDebugNodeVisit(incrementDesignatorStatement);
+        MJSymbol designatorSym = incrementDesignatorStatement.getDesignator().mjsymbol;
         if (designatorSym.getKind() == MJSymbol.Var && designatorSym.getLevel() == 1) { // local variables
             MJCode.put(MJCode.inc);
             MJCode.put(designatorSym.getAdr());
@@ -154,9 +181,9 @@ public class CodeGenerator extends VisitorAdaptor {
     }
 
     @Override
-    public void visit(VariableDecrementStatement variableDecrementStatement) {
-        logDebugNodeVisit(variableDecrementStatement);
-        MJSymbol designatorSym = variableDecrementStatement.getDesignator().mjsymbol;
+    public void visit(DecrementDesignatorStatement decrementDesignatorStatement) {
+        logDebugNodeVisit(decrementDesignatorStatement);
+        MJSymbol designatorSym = decrementDesignatorStatement.getDesignator().mjsymbol;
         if (designatorSym.getKind() == MJSymbol.Var && designatorSym.getLevel() == 1) { // local variables
             MJCode.put(MJCode.inc);
             MJCode.put(designatorSym.getAdr());
@@ -169,7 +196,7 @@ public class CodeGenerator extends VisitorAdaptor {
         }
     }
 
-    /******************** Method call *************************************************************/
+    /******************** Method call *****************************************************************/
 
     @Override
     public void visit(MethodCall methodCall) {
@@ -186,24 +213,64 @@ public class CodeGenerator extends VisitorAdaptor {
     @Override
     public void visit(DesignatorFactor designatorFactor) {
         logDebugNodeVisit(designatorFactor);
-        // TODO: Remove this check once semantic analysis ensures designator symbol is valid
-        if (MJUtils.isSymbolValid(designatorFactor.mjsymbol)) {
-            MJCode.load(designatorFactor.mjsymbol);
-        }
+        if (!MJUtils.isSymbolValid(designatorFactor.mjsymbol)) return;
+        MJCode.load(designatorFactor.mjsymbol);
     }
 
     @Override
     public void visit(ConstantFactor constantFactor) {
         logDebugNodeVisit(constantFactor);
-        ConstFactor cf = constantFactor.getConstFactor();
-        int value;
-        if (cf instanceof ConstFactorInt) {
-            value = ((ConstFactorInt) cf).getValue();
-        } else if (cf instanceof ConstFactorChar) {
-            value = ((ConstFactorChar) cf).getValue();
-        } else {
-            value = ((ConstFactorBool) cf).getValue() ? 1 : 0;
+        MJCode.load(constantFactor.mjsymbol);
+    }
+
+    @Override
+    public void visit(AllocatorFactor allocatorFactor) {
+        logDebugNodeVisit(allocatorFactor);
+        if (!MJUtils.isSymbolValid(allocatorFactor.mjsymbol)) return;
+        MJSymbol sym = allocatorFactor.mjsymbol;
+        if (allocatorFactor.getOptArrayIndexer() instanceof SingleArrayIndexer) { // array allocator
+            MJCode.put(MJCode.newarray);
+            MJCode.put(sym.getType() == MJTable.charType ? 0 : 1);
+        } else { // object allocator
+            MJCode.put(MJCode.new_);
+            // Object size = number of fields * 4B
+            MJCode.put2(sym.getType().getNumberOfFields() * 4);
+            // Initialize virtual method table pointer
+            MJCode.put(MJCode.dup);
+            MJCode.loadConst(sym.getAdr());
+            MJCode.store(sym.getType().getMembersTable().searchKey(MJConstants.VMT_POINTER));
         }
-        MJCode.load(new MJSymbol(MJSymbol.Con, null, MJTable.charType, value, 0));
+    }
+
+    /******************** Designators *****************************************************************/
+
+    // TODO: Test this solution and possibly tweak it...
+
+    @Override
+    public void visit(IdentifierDesignator identifierDesignator) {
+        logDebugNodeVisit(identifierDesignator);
+        if (!MJUtils.isSymbolValid(identifierDesignator.mjsymbol)) return;
+        MJSymbol designatorSym = identifierDesignator.mjsymbol;
+        if (MJUtils.isSymbolValid(currentClassSym) && (designatorSym.getKind() == MJSymbol.Fld ||
+                designatorSym.getKind() == MJSymbol.Meth)) {
+            MJSymbol this_ = MJTable.findSymbolInAnyScope(MJConstants.THIS);
+            MJCode.load(this_);
+        }
+        if (designatorSym.getType().getKind() == MJType.Array) {
+            MJCode.load(designatorSym);
+        }
+    }
+
+    @Override
+    public void visit(MemberAccessDesignator memberAccessDesignator) {
+        logDebugNodeVisit(memberAccessDesignator);
+        if (!MJUtils.isSymbolValid(memberAccessDesignator.mjsymbol)) return;
+        MJSymbol designatorSym = memberAccessDesignator.getDesignator().mjsymbol;
+        if (MJUtils.isValueAssignableToSymbol(designatorSym)) {
+            MJCode.load(designatorSym);
+        }
+        if (designatorSym.getType().getKind() == MJType.Array) {
+            MJCode.load(designatorSym);
+        }
     }
 }

@@ -30,6 +30,7 @@ public class MJSemanticAnalyzerLogger extends MJLogger {
         INV_ACT_PARAM,          // Params: Integer index
         UNDEF_OP,               // Params: String op, String type1Name, String type2Name
         UNIMPL_METHOD,          // Params: String className, String methodName
+        INACCESSIBLE_SYM,       // Params: String symName
         /* ANY OTHER MESSAGE */
         OTHER                   // Params: String message
     }
@@ -77,7 +78,7 @@ public class MJSemanticAnalyzerLogger extends MJLogger {
                 s1 = s1 == null ? "" : s1 + ' ';
                 s2 = s2 == null ? "" : '\'' + s2 + "' ";
                 String s3 = getNextContextObject(String.class, context);
-                return s1.isEmpty() && s2.isEmpty() || s3 == null ? invalidMessage : s1 + s2 + "is not a " + s3 + '!';
+                return s1.isEmpty() && s2.isEmpty() || s3 == null ? invalidMessage : s1 + s2 + "is not " + s3 + '!';
             }
             case SYM_IN_USE: {
                 String symName = getNextContextObject(String.class, context);
@@ -122,6 +123,10 @@ public class MJSemanticAnalyzerLogger extends MJLogger {
                 String className = getNextContextObject(String.class, context);
                 String methodName = getNextContextObject(String.class, context);
                 return className == null || methodName == null ? invalidMessage : "Non-abstract class '" + className + "' must implement abstract method '" + methodName + "'!";
+            }
+            case INACCESSIBLE_SYM: {
+                String symName = getNextContextObject(String.class, context);
+                return symName == null ? invalidMessage : "Symbol '" + symName + "' is not accessible in current scope!";
             }
             /* ANY OTHER MESSAGE */
             case OTHER: {

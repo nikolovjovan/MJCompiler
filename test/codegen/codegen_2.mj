@@ -12,7 +12,11 @@ program level_a_code_generation
 {
     void main()
         int a, b;
+        int arr[];
     {
+        arr = new int[N];
+        arr[5] = 12;
+        print(arr[5]);
         c = chr(65);
         print(c);
         print(eol);
@@ -35,6 +39,5 @@ program level_a_code_generation
         print(y);
         print(eol);
         // TODO: add expressions
-        // TODO: add arrays
     }
 }

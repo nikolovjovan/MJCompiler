@@ -1,5 +1,6 @@
 package rs.ac.bg.etf.pp1.symboltable.concepts;
 
+import rs.ac.bg.etf.pp1.symboltable.MJTable;
 import rs.ac.bg.etf.pp1.util.MJUtils;
 import rs.etf.pp1.symboltable.*;
 import rs.etf.pp1.symboltable.concepts.*;
@@ -97,6 +98,23 @@ public class MJType extends Struct {
     }
 
     @Override
+    public boolean compatibleWith(Struct other) {
+        if (!(other instanceof MJType)) return false;
+        return equals(other) ||
+                (this == MJTable.nullType && other.isRefType()) ||
+                (other == MJTable.nullType && isRefType());
+    }
+
+    @Override
+    public boolean assignableTo(Struct dest) {
+        if (!(dest instanceof MJType)) return false;
+        return equals(dest) ||
+                (this == MJTable.nullType && dest.isRefType()) ||
+                (getKind() == Array && dest.getKind() == Array && dest.getElemType() == MJTable.noType) ||
+                (getKind() == Class && dest.getKind() == Class && isDescendantOf((MJType) dest));
+    }
+
+    @Override
     public String toString() {
         if (getKind() != Class) return MJType.getTypeName(this);
         StringBuilder output = new StringBuilder();
@@ -109,4 +127,15 @@ public class MJType extends Struct {
     /******************** Public methods **************************************************************/
 
     public List<MJSymbol> getMembersList() { return MJUtils.collectionToList(getMembers()); }
+
+    public boolean isDescendantOf(MJType baseClass) {
+        if (getKind() != Class || baseClass.getKind() != Class) return false;
+        boolean found = false;
+        MJType it = this;
+        while (it != null && !found) {
+            found = it == baseClass;
+            it = it.getElemType();
+        }
+        return found;
+    }
 }

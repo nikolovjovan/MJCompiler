@@ -49,7 +49,6 @@ public class MJTable {
         universe.addToLocals(intTypeSym);
         universe.addToLocals(charTypeSym);
         universe.addToLocals(boolTypeSym);
-        universe.addToLocals(voidTypeSym);
 
         universe.addToLocals(nullSym);
         universe.addToLocals(eolSym);
