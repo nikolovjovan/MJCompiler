@@ -127,7 +127,7 @@ nonterminal rs.ac.bg.etf.pp1.symboltable.concepts.MJSymbol AbstractMethodHeader;
 
 /* Designator non-terminals */
 nonterminal rs.ac.bg.etf.pp1.symboltable.concepts.MJSymbol Designator;
-nonterminal OptDesignatorStatement, DesignatorStatement, AssignStatementFooter;
+nonterminal OptDesignatorStatement, DesignatorStatement, AssignHeader, AssignFooter;
 
 /* Statement non-terminals */
 nonterminal OptStatementList, Statement;
@@ -338,15 +338,17 @@ OptDesignatorStatement ::= (SingleDesignatorStatement) DesignatorStatement:state
                          | (NoDesignatorStatement) /* epsilon */
                          ;
 
-DesignatorStatement ::= (AssignmentDesignatorStatement) Designator:var AssignStatementFooter:footer
+DesignatorStatement ::= (AssignmentDesignatorStatement) AssignHeader:header AssignFooter:footer
                       | (MethodCallDesignatorStatement) MethodCall:methodCall
                       | (IncrementDesignatorStatement) Designator:var PLUSPLUS
                       | (DecrementDesignatorStatement) Designator:var MINUSMINUS
                       ;
 
-AssignStatementFooter ::= (AssignmentStatementFooter) Assignop:op Expr:expr
-                        | (ErrorAssignmentStatementFooter) error {: parser.log_error(MessageType.INV_ASSIGN_STMT_FTR); :}
-                        ;
+AssignHeader ::= (AssignmentHeader) Designator:var;
+
+AssignFooter ::= (AssignmentFooter) Assignop:op Expr:expr
+               | (ErrorAssignmentFooter) error {: parser.log_error(MessageType.INV_ASSIGN_FOOTER); :}
+               ;
 
 /* Statement non-terminals */
 
