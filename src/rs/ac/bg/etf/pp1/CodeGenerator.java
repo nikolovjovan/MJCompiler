@@ -7,7 +7,6 @@ import rs.ac.bg.etf.pp1.loggers.MJCodeGeneratorLogger.MessageType;
 import rs.ac.bg.etf.pp1.mj.runtime.MJCode;
 import rs.ac.bg.etf.pp1.symboltable.MJTable;
 import rs.ac.bg.etf.pp1.symboltable.concepts.MJSymbol;
-import rs.ac.bg.etf.pp1.symboltable.concepts.MJType;
 import rs.ac.bg.etf.pp1.util.MJUtils;
 
 public class CodeGenerator extends VisitorAdaptor {
@@ -44,6 +43,31 @@ public class CodeGenerator extends VisitorAdaptor {
     }
 
     /******************** Helper methods ******************************************************************************/
+
+    private void prepareDesignatorForStore(MJSymbol designatorSym) {
+        // Duplicates parameters on stack to enable operators which both load and store into designator
+        // Operators that require this are: ++, --, +=, -=, *=, /= and %=
+        if (designatorSym.getKind() == MJSymbol.Fld) {
+            MJCode.put(MJCode.dup);
+        } else if (designatorSym.getKind() == MJSymbol.Elem) {
+            MJCode.put(MJCode.dup2);
+        }
+    }
+
+    private void processIncOrDec(SyntaxNode info, MJSymbol designatorSym, boolean increment) {
+        logDebugNodeVisit(info);
+        if (designatorSym.getKind() == MJSymbol.Var && designatorSym.getLevel() == 1) { // local variables
+            MJCode.put(MJCode.inc);
+            MJCode.put(designatorSym.getAdr());
+            MJCode.put(increment ? 1 : -1);
+        } else {
+            prepareDesignatorForStore(designatorSym);
+            MJCode.load(designatorSym);
+            MJCode.loadConst(1);
+            MJCode.put(increment ? MJCode.add : MJCode.sub);
+            MJCode.store(designatorSym);
+        }
+    }
 
     private void insertArithmeticOperator(Rightop op) {
         if (op instanceof RightAddOperator) {
@@ -147,19 +171,17 @@ public class CodeGenerator extends VisitorAdaptor {
 
     /******************** Designator **********************************************************************************/
 
-    // TODO: Test this solution and possibly tweak it...
-
     @Override
     public void visit(IdentifierDesignator identifierDesignator) {
         logDebugNodeVisit(identifierDesignator);
-        if (!MJUtils.isSymbolValid(identifierDesignator.mjsymbol)) return;
         MJSymbol designatorSym = identifierDesignator.mjsymbol;
         if (MJUtils.isSymbolValid(currentClassSym) && (designatorSym.getKind() == MJSymbol.Fld ||
                 designatorSym.getKind() == MJSymbol.Meth)) {
             MJSymbol this_ = MJTable.findSymbolInAnyScope(MJConstants.THIS);
             MJCode.load(this_);
         }
-        if (designatorSym.getType().getKind() == MJType.Array) {
+        if (MJUtils.isValueAssignableToSymbol(designatorSym) &&
+                identifierDesignator.getParent() instanceof ElementAccessDesignator) {
             MJCode.load(designatorSym);
         }
     }
@@ -167,12 +189,12 @@ public class CodeGenerator extends VisitorAdaptor {
     @Override
     public void visit(MemberAccessDesignator memberAccessDesignator) {
         logDebugNodeVisit(memberAccessDesignator);
-        if (!MJUtils.isSymbolValid(memberAccessDesignator.mjsymbol)) return;
         MJSymbol designatorSym = memberAccessDesignator.getDesignator().mjsymbol;
         if (MJUtils.isValueAssignableToSymbol(designatorSym)) {
             MJCode.load(designatorSym);
         }
-        if (designatorSym.getType().getKind() == MJType.Array) {
+        if (MJUtils.isValueAssignableToSymbol(designatorSym) &&
+                memberAccessDesignator.getParent() instanceof ElementAccessDesignator) {
             MJCode.load(designatorSym);
         }
     }
@@ -184,11 +206,7 @@ public class CodeGenerator extends VisitorAdaptor {
         AssignmentDesignatorStatement statement = (AssignmentDesignatorStatement) assignmentHeader.getParent();
         AssignmentFooter footer = (AssignmentFooter) statement.getAssignFooter();
         if (!(footer.getAssignop() instanceof AssignOperator)) {
-            if (designatorSym.getKind() == MJSymbol.Fld) {
-                MJCode.put(MJCode.dup);
-            } else if (designatorSym.getKind() == MJSymbol.Elem) {
-                MJCode.put(MJCode.dup2);
-            }
+            prepareDesignatorForStore(designatorSym);
             MJCode.load(designatorSym);
         }
     }
@@ -207,34 +225,12 @@ public class CodeGenerator extends VisitorAdaptor {
 
     @Override
     public void visit(IncrementDesignatorStatement incrementDesignatorStatement) {
-        logDebugNodeVisit(incrementDesignatorStatement);
-        MJSymbol designatorSym = incrementDesignatorStatement.getDesignator().mjsymbol;
-        if (designatorSym.getKind() == MJSymbol.Var && designatorSym.getLevel() == 1) { // local variables
-            MJCode.put(MJCode.inc);
-            MJCode.put(designatorSym.getAdr());
-            MJCode.put(1);
-        } else {
-            MJCode.load(designatorSym);
-            MJCode.loadConst(1);
-            MJCode.put(MJCode.add);
-            MJCode.store(designatorSym);
-        }
+        processIncOrDec(incrementDesignatorStatement, incrementDesignatorStatement.getDesignator().mjsymbol, true);
     }
 
     @Override
     public void visit(DecrementDesignatorStatement decrementDesignatorStatement) {
-        logDebugNodeVisit(decrementDesignatorStatement);
-        MJSymbol designatorSym = decrementDesignatorStatement.getDesignator().mjsymbol;
-        if (designatorSym.getKind() == MJSymbol.Var && designatorSym.getLevel() == 1) { // local variables
-            MJCode.put(MJCode.inc);
-            MJCode.put(designatorSym.getAdr());
-            MJCode.put(-1);
-        } else {
-            MJCode.load(designatorSym);
-            MJCode.loadConst(1);
-            MJCode.put(MJCode.sub);
-            MJCode.store(designatorSym);
-        }
+        processIncOrDec(decrementDesignatorStatement, decrementDesignatorStatement.getDesignator().mjsymbol, false);
     }
 
     /******************** Statement ***********************************************************************************/
@@ -339,7 +335,7 @@ public class CodeGenerator extends VisitorAdaptor {
                 if (sft.getParent() instanceof SingleTermExpression) {
                     SingleTermExpression ste = (SingleTermExpression) sft.getParent();
                     if (ste.getParent() instanceof AssignmentExpression) {
-                        MJCode.put(designatorSym.getKind() == MJSymbol.Fld ? MJCode.dup : MJCode.dup2);
+                        prepareDesignatorForStore(designatorSym);
                     }
                 }
             }

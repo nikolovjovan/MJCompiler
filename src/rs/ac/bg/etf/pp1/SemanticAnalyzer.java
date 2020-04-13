@@ -255,14 +255,14 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         currentMethodSym = null;
     }
 
-    private void processVariableIncDec(SyntaxNode info, Designator designator) {
+    private void processIncOrDec(SyntaxNode info, MJSymbol designatorSym) {
         logDebugNodeVisit(info);
         // Check if value can be assigned to designator
-        if (assertValueNotAssignableToSymbol(info, designator.mjsymbol)) return;
+        if (assertValueNotAssignableToSymbol(info, designatorSym)) return;
         // Type checks
-        if (designator.mjsymbol.getType() != MJTable.intType) {
+        if (designatorSym.getType() != MJTable.intType) {
             logError(info, MessageType.INCOMPATIBLE_TYPES,
-                    MJType.getTypeName(designator.mjsymbol.getType()), MJType.getTypeName(MJTable.intType));
+                    MJType.getTypeName(designatorSym.getType()), MJType.getTypeName(MJTable.intType));
         }
     }
 
@@ -627,12 +627,12 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 
     @Override
     public void visit(IncrementDesignatorStatement incrementDesignatorStatement) {
-        processVariableIncDec(incrementDesignatorStatement, incrementDesignatorStatement.getDesignator());
+        processIncOrDec(incrementDesignatorStatement, incrementDesignatorStatement.getDesignator().mjsymbol);
     }
 
     @Override
     public void visit(DecrementDesignatorStatement decrementDesignatorStatement) {
-        processVariableIncDec(decrementDesignatorStatement, decrementDesignatorStatement.getDesignator());
+        processIncOrDec(decrementDesignatorStatement, decrementDesignatorStatement.getDesignator().mjsymbol);
     }
 
     /******************** Statement ***********************************************************************************/
