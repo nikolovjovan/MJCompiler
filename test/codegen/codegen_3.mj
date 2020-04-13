@@ -1,0 +1,228 @@
+// level B code generation:
+// - method call with arguments (both designator statement and factor support)
+// - optimal calculation of complex conditionals
+// - if and if-else statements
+// - for and foreach statements
+// - break and continue statements
+// - return statement with expression as value
+program level_b_code_generation
+    int globalI, globalIt;
+{
+    void readArray(int arr[])
+        int i;
+    {
+        for (i = 0; i < len(arr); i++) {
+            print('a'); print('r'); print('r');
+            print('['); print(i + 1); print(']'); print(' '); print('='); print(' ');
+            read(arr[i]);
+        }
+    }
+
+    void printArray(int arr[], bool inline)
+        int i, it;
+    {
+        if (inline) {
+            // test usage of local iterator
+            foreach (it : arr) {
+                print(it); print(' ');
+            }
+            print(eol);
+        } else {
+            i = 1;
+            // test usage of global iterator
+            foreach (globalIt : arr) {
+                print('a'); print('r'); print('r');
+                print('['); print(i); print(']'); print(' '); print('='); print(' ');
+                print(globalIt); print(eol);
+                i++;
+            }
+        }
+    }
+
+    void swap(int arr[], int i, int j)
+        int tmp;
+    {
+        tmp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = tmp;
+    }
+
+    void sortArray(int arr[], bool asc)
+        int i, j;
+    {
+        // test usage of nested for loops
+        for (i = 0; i < len(arr) - 1; i++) {
+            for (j = i + 1; j < len(arr); j++) {
+                if (asc && arr[i] > arr[j] || asc == false && arr[i] < arr[j]) {
+                    swap(arr, i, j);
+                }
+            }
+        }
+    }
+
+    // compares two arrays and returns false if there is an element in a which is not in b
+    // does not really make any sense but is a test of nested for loops
+    bool compareArraysFor(int a[], int b[])
+        int i, j;
+        bool same, found;
+    {
+        same = true;
+        for (i = 0; i < len(a); i++) {
+            found = false;
+            for (j = 0; j < len(b); j++) {
+                if (a[i] != b[j]) continue;
+                found = true;
+                break;
+            }
+            if (found) continue;
+            same = false;
+            break;
+        }
+        return same;
+    }
+
+    // compares two arrays and returns false if there is an element in a which is not in b
+    // does not really make any sense but is a test of nested foreach loops
+    bool compareArraysForEach(int a[], int b[])
+        int itA, itB;
+        bool same, found;
+    {
+        same = true;
+        foreach (itA : a) {
+            found = false;
+            foreach (itB : b) {
+                if (itA != itB) continue;
+                found = true;
+                break;
+            }
+            if (found) continue;
+            same = false;
+            break;
+        }
+        return same;
+    }
+
+    void printBool(bool b) {
+        if (b) {
+            print('t'); print('r'); print('u'); print('e');
+        } else {
+            print('f'); print('a'); print('l'); print('s'); print('e');
+        }
+    }
+
+    void conditionalPrint(int n) {
+        // test multiple nested if-else statements
+        if (n == 0) {
+            print('a');
+        } else if (n == 1) {
+            print('b');
+        } else {
+            print('!');
+        }
+        print(eol);
+    }
+
+    bool findElementFor(int arr[], int elem)
+        bool found;
+    {
+        found = false;
+        // test usage of global index
+        for (globalI = 0; globalI < len(arr); globalI++) {
+            if (arr[globalI] == elem) {
+                found = true;
+                // test usage of break in a for loop
+                break;
+            }
+        }
+        return found;
+    }
+
+    bool findElementForEach(int arr[], int elem)
+        int it;
+        bool found;
+    {
+        found = false;
+        // test usage of global iterator
+        foreach (it : arr) {
+            if (it == elem) {
+                found = true;
+                // test usage of break in a foreach loop
+                break;
+            }
+        }
+        return found;
+    }
+
+    int countOddFor(int arr[])
+        int i, count;
+    {
+        count = 0;
+        for (i = 0; i < len(arr); i++) {
+            // test usage of continue in a for loop
+            if (arr[i] % 2 == 0) continue;
+            count++;
+        }
+        return count;
+    }
+
+    int countOddForEach(int arr[])
+        int it, count;
+    {
+        count = 0;
+        foreach (it : arr) {
+            // test usage of continue in a foreach loop
+            if (it % 2 == 0) continue;
+            count++;
+        }
+        return count;
+    }
+
+    void main()
+        int n, e, arr[], arrCopy[];
+    {
+        print('s'); print('w'); print('i'); print('t'); print('c'); print('h'); print(' '); print('='); print(' ');
+        read(n);
+        conditionalPrint(n);
+
+        print('n'); print(' '); print('='); print(' ');
+        read(n);
+        if (n <= 0) {
+            print('B'); print('a'); print('d'); print(' '); print('n'); print('!');
+            return;
+        }
+
+        readArray(arr);
+        printArray(arr, false);
+
+        arrCopy = new int[n];
+        globalI = -1;
+        foreach (globalIt : arr) {
+            arrCopy[globalI += 1] = globalIt;
+        }
+
+        sortArray(arr, true);
+        printArray(arr, true);
+
+        print('c'); print('o'); print('m'); print('p'); print('a'); print('r'); print('e'); print(eol);
+        print('f'); print('o'); print('r'); print(' ');
+        printBool(compareArraysFor(arr, arrCopy)); print(eol);
+        print('f'); print('o'); print('r'); print('e'); print('a'); print('c'); print('h'); print(' ');
+        printBool(compareArraysForEach(arr, arrCopy)); print(eol);
+
+        print('e'); print(' '); print('=');
+        read(e);
+
+        print('f'); print('o'); print('r'); print(' ');
+        printBool(findElementFor(arr, e)); print(eol);
+        print('f'); print('o'); print('r'); print('e'); print('a'); print('c'); print('h'); print(' ');
+        printBool(findElementForEach(arr, e)); print(eol);
+
+        print('o'); print('d'); print('d'); print(' ');
+        print('c'); print('o'); print('u'); print('n'); print('t'); print(eol);
+
+        print('f'); print('o'); print('r'); print(' ');
+        print(countOddFor(arr)); print(eol);
+        print('f'); print('o'); print('r'); print('e'); print('a'); print('c'); print('h'); print(' ');
+        print(countOddForEach(arr)); print(eol);
+    }
+}

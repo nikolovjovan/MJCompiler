@@ -40,7 +40,6 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     private Access currentAccess = Access.PUBLIC;
 
     private MJSymbol currentMethodSym = MJTable.noSym;
-    private boolean returnFound = false;
 
     private String currentDesignatorName = "";
 
@@ -228,7 +227,6 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         MJTable.openScope(MJTable.getCurrentScope().getId() == ScopeID.PROGRAM ?
                 ScopeID.GLOBAL_METHOD :
                 ScopeID.CLASS_METHOD);
-        returnFound = false;
         currentFormalParamCount = 0;
         if (MJTable.getCurrentScope().getId() == ScopeID.CLASS_METHOD) {
             // Insert 'this' as implicit first formal parameter
@@ -244,10 +242,6 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 
     private void processMethodDeclaration(SyntaxNode info) {
         logDebugNodeVisit(info);
-        if (currentMethodSym.getType() != MJTable.voidType && !returnFound) {
-            logWarn(info, MessageType.OTHER,
-                    "Method return type is not 'void' but method does not contain a return statement!");
-        }
         MJTable.closeScope();
         currentMethodSym.setLevel(currentFormalParamCount);
         // Log object definition
@@ -591,7 +585,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
             elementAccessDesignator.mjsymbol = MJTable.noSym;
             return;
         }
-        currentDesignatorName += "[<expr>]";
+        currentDesignatorName += '[' + elementAccessDesignator.getArrayIndexer().getExpr().mjsymbol.getName() + ']';
         elementAccessDesignator.mjsymbol = new MJSymbol(MJSymbol.Elem, currentDesignatorName,
                 parentSym.getType().getElemType());
     }
@@ -680,7 +674,6 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     public void visit(ReturnStatement returnStatement) {
         logDebugNodeVisit(returnStatement);
         if (MJUtils.isSymbolValid(currentMethodSym)) {
-            returnFound = true;
             MJType retType = MJTable.voidType;
             if (returnStatement.getOptRetValue() instanceof ReturnValue) {
                 retType = ((ReturnValue) returnStatement.getOptRetValue()).getExpr().mjsymbol.getType();

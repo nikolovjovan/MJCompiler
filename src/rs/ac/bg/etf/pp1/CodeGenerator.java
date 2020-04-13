@@ -176,10 +176,19 @@ public class CodeGenerator extends VisitorAdaptor {
     @Override
     public void visit(MethodDeclaration methodDeclaration) {
         logDebugNodeVisit(methodDeclaration);
-        // TODO: Add trap 1
-        // Generate exit
-        MJCode.put(MJCode.exit);
-        MJCode.put(MJCode.return_);
+        if (methodDeclaration.getMethodHeader().mjsymbol.getType() == MJTable.voidType) {
+            // Insert an exit and a return instruction in case method return type is void. This is not optimized and
+            // can generate unreachable code if all control flows contain a return instruction.
+            // Checking control flow would require a complex implementation, so this is not optimized and can generate
+            // unreachable code. However it will always work so that's a worthy trade-off in this case.
+            MJCode.put(MJCode.exit);
+            MJCode.put(MJCode.return_);
+        } else {
+            // Insert a trap instruction which will generate a runtime error and will only be executed if there is no
+            // return statement in current control flow. Again, this is a trade-off similar to one above.
+            MJCode.put(MJCode.trap);
+            MJCode.put(1);
+        }
     }
 
     /******************** Designator **********************************************************************************/
