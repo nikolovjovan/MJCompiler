@@ -30,7 +30,7 @@ public class CodeGenerator extends VisitorAdaptor {
 
     private void logDebugNodeVisit(SyntaxNode info) {
         logger.debug(MJUtils.getLineNumber(info), -1, MessageType.NODE_VISIT, info.getClass().getSimpleName());
-        // Set current node in MJCode to allow it to use logError
+        // Set current node in MJCode to allow it to call logError method.
         MJCode.setCurrentNode(info);
     }
 
@@ -44,12 +44,25 @@ public class CodeGenerator extends VisitorAdaptor {
 
     /******************** Helper methods ******************************************************************************/
 
-    private void prepareDesignatorForStore(MJSymbol designatorSym) {
-        // Duplicates parameters on stack to enable operators which both load and store into designator
-        // Operators that require this are: ++, --, +=, -=, *=, /= and %=
-        if (designatorSym.getKind() == MJSymbol.Fld) {
+    // Checks if there is a designator part after this one (MemberAccessDesignator or ElementAccessDesignator) and
+    // loads current designator symbol onto the stack in order to allow the next part to load.
+    // For element access this must be done in previous node because ArrayIndexer contains an Expr node which puts
+    // element index onto the stack. As all instructions require array address be on the stack before index this is
+    // the only way to achieve that.
+    // For class member access this can be done in the following node but for consistency sake it is done in
+    // in previous node.
+    private void prepareForNextDesignatorNode(SyntaxNode node, MJSymbol sym) {
+        if (node.getParent() instanceof MemberAccessDesignator || node.getParent() instanceof ElementAccessDesignator) {
+            MJCode.load(sym);
+        }
+    }
+
+    // Duplicates elements on the stack to enable operators which both load and store into the designator.
+    // Operators that require this are: ++, --, +=, -=, *=, /= and %=.
+    private void duplicateDesignator(MJSymbol sym) {
+        if (sym.getKind() == MJSymbol.Fld) {
             MJCode.put(MJCode.dup);
-        } else if (designatorSym.getKind() == MJSymbol.Elem) {
+        } else if (sym.getKind() == MJSymbol.Elem) {
             MJCode.put(MJCode.dup2);
         }
     }
@@ -61,7 +74,7 @@ public class CodeGenerator extends VisitorAdaptor {
             MJCode.put(designatorSym.getAdr());
             MJCode.put(increment ? 1 : -1);
         } else {
-            prepareDesignatorForStore(designatorSym);
+            duplicateDesignator(designatorSym);
             MJCode.load(designatorSym);
             MJCode.loadConst(1);
             MJCode.put(increment ? MJCode.add : MJCode.sub);
@@ -174,29 +187,24 @@ public class CodeGenerator extends VisitorAdaptor {
     @Override
     public void visit(IdentifierDesignator identifierDesignator) {
         logDebugNodeVisit(identifierDesignator);
-        MJSymbol designatorSym = identifierDesignator.mjsymbol;
-        if (MJUtils.isSymbolValid(currentClassSym) && (designatorSym.getKind() == MJSymbol.Fld ||
-                designatorSym.getKind() == MJSymbol.Meth)) {
+        MJSymbol sym = identifierDesignator.mjsymbol;
+        if (MJUtils.isSymbolValid(currentClassSym) && currentClassSym.getLocalSymbols().contains(sym)) {
             MJSymbol this_ = MJTable.findSymbolInAnyScope(MJConstants.THIS);
             MJCode.load(this_);
         }
-        if (MJUtils.isValueAssignableToSymbol(designatorSym) &&
-                identifierDesignator.getParent() instanceof ElementAccessDesignator) {
-            MJCode.load(designatorSym);
-        }
+        prepareForNextDesignatorNode(identifierDesignator, sym);
     }
 
     @Override
     public void visit(MemberAccessDesignator memberAccessDesignator) {
         logDebugNodeVisit(memberAccessDesignator);
-        MJSymbol designatorSym = memberAccessDesignator.getDesignator().mjsymbol;
-        if (MJUtils.isValueAssignableToSymbol(designatorSym)) {
-            MJCode.load(designatorSym);
-        }
-        if (MJUtils.isValueAssignableToSymbol(designatorSym) &&
-                memberAccessDesignator.getParent() instanceof ElementAccessDesignator) {
-            MJCode.load(designatorSym);
-        }
+        prepareForNextDesignatorNode(memberAccessDesignator, memberAccessDesignator.mjsymbol);
+    }
+
+    @Override
+    public void visit(ElementAccessDesignator elementAccessDesignator) {
+        logDebugNodeVisit(elementAccessDesignator);
+        prepareForNextDesignatorNode(elementAccessDesignator, elementAccessDesignator.mjsymbol);
     }
 
     @Override
@@ -206,7 +214,7 @@ public class CodeGenerator extends VisitorAdaptor {
         AssignmentDesignatorStatement statement = (AssignmentDesignatorStatement) assignmentHeader.getParent();
         AssignmentFooter footer = (AssignmentFooter) statement.getAssignFooter();
         if (!(footer.getAssignop() instanceof AssignOperator)) {
-            prepareDesignatorForStore(designatorSym);
+            duplicateDesignator(designatorSym);
             MJCode.load(designatorSym);
         }
     }
@@ -276,20 +284,37 @@ public class CodeGenerator extends VisitorAdaptor {
     @Override
     public void visit(AssignmentExpression assignmentExpression) {
         logDebugNodeVisit(assignmentExpression);
-        MJSymbol leftSym = assignmentExpression.getLeftExpr().mjsymbol;
-        // Depending on operation insert appropriate instruction
+        // This could easily support standard '=' operator for expressions but since project specification does not
+        // require it it is not currently supported. The only difference would be that '=' operator would not insert
+        // any arithmetic instruction and just duplicate the result to allow storing.
+        // Therefore, this implementation will always insert an arithmetic operator before duplicating the result.
         insertArithmeticOperator(assignmentExpression.getRightop());
-        // TODO: Check dup for object fields
-        // Store value into left expression symbol
-        MJCode.put(leftSym.getKind() == MJSymbol.Var ? MJCode.dup :
-                (leftSym.getKind() == MJSymbol.Fld ? MJCode.dup_x1 : MJCode.dup_x2));
-        MJCode.store(leftSym);
+        // Depending on the kind of the left symbol different dup instructions are used.
+        MJSymbol sym = assignmentExpression.getLeftExpr().mjsymbol;
+        if (sym.getKind() == MJSymbol.Var) {
+            // Global and local variables do not push anything on the stack so regular dup instruction is fine here.
+            // The top of the stack will contain: ... RESULT RESULT (RESULT is expression result)
+            MJCode.put(MJCode.dup);
+        } else if (sym.getKind() == MJSymbol.Fld) {
+            // Class field designator pushes object's address onto the stack so the result must be placed before it.
+            // Instruction dup_x1 does exactly that and the top of the stack will contain: ... RESULT ADDRESS RESULT
+            MJCode.put(MJCode.dup_x1);
+        } else {
+            // Array element designator pushes both array's address and element index onto the stack so the result must
+            // be placed two places down. This is done with dup_x2 instruction and after execution the top of the stack
+            // will contain: ... RESULT ADDRESS INDEX RESULT
+            MJCode.put(MJCode.dup_x2);
+        }
+        // Insert a store instruction to store value on the stack into the left symbol.
+        // This instruction will remove everything from the stack except the duplicated result so the top of the stack
+        // will contain: ... RESULT
+        MJCode.store(sym);
     }
 
     @Override
     public void visit(MultipleTermsExpression multipleTermsExpression) {
         logDebugNodeVisit(multipleTermsExpression);
-        // Depending on operation insert appropriate instruction
+        // Depending on operation insert appropriate instruction.
         LeftAddop op = multipleTermsExpression.getLeftAddop();
         if (op instanceof AddOperator) {
             MJCode.put(MJCode.add);
@@ -301,7 +326,7 @@ public class CodeGenerator extends VisitorAdaptor {
     @Override
     public void visit(SingleTermExpression singleTermExpression) {
         logDebugNodeVisit(singleTermExpression);
-        // If expression is negated put a neg instruction
+        // If expression is negated put a neg instruction.
         if (singleTermExpression.getOptSign() instanceof MinusSign) {
             MJCode.put(MJCode.neg);
         }
@@ -312,7 +337,7 @@ public class CodeGenerator extends VisitorAdaptor {
     @Override
     public void visit(MultipleFactorsTerm multipleFactorsTerm) {
         logDebugNodeVisit(multipleFactorsTerm);
-        // Depending on operation insert appropriate instruction
+        // Depending on operation insert appropriate instruction.
         LeftMulop op = multipleFactorsTerm.getLeftMulop();
         if (op instanceof MulOperator) {
             MJCode.put(MJCode.mul);
@@ -328,19 +353,23 @@ public class CodeGenerator extends VisitorAdaptor {
     @Override
     public void visit(DesignatorFactor designatorFactor) {
         logDebugNodeVisit(designatorFactor);
-        MJSymbol designatorSym = designatorFactor.mjsymbol;
-        if (designatorSym.getKind() == MJSymbol.Fld || designatorSym.getKind() == MJSymbol.Elem) {
+        MJSymbol sym = designatorFactor.mjsymbol;
+        // If designator is a class field or an array element and it is on the right side of any assignment operator
+        // (excluding '=' because expressions do not support this operator) it must be duplicated in order to preserve
+        // the required address (and index for array element) to enable store instruction.
+        if (sym.getKind() == MJSymbol.Fld || sym.getKind() == MJSymbol.Elem) {
             if (designatorFactor.getParent() instanceof SingleFactorTerm) {
                 SingleFactorTerm sft = (SingleFactorTerm) designatorFactor.getParent();
                 if (sft.getParent() instanceof SingleTermExpression) {
                     SingleTermExpression ste = (SingleTermExpression) sft.getParent();
                     if (ste.getParent() instanceof AssignmentExpression) {
-                        prepareDesignatorForStore(designatorSym);
+                        duplicateDesignator(sym);
                     }
                 }
             }
         }
-        MJCode.load(designatorFactor.mjsymbol);
+        // In any case we need to load the symbol in order for it to be used in the expression.
+        MJCode.load(sym);
     }
 
     @Override
@@ -353,14 +382,16 @@ public class CodeGenerator extends VisitorAdaptor {
     public void visit(AllocatorFactor allocatorFactor) {
         logDebugNodeVisit(allocatorFactor);
         MJSymbol sym = allocatorFactor.mjsymbol;
-        if (allocatorFactor.getOptArrayIndexer() instanceof SingleArrayIndexer) { // array allocator
+        if (allocatorFactor.getOptArrayIndexer() instanceof SingleArrayIndexer) {
+            // Array allocator
             MJCode.put(MJCode.newarray);
             MJCode.put(sym.getType() == MJTable.charType ? 0 : 1);
-        } else { // object allocator
+        } else {
+            // Object allocator
             MJCode.put(MJCode.new_);
-            // Object size = number of fields * 4B
+            // Object size = number of fields * 4B (size is required in bytes)
             MJCode.put2(sym.getType().getNumberOfFields() * 4);
-            // Initialize virtual method table pointer
+            // Initialize virtual method table pointer.
             MJCode.put(MJCode.dup);
             MJCode.loadConst(sym.getAdr());
             MJCode.store(sym.getType().getMembersTable().searchKey(MJConstants.VMT_POINTER));
