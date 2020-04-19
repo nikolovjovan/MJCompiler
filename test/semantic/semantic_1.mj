@@ -19,6 +19,8 @@ program level_a_symbol_detection
     char var_c, var_d[], var_e;
     bool var_f;
 
+    int int; // invalid variable name
+
     // type_x var_g; // type 'type_x' not defined
     // var_a var_g; // 'var_a' is not a type
 {
@@ -27,6 +29,7 @@ program level_a_symbol_detection
         int local_var_a, local_var_b[];
         char local_var_c;
         bool local_var_d, local_var_e[];
+        bool char; // invalid variable name
     {
         var_b = new int[6];
         local_var_b = new int[15];

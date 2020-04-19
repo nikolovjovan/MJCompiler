@@ -12,6 +12,22 @@ parser code {:
 
   private int errorCount = 0;
 
+  private void log(Level level, int line, int column, MessageType type, String message, boolean incErrCnt) {
+    if (message != null) logger.log(level, line, column, type, message);
+    else logger.log(level, line, column, type);
+    if (incErrCnt && (level == Level.ERROR || level == Level.FATAL)) errorCount++;
+  }
+
+  private void log(Level level, Object info, MessageType type, String message) {
+    int line = -1, column = -1;
+    if (info instanceof Symbol) {
+      Symbol sym = (Symbol) info;
+      line = sym.left;
+      column = sym.right;
+    }
+    log(level, line, column, type, message, true);
+  }
+
   private void log(Level level, MessageType type, String message, Object info) {
     int line = -1, column = -1;
     if (info instanceof Symbol) {
@@ -34,8 +50,8 @@ parser code {:
     log(Level.ERROR, type, message, info);
   }
 
-  void log_error(MessageType type) {
-    log(Level.ERROR, type, null, null);
+  void log_error(int line, int column, MessageType type) {
+    log(Level.ERROR, line, column, type, null, false);
   }
 
   public int getErrorCount() { return errorCount; }
@@ -236,7 +252,13 @@ OptLocalVarDeclList ::= (MultipleLocalVarDeclarations) OptLocalVarDeclList:list 
                       ;
 
 LocalVarDecl ::= (LocalVarDeclaration) Type:type LocalVarList:list SEMICOLON
-               | (ErrorLocalVarDeclaration) error SEMICOLON {: parser.log_error(MessageType.INV_LOCAL_VAR_DECL); :}
+               | (ErrorLocalVarDeclaration) error SEMICOLON {:
+              parser.log_error(
+                ((java_cup.runtime.Symbol) CUP$MJParser$stack.elementAt(CUP$MJParser$top - 1)).left,
+                ((java_cup.runtime.Symbol) CUP$MJParser$stack.elementAt(CUP$MJParser$top - 0)).right,
+                MessageType.INV_LOCAL_VAR_DECL
+              );
+:}
                ;
 
 LocalVarList ::= (MultipleLocalVariables) LocalVarList:list COMMA LocalVar:declaration
@@ -244,15 +266,33 @@ LocalVarList ::= (MultipleLocalVariables) LocalVarList:list COMMA LocalVar:decla
                ;
 
 LocalVar ::= (LocalVariable) IDENT:name OptArrayBrackets:brackets
-           | (ErrorLocalVariable) error {: parser.log_error(MessageType.INV_LOCAL_VAR_DECL); :}
+           | (ErrorLocalVariable) error {:
+              parser.log_error(
+                ((java_cup.runtime.Symbol) CUP$MJParser$stack.elementAt(CUP$MJParser$top - 0)).left,
+                ((java_cup.runtime.Symbol) CUP$MJParser$stack.elementAt(CUP$MJParser$top - 0)).right,
+                MessageType.INV_LOCAL_VAR_DECL
+              );
+:}
            ;
 
 /* Common class non-terminals */
 
 OptClassBaseType ::= (ClassBaseType) EXTENDS Type:type
                    | (NoClassBaseType) /* epsilon */
-                   | (ErrorClassBaseTypeAfterExtends) EXTENDS error {: parser.log_error(MessageType.INV_CLS_BASE_TYPE); :}
-                   | (ErrorClassBaseTypeBeforeExtends) error {: parser.log_error(MessageType.INV_CLS_BASE_TYPE); :}
+                   | (ErrorClassBaseTypeAfterExtends) EXTENDS error {:
+              parser.log_error(
+                ((java_cup.runtime.Symbol) CUP$MJParser$stack.elementAt(CUP$MJParser$top - 1)).left,
+                ((java_cup.runtime.Symbol) CUP$MJParser$stack.elementAt(CUP$MJParser$top - 0)).right,
+                MessageType.INV_CLS_BASE_TYPE
+              );
+:}
+                   | (ErrorClassBaseTypeBeforeExtends) error {:
+              parser.log_error(
+                ((java_cup.runtime.Symbol) CUP$MJParser$stack.elementAt(CUP$MJParser$top - 0)).left,
+                ((java_cup.runtime.Symbol) CUP$MJParser$stack.elementAt(CUP$MJParser$top - 0)).right,
+                MessageType.INV_CLS_BASE_TYPE
+              );
+:}
                    ;
 
 AccessModifier ::= (PublicAccessModifier) PUBLIC
@@ -292,7 +332,13 @@ AbstractClassMethodDeclList ::= (MultipleAbstractClassMethods) AbstractClassMeth
 
 AbstractClassMethodDecl ::= (AbstractClassMethodDeclaration) AccessModifier:access MethodDecl:declaration
                           | (AbstractClassAbstractMethodDeclaration) AccessModifier:access AbstractMethodDecl:declaration
-                          | (ErrorAbstractClassMethodDeclaration) error SEMICOLON {: parser.log_error(MessageType.INV_ABS_CLS_METH_DECL); :}
+                          | (ErrorAbstractClassMethodDeclaration) error SEMICOLON {:
+              parser.log_error(
+                ((java_cup.runtime.Symbol) CUP$MJParser$stack.elementAt(CUP$MJParser$top - 1)).left,
+                ((java_cup.runtime.Symbol) CUP$MJParser$stack.elementAt(CUP$MJParser$top - 0)).right,
+                MessageType.INV_ABS_CLS_METH_DECL
+              );
+:}
                           ;
 
 /* Common method non-terminals */
@@ -310,7 +356,13 @@ FormalParamList ::= (MultipleFormalParameters) FormalParamList:list COMMA Formal
                   ;
 
 FormalParam ::= (FormalParameter) Type:type IDENT:name OptArrayBrackets:brackets
-              | (ErrorFormalParameter) error {: parser.log_error(MessageType.INV_FORMAL_PARAM); :}
+              | (ErrorFormalParameter) error {:
+              parser.log_error(
+                ((java_cup.runtime.Symbol) CUP$MJParser$stack.elementAt(CUP$MJParser$top - 0)).left,
+                ((java_cup.runtime.Symbol) CUP$MJParser$stack.elementAt(CUP$MJParser$top - 0)).right,
+                MessageType.INV_FORMAL_PARAM
+              );
+:}
               ;
 
 /* Method non-terminals */
@@ -347,7 +399,13 @@ DesignatorStatement ::= (AssignmentDesignatorStatement) AssignHeader:header Assi
 AssignHeader ::= (AssignmentHeader) Designator:var;
 
 AssignFooter ::= (AssignmentFooter) Assignop:op Expr:expr
-               | (ErrorAssignmentFooter) error {: parser.log_error(MessageType.INV_ASSIGN_FOOTER); :}
+               | (ErrorAssignmentFooter) error {:
+              parser.log_error(
+                ((java_cup.runtime.Symbol) CUP$MJParser$stack.elementAt(CUP$MJParser$top - 0)).left,
+                ((java_cup.runtime.Symbol) CUP$MJParser$stack.elementAt(CUP$MJParser$top - 0)).right,
+                MessageType.INV_ASSIGN_FOOTER
+              );
+:}
                ;
 
 /* Statement non-terminals */
@@ -378,7 +436,13 @@ ForStatementHeader ::= (ForStatementHeader) FOR LPAREN OptDesignatorStatement:in
 
 ForCondition ::= (SingleCondition) Condition:cond
                | (NoCondition) /* epsilon */
-               | (ErrorCondition) error {: parser.log_error(MessageType.INV_FOR_STMT_COND); :}
+               | (ErrorCondition) error {:
+              parser.log_error(
+                ((java_cup.runtime.Symbol) CUP$MJParser$stack.elementAt(CUP$MJParser$top - 0)).left,
+                ((java_cup.runtime.Symbol) CUP$MJParser$stack.elementAt(CUP$MJParser$top - 0)).right,
+                MessageType.INV_FOR_STMT_COND
+              );
+:}
                ;
 
 ForEachStatementHeader ::= (ForEachStatementHeader) FOREACH LPAREN IDENT:name COLON Designator:designator RPAREN;

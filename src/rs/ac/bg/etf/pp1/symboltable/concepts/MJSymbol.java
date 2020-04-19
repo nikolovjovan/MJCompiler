@@ -2,12 +2,14 @@ package rs.ac.bg.etf.pp1.symboltable.concepts;
 
 import rs.ac.bg.etf.pp1.util.MJUtils;
 import rs.etf.pp1.symboltable.concepts.*;
+import rs.etf.pp1.symboltable.structure.HashTableDataStructure;
+import rs.etf.pp1.symboltable.structure.SymbolDataStructure;
 
 import java.util.List;
 
 public class MJSymbol extends Obj {
 
-    public enum Access { DEFAULT, PUBLIC, PROTECTED, PRIVATE }
+    public enum Access { DEFAULT, PRIVATE, PROTECTED, PUBLIC }
 
     /******************** Static members **************************************************************/
 
@@ -65,6 +67,12 @@ public class MJSymbol extends Obj {
 
     public MJSymbol(MJSymbol obj, int kind) {
         super(kind, obj.getName(), obj.getType(), obj.getAdr(), obj.getLevel());
+        setFpPos(obj.getFpPos());
+        SymbolDataStructure locals = new HashTableDataStructure();
+        for (MJSymbol sym : obj.getLocalSymbolsList()) {
+            locals.insertKey(sym);
+        }
+        setLocals(locals);
         parent = obj.parent;
         abstract_ = obj.abstract_;
         access = obj.access;

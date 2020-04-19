@@ -21,11 +21,11 @@ public class MJSemanticTest extends MJTest {
         System.out.println("Starting semantic analysis...");
         SemanticAnalyzer analyzer = new SemanticAnalyzer();
         prog.traverseBottomUp(analyzer);
-        MJTable.dump();
         if (analyzer.getErrorCount() == 0) {
             System.out.println("Semantic analysis completed without errors.");
         } else {
             System.out.println("Semantic analysis completed with " + analyzer.getErrorCount() + " error(s)!");
         }
+        MJTable.dump();
     }
 }

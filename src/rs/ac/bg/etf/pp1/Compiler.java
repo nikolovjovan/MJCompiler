@@ -63,10 +63,11 @@ public class Compiler {
         System.out.println("Starting semantic analysis...");
         SemanticAnalyzer analyzer = new SemanticAnalyzer();
         prog.traverseBottomUp(analyzer);
-        tsdump();
 
         if (analyzer.getErrorCount() == 0) {
             System.out.println("Semantic analysis completed without errors!");
+
+            tsdump();
 
             File outputFile = new File(outputFileName);
             logger.info("Generating bytecode file: " + outputFile.getAbsolutePath());

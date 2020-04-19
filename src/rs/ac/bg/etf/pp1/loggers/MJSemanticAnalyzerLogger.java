@@ -27,6 +27,7 @@ public class MJSemanticAnalyzerLogger extends MJLogger {
         MISPLACED_RETURN,       // Params:
         INV_COMPILER_OBJ,       // Params: String objectName, Object object
         ITERATOR_IN_USE,        // Params: String varName
+        VAR_READ_ONLY,          // Params: String varName
         INV_ACT_PARAM,          // Params: Integer index
         UNDEF_OP,               // Params: String op, String type1Name, String type2Name
         UNIMPL_METHOD,          // Params: String className, String methodName
@@ -95,7 +96,7 @@ public class MJSemanticAnalyzerLogger extends MJLogger {
             case INCOMPATIBLE_TYPES: {
                 String type1Name = getNextContextObject(String.class, context);
                 String type2Name = getNextContextObject(String.class, context);
-                return type1Name == null || type2Name == null ? invalidMessage : type1Name + " incompatible with " + type2Name + 't';
+                return type1Name == null || type2Name == null ? invalidMessage : type1Name + " incompatible with " + type2Name + '!';
             }
             case MISPLACED_BREAK: return "Break statement found outside of a loop!";
             case MISPLACED_CONTINUE: return "Continue statement found outside of a loop!";
@@ -108,6 +109,10 @@ public class MJSemanticAnalyzerLogger extends MJLogger {
             case ITERATOR_IN_USE: {
                 String varName = getNextContextObject(String.class, context);
                 return varName == null ? invalidMessage : "Variable '" + varName + "' is already being used as a foreach iterator!";
+            }
+            case VAR_READ_ONLY: {
+                String varName = getNextContextObject(String.class, context);
+                return varName == null ? invalidMessage : "Variable '" + varName + "' is read-only inside the foreach loop!";
             }
             case INV_ACT_PARAM: {
                 Integer index = getNextContextObject(Integer.class, context);

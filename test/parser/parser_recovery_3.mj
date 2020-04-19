@@ -26,10 +26,10 @@ program error_c
     class B extends A {
     }
 
-    // invalid class extension declaration until 'extends'
+    // invalid class base type declaration until 'extends'
     class C badextends extends B {}
 
-    // invalid class extension declaration until '{'
+    // invalid class base type declaration until '{'
     class D extends ;:trash:; {}
 {
     void main()
