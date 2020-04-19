@@ -120,14 +120,11 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         if (assertInvSym(info, currentTypeSym, "Variable type")) return;
         // Check if name is already defined in current scope
         if (assertSymInCurrentScope(info, name)) return;
-        // Check if name is a type name
-        MJSymbol sym = MJTable.findSymbolInAnyScope(name);
-        if (MJUtils.isSymbolValid(sym) && sym.getKind() == MJSymbol.Type) {
-            logError(info, MessageType.OTHER, "Variable '" + name + "' cannot have the " +
-                    "same name as a previously defined type!");
-            return;
+        // Check if name is a reserved name
+        if (MJUtils.isReservedName(name)) {
+            logWarn(info, MessageType.OTHER, "Variable '" + name + "' hides reserved symbol!");
         }
-        sym = MJTable.insert(MJTable.getCurrentScope().getId() == ScopeID.CLASS ? MJSymbol.Fld : MJSymbol.Var,
+        MJSymbol sym = MJTable.insert(MJTable.getCurrentScope().getId() == ScopeID.CLASS ? MJSymbol.Fld : MJSymbol.Var,
                 name, array ? new MJType(MJType.Array, currentTypeSym.getType()) : currentTypeSym.getType());
         sym.setLevel(MJTable.getCurrentLevel());
         if (MJTable.getCurrentScope().getId() == ScopeID.CLASS) {
@@ -505,11 +502,8 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         // Check if name is already defined in current scope
         if (assertSymInCurrentScope(formalParameter, name)) return;
         // Check if name is a type name
-        MJSymbol sym = MJTable.findSymbolInAnyScope(name);
-        if (MJUtils.isSymbolValid(sym) && sym.getKind() == MJSymbol.Type) {
-            logError(formalParameter, MessageType.OTHER, "Formal parameter '" + name + "' cannot have the " +
-                    "same name as a previously defined type!");
-            return;
+        if (MJUtils.isReservedName(name)) {
+            logWarn(formalParameter, MessageType.OTHER, "Formal parameter '" + name + "' hides reserved symbol!");
         }
         // Check if method is being overridden (formal parameter type must be assignable to inherited type)
         if (MJTable.getCurrentScope().getId() == ScopeID.CLASS_METHOD &&
@@ -520,15 +514,15 @@ public class SemanticAnalyzer extends VisitorAdaptor {
                         "formal parameters!");
                 return;
             }
-            sym = currentMethodSym.getLocalSymbolsList().get(currentFormalParamCount);
-            if (!currentTypeSym.getType().assignableTo(sym.getType())) {
+            MJSymbol inheritedSym = currentMethodSym.getLocalSymbolsList().get(currentFormalParamCount);
+            if (!currentTypeSym.getType().assignableTo(inheritedSym.getType())) {
                 logError(formalParameter, MessageType.INCOMPATIBLE_TYPES,
-                        MJType.getTypeName(currentTypeSym.getType()), MJType.getTypeName(sym.getType()));
+                        MJType.getTypeName(currentTypeSym.getType()), MJType.getTypeName(inheritedSym.getType()));
                 return;
             }
         }
         // Insert obj into symbol table
-        sym = MJTable.insert(MJSymbol.Var, name,
+        MJSymbol sym = MJTable.insert(MJSymbol.Var, name,
                 formalParameter.getOptArrayBrackets() instanceof ArrayBrackets ?
                         new MJType(MJType.Array, currentTypeSym.getType()) :
                         currentTypeSym.getType());

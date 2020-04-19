@@ -27,6 +27,15 @@ public class MJUtils {
         return info.getLine();
     }
 
+    public static boolean isReservedName(String name) {
+        if (name == null || name.isEmpty()) return false;
+        return name.equals(MJTable.intTypeSym.getName()) || name.equals(MJTable.charTypeSym.getName()) ||
+                name.equals(MJTable.boolTypeSym.getName()) || name.equals(MJTable.voidTypeSym.getName()) ||
+                name.equals(MJTable.nullSym.getName()) || name.equals(MJTable.eolSym.getName()) ||
+                name.equals(MJTable.chrMethodSym.getName()) || name.equals(MJTable.ordMethodSym.getName()) ||
+                name.equals(MJTable.lenMethodSym.getName());
+    }
+
     public static boolean isTypeValid(MJType type) {
         return type != null && type != MJTable.noType;
     }
