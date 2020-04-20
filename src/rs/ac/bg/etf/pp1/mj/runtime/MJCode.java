@@ -9,13 +9,6 @@ import rs.etf.pp1.mj.runtime.Code;
 
 public class MJCode extends Code {
 
-    public static int jeq = 43;
-    public static int jne = 44;
-    public static int jlt = 45;
-    public static int jle = 46;
-    public static int jgt = 47;
-    public static int jge = 48;
-
     private static CodeGenerator generator = null;
     private static SyntaxNode currentNode = null;
 

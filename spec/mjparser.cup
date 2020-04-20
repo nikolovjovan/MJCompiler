@@ -147,7 +147,9 @@ nonterminal OptDesignatorStatement, DesignatorStatement, AssignHeader, AssignFoo
 
 /* Statement non-terminals */
 nonterminal OptStatementList, Statement;
-nonterminal IfStatementHeader, OptElseStatement, ForStatementHeader, ForCondition, ForEachStatementHeader;
+nonterminal IfStatementHeader, IfStatementHeaderStart, OptElseStatement;
+nonterminal java.lang.Integer ElseStatementStart;
+nonterminal ForStatementHeader, ForStatementHeaderStart, ForCondition, ForEachStatementHeader;
 nonterminal OptRetValue, OptPrintWidth;
 
 /* Method call non-terminals */
@@ -426,13 +428,19 @@ Statement ::= (DesignatorBasedStatement) DesignatorStatement:statement SEMICOLON
             | (StatementBlock) LBRACE OptStatementList:list RBRACE
             ;
 
-IfStatementHeader ::= (IfStatementHeader) IF LPAREN Condition:condition RPAREN;
+IfStatementHeader ::= (IfStatementHeader) IfStatementHeaderStart Condition:condition RPAREN;
 
-OptElseStatement ::= (ElseStatement) ELSE Statement:statement
+IfStatementHeaderStart ::= (IfStatementHeaderStart) IF LPAREN;
+
+OptElseStatement ::= (ElseStatement) ElseStatementStart Statement:statement
                    | (NoElseStatment) /* epsilon */
                    ;
 
-ForStatementHeader ::= (ForStatementHeader) FOR LPAREN OptDesignatorStatement:initStatement SEMICOLON ForCondition:condition SEMICOLON OptDesignatorStatement:updateStatement RPAREN;
+ElseStatementStart ::= (ElseStatementStart) ELSE;
+
+ForStatementHeader ::= (ForStatementHeader) ForStatementHeaderStart OptDesignatorStatement:initStatement SEMICOLON ForCondition:condition SEMICOLON OptDesignatorStatement:updateStatement RPAREN;
+
+ForStatementHeaderStart ::= (ForStatementHeaderStart) FOR LPAREN;
 
 ForCondition ::= (SingleCondition) Condition:cond
                | (NoCondition) /* epsilon */

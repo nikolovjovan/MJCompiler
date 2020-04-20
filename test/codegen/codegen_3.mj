@@ -191,6 +191,8 @@ program level_b_code_generation
             return;
         }
 
+        arr = new int[n];
+
         readArray(arr);
         printArray(arr, false);
 

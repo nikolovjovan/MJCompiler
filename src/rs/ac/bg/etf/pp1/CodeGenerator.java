@@ -1,6 +1,7 @@
 package rs.ac.bg.etf.pp1;
 
 import rs.ac.bg.etf.pp1.ast.*;
+import rs.ac.bg.etf.pp1.helpers.JumpAddressStack;
 import rs.ac.bg.etf.pp1.helpers.MJConstants;
 import rs.ac.bg.etf.pp1.loggers.MJCodeGeneratorLogger;
 import rs.ac.bg.etf.pp1.loggers.MJCodeGeneratorLogger.MessageType;
@@ -19,6 +20,8 @@ public class CodeGenerator extends VisitorAdaptor {
     private int mainPC;
 
     private MJSymbol currentClassSym = MJTable.noSym;
+
+    private JumpAddressStack jumpAddressStack = new JumpAddressStack();
 
     /******************** Public methods / constructors ***************************************************************/
 
@@ -99,6 +102,28 @@ public class CodeGenerator extends VisitorAdaptor {
             } else {
                 MJCode.put(MJCode.rem);
             }
+        }
+    }
+
+    // Checks if there is a condition fact after this one (MultipleFactsConditionTerm) and inserts a false jump for
+    // the specified relative operator. Also adds jump address to current false jump address list.
+    private void prepareForNextConditionFactNode(SyntaxNode node, int op) {
+        if (node.getParent() instanceof MultipleFactsConditionTerm) {
+            // Generate false jump since the next operator is AND
+            MJCode.putFalseJump(op, 0);
+            // Add patch address
+            jumpAddressStack.insertFalseJumpAddress(MJCode.pc - 2);
+        }
+    }
+
+    // Checks if there is a condition term after this one (MultipleTermsCondition) and inserts a true jump for
+    // the specified relative operator. Also adds jump address to current true jump address list.
+    private void prepareForNextConditionTermNode(SyntaxNode node, int op) {
+        if (node.getParent() instanceof MultipleTermsCondition) {
+            // Generate true jump since the next operator is OR
+            MJCode.putTrueJump(op, 0);
+            // Add patch address
+            jumpAddressStack.insertTrueJumpAddress(MJCode.pc - 2);
         }
     }
 
@@ -193,15 +218,26 @@ public class CodeGenerator extends VisitorAdaptor {
 
     /******************** Designator **********************************************************************************/
 
+    //------------------- Designator ---------------------------------------------------------------------------------//
+
     @Override
     public void visit(IdentifierDesignator identifierDesignator) {
         logDebugNodeVisit(identifierDesignator);
         MJSymbol sym = identifierDesignator.mjsymbol;
-        if (MJUtils.isSymbolValid(currentClassSym) && currentClassSym.getLocalSymbols().contains(sym)) {
-            MJSymbol this_ = MJTable.findSymbolInAnyScope(MJConstants.THIS);
-            MJCode.load(this_);
+        if (sym.isReadOnly()) { // Read-only iterator variable for foreach statement
+            // Load array address (parent symbol gets set to array this iterator loops through)
+            MJCode.load(sym.getParent());
+            // Load array index (this variable will hold index inside the loop)
+            MJCode.load(sym);
+            // Change this node's inner symbol to treat this as an array element which it actually is
+            identifierDesignator.mjsymbol = new MJSymbol(MJSymbol.Elem, sym.getName(), sym.getType());
+        } else { // Normal identifier
+            if (MJUtils.isSymbolValid(currentClassSym) && currentClassSym.getLocalSymbols().contains(sym)) {
+                MJSymbol this_ = MJTable.findSymbolInAnyScope(MJConstants.THIS);
+                MJCode.load(this_);
+            }
+            prepareForNextDesignatorNode(identifierDesignator, sym);
         }
-        prepareForNextDesignatorNode(identifierDesignator, sym);
     }
 
     @Override
@@ -214,6 +250,15 @@ public class CodeGenerator extends VisitorAdaptor {
     public void visit(ElementAccessDesignator elementAccessDesignator) {
         logDebugNodeVisit(elementAccessDesignator);
         prepareForNextDesignatorNode(elementAccessDesignator, elementAccessDesignator.mjsymbol);
+    }
+
+    //------------------- DesignatorStatement ------------------------------------------------------------------------//
+
+
+    @Override
+    public void visit(SingleDesignatorStatement singleDesignatorStatement) {
+        logDebugNodeVisit(singleDesignatorStatement);
+        // TODO: Disable designator statement code generation to prevent for loop updateStatement to be generated
     }
 
     @Override
@@ -253,6 +298,18 @@ public class CodeGenerator extends VisitorAdaptor {
     /******************** Statement ***********************************************************************************/
 
     @Override
+    public void visit(BreakStatement breakStatement) {
+        logDebugNodeVisit(breakStatement);
+        // TODO: Implement this method!
+    }
+
+    @Override
+    public void visit(ContinueStatement continueStatement) {
+        logDebugNodeVisit(continueStatement);
+        // TODO: Implement this method!
+    }
+
+    @Override
     public void visit(ReadStatement readStatement) {
         logDebugNodeVisit(readStatement);
         MJSymbol designatorSym = readStatement.getDesignator().mjsymbol;
@@ -274,6 +331,93 @@ public class CodeGenerator extends VisitorAdaptor {
         }
         MJCode.loadConst(width);
         MJCode.put(printStatement.getExpr().mjsymbol.getType() == MJTable.charType ? MJCode.bprint : MJCode.print);
+    }
+
+    @Override
+    public void visit(ReturnStatement returnStatement) {
+        logDebugNodeVisit(returnStatement);
+        // Generate exit and return instruction; return value is already on stack
+        MJCode.put(MJCode.exit);
+        MJCode.put(MJCode.return_);
+    }
+
+    @Override
+    public void visit(IfStatementHeaderStart ifStatementHeaderStart) {
+        logDebugNodeVisit(ifStatementHeaderStart);
+        jumpAddressStack.createJumpAddressList();
+    }
+
+    @Override
+    public void visit(IfStatementHeader ifStatementHeader) {
+        logDebugNodeVisit(ifStatementHeader);
+        MJSymbol conditionSym = ifStatementHeader.getCondition().mjsymbol;
+        // Generate false jump for last relational operation
+        MJCode.putFalseJump(conditionSym.getAdr(), 0);
+        // Add patch address
+        jumpAddressStack.insertFalseJumpAddress(MJCode.pc - 2);
+        // Fix all true jump addresses
+        for (Integer address : jumpAddressStack.getTrueJumpAddressList()) {
+            MJCode.fixup(address);
+        }
+    }
+
+    @Override
+    public void visit(ElseStatementStart elseStatementStart) {
+        logDebugNodeVisit(elseStatementStart);
+        // Place an unconditional jump to skip else statement
+        MJCode.putJump(0);
+        // Remember jump address to patch
+        elseStatementStart.integer = MJCode.pc - 2;
+        // Fix all false jumps
+        for (Integer address : jumpAddressStack.getFalseJumpAddressList()) {
+            MJCode.fixup(address);
+        }
+    }
+
+    @Override
+    public void visit(IfOptElseStatement ifOptElseStatement) {
+        logDebugNodeVisit(ifOptElseStatement);
+        if (ifOptElseStatement.getOptElseStatement() instanceof ElseStatement) {
+            // Fix unconditional jump
+            MJCode.fixup(((ElseStatement) ifOptElseStatement.getOptElseStatement()).getElseStatementStart().integer);
+        } else {
+            // Fix all false jumps
+            for (Integer address : jumpAddressStack.getFalseJumpAddressList()) {
+                MJCode.fixup(address);
+            }
+        }
+        jumpAddressStack.popJumpAddressList();
+    }
+
+    @Override
+    public void visit(ForStatementHeaderStart forStatementHeaderStart) {
+        logDebugNodeVisit(forStatementHeaderStart);
+        jumpAddressStack.createJumpAddressList();
+    }
+
+    @Override
+    public void visit(ForStatementHeader forStatementHeader) {
+        logDebugNodeVisit(forStatementHeader);
+        // TODO: Enable designator statement code generation to allow inner statements to be generated
+    }
+
+    @Override
+    public void visit(ForStatement forStatement) {
+        logDebugNodeVisit(forStatement);
+        // TODO: Generate updateStatement and a simple JMP statement to loop condition
+        jumpAddressStack.popJumpAddressList();
+    }
+
+    @Override
+    public void visit(ForEachStatementHeader forEachStatementHeader) {
+        logDebugNodeVisit(forEachStatementHeader);
+        jumpAddressStack.createJumpAddressList();
+    }
+
+    @Override
+    public void visit(ForEachStatement forEachStatement) {
+        logDebugNodeVisit(forEachStatement);
+        jumpAddressStack.popJumpAddressList();
     }
 
     /******************** Method call *********************************************************************************/
@@ -405,5 +549,92 @@ public class CodeGenerator extends VisitorAdaptor {
             MJCode.loadConst(sym.getAdr());
             MJCode.store(sym.getType().getMembersTable().searchKey(MJConstants.VMT_POINTER));
         }
+    }
+
+    /******************** Condition ***********************************************************************************/
+
+    @Override
+    public void visit(MultipleTermsCondition multipleTermsCondition) {
+        logDebugNodeVisit(multipleTermsCondition);
+        MJSymbol conditionSym = multipleTermsCondition.getCondition().mjsymbol;
+        MJSymbol termSym = multipleTermsCondition.getCondTerm().mjsymbol;
+        // Propagate condition term relational operator by creating a new symbol with same adr field
+        multipleTermsCondition.mjsymbol = new MJSymbol(MJSymbol.Con, conditionSym.getName() + " || " + termSym.getAdr(),
+                MJTable.boolType, termSym.getAdr(), termSym.getLevel());
+        // If this is not the last term in a condition, add a true jump
+        prepareForNextConditionTermNode(multipleTermsCondition, multipleTermsCondition.mjsymbol.getAdr());
+    }
+
+    @Override
+    public void visit(SingleTermCondition singleTermCondition) {
+        logDebugNodeVisit(singleTermCondition);
+        // Propagate condition term relational operator by propagating it's symbol
+        singleTermCondition.mjsymbol = singleTermCondition.getCondTerm().mjsymbol;
+        // If this is not the last term in a condition, add a true jump
+        prepareForNextConditionTermNode(singleTermCondition, singleTermCondition.mjsymbol.getAdr());
+    }
+
+    @Override
+    public void visit(MultipleFactsConditionTerm multipleFactsConditionTerm) {
+        logDebugNodeVisit(multipleFactsConditionTerm);
+        MJSymbol termSym = multipleFactsConditionTerm.getCondTerm().mjsymbol;
+        MJSymbol factSym = multipleFactsConditionTerm.getCondFact().mjsymbol;
+        // Propagate condition fact relational operator by creating a new symbol with same adr field
+        multipleFactsConditionTerm.mjsymbol = new MJSymbol(MJSymbol.Con, termSym.getName() + " && " + factSym.getAdr(),
+                MJTable.boolType, factSym.getAdr(), factSym.getLevel());
+        // If this is not the last factor in a term, add a false jump
+        prepareForNextConditionFactNode(multipleFactsConditionTerm, multipleFactsConditionTerm.mjsymbol.getAdr());
+    }
+
+    @Override
+    public void visit(SingleFactConditionTerm singleFactConditionTerm) {
+        logDebugNodeVisit(singleFactConditionTerm);
+        // Propagate condition fact relational operator by propagating it's symbol
+        singleFactConditionTerm.mjsymbol = singleFactConditionTerm.getCondFact().mjsymbol;
+        // If this is not the last factor in a term, add a false jump
+        prepareForNextConditionFactNode(singleFactConditionTerm, singleFactConditionTerm.mjsymbol.getAdr());
+    }
+
+    @Override
+    public void visit(ComplexConditionFact complexConditionFact) {
+        logDebugNodeVisit(complexConditionFact);
+        String leftName = complexConditionFact.getExpr().mjsymbol.getName();
+        String rightName = complexConditionFact.getExpr().mjsymbol.getName();
+        // Get relational operator code and name
+        Relop relop = complexConditionFact.getRelop();
+        int op;
+        String opName;
+        if (relop instanceof EqOperator) {
+            op = MJCode.eq;
+            opName = " == ";
+        } else if (relop instanceof NeqOperator) {
+            op = MJCode.ne;
+            opName = " != ";
+        } else if (relop instanceof GrtOperator) {
+            op = MJCode.gt;
+            opName = " > ";
+        } else if (relop instanceof GeqOperator) {
+            op = MJCode.ge;
+            opName = " >= ";
+        } else if (relop instanceof LssOperator) {
+            op = MJCode.lt;
+            opName = " < ";
+        } else {
+            op = MJCode.le;
+            opName = " <= ";
+        }
+        // Store relational operator code in adr field of this node's mjsymbol
+        complexConditionFact.mjsymbol = new MJSymbol(MJSymbol.Con, leftName + opName + rightName,
+                MJTable.boolType, op, -1);
+    }
+
+    @Override
+    public void visit(SimpleConditionFact simpleConditionFact) {
+        logDebugNodeVisit(simpleConditionFact);
+        // Boolean designator already on stack, load a boolean constant (false = 0) to compare it to
+        MJCode.loadConst(0);
+        // Store relational operator code in adr field of this node's mjsymbol
+        simpleConditionFact.mjsymbol = new MJSymbol(MJSymbol.Con, simpleConditionFact.getExpr().mjsymbol.getName(),
+                MJTable.boolType, MJCode.eq, -1);
     }
 }

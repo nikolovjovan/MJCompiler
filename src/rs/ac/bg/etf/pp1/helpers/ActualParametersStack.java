@@ -23,14 +23,6 @@ public class ActualParametersStack {
         parametersStack = new Stack<>();
     }
 
-    public boolean insertActualParameter(MJSymbol parameter) {
-        if (currentParameters == null) {
-            return false;
-        }
-        currentParameters.parameters.add(parameter);
-        return true;
-    }
-
     public void createParameters() {
         if (currentParameters != null) {
             parametersStack.add(currentParameters);
@@ -52,5 +44,13 @@ public class ActualParametersStack {
         }
 
         return parameters;
+    }
+
+    public boolean insertActualParameter(MJSymbol parameter) {
+        if (currentParameters == null) {
+            return false;
+        }
+        currentParameters.parameters.add(parameter);
+        return true;
     }
 }

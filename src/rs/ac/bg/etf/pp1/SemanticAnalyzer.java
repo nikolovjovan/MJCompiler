@@ -180,6 +180,12 @@ public class SemanticAnalyzer extends VisitorAdaptor {
             // Insert VMT_POINTER as first field
             MJTable.insert(MJSymbol.Fld, MJConstants.VMT_POINTER, MJTable.intType);
         }
+        // Set reference in syntax node
+        if (info instanceof ClassHeader) {
+            ((ClassHeader) info).mjsymbol = currentClassSym;
+        } else {
+            ((AbstractClassHeader) info).mjsymbol = currentClassSym;
+        }
     }
 
     private void processClassDeclaration(SyntaxNode info) {
@@ -457,7 +463,6 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     @Override
     public void visit(ClassHeader classHeader) {
         processClassHeader(classHeader, false, classHeader.getName(), classHeader.getOptClassBaseType());
-        classHeader.mjsymbol = currentClassSym;
     }
 
     @Override
@@ -470,7 +475,6 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     @Override
     public void visit(AbstractClassHeader abstractClassHeader) {
         processClassHeader(abstractClassHeader, true, abstractClassHeader.getName(), abstractClassHeader.getOptClassBaseType());
-        abstractClassHeader.mjsymbol = currentClassSym;
     }
 
     @Override
@@ -773,6 +777,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 
     @Override
     public void visit(ForStatementHeader forStatementHeader) {
+        logDebugNodeVisit(forStatementHeader);
         forDepth++;
         logDebugNodeVisit(forStatementHeader);
     }
@@ -1092,17 +1097,6 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     /******************** Condition ***********************************************************************************/
 
     @Override
-    public void visit(SimpleConditionFact simpleConditionFact) {
-        logDebugNodeVisit(simpleConditionFact);
-        simpleConditionFact.mjsymbol = simpleConditionFact.getExpr().mjsymbol;
-        // Check if type is boolean
-        if (!simpleConditionFact.mjsymbol.getType().equals(MJTable.boolType)) {
-            logError(simpleConditionFact, MessageType.INCOMPATIBLE_TYPES,
-                    MJType.getTypeName(simpleConditionFact.mjsymbol.getType()), MJType.getTypeName(MJTable.boolType));
-        }
-    }
-
-    @Override
     public void visit(ComplexConditionFact complexConditionFact) {
         logDebugNodeVisit(complexConditionFact);
         MJType tl = complexConditionFact.getExpr().mjsymbol.getType();
@@ -1112,26 +1106,37 @@ public class SemanticAnalyzer extends VisitorAdaptor {
             logError(complexConditionFact, MessageType.INCOMPATIBLE_TYPES,
                     MJType.getTypeName(tl), MJType.getTypeName(tr));
         } else if (tl.getKind() == MJType.Array || tl.getKind() == MJType.Class) {
-            Relop rel = complexConditionFact.getRelop();
-            // Convert rel to string
+            Relop relop = complexConditionFact.getRelop();
+            // Convert relop to string
             String op;
-            if (rel instanceof EqOperator) {
+            if (relop instanceof EqOperator) {
                 op = "==";
-            } else if (rel instanceof NeqOperator) {
+            } else if (relop instanceof NeqOperator) {
                 op = "!=";
-            } else if (rel instanceof GrtOperator) {
+            } else if (relop instanceof GrtOperator) {
                 op = ">";
-            } else if (rel instanceof GeqOperator) {
+            } else if (relop instanceof GeqOperator) {
                 op = ">=";
-            } else if (rel instanceof LssOperator) {
+            } else if (relop instanceof LssOperator) {
                 op = "<";
             } else {
                 op = "<=";
             }
             // Reference types (arrays and class objects) can only use '!=' or '==' relational operators
-            if (!(rel instanceof EqOperator) && !(rel instanceof NeqOperator)) {
+            if (!(relop instanceof EqOperator) && !(relop instanceof NeqOperator)) {
                 logError(complexConditionFact, MessageType.UNDEF_OP, op, MJType.getTypeName(tl), MJType.getTypeName(tr));
             }
+        }
+    }
+
+    @Override
+    public void visit(SimpleConditionFact simpleConditionFact) {
+        logDebugNodeVisit(simpleConditionFact);
+        MJSymbol exprSym = simpleConditionFact.getExpr().mjsymbol;
+        // Check if type is boolean
+        if (!exprSym.getType().equals(MJTable.boolType)) {
+            logError(simpleConditionFact, MessageType.INCOMPATIBLE_TYPES,
+                    MJType.getTypeName(simpleConditionFact.mjsymbol.getType()), MJType.getTypeName(MJTable.boolType));
         }
     }
 }
