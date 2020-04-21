@@ -37,18 +37,19 @@ public class JumpAddressStack {
         }
     }
 
-    public List<Integer> getTrueJumpAddressList() {
+    public List<Integer> getJumpAddressList(boolean trueJump) {
         if (currentJumpAdressList == null) {
             return null;
         }
-        return currentJumpAdressList.trueJumpAddressList;
+        return trueJump ? currentJumpAdressList.trueJumpAddressList : currentJumpAdressList.falseJumpAddressList;
+    }
+
+    public List<Integer> getTrueJumpAddressList() {
+        return getJumpAddressList(true);
     }
 
     public List<Integer> getFalseJumpAddressList() {
-        if (currentJumpAdressList == null) {
-            return null;
-        }
-        return currentJumpAdressList.falseJumpAddressList;
+        return getJumpAddressList(false);
     }
 
     public boolean insertJumpAddress(boolean trueJump, int address) {

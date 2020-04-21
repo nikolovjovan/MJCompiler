@@ -122,6 +122,49 @@ program level_b_code_generation
         print(eol);
     }
 
+    void iftest()
+        int i, n;
+    {
+        i = 2; n = 4;
+        if (i <= n) n = 0; // single term with one factor
+        print(1); print(':'); print(n); print(eol);
+
+        i = -6; n = -4;
+        if (i <= n && n < 0) n = 0; // single term with two factors
+        print(2); print(':'); print(n); print(eol);
+
+        i = -3; n = -6;
+        if (i <= n || n < 0) n = 0; // two terms with single factors
+        print(3); print(':'); print(n); print(eol);
+
+        i = 2; n = 6;
+        if (i <= n || n < 0 && i > 0) n = 0; // two terms and one with two factors
+        print(4); print(':'); print(n); print(eol);
+
+        i = -1; n = -6;
+        if (n < 0 && i > 0 || i <= n || 5 > 7) n = 0; // complex conditional
+        print(5); print(':'); print(n); print(eol);
+
+        i = 10; n = 5;
+        if (i <= n) n = 0; // if
+        else n = 1; // matched else
+        print(6); print(':'); print(n); print(eol);
+
+        n = 1;
+        print(7); print(':');
+        if (n > 2) // unmatched if
+            if (n < 5) print('a'); // if
+            else print('b'); // matched else
+        print(eol);
+
+        n = 3;
+        if (n > 10) i = 1; // fallthrough if
+        else if (n > 5) i = 2;
+        else if (n > 0) i = 3;
+        else i = 4;
+        print(8); print(':'); print(i); print(eol);
+    }
+
     bool findElementFor(int arr[], int elem)
         bool found;
     {
@@ -180,6 +223,8 @@ program level_b_code_generation
     void main()
         int n, e, arr[], arrCopy[];
     {
+        iftest();
+
         print('s'); print('w'); print('i'); print('t'); print('c'); print('h'); print(' '); print('='); print(' ');
         read(n);
         conditionalPrint(n);

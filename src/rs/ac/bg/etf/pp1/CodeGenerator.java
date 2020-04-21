@@ -10,6 +10,8 @@ import rs.ac.bg.etf.pp1.symboltable.MJTable;
 import rs.ac.bg.etf.pp1.symboltable.concepts.MJSymbol;
 import rs.ac.bg.etf.pp1.util.MJUtils;
 
+import java.util.List;
+
 public class CodeGenerator extends VisitorAdaptor {
 
     private static final String MAIN = "main";
@@ -125,6 +127,16 @@ public class CodeGenerator extends VisitorAdaptor {
             // Add patch address
             jumpAddressStack.insertTrueJumpAddress(MJCode.pc - 2);
         }
+    }
+
+    private void patchJumpAddresses(boolean trueJumps) {
+        // Get specified jump patch address list
+        List<Integer> patchAddressList = jumpAddressStack.getJumpAddressList(trueJumps);
+        for (Integer patchAddress : patchAddressList) {
+            MJCode.fixup(patchAddress);
+        }
+        // Clear the list since everything has been patched
+        patchAddressList.clear();
     }
 
     /******************** Program *************************************************************************************/
@@ -355,10 +367,8 @@ public class CodeGenerator extends VisitorAdaptor {
         MJCode.putFalseJump(conditionSym.getAdr(), 0);
         // Add patch address
         jumpAddressStack.insertFalseJumpAddress(MJCode.pc - 2);
-        // Fix all true jump addresses
-        for (Integer address : jumpAddressStack.getTrueJumpAddressList()) {
-            MJCode.fixup(address);
-        }
+        // Fix all true jumps
+        patchJumpAddresses(true);
     }
 
     @Override
@@ -369,9 +379,7 @@ public class CodeGenerator extends VisitorAdaptor {
         // Remember jump address to patch
         elseStatementStart.integer = MJCode.pc - 2;
         // Fix all false jumps
-        for (Integer address : jumpAddressStack.getFalseJumpAddressList()) {
-            MJCode.fixup(address);
-        }
+        patchJumpAddresses(false);
     }
 
     @Override
@@ -382,9 +390,7 @@ public class CodeGenerator extends VisitorAdaptor {
             MJCode.fixup(((ElseStatement) ifOptElseStatement.getOptElseStatement()).getElseStatementStart().integer);
         } else {
             // Fix all false jumps
-            for (Integer address : jumpAddressStack.getFalseJumpAddressList()) {
-                MJCode.fixup(address);
-            }
+            patchJumpAddresses(false);
         }
         jumpAddressStack.popJumpAddressList();
     }
