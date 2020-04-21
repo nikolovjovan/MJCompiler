@@ -50,62 +50,62 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 
     /******************** Error / debug methods ***********************************************************************/
 
-    private void logDebug(SyntaxNode info, Object... context) {
-        logger.debug(MJUtils.getLineNumber(info), -1, context);
+    private void logDebug(SyntaxNode node, Object... context) {
+        logger.debug(MJUtils.getLineNumber(node), -1, context);
     }
 
-    private void logDebugNodeVisit(SyntaxNode info) {
-        logger.debug(MJUtils.getLineNumber(info), -1, MessageType.NODE_VISIT, info.getClass().getSimpleName());
+    private void logDebugNodeVisit(SyntaxNode node) {
+        logger.debug(MJUtils.getLineNumber(node), -1, MessageType.NODE_VISIT, node.getClass().getSimpleName());
     }
 
-    private void logInfo(SyntaxNode info, Object... context) {
-        logger.info(MJUtils.getLineNumber(info), -1, context);
+    private void logInfo(SyntaxNode node, Object... context) {
+        logger.info(MJUtils.getLineNumber(node), -1, context);
     }
 
-    private void logWarn(SyntaxNode info, Object... context) {
-        logger.warn(MJUtils.getLineNumber(info), -1, context);
+    private void logWarn(SyntaxNode node, Object... context) {
+        logger.warn(MJUtils.getLineNumber(node), -1, context);
     }
 
-    private void logError(SyntaxNode info, Object... context) {
+    private void logError(SyntaxNode node, Object... context) {
         errorCount++;
-        logger.error(MJUtils.getLineNumber(info), -1, context);
+        logger.error(MJUtils.getLineNumber(node), -1, context);
     }
 
-    private boolean assertInvSym(SyntaxNode info, MJSymbol sym, String symName) {
+    private boolean assertInvSym(SyntaxNode node, MJSymbol sym, String symName) {
         if (!MJUtils.isSymbolValid(sym)) {
-            logError(info, MessageType.INV_SYM, symName);
+            logError(node, MessageType.INV_SYM, symName);
             return true;
         }
         return false;
     }
 
-    private boolean assertSymInAnyScope(SyntaxNode info, String symName) {
+    private boolean assertSymInAnyScope(SyntaxNode node, String symName) {
         if (MJUtils.isSymbolValid(MJTable.findSymbolInAnyScope(symName))) {
-            logError(info, MessageType.SYM_IN_USE, symName);
+            logError(node, MessageType.SYM_IN_USE, symName);
             return true;
         }
         return false;
     }
 
-    private boolean assertSymInCurrentScope(SyntaxNode info, String symName) {
+    private boolean assertSymInCurrentScope(SyntaxNode node, String symName) {
         if (MJUtils.isSymbolValid(MJTable.findSymbolInCurrentScope(symName))) {
-            logError(info, MessageType.SYM_IN_USE, symName);
+            logError(node, MessageType.SYM_IN_USE, symName);
             return true;
         }
         return false;
     }
 
-    private boolean assertTypeNotBasic(SyntaxNode info, MJType type, String kindName) {
+    private boolean assertTypeNotBasic(SyntaxNode node, MJType type, String kindName) {
         if (!MJUtils.isTypeBasic(type)) {
-            logError(info, MessageType.TYPE_NOT_BASIC, kindName);
+            logError(node, MessageType.TYPE_NOT_BASIC, kindName);
             return true;
         }
         return false;
     }
 
-    private boolean assertValueNotAssignableToSymbol(SyntaxNode info, MJSymbol sym) {
+    private boolean assertValueNotAssignableToSymbol(SyntaxNode node, MJSymbol sym) {
         if (!MJUtils.isValueAssignableToSymbol(sym)) {
-            logError(info, MessageType.SYM_DEF_INV_KIND, null, sym.getName(),
+            logError(node, MessageType.SYM_DEF_INV_KIND, null, sym.getName(),
                     "a variable, a class field or an array element");
             return true;
         }
@@ -114,15 +114,15 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 
     /******************** Helper methods ******************************************************************************/
 
-    private void processVariable(SyntaxNode info, String name, boolean array) {
-        logDebugNodeVisit(info);
+    private void processVariable(SyntaxNode node, String name, boolean array) {
+        logDebugNodeVisit(node);
         // Type checking
-        if (assertInvSym(info, currentTypeSym, "Variable type")) return;
+        if (assertInvSym(node, currentTypeSym, "Variable type")) return;
         // Check if name is already defined in current scope
-        if (assertSymInCurrentScope(info, name)) return;
+        if (assertSymInCurrentScope(node, name)) return;
         // Check if name is a reserved name
         if (MJUtils.isReservedName(name)) {
-            logWarn(info, MessageType.OTHER, "Variable '" + name + "' hides reserved symbol!");
+            logWarn(node, MessageType.OTHER, "Variable '" + name + "' hides reserved symbol!");
         }
         MJSymbol sym = MJTable.insert(MJTable.getCurrentScope().getId() == ScopeID.CLASS ? MJSymbol.Fld : MJSymbol.Var,
                 name, array ? new MJType(MJType.Array, currentTypeSym.getType()) : currentTypeSym.getType());
@@ -133,37 +133,37 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         }
         if (MJTable.getCurrentScope().getId() == ScopeID.PROGRAM) varCount++;
         // Log object definition
-        logInfo(info, MessageType.DEF_SYM, MJType.getTypeName(sym.getType()) + " variable", sym);
+        logInfo(node, MessageType.DEF_SYM, MJType.getTypeName(sym.getType()) + " variable", sym);
     }
 
-    private void processAccessModifier(SyntaxNode info) {
-        logDebugNodeVisit(info);
+    private void processAccessModifier(SyntaxNode node) {
+        logDebugNodeVisit(node);
         // Set current access modifier
-        if (info instanceof PublicAccessModifier) {
+        if (node instanceof PublicAccessModifier) {
             currentAccess = Access.PUBLIC;
-        } else if (info instanceof ProtectedAccessModifier) {
+        } else if (node instanceof ProtectedAccessModifier) {
             currentAccess = Access.PROTECTED;
         } else {
             currentAccess = Access.PRIVATE;
         }
         // Log current access modifier
-        logDebug(info, MessageType.CUR_ACC_MOD, currentAccess.toString());
+        logDebug(node, MessageType.CUR_ACC_MOD, currentAccess.toString());
     }
 
-    private void processClassHeader(SyntaxNode info, boolean abs, String name, OptClassBaseType optBaseType) {
-        logDebugNodeVisit(info);
+    private void processClassHeader(SyntaxNode node, boolean abs, String name, OptClassBaseType optBaseType) {
+        logDebugNodeVisit(node);
         // Check base type
         MJType baseType = MJTable.noType;
         if (optBaseType instanceof ClassBaseType) {
             MJSymbol typeSym = ((ClassBaseType) optBaseType).getType().mjsymbol;
             if (typeSym.getType().getKind() != MJType.Class) {
-                logError(info, MessageType.SYM_DEF_INV_KIND, null, typeSym.getName(), "a class");
+                logError(node, MessageType.SYM_DEF_INV_KIND, null, typeSym.getName(), "a class");
             } else {
                 baseType = typeSym.getType();
             }
         }
         // If symbol with same name is already defined, make a new obj outside symbol table to continue analysis
-        if (assertSymInAnyScope(info, name)) {
+        if (assertSymInAnyScope(node, name)) {
             currentClassSym = new MJSymbol(MJSymbol.Type, name, new MJType(MJType.Class, baseType));
         } else {
             currentClassSym = MJTable.insert(MJSymbol.Type, name, new MJType(MJType.Class, baseType));
@@ -181,15 +181,15 @@ public class SemanticAnalyzer extends VisitorAdaptor {
             MJTable.insert(MJSymbol.Fld, MJConstants.VMT_POINTER, MJTable.intType);
         }
         // Set reference in syntax node
-        if (info instanceof ClassHeader) {
-            ((ClassHeader) info).mjsymbol = currentClassSym;
+        if (node instanceof ClassHeader) {
+            ((ClassHeader) node).mjsymbol = currentClassSym;
         } else {
-            ((AbstractClassHeader) info).mjsymbol = currentClassSym;
+            ((AbstractClassHeader) node).mjsymbol = currentClassSym;
         }
     }
 
-    private void processClassDeclaration(SyntaxNode info) {
-        logDebugNodeVisit(info);
+    private void processClassDeclaration(SyntaxNode node) {
+        logDebugNodeVisit(node);
         // Add local symbols and close scope
         MJTable.chainLocalSymbols(currentClassSym.getType()); // set members
         MJTable.closeScope();
@@ -197,20 +197,20 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         if (!currentClassSym.isAbstract()) {
             for (MJSymbol sym : currentClassSym.getType().getMembersList()) {
                 if (sym.getKind() == MJSymbol.Meth && sym.isAbstract()) {
-                    logError(info, MessageType.UNIMPL_METHOD, currentClassSym.getName(), sym.getName());
+                    logError(node, MessageType.UNIMPL_METHOD, currentClassSym.getName(), sym.getName());
                 }
             }
         }
         // Log object definition
-        logInfo(info, MessageType.DEF_SYM, "class", currentClassSym);
+        logInfo(node, MessageType.DEF_SYM, "class", currentClassSym);
         currentClassSym = MJTable.noSym;
     }
 
-    private void processMethodHeader(SyntaxNode info, boolean abs, String name, RetType retType) {
-        logDebugNodeVisit(info);
+    private void processMethodHeader(SyntaxNode node, boolean abs, String name, RetType retType) {
+        logDebugNodeVisit(node);
         // Return type check
         MJType returnType = MJTable.voidType;
-        if (!assertInvSym(info, retType.mjsymbol, "return type")) {
+        if (!assertInvSym(node, retType.mjsymbol, "return type")) {
             returnType = retType.mjsymbol.getType();
         }
         // Insert or modify existing symbol (class method overriding)
@@ -221,7 +221,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
                     methodSym.getParent() != currentClassSym) {
                 // Check if return type is assignable to base method return type
                 if (!returnType.assignableTo(methodSym.getType())) {
-                    logError(info, MessageType.INCOMPATIBLE_TYPES,
+                    logError(node, MessageType.INCOMPATIBLE_TYPES,
                             MJType.getTypeName(returnType), MJType.getTypeName(methodSym.getType()));
                     // To continue analysis instantiate a new symbol outside symbol table
                     currentMethodSym = new MJSymbol(MJSymbol.Meth, name, returnType);
@@ -231,7 +231,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
                 }
             } else {
                 // Symbol with same name is already defined, log error message
-                logError(info, MessageType.SYM_IN_USE, name);
+                logError(node, MessageType.SYM_IN_USE, name);
                 // To continue analysis instantiate a new symbol outside symbol table
                 currentMethodSym = new MJSymbol(MJSymbol.Meth, name, returnType);
             }
@@ -242,11 +242,11 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         // Abstract method checks
         if (abs) {
             if (!MJUtils.isSymbolValid(currentClassSym)) {
-                logError(info, MessageType.OTHER, "Abstract method definition outside abstract class!");
+                logError(node, MessageType.OTHER, "Abstract method definition outside abstract class!");
             } else if (!currentClassSym.isAbstract()) {
-                logError(info, MessageType.OTHER, "Abstract method definition inside a concrete class!");
+                logError(node, MessageType.OTHER, "Abstract method definition inside a concrete class!");
             } else if (currentAccess == Access.PRIVATE) {
-                logError(info, MessageType.OTHER,  "Abstract method cannot be declared private!");
+                logError(node, MessageType.OTHER,  "Abstract method cannot be declared private!");
             }
         }
         currentMethodSym.setAbstract(abs);
@@ -263,7 +263,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
             if (currentMethodSym == methodSym) { // Method override
                 // Change access modifier
                 if (currentAccess.ordinal() < methodSym.getAccess().ordinal()) {
-                    logError(info, MessageType.OTHER, "Cannot set lower access modifier '" + currentAccess +
+                    logError(node, MessageType.OTHER, "Cannot set lower access modifier '" + currentAccess +
                             "' to a method defined with '" + methodSym.getAccess() + "' access!");
                 } else {
                     currentMethodSym.setAccess(currentAccess);
@@ -278,32 +278,32 @@ public class SemanticAnalyzer extends VisitorAdaptor {
             methodCount++;
         }
         // Set reference in syntax node
-        if (info instanceof MethodHeader) {
-            ((MethodHeader) info).mjsymbol = currentMethodSym;
+        if (node instanceof MethodHeader) {
+            ((MethodHeader) node).mjsymbol = currentMethodSym;
         } else {
-            ((AbstractMethodHeader) info).mjsymbol = currentMethodSym;
+            ((AbstractMethodHeader) node).mjsymbol = currentMethodSym;
         }
     }
 
-    private void processMethodDeclaration(SyntaxNode info) {
-        logDebugNodeVisit(info);
+    private void processMethodDeclaration(SyntaxNode node) {
+        logDebugNodeVisit(node);
         MJTable.chainLocalSymbols(currentMethodSym);
         MJTable.closeScope();
         currentMethodSym.setLevel(currentFormalParamCount);
         // Set parent class here to allow method overriding
         currentMethodSym.setParent(currentClassSym);
         // Log object definition
-        logInfo(info, MessageType.DEF_SYM, "method", currentMethodSym);
+        logInfo(node, MessageType.DEF_SYM, "method", currentMethodSym);
         currentMethodSym = null;
     }
 
-    private void processIncOrDec(SyntaxNode info, MJSymbol designatorSym) {
-        logDebugNodeVisit(info);
+    private void processIncOrDec(SyntaxNode node, MJSymbol designatorSym) {
+        logDebugNodeVisit(node);
         // Check if value can be assigned to designator
-        if (assertValueNotAssignableToSymbol(info, designatorSym)) return;
+        if (assertValueNotAssignableToSymbol(node, designatorSym)) return;
         // Type checks
         if (designatorSym.getType() != MJTable.intType) {
-            logError(info, MessageType.INCOMPATIBLE_TYPES,
+            logError(node, MessageType.INCOMPATIBLE_TYPES,
                     MJType.getTypeName(designatorSym.getType()), MJType.getTypeName(MJTable.intType));
         }
     }
@@ -817,8 +817,12 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         if (iteratorSymValid && designatorSymValid && !iteratorSym.getType().equals(designatorSym.getType().getElemType())) {
             logError(forEachStatementHeader, MessageType.INCOMPATIBLE_TYPES, "Iterator type", "type of array element");
         }
-        // Set iterator variable to read-only inside foreach statement
-        if (iteratorSymValid) iteratorSym.setReadOnly(true);
+        if (iteratorSymValid) {
+            // Set iterator symbol to read-only inside foreach statement
+            iteratorSym.setReadOnly(true);
+            // Set node symbol to iterator variable symbol for use in code generation
+            forEachStatementHeader.mjsymbol = iteratorSym;
+        }
         forDepth++;
     }
 
@@ -827,9 +831,10 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         logDebugNodeVisit(forEachStatement);
         forDepth--;
         if (forDepth < 0) logError(forEachStatement, MessageType.INV_COMPILER_OBJ, "for depth", forDepth);
-        MJSymbol iteratorSym = MJTable.findSymbolInAnyScope(forEachStatement.getForEachStatementHeader().getName());
+        MJSymbol iteratorSym = forEachStatement.getForEachStatementHeader().mjsymbol;
         if (MJUtils.isSymbolValid(iteratorSym)) {
-            iteratorSym.setReadOnly(false); // set element back to read-write as we exited foreach statement
+            // Set iterator symbol back to read-write as we exited foreach statement
+            iteratorSym.setReadOnly(false);
         }
     }
 

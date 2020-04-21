@@ -24,7 +24,7 @@ public class JumpAddressStack {
 
     public void createJumpAddressList() {
         if (currentJumpAdressList != null) {
-            jumpAddressListStack.add(currentJumpAdressList);
+            jumpAddressListStack.push(currentJumpAdressList);
         }
         currentJumpAdressList = new JumpAddressList();
     }

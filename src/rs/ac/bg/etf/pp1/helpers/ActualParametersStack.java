@@ -25,7 +25,7 @@ public class ActualParametersStack {
 
     public void createParameters() {
         if (currentParameters != null) {
-            parametersStack.add(currentParameters);
+            parametersStack.push(currentParameters);
         }
         currentParameters = new ActualMethodParameters();
     }

@@ -143,13 +143,14 @@ nonterminal rs.ac.bg.etf.pp1.symboltable.concepts.MJSymbol AbstractMethodHeader;
 
 /* Designator non-terminals */
 nonterminal rs.ac.bg.etf.pp1.symboltable.concepts.MJSymbol Designator;
-nonterminal OptDesignatorStatement, DesignatorStatement, AssignHeader, AssignFooter;
+nonterminal DesignatorStatement, AssignHeader, AssignFooter;
 
 /* Statement non-terminals */
 nonterminal OptStatementList, Statement;
 nonterminal IfStatementHeader, IfStatementHeaderStart, OptElseStatement;
-nonterminal java.lang.Integer ElseStatementStart;
-nonterminal ForStatementHeader, ForStatementHeaderStart, ForCondition, ForEachStatementHeader;
+nonterminal ForStatementHeader, ForDesignatorStatement, ForCondition;
+nonterminal rs.ac.bg.etf.pp1.symboltable.concepts.MJSymbol ForEachStatementHeader;
+nonterminal java.lang.Integer ElseStatementStart, ForStatementHeaderStart, ForEachStatementHeaderStart;
 nonterminal OptRetValue, OptPrintWidth;
 
 /* Method call non-terminals */
@@ -388,10 +389,6 @@ Designator ::= (IdentifierDesignator) IDENT:name
              | (ElementAccessDesignator) Designator:array ArrayIndexer:index
              ;
 
-OptDesignatorStatement ::= (SingleDesignatorStatement) DesignatorStatement:statement
-                         | (NoDesignatorStatement) /* epsilon */
-                         ;
-
 DesignatorStatement ::= (AssignmentDesignatorStatement) AssignHeader:header AssignFooter:footer
                       | (MethodCallDesignatorStatement) MethodCall:methodCall
                       | (IncrementDesignatorStatement) Designator:var PLUSPLUS
@@ -438,9 +435,13 @@ OptElseStatement ::= (ElseStatement) ElseStatementStart Statement:statement
 
 ElseStatementStart ::= (ElseStatementStart) ELSE;
 
-ForStatementHeader ::= (ForStatementHeader) ForStatementHeaderStart OptDesignatorStatement:initStatement SEMICOLON ForCondition:condition SEMICOLON OptDesignatorStatement:updateStatement RPAREN;
+ForStatementHeader ::= (ForStatementHeader) ForStatementHeaderStart ForDesignatorStatement:initStatement SEMICOLON ForCondition:condition SEMICOLON ForDesignatorStatement:updateStatement RPAREN;
 
 ForStatementHeaderStart ::= (ForStatementHeaderStart) FOR LPAREN;
+
+ForDesignatorStatement ::= (SingleDesignatorStatement) DesignatorStatement:statement
+                         | (NoDesignatorStatement) /* epsilon */
+                         ;
 
 ForCondition ::= (SingleCondition) Condition:cond
                | (NoCondition) /* epsilon */
@@ -453,7 +454,9 @@ ForCondition ::= (SingleCondition) Condition:cond
 :}
                ;
 
-ForEachStatementHeader ::= (ForEachStatementHeader) FOREACH LPAREN IDENT:name COLON Designator:designator RPAREN;
+ForEachStatementHeader ::= (ForEachStatementHeader) ForEachStatementHeaderStart IDENT:name COLON Designator:designator RPAREN;
+
+ForEachStatementHeaderStart ::= (ForEachStatementHeaderStart) FOREACH LPAREN;
 
 OptRetValue ::= (ReturnValue) Expr:expr
               | (NoReturnValue) /* epsilon */

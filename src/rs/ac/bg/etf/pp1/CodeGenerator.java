@@ -11,6 +11,7 @@ import rs.ac.bg.etf.pp1.symboltable.concepts.MJSymbol;
 import rs.ac.bg.etf.pp1.util.MJUtils;
 
 import java.util.List;
+import java.util.Stack;
 
 public class CodeGenerator extends VisitorAdaptor {
 
@@ -23,7 +24,10 @@ public class CodeGenerator extends VisitorAdaptor {
 
     private MJSymbol currentClassSym = MJTable.noSym;
 
-    private JumpAddressStack jumpAddressStack = new JumpAddressStack();
+    private JumpAddressStack jumpAddressStack = new JumpAddressStack(), loopAddressStack = new JumpAddressStack();
+    private Stack<Designator> arrayDesignatorStack = new Stack<>();
+
+    private boolean generateCode = true;
 
     /******************** Public methods / constructors ***************************************************************/
 
@@ -33,21 +37,28 @@ public class CodeGenerator extends VisitorAdaptor {
 
     /******************** Error / debug methods ***********************************************************************/
 
-    private void logDebugNodeVisit(SyntaxNode info) {
-        logger.debug(MJUtils.getLineNumber(info), -1, MessageType.NODE_VISIT, info.getClass().getSimpleName());
-        // Set current node in MJCode to allow it to call logError method.
-        MJCode.setCurrentNode(info);
+    private void logDebugNodeVisit(SyntaxNode node) {
+        logger.debug(MJUtils.getLineNumber(node), -1, MessageType.NODE_VISIT, node.getClass().getSimpleName());
     }
 
     // This method is public to allow MJCode to access it and log error messages!
     // Ugly I know but it seems the most reasonable solution while still using base classes and not reimplementing them.
     // Ideally I would never use the ugly code found in provided libraries, but since I must, this is my solution.
-    public void logError(SyntaxNode info, Object... context) {
+    public void logError(SyntaxNode node, Object... context) {
         errorCount++;
-        logger.error(MJUtils.getLineNumber(info), -1, context);
+        logger.error(MJUtils.getLineNumber(node), -1, context);
     }
 
     /******************** Helper methods ******************************************************************************/
+
+    private boolean visitStart(SyntaxNode node) {
+        // Log node visit debug information
+        logDebugNodeVisit(node);
+        // Set current node in MJCode to allow it to call logError method.
+        MJCode.setCurrentNode(node);
+        // Return true if code should be generated
+        return generateCode;
+    }
 
     // Checks if there is a designator part after this one (MemberAccessDesignator or ElementAccessDesignator) and
     // loads current designator symbol onto the stack in order to allow the next part to load.
@@ -72,8 +83,7 @@ public class CodeGenerator extends VisitorAdaptor {
         }
     }
 
-    private void processIncOrDec(SyntaxNode info, MJSymbol designatorSym, boolean increment) {
-        logDebugNodeVisit(info);
+    private void generateIncDec(MJSymbol designatorSym, boolean increment) {
         if (designatorSym.getKind() == MJSymbol.Var && designatorSym.getLevel() == 1) { // local variables
             MJCode.put(MJCode.inc);
             MJCode.put(designatorSym.getAdr());
@@ -129,14 +139,35 @@ public class CodeGenerator extends VisitorAdaptor {
         }
     }
 
-    private void patchJumpAddresses(boolean trueJumps) {
+    private void patchJumpAddresses(boolean loopStack, boolean trueJumps) {
         // Get specified jump patch address list
-        List<Integer> patchAddressList = jumpAddressStack.getJumpAddressList(trueJumps);
+        List<Integer> patchAddressList = loopStack ?
+                loopAddressStack.getJumpAddressList(trueJumps) : jumpAddressStack.getJumpAddressList(trueJumps);
         for (Integer patchAddress : patchAddressList) {
             MJCode.fixup(patchAddress);
         }
         // Clear the list since everything has been patched
         patchAddressList.clear();
+    }
+
+    private void processForDesignatorStatement(SyntaxNode node) {
+        if (node.getParent() instanceof ForStatementHeader) {
+            ForStatementHeader header = (ForStatementHeader) node.getParent();
+            if (node == header.getForDesignatorStatement()) { // initStatement
+                // Store current pc in header start node as it is the start address of condition check
+                header.getForStatementHeaderStart().integer = MJCode.pc;
+            } else { // updateStatement
+                // Re-enable code generation as this node has been visited and no code has been generated
+                generateCode = true;
+            }
+        }
+    }
+
+    private void processForCondition(SyntaxNode node) {
+        if (node.getParent() instanceof ForStatementHeader) {
+            // Disable code generation to prevent updateStatement from being prematurely generated
+            generateCode = false;
+        }
     }
 
     /******************** Program *************************************************************************************/
@@ -145,7 +176,7 @@ public class CodeGenerator extends VisitorAdaptor {
     public void visit(ProgramHeader programHeader) {
         // Set generator in MJCode to allow it to use logError
         MJCode.setGenerator(this);
-        logDebugNodeVisit(programHeader);
+        if (!visitStart(programHeader)) return;
         // Generate code for predeclared method: chr
         MJTable.chrMethodSym.setAdr(MJCode.pc);
         MJCode.put(MJCode.return_);
@@ -160,7 +191,7 @@ public class CodeGenerator extends VisitorAdaptor {
 
     @Override
     public void visit(Program program) {
-        logDebugNodeVisit(program);
+        if (!visitStart(program)) return;
         if (MJCode.pc >= MJConstants.MAX_CODE_SIZE) {
             logError(program, MessageType.INV_PROG_SIZE, MJCode.pc, MJConstants.MAX_CODE_SIZE);
         }
@@ -170,13 +201,13 @@ public class CodeGenerator extends VisitorAdaptor {
 
     @Override
     public void visit(ClassHeader classHeader) {
-        logDebugNodeVisit(classHeader);
+        if (!visitStart(classHeader)) return;
         currentClassSym = classHeader.mjsymbol;
     }
 
     @Override
     public void visit(ClassDeclaration classDeclaration) {
-        logDebugNodeVisit(classDeclaration);
+        if (!visitStart(classDeclaration)) return;
         currentClassSym = MJTable.noSym;
     }
 
@@ -184,13 +215,13 @@ public class CodeGenerator extends VisitorAdaptor {
 
     @Override
     public void visit(AbstractClassHeader abstractClassHeader) {
-        logDebugNodeVisit(abstractClassHeader);
+        if (!visitStart(abstractClassHeader)) return;
         currentClassSym = abstractClassHeader.mjsymbol;
     }
 
     @Override
     public void visit(AbstractClassDeclaration abstractClassDeclaration) {
-        logDebugNodeVisit(abstractClassDeclaration);
+        if (!visitStart(abstractClassDeclaration)) return;
         currentClassSym = MJTable.noSym;
     }
 
@@ -198,7 +229,7 @@ public class CodeGenerator extends VisitorAdaptor {
 
     @Override
     public void visit(MethodHeader methodHeader) {
-        logDebugNodeVisit(methodHeader);
+        if (!visitStart(methodHeader)) return;
         // Check if method is MAIN
         if (methodHeader.getName().equals(MAIN)) {
             mainPC = MJCode.pc;
@@ -212,7 +243,7 @@ public class CodeGenerator extends VisitorAdaptor {
 
     @Override
     public void visit(MethodDeclaration methodDeclaration) {
-        logDebugNodeVisit(methodDeclaration);
+        if (!visitStart(methodDeclaration)) return;
         if (methodDeclaration.getMethodHeader().mjsymbol.getType() == MJTable.voidType) {
             // Insert an exit and a return instruction in case method return type is void. This is not optimized and
             // can generate unreachable code if all control flows contain a return instruction.
@@ -234,15 +265,21 @@ public class CodeGenerator extends VisitorAdaptor {
 
     @Override
     public void visit(IdentifierDesignator identifierDesignator) {
-        logDebugNodeVisit(identifierDesignator);
+        if (!visitStart(identifierDesignator)) return;
         MJSymbol sym = identifierDesignator.mjsymbol;
         if (sym.isReadOnly()) { // Read-only iterator variable for foreach statement
-            // Load array address (parent symbol gets set to array this iterator loops through)
-            MJCode.load(sym.getParent());
+            Designator arrayDesignator = arrayDesignatorStack.peek();
+            // Load array address
+            arrayDesignator.traverseBottomUp(this);
+            MJCode.load(arrayDesignator.mjsymbol);
             // Load array index (this variable will hold index inside the loop)
             MJCode.load(sym);
-            // Change this node's inner symbol to treat this as an array element which it actually is
+            // Change this node's mjsymbol to treat this as an array element which it actually is
             identifierDesignator.mjsymbol = new MJSymbol(MJSymbol.Elem, sym.getName(), sym.getType());
+            if (identifierDesignator.getParent() instanceof DesignatorFactor) {
+                // Change designator factor mjsymbol to this new one
+                ((DesignatorFactor) identifierDesignator.getParent()).mjsymbol = identifierDesignator.mjsymbol;
+            }
         } else { // Normal identifier
             if (MJUtils.isSymbolValid(currentClassSym) && currentClassSym.getLocalSymbols().contains(sym)) {
                 MJSymbol this_ = MJTable.findSymbolInAnyScope(MJConstants.THIS);
@@ -254,28 +291,21 @@ public class CodeGenerator extends VisitorAdaptor {
 
     @Override
     public void visit(MemberAccessDesignator memberAccessDesignator) {
-        logDebugNodeVisit(memberAccessDesignator);
+        if (!visitStart(memberAccessDesignator)) return;
         prepareForNextDesignatorNode(memberAccessDesignator, memberAccessDesignator.mjsymbol);
     }
 
     @Override
     public void visit(ElementAccessDesignator elementAccessDesignator) {
-        logDebugNodeVisit(elementAccessDesignator);
+        if (!visitStart(elementAccessDesignator)) return;
         prepareForNextDesignatorNode(elementAccessDesignator, elementAccessDesignator.mjsymbol);
     }
 
     //------------------- DesignatorStatement ------------------------------------------------------------------------//
 
-
-    @Override
-    public void visit(SingleDesignatorStatement singleDesignatorStatement) {
-        logDebugNodeVisit(singleDesignatorStatement);
-        // TODO: Disable designator statement code generation to prevent for loop updateStatement to be generated
-    }
-
     @Override
     public void visit(AssignmentHeader assignmentHeader) {
-        logDebugNodeVisit(assignmentHeader);
+        if (!visitStart(assignmentHeader)) return;
         MJSymbol designatorSym = assignmentHeader.getDesignator().mjsymbol;
         AssignmentDesignatorStatement statement = (AssignmentDesignatorStatement) assignmentHeader.getParent();
         AssignmentFooter footer = (AssignmentFooter) statement.getAssignFooter();
@@ -287,7 +317,7 @@ public class CodeGenerator extends VisitorAdaptor {
 
     @Override
     public void visit(AssignmentDesignatorStatement assignmentDesignatorStatement) {
-        logDebugNodeVisit(assignmentDesignatorStatement);
+        if (!visitStart(assignmentDesignatorStatement)) return;
         AssignmentHeader header = (AssignmentHeader) assignmentDesignatorStatement.getAssignHeader();
         AssignmentFooter footer = (AssignmentFooter) assignmentDesignatorStatement.getAssignFooter();
         MJSymbol designatorSym = header.getDesignator().mjsymbol;
@@ -299,31 +329,39 @@ public class CodeGenerator extends VisitorAdaptor {
 
     @Override
     public void visit(IncrementDesignatorStatement incrementDesignatorStatement) {
-        processIncOrDec(incrementDesignatorStatement, incrementDesignatorStatement.getDesignator().mjsymbol, true);
+        if (!visitStart(incrementDesignatorStatement)) return;
+        generateIncDec(incrementDesignatorStatement.getDesignator().mjsymbol, true);
     }
 
     @Override
     public void visit(DecrementDesignatorStatement decrementDesignatorStatement) {
-        processIncOrDec(decrementDesignatorStatement, decrementDesignatorStatement.getDesignator().mjsymbol, false);
+        if (!visitStart(decrementDesignatorStatement)) return;
+        generateIncDec(decrementDesignatorStatement.getDesignator().mjsymbol, false);
     }
 
     /******************** Statement ***********************************************************************************/
 
     @Override
     public void visit(BreakStatement breakStatement) {
-        logDebugNodeVisit(breakStatement);
-        // TODO: Implement this method!
+        if (!visitStart(breakStatement)) return;
+        // Insert an unconditional jump to the address after the loop
+        MJCode.putJump(0);
+        // Insert patch address as a false jump address (used only for break statement patch addresses)
+        loopAddressStack.insertFalseJumpAddress(MJCode.pc - 2);
     }
 
     @Override
     public void visit(ContinueStatement continueStatement) {
-        logDebugNodeVisit(continueStatement);
-        // TODO: Implement this method!
+        if (!visitStart(continueStatement)) return;
+        // Insert an unconditional jump to the update statement
+        MJCode.putJump(0);
+        // Insert patch address as a true jump address (used only for continue statement patch addresses)
+        loopAddressStack.insertTrueJumpAddress(MJCode.pc - 2);
     }
 
     @Override
     public void visit(ReadStatement readStatement) {
-        logDebugNodeVisit(readStatement);
+        if (!visitStart(readStatement)) return;
         MJSymbol designatorSym = readStatement.getDesignator().mjsymbol;
         if (designatorSym.getType() == MJTable.charType) {
             MJCode.put(MJCode.bread);
@@ -335,7 +373,7 @@ public class CodeGenerator extends VisitorAdaptor {
 
     @Override
     public void visit(PrintStatement printStatement) {
-        logDebugNodeVisit(printStatement);
+        if (!visitStart(printStatement)) return;
         OptPrintWidth optPrintWidth = printStatement.getOptPrintWidth();
         int width = 0;
         if (optPrintWidth instanceof PrintWidth) {
@@ -347,7 +385,7 @@ public class CodeGenerator extends VisitorAdaptor {
 
     @Override
     public void visit(ReturnStatement returnStatement) {
-        logDebugNodeVisit(returnStatement);
+        if (!visitStart(returnStatement)) return;
         // Generate exit and return instruction; return value is already on stack
         MJCode.put(MJCode.exit);
         MJCode.put(MJCode.return_);
@@ -355,82 +393,207 @@ public class CodeGenerator extends VisitorAdaptor {
 
     @Override
     public void visit(IfStatementHeaderStart ifStatementHeaderStart) {
-        logDebugNodeVisit(ifStatementHeaderStart);
+        if (!visitStart(ifStatementHeaderStart)) return;
         jumpAddressStack.createJumpAddressList();
     }
 
     @Override
     public void visit(IfStatementHeader ifStatementHeader) {
-        logDebugNodeVisit(ifStatementHeader);
+        if (!visitStart(ifStatementHeader)) return;
         MJSymbol conditionSym = ifStatementHeader.getCondition().mjsymbol;
         // Generate false jump for last relational operation
         MJCode.putFalseJump(conditionSym.getAdr(), 0);
         // Add patch address
         jumpAddressStack.insertFalseJumpAddress(MJCode.pc - 2);
         // Fix all true jumps
-        patchJumpAddresses(true);
+        patchJumpAddresses(false, true);
     }
 
     @Override
     public void visit(ElseStatementStart elseStatementStart) {
-        logDebugNodeVisit(elseStatementStart);
+        if (!visitStart(elseStatementStart)) return;
         // Place an unconditional jump to skip else statement
         MJCode.putJump(0);
         // Remember jump address to patch
         elseStatementStart.integer = MJCode.pc - 2;
         // Fix all false jumps
-        patchJumpAddresses(false);
+        patchJumpAddresses(false, false);
     }
 
     @Override
     public void visit(IfOptElseStatement ifOptElseStatement) {
-        logDebugNodeVisit(ifOptElseStatement);
+        if (!visitStart(ifOptElseStatement)) return;
         if (ifOptElseStatement.getOptElseStatement() instanceof ElseStatement) {
             // Fix unconditional jump
             MJCode.fixup(((ElseStatement) ifOptElseStatement.getOptElseStatement()).getElseStatementStart().integer);
         } else {
             // Fix all false jumps
-            patchJumpAddresses(false);
+            patchJumpAddresses(false, false);
         }
         jumpAddressStack.popJumpAddressList();
     }
 
     @Override
     public void visit(ForStatementHeaderStart forStatementHeaderStart) {
-        logDebugNodeVisit(forStatementHeaderStart);
+        if (!visitStart(forStatementHeaderStart)) return;
         jumpAddressStack.createJumpAddressList();
+        loopAddressStack.createJumpAddressList();
     }
 
     @Override
     public void visit(ForStatementHeader forStatementHeader) {
-        logDebugNodeVisit(forStatementHeader);
-        // TODO: Enable designator statement code generation to allow inner statements to be generated
+        if (!visitStart(forStatementHeader)) return;
+        if (forStatementHeader.getForCondition() instanceof SingleCondition) { // SingleCondition
+            MJSymbol conditionSym = ((SingleCondition) forStatementHeader.getForCondition()).getCondition().mjsymbol;
+            // Generate false jump for last relational operation
+            MJCode.putFalseJump(conditionSym.getAdr(), 0);
+            // Add patch address
+            loopAddressStack.insertFalseJumpAddress(MJCode.pc - 2);
+            // Fix all true jumps
+            patchJumpAddresses(false, true);
+        }
+    }
+
+    @Override
+    public void visit(SingleDesignatorStatement singleDesignatorStatement) {
+        visitStart(singleDesignatorStatement);
+        processForDesignatorStatement(singleDesignatorStatement);
+    }
+
+    @Override
+    public void visit(NoDesignatorStatement noDesignatorStatement) {
+        visitStart(noDesignatorStatement);
+        processForDesignatorStatement(noDesignatorStatement);
+    }
+
+    @Override
+    public void visit(SingleCondition singleCondition) {
+        visitStart(singleCondition);
+        processForCondition(singleCondition);
+    }
+
+    @Override
+    public void visit(NoCondition noCondition) {
+        visitStart(noCondition);
+        processForCondition(noCondition);
     }
 
     @Override
     public void visit(ForStatement forStatement) {
-        logDebugNodeVisit(forStatement);
-        // TODO: Generate updateStatement and a simple JMP statement to loop condition
+        if (!visitStart(forStatement)) return;
+        ForStatementHeader header = forStatement.getForStatementHeader();
+        int conditionCheckAddress = header.getForStatementHeaderStart().integer;
+        if (header.getForDesignatorStatement1() instanceof SingleDesignatorStatement) { // SingleDesignatorStatement
+            // Patch all continue statements
+            patchJumpAddresses(true, true);
+            // Generate code for update statement
+            ((SingleDesignatorStatement) header.getForDesignatorStatement1()).getDesignatorStatement()
+                    .traverseBottomUp(this);
+        } else { // NoDesignatorStatement
+            // Small optimization - patch all true jumps to condition check address instead of this address because
+            //                      there is no update statement so no need to jump twice
+            int tmp = MJCode.pc;
+            // Change pc to the address of the condition check to patch it
+            MJCode.pc = conditionCheckAddress;
+            // Patch all continue statements
+            patchJumpAddresses(true, true);
+            // Change pc back to current address
+            MJCode.pc = tmp;
+        }
+        // Generate an unconditional jump statement to condition check
+        MJCode.putJump(conditionCheckAddress);
+        // Patch all false jumps (conditions and break statements)
+        patchJumpAddresses(false, false); // for conditions
+        patchJumpAddresses(true, false); // break statements
         jumpAddressStack.popJumpAddressList();
+        loopAddressStack.popJumpAddressList();
+    }
+
+    @Override
+    public void visit(ForEachStatementHeaderStart forEachStatementHeaderStart) {
+        visitStart(forEachStatementHeaderStart);
+        jumpAddressStack.createJumpAddressList();
+        loopAddressStack.createJumpAddressList();
+        // Prevent array designator from generating code
+        generateCode = false;
     }
 
     @Override
     public void visit(ForEachStatementHeader forEachStatementHeader) {
-        logDebugNodeVisit(forEachStatementHeader);
-        jumpAddressStack.createJumpAddressList();
+        visitStart(forEachStatementHeader);
+        // Re-enable code generation
+        generateCode = true;
+        MJSymbol iteratorSym = forEachStatementHeader.mjsymbol;
+        MJSymbol arraySym = forEachStatementHeader.getDesignator().mjsymbol;
+        // Generate for initStatement (it = 0)
+        MJCode.loadConst(0);
+        MJCode.store(iteratorSym);
+        // Remember condition check address
+        forEachStatementHeader.getForEachStatementHeaderStart().integer = MJCode.pc;
+        // Add condition check (it < len(arr))
+        MJCode.load(iteratorSym);
+        // Generate required array designator parts
+        forEachStatementHeader.getDesignator().traverseBottomUp(this);
+        // Load array address
+        MJCode.load(arraySym);
+        MJCode.put(MJCode.arraylength);
+        MJCode.putFalseJump(MJCode.lt, 0);
+        // Add patch address (will jump to last part of foreach loop where iterator will get current value)
+        loopAddressStack.insertFalseJumpAddress(MJCode.pc - 2);
+        // Set iterator variable to read-only inside foreach statement
+        iteratorSym.setReadOnly(true);
+        // Add array designator node to stack (used to generate array address load)
+        arrayDesignatorStack.push(forEachStatementHeader.getDesignator());
     }
 
     @Override
     public void visit(ForEachStatement forEachStatement) {
-        logDebugNodeVisit(forEachStatement);
+        if (!visitStart(forEachStatement)) return;
+        ForEachStatementHeader header = forEachStatement.getForEachStatementHeader();
+        MJSymbol iteratorSym = header.mjsymbol;
+        MJSymbol arraySym = header.getDesignator().mjsymbol;
+        // Patch all true jumps (continue statements)
+        patchJumpAddresses(true, true);
+        // Generate for updateStatement (it++)
+        generateIncDec(iteratorSym, true);
+        // Generate an unconditional jump statement to condition check
+        MJCode.putJump(header.getForEachStatementHeaderStart().integer);
+        // Patch all false jumps (for condition false jump and break statements)
+        patchJumpAddresses(false, false); // conditions
+        patchJumpAddresses(true, false); // break statements
+        // Load current element value into iterator variable...
+        // - Load array address and index assuming it is in range
+        MJCode.load(arraySym);
+        MJCode.load(iteratorSym);
+        // - Check if index is outside the range
+        MJCode.load(iteratorSym);
+        MJCode.load(arraySym);
+        MJCode.put(MJCode.arraylength);
+        MJCode.putTrueJump(MJCode.lt, 0);
+        int patchAddress = MJCode.pc - 2;
+        // - If it is not decrement it by one (since it cannot be greater than len(arr) only equal to)
+        MJCode.loadConst(1);
+        MJCode.put(MJCode.sub);
+        // - Fix jump address
+        MJCode.fixup(patchAddress);
+        // - Load element value
+        MJCode.load(new MJSymbol(MJSymbol.Elem, null, arraySym.getType().getElemType()));
+        // - Store into iterator variable
+        MJCode.store(iteratorSym);
+        // Now iterator variable has the value of current element when loop was exited
         jumpAddressStack.popJumpAddressList();
+        loopAddressStack.popJumpAddressList();
+        // Set iterator symbol back to read-write as we exited foreach statement
+        iteratorSym.setReadOnly(false);
+        // Pop designator node
+        arrayDesignatorStack.pop();
     }
 
     /******************** Method call *********************************************************************************/
 
     @Override
     public void visit(MethodCall methodCall) {
-        logDebugNodeVisit(methodCall);
+        if (!visitStart(methodCall)) return;
         int relativeAddress = methodCall.mjsymbol.getAdr() - MJCode.pc;
         MJCode.put(MJCode.call);
         MJCode.put2(relativeAddress);
@@ -442,7 +605,7 @@ public class CodeGenerator extends VisitorAdaptor {
 
     @Override
     public void visit(AssignmentExpression assignmentExpression) {
-        logDebugNodeVisit(assignmentExpression);
+        if (!visitStart(assignmentExpression)) return;
         // This could easily support standard '=' operator for expressions but since project specification does not
         // require it it is not currently supported. The only difference would be that '=' operator would not insert
         // any arithmetic instruction and just duplicate the result to allow storing.
@@ -472,7 +635,7 @@ public class CodeGenerator extends VisitorAdaptor {
 
     @Override
     public void visit(MultipleTermsExpression multipleTermsExpression) {
-        logDebugNodeVisit(multipleTermsExpression);
+        if (!visitStart(multipleTermsExpression)) return;
         // Depending on operation insert appropriate instruction.
         LeftAddop op = multipleTermsExpression.getLeftAddop();
         if (op instanceof AddOperator) {
@@ -484,7 +647,7 @@ public class CodeGenerator extends VisitorAdaptor {
 
     @Override
     public void visit(SingleTermExpression singleTermExpression) {
-        logDebugNodeVisit(singleTermExpression);
+        if (!visitStart(singleTermExpression)) return;
         // If expression is negated put a neg instruction.
         if (singleTermExpression.getOptSign() instanceof MinusSign) {
             MJCode.put(MJCode.neg);
@@ -495,7 +658,7 @@ public class CodeGenerator extends VisitorAdaptor {
 
     @Override
     public void visit(MultipleFactorsTerm multipleFactorsTerm) {
-        logDebugNodeVisit(multipleFactorsTerm);
+        if (!visitStart(multipleFactorsTerm)) return;
         // Depending on operation insert appropriate instruction.
         LeftMulop op = multipleFactorsTerm.getLeftMulop();
         if (op instanceof MulOperator) {
@@ -511,7 +674,7 @@ public class CodeGenerator extends VisitorAdaptor {
 
     @Override
     public void visit(DesignatorFactor designatorFactor) {
-        logDebugNodeVisit(designatorFactor);
+        if (!visitStart(designatorFactor)) return;
         MJSymbol sym = designatorFactor.mjsymbol;
         // If designator is a class field or an array element and it is on the right side of any assignment operator
         // (excluding '=' because expressions do not support this operator) it must be duplicated in order to preserve
@@ -533,13 +696,13 @@ public class CodeGenerator extends VisitorAdaptor {
 
     @Override
     public void visit(ConstantFactor constantFactor) {
-        logDebugNodeVisit(constantFactor);
+        if (!visitStart(constantFactor)) return;
         MJCode.load(constantFactor.mjsymbol);
     }
 
     @Override
     public void visit(AllocatorFactor allocatorFactor) {
-        logDebugNodeVisit(allocatorFactor);
+        if (!visitStart(allocatorFactor)) return;
         MJSymbol sym = allocatorFactor.mjsymbol;
         if (allocatorFactor.getOptArrayIndexer() instanceof SingleArrayIndexer) {
             // Array allocator
@@ -561,7 +724,7 @@ public class CodeGenerator extends VisitorAdaptor {
 
     @Override
     public void visit(MultipleTermsCondition multipleTermsCondition) {
-        logDebugNodeVisit(multipleTermsCondition);
+        if (!visitStart(multipleTermsCondition)) return;
         MJSymbol conditionSym = multipleTermsCondition.getCondition().mjsymbol;
         MJSymbol termSym = multipleTermsCondition.getCondTerm().mjsymbol;
         // Propagate condition term relational operator by creating a new symbol with same adr field
@@ -573,7 +736,7 @@ public class CodeGenerator extends VisitorAdaptor {
 
     @Override
     public void visit(SingleTermCondition singleTermCondition) {
-        logDebugNodeVisit(singleTermCondition);
+        if (!visitStart(singleTermCondition)) return;
         // Propagate condition term relational operator by propagating it's symbol
         singleTermCondition.mjsymbol = singleTermCondition.getCondTerm().mjsymbol;
         // If this is not the last term in a condition, add a true jump
@@ -582,7 +745,7 @@ public class CodeGenerator extends VisitorAdaptor {
 
     @Override
     public void visit(MultipleFactsConditionTerm multipleFactsConditionTerm) {
-        logDebugNodeVisit(multipleFactsConditionTerm);
+        if (!visitStart(multipleFactsConditionTerm)) return;
         MJSymbol termSym = multipleFactsConditionTerm.getCondTerm().mjsymbol;
         MJSymbol factSym = multipleFactsConditionTerm.getCondFact().mjsymbol;
         // Propagate condition fact relational operator by creating a new symbol with same adr field
@@ -594,7 +757,7 @@ public class CodeGenerator extends VisitorAdaptor {
 
     @Override
     public void visit(SingleFactConditionTerm singleFactConditionTerm) {
-        logDebugNodeVisit(singleFactConditionTerm);
+        if (!visitStart(singleFactConditionTerm)) return;
         // Propagate condition fact relational operator by propagating it's symbol
         singleFactConditionTerm.mjsymbol = singleFactConditionTerm.getCondFact().mjsymbol;
         // If this is not the last factor in a term, add a false jump
@@ -603,7 +766,7 @@ public class CodeGenerator extends VisitorAdaptor {
 
     @Override
     public void visit(ComplexConditionFact complexConditionFact) {
-        logDebugNodeVisit(complexConditionFact);
+        if (!visitStart(complexConditionFact)) return;
         String leftName = complexConditionFact.getExpr().mjsymbol.getName();
         String rightName = complexConditionFact.getExpr().mjsymbol.getName();
         // Get relational operator code and name
@@ -636,11 +799,11 @@ public class CodeGenerator extends VisitorAdaptor {
 
     @Override
     public void visit(SimpleConditionFact simpleConditionFact) {
-        logDebugNodeVisit(simpleConditionFact);
+        if (!visitStart(simpleConditionFact)) return;
         // Boolean designator already on stack, load a boolean constant (false = 0) to compare it to
         MJCode.loadConst(0);
         // Store relational operator code in adr field of this node's mjsymbol
         simpleConditionFact.mjsymbol = new MJSymbol(MJSymbol.Con, simpleConditionFact.getExpr().mjsymbol.getName(),
-                MJTable.boolType, MJCode.eq, -1);
+                MJTable.boolType, MJCode.ne, -1);
     }
 }
