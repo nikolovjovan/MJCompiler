@@ -36,10 +36,10 @@ public class MJSymbol extends Obj {
     //   int adr                    - kind == Con:              Constant value
     //                                kind == Meth, Var, Fld:   Memory offset
     //   int level                  - kind == Var:              Nesting level
-    //                                kind == Meth:             Formal argument count
-    //   int fpPos                  - kind == Var:              Formal argument position (only locals)
+    //                                kind == Meth:             Formal parameter count
+    //   int fpPos                  - kind == Var:              Formal parameter position (only locals)
     //   SymbolDataStructure locals - kind == Meth:             Local variable collection
-    //                                                          Includes formal arguments as locals
+    //                                                          Includes formal parameter as locals
     //                                kind == Prog:             Program symbol collection
 
     // kind == Fld, Meth:   Used to check for access level inside subclasses
@@ -57,12 +57,19 @@ public class MJSymbol extends Obj {
 
     /******************** Constructors ****************************************************************/
 
+    public MJSymbol(int kind, String name, MJType type, int adr, int level, int fpPos) {
+        super(kind, name, type, adr, level);
+        setFpPos(fpPos);
+    }
+
     public MJSymbol(int kind, String name, MJType type, int adr, int level) {
         super(kind, name, type, adr, level);
+        setFpPos(-1);
     }
 
     public MJSymbol(int kind, String name, MJType type) {
         super(kind, name, type);
+        setFpPos(-1);
     }
 
     public MJSymbol(MJSymbol obj, int kind) {
@@ -70,7 +77,7 @@ public class MJSymbol extends Obj {
         setFpPos(obj.getFpPos());
         SymbolDataStructure locals = new HashTableDataStructure();
         for (MJSymbol sym : obj.getLocalSymbolsList()) {
-            locals.insertKey(sym);
+            locals.insertKey(new MJSymbol(sym));
         }
         setLocals(locals);
         parent = obj.parent;
@@ -149,7 +156,7 @@ public class MJSymbol extends Obj {
     public String getKindName() {
         switch (getKind()) {
             case Con:   return "Constant";
-            case Var:   return "Variable";
+            case Var:   return getFpPos() == -1 ? "Variable" : "Formal parameter";
             case Type:  return "Type";
             case Meth:  return abstract_ ? "Abstract method" : "Method";
             case Fld:   return "Field";
@@ -169,27 +176,29 @@ public class MJSymbol extends Obj {
         output.append(" '").append(getName()).append("': ");
         // type
         if (getKind() != Var  || !"this".equalsIgnoreCase(getName())) {
+            output.append("type = '");
             // abstract class?
             if (abstract_ && getKind() == Type && getType().getKind() == Struct.Class) output.append("abstract ");
-            output.append(MJType.getBasicTypeName(getType()));
+            output.append(MJType.getBasicTypeName(getType())).append('\'');
         }
         // adr
-        output.append(", ").append(getAdr());
+        output.append(", adr = ").append(getAdr());
         // level
-        output.append(", ").append(getLevel());
+        output.append(", level = ").append(getLevel());
         // parent
-        if (parent != null) output.append(", ").append(parent);
+        if (MJUtils.isSymbolValid(parent)) output.append(", parent = '").append(parent.getName()).append('\'');
         // class access
-        if (access != Access.DEFAULT) output.append(", ").append(access);
+        if (access != Access.DEFAULT) output.append(", access modifier = ").append(access.toString().toLowerCase());
         // locals
-        if (getKind() == Prog || getKind() == Meth) {
+        if (!getLocalSymbols().isEmpty()) {
             output.append(inline ? ' ' : '\n');
             if (!inline) {
                 MJSymbol.nextIndentationLevel();
             }
-            for (Obj o : getLocalSymbols()) {
-                output.append(currentIndentation.toString()).append(o);
-                output.append(inline ? ' ' : '\n');
+            List<MJSymbol> locals = getLocalSymbolsList();
+            for (int i = 0; i < locals.size(); i++) {
+                output.append(currentIndentation.toString()).append(locals.get(i));
+                if (i < locals.size() - 1) output.append(inline ? ' ' : '\n');
             }
             if (!inline) {
                 MJSymbol.previousIndentationLevel();

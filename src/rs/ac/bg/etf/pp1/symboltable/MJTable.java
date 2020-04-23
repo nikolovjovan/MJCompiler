@@ -56,7 +56,7 @@ public class MJTable {
         universe.addToLocals(chrMethodSym = new MJSymbol(MJSymbol.Meth, "chr", charType, 0, 1));
         {
             openScope(ScopeID.GLOBAL_METHOD);
-            currentScope.addToLocals(new MJSymbol(MJSymbol.Var, "i", intType, 0, 1));
+            currentScope.addToLocals(new MJSymbol(MJSymbol.Var, "i", intType, 0, 1, 0));
             chrMethodSym.setLocals(currentScope.getLocals());
             closeScope();
         }
@@ -64,7 +64,7 @@ public class MJTable {
         universe.addToLocals(ordMethodSym = new MJSymbol(MJSymbol.Meth, "ord", intType, 0, 1));
         {
             openScope(ScopeID.GLOBAL_METHOD);
-            currentScope.addToLocals(new MJSymbol(MJSymbol.Var, "ch", charType, 0, 1));
+            currentScope.addToLocals(new MJSymbol(MJSymbol.Var, "ch", charType, 0, 1, 0));
             ordMethodSym.setLocals(currentScope.getLocals());
             closeScope();
         }
@@ -72,7 +72,7 @@ public class MJTable {
         universe.addToLocals(lenMethodSym = new MJSymbol(MJSymbol.Meth, "len", intType, 0, 1));
         {
             openScope(ScopeID.GLOBAL_METHOD);
-            currentScope.addToLocals(new MJSymbol(MJSymbol.Var, "arr", new MJType(MJType.Array, noType), 0, 1));
+            currentScope.addToLocals(new MJSymbol(MJSymbol.Var, "arr", new MJType(MJType.Array, noType), 0, 1, 0));
             lenMethodSym.setLocals(currentScope.getLocals());
             closeScope();
         }

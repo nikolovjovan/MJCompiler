@@ -1,0 +1,46 @@
+// level C code generation:
+// - class inheritance (both abstract and concrete)
+// - substitution (subclass object reference can replace superclass reference, even when superclass is abstract)
+// - object and object array instantiation
+// - virtual method table generation
+// - polymorphic binding of class methods
+program level_c_code_generation
+    class TCalc { // TaxCalculator
+        protected int tax; // [0,100] interval
+        {
+            public int calc(int cost) {
+                return cost * (1 + tax);
+            }
+            public int getTax() { return tax; }
+            public void setTax(int tax) { this.tax = tax; }
+        }
+    }
+    class ATCalc extends TCalc {
+        // Tax including amortization
+        protected int a; // [0,100] interval
+        {
+            // @Override
+            public int calc(int c) {
+                return (c * a) * (1 * tax);
+            }
+            public int getAmortization() { return a; }
+            public void setAmortization(int a) { this.a = a; }
+        }
+    }
+{
+    void main()
+        TCalc c1;
+        ATCalc c2;
+        int cost;
+    {
+        cost = 1000;
+        c1 = new TCalc;
+        c1.setTax(10);
+        c2 = new ATCalc;
+        c2.setTax(18);
+        c2.setAmortization(2);
+        print(c1.calc(cost));
+        print(eol);
+        print(c2.calc(cost));
+    }
+}

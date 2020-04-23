@@ -61,4 +61,14 @@ public class MJUtils {
                 sym.getParent() == classSym ||
                 sym.getAccess() == Access.PROTECTED && classSym.getType().isDescendantOf(sym.getParent().getType());
     }
+
+    public static MJSymbol findLocalSymbol(MJSymbol parentSym, String name) {
+        if (!isSymbolValid(parentSym)) return MJTable.noSym;
+        List<MJSymbol> locals = parentSym.getKind() == MJSymbol.Type ?
+                parentSym.getType().getMembersList() : parentSym.getLocalSymbolsList();
+        for (MJSymbol localSym : locals) {
+            if (localSym.getName().equals(name)) return localSym;
+        }
+        return MJTable.noSym;
+    }
 }

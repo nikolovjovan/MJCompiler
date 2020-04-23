@@ -79,8 +79,6 @@ public class Compiler {
             prog.traverseBottomUp(generator);
 
             if (generator.getErrorCount() == 0) {
-                MJCode.dataSize = analyzer.getVarCount();
-                MJCode.mainPc = generator.getMainPC();
                 MJCode.write(new FileOutputStream(outputFile));
                 if (MJCode.greska) {
                     throw new MJCodeGeneratorException("Failed to write bytecode to output file: " + outputFile.getAbsolutePath() + "!");

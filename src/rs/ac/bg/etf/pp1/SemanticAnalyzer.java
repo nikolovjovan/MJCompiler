@@ -353,7 +353,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
             logError(program, MessageType.SYM_DEF_INV_KIND, null, MJConstants.MAIN, "a method");
         } else if (mainSym.getType() != MJTable.voidType || mainSym.getLevel() != 0) {
             logError(program, MessageType.SYM_DEF_INV_KIND,
-                    "Main method defined but", "a void method with zero arguments");
+                    "Main method defined but", "a void method with zero parameters");
         } else { // Log object definition
             logInfo(program, MessageType.DEF_SYM, "program", programSym);
         }

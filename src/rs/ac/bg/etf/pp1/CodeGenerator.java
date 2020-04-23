@@ -10,28 +10,26 @@ import rs.ac.bg.etf.pp1.symboltable.MJTable;
 import rs.ac.bg.etf.pp1.symboltable.concepts.MJSymbol;
 import rs.ac.bg.etf.pp1.util.MJUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
 public class CodeGenerator extends VisitorAdaptor {
 
-    private static final String MAIN = "main";
-
     private MJCodeGeneratorLogger logger = new MJCodeGeneratorLogger();
 
     private int errorCount = 0;
-    private int mainPC;
 
-    private MJSymbol currentClassSym = MJTable.noSym;
+    private boolean generateCode = true;
 
     private JumpAddressStack jumpAddressStack = new JumpAddressStack(), loopAddressStack = new JumpAddressStack();
     private Stack<Designator> arrayDesignatorStack = new Stack<>();
 
-    private boolean generateCode = true;
+    private MJSymbol programSym = MJTable.noSym;
+
+    private List<Byte> classVirtualMethodTables = new ArrayList<>();
 
     /******************** Public methods / constructors ***************************************************************/
-
-    public int getMainPC() { return mainPC; }
 
     public int getErrorCount() { return errorCount; }
 
@@ -170,13 +168,26 @@ public class CodeGenerator extends VisitorAdaptor {
         }
     }
 
+    private void addWordToStaticData(int value, int address) {
+        // Load constant value onto stack
+        classVirtualMethodTables.add((byte) MJCode.const_);
+        classVirtualMethodTables.add((byte) (value >> 24));
+        classVirtualMethodTables.add((byte) (value >> 16));
+        classVirtualMethodTables.add((byte) (value >> 8));
+        classVirtualMethodTables.add((byte) (value));
+        // Store value at specified static memory address
+        classVirtualMethodTables.add((byte) MJCode.putstatic);
+        classVirtualMethodTables.add((byte) (address >> 8));
+        classVirtualMethodTables.add((byte) (address));
+    }
+
     /******************** Program *************************************************************************************/
 
     @Override
     public void visit(ProgramHeader programHeader) {
+        if (!visitStart(programHeader)) return;
         // Set generator in MJCode to allow it to use logError
         MJCode.setGenerator(this);
-        if (!visitStart(programHeader)) return;
         // Generate code for predeclared method: chr
         MJTable.chrMethodSym.setAdr(MJCode.pc);
         MJCode.put(MJCode.return_);
@@ -187,6 +198,8 @@ public class CodeGenerator extends VisitorAdaptor {
         MJTable.lenMethodSym.setAdr(MJCode.pc);
         MJCode.put(MJCode.arraylength);
         MJCode.put(MJCode.return_);
+        // Set global program symbol
+        programSym = programHeader.mjsymbol;
     }
 
     @Override
@@ -195,6 +208,17 @@ public class CodeGenerator extends VisitorAdaptor {
         if (MJCode.pc >= MJConstants.MAX_CODE_SIZE) {
             logError(program, MessageType.INV_PROG_SIZE, MJCode.pc, MJConstants.MAX_CODE_SIZE);
         }
+        // Reset global program symbol
+        programSym = MJTable.noSym;
+    }
+
+    /******************** Global variables ****************************************************************************/
+
+    @Override
+    public void visit(Variable variable) {
+        if (!visitStart(variable)) return;
+        // Set global variable address and increment data size
+        MJUtils.findLocalSymbol(programSym, variable.getName()).setAdr(MJCode.dataSize++);
     }
 
     /******************** Class ***************************************************************************************/
@@ -202,27 +226,38 @@ public class CodeGenerator extends VisitorAdaptor {
     @Override
     public void visit(ClassHeader classHeader) {
         if (!visitStart(classHeader)) return;
-        currentClassSym = classHeader.mjsymbol;
+        // Save virtual method table address in class symbol
+        classHeader.mjsymbol.setAdr(MJCode.dataSize);
     }
 
     @Override
     public void visit(ClassDeclaration classDeclaration) {
         if (!visitStart(classDeclaration)) return;
-        currentClassSym = MJTable.noSym;
-    }
-
-    /******************** Abstract class ******************************************************************************/
-
-    @Override
-    public void visit(AbstractClassHeader abstractClassHeader) {
-        if (!visitStart(abstractClassHeader)) return;
-        currentClassSym = abstractClassHeader.mjsymbol;
-    }
-
-    @Override
-    public void visit(AbstractClassDeclaration abstractClassDeclaration) {
-        if (!visitStart(abstractClassDeclaration)) return;
-        currentClassSym = MJTable.noSym;
+        MJSymbol classSym = classDeclaration.getClassHeader().mjsymbol;
+        // Add method names and addresses
+        for (MJSymbol memberSym : classSym.getType().getMembersList()) {
+            if (memberSym.getKind() == MJSymbol.Meth) {
+                // Add name
+                String name = memberSym.getName();
+                for (int i = 0; i < name.length(); i++) {
+                    addWordToStaticData(name.charAt(i), MJCode.dataSize++);
+                }
+                // Add name terminator
+                addWordToStaticData(-1, MJCode.dataSize++);
+                // If method is inherited and not overridden update it's address
+                if (memberSym.getParent() != classSym) {
+                    MJSymbol it = memberSym;
+                    while (MJUtils.isSymbolValid(it) && it.getAdr() == 0) {
+                        it = MJUtils.findLocalSymbol(it.getParent(), name);
+                    }
+                    memberSym.setAdr(it.getAdr());
+                }
+                // Add method address
+                addWordToStaticData(memberSym.getAdr(), MJCode.dataSize++);
+            }
+        }
+        // Add table terminator
+        addWordToStaticData(-2, MJCode.dataSize++);
     }
 
     /******************** Method **************************************************************************************/
@@ -230,11 +265,16 @@ public class CodeGenerator extends VisitorAdaptor {
     @Override
     public void visit(MethodHeader methodHeader) {
         if (!visitStart(methodHeader)) return;
-        // Check if method is MAIN
-        if (methodHeader.getName().equals(MAIN)) {
-            mainPC = MJCode.pc;
-        }
+        // Set method address
         methodHeader.mjsymbol.setAdr(MJCode.pc);
+        if (methodHeader.getName().equals(MJConstants.MAIN)) {
+            // Set main method address
+            MJCode.mainPc = MJCode.pc;
+            // Generate virtual method table initializer
+            for (Byte b : classVirtualMethodTables) {
+                MJCode.put(b);
+            }
+        }
         // Generate the entry
         MJCode.put(MJCode.enter);
         MJCode.put(methodHeader.mjsymbol.getLevel());
@@ -281,9 +321,10 @@ public class CodeGenerator extends VisitorAdaptor {
                 ((DesignatorFactor) identifierDesignator.getParent()).mjsymbol = identifierDesignator.mjsymbol;
             }
         } else { // Normal identifier
-            if (MJUtils.isSymbolValid(currentClassSym) && currentClassSym.getLocalSymbols().contains(sym)) {
-                MJSymbol this_ = MJTable.findSymbolInAnyScope(MJConstants.THIS);
-                MJCode.load(this_);
+            if (MJUtils.isSymbolValid(sym.getParent()) &&
+                    sym.getKind() == MJSymbol.Meth || sym.getKind() == MJSymbol.Fld) { // Class method or field
+                // Load 'this' by loading first local method symbol (always the first formal parameter)
+                MJCode.put(MJCode.load_n);
             }
             prepareForNextDesignatorNode(identifierDesignator, sym);
         }
@@ -594,9 +635,28 @@ public class CodeGenerator extends VisitorAdaptor {
     @Override
     public void visit(MethodCall methodCall) {
         if (!visitStart(methodCall)) return;
-        int relativeAddress = methodCall.mjsymbol.getAdr() - MJCode.pc;
-        MJCode.put(MJCode.call);
-        MJCode.put2(relativeAddress);
+        MJSymbol methodSym = methodCall.mjsymbol;
+        if (MJUtils.isSymbolValid(methodSym.getParent())) { // Class method
+            // Generate code for object address loading again (this time after all actual parameters)
+            methodCall.getMethodCallHeader().getDesignator().traverseBottomUp(this);
+            // Load virtual method table pointer
+            MJCode.put(MJCode.getfield);
+            MJCode.put2(0);
+            // Generate method call instruction
+            MJCode.put(MJCode.invokevirtual);
+            String methodName = methodSym.getName();
+            for (int i = 0; i < methodName.length(); i++) {
+                MJCode.put4(methodName.charAt(i));
+            }
+            MJCode.put4(-1);
+        } else { // Global method
+            MJCode.putCall(methodSym.getAdr());
+        }
+        if (methodSym.getType() != MJTable.voidType && methodCall.getParent() instanceof MethodCallDesignatorStatement) {
+            // MethodCallDesignatorStatement does not need the return value so pop it of the expression stack
+            // MethodCallFactor does need the return value so that is why there is a parent check
+            MJCode.put(MJCode.pop);
+        }
     }
 
     /******************** Expression **********************************************************************************/
@@ -703,7 +763,7 @@ public class CodeGenerator extends VisitorAdaptor {
     @Override
     public void visit(AllocatorFactor allocatorFactor) {
         if (!visitStart(allocatorFactor)) return;
-        MJSymbol sym = allocatorFactor.mjsymbol;
+        MJSymbol sym = allocatorFactor.getType().mjsymbol;
         if (allocatorFactor.getOptArrayIndexer() instanceof SingleArrayIndexer) {
             // Array allocator
             MJCode.put(MJCode.newarray);
