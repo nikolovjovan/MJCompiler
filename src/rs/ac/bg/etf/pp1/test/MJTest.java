@@ -75,7 +75,7 @@ public abstract class MJTest {
         try {
             for (File inputFile : testInputs) {
                 Compiler.setInputFileName(inputFile.getName());
-                Compiler.setOutputFileName(inputFile.getName().concat(".out"));
+                Compiler.setOutputFileName(inputFile.getAbsolutePath().substring(0, inputFile.getAbsolutePath().length() - 3).concat(".obj"));
                 Log4JUtils.INSTANCE.prepareLogFile(Logger.getRootLogger());
                 String testMessage = "Testing " + testName() + " with input file '" + testDir + "/" + inputFile.getName() + "'.";
                 logger.info(testMessage);

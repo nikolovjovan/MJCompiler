@@ -34,23 +34,18 @@ public class ActualParametersStack {
         if (currentParameters == null) {
             return null;
         }
-
         List<MJSymbol> parameters = currentParameters.parameters;
-
         if (parametersStack.isEmpty()) {
             currentParameters = null;
         } else {
             currentParameters = parametersStack.pop();
         }
-
         return parameters;
     }
 
-    public boolean insertActualParameter(MJSymbol parameter) {
-        if (currentParameters == null) {
-            return false;
+    public void insertActualParameter(MJSymbol parameter) {
+        if (currentParameters != null) {
+            currentParameters.parameters.add(parameter);
         }
-        currentParameters.parameters.add(parameter);
-        return true;
     }
 }

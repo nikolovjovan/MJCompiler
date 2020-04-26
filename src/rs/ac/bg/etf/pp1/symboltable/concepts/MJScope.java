@@ -1,9 +1,6 @@
 package rs.ac.bg.etf.pp1.symboltable.concepts;
 
-import rs.ac.bg.etf.pp1.util.MJUtils;
 import rs.etf.pp1.symboltable.concepts.Scope;
-
-import java.util.List;
 
 public class MJScope extends Scope {
 
@@ -43,6 +40,4 @@ public class MJScope extends Scope {
     public ScopeID getId() {
         return id;
     }
-
-    public List<MJSymbol> valuesList() { return MJUtils.collectionToList(values()); }
 }

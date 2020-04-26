@@ -44,31 +44,12 @@ public class JumpAddressStack {
         return trueJump ? currentJumpAdressList.trueJumpAddressList : currentJumpAdressList.falseJumpAddressList;
     }
 
-    public List<Integer> getTrueJumpAddressList() {
-        return getJumpAddressList(true);
-    }
-
-    public List<Integer> getFalseJumpAddressList() {
-        return getJumpAddressList(false);
-    }
-
-    public boolean insertJumpAddress(boolean trueJump, int address) {
-        if (currentJumpAdressList == null) {
-            return false;
-        }
+    public void insertJumpAddress(boolean trueJump, int address) {
+        if (currentJumpAdressList == null) return;
         if (trueJump) {
             currentJumpAdressList.trueJumpAddressList.add(address);
         } else {
             currentJumpAdressList.falseJumpAddressList.add(address);
         }
-        return true;
-    }
-
-    public boolean insertTrueJumpAddress(int address) {
-        return insertJumpAddress(true, address);
-    }
-
-    public boolean insertFalseJumpAddress(int address) {
-        return insertJumpAddress(false, address);
     }
 }

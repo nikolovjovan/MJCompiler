@@ -67,6 +67,12 @@ public class Compiler {
         if (analyzer.getErrorCount() == 0) {
             System.out.println("Semantic analysis completed without errors!");
 
+            System.out.println("====================================================================================================");
+            System.out.printf("%5d symbolic constant(s) defined\n", analyzer.getConstCount());
+            System.out.printf("%5d global variable(s) defined\n", analyzer.getVarCount());
+            System.out.printf("%5d class(es) defined\n", analyzer.getClassCount());
+            System.out.printf("%5d global method(s) defined\n", analyzer.getMethodCount());
+
             tsdump();
 
             File outputFile = new File(outputFileName);

@@ -53,7 +53,7 @@ public class MJType extends Struct {
         return getBasicTypeName(type);
     }
 
-    /********************* Private fields *************************************************************/
+    //******************** Private fields *************************************************************/
 
     // Inherited fields:
     //   int kind                       - Possible values: None, Int, Char, Array, Class, Bool, Void
@@ -72,10 +72,6 @@ public class MJType extends Struct {
     public MJType(int kind, MJType elemType) {
         super(kind, elemType);
         if (kind == Class) setElementType(elemType);
-    }
-
-    public MJType(int kind, SymbolDataStructure members) {
-        super(kind, members);
     }
 
     /******************** Method overrides ************************************************************/

@@ -31,6 +31,38 @@ public class CodeGenerator extends VisitorAdaptor {
 
     /******************** Public methods / constructors ***************************************************************/
 
+    public CodeGenerator() {
+        // Initialize MJCode
+        MJCode.init();
+        // Set generator reference in MJCode to allow it to use logError
+        MJCode.setGenerator(this);
+        // Generate code for predeclared method: char chr(int i)
+        MJTable.chrMethodSym.setAdr(MJCode.pc);
+        MJCode.put(MJCode.enter);
+        MJCode.put(1);
+        MJCode.put(1);
+        MJCode.put(MJCode.load_n);
+        MJCode.put(MJCode.exit);
+        MJCode.put(MJCode.return_);
+        // Generate code for predeclared method: int ord(chr ch)
+        MJTable.ordMethodSym.setAdr(MJCode.pc);
+        MJCode.put(MJCode.enter);
+        MJCode.put(1);
+        MJCode.put(1);
+        MJCode.put(MJCode.load_n);
+        MJCode.put(MJCode.exit);
+        MJCode.put(MJCode.return_);
+        // Generate code for predeclared method: int len(void arr[])
+        MJTable.lenMethodSym.setAdr(MJCode.pc);
+        MJCode.put(MJCode.enter);
+        MJCode.put(1);
+        MJCode.put(1);
+        MJCode.put(MJCode.load_n);
+        MJCode.put(MJCode.arraylength);
+        MJCode.put(MJCode.exit);
+        MJCode.put(MJCode.return_);
+    }
+
     public int getErrorCount() { return errorCount; }
 
     /******************** Error / debug methods ***********************************************************************/
@@ -122,7 +154,7 @@ public class CodeGenerator extends VisitorAdaptor {
             // Generate false jump since the next operator is AND
             MJCode.putFalseJump(op, 0);
             // Add patch address
-            jumpAddressStack.insertFalseJumpAddress(MJCode.pc - 2);
+            jumpAddressStack.insertJumpAddress(false, MJCode.pc - 2);
         }
     }
 
@@ -133,7 +165,7 @@ public class CodeGenerator extends VisitorAdaptor {
             // Generate true jump since the next operator is OR
             MJCode.putTrueJump(op, 0);
             // Add patch address
-            jumpAddressStack.insertTrueJumpAddress(MJCode.pc - 2);
+            jumpAddressStack.insertJumpAddress(true, MJCode.pc - 2);
         }
     }
 
@@ -186,18 +218,6 @@ public class CodeGenerator extends VisitorAdaptor {
     @Override
     public void visit(ProgramHeader programHeader) {
         if (!visitStart(programHeader)) return;
-        // Set generator in MJCode to allow it to use logError
-        MJCode.setGenerator(this);
-        // Generate code for predeclared method: chr
-        MJTable.chrMethodSym.setAdr(MJCode.pc);
-        MJCode.put(MJCode.return_);
-        // Generate code for predeclared method: ord
-        MJTable.ordMethodSym.setAdr(MJCode.pc);
-        MJCode.put(MJCode.return_);
-        // Generate code for predeclared method: len
-        MJTable.lenMethodSym.setAdr(MJCode.pc);
-        MJCode.put(MJCode.arraylength);
-        MJCode.put(MJCode.return_);
         // Set global program symbol
         programSym = programHeader.mjsymbol;
     }
@@ -205,8 +225,9 @@ public class CodeGenerator extends VisitorAdaptor {
     @Override
     public void visit(Program program) {
         if (!visitStart(program)) return;
+        // Check generated code size
         if (MJCode.pc >= MJConstants.MAX_CODE_SIZE) {
-            logError(program, MessageType.INV_PROG_SIZE, MJCode.pc, MJConstants.MAX_CODE_SIZE);
+            logError(program, MessageType.INV_CODE_SIZE, MJCode.pc, MJConstants.MAX_CODE_SIZE);
         }
         // Reset global program symbol
         programSym = MJTable.noSym;
@@ -388,7 +409,7 @@ public class CodeGenerator extends VisitorAdaptor {
         // Insert an unconditional jump to the address after the loop
         MJCode.putJump(0);
         // Insert patch address as a false jump address (used only for break statement patch addresses)
-        loopAddressStack.insertFalseJumpAddress(MJCode.pc - 2);
+        loopAddressStack.insertJumpAddress(false, MJCode.pc - 2);
     }
 
     @Override
@@ -397,7 +418,7 @@ public class CodeGenerator extends VisitorAdaptor {
         // Insert an unconditional jump to the update statement
         MJCode.putJump(0);
         // Insert patch address as a true jump address (used only for continue statement patch addresses)
-        loopAddressStack.insertTrueJumpAddress(MJCode.pc - 2);
+        loopAddressStack.insertJumpAddress(true, MJCode.pc - 2);
     }
 
     @Override
@@ -445,7 +466,7 @@ public class CodeGenerator extends VisitorAdaptor {
         // Generate false jump for last relational operation
         MJCode.putFalseJump(conditionSym.getAdr(), 0);
         // Add patch address
-        jumpAddressStack.insertFalseJumpAddress(MJCode.pc - 2);
+        jumpAddressStack.insertJumpAddress(false, MJCode.pc - 2);
         // Fix all true jumps
         patchJumpAddresses(false, true);
     }
@@ -489,7 +510,7 @@ public class CodeGenerator extends VisitorAdaptor {
             // Generate false jump for last relational operation
             MJCode.putFalseJump(conditionSym.getAdr(), 0);
             // Add patch address
-            loopAddressStack.insertFalseJumpAddress(MJCode.pc - 2);
+            loopAddressStack.insertJumpAddress(false, MJCode.pc - 2);
             // Fix all true jumps
             patchJumpAddresses(false, true);
         }
@@ -580,7 +601,7 @@ public class CodeGenerator extends VisitorAdaptor {
         MJCode.put(MJCode.arraylength);
         MJCode.putFalseJump(MJCode.lt, 0);
         // Add patch address (will jump to last part of foreach loop where iterator will get current value)
-        loopAddressStack.insertFalseJumpAddress(MJCode.pc - 2);
+        loopAddressStack.insertJumpAddress(false, MJCode.pc - 2);
         // Set iterator variable to read-only inside foreach statement
         iteratorSym.setReadOnly(true);
         // Add array designator node to stack (used to generate array address load)

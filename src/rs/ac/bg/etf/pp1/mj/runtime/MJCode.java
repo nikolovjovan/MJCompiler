@@ -12,6 +12,14 @@ public class MJCode extends Code {
     private static CodeGenerator generator = null;
     private static SyntaxNode currentNode = null;
 
+    public static void init() {
+        // Reset all static variables (useful when compiling multiple files in single run)
+        Code.pc = 0;
+        Code.mainPc = -1;
+        Code.dataSize = 0;
+        Code.greska = false;
+    }
+
     public static void setGenerator(CodeGenerator codeGenerator) {
         generator = codeGenerator;
     }
@@ -26,7 +34,7 @@ public class MJCode extends Code {
         Code.load(sym);
         // Log error if needed
         if (generator != null && sym.getKind() != MJSymbol.Con && !MJUtils.isValueAssignableToSymbol(sym)) {
-            generator.logError(currentNode, MessageType.OTHER, "Invalid MJCode.load() operand kind: " + sym.getKindName() + "!");
+            generator.logError(currentNode, MessageType.INV_LOAD_PARAM, sym.getKindName());
         }
     }
 
@@ -36,7 +44,7 @@ public class MJCode extends Code {
         Code.store(sym);
         // Log error if needed
         if (generator != null && !MJUtils.isValueAssignableToSymbol(sym)) {
-            generator.logError(currentNode, MessageType.OTHER, '\'' + sym.getName() + "' is not a variable, a class field or an array element!");
+            generator.logError(currentNode, MessageType.INV_STORE_PARAM, sym.getName());
         }
     }
 

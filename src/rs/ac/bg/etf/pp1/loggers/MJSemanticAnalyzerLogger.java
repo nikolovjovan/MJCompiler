@@ -1,8 +1,7 @@
 package rs.ac.bg.etf.pp1.loggers;
 
 import rs.ac.bg.etf.pp1.symboltable.concepts.MJSymbol;
-
-// TODO: Move more messages from SemanticAnalyzer here...
+import rs.ac.bg.etf.pp1.util.MJUtils;
 
 public class MJSemanticAnalyzerLogger extends MJLogger {
 
@@ -14,8 +13,10 @@ public class MJSemanticAnalyzerLogger extends MJLogger {
         CUR_ACC_MOD,            // Params: String accessName
         /* INFO MESSAGES */
         DEF_SYM,                // Params: String kindName, MJSymbol symbol
+        SYM_USAGE,              // Params: String kindName, MJSymbol symbol
+        /* WARN MESSAGES */
+        RES_SYM_HIDDEN,         // Params: String s1, String s2
         /* ERROR MESSAGES */
-        INV_SYM_CHECK_REACHED,  // Params: String s1, String s1
         SYM_NOT_DEF,            // Params: String s1, String s2
         SYM_DEF_INV_KIND,       // Params: String s1, String s2, String s3
         SYM_IN_USE,             // Params: String symName
@@ -32,12 +33,28 @@ public class MJSemanticAnalyzerLogger extends MJLogger {
         UNDEF_OP,               // Params: String op, String type1Name, String type2Name
         UNIMPL_METHOD,          // Params: String className, String methodName
         INACCESSIBLE_SYM,       // Params: String symName
+        MISPLACED_ABS_METH,     // Params:
+        PRIVATE_ABS_METH,       // Params:
+        INV_ACC_MOD_OVRD,       // Params: String oldAccModName, String newAccModName
+        INV_METH_OVRD_FP_CNT,   // Params: String methodName, Integer fpCount
+        MEMBER_NOT_FOUND,       // Params: String designatorName, String memberName
+        INV_METH_ARG_CNT,       // Params:
+        /* FATAL MESSAGES */
+        MAX_COUNT_EXCEEDED,     // Params: String kindName, Integer count, Integer maxCount
         /* ANY OTHER MESSAGE */
         OTHER                   // Params: String message
     }
 
     public MJSemanticAnalyzerLogger() {
         super("SEMANTIC ANALYZER: ");
+    }
+
+    private String generateMessageHeader(Object... context) {
+        String s1 = getNextContextObject(String.class, context);
+        String s2 = getNextContextObject(String.class, context);
+        s1 = s1 == null ? "" : s1 + ' ';
+        s2 = s2 == null ? "" : '\'' + s2 + "' ";
+        return s1.isEmpty() && s2.isEmpty() ? "" : s1 + s2;
     }
 
     @Override
@@ -58,28 +75,27 @@ public class MJSemanticAnalyzerLogger extends MJLogger {
             case DEF_SYM: {
                 String kindName = getNextContextObject(String.class, context);
                 MJSymbol symbol = getNextContextObject(MJSymbol.class, context);
-                return kindName == null || symbol == null ? invalidMessage : "Defined " + kindName + " '" + symbol.getName() + "'. Symbol node string: " + symbol;
+                return kindName == null || symbol == null ? invalidMessage : "Defined " + kindName + " '" + symbol.getName() + "'. Symbol node: " + symbol;
+            }
+            case SYM_USAGE: {
+                String kindName = getNextContextObject(String.class, context);
+                MJSymbol symbol = getNextContextObject(MJSymbol.class, context);
+                return kindName == null || symbol == null ? invalidMessage : "Found " + kindName + " '" + symbol.getName() + "'!" + (MJUtils.isSymbolValid(symbol) ? " Symbol node: " + symbol : "");
+            }
+            /* WARN MESSAGES */
+            case RES_SYM_HIDDEN: {
+                String header = generateMessageHeader(context);
+                return header.isEmpty() ? invalidMessage : header + " hides a reserved symbol!";
             }
             /* ERROR MESSAGES */
-            case INV_SYM_CHECK_REACHED: {
-                String s1 = getNextContextObject(String.class, context);
-                String s2 = getNextContextObject(String.class, context);
-                return s1 == null || s2 == null ? invalidMessage : s1 + " not initialized but " + s2 + " reached!";
-            }
             case SYM_NOT_DEF: {
-                String s1 = getNextContextObject(String.class, context);
-                String s2 = getNextContextObject(String.class, context);
-                s1 = s1 == null ? "" : s1 + ' ';
-                s2 = s2 == null ? "" : '\'' + s2 + "' ";
-                return s1.isEmpty() && s2.isEmpty() ? invalidMessage : s1 + s2 + "is not defined!";
+                String header = generateMessageHeader(context);
+                return header.isEmpty() ? invalidMessage : header + "is not defined!";
             }
             case SYM_DEF_INV_KIND: {
-                String s1 = getNextContextObject(String.class, context);
-                String s2 = getNextContextObject(String.class, context);
-                s1 = s1 == null ? "" : s1 + ' ';
-                s2 = s2 == null ? "" : '\'' + s2 + "' ";
+                String header = generateMessageHeader(context);
                 String s3 = getNextContextObject(String.class, context);
-                return s1.isEmpty() && s2.isEmpty() || s3 == null ? invalidMessage : s1 + s2 + "is not " + s3 + '!';
+                return header.isEmpty() || s3 == null ? invalidMessage : header + "is not " + s3 + '!';
             }
             case SYM_IN_USE: {
                 String symName = getNextContextObject(String.class, context);
@@ -132,6 +148,31 @@ public class MJSemanticAnalyzerLogger extends MJLogger {
             case INACCESSIBLE_SYM: {
                 String symName = getNextContextObject(String.class, context);
                 return symName == null ? invalidMessage : "Symbol '" + symName + "' is not accessible in current scope!";
+            }
+            case MISPLACED_ABS_METH: return "Abstract method can only be defined inside an abstract class!";
+            case PRIVATE_ABS_METH: return "Abstract method cannot be declared private!";
+            case INV_ACC_MOD_OVRD: {
+                String oldAccModName = getNextContextObject(String.class, context);
+                String newAccModName = getNextContextObject(String.class, context);
+                return oldAccModName == null || newAccModName == null ? invalidMessage : "Cannot override '" + oldAccModName + "' method access modifier with '" + newAccModName + "' access modifier!";
+            }
+            case INV_METH_OVRD_FP_CNT: {
+                String methodName = getNextContextObject(String.class, context);
+                Integer fpCount = getNextContextObject(Integer.class, context);
+                return methodName == null || fpCount == null ? invalidMessage : "Overridden method '" + methodName + "' must have exactly " + fpCount + " formal parameter(s)!";
+            }
+            case MEMBER_NOT_FOUND: {
+                String designatorName = getNextContextObject(String.class, context);
+                String memberName = getNextContextObject(String.class, context);
+                return designatorName == null || memberName == null ? invalidMessage : "Designator '" + designatorName + "' has no member named '" + memberName + "'!";
+            }
+            case INV_METH_ARG_CNT: return "Wrong number of arguments!";
+            /* FATAL MESSAGES */
+            case MAX_COUNT_EXCEEDED: {
+                String kindName = getNextContextObject(String.class, context);
+                Integer count = getNextContextObject(Integer.class, context);
+                Integer maxCount = getNextContextObject(Integer.class, context);
+                return kindName == null || count == null || maxCount == null ? invalidMessage : "Number of " + kindName + ": " + count + " exceeds the maximum allowed number of " + kindName + ": " + maxCount + '!';
             }
             /* ANY OTHER MESSAGE */
             case OTHER: {

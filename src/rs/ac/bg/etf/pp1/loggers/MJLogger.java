@@ -33,6 +33,7 @@ public abstract class MJLogger {
     }
 
     public final void log(Level level, int line, int column, Object... context) {
+        if (level == Level.DEBUG && !Compiler.isDebugMode()) return;
         logger.log(level, formatMessage(generateMessage(context), line, column));
         contextIndex = 0; // Reset context index for next generate_message call
     }

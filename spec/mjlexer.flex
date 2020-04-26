@@ -111,8 +111,7 @@ Bool            = true|false
   {Blank}     { /* ignore */ }
   {Comment}   { /* ignore */ }
 
-  {Int}
-  {
+  {Int}       {
             try {
               return new_symbol(sym.INT, Integer.valueOf(yytext()));
             } catch (NumberFormatException e) {
@@ -123,8 +122,7 @@ Bool            = true|false
   {Bool}      { return new_symbol(sym.BOOL, Boolean.valueOf(yytext())); }
   {Ident}     { return new_symbol(sym.IDENT, yytext()); }
 
-  .
-  {
+  .           {
             errorLine = yyline + 1;
             errorColumn = yycolumn + 1;
             errorSymbol.setLength(0);
@@ -136,8 +134,7 @@ Bool            = true|false
 
 <ERROR> {
 
-  {SafeChar}
-  {
+  {SafeChar}  {
             yybegin(YYINITIAL);
             logger.error(errorLine, errorColumn, MessageType.INV_SYMBOL, errorSymbol.toString());
   }

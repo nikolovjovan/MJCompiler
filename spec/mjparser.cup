@@ -96,8 +96,8 @@ terminal Boolean BOOL;
 terminal String IDENT;
 
 /* Program non-terminals */
-nonterminal rs.ac.bg.etf.pp1.symboltable.concepts.MJSymbol Program, ProgramHeader;
-nonterminal OptProgramDeclList, ProgramDecl, OptMethodDeclList;
+nonterminal rs.ac.bg.etf.pp1.symboltable.concepts.MJSymbol ProgramHeader;
+nonterminal Program, OptProgramDeclList, ProgramDecl, OptMethodDeclList;
 
 /* Common non-terminals */
 nonterminal rs.ac.bg.etf.pp1.symboltable.concepts.MJSymbol Type;

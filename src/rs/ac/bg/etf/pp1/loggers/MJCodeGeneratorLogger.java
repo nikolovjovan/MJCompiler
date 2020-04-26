@@ -8,7 +8,9 @@ public class MJCodeGeneratorLogger extends MJLogger {
         /* DEBUG MESSAGES */
         NODE_VISIT,             // Params: String nodeName
         /* ERROR MESSAGES */
-        INV_PROG_SIZE,          // Params: Integer actualSize, Integer maxSize
+        INV_LOAD_PARAM,         // Params: String kindName
+        INV_STORE_PARAM,        // Params: String symName
+        INV_CODE_SIZE,          // Params: Integer actualSize, Integer maxSize
         /* ANY OTHER MESSAGE */
         OTHER                   // Params: String message
     }
@@ -28,7 +30,15 @@ public class MJCodeGeneratorLogger extends MJLogger {
                 return nodeName == null ? invalidMessage : "Visited node: '" + nodeName + "'.";
             }
             /* ERROR MESSAGES */
-            case INV_PROG_SIZE: {
+            case INV_LOAD_PARAM: {
+                String kindName = getNextContextObject(String.class, context);
+                return kindName == null ? invalidMessage : "Invalid MJCode.load() operand kind: " + kindName + '!';
+            }
+            case INV_STORE_PARAM: {
+                String symName = getNextContextObject(String.class, context);
+                return symName == null ? invalidMessage : '\'' + symName + "' is not a variable, an array element or a class field!";
+            }
+            case INV_CODE_SIZE: {
                 Integer actualSize = getNextContextObject(Integer.class, context);
                 Integer maxSize = getNextContextObject(Integer.class, context);
                 return actualSize == null || maxSize == null ? invalidMessage : "Program is too big! Size: " + actualSize + ", max size: " + maxSize + '!';

@@ -182,7 +182,7 @@ public class MJTable {
      * @param out Output stream.
      */
     public static void dump(SymbolTableVisitor stv, PrintStream out) {
-        out.println("========================= SYMBOL TABLE DUMP =========================");
+        out.println("======================================== SYMBOL TABLE DUMP =========================================");
         if (stv == null) {
             stv = new MJDumpSymbolTableVisitor();
         }
@@ -194,24 +194,8 @@ public class MJTable {
 
     /**
      * Prints symbol table to standard output.
-     * @param stv Symbol table visitor.
-     */
-    public static void dump(SymbolTableVisitor stv) {
-        dump(stv, System.out);
-    }
-
-    /**
-     * Prints symbol table to specified print stream.
-     * @param out Output stream.
-     */
-    public static void dump(PrintStream out) {
-        dump(new MJDumpSymbolTableVisitor(), out);
-    }
-
-    /**
-     * Prints symbol table to standard output.
      */
     public static void dump() {
-        dump(System.out);
+        dump(null, System.out);
     }
 }
