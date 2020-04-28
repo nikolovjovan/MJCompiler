@@ -2,8 +2,6 @@ package rs.ac.bg.etf.pp1.loggers;
 
 public class MJParserLogger extends MJLogger {
 
-    private static final String invalidMessage = "Invalid parser message!";
-
     public enum MessageType {
         /* ERROR MESSAGES */
         SYNTAX_ERROR,           // Params:
@@ -26,7 +24,7 @@ public class MJParserLogger extends MJLogger {
     @Override
     protected String generateMessage(Object... context) {
         MessageType type = getNextContextObject(MessageType.class, context);
-        if (type == null) return invalidMessage;
+        if (type == null) return generateInvalidMessage(null);
         switch (type) {
             /* ERROR MESSAGES */
             case SYNTAX_ERROR:          return "Syntax error!";
@@ -41,9 +39,10 @@ public class MJParserLogger extends MJLogger {
             /* ANY OTHER MESSAGE */
             case OTHER: {
                 String message = getNextContextObject(String.class, context);
-                return message == null ? invalidMessage : message;
+                if (message == null) break;
+                return message;
             }
-            default: return "Unhandled parser message type: '" + type.name() + "'.";
         }
+        return generateInvalidMessage(type.name());
     }
 }

@@ -38,7 +38,7 @@ public class CLIUtils {
                 printError("Input file '" + inputFile.getAbsolutePath() + "' does not exist!");
                 return false;
             }
-            Compiler.setInputFileName(args[args.length - 1]);
+            Compiler.setInputFile(inputFile);
         }
         for (int i = 0; i < args.length - 1; ++i) {
             switch (args[i]) {
@@ -57,7 +57,7 @@ public class CLIUtils {
                             printError("Illegal output file name: " + args[i + 1]);
                             return false;
                         } else {
-                            Compiler.setOutputFileName(args[++i]);
+                            Compiler.setOutputFile(new File(args[++i]));
                         }
                     } else {
                         printError("Output file name missing!");
@@ -71,8 +71,8 @@ public class CLIUtils {
                 }
             }
         }
-        if (Compiler.getOutputFileName() == null) {
-            Compiler.setOutputFileName(Compiler.getInputFileName().concat(".obj"));
+        if (Compiler.getOutputFile() == null) {
+            Compiler.setOutputFile(new File(Compiler.getInputFile().getAbsolutePath().concat(".obj")));
         }
         return true;
     }

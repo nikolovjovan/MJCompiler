@@ -16,6 +16,11 @@ public abstract class MJLogger {
 
     protected abstract String generateMessage(Object... context);
 
+    protected String generateInvalidMessage(String messageKind) {
+        return messageKind == null || messageKind.isEmpty() ?
+                "Invalid message kind!" : "Invalid '" + messageKind + "' message!";
+    }
+
     protected <TObject> TObject getContextObject(int index, Class<TObject> type, Object... context) {
         if (context.length <= index || context[index] == null || !(context[index].getClass().equals(type))) return null;
         return type.cast(context[index]);
@@ -28,8 +33,10 @@ public abstract class MJLogger {
     protected String formatMessage(String message, int line, int column) {
         StringBuilder messageBuilder = new StringBuilder();
         if (line <= 0) return messageBuilder.append(messageHeader).append(message).toString();
-        if (column <= 0) return messageBuilder.append(Compiler.getInputFileName()).append(':').append(line).append(": ").append(messageHeader).append(message).toString();
-        return messageBuilder.append(Compiler.getInputFileName()).append(':').append(line).append(':').append(column).append(": ").append(messageHeader).append(message).toString();
+        if (column <= 0) return messageBuilder.append(Compiler.getInputFile().getName()).append(':').append(line)
+                .append(": ").append(messageHeader).append(message).toString();
+        return messageBuilder.append(Compiler.getInputFile().getName()).append(':').append(line).append(':')
+                .append(column).append(": ").append(messageHeader).append(message).toString();
     }
 
     public final void log(Level level, int line, int column, Object... context) {

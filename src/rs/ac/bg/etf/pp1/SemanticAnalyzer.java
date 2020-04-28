@@ -402,12 +402,12 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         // Check main method is defined and valid type
         MJSymbol mainSym = MJUtils.findLocalSymbol(programSym, MJConstants.MAIN);
         if (!MJUtils.isSymbolValid(mainSym)) {
-            logError(program, MessageType.SYM_NOT_DEF, "Main method");
+            logError(program, MessageType.SYM_NOT_DEF, "Main method", null);
         } else if (mainSym.getKind() != MJSymbol.Meth) {
             logError(program, MessageType.SYM_DEF_INV_KIND, null, MJConstants.MAIN, "a method");
         } else if (mainSym.getType() != MJTable.voidType || mainSym.getLevel() != 0) {
-            logError(program, MessageType.SYM_DEF_INV_KIND,
-                    "Main method defined but", "a void method with zero parameters");
+            logError(program, MessageType.SYM_DEF_INV_KIND, "Main method defined but", null,
+                    "a void method with zero parameters");
         }
         // Check global variable count
         if (varCount > MJConstants.MAX_GLOBAL_VARIABLE_COUNT) {
@@ -1157,7 +1157,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         } else { // object allocator
             if (typeSym.getType().getKind() != MJType.Class || typeSym.isAbstract()) {
                 logError(allocatorFactor, MessageType.SYM_DEF_INV_KIND,
-                        "Object type", "a non-abstract class type");
+                        "Object type", MJType.getTypeName(typeSym.getType()), "a non-abstract class type");
             } else {
                 allocatorFactor.mjsymbol = new MJSymbol(MJSymbol.Con, "", typeSym.getType());
             }

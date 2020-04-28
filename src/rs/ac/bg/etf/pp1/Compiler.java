@@ -17,7 +17,7 @@ public class Compiler {
     private static Logger logger = Logger.getLogger(Compiler.class);
 
     private static boolean debugMode;
-    private static String inputFileName, outputFileName;
+    private static File inputFile, outputFile, logFile;
 
     public static boolean isDebugMode() {
         return debugMode;
@@ -27,20 +27,28 @@ public class Compiler {
         Compiler.debugMode = debugMode;
     }
 
-    public static String getInputFileName() {
-        return inputFileName;
+    public static File getInputFile() {
+        return inputFile;
     }
 
-    public static void setInputFileName(String inputFileName) {
-        Compiler.inputFileName = inputFileName;
+    public static void setInputFile(File inputFileName) {
+        Compiler.inputFile = inputFileName;
     }
 
-    public static String getOutputFileName() {
-        return outputFileName;
+    public static File getOutputFile() {
+        return outputFile;
     }
 
-    public static void setOutputFileName(String outputFileName) {
-        Compiler.outputFileName = outputFileName;
+    public static void setOutputFile(File outputFile) {
+        Compiler.outputFile = outputFile;
+    }
+
+    public static File getLogFile() {
+        return logFile;
+    }
+
+    public static void setLogFile(File logFile) {
+        Compiler.logFile = logFile;
     }
 
     public static void tsdump() {
@@ -75,7 +83,6 @@ public class Compiler {
 
             tsdump();
 
-            File outputFile = new File(outputFileName);
             logger.info("Generating bytecode file: " + outputFile.getAbsolutePath());
             if (outputFile.exists()) {
                 outputFile.delete();
@@ -100,12 +107,11 @@ public class Compiler {
     }
 
     public static void main(String[] args) {
-        DOMConfigurator.configure(Log4JUtils.INSTANCE.getLoggerConfigFileName());
+        DOMConfigurator.configure(Log4JUtils.getLoggerConfigFileName());
 
         if (!CLIUtils.parseCLIArgs(args)) return;
-        File inputFile = new File(inputFileName);
 
-        Log4JUtils.INSTANCE.prepareLogFile(Logger.getRootLogger());
+        Log4JUtils.prepareLogFile(Logger.getRootLogger());
 
         logger.info("Compiling source file: " + inputFile.getAbsolutePath());
         try (BufferedReader br = new BufferedReader(new FileReader(inputFile))) {

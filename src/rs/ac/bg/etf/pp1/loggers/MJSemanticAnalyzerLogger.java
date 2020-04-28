@@ -5,8 +5,6 @@ import rs.ac.bg.etf.pp1.util.MJUtils;
 
 public class MJSemanticAnalyzerLogger extends MJLogger {
 
-    private static final String invalidMessage = "Invalid semantic analyzer message!";
-
     public enum MessageType {
         /* DEBUG MESSAGES */
         NODE_VISIT,             // Params: String nodeName
@@ -60,59 +58,71 @@ public class MJSemanticAnalyzerLogger extends MJLogger {
     @Override
     protected String generateMessage(Object... context) {
         MessageType type = getNextContextObject(MessageType.class, context);
-        if (type == null) return invalidMessage;
+        if (type == null) return generateInvalidMessage(null);
         switch (type) {
             /* DEBUG MESSAGES */
             case NODE_VISIT: {
                 String nodeName = getNextContextObject(String.class, context);
-                return nodeName == null ? invalidMessage : "Visited node: '" + nodeName + "'.";
+                if (nodeName == null) break;
+                return "Visited node: '" + nodeName + "'.";
             }
             case CUR_ACC_MOD: {
                 String accName = getNextContextObject(String.class, context);
-                return accName == null ? invalidMessage : "Current access modifier: " + accName + '.';
+                if (accName == null) break;
+                return "Current access modifier: " + accName + '.';
             }
             /* INFO MESSAGES */
             case DEF_SYM: {
                 String kindName = getNextContextObject(String.class, context);
                 MJSymbol symbol = getNextContextObject(MJSymbol.class, context);
-                return kindName == null || symbol == null ? invalidMessage : "Defined " + kindName + " '" + symbol.getName() + "'. Symbol node: " + symbol;
+                if (kindName == null || symbol == null) break;
+                return "Defined " + kindName + " '" + symbol.getName() + "'. Symbol node: " + symbol;
             }
             case SYM_USAGE: {
                 String kindName = getNextContextObject(String.class, context);
                 MJSymbol symbol = getNextContextObject(MJSymbol.class, context);
-                return kindName == null || symbol == null ? invalidMessage : "Found " + kindName + " '" + symbol.getName() + "'!" + (MJUtils.isSymbolValid(symbol) ? " Symbol node: " + symbol : "");
+                if (kindName == null || symbol == null) break;
+                return "Found " + kindName + " '" + symbol.getName() + "'!" +
+                        (MJUtils.isSymbolValid(symbol) ? " Symbol node: " + symbol : "");
             }
             /* WARN MESSAGES */
             case RES_SYM_HIDDEN: {
                 String header = generateMessageHeader(context);
-                return header.isEmpty() ? invalidMessage : header + " hides a reserved symbol!";
+                if (header.isEmpty()) break;
+                return header + " hides a reserved symbol!";
             }
             /* ERROR MESSAGES */
             case SYM_NOT_DEF: {
                 String header = generateMessageHeader(context);
-                return header.isEmpty() ? invalidMessage : header + "is not defined!";
+                if (header.isEmpty()) break;
+                return header + "is not defined!";
             }
             case SYM_DEF_INV_KIND: {
                 String header = generateMessageHeader(context);
                 String s3 = getNextContextObject(String.class, context);
-                return header.isEmpty() || s3 == null ? invalidMessage : header + "is not " + s3 + '!';
+                if (header.isEmpty() || s3 == null) break;
+                return header + "is not " + s3 + '!';
             }
             case SYM_IN_USE: {
                 String symName = getNextContextObject(String.class, context);
-                return symName == null ? invalidMessage : "'" + symName + "' is already in use!";
+                if (symName == null) break;
+                return "'" + symName + "' is already in use!";
             }
             case INV_SYM: {
                 String symName = getNextContextObject(String.class, context);
-                return symName == null ? invalidMessage : symName + " is invalid!";
+                if (symName == null) break;
+                return symName + " is invalid!";
             }
             case TYPE_NOT_BASIC: {
                 String kindName = getNextContextObject(String.class, context);
-                return kindName == null ? invalidMessage : kindName + " must be of basic type: int, char or bool!";
+                if (kindName == null) break;
+                return kindName + " must be of basic type: int, char or bool!";
             }
             case INCOMPATIBLE_TYPES: {
                 String type1Name = getNextContextObject(String.class, context);
                 String type2Name = getNextContextObject(String.class, context);
-                return type1Name == null || type2Name == null ? invalidMessage : type1Name + " incompatible with " + type2Name + '!';
+                if (type1Name == null || type2Name == null) break;
+                return type1Name + " incompatible with " + type2Name + '!';
             }
             case MISPLACED_BREAK: return "Break statement found outside of a loop!";
             case MISPLACED_CONTINUE: return "Continue statement found outside of a loop!";
@@ -120,51 +130,63 @@ public class MJSemanticAnalyzerLogger extends MJLogger {
             case INV_COMPILER_OBJ: {
                 String objectName = getNextContextObject(String.class, context);
                 Object object = getNextContextObject(Object.class, context);
-                return objectName == null || object == null ? invalidMessage : "Invalid " + objectName + ": " + object + '!';
+                if (objectName == null || object == null) break;
+                return "Invalid " + objectName + ": " + object + '!';
             }
             case ITERATOR_IN_USE: {
                 String varName = getNextContextObject(String.class, context);
-                return varName == null ? invalidMessage : "Variable '" + varName + "' is already being used as a foreach iterator!";
+                if (varName == null) break;
+                return "Variable '" + varName + "' is already being used as a foreach iterator!";
             }
             case VAR_READ_ONLY: {
                 String varName = getNextContextObject(String.class, context);
-                return varName == null ? invalidMessage : "Variable '" + varName + "' is read-only inside the foreach loop!";
+                if (varName == null) break;
+                return "Variable '" + varName + "' is read-only inside the foreach loop!";
             }
             case INV_ACT_PARAM: {
                 Integer index = getNextContextObject(Integer.class, context);
-                return index == null ? invalidMessage : "Actual parameter at position " + index + " is of wrong type!";
+                if (index == null) break;
+                return "Actual parameter at position " + index + " is of wrong type!";
             }
             case UNDEF_OP: {
                 String op = getNextContextObject(String.class, context);
                 String type1Name = getNextContextObject(String.class, context);
                 String type2Name = getNextContextObject(String.class, context);
-                return op == null || type1Name == null || type2Name == null ? invalidMessage : "Operator '" + op + "' is undefined for arguments of types '" + type1Name + "' and '" + type2Name + "'!";
+                if (op == null || type1Name == null || type2Name == null) break;
+                return "Operator '" + op + "' is undefined for arguments of types '" +
+                        type1Name + "' and '" + type2Name + "'!";
             }
             case UNIMPL_METHOD: {
                 String className = getNextContextObject(String.class, context);
                 String methodName = getNextContextObject(String.class, context);
-                return className == null || methodName == null ? invalidMessage : "Non-abstract class '" + className + "' must implement abstract method '" + methodName + "'!";
+                if (className == null || methodName == null) break;
+                return "Non-abstract class '" + className + "' must implement abstract method '" + methodName + "'!";
             }
             case INACCESSIBLE_SYM: {
                 String symName = getNextContextObject(String.class, context);
-                return symName == null ? invalidMessage : "Symbol '" + symName + "' is not accessible in current scope!";
+                if (symName == null) break;
+                return "Symbol '" + symName + "' is not accessible in current scope!";
             }
             case MISPLACED_ABS_METH: return "Abstract method can only be defined inside an abstract class!";
             case PRIVATE_ABS_METH: return "Abstract method cannot be declared private!";
             case INV_ACC_MOD_OVRD: {
                 String oldAccModName = getNextContextObject(String.class, context);
                 String newAccModName = getNextContextObject(String.class, context);
-                return oldAccModName == null || newAccModName == null ? invalidMessage : "Cannot override '" + oldAccModName + "' method access modifier with '" + newAccModName + "' access modifier!";
+                if (oldAccModName == null || newAccModName == null) break;
+                return "Cannot override '" + oldAccModName + "' method access modifier with '" +
+                        newAccModName + "' access modifier!";
             }
             case INV_METH_OVRD_FP_CNT: {
                 String methodName = getNextContextObject(String.class, context);
                 Integer fpCount = getNextContextObject(Integer.class, context);
-                return methodName == null || fpCount == null ? invalidMessage : "Overridden method '" + methodName + "' must have exactly " + fpCount + " formal parameter(s)!";
+                if (methodName == null || fpCount == null) break;
+                return "Overridden method '" + methodName + "' must have exactly " + fpCount + " formal parameter(s)!";
             }
             case MEMBER_NOT_FOUND: {
                 String designatorName = getNextContextObject(String.class, context);
                 String memberName = getNextContextObject(String.class, context);
-                return designatorName == null || memberName == null ? invalidMessage : "Designator '" + designatorName + "' has no member named '" + memberName + "'!";
+                if (designatorName == null || memberName == null) break;
+                return "Designator '" + designatorName + "' has no member named '" + memberName + "'!";
             }
             case INV_METH_ARG_CNT: return "Wrong number of arguments!";
             /* FATAL MESSAGES */
@@ -172,14 +194,17 @@ public class MJSemanticAnalyzerLogger extends MJLogger {
                 String kindName = getNextContextObject(String.class, context);
                 Integer count = getNextContextObject(Integer.class, context);
                 Integer maxCount = getNextContextObject(Integer.class, context);
-                return kindName == null || count == null || maxCount == null ? invalidMessage : "Number of " + kindName + ": " + count + " exceeds the maximum allowed number of " + kindName + ": " + maxCount + '!';
+                if (kindName == null || count == null || maxCount == null) break;
+                return "Number of " + kindName + ": " + count + " exceeds the maximum allowed number of " +
+                        kindName + ": " + maxCount + '!';
             }
             /* ANY OTHER MESSAGE */
             case OTHER: {
                 String message = getNextContextObject(String.class, context);
-                return message == null ? invalidMessage : message;
+                if (message == null) break;
+                return message;
             }
-            default: return "Unhandled semantic analyzer message type: '" + type.name() + "'.";
         }
+        return generateInvalidMessage(type.name());
     }
 }

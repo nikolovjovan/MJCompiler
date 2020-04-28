@@ -28,7 +28,6 @@ out/
 *.class
 
 # Log file
-*.log
 logs/
 
 # Compiled MikroJava program

@@ -8,22 +8,19 @@ import rs.ac.bg.etf.pp1.Compiler;
 
 public class Log4JUtils {
 
-    public static Log4JUtils INSTANCE = new Log4JUtils();
-
-    public String getLoggerConfigFileName() {
+    public static String getLoggerConfigFileName() {
         return "config/log4j.xml";
     }
 
-    public void prepareLogFile(Logger root) {
-        Appender appender = root.getAppender("file");
-        if (!(appender instanceof FileAppender)) return;
+    public static File prepareLogFile(Logger root, boolean test) {
+        Appender appender = root.getAppender(test ? "test.file" : "file");
+        if (!(appender instanceof FileAppender)) return null;
         FileAppender fAppender = (FileAppender) appender;
         String logFileName = fAppender.getFile();
-        String inputFileName = Compiler.getInputFileName();
-        if (inputFileName != null && !inputFileName.isEmpty()) {
-            logFileName = new File(logFileName).getParentFile().getAbsolutePath() + '\\' + new File(inputFileName).getName() + ".log";
+        if (Compiler.getInputFile() != null && Compiler.getInputFile().exists()) {
+            logFileName = new File(logFileName).getParentFile().getAbsolutePath() + '\\' + Compiler.getInputFile().getName() + ".log";
         } else {
-            logFileName = logFileName.substring(0, logFileName.lastIndexOf('.')) + "-test.log";
+            logFileName = logFileName.substring(0, logFileName.lastIndexOf('.')) + "-invalid.log";
         }
         File logFile = new File(logFileName);
         if (logFile.exists()) {
@@ -34,5 +31,10 @@ public class Log4JUtils {
         }
         fAppender.setFile(logFile.getAbsolutePath());
         fAppender.activateOptions();
+        return logFile;
+    }
+
+    public static void prepareLogFile(Logger root) {
+        prepareLogFile(root, false);
     }
 }
