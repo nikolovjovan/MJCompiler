@@ -1,0 +1,51 @@
+// keywords
+program
+const
+new
+print
+read
+void
+// addition operators
++
+-
+// multiplication operators
+*
+/
+%
+// assignment operators
+=
++=
+-=
+*=
+/=
+%=
+// increment and decrement operators
+++
+--
+// parentheses, brackets, braces, etc.
+(
+)
+[
+]
+{
+}
+,
+;
+// identifiers
+UpperCase_Identifier_0123456789
+lowerCase_Identifier_0123456789
+// numbers
+0123456789
+9876543210 // exceeds integer
++22
+-22
+// characters
+'a'
+a = '' // this should not work
+a = 'abc' // neither should this
+// booleans
+true
+false
+// invalid symbols
+$identifier
+£╜♀

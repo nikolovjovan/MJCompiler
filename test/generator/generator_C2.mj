@@ -1,0 +1,320 @@
+// level C code generation:
+// - class inheritance (both abstract and concrete)
+// - substitution (subclass object reference can replace superclass reference, even when superclass is abstract)
+// - object and object array instantiation
+// - virtual method table generation
+// - polymorphic binding of class methods
+program level_c_code_generation_2
+
+    class String {
+        public char arr[];
+        {
+            public int length() {
+                if (arr == null) return 0;
+                return len(arr);
+            }
+
+            public bool isEmpty() {
+                if (length() == 0) return true;
+                return false;
+            }
+
+            public String concat(String s)
+                String result;
+                int i, offset;
+            {
+                if (s == null || s.isEmpty()) return this;
+                if (isEmpty()) return s;
+                result = new String;
+                result.arr = new char[length() + s.length()];
+                offset = length();
+                for (i = 0; i < offset; i++) {
+                    result.arr[i] = arr[i];
+                }
+                for (i = 0; i < s.length(); i++) {
+                    result.arr[offset + i] = s.arr[i];
+                }
+                return result;
+            }
+
+            public bool equals(String s)
+                int i, l;
+            {
+                if (this == s) return true;
+                if (this == null || s == null) return false;
+                l = length();
+                if (l != s.length()) return false;
+                for (i = 0; i < l; i++) {
+                    if (arr[i] != s.arr[i]) return false;
+                }
+                return true;
+            }
+        }
+    }
+
+    String shopHeader, ownerHeader, bakerHeader, butcherHeader, helperHeader;
+
+    abstract class AbsWorker {
+        protected String name;
+        protected int yearOfBirth;
+        {
+            public String getName() { return name; }
+            public void setName(String name) { this.name = name; }
+
+            public int getYearOfBirth() { return yearOfBirth; }
+            public void setYearOfBirth(int yearOfBirth) { this.yearOfBirth = yearOfBirth; }
+
+            public abstract String toString();
+        }
+    }
+
+    class Worker extends AbsWorker {
+        {
+            // @Override
+            public String toString() { return name; }
+        }
+    }
+
+    class ShopOwner extends AbsWorker {
+        protected String shopName;
+        {
+            public String getShopName() { return shopName; }
+            public void setShopName(String shopName) {
+                if (shopHeader == null) {
+                    shopHeader = new String;
+                    shopHeader.arr = new char[6];
+                    shopHeader.arr[0] = 'S';
+                    shopHeader.arr[1] = 'h';
+                    shopHeader.arr[2] = 'o';
+                    shopHeader.arr[3] = 'p';
+                    shopHeader.arr[4] = ':';
+                    shopHeader.arr[5] = ' ';
+                }
+                this.shopName = shopHeader.concat(shopName);
+            }
+
+            protected void initOwnerHeader() {
+                ownerHeader = new String;
+                ownerHeader.arr = new char[9];
+                ownerHeader.arr[0] = ';';
+                ownerHeader.arr[1] = ' ';
+                ownerHeader.arr[2] = 'O';
+                ownerHeader.arr[3] = 'w';
+                ownerHeader.arr[4] = 'n';
+                ownerHeader.arr[5] = 'e';
+                ownerHeader.arr[6] = 'r';
+                ownerHeader.arr[7] = ':';
+                ownerHeader.arr[8] = ' ';
+            }
+
+            // @Override
+            public String toString()
+                String s;
+            {
+                if (ownerHeader == null) {
+                    initOwnerHeader();
+                }
+                if (shopName == null) return name;
+                s = shopName.concat(ownerHeader);
+                return s.concat(name);
+            }
+        }
+    }
+
+    class Baker extends ShopOwner {
+        {
+            // @Override
+            public void setName(String name)
+                int i;
+            {
+                if (bakerHeader == null) {
+                    bakerHeader = new String;
+                    bakerHeader.arr = new char[7];
+                    bakerHeader.arr[0] = 'B';
+                    bakerHeader.arr[1] = 'a';
+                    bakerHeader.arr[2] = 'k';
+                    bakerHeader.arr[3] = 'e';
+                    bakerHeader.arr[4] = 'r';
+                    bakerHeader.arr[5] = ':';
+                    bakerHeader.arr[6] = ' ';
+                }
+                this.name = bakerHeader.concat(name);
+            }
+        }
+    }
+
+    class Butcher extends ShopOwner {
+        public AbsWorker helper;
+        {
+            // @Override
+            public void setName(String name)
+                int i;
+            {
+                if (butcherHeader == null) {
+                    butcherHeader = new String;
+                    butcherHeader.arr = new char[9];
+                    butcherHeader.arr[0] = 'B';
+                    butcherHeader.arr[1] = 'u';
+                    butcherHeader.arr[2] = 't';
+                    butcherHeader.arr[3] = 'c';
+                    butcherHeader.arr[4] = 'h';
+                    butcherHeader.arr[5] = 'e';
+                    butcherHeader.arr[6] = 'r';
+                    butcherHeader.arr[7] = ':';
+                    butcherHeader.arr[8] = ' ';
+                }
+                this.name = butcherHeader.concat(name);
+            }
+
+            // @Override
+            public String toString()
+                String s;
+            {
+                if (ownerHeader == null) {
+                    initOwnerHeader();
+                }
+                if (helperHeader == null) {
+                    helperHeader = new String;
+                    helperHeader.arr = new char[10];
+                    helperHeader.arr[0] = ';';
+                    helperHeader.arr[1] = ' ';
+                    helperHeader.arr[2] = 'H';
+                    helperHeader.arr[3] = 'e';
+                    helperHeader.arr[4] = 'l';
+                    helperHeader.arr[5] = 'p';
+                    helperHeader.arr[6] = 'e';
+                    helperHeader.arr[7] = 'r';
+                    helperHeader.arr[8] = ':';
+                    helperHeader.arr[9] = ' ';
+                }
+                if (shopName == null) return name;
+                s = shopName.concat(ownerHeader);
+                s = s.concat(name);
+                if (helper == null) return s;
+                s = s.concat(helperHeader);
+                s = s.concat(helper.toString());
+                return s;
+            }
+        }
+    }
+
+{
+    void printString(String s)
+        char c;
+    {
+        if (s == null || s.isEmpty()) return;
+        foreach (c : s.arr) {
+            print(c);
+        }
+    }
+
+    void printlnString(String s) {
+        printString(s);
+        print(eol);
+    }
+
+    void main()
+        String s, s2;
+        int sw;
+        AbsWorker workers[], worker;
+        Baker baker;
+        Butcher butcher;
+    {
+        workers = new AbsWorker[5];
+
+        // Regular old Joe
+        worker = new Worker;
+        s = new String;
+        s.arr = new char[3];
+        s.arr[0] = 'J'; s.arr[1] = 'o'; s.arr[2] = 'e';
+        worker.setName(s); // name = Joe
+        worker.setYearOfBirth(1968);
+        workers[0] = worker;
+
+        // Bakery owner Meave
+        baker = new Baker;
+        s = new String;
+        s.arr = new char[6];
+        s.arr[0] = 'B'; s.arr[1] = 'u'; s.arr[2] = 't'; s.arr[3] = 't'; s.arr[4] = 'e'; s.arr[5] = 'r';
+        baker.setShopName(s); // shopName = Butter
+        s = new String;
+        s.arr = new char[5];
+        s.arr[0] = 'M'; s.arr[1] = 'e'; s.arr[2] = 'a'; s.arr[3] = 'v'; s.arr[4] = 'e';
+        baker.setName(s); // name = Baker: Meave
+        baker.setYearOfBirth(1971);
+        workers[1] = baker;
+
+        // Butchery worker Biff
+        butcher = new Butcher;
+        s = new String;
+        s.arr = new char[4];
+        s.arr[0] = 'B'; s.arr[1] = 'i'; s.arr[2] = 'f'; s.arr[3] = 'f';
+        butcher.setName(s); // name = Butcher: Biff
+        butcher.setYearOfBirth(1978);
+        workers[2] = butcher;
+
+        // Butchery owner Samuel
+        butcher = new Butcher;
+        s = new String;
+        s.arr = new char[4];
+        s.arr[0] = 'M'; s.arr[1] = 'e'; s.arr[2] = 'a'; s.arr[3] = 't';
+        butcher.setShopName(s); // shopName = Meat
+        s = new String;
+        s.arr = new char[6];
+        s.arr[0] = 'S'; s.arr[1] = 'a'; s.arr[2] = 'm'; s.arr[3] = 'u'; s.arr[4] = 'e'; s.arr[5] = 'l';
+        butcher.setName(s); // name = Butcher: Samuel
+        butcher.helper = workers[2]; // Biff works for Samuel
+        butcher.setYearOfBirth(1963);
+        workers[3] = butcher;
+
+        // Bakery owner Miranda
+        baker = new Baker;
+        s = new String;
+        s.arr = new char[5];
+        s.arr[0] = 'B'; s.arr[1] = 'r'; s.arr[2] = 'e'; s.arr[3] = 'a'; s.arr[4] = 'd';
+        baker.setShopName(s); // shopName = Bread
+        s = new String;
+        s.arr = new char[7];
+        s.arr[0] = 'M'; s.arr[1] = 'i'; s.arr[2] = 'r'; s.arr[3] = 'a'; s.arr[4] = 'n'; s.arr[5] = 'd'; s.arr[6] = 'a';
+        baker.setName(s); // name = Baker: Miranda
+        baker.setYearOfBirth(1985);
+        workers[4] = baker;
+
+        // Change the name of the butchery worker
+        s = new String;
+        s.arr = new char[4];
+        s.arr[0] = 'E'; s.arr[1] = 'r'; s.arr[2] = 'i'; s.arr[3] = 'c';
+        butcher.helper.setName(s); // name = Butcher: Eric
+
+        // Print worker names
+        foreach (worker : workers) {
+            printlnString(worker.getName());
+        }
+
+        s = new String;
+        s2 = workers[0].getName(); // syntax constraint: designator cannot have method call (super annoying)
+        if (s2.equals(workers[1].getName())) {
+            s.arr = new char[3];
+            s.arr[0] = 'B'; s.arr[1] = 'a'; s.arr[2] = 'd';
+        } else {
+            s.arr = new char[4];
+            s.arr[0] = 'G'; s.arr[1] = 'o'; s.arr[2] = 'o'; s.arr[3] = 'd';
+        }
+        printlnString(s);
+
+        s = new String;
+        s.arr = new char[5];
+        s.arr[0] = 's'; s.arr[1] = 'w'; s.arr[2] = ' '; s.arr[3] = '='; s.arr[4] = ' ';
+        printString(s);
+        read(sw);
+        if (sw > 0) {
+            printlnString(baker.getName());
+        } else {
+            printlnString(butcher.getName());
+        }
+
+        foreach (worker : workers) {
+            printlnString(worker.toString());
+        }
+    }
+}

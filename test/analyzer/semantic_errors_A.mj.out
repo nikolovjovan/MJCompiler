@@ -1,0 +1,64 @@
+Syntax analysis completed without errors.
+Starting semantic analysis...
+Found global variable usage 'gd' at line 39! Symbol node: Variable 'gd': type = 'array of char', adr = 8, level = 0
+Found global variable usage 'gf' at line 40! Symbol node: Variable 'gf': type = 'array of bool', adr = 10, level = 0
+Found local variable usage 'lf' at line 43! Symbol node: Variable 'lf': type = 'array of bool', adr = 2, level = 1
+Found global variable usage 'gc' at line 49! Symbol node: Variable 'gc': type = 'char', adr = 7, level = 0
+Found global variable usage 'gd' at line 50! Symbol node: Variable 'gd': type = 'array of char', adr = 8, level = 0
+Found array element access 'gd[1]' at line 50! Symbol node: Array element 'gd[1]': type = 'char', adr = -1, level = -1
+Found global variable usage 'gd' at line 51! Symbol node: Variable 'gd': type = 'array of char', adr = 8, level = 0
+Found array element access 'gd[0]' at line 51! Symbol node: Array element 'gd[0]': type = 'char', adr = -1, level = -1
+Found global variable usage 'ge' at line 52! Symbol node: Variable 'ge': type = 'bool', adr = 9, level = 0
+Found global variable usage 'gf' at line 53! Symbol node: Variable 'gf': type = 'array of bool', adr = 10, level = 0
+Found array element access 'gf[0]' at line 53! Symbol node: Array element 'gf[0]': type = 'bool', adr = -1, level = -1
+Found symbolic constant usage 'cd' at line 53! Symbol node: Constant 'cd': type = 'bool', adr = 1, level = 0
+Found global variable usage 'gf' at line 54! Symbol node: Variable 'gf': type = 'array of bool', adr = 10, level = 0
+Found array element access 'gf[3]' at line 54! Symbol node: Array element 'gf[3]': type = 'bool', adr = -1, level = -1
+Found global variable usage 'gf' at line 54! Symbol node: Variable 'gf': type = 'array of bool', adr = 10, level = 0
+Found array element access 'gf[0]' at line 54! Symbol node: Array element 'gf[0]': type = 'bool', adr = -1, level = -1
+Found global variable usage 'gf' at line 55! Symbol node: Variable 'gf': type = 'array of bool', adr = 10, level = 0
+Found array element access 'gf[2]' at line 55! Symbol node: Array element 'gf[2]': type = 'bool', adr = -1, level = -1
+Found global variable usage 'gf' at line 56! Symbol node: Variable 'gf': type = 'array of bool', adr = 10, level = 0
+Found array element access 'gf[3]' at line 56! Symbol node: Array element 'gf[3]': type = 'bool', adr = -1, level = -1
+Found global variable usage 'gc' at line 61! Symbol node: Variable 'gc': type = 'char', adr = 7, level = 0
+Found local variable usage 'le' at line 63! Symbol node: Variable 'le': type = 'bool', adr = 1, level = 1
+Found local variable usage 'lf' at line 64! Symbol node: Variable 'lf': type = 'array of bool', adr = 2, level = 1
+Found array element access 'lf[2]' at line 64! Symbol node: Array element 'lf[2]': type = 'bool', adr = -1, level = -1
+Found symbolic constant usage 'cd' at line 64! Symbol node: Constant 'cd': type = 'bool', adr = 1, level = 0
+======================================== SYMBOL TABLE DUMP =========================================
+Type 'int': type = 'int', adr = -1, level = -1
+Type 'char': type = 'char', adr = -1, level = -1
+Type 'bool': type = 'bool', adr = -1, level = -1
+Constant 'null': type = 'class', adr = 0, level = 0
+Constant 'eol': type = 'char', adr = 10, level = 0
+Method 'chr': type = 'char', adr = 0, level = 1
+  Formal parameter 'i': type = 'int', adr = 0, level = 1
+Method 'ord': type = 'int', adr = 0, level = 1
+  Formal parameter 'ch': type = 'char', adr = 0, level = 1
+Method 'len': type = 'int', adr = 0, level = 1
+  Formal parameter 'arr': type = 'array of none', adr = 0, level = 1
+Program 'level_a_syntax_test': type = 'none', adr = 0, level = 1
+  Constant 'a': type = 'int', adr = 20, level = 0
+  Constant 'b': type = 'int', adr = -1, level = 0
+  Constant 'c': type = 'int', adr = 25, level = 0
+  Constant 'd': type = 'char', adr = 97, level = 0
+  Constant 'e': type = 'bool', adr = 1, level = 0
+  Constant 'f': type = 'bool', adr = 0, level = 0
+  Variable 'var_a': type = 'int', adr = 0, level = 0
+  Variable 'var_b': type = 'array of int', adr = 1, level = 0
+  Variable 'var_c': type = 'char', adr = 2, level = 0
+  Variable 'var_d': type = 'array of char', adr = 3, level = 0
+  Variable 'var_e': type = 'char', adr = 4, level = 0
+  Variable 'var_f': type = 'bool', adr = 5, level = 0
+  Variable 'int': type = 'int', adr = 6, level = 0
+  Constant 'cc': type = 'char', adr = 115, level = 0
+  Constant 'cd': type = 'bool', adr = 1, level = 0
+  Variable 'gc': type = 'char', adr = 7, level = 0
+  Variable 'gd': type = 'array of char', adr = 8, level = 0
+  Variable 'ge': type = 'bool', adr = 9, level = 0
+  Variable 'gf': type = 'array of bool', adr = 10, level = 0
+  Method 'main': type = 'void', adr = 0, level = 0
+    Variable 'char': type = 'bool', adr = 0, level = 1
+    Variable 'le': type = 'bool', adr = 1, level = 1
+    Variable 'lf': type = 'array of bool', adr = 2, level = 1
+

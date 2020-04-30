@@ -1,0 +1,102 @@
+// level C symbol detection:
+// - abstract inner class
+// - access to inner class field
+// - inner class method call
+program level_c_symbol_detection
+    // const declarations
+    const int a = 20, b = -1, c = +25;
+    const char d = 'a';
+    const bool e = true, f = false;
+
+    // global variables
+    int var_a, var_b[];
+    char var_c, var_d[], var_e;
+    bool var_f;
+
+    abstract class abstract_class { // abstract inner class
+        public int abstract_class_public_field;
+        protected char abstract_class_protected_field;
+        private bool abstract_class_private_field;
+        {
+            public abstract void public_method(int a, int b);
+            protected abstract void protected_method(char a);
+        }
+    }
+
+    class concrete_class extends abstract_class {
+        // class variables
+        public int class_var_a, class_var_b[];
+        protected char class_var_c;
+        private bool class_var_d;
+        {
+            // abstract method implementation
+            public void public_method(int a, int b)
+                int c;
+            {
+                abstract_class_public_field = 12; // superclass public field access
+                abstract_class_protected_field = 'c'; // superclass protected field access
+                class_var_a = 15; // this class public field access
+                class_var_c = 'd'; // this class protected field access
+                class_var_d = false; // this class private field access
+            }
+            // abstract method implementation
+            protected void protected_method(char a) {}
+            private void private_method(bool ind) {}
+        }
+    }
+
+    class test_class {
+        // class variables
+        public int class_var_a, class_var_b[];
+        protected char class_var_c;
+        private bool class_var_d;
+        {
+            public void test_method() {}
+        }
+    }
+{
+    int calc(int a, int b, bool c) {
+        if (c) return a + b;
+        return a * b;
+    }
+
+    void test()
+        // local variables
+        int local_var_a, local_var_b[], i;
+        char local_var_c;
+        bool local_var_d, local_var_e[];
+        test_class local_var_obj;
+    {
+        local_var_a = a; // int const usage
+        local_var_b = new int[5]; // array instantiation
+        local_var_c = d; // char const usage
+        local_var_obj = new test_class;
+
+        local_var_a = local_var_obj.class_var_a; // class field access
+        local_var_b[3] = local_var_obj.class_var_b[5]; // class array field element access
+        local_var_obj.test_method(); // class method call
+
+        local_var_a = calc(local_var_a, local_var_a, local_var_d); // test method call
+        local_var_b = new int[c - a]; // const expr
+        for (i = 0; i < c - a; i++) {
+            if (i % 2 == 0) local_var_c = 'e';
+            else local_var_c = 'o';
+            continue;
+        }
+    }
+
+    void main()
+        int a, b;
+        char c;
+        bool ind;
+        abstract_class var;
+    {
+        a = 4;
+        b = 15;
+        c = 'b';
+        ind = false;
+        var = new concrete_class; // concrete class instantiation
+        var.abstract_class_public_field = -5; // superclass public field access
+        var.public_method(a, b); // public method call
+    }
+}

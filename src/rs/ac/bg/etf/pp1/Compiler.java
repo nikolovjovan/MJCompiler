@@ -1,9 +1,9 @@
 package rs.ac.bg.etf.pp1;
 
 import org.apache.log4j.Logger;
-import org.apache.log4j.xml.DOMConfigurator;
 import rs.ac.bg.etf.pp1.ast.Program;
 import rs.ac.bg.etf.pp1.exceptions.MJCodeGeneratorException;
+import rs.ac.bg.etf.pp1.exceptions.MJCompilerException;
 import rs.ac.bg.etf.pp1.exceptions.MJSemanticAnalyzerException;
 import rs.ac.bg.etf.pp1.mj.runtime.MJCode;
 import rs.ac.bg.etf.pp1.symboltable.MJTable;
@@ -56,6 +56,8 @@ public class Compiler {
     }
 
     public static void compile(Reader r) throws Exception {
+        System.out.println("Compiling source file: " + inputFile.getAbsolutePath());
+
         MJLexer lexer = new MJLexer(r);
         MJParser parser = new MJParser(lexer);
 
@@ -83,7 +85,7 @@ public class Compiler {
 
             tsdump();
 
-            logger.info("Generating bytecode file: " + outputFile.getAbsolutePath());
+            System.out.println("Generating bytecode file: " + outputFile.getAbsolutePath());
             if (outputFile.exists()) {
                 outputFile.delete();
             }
@@ -93,33 +95,33 @@ public class Compiler {
 
             if (generator.getErrorCount() == 0) {
                 MJCode.write(new FileOutputStream(outputFile));
-                if (MJCode.greska) {
+                if (!MJCode.greska) {
+                    System.out.println("Compilation finished!");
+                } else {
                     throw new MJCodeGeneratorException("Failed to write bytecode to output file: " + outputFile.getAbsolutePath() + "!");
                 }
             } else {
                 throw new MJCodeGeneratorException("Code generation failed with " + generator.getErrorCount() + " error(s)!");
             }
-
-            logger.info("Compilation finished!");
         } else {
             throw new MJSemanticAnalyzerException("Semantic analysis failed with " + analyzer.getErrorCount() + " error(s)!");
         }
     }
 
     public static void main(String[] args) {
-        DOMConfigurator.configure(Log4JUtils.getLoggerConfigFileName());
-
         if (!CLIUtils.parseCLIArgs(args)) return;
-
-        Log4JUtils.prepareLogFile(Logger.getRootLogger());
-
-        logger.info("Compiling source file: " + inputFile.getAbsolutePath());
+        Log4JUtils.prepareLogFile(false);
+        boolean failure = true;
         try (BufferedReader br = new BufferedReader(new FileReader(inputFile))) {
             compile(br);
+            failure = false;
+        } catch (MJCompilerException e) {
+            System.err.println(e.getMessage());
         } catch (Exception e) {
-            logger.error("Failed to compile source file: '" + inputFile.getAbsolutePath() + "'!", e);
-            System.err.println("Compilation failed!");
             e.printStackTrace(System.err);
+        }
+        if (failure) {
+            System.err.println("Failed to compile source file: '" + inputFile.getAbsolutePath() + "'!");
         }
     }
 }

@@ -1,0 +1,125 @@
+Compiling source file: D:\Documents\Fakultet\7. semestar\13E114PP1\Projekat\MJCompiler\test\generator\test302.mj
+Syntax analysis completed without errors!
+Starting semantic analysis...
+Found formal parameter usage 'z' at line 15! Symbol node: Formal parameter 'z': type = 'int', adr = 0, level = 1
+Found formal parameter usage 'd' at line 15! Symbol node: Formal parameter 'd': type = 'int', adr = 1, level = 1
+Found formal parameter usage 'inc' at line 20! Symbol node: Formal parameter 'inc': type = 'int', adr = 1, level = 1
+Found symbolic constant usage 'jedan' at line 20! Symbol node: Constant 'jedan': type = 'int', adr = 1, level = 0
+Found local variable usage 'pom' at line 20! Symbol node: Variable 'pom': type = 'int', adr = 2, level = 1
+Found formal parameter usage 'inc' at line 21! Symbol node: Formal parameter 'inc': type = 'int', adr = 1, level = 1
+Found local variable usage 'pom' at line 21! Symbol node: Variable 'pom': type = 'int', adr = 2, level = 1
+Found formal parameter usage 'a' at line 21! Symbol node: Formal parameter 'a': type = 'int', adr = 0, level = 1
+Found global method call 'sum' at line 23! Symbol node: Method 'sum': type = 'int', adr = 0, level = 2
+  Formal parameter 'z': type = 'int', adr = 0, level = 1
+  Formal parameter 'd': type = 'int', adr = 1, level = 1
+Found formal parameter usage 'a' at line 23! Symbol node: Formal parameter 'a': type = 'int', adr = 0, level = 1
+Found local variable usage 'pom' at line 23! Symbol node: Variable 'pom': type = 'int', adr = 2, level = 1
+Found global variable usage 'ibool' at line 36! Symbol node: Variable 'ibool': type = 'bool', adr = 1, level = 0
+Found global variable usage 'i' at line 37! Symbol node: Variable 'i': type = 'int', adr = 0, level = 0
+Found global variable usage 'i' at line 38! Symbol node: Variable 'i': type = 'int', adr = 0, level = 0
+Found global variable usage 'i' at line 38! Symbol node: Variable 'i': type = 'int', adr = 0, level = 0
+Found global variable usage 'i' at line 38! Symbol node: Variable 'i': type = 'int', adr = 0, level = 0
+Found for loop 'none' at line 38!
+Found global variable usage 'i' at line 40! Symbol node: Variable 'i': type = 'int', adr = 0, level = 0
+Found global variable usage 'ibool' at line 40! Symbol node: Variable 'ibool': type = 'bool', adr = 1, level = 0
+Found global variable usage 'ibool' at line 43! Symbol node: Variable 'ibool': type = 'bool', adr = 1, level = 0
+Found global variable usage 'i' at line 44! Symbol node: Variable 'i': type = 'int', adr = 0, level = 0
+Found global variable usage 'niz' at line 47! Symbol node: Variable 'niz': type = 'array of int', adr = 2, level = 0
+Found global variable usage 'niz' at line 48! Symbol node: Variable 'niz': type = 'array of int', adr = 2, level = 0
+Found array element access 'niz[0]' at line 48! Symbol node: Array element 'niz[0]': type = 'int', adr = -1, level = -1
+Found global variable usage 'niz' at line 49! Symbol node: Variable 'niz': type = 'array of int', adr = 2, level = 0
+Found array element access 'niz[1]' at line 49! Symbol node: Array element 'niz[1]': type = 'int', adr = -1, level = -1
+Found global variable usage 'niz' at line 50! Symbol node: Variable 'niz': type = 'array of int', adr = 2, level = 0
+Found array element access 'niz[2]' at line 50! Symbol node: Array element 'niz[2]': type = 'int', adr = -1, level = -1
+Found global method call 'sum' at line 50! Symbol node: Method 'sum': type = 'int', adr = 0, level = 2
+  Formal parameter 'z': type = 'int', adr = 0, level = 1
+  Formal parameter 'd': type = 'int', adr = 1, level = 1
+Found global variable usage 'niz' at line 50! Symbol node: Variable 'niz': type = 'array of int', adr = 2, level = 0
+Found array element access 'niz[1]' at line 50! Symbol node: Array element 'niz[1]': type = 'int', adr = -1, level = -1
+Found global variable usage 'niz' at line 50! Symbol node: Variable 'niz': type = 'array of int', adr = 2, level = 0
+Found array element access 'niz[0]' at line 50! Symbol node: Array element 'niz[0]': type = 'int', adr = -1, level = -1
+Found global variable usage 'niz' at line 51! Symbol node: Variable 'niz': type = 'array of int', adr = 2, level = 0
+Found array element access 'niz[2]' at line 51! Symbol node: Array element 'niz[2]': type = 'int', adr = -1, level = -1
+Found global method call 'verify' at line 51! Symbol node: Method 'verify': type = 'bool', adr = 0, level = 0
+Found global method call 'ord' at line 51! Symbol node: Method 'ord': type = 'int', adr = 0, level = 1
+  Formal parameter 'ch': type = 'char', adr = 0, level = 1
+Found global method call 'ord' at line 52! Symbol node: Method 'ord': type = 'int', adr = 0, level = 1
+  Formal parameter 'ch': type = 'char', adr = 0, level = 1
+Found symbolic constant usage 'eol' at line 54! Symbol node: Constant 'eol': type = 'char', adr = 10, level = 0
+Found global variable usage 'i' at line 55! Symbol node: Variable 'i': type = 'int', adr = 0, level = 0
+Found global variable usage 'i' at line 56! Symbol node: Variable 'i': type = 'int', adr = 0, level = 0
+Found for loop 'none' at line 56!
+Found global variable usage 'i' at line 58! Symbol node: Variable 'i': type = 'int', adr = 0, level = 0
+Found global variable usage 'i' at line 60! Symbol node: Variable 'i': type = 'int', adr = 0, level = 0
+Found global variable usage 'i' at line 63! Symbol node: Variable 'i': type = 'int', adr = 0, level = 0
+Found global variable usage 'i' at line 64! Symbol node: Variable 'i': type = 'int', adr = 0, level = 0
+Found global method call 'inkrement' at line 64! Symbol node: Method 'inkrement': type = 'int', adr = 0, level = 2
+  Formal parameter 'a': type = 'int', adr = 0, level = 1
+  Formal parameter 'inc': type = 'int', adr = 1, level = 1
+  Variable 'pom': type = 'int', adr = 2, level = 1
+Found global variable usage 'i' at line 64! Symbol node: Variable 'i': type = 'int', adr = 0, level = 0
+Found global variable usage 'i' at line 67! Symbol node: Variable 'i': type = 'int', adr = 0, level = 0
+Found global method call 'verify' at line 67! Symbol node: Method 'verify': type = 'bool', adr = 0, level = 0
+Found global variable usage 'niz' at line 70! Symbol node: Variable 'niz': type = 'array of int', adr = 2, level = 0
+Found array element access 'niz[0]' at line 70! Symbol node: Array element 'niz[0]': type = 'int', adr = -1, level = -1
+Found global variable usage 'niz' at line 71! Symbol node: Variable 'niz': type = 'array of int', adr = 2, level = 0
+Found array element access 'niz[1]' at line 71! Symbol node: Array element 'niz[1]': type = 'int', adr = -1, level = -1
+Found global variable usage 'niz' at line 72! Symbol node: Variable 'niz': type = 'array of int', adr = 2, level = 0
+Found array element access 'niz[2]' at line 72! Symbol node: Array element 'niz[2]': type = 'int', adr = -1, level = -1
+Found symbolic constant usage 'eol' at line 73! Symbol node: Constant 'eol': type = 'char', adr = 10, level = 0
+Found global method call 'sum' at line 75! Symbol node: Method 'sum': type = 'int', adr = 0, level = 2
+  Formal parameter 'z': type = 'int', adr = 0, level = 1
+  Formal parameter 'd': type = 'int', adr = 1, level = 1
+Found global method call 'sum' at line 75! Symbol node: Method 'sum': type = 'int', adr = 0, level = 2
+  Formal parameter 'z': type = 'int', adr = 0, level = 1
+  Formal parameter 'd': type = 'int', adr = 1, level = 1
+Found global variable usage 'niz' at line 75! Symbol node: Variable 'niz': type = 'array of int', adr = 2, level = 0
+Found array element access 'niz[0]' at line 75! Symbol node: Array element 'niz[0]': type = 'int', adr = -1, level = -1
+Found global variable usage 'niz' at line 75! Symbol node: Variable 'niz': type = 'array of int', adr = 2, level = 0
+Found array element access 'niz[1]' at line 75! Symbol node: Array element 'niz[1]': type = 'int', adr = -1, level = -1
+Found global variable usage 'niz' at line 75! Symbol node: Variable 'niz': type = 'array of int', adr = 2, level = 0
+Found array element access 'niz[2]' at line 75! Symbol node: Array element 'niz[2]': type = 'int', adr = -1, level = -1
+Found global variable usage 'niz' at line 77! Symbol node: Variable 'niz': type = 'array of int', adr = 2, level = 0
+Found global variable usage 'i' at line 78! Symbol node: Variable 'i': type = 'int', adr = 0, level = 0
+Found symbolic constant usage 'eol' at line 81! Symbol node: Constant 'eol': type = 'char', adr = 10, level = 0
+Found global method call 'inkrement' at line 82! Symbol node: Method 'inkrement': type = 'int', adr = 0, level = 2
+  Formal parameter 'a': type = 'int', adr = 0, level = 1
+  Formal parameter 'inc': type = 'int', adr = 1, level = 1
+  Variable 'pom': type = 'int', adr = 2, level = 1
+Found global variable usage 'niz' at line 82! Symbol node: Variable 'niz': type = 'array of int', adr = 2, level = 0
+Found array element access 'niz[2]' at line 82! Symbol node: Array element 'niz[2]': type = 'int', adr = -1, level = -1
+Semantic analysis completed without errors!
+====================================================================================================
+    1 symbolic constant(s) defined
+    3 global variable(s) defined
+    0 class(es) defined
+    4 global method(s) defined
+======================================== SYMBOL TABLE DUMP =========================================
+Type 'int': type = 'int', adr = -1, level = -1
+Type 'char': type = 'char', adr = -1, level = -1
+Type 'bool': type = 'bool', adr = -1, level = -1
+Constant 'null': type = 'class', adr = 0, level = 0
+Constant 'eol': type = 'char', adr = 10, level = 0
+Method 'chr': type = 'char', adr = 0, level = 1
+  Formal parameter 'i': type = 'int', adr = 0, level = 1
+Method 'ord': type = 'int', adr = 0, level = 1
+  Formal parameter 'ch': type = 'char', adr = 0, level = 1
+Method 'len': type = 'int', adr = 0, level = 1
+  Formal parameter 'arr': type = 'array of none', adr = 0, level = 1
+Program 'test302': type = 'none', adr = 0, level = 1
+  Constant 'jedan': type = 'int', adr = 1, level = 0
+  Variable 'i': type = 'int', adr = 0, level = 0
+  Variable 'ibool': type = 'bool', adr = 1, level = 0
+  Variable 'niz': type = 'array of int', adr = 2, level = 0
+  Method 'sum': type = 'int', adr = 0, level = 2
+    Formal parameter 'z': type = 'int', adr = 0, level = 1
+    Formal parameter 'd': type = 'int', adr = 1, level = 1
+  Method 'inkrement': type = 'int', adr = 0, level = 2
+    Formal parameter 'a': type = 'int', adr = 0, level = 1
+    Formal parameter 'inc': type = 'int', adr = 1, level = 1
+    Variable 'pom': type = 'int', adr = 2, level = 1
+  Method 'verify': type = 'bool', adr = 0, level = 0
+  Method 'main': type = 'void', adr = 0, level = 0
+
+Generating bytecode file: D:\Documents\Fakultet\7. semestar\13E114PP1\Projekat\MJCompiler\test\test302.obj
+Compilation finished!

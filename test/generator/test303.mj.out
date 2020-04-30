@@ -1,0 +1,241 @@
+Compiling source file: D:\Documents\Fakultet\7. semestar\13E114PP1\Projekat\MJCompiler\test\generator\test303.mj
+Syntax analysis completed without errors!
+Starting semantic analysis...
+Found abstract class usage 'AbsPredmet' at line 13! Symbol node: Type 'AbsPredmet': type = 'abstract class', adr = 0, level = 0
+Found local variable usage 'this' at line 19! Symbol node: Variable 'this': , adr = 0, level = 1
+Found class 'Predmet' field usage 'tezina' at line 19! Symbol node: Field 'tezina': type = 'int', adr = 1, level = 1, parent = 'Predmet', access modifier = protected
+Found formal parameter usage 'tezina' at line 19! Symbol node: Formal parameter 'tezina': type = 'int', adr = 1, level = 1
+Found class 'Predmet' field usage 'tezina' at line 20! Symbol node: Field 'tezina': type = 'int', adr = 1, level = 1, parent = 'Predmet', access modifier = protected
+Found class 'Predmet' method call 'zapremina' at line 22! Symbol node: Method 'zapremina': type = 'int', adr = 0, level = 1, parent = 'Predmet', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+Found class 'Predmet' field usage 'tezina' at line 22! Symbol node: Field 'tezina': type = 'int', adr = 1, level = 1, parent = 'Predmet', access modifier = protected
+Found local variable usage 'this' at line 23! Symbol node: Variable 'this': , adr = 0, level = 1
+Found class 'Predmet' field usage 'vrsta' at line 23! Symbol node: Field 'vrsta': type = 'char', adr = 2, level = 1, parent = 'Predmet', access modifier = protected
+Found formal parameter usage 'vrsta' at line 23! Symbol node: Formal parameter 'vrsta': type = 'char', adr = 1, level = 1
+Found class 'Predmet' field usage 'vrsta' at line 24! Symbol node: Field 'vrsta': type = 'char', adr = 2, level = 1, parent = 'Predmet', access modifier = protected
+Found class 'Predmet' field usage 'tezina' at line 25! Symbol node: Field 'tezina': type = 'int', adr = 1, level = 1, parent = 'Predmet', access modifier = protected
+Found local variable usage 'this' at line 33! Symbol node: Variable 'this': , adr = 0, level = 1
+Found class 'Predmet' field usage 'tezina' at line 33! Symbol node: Field 'tezina': type = 'int', adr = 1, level = 1, parent = 'Predmet', access modifier = protected
+Found formal parameter usage 'tezina' at line 33! Symbol node: Formal parameter 'tezina': type = 'int', adr = 1, level = 1
+Found class 'Predmet' field usage 'vrsta' at line 33! Symbol node: Field 'vrsta': type = 'char', adr = 2, level = 1, parent = 'Predmet', access modifier = protected
+Found local variable usage 'this' at line 34! Symbol node: Variable 'this': , adr = 0, level = 1
+Found class 'Sfera' field usage 'r' at line 34! Symbol node: Field 'r': type = 'int', adr = 3, level = 1, parent = 'Sfera', access modifier = private
+Found formal parameter usage 'r' at line 34! Symbol node: Formal parameter 'r': type = 'int', adr = 1, level = 1
+Found class 'Predmet' method call 'postaviVrstu' at line 34! Symbol node: Method 'postaviVrstu': type = 'void', adr = 0, level = 2, parent = 'Predmet', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 'vrsta': type = 'char', adr = 1, level = 1
+Found local variable usage 'z' at line 38! Symbol node: Variable 'z': type = 'int', adr = 1, level = 2
+Found symbolic constant usage 'cinilac' at line 38! Symbol node: Constant 'cinilac': type = 'int', adr = 4, level = 0
+Found local variable usage 'z' at line 39! Symbol node: Variable 'z': type = 'int', adr = 1, level = 2
+Found class 'Sfera' field usage 'r' at line 39! Symbol node: Field 'r': type = 'int', adr = 3, level = 1, parent = 'Sfera', access modifier = private
+Found symbolic constant usage 'delilac' at line 39! Symbol node: Constant 'delilac': type = 'int', adr = 3, level = 0
+Found local variable usage 'this' at line 48! Symbol node: Variable 'this': , adr = 0, level = 1
+Found class 'Predmet' field usage 'tezina' at line 48! Symbol node: Field 'tezina': type = 'int', adr = 1, level = 1, parent = 'Predmet', access modifier = protected
+Found formal parameter usage 'tezina' at line 48! Symbol node: Formal parameter 'tezina': type = 'int', adr = 1, level = 1
+Found class 'Predmet' field usage 'vrsta' at line 48! Symbol node: Field 'vrsta': type = 'char', adr = 2, level = 1, parent = 'Predmet', access modifier = protected
+Found local variable usage 'this' at line 49! Symbol node: Variable 'this': , adr = 0, level = 1
+Found class 'Kvadar' field usage 'a' at line 49! Symbol node: Field 'a': type = 'int', adr = 3, level = 1, parent = 'Kvadar', access modifier = private
+Found formal parameter usage 'a' at line 49! Symbol node: Formal parameter 'a': type = 'int', adr = 1, level = 1
+Found local variable usage 'this' at line 49! Symbol node: Variable 'this': , adr = 0, level = 1
+Found class 'Kvadar' field usage 'b' at line 49! Symbol node: Field 'b': type = 'int', adr = 4, level = 1, parent = 'Kvadar', access modifier = private
+Found formal parameter usage 'b' at line 49! Symbol node: Formal parameter 'b': type = 'int', adr = 2, level = 1
+Found local variable usage 'this' at line 49! Symbol node: Variable 'this': , adr = 0, level = 1
+Found class 'Kvadar' field usage 'c' at line 49! Symbol node: Field 'c': type = 'int', adr = 5, level = 1, parent = 'Kvadar', access modifier = private
+Found formal parameter usage 'c' at line 49! Symbol node: Formal parameter 'c': type = 'int', adr = 3, level = 1
+Found class 'Predmet' field usage 'vrsta' at line 49! Symbol node: Field 'vrsta': type = 'char', adr = 2, level = 1, parent = 'Predmet', access modifier = protected
+Found local variable usage 'z' at line 53! Symbol node: Variable 'z': type = 'int', adr = 1, level = 2
+Found class 'Kvadar' field usage 'a' at line 53! Symbol node: Field 'a': type = 'int', adr = 3, level = 1, parent = 'Kvadar', access modifier = private
+Found class 'Kvadar' field usage 'b' at line 53! Symbol node: Field 'b': type = 'int', adr = 4, level = 1, parent = 'Kvadar', access modifier = private
+Found class 'Kvadar' field usage 'c' at line 53! Symbol node: Field 'c': type = 'int', adr = 5, level = 1, parent = 'Kvadar', access modifier = private
+Found local variable usage 'z' at line 54! Symbol node: Variable 'z': type = 'int', adr = 1, level = 2
+Found formal parameter usage 'p' at line 65! Symbol node: Formal parameter 'p': type = 'class', adr = 0, level = 1
+Found class 'Predmet' field usage 'dohvVrstu' at line 65! Symbol node: Method 'dohvVrstu': type = 'char', adr = 0, level = 1, parent = 'Predmet', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+Found formal parameter usage 'p' at line 66! Symbol node: Formal parameter 'p': type = 'class', adr = 0, level = 1
+Found class 'Predmet' field usage 'dohvVrstu' at line 66! Symbol node: Method 'dohvVrstu': type = 'char', adr = 0, level = 1, parent = 'Predmet', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+Found symbolic constant usage 'eol' at line 68! Symbol node: Constant 'eol': type = 'char', adr = 10, level = 0
+Found formal parameter usage 'p' at line 69! Symbol node: Formal parameter 'p': type = 'class', adr = 0, level = 1
+Found class 'Predmet' field usage 'dohvTezinu' at line 69! Symbol node: Method 'dohvTezinu': type = 'int', adr = 0, level = 1, parent = 'Predmet', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+Found abstract class usage 'AbsPredmet' at line 72! Symbol node: Type 'AbsPredmet': type = 'abstract class', adr = 0, level = 0
+Found local variable usage 'predmeti' at line 74! Symbol node: Variable 'predmeti': type = 'array of class', adr = 0, level = 1
+Found local variable usage 'absPredmeti' at line 75! Symbol node: Variable 'absPredmeti': type = 'array of class', adr = 1, level = 1
+Found abstract class usage 'AbsPredmet' at line 75! Symbol node: Type 'AbsPredmet': type = 'abstract class', adr = 0, level = 0
+Found local variable usage 's1' at line 76! Symbol node: Variable 's1': type = 'class', adr = 3, level = 1
+Found local variable usage 's2' at line 77! Symbol node: Variable 's2': type = 'class', adr = 4, level = 1
+Found local variable usage 's3' at line 78! Symbol node: Variable 's3': type = 'class', adr = 5, level = 1
+Found local variable usage 'k1' at line 80! Symbol node: Variable 'k1': type = 'class', adr = 6, level = 1
+Found local variable usage 'k2' at line 81! Symbol node: Variable 'k2': type = 'class', adr = 7, level = 1
+Found local variable usage 'k3' at line 82! Symbol node: Variable 'k3': type = 'class', adr = 8, level = 1
+Found local variable usage 's1' at line 84! Symbol node: Variable 's1': type = 'class', adr = 3, level = 1
+Found class 'Sfera' field usage 'postaviPoluprecnik' at line 84! Symbol node: Method 'postaviPoluprecnik': type = 'void', adr = 0, level = 2, parent = 'Sfera', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 'r': type = 'int', adr = 1, level = 1
+Found local variable usage 's2' at line 85! Symbol node: Variable 's2': type = 'class', adr = 4, level = 1
+Found class 'Sfera' field usage 'postaviPoluprecnik' at line 85! Symbol node: Method 'postaviPoluprecnik': type = 'void', adr = 0, level = 2, parent = 'Sfera', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 'r': type = 'int', adr = 1, level = 1
+Found local variable usage 's3' at line 86! Symbol node: Variable 's3': type = 'class', adr = 5, level = 1
+Found class 'Sfera' field usage 'postaviPoluprecnik' at line 86! Symbol node: Method 'postaviPoluprecnik': type = 'void', adr = 0, level = 2, parent = 'Sfera', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 'r': type = 'int', adr = 1, level = 1
+Found local variable usage 'k1' at line 88! Symbol node: Variable 'k1': type = 'class', adr = 6, level = 1
+Found class 'Kvadar' field usage 'postaviStranice' at line 88! Symbol node: Method 'postaviStranice': type = 'void', adr = 0, level = 4, parent = 'Kvadar', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 'a': type = 'int', adr = 1, level = 1
+  Formal parameter 'b': type = 'int', adr = 2, level = 1
+  Formal parameter 'c': type = 'int', adr = 3, level = 1
+Found local variable usage 'k2' at line 89! Symbol node: Variable 'k2': type = 'class', adr = 7, level = 1
+Found class 'Kvadar' field usage 'postaviStranice' at line 89! Symbol node: Method 'postaviStranice': type = 'void', adr = 0, level = 4, parent = 'Kvadar', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 'a': type = 'int', adr = 1, level = 1
+  Formal parameter 'b': type = 'int', adr = 2, level = 1
+  Formal parameter 'c': type = 'int', adr = 3, level = 1
+Found local variable usage 'k3' at line 90! Symbol node: Variable 'k3': type = 'class', adr = 8, level = 1
+Found class 'Kvadar' field usage 'postaviStranice' at line 90! Symbol node: Method 'postaviStranice': type = 'void', adr = 0, level = 4, parent = 'Kvadar', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 'a': type = 'int', adr = 1, level = 1
+  Formal parameter 'b': type = 'int', adr = 2, level = 1
+  Formal parameter 'c': type = 'int', adr = 3, level = 1
+Found local variable usage 'predmeti' at line 92! Symbol node: Variable 'predmeti': type = 'array of class', adr = 0, level = 1
+Found array element access 'predmeti[0]' at line 92! Symbol node: Array element 'predmeti[0]': type = 'class', adr = -1, level = -1
+Found local variable usage 's1' at line 92! Symbol node: Variable 's1': type = 'class', adr = 3, level = 1
+Found local variable usage 'predmeti' at line 93! Symbol node: Variable 'predmeti': type = 'array of class', adr = 0, level = 1
+Found array element access 'predmeti[2]' at line 93! Symbol node: Array element 'predmeti[2]': type = 'class', adr = -1, level = -1
+Found local variable usage 's2' at line 93! Symbol node: Variable 's2': type = 'class', adr = 4, level = 1
+Found local variable usage 'predmeti' at line 94! Symbol node: Variable 'predmeti': type = 'array of class', adr = 0, level = 1
+Found array element access 'predmeti[4]' at line 94! Symbol node: Array element 'predmeti[4]': type = 'class', adr = -1, level = -1
+Found local variable usage 's3' at line 94! Symbol node: Variable 's3': type = 'class', adr = 5, level = 1
+Found local variable usage 'predmeti' at line 95! Symbol node: Variable 'predmeti': type = 'array of class', adr = 0, level = 1
+Found array element access 'predmeti[1]' at line 95! Symbol node: Array element 'predmeti[1]': type = 'class', adr = -1, level = -1
+Found local variable usage 'k1' at line 95! Symbol node: Variable 'k1': type = 'class', adr = 6, level = 1
+Found local variable usage 'predmeti' at line 96! Symbol node: Variable 'predmeti': type = 'array of class', adr = 0, level = 1
+Found array element access 'predmeti[3]' at line 96! Symbol node: Array element 'predmeti[3]': type = 'class', adr = -1, level = -1
+Found local variable usage 'k2' at line 96! Symbol node: Variable 'k2': type = 'class', adr = 7, level = 1
+Found local variable usage 'predmeti' at line 97! Symbol node: Variable 'predmeti': type = 'array of class', adr = 0, level = 1
+Found array element access 'predmeti[5]' at line 97! Symbol node: Array element 'predmeti[5]': type = 'class', adr = -1, level = -1
+Found local variable usage 'k3' at line 97! Symbol node: Variable 'k3': type = 'class', adr = 8, level = 1
+Found local variable usage 't' at line 99! Symbol node: Variable 't': type = 'int', adr = 9, level = 1
+Found local variable usage 'i' at line 100! Symbol node: Variable 'i': type = 'int', adr = 2, level = 1
+Found local variable usage 'i' at line 100! Symbol node: Variable 'i': type = 'int', adr = 2, level = 1
+Found local variable usage 'i' at line 100! Symbol node: Variable 'i': type = 'int', adr = 2, level = 1
+Found for loop 'none' at line 100!
+Found local variable usage 'predmeti' at line 102! Symbol node: Variable 'predmeti': type = 'array of class', adr = 0, level = 1
+Found local variable usage 'i' at line 102! Symbol node: Variable 'i': type = 'int', adr = 2, level = 1
+Found array element access 'i[i]' at line 102! Symbol node: Array element 'i[i]': type = 'class', adr = -1, level = -1
+Found class 'Predmet' field usage 'postaviTezinu' at line 102! Symbol node: Method 'postaviTezinu': type = 'void', adr = 0, level = 2, parent = 'Predmet', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 'tezina': type = 'int', adr = 1, level = 1
+Found local variable usage 't' at line 102! Symbol node: Variable 't': type = 'int', adr = 9, level = 1
+Found local variable usage 'absPredmeti' at line 103! Symbol node: Variable 'absPredmeti': type = 'array of class', adr = 1, level = 1
+Found local variable usage 'i' at line 103! Symbol node: Variable 'i': type = 'int', adr = 2, level = 1
+Found array element access 'i[i]' at line 103! Symbol node: Array element 'i[i]': type = 'class', adr = -1, level = -1
+Found local variable usage 'predmeti' at line 103! Symbol node: Variable 'predmeti': type = 'array of class', adr = 0, level = 1
+Found local variable usage 'i' at line 103! Symbol node: Variable 'i': type = 'int', adr = 2, level = 1
+Found array element access 'i[i]' at line 103! Symbol node: Array element 'i[i]': type = 'class', adr = -1, level = -1
+Found global variable usage 'zapreminaS' at line 106! Symbol node: Variable 'zapreminaS': type = 'int', adr = 1, level = 0
+Found global variable usage 'tezinaS' at line 107! Symbol node: Variable 'tezinaS': type = 'int', adr = 3, level = 0
+Found local variable usage 'i' at line 108! Symbol node: Variable 'i': type = 'int', adr = 2, level = 1
+Found local variable usage 'i' at line 108! Symbol node: Variable 'i': type = 'int', adr = 2, level = 1
+Found local variable usage 'i' at line 108! Symbol node: Variable 'i': type = 'int', adr = 2, level = 1
+Found for loop 'none' at line 108!
+Found local variable usage 'i' at line 110! Symbol node: Variable 'i': type = 'int', adr = 2, level = 1
+Found global variable usage 'zapreminaS' at line 111! Symbol node: Variable 'zapreminaS': type = 'int', adr = 1, level = 0
+Found global variable usage 'zapreminaS' at line 111! Symbol node: Variable 'zapreminaS': type = 'int', adr = 1, level = 0
+Found local variable usage 'absPredmeti' at line 111! Symbol node: Variable 'absPredmeti': type = 'array of class', adr = 1, level = 1
+Found local variable usage 'i' at line 111! Symbol node: Variable 'i': type = 'int', adr = 2, level = 1
+Found array element access 'i[i - 1]' at line 111! Symbol node: Array element 'i[i - 1]': type = 'class', adr = -1, level = -1
+Found class 'AbsPredmet' field usage 'zapremina' at line 111! Symbol node: Abstract method 'zapremina': type = 'int', adr = 0, level = 1, parent = 'AbsPredmet', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+Found global variable usage 'tezinaS' at line 112! Symbol node: Variable 'tezinaS': type = 'int', adr = 3, level = 0
+Found global variable usage 'tezinaS' at line 112! Symbol node: Variable 'tezinaS': type = 'int', adr = 3, level = 0
+Found local variable usage 'absPredmeti' at line 112! Symbol node: Variable 'absPredmeti': type = 'array of class', adr = 1, level = 1
+Found local variable usage 'i' at line 112! Symbol node: Variable 'i': type = 'int', adr = 2, level = 1
+Found array element access 'i[i - 1]' at line 112! Symbol node: Array element 'i[i - 1]': type = 'class', adr = -1, level = -1
+Found class 'AbsPredmet' field usage 'Q' at line 112! Symbol node: Abstract method 'Q': type = 'int', adr = 0, level = 1, parent = 'AbsPredmet', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+Found global method call 'ispis' at line 113! Symbol node: Method 'ispis': type = 'void', adr = 0, level = 1
+  Formal parameter 'p': type = 'class', adr = 0, level = 1
+Found local variable usage 'predmeti' at line 113! Symbol node: Variable 'predmeti': type = 'array of class', adr = 0, level = 1
+Found local variable usage 'i' at line 113! Symbol node: Variable 'i': type = 'int', adr = 2, level = 1
+Found array element access 'i[i - 1]' at line 113! Symbol node: Array element 'i[i - 1]': type = 'class', adr = -1, level = -1
+Found global variable usage 'zapreminaK' at line 116! Symbol node: Variable 'zapreminaK': type = 'int', adr = 0, level = 0
+Found global variable usage 'tezinaK' at line 117! Symbol node: Variable 'tezinaK': type = 'int', adr = 2, level = 0
+Found local variable usage 'i' at line 118! Symbol node: Variable 'i': type = 'int', adr = 2, level = 1
+Found local variable usage 'i' at line 118! Symbol node: Variable 'i': type = 'int', adr = 2, level = 1
+Found local variable usage 'i' at line 118! Symbol node: Variable 'i': type = 'int', adr = 2, level = 1
+Found for loop 'none' at line 118!
+Found local variable usage 'i' at line 120! Symbol node: Variable 'i': type = 'int', adr = 2, level = 1
+Found global variable usage 'zapreminaK' at line 121! Symbol node: Variable 'zapreminaK': type = 'int', adr = 0, level = 0
+Found global variable usage 'zapreminaK' at line 121! Symbol node: Variable 'zapreminaK': type = 'int', adr = 0, level = 0
+Found local variable usage 'predmeti' at line 121! Symbol node: Variable 'predmeti': type = 'array of class', adr = 0, level = 1
+Found local variable usage 'i' at line 121! Symbol node: Variable 'i': type = 'int', adr = 2, level = 1
+Found array element access 'i[i - 1]' at line 121! Symbol node: Array element 'i[i - 1]': type = 'class', adr = -1, level = -1
+Found class 'Predmet' field usage 'zapremina' at line 121! Symbol node: Method 'zapremina': type = 'int', adr = 0, level = 1, parent = 'Predmet', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+Found global variable usage 'tezinaK' at line 122! Symbol node: Variable 'tezinaK': type = 'int', adr = 2, level = 0
+Found global variable usage 'tezinaK' at line 122! Symbol node: Variable 'tezinaK': type = 'int', adr = 2, level = 0
+Found local variable usage 'predmeti' at line 122! Symbol node: Variable 'predmeti': type = 'array of class', adr = 0, level = 1
+Found local variable usage 'i' at line 122! Symbol node: Variable 'i': type = 'int', adr = 2, level = 1
+Found array element access 'i[i - 1]' at line 122! Symbol node: Array element 'i[i - 1]': type = 'class', adr = -1, level = -1
+Found class 'Predmet' field usage 'Q' at line 122! Symbol node: Method 'Q': type = 'int', adr = 0, level = 1, parent = 'Predmet', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+Found global method call 'ispis' at line 123! Symbol node: Method 'ispis': type = 'void', adr = 0, level = 1
+  Formal parameter 'p': type = 'class', adr = 0, level = 1
+Found local variable usage 'predmeti' at line 123! Symbol node: Variable 'predmeti': type = 'array of class', adr = 0, level = 1
+Found local variable usage 'i' at line 123! Symbol node: Variable 'i': type = 'int', adr = 2, level = 1
+Found array element access 'i[i - 1]' at line 123! Symbol node: Array element 'i[i - 1]': type = 'class', adr = -1, level = -1
+Found global variable usage 'zapreminaS' at line 126! Symbol node: Variable 'zapreminaS': type = 'int', adr = 1, level = 0
+Found symbolic constant usage 'eol' at line 126! Symbol node: Constant 'eol': type = 'char', adr = 10, level = 0
+Found global variable usage 'zapreminaK' at line 127! Symbol node: Variable 'zapreminaK': type = 'int', adr = 0, level = 0
+Found symbolic constant usage 'eol' at line 127! Symbol node: Constant 'eol': type = 'char', adr = 10, level = 0
+Found global variable usage 'tezinaS' at line 128! Symbol node: Variable 'tezinaS': type = 'int', adr = 3, level = 0
+Found symbolic constant usage 'eol' at line 128! Symbol node: Constant 'eol': type = 'char', adr = 10, level = 0
+Found global variable usage 'tezinaK' at line 129! Symbol node: Variable 'tezinaK': type = 'int', adr = 2, level = 0
+Found symbolic constant usage 'eol' at line 129! Symbol node: Constant 'eol': type = 'char', adr = 10, level = 0
+Semantic analysis completed without errors!
+====================================================================================================
+    2 symbolic constant(s) defined
+    4 global variable(s) defined
+    4 class(es) defined
+    2 global method(s) defined
+======================================== SYMBOL TABLE DUMP =========================================
+Type 'int': type = 'int', adr = -1, level = -1
+Type 'char': type = 'char', adr = -1, level = -1
+Type 'bool': type = 'bool', adr = -1, level = -1
+Constant 'null': type = 'class', adr = 0, level = 0
+Constant 'eol': type = 'char', adr = 10, level = 0
+Method 'chr': type = 'char', adr = 0, level = 1
+  Formal parameter 'i': type = 'int', adr = 0, level = 1
+Method 'ord': type = 'int', adr = 0, level = 1
+  Formal parameter 'ch': type = 'char', adr = 0, level = 1
+Method 'len': type = 'int', adr = 0, level = 1
+  Formal parameter 'arr': type = 'array of none', adr = 0, level = 1
+Program 'test_303': type = 'none', adr = 0, level = 1
+  Constant 'cinilac': type = 'int', adr = 4, level = 0
+  Constant 'delilac': type = 'int', adr = 3, level = 0
+  Type 'AbsPredmet': type = 'abstract class', adr = 0, level = 0
+  Type 'Predmet': type = 'class', adr = 0, level = 0
+  Type 'Sfera': type = 'class', adr = 0, level = 0
+  Type 'Kvadar': type = 'class', adr = 0, level = 0
+  Variable 'zapreminaK': type = 'int', adr = 0, level = 0
+  Variable 'zapreminaS': type = 'int', adr = 1, level = 0
+  Variable 'tezinaK': type = 'int', adr = 2, level = 0
+  Variable 'tezinaS': type = 'int', adr = 3, level = 0
+  Method 'ispis': type = 'void', adr = 0, level = 1
+    Formal parameter 'p': type = 'class', adr = 0, level = 1
+  Method 'main': type = 'void', adr = 0, level = 0
+    Variable 'predmeti': type = 'array of class', adr = 0, level = 1
+    Variable 'absPredmeti': type = 'array of class', adr = 1, level = 1
+    Variable 'i': type = 'int', adr = 2, level = 1
+    Variable 's1': type = 'class', adr = 3, level = 1
+    Variable 's2': type = 'class', adr = 4, level = 1
+    Variable 's3': type = 'class', adr = 5, level = 1
+    Variable 'k1': type = 'class', adr = 6, level = 1
+    Variable 'k2': type = 'class', adr = 7, level = 1
+    Variable 'k3': type = 'class', adr = 8, level = 1
+    Variable 't': type = 'int', adr = 9, level = 1
+
+Generating bytecode file: D:\Documents\Fakultet\7. semestar\13E114PP1\Projekat\MJCompiler\test\test303.obj
+Compilation finished!

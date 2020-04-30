@@ -16,7 +16,7 @@ public class MJLexerTest extends MJTest {
     protected String testName() { return "lexer"; }
 
     @Override
-    protected void processTestFile(Reader r) throws Exception {
+    protected void processTestInputFile(Reader r) throws Exception {
         MJLexer lexer = new MJLexer(r);
         Symbol currToken = lexer.next_token();
         while (currToken.sym != sym.EOF) currToken = lexer.next_token();

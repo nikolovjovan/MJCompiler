@@ -3,7 +3,6 @@
 
     <property name="output.dir" value="${basedir}/out/production/MJCompiler" />
 
-    <property name="config.dir" value="config" />
     <property name="spec.dir" value="spec" />
     <property name="source.dir" value="src" />
 
@@ -30,7 +29,6 @@
     </path>
 
     <path id="classpath">
-        <pathelement location="${config.dir}" />
         <pathelement location="${output.dir}" />
         <path refid="library.log4j-1.2.17.classpath" />
         <path refid="library.cup_v10k.classpath" />

@@ -1,0 +1,503 @@
+DEBUG - july301.mj:1:1: LEXER: Found symbol: '#2' with value: 'program'
+DEBUG - july301.mj:1:9: LEXER: Found symbol: '#55' with value: 'july301'
+DEBUG - july301.mj:2:5: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - july301.mj:2:9: LEXER: Found symbol: '#55' with value: 'arr'
+DEBUG - july301.mj:2:12: LEXER: Found symbol: '#44' with value: '['
+DEBUG - july301.mj:2:13: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - july301.mj:2:14: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - july301.mj:3:1: LEXER: Found symbol: '#46' with value: '{'
+DEBUG - july301.mj:4:5: LEXER: Found symbol: '#13' with value: 'void'
+DEBUG - july301.mj:4:10: LEXER: Found symbol: '#55' with value: 'main'
+DEBUG - july301.mj:4:14: LEXER: Found symbol: '#42' with value: '('
+DEBUG - july301.mj:4:15: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - july301.mj:5:9: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - july301.mj:5:13: LEXER: Found symbol: '#55' with value: 'x'
+DEBUG - july301.mj:5:14: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - july301.mj:6:5: LEXER: Found symbol: '#46' with value: '{'
+DEBUG - july301.mj:7:9: LEXER: Found symbol: '#55' with value: 'arr'
+DEBUG - july301.mj:7:13: LEXER: Found symbol: '#21' with value: '='
+DEBUG - july301.mj:7:15: LEXER: Found symbol: '#9' with value: 'new'
+DEBUG - july301.mj:7:19: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - july301.mj:7:22: LEXER: Found symbol: '#44' with value: '['
+DEBUG - july301.mj:7:23: LEXER: Found symbol: '#52' with value: '2'
+DEBUG - july301.mj:7:24: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - july301.mj:7:25: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - july301.mj:8:9: LEXER: Found symbol: '#55' with value: 'x'
+DEBUG - july301.mj:8:11: LEXER: Found symbol: '#21' with value: '='
+DEBUG - july301.mj:8:13: LEXER: Found symbol: '#52' with value: '0'
+DEBUG - july301.mj:8:14: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - july301.mj:9:9: LEXER: Found symbol: '#55' with value: 'x'
+DEBUG - july301.mj:9:11: LEXER: Found symbol: '#37' with value: '+='
+DEBUG - july301.mj:9:14: LEXER: Found symbol: '#52' with value: '2'
+DEBUG - july301.mj:9:15: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - july301.mj:10:9: LEXER: Found symbol: '#55' with value: 'arr'
+DEBUG - july301.mj:10:12: LEXER: Found symbol: '#44' with value: '['
+DEBUG - july301.mj:10:13: LEXER: Found symbol: '#52' with value: '0'
+DEBUG - july301.mj:10:14: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - july301.mj:10:16: LEXER: Found symbol: '#39' with value: '*='
+DEBUG - july301.mj:10:19: LEXER: Found symbol: '#55' with value: 'x'
+DEBUG - july301.mj:10:21: LEXER: Found symbol: '#38' with value: '-='
+DEBUG - july301.mj:10:24: LEXER: Found symbol: '#52' with value: '1'
+DEBUG - july301.mj:10:25: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - july301.mj:11:9: LEXER: Found symbol: '#10' with value: 'print'
+DEBUG - july301.mj:11:14: LEXER: Found symbol: '#42' with value: '('
+DEBUG - july301.mj:11:15: LEXER: Found symbol: '#55' with value: 'x'
+DEBUG - july301.mj:11:16: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - july301.mj:11:17: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - july301.mj:11:19: LEXER: Found symbol: '#10' with value: 'print'
+DEBUG - july301.mj:11:24: LEXER: Found symbol: '#42' with value: '('
+DEBUG - july301.mj:11:25: LEXER: Found symbol: '#55' with value: 'eol'
+DEBUG - july301.mj:11:28: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - july301.mj:11:29: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - july301.mj:11:31: LEXER: Found symbol: '#10' with value: 'print'
+DEBUG - july301.mj:11:36: LEXER: Found symbol: '#42' with value: '('
+DEBUG - july301.mj:11:37: LEXER: Found symbol: '#55' with value: 'arr'
+DEBUG - july301.mj:11:40: LEXER: Found symbol: '#44' with value: '['
+DEBUG - july301.mj:11:41: LEXER: Found symbol: '#52' with value: '0'
+DEBUG - july301.mj:11:42: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - july301.mj:11:43: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - july301.mj:11:44: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - july301.mj:12:5: LEXER: Found symbol: '#47' with value: '}'
+DEBUG - july301.mj:13:1: LEXER: Found symbol: '#47' with value: '}'
+DEBUG - july301.mj:13:2: LEXER: Found symbol: '#0' with value: ''
+DEBUG - july301.mj:13:2: LEXER: Found symbol: '#0' with value: ''
+INFO  - Abstract syntax tree: Program(
+  ProgramHeader(
+   july301
+  ) [ProgramHeader]
+  MultipleProgramDeclarations(
+    NoProgramDeclarations(
+    ) [NoProgramDeclarations]
+    VarProgramDeclaration(
+      VarDeclaration(
+        Type(
+         int
+        ) [Type]
+        SingleVariable(
+          Variable(
+           arr
+            ArrayBrackets(
+            ) [ArrayBrackets]
+          ) [Variable]
+        ) [SingleVariable]
+      ) [VarDeclaration]
+    ) [VarProgramDeclaration]
+  ) [MultipleProgramDeclarations]
+  MultipleMethodDeclarations(
+    NoMethodDeclarations(
+    ) [NoMethodDeclarations]
+    MethodDeclaration(
+      MethodHeader(
+        ReturnVoid(
+        ) [ReturnVoid]
+       main
+      ) [MethodHeader]
+      NoFormalParameters(
+      ) [NoFormalParameters]
+      MultipleLocalVarDeclarations(
+        NoLocalVarDeclarations(
+        ) [NoLocalVarDeclarations]
+        LocalVarDeclaration(
+          Type(
+           int
+          ) [Type]
+          SingleLocalVariable(
+            LocalVariable(
+             x
+              NoArrayBrackets(
+              ) [NoArrayBrackets]
+            ) [LocalVariable]
+          ) [SingleLocalVariable]
+        ) [LocalVarDeclaration]
+      ) [MultipleLocalVarDeclarations]
+      MethodStatementListStart(
+      ) [MethodStatementListStart]
+      MultipleStatements(
+        MultipleStatements(
+          MultipleStatements(
+            MultipleStatements(
+              MultipleStatements(
+                MultipleStatements(
+                  MultipleStatements(
+                    NoStatements(
+                    ) [NoStatements]
+                    DesignatorBasedStatement(
+                      AssignmentDesignatorStatement(
+                        AssignmentHeader(
+                          IdentifierDesignator(
+                           arr
+                          ) [IdentifierDesignator]
+                        ) [AssignmentHeader]
+                        AssignmentFooter(
+                          AssignOperator(
+                          ) [AssignOperator]
+                          LeftExpression(
+                            SingleTermExpression(
+                              NoSign(
+                              ) [NoSign]
+                              SingleFactorTerm(
+                                AllocatorFactor(
+                                  Type(
+                                   int
+                                  ) [Type]
+                                  SingleArrayIndexer(
+                                    ArrayIndexer(
+                                      LeftExpression(
+                                        SingleTermExpression(
+                                          NoSign(
+                                          ) [NoSign]
+                                          SingleFactorTerm(
+                                            ConstantFactor(
+                                              IntConstantFactor(
+                                               2
+                                              ) [IntConstantFactor]
+                                            ) [ConstantFactor]
+                                          ) [SingleFactorTerm]
+                                        ) [SingleTermExpression]
+                                      ) [LeftExpression]
+                                    ) [ArrayIndexer]
+                                  ) [SingleArrayIndexer]
+                                ) [AllocatorFactor]
+                              ) [SingleFactorTerm]
+                            ) [SingleTermExpression]
+                          ) [LeftExpression]
+                        ) [AssignmentFooter]
+                      ) [AssignmentDesignatorStatement]
+                    ) [DesignatorBasedStatement]
+                  ) [MultipleStatements]
+                  DesignatorBasedStatement(
+                    AssignmentDesignatorStatement(
+                      AssignmentHeader(
+                        IdentifierDesignator(
+                         x
+                        ) [IdentifierDesignator]
+                      ) [AssignmentHeader]
+                      AssignmentFooter(
+                        AssignOperator(
+                        ) [AssignOperator]
+                        LeftExpression(
+                          SingleTermExpression(
+                            NoSign(
+                            ) [NoSign]
+                            SingleFactorTerm(
+                              ConstantFactor(
+                                IntConstantFactor(
+                                 0
+                                ) [IntConstantFactor]
+                              ) [ConstantFactor]
+                            ) [SingleFactorTerm]
+                          ) [SingleTermExpression]
+                        ) [LeftExpression]
+                      ) [AssignmentFooter]
+                    ) [AssignmentDesignatorStatement]
+                  ) [DesignatorBasedStatement]
+                ) [MultipleStatements]
+                DesignatorBasedStatement(
+                  AssignmentDesignatorStatement(
+                    AssignmentHeader(
+                      IdentifierDesignator(
+                       x
+                      ) [IdentifierDesignator]
+                    ) [AssignmentHeader]
+                    AssignmentFooter(
+                      RightOperator(
+                        RightAddOperator(
+                          AddAssignOperator(
+                          ) [AddAssignOperator]
+                        ) [RightAddOperator]
+                      ) [RightOperator]
+                      LeftExpression(
+                        SingleTermExpression(
+                          NoSign(
+                          ) [NoSign]
+                          SingleFactorTerm(
+                            ConstantFactor(
+                              IntConstantFactor(
+                               2
+                              ) [IntConstantFactor]
+                            ) [ConstantFactor]
+                          ) [SingleFactorTerm]
+                        ) [SingleTermExpression]
+                      ) [LeftExpression]
+                    ) [AssignmentFooter]
+                  ) [AssignmentDesignatorStatement]
+                ) [DesignatorBasedStatement]
+              ) [MultipleStatements]
+              DesignatorBasedStatement(
+                AssignmentDesignatorStatement(
+                  AssignmentHeader(
+                    ElementAccessDesignator(
+                      IdentifierDesignator(
+                       arr
+                      ) [IdentifierDesignator]
+                      ArrayIndexer(
+                        LeftExpression(
+                          SingleTermExpression(
+                            NoSign(
+                            ) [NoSign]
+                            SingleFactorTerm(
+                              ConstantFactor(
+                                IntConstantFactor(
+                                 0
+                                ) [IntConstantFactor]
+                              ) [ConstantFactor]
+                            ) [SingleFactorTerm]
+                          ) [SingleTermExpression]
+                        ) [LeftExpression]
+                      ) [ArrayIndexer]
+                    ) [ElementAccessDesignator]
+                  ) [AssignmentHeader]
+                  AssignmentFooter(
+                    RightOperator(
+                      RightMulOperator(
+                        MulAssignOperator(
+                        ) [MulAssignOperator]
+                      ) [RightMulOperator]
+                    ) [RightOperator]
+                    AssignmentExpression(
+                      SingleTermExpression(
+                        NoSign(
+                        ) [NoSign]
+                        SingleFactorTerm(
+                          DesignatorFactor(
+                            IdentifierDesignator(
+                             x
+                            ) [IdentifierDesignator]
+                          ) [DesignatorFactor]
+                        ) [SingleFactorTerm]
+                      ) [SingleTermExpression]
+                      RightAddOperator(
+                        SubAssignOperator(
+                        ) [SubAssignOperator]
+                      ) [RightAddOperator]
+                      LeftExpression(
+                        SingleTermExpression(
+                          NoSign(
+                          ) [NoSign]
+                          SingleFactorTerm(
+                            ConstantFactor(
+                              IntConstantFactor(
+                               1
+                              ) [IntConstantFactor]
+                            ) [ConstantFactor]
+                          ) [SingleFactorTerm]
+                        ) [SingleTermExpression]
+                      ) [LeftExpression]
+                    ) [AssignmentExpression]
+                  ) [AssignmentFooter]
+                ) [AssignmentDesignatorStatement]
+              ) [DesignatorBasedStatement]
+            ) [MultipleStatements]
+            PrintStatement(
+              LeftExpression(
+                SingleTermExpression(
+                  NoSign(
+                  ) [NoSign]
+                  SingleFactorTerm(
+                    DesignatorFactor(
+                      IdentifierDesignator(
+                       x
+                      ) [IdentifierDesignator]
+                    ) [DesignatorFactor]
+                  ) [SingleFactorTerm]
+                ) [SingleTermExpression]
+              ) [LeftExpression]
+              NoPrintWidth(
+              ) [NoPrintWidth]
+            ) [PrintStatement]
+          ) [MultipleStatements]
+          PrintStatement(
+            LeftExpression(
+              SingleTermExpression(
+                NoSign(
+                ) [NoSign]
+                SingleFactorTerm(
+                  DesignatorFactor(
+                    IdentifierDesignator(
+                     eol
+                    ) [IdentifierDesignator]
+                  ) [DesignatorFactor]
+                ) [SingleFactorTerm]
+              ) [SingleTermExpression]
+            ) [LeftExpression]
+            NoPrintWidth(
+            ) [NoPrintWidth]
+          ) [PrintStatement]
+        ) [MultipleStatements]
+        PrintStatement(
+          LeftExpression(
+            SingleTermExpression(
+              NoSign(
+              ) [NoSign]
+              SingleFactorTerm(
+                DesignatorFactor(
+                  ElementAccessDesignator(
+                    IdentifierDesignator(
+                     arr
+                    ) [IdentifierDesignator]
+                    ArrayIndexer(
+                      LeftExpression(
+                        SingleTermExpression(
+                          NoSign(
+                          ) [NoSign]
+                          SingleFactorTerm(
+                            ConstantFactor(
+                              IntConstantFactor(
+                               0
+                              ) [IntConstantFactor]
+                            ) [ConstantFactor]
+                          ) [SingleFactorTerm]
+                        ) [SingleTermExpression]
+                      ) [LeftExpression]
+                    ) [ArrayIndexer]
+                  ) [ElementAccessDesignator]
+                ) [DesignatorFactor]
+              ) [SingleFactorTerm]
+            ) [SingleTermExpression]
+          ) [LeftExpression]
+          NoPrintWidth(
+          ) [NoPrintWidth]
+        ) [PrintStatement]
+      ) [MultipleStatements]
+    ) [MethodDeclaration]
+  ) [MultipleMethodDeclarations]
+) [Program]
+DEBUG - july301.mj:1: SEMANTIC ANALYZER: Visited node: 'ProgramHeader'.
+DEBUG - july301.mj:2: SEMANTIC ANALYZER: Visited node: 'Type'.
+DEBUG - july301.mj:2: SEMANTIC ANALYZER: Visited node: 'Variable'.
+INFO  - july301.mj:2: SEMANTIC ANALYZER: Defined int array variable 'arr'. Symbol node: Variable 'arr': type = 'array of int', adr = 0, level = 0
+DEBUG - SEMANTIC ANALYZER: Visited node: 'ReturnVoid'.
+DEBUG - july301.mj:4: SEMANTIC ANALYZER: Visited node: 'MethodHeader'.
+DEBUG - july301.mj:5: SEMANTIC ANALYZER: Visited node: 'Type'.
+DEBUG - july301.mj:5: SEMANTIC ANALYZER: Visited node: 'LocalVariable'.
+INFO  - july301.mj:5: SEMANTIC ANALYZER: Defined int variable 'x'. Symbol node: Variable 'x': type = 'int', adr = 0, level = 1
+DEBUG - SEMANTIC ANALYZER: Visited node: 'MethodStatementListStart'.
+DEBUG - july301.mj:7: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - july301.mj:7: SEMANTIC ANALYZER: Found global variable usage 'arr'! Symbol node: Variable 'arr': type = 'array of int', adr = 0, level = 0
+DEBUG - july301.mj:7: SEMANTIC ANALYZER: Visited node: 'Type'.
+DEBUG - july301.mj:7: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - july301.mj:7: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - july301.mj:22: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - july301.mj:22: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - july301.mj:7: SEMANTIC ANALYZER: Visited node: 'AllocatorFactor'.
+DEBUG - july301.mj:7: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - july301.mj:13: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - july301.mj:13: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - july301.mj:7: SEMANTIC ANALYZER: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - july301.mj:8: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - july301.mj:8: SEMANTIC ANALYZER: Found local variable usage 'x'! Symbol node: Variable 'x': type = 'int', adr = 0, level = 1
+DEBUG - july301.mj:8: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - july301.mj:8: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - july301.mj:11: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - july301.mj:11: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - july301.mj:8: SEMANTIC ANALYZER: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - july301.mj:9: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - july301.mj:9: SEMANTIC ANALYZER: Found local variable usage 'x'! Symbol node: Variable 'x': type = 'int', adr = 0, level = 1
+DEBUG - july301.mj:9: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - july301.mj:9: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - july301.mj:11: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - july301.mj:11: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - july301.mj:9: SEMANTIC ANALYZER: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - july301.mj:10: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - july301.mj:10: SEMANTIC ANALYZER: Found global variable usage 'arr'! Symbol node: Variable 'arr': type = 'array of int', adr = 0, level = 0
+DEBUG - july301.mj:10: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - july301.mj:10: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - july301.mj:12: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - july301.mj:12: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - july301.mj:10: SEMANTIC ANALYZER: Visited node: 'ElementAccessDesignator'.
+INFO  - july301.mj:10: SEMANTIC ANALYZER: Found array element access 'arr[0]'! Symbol node: Array element 'arr[0]': type = 'int', adr = -1, level = -1
+DEBUG - july301.mj:10: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - july301.mj:10: SEMANTIC ANALYZER: Found local variable usage 'x'! Symbol node: Variable 'x': type = 'int', adr = 0, level = 1
+DEBUG - july301.mj:10: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - july301.mj:10: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - july301.mj:16: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - july301.mj:10: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - july301.mj:10: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - july301.mj:21: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - july301.mj:21: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - july301.mj:16: SEMANTIC ANALYZER: Visited node: 'AssignmentExpression'.
+DEBUG - july301.mj:10: SEMANTIC ANALYZER: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - july301.mj:11: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - july301.mj:11: SEMANTIC ANALYZER: Found local variable usage 'x'! Symbol node: Variable 'x': type = 'int', adr = 0, level = 1
+DEBUG - july301.mj:11: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - july301.mj:11: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - july301.mj:14: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - july301.mj:14: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - july301.mj:14: SEMANTIC ANALYZER: Visited node: 'PrintStatement'.
+DEBUG - july301.mj:11: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - july301.mj:11: SEMANTIC ANALYZER: Found symbolic constant usage 'eol'! Symbol node: Constant 'eol': type = 'char', adr = 10, level = 0
+DEBUG - july301.mj:11: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - july301.mj:11: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - july301.mj:24: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - july301.mj:24: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - july301.mj:24: SEMANTIC ANALYZER: Visited node: 'PrintStatement'.
+DEBUG - july301.mj:11: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - july301.mj:11: SEMANTIC ANALYZER: Found global variable usage 'arr'! Symbol node: Variable 'arr': type = 'array of int', adr = 0, level = 0
+DEBUG - july301.mj:11: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - july301.mj:11: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - july301.mj:40: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - july301.mj:40: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - july301.mj:11: SEMANTIC ANALYZER: Visited node: 'ElementAccessDesignator'.
+INFO  - july301.mj:11: SEMANTIC ANALYZER: Found array element access 'arr[0]'! Symbol node: Array element 'arr[0]': type = 'int', adr = -1, level = -1
+DEBUG - july301.mj:11: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - july301.mj:11: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - july301.mj:36: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - july301.mj:36: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - july301.mj:36: SEMANTIC ANALYZER: Visited node: 'PrintStatement'.
+DEBUG - july301.mj:4: SEMANTIC ANALYZER: Visited node: 'MethodDeclaration'.
+INFO  - july301.mj:4: SEMANTIC ANALYZER: Defined method 'main'. Symbol node: Method 'main': type = 'void', adr = 0, level = 0
+  Variable 'x': type = 'int', adr = 0, level = 1
+DEBUG - july301.mj:1: SEMANTIC ANALYZER: Visited node: 'Program'.
+INFO  - july301.mj:1: SEMANTIC ANALYZER: Defined program 'july301'. Symbol node: Program 'july301': type = 'none', adr = 0, level = 1
+  Variable 'arr': type = 'array of int', adr = 0, level = 0
+  Method 'main': type = 'void', adr = 0, level = 0
+    Variable 'x': type = 'int', adr = 0, level = 1
+DEBUG - july301.mj:1: CODE GENERATOR: Visited node: 'ProgramHeader'.
+DEBUG - july301.mj:2: CODE GENERATOR: Visited node: 'Variable'.
+DEBUG - july301.mj:4: CODE GENERATOR: Visited node: 'MethodHeader'.
+DEBUG - july301.mj:7: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - july301.mj:7: CODE GENERATOR: Visited node: 'AssignmentHeader'.
+DEBUG - july301.mj:7: CODE GENERATOR: Visited node: 'ConstantFactor'.
+DEBUG - july301.mj:22: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - july301.mj:7: CODE GENERATOR: Visited node: 'AllocatorFactor'.
+DEBUG - july301.mj:13: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - july301.mj:7: CODE GENERATOR: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - july301.mj:8: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - july301.mj:8: CODE GENERATOR: Visited node: 'AssignmentHeader'.
+DEBUG - july301.mj:8: CODE GENERATOR: Visited node: 'ConstantFactor'.
+DEBUG - july301.mj:11: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - july301.mj:8: CODE GENERATOR: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - july301.mj:9: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - july301.mj:9: CODE GENERATOR: Visited node: 'AssignmentHeader'.
+DEBUG - july301.mj:9: CODE GENERATOR: Visited node: 'ConstantFactor'.
+DEBUG - july301.mj:11: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - july301.mj:9: CODE GENERATOR: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - july301.mj:10: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - july301.mj:10: CODE GENERATOR: Visited node: 'ConstantFactor'.
+DEBUG - july301.mj:12: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - july301.mj:10: CODE GENERATOR: Visited node: 'ElementAccessDesignator'.
+DEBUG - july301.mj:10: CODE GENERATOR: Visited node: 'AssignmentHeader'.
+DEBUG - july301.mj:10: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - july301.mj:10: CODE GENERATOR: Visited node: 'DesignatorFactor'.
+DEBUG - july301.mj:16: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - july301.mj:10: CODE GENERATOR: Visited node: 'ConstantFactor'.
+DEBUG - july301.mj:21: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - july301.mj:16: CODE GENERATOR: Visited node: 'AssignmentExpression'.
+DEBUG - july301.mj:10: CODE GENERATOR: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - july301.mj:11: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - july301.mj:11: CODE GENERATOR: Visited node: 'DesignatorFactor'.
+DEBUG - july301.mj:14: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - july301.mj:14: CODE GENERATOR: Visited node: 'PrintStatement'.
+DEBUG - july301.mj:11: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - july301.mj:11: CODE GENERATOR: Visited node: 'DesignatorFactor'.
+DEBUG - july301.mj:24: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - july301.mj:24: CODE GENERATOR: Visited node: 'PrintStatement'.
+DEBUG - july301.mj:11: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - july301.mj:11: CODE GENERATOR: Visited node: 'ConstantFactor'.
+DEBUG - july301.mj:40: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - july301.mj:11: CODE GENERATOR: Visited node: 'ElementAccessDesignator'.
+DEBUG - july301.mj:11: CODE GENERATOR: Visited node: 'DesignatorFactor'.
+DEBUG - july301.mj:36: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - july301.mj:36: CODE GENERATOR: Visited node: 'PrintStatement'.
+DEBUG - july301.mj:4: CODE GENERATOR: Visited node: 'MethodDeclaration'.
+DEBUG - july301.mj:1: CODE GENERATOR: Visited node: 'Program'.

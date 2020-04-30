@@ -9,71 +9,48 @@ import rs.ac.bg.etf.pp1.loggers.MJParserLogger.MessageType;
 
 parser code {:
   private MJParserLogger logger = new MJParserLogger();
-
-  private int errorCount = 0;
-
-  private void log(Level level, int line, int column, MessageType type, String message, boolean incErrCnt) {
-    if (message != null) logger.log(level, line, column, type, message);
-    else logger.log(level, line, column, type);
-    if (incErrCnt && (level == Level.ERROR || level == Level.FATAL)) errorCount++;
-  }
-
-  private void log(Level level, Object info, MessageType type, String message) {
-    int line = -1, column = -1;
-    if (info instanceof Symbol) {
-      Symbol sym = (Symbol) info;
-      line = sym.left;
-      column = sym.right;
-    }
-    log(level, line, column, type, message, true);
-  }
-
-  private void log(Level level, MessageType type, String message, Object info) {
-    int line = -1, column = -1;
-    if (info instanceof Symbol) {
-      Symbol sym = (Symbol) info;
-      line = sym.left;
-      column = sym.right;
-    }
-    if (message != null) logger.log(level, line, column, type, message);
-    else logger.log(level, line, column, type);
-    if (level == Level.ERROR || level == Level.FATAL) errorCount++;
-  }
-
-  private void log_fatal(MessageType type, String message, Object info) throws Exception {
-    log(Level.FATAL, type, message, info);
-    done_parsing();
-    throw new MJParserException("Cannot recover from previous error(s)!");
-  }
-
-  private void log_error(MessageType type, String message, Object info) {
-    log(Level.ERROR, type, message, info);
-  }
-
-  void log_error(int line, int column, MessageType type) {
-    log(Level.ERROR, line, column, type, null, false);
-  }
+  private int errorLine = -1, errorColumn = -1, errorCount = 0;
 
   public int getErrorCount() { return errorCount; }
 
   @Override
   public void report_error(String message, Object info) {
-    log_error(MessageType.OTHER, message, info);
+    log_error(-1, info instanceof Symbol ? ((Symbol) info).left : -1, MessageType.OTHER, message);
   }
 
   @Override
   public void report_fatal_error(String message, Object info) throws Exception {
-    log_fatal(MessageType.OTHER, message, info);
+    log_fatal(-1, info instanceof Symbol ? ((Symbol) info).left : -1, MessageType.OTHER, message);
   }
 
   @Override
   public void syntax_error(Symbol cur_token) {
-    log_error(MessageType.SYNTAX_ERROR, null, cur_token);
+    errorLine = cur_token.left;
+    errorColumn = cur_token.right;
+    log_error(errorLine, errorColumn, MessageType.SYNTAX_ERROR, null);
   }
 
   @Override
   public void unrecovered_syntax_error(Symbol cur_token) throws Exception {
-    log_fatal(MessageType.IRR_SYNTAX_ERROR, null, cur_token);
+    log_fatal(cur_token.left, cur_token.right, MessageType.IRR_SYNTAX_ERROR, null);
+  }
+
+  void log_warn_error_recovery(MessageType type) {
+    logger.warn(errorLine, errorColumn, type);
+  }
+
+  private void log_error(int line, int column, MessageType type, String message) {
+    errorCount++;
+    if (message != null) logger.error(line, column, type, message);
+    else logger.error(line, column, type);
+  }
+
+  private void log_fatal(int line, int column, MessageType type, String message) throws Exception {
+    errorCount++;
+    if (message != null) logger.fatal(line, column, type, message);
+    else logger.fatal(line, column, type);
+    done_parsing();
+    throw new MJParserException("Cannot recover from previous error(s)!");
   }
 :}
 
@@ -255,13 +232,7 @@ OptLocalVarDeclList ::= (MultipleLocalVarDeclarations) OptLocalVarDeclList:list 
                       ;
 
 LocalVarDecl ::= (LocalVarDeclaration) Type:type LocalVarList:list SEMICOLON
-               | (ErrorLocalVarDeclaration) error SEMICOLON {:
-              parser.log_error(
-                ((java_cup.runtime.Symbol) CUP$MJParser$stack.elementAt(CUP$MJParser$top - 1)).left,
-                ((java_cup.runtime.Symbol) CUP$MJParser$stack.elementAt(CUP$MJParser$top - 0)).right,
-                MessageType.INV_LOCAL_VAR_DECL
-              );
-:}
+               | (ErrorLocalVarDeclaration) error SEMICOLON {: parser.log_warn_error_recovery(MessageType.INV_LOCAL_VAR_DECL); :}
                ;
 
 LocalVarList ::= (MultipleLocalVariables) LocalVarList:list COMMA LocalVar:declaration
@@ -269,33 +240,15 @@ LocalVarList ::= (MultipleLocalVariables) LocalVarList:list COMMA LocalVar:decla
                ;
 
 LocalVar ::= (LocalVariable) IDENT:name OptArrayBrackets:brackets
-           | (ErrorLocalVariable) error {:
-              parser.log_error(
-                ((java_cup.runtime.Symbol) CUP$MJParser$stack.elementAt(CUP$MJParser$top - 0)).left,
-                ((java_cup.runtime.Symbol) CUP$MJParser$stack.elementAt(CUP$MJParser$top - 0)).right,
-                MessageType.INV_LOCAL_VAR_DECL
-              );
-:}
+           | (ErrorLocalVariable) error {: parser.log_warn_error_recovery(MessageType.INV_CLS_BASE_TYPE); :}
            ;
 
 /* Common class non-terminals */
 
 OptClassBaseType ::= (ClassBaseType) EXTENDS Type:type
                    | (NoClassBaseType) /* epsilon */
-                   | (ErrorClassBaseTypeAfterExtends) EXTENDS error {:
-              parser.log_error(
-                ((java_cup.runtime.Symbol) CUP$MJParser$stack.elementAt(CUP$MJParser$top - 1)).left,
-                ((java_cup.runtime.Symbol) CUP$MJParser$stack.elementAt(CUP$MJParser$top - 0)).right,
-                MessageType.INV_CLS_BASE_TYPE
-              );
-:}
-                   | (ErrorClassBaseTypeBeforeExtends) error {:
-              parser.log_error(
-                ((java_cup.runtime.Symbol) CUP$MJParser$stack.elementAt(CUP$MJParser$top - 0)).left,
-                ((java_cup.runtime.Symbol) CUP$MJParser$stack.elementAt(CUP$MJParser$top - 0)).right,
-                MessageType.INV_CLS_BASE_TYPE
-              );
-:}
+                   | (ErrorClassBaseTypeAfterExtends) EXTENDS error {: parser.log_warn_error_recovery(MessageType.INV_CLS_BASE_TYPE); :}
+                   | (ErrorClassBaseTypeBeforeExtends) error {: parser.log_warn_error_recovery(MessageType.INV_CLS_BASE_TYPE); :}
                    ;
 
 AccessModifier ::= (PublicAccessModifier) PUBLIC
@@ -335,13 +288,7 @@ AbstractClassMethodDeclList ::= (MultipleAbstractClassMethods) AbstractClassMeth
 
 AbstractClassMethodDecl ::= (AbstractClassMethodDeclaration) AccessModifier:access MethodDecl:declaration
                           | (AbstractClassAbstractMethodDeclaration) AccessModifier:access AbstractMethodDecl:declaration
-                          | (ErrorAbstractClassMethodDeclaration) error SEMICOLON {:
-              parser.log_error(
-                ((java_cup.runtime.Symbol) CUP$MJParser$stack.elementAt(CUP$MJParser$top - 1)).left,
-                ((java_cup.runtime.Symbol) CUP$MJParser$stack.elementAt(CUP$MJParser$top - 0)).right,
-                MessageType.INV_ABS_CLS_METH_DECL
-              );
-:}
+                          | (ErrorAbstractClassMethodDeclaration) error SEMICOLON {: parser.log_warn_error_recovery(MessageType.INV_ABS_CLS_METH_DECL); :}
                           ;
 
 /* Common method non-terminals */
@@ -359,13 +306,7 @@ FormalParamList ::= (MultipleFormalParameters) FormalParamList:list COMMA Formal
                   ;
 
 FormalParam ::= (FormalParameter) Type:type IDENT:name OptArrayBrackets:brackets
-              | (ErrorFormalParameter) error {:
-              parser.log_error(
-                ((java_cup.runtime.Symbol) CUP$MJParser$stack.elementAt(CUP$MJParser$top - 0)).left,
-                ((java_cup.runtime.Symbol) CUP$MJParser$stack.elementAt(CUP$MJParser$top - 0)).right,
-                MessageType.INV_FORMAL_PARAM
-              );
-:}
+              | (ErrorFormalParameter) error {: parser.log_warn_error_recovery(MessageType.INV_FORMAL_PARAM); :}
               ;
 
 /* Method non-terminals */
@@ -398,13 +339,7 @@ DesignatorStatement ::= (AssignmentDesignatorStatement) AssignHeader:header Assi
 AssignHeader ::= (AssignmentHeader) Designator:var;
 
 AssignFooter ::= (AssignmentFooter) Assignop:op Expr:expr
-               | (ErrorAssignmentFooter) error {:
-              parser.log_error(
-                ((java_cup.runtime.Symbol) CUP$MJParser$stack.elementAt(CUP$MJParser$top - 0)).left,
-                ((java_cup.runtime.Symbol) CUP$MJParser$stack.elementAt(CUP$MJParser$top - 0)).right,
-                MessageType.INV_ASSIGN_FOOTER
-              );
-:}
+               | (ErrorAssignmentFooter) error {: parser.log_warn_error_recovery(MessageType.INV_ASSIGN_FOOTER); :}
                ;
 
 /* Statement non-terminals */
@@ -445,13 +380,7 @@ ForDesignatorStatement ::= (SingleDesignatorStatement) DesignatorStatement:state
 
 ForCondition ::= (SingleCondition) Condition:cond
                | (NoCondition) /* epsilon */
-               | (ErrorCondition) error {:
-              parser.log_error(
-                ((java_cup.runtime.Symbol) CUP$MJParser$stack.elementAt(CUP$MJParser$top - 0)).left,
-                ((java_cup.runtime.Symbol) CUP$MJParser$stack.elementAt(CUP$MJParser$top - 0)).right,
-                MessageType.INV_FOR_STMT_COND
-              );
-:}
+               | (ErrorCondition) error {: parser.log_warn_error_recovery(MessageType.INV_FOR_STMT_COND); :}
                ;
 
 ForEachStatementHeader ::= (ForEachStatementHeader) ForEachStatementHeaderStart IDENT:name COLON Designator:designator RPAREN;

@@ -1,0 +1,38 @@
+Compiling source file: D:\Documents\Fakultet\7. semestar\13E114PP1\Projekat\MJCompiler\test\generator\july301.mj
+Syntax analysis completed without errors!
+Starting semantic analysis...
+Found global variable usage 'arr' at line 7! Symbol node: Variable 'arr': type = 'array of int', adr = 0, level = 0
+Found local variable usage 'x' at line 8! Symbol node: Variable 'x': type = 'int', adr = 0, level = 1
+Found local variable usage 'x' at line 9! Symbol node: Variable 'x': type = 'int', adr = 0, level = 1
+Found global variable usage 'arr' at line 10! Symbol node: Variable 'arr': type = 'array of int', adr = 0, level = 0
+Found array element access 'arr[0]' at line 10! Symbol node: Array element 'arr[0]': type = 'int', adr = -1, level = -1
+Found local variable usage 'x' at line 10! Symbol node: Variable 'x': type = 'int', adr = 0, level = 1
+Found local variable usage 'x' at line 11! Symbol node: Variable 'x': type = 'int', adr = 0, level = 1
+Found symbolic constant usage 'eol' at line 11! Symbol node: Constant 'eol': type = 'char', adr = 10, level = 0
+Found global variable usage 'arr' at line 11! Symbol node: Variable 'arr': type = 'array of int', adr = 0, level = 0
+Found array element access 'arr[0]' at line 11! Symbol node: Array element 'arr[0]': type = 'int', adr = -1, level = -1
+Semantic analysis completed without errors!
+====================================================================================================
+    0 symbolic constant(s) defined
+    1 global variable(s) defined
+    0 class(es) defined
+    1 global method(s) defined
+======================================== SYMBOL TABLE DUMP =========================================
+Type 'int': type = 'int', adr = -1, level = -1
+Type 'char': type = 'char', adr = -1, level = -1
+Type 'bool': type = 'bool', adr = -1, level = -1
+Constant 'null': type = 'class', adr = 0, level = 0
+Constant 'eol': type = 'char', adr = 10, level = 0
+Method 'chr': type = 'char', adr = 0, level = 1
+  Formal parameter 'i': type = 'int', adr = 0, level = 1
+Method 'ord': type = 'int', adr = 0, level = 1
+  Formal parameter 'ch': type = 'char', adr = 0, level = 1
+Method 'len': type = 'int', adr = 0, level = 1
+  Formal parameter 'arr': type = 'array of none', adr = 0, level = 1
+Program 'july301': type = 'none', adr = 0, level = 1
+  Variable 'arr': type = 'array of int', adr = 0, level = 0
+  Method 'main': type = 'void', adr = 0, level = 0
+    Variable 'x': type = 'int', adr = 0, level = 1
+
+Generating bytecode file: D:\Documents\Fakultet\7. semestar\13E114PP1\Projekat\MJCompiler\test\july301.obj
+Compilation finished!

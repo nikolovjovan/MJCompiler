@@ -1,0 +1,1528 @@
+DEBUG - parser_A.mj:2:1: LEXER: Found symbol: '#2' with value: 'program'
+DEBUG - parser_A.mj:2:9: LEXER: Found symbol: '#55' with value: 'level_a_syntax_test'
+DEBUG - parser_A.mj:3:5: LEXER: Found symbol: '#7' with value: 'const'
+DEBUG - parser_A.mj:3:11: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - parser_A.mj:3:15: LEXER: Found symbol: '#55' with value: 'ca'
+DEBUG - parser_A.mj:3:18: LEXER: Found symbol: '#21' with value: '='
+DEBUG - parser_A.mj:3:20: LEXER: Found symbol: '#52' with value: '1'
+DEBUG - parser_A.mj:3:21: LEXER: Found symbol: '#50' with value: ','
+DEBUG - parser_A.mj:3:23: LEXER: Found symbol: '#55' with value: 'cb'
+DEBUG - parser_A.mj:3:26: LEXER: Found symbol: '#21' with value: '='
+DEBUG - parser_A.mj:3:28: LEXER: Found symbol: '#52' with value: '6'
+DEBUG - parser_A.mj:3:29: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_A.mj:4:5: LEXER: Found symbol: '#7' with value: 'const'
+DEBUG - parser_A.mj:4:11: LEXER: Found symbol: '#55' with value: 'char'
+DEBUG - parser_A.mj:4:16: LEXER: Found symbol: '#55' with value: 'cc'
+DEBUG - parser_A.mj:4:19: LEXER: Found symbol: '#21' with value: '='
+DEBUG - parser_A.mj:4:21: LEXER: Found symbol: '#53' with value: 's'
+DEBUG - parser_A.mj:4:24: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_A.mj:5:5: LEXER: Found symbol: '#7' with value: 'const'
+DEBUG - parser_A.mj:5:11: LEXER: Found symbol: '#55' with value: 'bool'
+DEBUG - parser_A.mj:5:16: LEXER: Found symbol: '#55' with value: 'cd'
+DEBUG - parser_A.mj:5:19: LEXER: Found symbol: '#21' with value: '='
+DEBUG - parser_A.mj:5:21: LEXER: Found symbol: '#54' with value: 'true'
+DEBUG - parser_A.mj:5:25: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_A.mj:7:5: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - parser_A.mj:7:9: LEXER: Found symbol: '#55' with value: 'ga'
+DEBUG - parser_A.mj:7:11: LEXER: Found symbol: '#50' with value: ','
+DEBUG - parser_A.mj:7:13: LEXER: Found symbol: '#55' with value: 'gb'
+DEBUG - parser_A.mj:7:15: LEXER: Found symbol: '#44' with value: '['
+DEBUG - parser_A.mj:7:16: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - parser_A.mj:7:17: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_A.mj:8:5: LEXER: Found symbol: '#55' with value: 'char'
+DEBUG - parser_A.mj:8:10: LEXER: Found symbol: '#55' with value: 'gc'
+DEBUG - parser_A.mj:8:12: LEXER: Found symbol: '#50' with value: ','
+DEBUG - parser_A.mj:8:14: LEXER: Found symbol: '#55' with value: 'gd'
+DEBUG - parser_A.mj:8:16: LEXER: Found symbol: '#44' with value: '['
+DEBUG - parser_A.mj:8:17: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - parser_A.mj:8:18: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_A.mj:9:5: LEXER: Found symbol: '#55' with value: 'bool'
+DEBUG - parser_A.mj:9:10: LEXER: Found symbol: '#55' with value: 'ge'
+DEBUG - parser_A.mj:9:12: LEXER: Found symbol: '#50' with value: ','
+DEBUG - parser_A.mj:9:14: LEXER: Found symbol: '#55' with value: 'gf'
+DEBUG - parser_A.mj:9:16: LEXER: Found symbol: '#44' with value: '['
+DEBUG - parser_A.mj:9:17: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - parser_A.mj:9:18: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_A.mj:10:1: LEXER: Found symbol: '#46' with value: '{'
+DEBUG - parser_A.mj:11:5: LEXER: Found symbol: '#13' with value: 'void'
+DEBUG - parser_A.mj:11:10: LEXER: Found symbol: '#55' with value: 'main'
+DEBUG - parser_A.mj:11:14: LEXER: Found symbol: '#42' with value: '('
+DEBUG - parser_A.mj:11:15: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - parser_A.mj:12:9: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - parser_A.mj:12:13: LEXER: Found symbol: '#55' with value: 'la'
+DEBUG - parser_A.mj:12:15: LEXER: Found symbol: '#50' with value: ','
+DEBUG - parser_A.mj:12:17: LEXER: Found symbol: '#55' with value: 'lb'
+DEBUG - parser_A.mj:12:19: LEXER: Found symbol: '#44' with value: '['
+DEBUG - parser_A.mj:12:20: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - parser_A.mj:12:21: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_A.mj:13:9: LEXER: Found symbol: '#55' with value: 'char'
+DEBUG - parser_A.mj:13:14: LEXER: Found symbol: '#55' with value: 'lc'
+DEBUG - parser_A.mj:13:16: LEXER: Found symbol: '#50' with value: ','
+DEBUG - parser_A.mj:13:18: LEXER: Found symbol: '#55' with value: 'ld'
+DEBUG - parser_A.mj:13:20: LEXER: Found symbol: '#44' with value: '['
+DEBUG - parser_A.mj:13:21: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - parser_A.mj:13:22: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_A.mj:14:9: LEXER: Found symbol: '#55' with value: 'bool'
+DEBUG - parser_A.mj:14:14: LEXER: Found symbol: '#55' with value: 'le'
+DEBUG - parser_A.mj:14:16: LEXER: Found symbol: '#50' with value: ','
+DEBUG - parser_A.mj:14:18: LEXER: Found symbol: '#55' with value: 'lf'
+DEBUG - parser_A.mj:14:20: LEXER: Found symbol: '#44' with value: '['
+DEBUG - parser_A.mj:14:21: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - parser_A.mj:14:22: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_A.mj:15:5: LEXER: Found symbol: '#46' with value: '{'
+DEBUG - parser_A.mj:16:9: LEXER: Found symbol: '#55' with value: 'gb'
+DEBUG - parser_A.mj:16:12: LEXER: Found symbol: '#21' with value: '='
+DEBUG - parser_A.mj:16:14: LEXER: Found symbol: '#9' with value: 'new'
+DEBUG - parser_A.mj:16:18: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - parser_A.mj:16:21: LEXER: Found symbol: '#44' with value: '['
+DEBUG - parser_A.mj:16:22: LEXER: Found symbol: '#52' with value: '5'
+DEBUG - parser_A.mj:16:23: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - parser_A.mj:16:24: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_A.mj:17:9: LEXER: Found symbol: '#55' with value: 'gd'
+DEBUG - parser_A.mj:17:12: LEXER: Found symbol: '#21' with value: '='
+DEBUG - parser_A.mj:17:14: LEXER: Found symbol: '#9' with value: 'new'
+DEBUG - parser_A.mj:17:18: LEXER: Found symbol: '#55' with value: 'char'
+DEBUG - parser_A.mj:17:22: LEXER: Found symbol: '#44' with value: '['
+DEBUG - parser_A.mj:17:23: LEXER: Found symbol: '#52' with value: '2'
+DEBUG - parser_A.mj:17:24: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - parser_A.mj:17:25: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_A.mj:18:9: LEXER: Found symbol: '#55' with value: 'gf'
+DEBUG - parser_A.mj:18:12: LEXER: Found symbol: '#21' with value: '='
+DEBUG - parser_A.mj:18:14: LEXER: Found symbol: '#9' with value: 'new'
+DEBUG - parser_A.mj:18:18: LEXER: Found symbol: '#55' with value: 'bool'
+DEBUG - parser_A.mj:18:22: LEXER: Found symbol: '#44' with value: '['
+DEBUG - parser_A.mj:18:23: LEXER: Found symbol: '#52' with value: '6'
+DEBUG - parser_A.mj:18:24: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - parser_A.mj:18:25: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_A.mj:19:9: LEXER: Found symbol: '#55' with value: 'lb'
+DEBUG - parser_A.mj:19:12: LEXER: Found symbol: '#21' with value: '='
+DEBUG - parser_A.mj:19:14: LEXER: Found symbol: '#9' with value: 'new'
+DEBUG - parser_A.mj:19:18: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - parser_A.mj:19:21: LEXER: Found symbol: '#44' with value: '['
+DEBUG - parser_A.mj:19:22: LEXER: Found symbol: '#52' with value: '4'
+DEBUG - parser_A.mj:19:23: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - parser_A.mj:19:24: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_A.mj:20:9: LEXER: Found symbol: '#55' with value: 'ld'
+DEBUG - parser_A.mj:20:12: LEXER: Found symbol: '#21' with value: '='
+DEBUG - parser_A.mj:20:14: LEXER: Found symbol: '#9' with value: 'new'
+DEBUG - parser_A.mj:20:18: LEXER: Found symbol: '#55' with value: 'char'
+DEBUG - parser_A.mj:20:22: LEXER: Found symbol: '#44' with value: '['
+DEBUG - parser_A.mj:20:23: LEXER: Found symbol: '#52' with value: '2'
+DEBUG - parser_A.mj:20:24: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - parser_A.mj:20:25: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_A.mj:21:9: LEXER: Found symbol: '#55' with value: 'lf'
+DEBUG - parser_A.mj:21:12: LEXER: Found symbol: '#21' with value: '='
+DEBUG - parser_A.mj:21:14: LEXER: Found symbol: '#9' with value: 'new'
+DEBUG - parser_A.mj:21:18: LEXER: Found symbol: '#55' with value: 'bool'
+DEBUG - parser_A.mj:21:22: LEXER: Found symbol: '#44' with value: '['
+DEBUG - parser_A.mj:21:23: LEXER: Found symbol: '#52' with value: '8'
+DEBUG - parser_A.mj:21:24: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - parser_A.mj:21:25: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_A.mj:23:9: LEXER: Found symbol: '#55' with value: 'ga'
+DEBUG - parser_A.mj:23:12: LEXER: Found symbol: '#21' with value: '='
+DEBUG - parser_A.mj:23:14: LEXER: Found symbol: '#55' with value: 'ca'
+DEBUG - parser_A.mj:23:17: LEXER: Found symbol: '#22' with value: '+'
+DEBUG - parser_A.mj:23:19: LEXER: Found symbol: '#55' with value: 'cb'
+DEBUG - parser_A.mj:23:22: LEXER: Found symbol: '#24' with value: '*'
+DEBUG - parser_A.mj:23:24: LEXER: Found symbol: '#52' with value: '5'
+DEBUG - parser_A.mj:23:26: LEXER: Found symbol: '#23' with value: '-'
+DEBUG - parser_A.mj:23:28: LEXER: Found symbol: '#42' with value: '('
+DEBUG - parser_A.mj:23:29: LEXER: Found symbol: '#52' with value: '15'
+DEBUG - parser_A.mj:23:32: LEXER: Found symbol: '#23' with value: '-'
+DEBUG - parser_A.mj:23:34: LEXER: Found symbol: '#52' with value: '9'
+DEBUG - parser_A.mj:23:35: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - parser_A.mj:23:36: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_A.mj:24:9: LEXER: Found symbol: '#55' with value: 'ga'
+DEBUG - parser_A.mj:24:11: LEXER: Found symbol: '#27' with value: '++'
+DEBUG - parser_A.mj:24:13: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_A.mj:25:9: LEXER: Found symbol: '#10' with value: 'print'
+DEBUG - parser_A.mj:25:14: LEXER: Found symbol: '#42' with value: '('
+DEBUG - parser_A.mj:25:15: LEXER: Found symbol: '#55' with value: 'ga'
+DEBUG - parser_A.mj:25:17: LEXER: Found symbol: '#50' with value: ','
+DEBUG - parser_A.mj:25:19: LEXER: Found symbol: '#52' with value: '5'
+DEBUG - parser_A.mj:25:20: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - parser_A.mj:25:21: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_A.mj:26:9: LEXER: Found symbol: '#55' with value: 'gb'
+DEBUG - parser_A.mj:26:11: LEXER: Found symbol: '#44' with value: '['
+DEBUG - parser_A.mj:26:12: LEXER: Found symbol: '#52' with value: '4'
+DEBUG - parser_A.mj:26:13: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - parser_A.mj:26:15: LEXER: Found symbol: '#21' with value: '='
+DEBUG - parser_A.mj:26:17: LEXER: Found symbol: '#52' with value: '6'
+DEBUG - parser_A.mj:26:19: LEXER: Found symbol: '#26' with value: '%'
+DEBUG - parser_A.mj:26:21: LEXER: Found symbol: '#52' with value: '2'
+DEBUG - parser_A.mj:26:23: LEXER: Found symbol: '#22' with value: '+'
+DEBUG - parser_A.mj:26:25: LEXER: Found symbol: '#42' with value: '('
+DEBUG - parser_A.mj:26:26: LEXER: Found symbol: '#52' with value: '27'
+DEBUG - parser_A.mj:26:29: LEXER: Found symbol: '#24' with value: '*'
+DEBUG - parser_A.mj:26:31: LEXER: Found symbol: '#42' with value: '('
+DEBUG - parser_A.mj:26:32: LEXER: Found symbol: '#52' with value: '5'
+DEBUG - parser_A.mj:26:34: LEXER: Found symbol: '#23' with value: '-'
+DEBUG - parser_A.mj:26:36: LEXER: Found symbol: '#52' with value: '7'
+DEBUG - parser_A.mj:26:37: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - parser_A.mj:26:38: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - parser_A.mj:26:39: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_A.mj:27:9: LEXER: Found symbol: '#11' with value: 'read'
+DEBUG - parser_A.mj:27:13: LEXER: Found symbol: '#42' with value: '('
+DEBUG - parser_A.mj:27:14: LEXER: Found symbol: '#55' with value: 'gc'
+DEBUG - parser_A.mj:27:16: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - parser_A.mj:27:17: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_A.mj:28:9: LEXER: Found symbol: '#55' with value: 'gd'
+DEBUG - parser_A.mj:28:11: LEXER: Found symbol: '#44' with value: '['
+DEBUG - parser_A.mj:28:12: LEXER: Found symbol: '#52' with value: '1'
+DEBUG - parser_A.mj:28:13: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - parser_A.mj:28:15: LEXER: Found symbol: '#21' with value: '='
+DEBUG - parser_A.mj:28:17: LEXER: Found symbol: '#53' with value: 'a'
+DEBUG - parser_A.mj:28:20: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_A.mj:29:9: LEXER: Found symbol: '#11' with value: 'read'
+DEBUG - parser_A.mj:29:13: LEXER: Found symbol: '#42' with value: '('
+DEBUG - parser_A.mj:29:14: LEXER: Found symbol: '#55' with value: 'gd'
+DEBUG - parser_A.mj:29:16: LEXER: Found symbol: '#44' with value: '['
+DEBUG - parser_A.mj:29:17: LEXER: Found symbol: '#52' with value: '0'
+DEBUG - parser_A.mj:29:18: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - parser_A.mj:29:19: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - parser_A.mj:29:20: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_A.mj:30:9: LEXER: Found symbol: '#55' with value: 'ge'
+DEBUG - parser_A.mj:30:12: LEXER: Found symbol: '#21' with value: '='
+DEBUG - parser_A.mj:30:14: LEXER: Found symbol: '#54' with value: 'false'
+DEBUG - parser_A.mj:30:19: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_A.mj:31:9: LEXER: Found symbol: '#55' with value: 'gf'
+DEBUG - parser_A.mj:31:11: LEXER: Found symbol: '#44' with value: '['
+DEBUG - parser_A.mj:31:12: LEXER: Found symbol: '#52' with value: '0'
+DEBUG - parser_A.mj:31:13: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - parser_A.mj:31:15: LEXER: Found symbol: '#21' with value: '='
+DEBUG - parser_A.mj:31:17: LEXER: Found symbol: '#55' with value: 'cd'
+DEBUG - parser_A.mj:31:19: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_A.mj:32:9: LEXER: Found symbol: '#55' with value: 'gf'
+DEBUG - parser_A.mj:32:11: LEXER: Found symbol: '#44' with value: '['
+DEBUG - parser_A.mj:32:12: LEXER: Found symbol: '#52' with value: '3'
+DEBUG - parser_A.mj:32:13: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - parser_A.mj:32:15: LEXER: Found symbol: '#21' with value: '='
+DEBUG - parser_A.mj:32:17: LEXER: Found symbol: '#55' with value: 'gf'
+DEBUG - parser_A.mj:32:19: LEXER: Found symbol: '#44' with value: '['
+DEBUG - parser_A.mj:32:20: LEXER: Found symbol: '#52' with value: '0'
+DEBUG - parser_A.mj:32:21: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - parser_A.mj:32:22: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_A.mj:33:9: LEXER: Found symbol: '#11' with value: 'read'
+DEBUG - parser_A.mj:33:13: LEXER: Found symbol: '#42' with value: '('
+DEBUG - parser_A.mj:33:14: LEXER: Found symbol: '#55' with value: 'gf'
+DEBUG - parser_A.mj:33:16: LEXER: Found symbol: '#44' with value: '['
+DEBUG - parser_A.mj:33:17: LEXER: Found symbol: '#52' with value: '2'
+DEBUG - parser_A.mj:33:18: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - parser_A.mj:33:19: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - parser_A.mj:33:20: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_A.mj:34:9: LEXER: Found symbol: '#10' with value: 'print'
+DEBUG - parser_A.mj:34:14: LEXER: Found symbol: '#42' with value: '('
+DEBUG - parser_A.mj:34:15: LEXER: Found symbol: '#55' with value: 'gf'
+DEBUG - parser_A.mj:34:17: LEXER: Found symbol: '#44' with value: '['
+DEBUG - parser_A.mj:34:18: LEXER: Found symbol: '#52' with value: '3'
+DEBUG - parser_A.mj:34:19: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - parser_A.mj:34:20: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - parser_A.mj:34:21: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_A.mj:36:9: LEXER: Found symbol: '#55' with value: 'la'
+DEBUG - parser_A.mj:36:12: LEXER: Found symbol: '#21' with value: '='
+DEBUG - parser_A.mj:36:14: LEXER: Found symbol: '#55' with value: 'ga'
+DEBUG - parser_A.mj:36:17: LEXER: Found symbol: '#39' with value: '*='
+DEBUG - parser_A.mj:36:20: LEXER: Found symbol: '#52' with value: '5'
+DEBUG - parser_A.mj:36:21: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_A.mj:37:9: LEXER: Found symbol: '#55' with value: 'la'
+DEBUG - parser_A.mj:37:11: LEXER: Found symbol: '#28' with value: '--'
+DEBUG - parser_A.mj:37:13: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_A.mj:38:9: LEXER: Found symbol: '#55' with value: 'lb'
+DEBUG - parser_A.mj:38:11: LEXER: Found symbol: '#44' with value: '['
+DEBUG - parser_A.mj:38:12: LEXER: Found symbol: '#52' with value: '2'
+DEBUG - parser_A.mj:38:13: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - parser_A.mj:38:15: LEXER: Found symbol: '#21' with value: '='
+DEBUG - parser_A.mj:38:17: LEXER: Found symbol: '#55' with value: 'la'
+DEBUG - parser_A.mj:38:20: LEXER: Found symbol: '#39' with value: '*='
+DEBUG - parser_A.mj:38:23: LEXER: Found symbol: '#23' with value: '-'
+DEBUG - parser_A.mj:38:24: LEXER: Found symbol: '#52' with value: '4'
+DEBUG - parser_A.mj:38:26: LEXER: Found symbol: '#22' with value: '+'
+DEBUG - parser_A.mj:38:28: LEXER: Found symbol: '#52' with value: '6'
+DEBUG - parser_A.mj:38:30: LEXER: Found symbol: '#24' with value: '*'
+DEBUG - parser_A.mj:38:32: LEXER: Found symbol: '#52' with value: '2'
+DEBUG - parser_A.mj:38:33: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_A.mj:39:9: LEXER: Found symbol: '#55' with value: 'lc'
+DEBUG - parser_A.mj:39:12: LEXER: Found symbol: '#21' with value: '='
+DEBUG - parser_A.mj:39:14: LEXER: Found symbol: '#55' with value: 'gc'
+DEBUG - parser_A.mj:39:16: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_A.mj:40:9: LEXER: Found symbol: '#55' with value: 'ld'
+DEBUG - parser_A.mj:40:11: LEXER: Found symbol: '#44' with value: '['
+DEBUG - parser_A.mj:40:12: LEXER: Found symbol: '#52' with value: '1'
+DEBUG - parser_A.mj:40:13: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - parser_A.mj:40:15: LEXER: Found symbol: '#21' with value: '='
+DEBUG - parser_A.mj:40:17: LEXER: Found symbol: '#53' with value: 'F'
+DEBUG - parser_A.mj:40:20: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_A.mj:41:9: LEXER: Found symbol: '#55' with value: 'le'
+DEBUG - parser_A.mj:41:12: LEXER: Found symbol: '#21' with value: '='
+DEBUG - parser_A.mj:41:14: LEXER: Found symbol: '#54' with value: 'false'
+DEBUG - parser_A.mj:41:19: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_A.mj:42:9: LEXER: Found symbol: '#55' with value: 'lf'
+DEBUG - parser_A.mj:42:11: LEXER: Found symbol: '#44' with value: '['
+DEBUG - parser_A.mj:42:12: LEXER: Found symbol: '#52' with value: '2'
+DEBUG - parser_A.mj:42:13: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - parser_A.mj:42:15: LEXER: Found symbol: '#21' with value: '='
+DEBUG - parser_A.mj:42:17: LEXER: Found symbol: '#55' with value: 'cd'
+DEBUG - parser_A.mj:42:19: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_A.mj:43:5: LEXER: Found symbol: '#47' with value: '}'
+DEBUG - parser_A.mj:44:1: LEXER: Found symbol: '#47' with value: '}'
+DEBUG - parser_A.mj:44:2: LEXER: Found symbol: '#0' with value: ''
+DEBUG - parser_A.mj:44:2: LEXER: Found symbol: '#0' with value: ''
+INFO  - Abstract syntax tree:
+Program(
+  ProgramHeader(
+   level_a_syntax_test
+  ) [ProgramHeader]
+  MultipleProgramDeclarations(
+    MultipleProgramDeclarations(
+      MultipleProgramDeclarations(
+        MultipleProgramDeclarations(
+          MultipleProgramDeclarations(
+            MultipleProgramDeclarations(
+              NoProgramDeclarations(
+              ) [NoProgramDeclarations]
+              ConstProgramDeclaration(
+                ConstDeclaration(
+                  Type(
+                   int
+                  ) [Type]
+                  MultipleConstAssignments(
+                    SingleConstAssignment(
+                      ConstAssignment(
+                       ca
+                        IntConst(
+                          NoSign(
+                          ) [NoSign]
+                         1
+                        ) [IntConst]
+                      ) [ConstAssignment]
+                    ) [SingleConstAssignment]
+                    ConstAssignment(
+                     cb
+                      IntConst(
+                        NoSign(
+                        ) [NoSign]
+                       6
+                      ) [IntConst]
+                    ) [ConstAssignment]
+                  ) [MultipleConstAssignments]
+                ) [ConstDeclaration]
+              ) [ConstProgramDeclaration]
+            ) [MultipleProgramDeclarations]
+            ConstProgramDeclaration(
+              ConstDeclaration(
+                Type(
+                 char
+                ) [Type]
+                SingleConstAssignment(
+                  ConstAssignment(
+                   cc
+                    CharConst(
+                     s
+                    ) [CharConst]
+                  ) [ConstAssignment]
+                ) [SingleConstAssignment]
+              ) [ConstDeclaration]
+            ) [ConstProgramDeclaration]
+          ) [MultipleProgramDeclarations]
+          ConstProgramDeclaration(
+            ConstDeclaration(
+              Type(
+               bool
+              ) [Type]
+              SingleConstAssignment(
+                ConstAssignment(
+                 cd
+                  BoolConst(
+                   true
+                  ) [BoolConst]
+                ) [ConstAssignment]
+              ) [SingleConstAssignment]
+            ) [ConstDeclaration]
+          ) [ConstProgramDeclaration]
+        ) [MultipleProgramDeclarations]
+        VarProgramDeclaration(
+          VarDeclaration(
+            Type(
+             int
+            ) [Type]
+            MultipleVariables(
+              SingleVariable(
+                Variable(
+                 ga
+                  NoArrayBrackets(
+                  ) [NoArrayBrackets]
+                ) [Variable]
+              ) [SingleVariable]
+              Variable(
+               gb
+                ArrayBrackets(
+                ) [ArrayBrackets]
+              ) [Variable]
+            ) [MultipleVariables]
+          ) [VarDeclaration]
+        ) [VarProgramDeclaration]
+      ) [MultipleProgramDeclarations]
+      VarProgramDeclaration(
+        VarDeclaration(
+          Type(
+           char
+          ) [Type]
+          MultipleVariables(
+            SingleVariable(
+              Variable(
+               gc
+                NoArrayBrackets(
+                ) [NoArrayBrackets]
+              ) [Variable]
+            ) [SingleVariable]
+            Variable(
+             gd
+              ArrayBrackets(
+              ) [ArrayBrackets]
+            ) [Variable]
+          ) [MultipleVariables]
+        ) [VarDeclaration]
+      ) [VarProgramDeclaration]
+    ) [MultipleProgramDeclarations]
+    VarProgramDeclaration(
+      VarDeclaration(
+        Type(
+         bool
+        ) [Type]
+        MultipleVariables(
+          SingleVariable(
+            Variable(
+             ge
+              NoArrayBrackets(
+              ) [NoArrayBrackets]
+            ) [Variable]
+          ) [SingleVariable]
+          Variable(
+           gf
+            ArrayBrackets(
+            ) [ArrayBrackets]
+          ) [Variable]
+        ) [MultipleVariables]
+      ) [VarDeclaration]
+    ) [VarProgramDeclaration]
+  ) [MultipleProgramDeclarations]
+  MultipleMethodDeclarations(
+    NoMethodDeclarations(
+    ) [NoMethodDeclarations]
+    MethodDeclaration(
+      MethodHeader(
+        ReturnVoid(
+        ) [ReturnVoid]
+       main
+      ) [MethodHeader]
+      NoFormalParameters(
+      ) [NoFormalParameters]
+      MultipleLocalVarDeclarations(
+        MultipleLocalVarDeclarations(
+          MultipleLocalVarDeclarations(
+            NoLocalVarDeclarations(
+            ) [NoLocalVarDeclarations]
+            LocalVarDeclaration(
+              Type(
+               int
+              ) [Type]
+              MultipleLocalVariables(
+                SingleLocalVariable(
+                  LocalVariable(
+                   la
+                    NoArrayBrackets(
+                    ) [NoArrayBrackets]
+                  ) [LocalVariable]
+                ) [SingleLocalVariable]
+                LocalVariable(
+                 lb
+                  ArrayBrackets(
+                  ) [ArrayBrackets]
+                ) [LocalVariable]
+              ) [MultipleLocalVariables]
+            ) [LocalVarDeclaration]
+          ) [MultipleLocalVarDeclarations]
+          LocalVarDeclaration(
+            Type(
+             char
+            ) [Type]
+            MultipleLocalVariables(
+              SingleLocalVariable(
+                LocalVariable(
+                 lc
+                  NoArrayBrackets(
+                  ) [NoArrayBrackets]
+                ) [LocalVariable]
+              ) [SingleLocalVariable]
+              LocalVariable(
+               ld
+                ArrayBrackets(
+                ) [ArrayBrackets]
+              ) [LocalVariable]
+            ) [MultipleLocalVariables]
+          ) [LocalVarDeclaration]
+        ) [MultipleLocalVarDeclarations]
+        LocalVarDeclaration(
+          Type(
+           bool
+          ) [Type]
+          MultipleLocalVariables(
+            SingleLocalVariable(
+              LocalVariable(
+               le
+                NoArrayBrackets(
+                ) [NoArrayBrackets]
+              ) [LocalVariable]
+            ) [SingleLocalVariable]
+            LocalVariable(
+             lf
+              ArrayBrackets(
+              ) [ArrayBrackets]
+            ) [LocalVariable]
+          ) [MultipleLocalVariables]
+        ) [LocalVarDeclaration]
+      ) [MultipleLocalVarDeclarations]
+      MethodStatementListStart(
+      ) [MethodStatementListStart]
+      MultipleStatements(
+        MultipleStatements(
+          MultipleStatements(
+            MultipleStatements(
+              MultipleStatements(
+                MultipleStatements(
+                  MultipleStatements(
+                    MultipleStatements(
+                      MultipleStatements(
+                        MultipleStatements(
+                          MultipleStatements(
+                            MultipleStatements(
+                              MultipleStatements(
+                                MultipleStatements(
+                                  MultipleStatements(
+                                    MultipleStatements(
+                                      MultipleStatements(
+                                        MultipleStatements(
+                                          MultipleStatements(
+                                            MultipleStatements(
+                                              MultipleStatements(
+                                                MultipleStatements(
+                                                  MultipleStatements(
+                                                    MultipleStatements(
+                                                      MultipleStatements(
+                                                        NoStatements(
+                                                        ) [NoStatements]
+                                                        DesignatorBasedStatement(
+                                                          AssignmentDesignatorStatement(
+                                                            AssignmentHeader(
+                                                              IdentifierDesignator(
+                                                               gb
+                                                              ) [IdentifierDesignator]
+                                                            ) [AssignmentHeader]
+                                                            AssignmentFooter(
+                                                              AssignOperator(
+                                                              ) [AssignOperator]
+                                                              LeftExpression(
+                                                                SingleTermExpression(
+                                                                  NoSign(
+                                                                  ) [NoSign]
+                                                                  SingleFactorTerm(
+                                                                    AllocatorFactor(
+                                                                      Type(
+                                                                       int
+                                                                      ) [Type]
+                                                                      SingleArrayIndexer(
+                                                                        ArrayIndexer(
+                                                                          LeftExpression(
+                                                                            SingleTermExpression(
+                                                                              NoSign(
+                                                                              ) [NoSign]
+                                                                              SingleFactorTerm(
+                                                                                ConstantFactor(
+                                                                                  IntConstantFactor(
+                                                                                   5
+                                                                                  ) [IntConstantFactor]
+                                                                                ) [ConstantFactor]
+                                                                              ) [SingleFactorTerm]
+                                                                            ) [SingleTermExpression]
+                                                                          ) [LeftExpression]
+                                                                        ) [ArrayIndexer]
+                                                                      ) [SingleArrayIndexer]
+                                                                    ) [AllocatorFactor]
+                                                                  ) [SingleFactorTerm]
+                                                                ) [SingleTermExpression]
+                                                              ) [LeftExpression]
+                                                            ) [AssignmentFooter]
+                                                          ) [AssignmentDesignatorStatement]
+                                                        ) [DesignatorBasedStatement]
+                                                      ) [MultipleStatements]
+                                                      DesignatorBasedStatement(
+                                                        AssignmentDesignatorStatement(
+                                                          AssignmentHeader(
+                                                            IdentifierDesignator(
+                                                             gd
+                                                            ) [IdentifierDesignator]
+                                                          ) [AssignmentHeader]
+                                                          AssignmentFooter(
+                                                            AssignOperator(
+                                                            ) [AssignOperator]
+                                                            LeftExpression(
+                                                              SingleTermExpression(
+                                                                NoSign(
+                                                                ) [NoSign]
+                                                                SingleFactorTerm(
+                                                                  AllocatorFactor(
+                                                                    Type(
+                                                                     char
+                                                                    ) [Type]
+                                                                    SingleArrayIndexer(
+                                                                      ArrayIndexer(
+                                                                        LeftExpression(
+                                                                          SingleTermExpression(
+                                                                            NoSign(
+                                                                            ) [NoSign]
+                                                                            SingleFactorTerm(
+                                                                              ConstantFactor(
+                                                                                IntConstantFactor(
+                                                                                 2
+                                                                                ) [IntConstantFactor]
+                                                                              ) [ConstantFactor]
+                                                                            ) [SingleFactorTerm]
+                                                                          ) [SingleTermExpression]
+                                                                        ) [LeftExpression]
+                                                                      ) [ArrayIndexer]
+                                                                    ) [SingleArrayIndexer]
+                                                                  ) [AllocatorFactor]
+                                                                ) [SingleFactorTerm]
+                                                              ) [SingleTermExpression]
+                                                            ) [LeftExpression]
+                                                          ) [AssignmentFooter]
+                                                        ) [AssignmentDesignatorStatement]
+                                                      ) [DesignatorBasedStatement]
+                                                    ) [MultipleStatements]
+                                                    DesignatorBasedStatement(
+                                                      AssignmentDesignatorStatement(
+                                                        AssignmentHeader(
+                                                          IdentifierDesignator(
+                                                           gf
+                                                          ) [IdentifierDesignator]
+                                                        ) [AssignmentHeader]
+                                                        AssignmentFooter(
+                                                          AssignOperator(
+                                                          ) [AssignOperator]
+                                                          LeftExpression(
+                                                            SingleTermExpression(
+                                                              NoSign(
+                                                              ) [NoSign]
+                                                              SingleFactorTerm(
+                                                                AllocatorFactor(
+                                                                  Type(
+                                                                   bool
+                                                                  ) [Type]
+                                                                  SingleArrayIndexer(
+                                                                    ArrayIndexer(
+                                                                      LeftExpression(
+                                                                        SingleTermExpression(
+                                                                          NoSign(
+                                                                          ) [NoSign]
+                                                                          SingleFactorTerm(
+                                                                            ConstantFactor(
+                                                                              IntConstantFactor(
+                                                                               6
+                                                                              ) [IntConstantFactor]
+                                                                            ) [ConstantFactor]
+                                                                          ) [SingleFactorTerm]
+                                                                        ) [SingleTermExpression]
+                                                                      ) [LeftExpression]
+                                                                    ) [ArrayIndexer]
+                                                                  ) [SingleArrayIndexer]
+                                                                ) [AllocatorFactor]
+                                                              ) [SingleFactorTerm]
+                                                            ) [SingleTermExpression]
+                                                          ) [LeftExpression]
+                                                        ) [AssignmentFooter]
+                                                      ) [AssignmentDesignatorStatement]
+                                                    ) [DesignatorBasedStatement]
+                                                  ) [MultipleStatements]
+                                                  DesignatorBasedStatement(
+                                                    AssignmentDesignatorStatement(
+                                                      AssignmentHeader(
+                                                        IdentifierDesignator(
+                                                         lb
+                                                        ) [IdentifierDesignator]
+                                                      ) [AssignmentHeader]
+                                                      AssignmentFooter(
+                                                        AssignOperator(
+                                                        ) [AssignOperator]
+                                                        LeftExpression(
+                                                          SingleTermExpression(
+                                                            NoSign(
+                                                            ) [NoSign]
+                                                            SingleFactorTerm(
+                                                              AllocatorFactor(
+                                                                Type(
+                                                                 int
+                                                                ) [Type]
+                                                                SingleArrayIndexer(
+                                                                  ArrayIndexer(
+                                                                    LeftExpression(
+                                                                      SingleTermExpression(
+                                                                        NoSign(
+                                                                        ) [NoSign]
+                                                                        SingleFactorTerm(
+                                                                          ConstantFactor(
+                                                                            IntConstantFactor(
+                                                                             4
+                                                                            ) [IntConstantFactor]
+                                                                          ) [ConstantFactor]
+                                                                        ) [SingleFactorTerm]
+                                                                      ) [SingleTermExpression]
+                                                                    ) [LeftExpression]
+                                                                  ) [ArrayIndexer]
+                                                                ) [SingleArrayIndexer]
+                                                              ) [AllocatorFactor]
+                                                            ) [SingleFactorTerm]
+                                                          ) [SingleTermExpression]
+                                                        ) [LeftExpression]
+                                                      ) [AssignmentFooter]
+                                                    ) [AssignmentDesignatorStatement]
+                                                  ) [DesignatorBasedStatement]
+                                                ) [MultipleStatements]
+                                                DesignatorBasedStatement(
+                                                  AssignmentDesignatorStatement(
+                                                    AssignmentHeader(
+                                                      IdentifierDesignator(
+                                                       ld
+                                                      ) [IdentifierDesignator]
+                                                    ) [AssignmentHeader]
+                                                    AssignmentFooter(
+                                                      AssignOperator(
+                                                      ) [AssignOperator]
+                                                      LeftExpression(
+                                                        SingleTermExpression(
+                                                          NoSign(
+                                                          ) [NoSign]
+                                                          SingleFactorTerm(
+                                                            AllocatorFactor(
+                                                              Type(
+                                                               char
+                                                              ) [Type]
+                                                              SingleArrayIndexer(
+                                                                ArrayIndexer(
+                                                                  LeftExpression(
+                                                                    SingleTermExpression(
+                                                                      NoSign(
+                                                                      ) [NoSign]
+                                                                      SingleFactorTerm(
+                                                                        ConstantFactor(
+                                                                          IntConstantFactor(
+                                                                           2
+                                                                          ) [IntConstantFactor]
+                                                                        ) [ConstantFactor]
+                                                                      ) [SingleFactorTerm]
+                                                                    ) [SingleTermExpression]
+                                                                  ) [LeftExpression]
+                                                                ) [ArrayIndexer]
+                                                              ) [SingleArrayIndexer]
+                                                            ) [AllocatorFactor]
+                                                          ) [SingleFactorTerm]
+                                                        ) [SingleTermExpression]
+                                                      ) [LeftExpression]
+                                                    ) [AssignmentFooter]
+                                                  ) [AssignmentDesignatorStatement]
+                                                ) [DesignatorBasedStatement]
+                                              ) [MultipleStatements]
+                                              DesignatorBasedStatement(
+                                                AssignmentDesignatorStatement(
+                                                  AssignmentHeader(
+                                                    IdentifierDesignator(
+                                                     lf
+                                                    ) [IdentifierDesignator]
+                                                  ) [AssignmentHeader]
+                                                  AssignmentFooter(
+                                                    AssignOperator(
+                                                    ) [AssignOperator]
+                                                    LeftExpression(
+                                                      SingleTermExpression(
+                                                        NoSign(
+                                                        ) [NoSign]
+                                                        SingleFactorTerm(
+                                                          AllocatorFactor(
+                                                            Type(
+                                                             bool
+                                                            ) [Type]
+                                                            SingleArrayIndexer(
+                                                              ArrayIndexer(
+                                                                LeftExpression(
+                                                                  SingleTermExpression(
+                                                                    NoSign(
+                                                                    ) [NoSign]
+                                                                    SingleFactorTerm(
+                                                                      ConstantFactor(
+                                                                        IntConstantFactor(
+                                                                         8
+                                                                        ) [IntConstantFactor]
+                                                                      ) [ConstantFactor]
+                                                                    ) [SingleFactorTerm]
+                                                                  ) [SingleTermExpression]
+                                                                ) [LeftExpression]
+                                                              ) [ArrayIndexer]
+                                                            ) [SingleArrayIndexer]
+                                                          ) [AllocatorFactor]
+                                                        ) [SingleFactorTerm]
+                                                      ) [SingleTermExpression]
+                                                    ) [LeftExpression]
+                                                  ) [AssignmentFooter]
+                                                ) [AssignmentDesignatorStatement]
+                                              ) [DesignatorBasedStatement]
+                                            ) [MultipleStatements]
+                                            DesignatorBasedStatement(
+                                              AssignmentDesignatorStatement(
+                                                AssignmentHeader(
+                                                  IdentifierDesignator(
+                                                   ga
+                                                  ) [IdentifierDesignator]
+                                                ) [AssignmentHeader]
+                                                AssignmentFooter(
+                                                  AssignOperator(
+                                                  ) [AssignOperator]
+                                                  LeftExpression(
+                                                    MultipleTermsExpression(
+                                                      MultipleTermsExpression(
+                                                        SingleTermExpression(
+                                                          NoSign(
+                                                          ) [NoSign]
+                                                          SingleFactorTerm(
+                                                            DesignatorFactor(
+                                                              IdentifierDesignator(
+                                                               ca
+                                                              ) [IdentifierDesignator]
+                                                            ) [DesignatorFactor]
+                                                          ) [SingleFactorTerm]
+                                                        ) [SingleTermExpression]
+                                                        AddOperator(
+                                                        ) [AddOperator]
+                                                        MultipleFactorsTerm(
+                                                          SingleFactorTerm(
+                                                            DesignatorFactor(
+                                                              IdentifierDesignator(
+                                                               cb
+                                                              ) [IdentifierDesignator]
+                                                            ) [DesignatorFactor]
+                                                          ) [SingleFactorTerm]
+                                                          MulOperator(
+                                                          ) [MulOperator]
+                                                          ConstantFactor(
+                                                            IntConstantFactor(
+                                                             5
+                                                            ) [IntConstantFactor]
+                                                          ) [ConstantFactor]
+                                                        ) [MultipleFactorsTerm]
+                                                      ) [MultipleTermsExpression]
+                                                      SubOperator(
+                                                      ) [SubOperator]
+                                                      SingleFactorTerm(
+                                                        InnerExpressionFactor(
+                                                          LeftExpression(
+                                                            MultipleTermsExpression(
+                                                              SingleTermExpression(
+                                                                NoSign(
+                                                                ) [NoSign]
+                                                                SingleFactorTerm(
+                                                                  ConstantFactor(
+                                                                    IntConstantFactor(
+                                                                     15
+                                                                    ) [IntConstantFactor]
+                                                                  ) [ConstantFactor]
+                                                                ) [SingleFactorTerm]
+                                                              ) [SingleTermExpression]
+                                                              SubOperator(
+                                                              ) [SubOperator]
+                                                              SingleFactorTerm(
+                                                                ConstantFactor(
+                                                                  IntConstantFactor(
+                                                                   9
+                                                                  ) [IntConstantFactor]
+                                                                ) [ConstantFactor]
+                                                              ) [SingleFactorTerm]
+                                                            ) [MultipleTermsExpression]
+                                                          ) [LeftExpression]
+                                                        ) [InnerExpressionFactor]
+                                                      ) [SingleFactorTerm]
+                                                    ) [MultipleTermsExpression]
+                                                  ) [LeftExpression]
+                                                ) [AssignmentFooter]
+                                              ) [AssignmentDesignatorStatement]
+                                            ) [DesignatorBasedStatement]
+                                          ) [MultipleStatements]
+                                          DesignatorBasedStatement(
+                                            IncrementDesignatorStatement(
+                                              IdentifierDesignator(
+                                               ga
+                                              ) [IdentifierDesignator]
+                                            ) [IncrementDesignatorStatement]
+                                          ) [DesignatorBasedStatement]
+                                        ) [MultipleStatements]
+                                        PrintStatement(
+                                          LeftExpression(
+                                            SingleTermExpression(
+                                              NoSign(
+                                              ) [NoSign]
+                                              SingleFactorTerm(
+                                                DesignatorFactor(
+                                                  IdentifierDesignator(
+                                                   ga
+                                                  ) [IdentifierDesignator]
+                                                ) [DesignatorFactor]
+                                              ) [SingleFactorTerm]
+                                            ) [SingleTermExpression]
+                                          ) [LeftExpression]
+                                          PrintWidth(
+                                           5
+                                          ) [PrintWidth]
+                                        ) [PrintStatement]
+                                      ) [MultipleStatements]
+                                      DesignatorBasedStatement(
+                                        AssignmentDesignatorStatement(
+                                          AssignmentHeader(
+                                            ElementAccessDesignator(
+                                              IdentifierDesignator(
+                                               gb
+                                              ) [IdentifierDesignator]
+                                              ArrayIndexer(
+                                                LeftExpression(
+                                                  SingleTermExpression(
+                                                    NoSign(
+                                                    ) [NoSign]
+                                                    SingleFactorTerm(
+                                                      ConstantFactor(
+                                                        IntConstantFactor(
+                                                         4
+                                                        ) [IntConstantFactor]
+                                                      ) [ConstantFactor]
+                                                    ) [SingleFactorTerm]
+                                                  ) [SingleTermExpression]
+                                                ) [LeftExpression]
+                                              ) [ArrayIndexer]
+                                            ) [ElementAccessDesignator]
+                                          ) [AssignmentHeader]
+                                          AssignmentFooter(
+                                            AssignOperator(
+                                            ) [AssignOperator]
+                                            LeftExpression(
+                                              MultipleTermsExpression(
+                                                SingleTermExpression(
+                                                  NoSign(
+                                                  ) [NoSign]
+                                                  MultipleFactorsTerm(
+                                                    SingleFactorTerm(
+                                                      ConstantFactor(
+                                                        IntConstantFactor(
+                                                         6
+                                                        ) [IntConstantFactor]
+                                                      ) [ConstantFactor]
+                                                    ) [SingleFactorTerm]
+                                                    ModOperator(
+                                                    ) [ModOperator]
+                                                    ConstantFactor(
+                                                      IntConstantFactor(
+                                                       2
+                                                      ) [IntConstantFactor]
+                                                    ) [ConstantFactor]
+                                                  ) [MultipleFactorsTerm]
+                                                ) [SingleTermExpression]
+                                                AddOperator(
+                                                ) [AddOperator]
+                                                SingleFactorTerm(
+                                                  InnerExpressionFactor(
+                                                    LeftExpression(
+                                                      SingleTermExpression(
+                                                        NoSign(
+                                                        ) [NoSign]
+                                                        MultipleFactorsTerm(
+                                                          SingleFactorTerm(
+                                                            ConstantFactor(
+                                                              IntConstantFactor(
+                                                               27
+                                                              ) [IntConstantFactor]
+                                                            ) [ConstantFactor]
+                                                          ) [SingleFactorTerm]
+                                                          MulOperator(
+                                                          ) [MulOperator]
+                                                          InnerExpressionFactor(
+                                                            LeftExpression(
+                                                              MultipleTermsExpression(
+                                                                SingleTermExpression(
+                                                                  NoSign(
+                                                                  ) [NoSign]
+                                                                  SingleFactorTerm(
+                                                                    ConstantFactor(
+                                                                      IntConstantFactor(
+                                                                       5
+                                                                      ) [IntConstantFactor]
+                                                                    ) [ConstantFactor]
+                                                                  ) [SingleFactorTerm]
+                                                                ) [SingleTermExpression]
+                                                                SubOperator(
+                                                                ) [SubOperator]
+                                                                SingleFactorTerm(
+                                                                  ConstantFactor(
+                                                                    IntConstantFactor(
+                                                                     7
+                                                                    ) [IntConstantFactor]
+                                                                  ) [ConstantFactor]
+                                                                ) [SingleFactorTerm]
+                                                              ) [MultipleTermsExpression]
+                                                            ) [LeftExpression]
+                                                          ) [InnerExpressionFactor]
+                                                        ) [MultipleFactorsTerm]
+                                                      ) [SingleTermExpression]
+                                                    ) [LeftExpression]
+                                                  ) [InnerExpressionFactor]
+                                                ) [SingleFactorTerm]
+                                              ) [MultipleTermsExpression]
+                                            ) [LeftExpression]
+                                          ) [AssignmentFooter]
+                                        ) [AssignmentDesignatorStatement]
+                                      ) [DesignatorBasedStatement]
+                                    ) [MultipleStatements]
+                                    ReadStatement(
+                                      IdentifierDesignator(
+                                       gc
+                                      ) [IdentifierDesignator]
+                                    ) [ReadStatement]
+                                  ) [MultipleStatements]
+                                  DesignatorBasedStatement(
+                                    AssignmentDesignatorStatement(
+                                      AssignmentHeader(
+                                        ElementAccessDesignator(
+                                          IdentifierDesignator(
+                                           gd
+                                          ) [IdentifierDesignator]
+                                          ArrayIndexer(
+                                            LeftExpression(
+                                              SingleTermExpression(
+                                                NoSign(
+                                                ) [NoSign]
+                                                SingleFactorTerm(
+                                                  ConstantFactor(
+                                                    IntConstantFactor(
+                                                     1
+                                                    ) [IntConstantFactor]
+                                                  ) [ConstantFactor]
+                                                ) [SingleFactorTerm]
+                                              ) [SingleTermExpression]
+                                            ) [LeftExpression]
+                                          ) [ArrayIndexer]
+                                        ) [ElementAccessDesignator]
+                                      ) [AssignmentHeader]
+                                      AssignmentFooter(
+                                        AssignOperator(
+                                        ) [AssignOperator]
+                                        LeftExpression(
+                                          SingleTermExpression(
+                                            NoSign(
+                                            ) [NoSign]
+                                            SingleFactorTerm(
+                                              ConstantFactor(
+                                                CharConstantFactor(
+                                                 a
+                                                ) [CharConstantFactor]
+                                              ) [ConstantFactor]
+                                            ) [SingleFactorTerm]
+                                          ) [SingleTermExpression]
+                                        ) [LeftExpression]
+                                      ) [AssignmentFooter]
+                                    ) [AssignmentDesignatorStatement]
+                                  ) [DesignatorBasedStatement]
+                                ) [MultipleStatements]
+                                ReadStatement(
+                                  ElementAccessDesignator(
+                                    IdentifierDesignator(
+                                     gd
+                                    ) [IdentifierDesignator]
+                                    ArrayIndexer(
+                                      LeftExpression(
+                                        SingleTermExpression(
+                                          NoSign(
+                                          ) [NoSign]
+                                          SingleFactorTerm(
+                                            ConstantFactor(
+                                              IntConstantFactor(
+                                               0
+                                              ) [IntConstantFactor]
+                                            ) [ConstantFactor]
+                                          ) [SingleFactorTerm]
+                                        ) [SingleTermExpression]
+                                      ) [LeftExpression]
+                                    ) [ArrayIndexer]
+                                  ) [ElementAccessDesignator]
+                                ) [ReadStatement]
+                              ) [MultipleStatements]
+                              DesignatorBasedStatement(
+                                AssignmentDesignatorStatement(
+                                  AssignmentHeader(
+                                    IdentifierDesignator(
+                                     ge
+                                    ) [IdentifierDesignator]
+                                  ) [AssignmentHeader]
+                                  AssignmentFooter(
+                                    AssignOperator(
+                                    ) [AssignOperator]
+                                    LeftExpression(
+                                      SingleTermExpression(
+                                        NoSign(
+                                        ) [NoSign]
+                                        SingleFactorTerm(
+                                          ConstantFactor(
+                                            BoolConstantFactor(
+                                             false
+                                            ) [BoolConstantFactor]
+                                          ) [ConstantFactor]
+                                        ) [SingleFactorTerm]
+                                      ) [SingleTermExpression]
+                                    ) [LeftExpression]
+                                  ) [AssignmentFooter]
+                                ) [AssignmentDesignatorStatement]
+                              ) [DesignatorBasedStatement]
+                            ) [MultipleStatements]
+                            DesignatorBasedStatement(
+                              AssignmentDesignatorStatement(
+                                AssignmentHeader(
+                                  ElementAccessDesignator(
+                                    IdentifierDesignator(
+                                     gf
+                                    ) [IdentifierDesignator]
+                                    ArrayIndexer(
+                                      LeftExpression(
+                                        SingleTermExpression(
+                                          NoSign(
+                                          ) [NoSign]
+                                          SingleFactorTerm(
+                                            ConstantFactor(
+                                              IntConstantFactor(
+                                               0
+                                              ) [IntConstantFactor]
+                                            ) [ConstantFactor]
+                                          ) [SingleFactorTerm]
+                                        ) [SingleTermExpression]
+                                      ) [LeftExpression]
+                                    ) [ArrayIndexer]
+                                  ) [ElementAccessDesignator]
+                                ) [AssignmentHeader]
+                                AssignmentFooter(
+                                  AssignOperator(
+                                  ) [AssignOperator]
+                                  LeftExpression(
+                                    SingleTermExpression(
+                                      NoSign(
+                                      ) [NoSign]
+                                      SingleFactorTerm(
+                                        DesignatorFactor(
+                                          IdentifierDesignator(
+                                           cd
+                                          ) [IdentifierDesignator]
+                                        ) [DesignatorFactor]
+                                      ) [SingleFactorTerm]
+                                    ) [SingleTermExpression]
+                                  ) [LeftExpression]
+                                ) [AssignmentFooter]
+                              ) [AssignmentDesignatorStatement]
+                            ) [DesignatorBasedStatement]
+                          ) [MultipleStatements]
+                          DesignatorBasedStatement(
+                            AssignmentDesignatorStatement(
+                              AssignmentHeader(
+                                ElementAccessDesignator(
+                                  IdentifierDesignator(
+                                   gf
+                                  ) [IdentifierDesignator]
+                                  ArrayIndexer(
+                                    LeftExpression(
+                                      SingleTermExpression(
+                                        NoSign(
+                                        ) [NoSign]
+                                        SingleFactorTerm(
+                                          ConstantFactor(
+                                            IntConstantFactor(
+                                             3
+                                            ) [IntConstantFactor]
+                                          ) [ConstantFactor]
+                                        ) [SingleFactorTerm]
+                                      ) [SingleTermExpression]
+                                    ) [LeftExpression]
+                                  ) [ArrayIndexer]
+                                ) [ElementAccessDesignator]
+                              ) [AssignmentHeader]
+                              AssignmentFooter(
+                                AssignOperator(
+                                ) [AssignOperator]
+                                LeftExpression(
+                                  SingleTermExpression(
+                                    NoSign(
+                                    ) [NoSign]
+                                    SingleFactorTerm(
+                                      DesignatorFactor(
+                                        ElementAccessDesignator(
+                                          IdentifierDesignator(
+                                           gf
+                                          ) [IdentifierDesignator]
+                                          ArrayIndexer(
+                                            LeftExpression(
+                                              SingleTermExpression(
+                                                NoSign(
+                                                ) [NoSign]
+                                                SingleFactorTerm(
+                                                  ConstantFactor(
+                                                    IntConstantFactor(
+                                                     0
+                                                    ) [IntConstantFactor]
+                                                  ) [ConstantFactor]
+                                                ) [SingleFactorTerm]
+                                              ) [SingleTermExpression]
+                                            ) [LeftExpression]
+                                          ) [ArrayIndexer]
+                                        ) [ElementAccessDesignator]
+                                      ) [DesignatorFactor]
+                                    ) [SingleFactorTerm]
+                                  ) [SingleTermExpression]
+                                ) [LeftExpression]
+                              ) [AssignmentFooter]
+                            ) [AssignmentDesignatorStatement]
+                          ) [DesignatorBasedStatement]
+                        ) [MultipleStatements]
+                        ReadStatement(
+                          ElementAccessDesignator(
+                            IdentifierDesignator(
+                             gf
+                            ) [IdentifierDesignator]
+                            ArrayIndexer(
+                              LeftExpression(
+                                SingleTermExpression(
+                                  NoSign(
+                                  ) [NoSign]
+                                  SingleFactorTerm(
+                                    ConstantFactor(
+                                      IntConstantFactor(
+                                       2
+                                      ) [IntConstantFactor]
+                                    ) [ConstantFactor]
+                                  ) [SingleFactorTerm]
+                                ) [SingleTermExpression]
+                              ) [LeftExpression]
+                            ) [ArrayIndexer]
+                          ) [ElementAccessDesignator]
+                        ) [ReadStatement]
+                      ) [MultipleStatements]
+                      PrintStatement(
+                        LeftExpression(
+                          SingleTermExpression(
+                            NoSign(
+                            ) [NoSign]
+                            SingleFactorTerm(
+                              DesignatorFactor(
+                                ElementAccessDesignator(
+                                  IdentifierDesignator(
+                                   gf
+                                  ) [IdentifierDesignator]
+                                  ArrayIndexer(
+                                    LeftExpression(
+                                      SingleTermExpression(
+                                        NoSign(
+                                        ) [NoSign]
+                                        SingleFactorTerm(
+                                          ConstantFactor(
+                                            IntConstantFactor(
+                                             3
+                                            ) [IntConstantFactor]
+                                          ) [ConstantFactor]
+                                        ) [SingleFactorTerm]
+                                      ) [SingleTermExpression]
+                                    ) [LeftExpression]
+                                  ) [ArrayIndexer]
+                                ) [ElementAccessDesignator]
+                              ) [DesignatorFactor]
+                            ) [SingleFactorTerm]
+                          ) [SingleTermExpression]
+                        ) [LeftExpression]
+                        NoPrintWidth(
+                        ) [NoPrintWidth]
+                      ) [PrintStatement]
+                    ) [MultipleStatements]
+                    DesignatorBasedStatement(
+                      AssignmentDesignatorStatement(
+                        AssignmentHeader(
+                          IdentifierDesignator(
+                           la
+                          ) [IdentifierDesignator]
+                        ) [AssignmentHeader]
+                        AssignmentFooter(
+                          AssignOperator(
+                          ) [AssignOperator]
+                          AssignmentExpression(
+                            SingleTermExpression(
+                              NoSign(
+                              ) [NoSign]
+                              SingleFactorTerm(
+                                DesignatorFactor(
+                                  IdentifierDesignator(
+                                   ga
+                                  ) [IdentifierDesignator]
+                                ) [DesignatorFactor]
+                              ) [SingleFactorTerm]
+                            ) [SingleTermExpression]
+                            RightMulOperator(
+                              MulAssignOperator(
+                              ) [MulAssignOperator]
+                            ) [RightMulOperator]
+                            LeftExpression(
+                              SingleTermExpression(
+                                NoSign(
+                                ) [NoSign]
+                                SingleFactorTerm(
+                                  ConstantFactor(
+                                    IntConstantFactor(
+                                     5
+                                    ) [IntConstantFactor]
+                                  ) [ConstantFactor]
+                                ) [SingleFactorTerm]
+                              ) [SingleTermExpression]
+                            ) [LeftExpression]
+                          ) [AssignmentExpression]
+                        ) [AssignmentFooter]
+                      ) [AssignmentDesignatorStatement]
+                    ) [DesignatorBasedStatement]
+                  ) [MultipleStatements]
+                  DesignatorBasedStatement(
+                    DecrementDesignatorStatement(
+                      IdentifierDesignator(
+                       la
+                      ) [IdentifierDesignator]
+                    ) [DecrementDesignatorStatement]
+                  ) [DesignatorBasedStatement]
+                ) [MultipleStatements]
+                DesignatorBasedStatement(
+                  AssignmentDesignatorStatement(
+                    AssignmentHeader(
+                      ElementAccessDesignator(
+                        IdentifierDesignator(
+                         lb
+                        ) [IdentifierDesignator]
+                        ArrayIndexer(
+                          LeftExpression(
+                            SingleTermExpression(
+                              NoSign(
+                              ) [NoSign]
+                              SingleFactorTerm(
+                                ConstantFactor(
+                                  IntConstantFactor(
+                                   2
+                                  ) [IntConstantFactor]
+                                ) [ConstantFactor]
+                              ) [SingleFactorTerm]
+                            ) [SingleTermExpression]
+                          ) [LeftExpression]
+                        ) [ArrayIndexer]
+                      ) [ElementAccessDesignator]
+                    ) [AssignmentHeader]
+                    AssignmentFooter(
+                      AssignOperator(
+                      ) [AssignOperator]
+                      AssignmentExpression(
+                        SingleTermExpression(
+                          NoSign(
+                          ) [NoSign]
+                          SingleFactorTerm(
+                            DesignatorFactor(
+                              IdentifierDesignator(
+                               la
+                              ) [IdentifierDesignator]
+                            ) [DesignatorFactor]
+                          ) [SingleFactorTerm]
+                        ) [SingleTermExpression]
+                        RightMulOperator(
+                          MulAssignOperator(
+                          ) [MulAssignOperator]
+                        ) [RightMulOperator]
+                        LeftExpression(
+                          MultipleTermsExpression(
+                            SingleTermExpression(
+                              MinusSign(
+                              ) [MinusSign]
+                              SingleFactorTerm(
+                                ConstantFactor(
+                                  IntConstantFactor(
+                                   4
+                                  ) [IntConstantFactor]
+                                ) [ConstantFactor]
+                              ) [SingleFactorTerm]
+                            ) [SingleTermExpression]
+                            AddOperator(
+                            ) [AddOperator]
+                            MultipleFactorsTerm(
+                              SingleFactorTerm(
+                                ConstantFactor(
+                                  IntConstantFactor(
+                                   6
+                                  ) [IntConstantFactor]
+                                ) [ConstantFactor]
+                              ) [SingleFactorTerm]
+                              MulOperator(
+                              ) [MulOperator]
+                              ConstantFactor(
+                                IntConstantFactor(
+                                 2
+                                ) [IntConstantFactor]
+                              ) [ConstantFactor]
+                            ) [MultipleFactorsTerm]
+                          ) [MultipleTermsExpression]
+                        ) [LeftExpression]
+                      ) [AssignmentExpression]
+                    ) [AssignmentFooter]
+                  ) [AssignmentDesignatorStatement]
+                ) [DesignatorBasedStatement]
+              ) [MultipleStatements]
+              DesignatorBasedStatement(
+                AssignmentDesignatorStatement(
+                  AssignmentHeader(
+                    IdentifierDesignator(
+                     lc
+                    ) [IdentifierDesignator]
+                  ) [AssignmentHeader]
+                  AssignmentFooter(
+                    AssignOperator(
+                    ) [AssignOperator]
+                    LeftExpression(
+                      SingleTermExpression(
+                        NoSign(
+                        ) [NoSign]
+                        SingleFactorTerm(
+                          DesignatorFactor(
+                            IdentifierDesignator(
+                             gc
+                            ) [IdentifierDesignator]
+                          ) [DesignatorFactor]
+                        ) [SingleFactorTerm]
+                      ) [SingleTermExpression]
+                    ) [LeftExpression]
+                  ) [AssignmentFooter]
+                ) [AssignmentDesignatorStatement]
+              ) [DesignatorBasedStatement]
+            ) [MultipleStatements]
+            DesignatorBasedStatement(
+              AssignmentDesignatorStatement(
+                AssignmentHeader(
+                  ElementAccessDesignator(
+                    IdentifierDesignator(
+                     ld
+                    ) [IdentifierDesignator]
+                    ArrayIndexer(
+                      LeftExpression(
+                        SingleTermExpression(
+                          NoSign(
+                          ) [NoSign]
+                          SingleFactorTerm(
+                            ConstantFactor(
+                              IntConstantFactor(
+                               1
+                              ) [IntConstantFactor]
+                            ) [ConstantFactor]
+                          ) [SingleFactorTerm]
+                        ) [SingleTermExpression]
+                      ) [LeftExpression]
+                    ) [ArrayIndexer]
+                  ) [ElementAccessDesignator]
+                ) [AssignmentHeader]
+                AssignmentFooter(
+                  AssignOperator(
+                  ) [AssignOperator]
+                  LeftExpression(
+                    SingleTermExpression(
+                      NoSign(
+                      ) [NoSign]
+                      SingleFactorTerm(
+                        ConstantFactor(
+                          CharConstantFactor(
+                           F
+                          ) [CharConstantFactor]
+                        ) [ConstantFactor]
+                      ) [SingleFactorTerm]
+                    ) [SingleTermExpression]
+                  ) [LeftExpression]
+                ) [AssignmentFooter]
+              ) [AssignmentDesignatorStatement]
+            ) [DesignatorBasedStatement]
+          ) [MultipleStatements]
+          DesignatorBasedStatement(
+            AssignmentDesignatorStatement(
+              AssignmentHeader(
+                IdentifierDesignator(
+                 le
+                ) [IdentifierDesignator]
+              ) [AssignmentHeader]
+              AssignmentFooter(
+                AssignOperator(
+                ) [AssignOperator]
+                LeftExpression(
+                  SingleTermExpression(
+                    NoSign(
+                    ) [NoSign]
+                    SingleFactorTerm(
+                      ConstantFactor(
+                        BoolConstantFactor(
+                         false
+                        ) [BoolConstantFactor]
+                      ) [ConstantFactor]
+                    ) [SingleFactorTerm]
+                  ) [SingleTermExpression]
+                ) [LeftExpression]
+              ) [AssignmentFooter]
+            ) [AssignmentDesignatorStatement]
+          ) [DesignatorBasedStatement]
+        ) [MultipleStatements]
+        DesignatorBasedStatement(
+          AssignmentDesignatorStatement(
+            AssignmentHeader(
+              ElementAccessDesignator(
+                IdentifierDesignator(
+                 lf
+                ) [IdentifierDesignator]
+                ArrayIndexer(
+                  LeftExpression(
+                    SingleTermExpression(
+                      NoSign(
+                      ) [NoSign]
+                      SingleFactorTerm(
+                        ConstantFactor(
+                          IntConstantFactor(
+                           2
+                          ) [IntConstantFactor]
+                        ) [ConstantFactor]
+                      ) [SingleFactorTerm]
+                    ) [SingleTermExpression]
+                  ) [LeftExpression]
+                ) [ArrayIndexer]
+              ) [ElementAccessDesignator]
+            ) [AssignmentHeader]
+            AssignmentFooter(
+              AssignOperator(
+              ) [AssignOperator]
+              LeftExpression(
+                SingleTermExpression(
+                  NoSign(
+                  ) [NoSign]
+                  SingleFactorTerm(
+                    DesignatorFactor(
+                      IdentifierDesignator(
+                       cd
+                      ) [IdentifierDesignator]
+                    ) [DesignatorFactor]
+                  ) [SingleFactorTerm]
+                ) [SingleTermExpression]
+              ) [LeftExpression]
+            ) [AssignmentFooter]
+          ) [AssignmentDesignatorStatement]
+        ) [DesignatorBasedStatement]
+      ) [MultipleStatements]
+    ) [MethodDeclaration]
+  ) [MultipleMethodDeclarations]
+) [Program]

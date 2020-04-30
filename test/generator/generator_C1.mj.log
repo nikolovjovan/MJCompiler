@@ -1,0 +1,1446 @@
+DEBUG - generator_C1.mj:7:1: LEXER: Found symbol: '#2' with value: 'program'
+DEBUG - generator_C1.mj:7:9: LEXER: Found symbol: '#55' with value: 'level_c_code_generation_1'
+DEBUG - generator_C1.mj:8:5: LEXER: Found symbol: '#4' with value: 'class'
+DEBUG - generator_C1.mj:8:11: LEXER: Found symbol: '#55' with value: 'TCalc'
+DEBUG - generator_C1.mj:8:17: LEXER: Found symbol: '#46' with value: '{'
+DEBUG - generator_C1.mj:9:9: LEXER: Found symbol: '#19' with value: 'protected'
+DEBUG - generator_C1.mj:9:19: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - generator_C1.mj:9:23: LEXER: Found symbol: '#55' with value: 'tax'
+DEBUG - generator_C1.mj:9:26: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - generator_C1.mj:10:9: LEXER: Found symbol: '#46' with value: '{'
+DEBUG - generator_C1.mj:11:13: LEXER: Found symbol: '#18' with value: 'public'
+DEBUG - generator_C1.mj:11:20: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - generator_C1.mj:11:24: LEXER: Found symbol: '#55' with value: 'calc'
+DEBUG - generator_C1.mj:11:28: LEXER: Found symbol: '#42' with value: '('
+DEBUG - generator_C1.mj:11:29: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - generator_C1.mj:11:33: LEXER: Found symbol: '#55' with value: 'cost'
+DEBUG - generator_C1.mj:11:37: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - generator_C1.mj:11:39: LEXER: Found symbol: '#46' with value: '{'
+DEBUG - generator_C1.mj:12:17: LEXER: Found symbol: '#12' with value: 'return'
+DEBUG - generator_C1.mj:12:24: LEXER: Found symbol: '#55' with value: 'cost'
+DEBUG - generator_C1.mj:12:29: LEXER: Found symbol: '#24' with value: '*'
+DEBUG - generator_C1.mj:12:31: LEXER: Found symbol: '#42' with value: '('
+DEBUG - generator_C1.mj:12:32: LEXER: Found symbol: '#52' with value: '1'
+DEBUG - generator_C1.mj:12:34: LEXER: Found symbol: '#22' with value: '+'
+DEBUG - generator_C1.mj:12:36: LEXER: Found symbol: '#55' with value: 'tax'
+DEBUG - generator_C1.mj:12:39: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - generator_C1.mj:12:40: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - generator_C1.mj:13:13: LEXER: Found symbol: '#47' with value: '}'
+DEBUG - generator_C1.mj:14:13: LEXER: Found symbol: '#18' with value: 'public'
+DEBUG - generator_C1.mj:14:20: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - generator_C1.mj:14:24: LEXER: Found symbol: '#55' with value: 'getTax'
+DEBUG - generator_C1.mj:14:30: LEXER: Found symbol: '#42' with value: '('
+DEBUG - generator_C1.mj:14:31: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - generator_C1.mj:14:33: LEXER: Found symbol: '#46' with value: '{'
+DEBUG - generator_C1.mj:14:35: LEXER: Found symbol: '#12' with value: 'return'
+DEBUG - generator_C1.mj:14:42: LEXER: Found symbol: '#55' with value: 'tax'
+DEBUG - generator_C1.mj:14:45: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - generator_C1.mj:14:47: LEXER: Found symbol: '#47' with value: '}'
+DEBUG - generator_C1.mj:15:13: LEXER: Found symbol: '#18' with value: 'public'
+DEBUG - generator_C1.mj:15:20: LEXER: Found symbol: '#13' with value: 'void'
+DEBUG - generator_C1.mj:15:25: LEXER: Found symbol: '#55' with value: 'setTax'
+DEBUG - generator_C1.mj:15:31: LEXER: Found symbol: '#42' with value: '('
+DEBUG - generator_C1.mj:15:32: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - generator_C1.mj:15:36: LEXER: Found symbol: '#55' with value: 'tax'
+DEBUG - generator_C1.mj:15:39: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - generator_C1.mj:15:41: LEXER: Found symbol: '#46' with value: '{'
+DEBUG - generator_C1.mj:15:43: LEXER: Found symbol: '#55' with value: 'this'
+DEBUG - generator_C1.mj:15:47: LEXER: Found symbol: '#51' with value: '.'
+DEBUG - generator_C1.mj:15:48: LEXER: Found symbol: '#55' with value: 'tax'
+DEBUG - generator_C1.mj:15:52: LEXER: Found symbol: '#21' with value: '='
+DEBUG - generator_C1.mj:15:54: LEXER: Found symbol: '#55' with value: 'tax'
+DEBUG - generator_C1.mj:15:57: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - generator_C1.mj:15:59: LEXER: Found symbol: '#47' with value: '}'
+DEBUG - generator_C1.mj:16:9: LEXER: Found symbol: '#47' with value: '}'
+DEBUG - generator_C1.mj:17:5: LEXER: Found symbol: '#47' with value: '}'
+DEBUG - generator_C1.mj:18:5: LEXER: Found symbol: '#4' with value: 'class'
+DEBUG - generator_C1.mj:18:11: LEXER: Found symbol: '#55' with value: 'ATCalc'
+DEBUG - generator_C1.mj:18:18: LEXER: Found symbol: '#15' with value: 'extends'
+DEBUG - generator_C1.mj:18:26: LEXER: Found symbol: '#55' with value: 'TCalc'
+DEBUG - generator_C1.mj:18:32: LEXER: Found symbol: '#46' with value: '{'
+DEBUG - generator_C1.mj:20:9: LEXER: Found symbol: '#19' with value: 'protected'
+DEBUG - generator_C1.mj:20:19: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - generator_C1.mj:20:23: LEXER: Found symbol: '#55' with value: 'a'
+DEBUG - generator_C1.mj:20:24: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - generator_C1.mj:21:9: LEXER: Found symbol: '#46' with value: '{'
+DEBUG - generator_C1.mj:23:13: LEXER: Found symbol: '#18' with value: 'public'
+DEBUG - generator_C1.mj:23:20: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - generator_C1.mj:23:24: LEXER: Found symbol: '#55' with value: 'calc'
+DEBUG - generator_C1.mj:23:28: LEXER: Found symbol: '#42' with value: '('
+DEBUG - generator_C1.mj:23:29: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - generator_C1.mj:23:33: LEXER: Found symbol: '#55' with value: 'c'
+DEBUG - generator_C1.mj:23:34: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - generator_C1.mj:23:36: LEXER: Found symbol: '#46' with value: '{'
+DEBUG - generator_C1.mj:24:17: LEXER: Found symbol: '#12' with value: 'return'
+DEBUG - generator_C1.mj:24:24: LEXER: Found symbol: '#42' with value: '('
+DEBUG - generator_C1.mj:24:25: LEXER: Found symbol: '#55' with value: 'c'
+DEBUG - generator_C1.mj:24:27: LEXER: Found symbol: '#24' with value: '*'
+DEBUG - generator_C1.mj:24:29: LEXER: Found symbol: '#55' with value: 'a'
+DEBUG - generator_C1.mj:24:30: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - generator_C1.mj:24:32: LEXER: Found symbol: '#24' with value: '*'
+DEBUG - generator_C1.mj:24:34: LEXER: Found symbol: '#42' with value: '('
+DEBUG - generator_C1.mj:24:35: LEXER: Found symbol: '#52' with value: '1'
+DEBUG - generator_C1.mj:24:37: LEXER: Found symbol: '#24' with value: '*'
+DEBUG - generator_C1.mj:24:39: LEXER: Found symbol: '#55' with value: 'tax'
+DEBUG - generator_C1.mj:24:42: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - generator_C1.mj:24:43: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - generator_C1.mj:25:13: LEXER: Found symbol: '#47' with value: '}'
+DEBUG - generator_C1.mj:26:13: LEXER: Found symbol: '#18' with value: 'public'
+DEBUG - generator_C1.mj:26:20: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - generator_C1.mj:26:24: LEXER: Found symbol: '#55' with value: 'getAmortization'
+DEBUG - generator_C1.mj:26:39: LEXER: Found symbol: '#42' with value: '('
+DEBUG - generator_C1.mj:26:40: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - generator_C1.mj:26:42: LEXER: Found symbol: '#46' with value: '{'
+DEBUG - generator_C1.mj:26:44: LEXER: Found symbol: '#12' with value: 'return'
+DEBUG - generator_C1.mj:26:51: LEXER: Found symbol: '#55' with value: 'a'
+DEBUG - generator_C1.mj:26:52: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - generator_C1.mj:26:54: LEXER: Found symbol: '#47' with value: '}'
+DEBUG - generator_C1.mj:27:13: LEXER: Found symbol: '#18' with value: 'public'
+DEBUG - generator_C1.mj:27:20: LEXER: Found symbol: '#13' with value: 'void'
+DEBUG - generator_C1.mj:27:25: LEXER: Found symbol: '#55' with value: 'setAmortization'
+DEBUG - generator_C1.mj:27:40: LEXER: Found symbol: '#42' with value: '('
+DEBUG - generator_C1.mj:27:41: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - generator_C1.mj:27:45: LEXER: Found symbol: '#55' with value: 'a'
+DEBUG - generator_C1.mj:27:46: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - generator_C1.mj:27:48: LEXER: Found symbol: '#46' with value: '{'
+DEBUG - generator_C1.mj:27:50: LEXER: Found symbol: '#55' with value: 'this'
+DEBUG - generator_C1.mj:27:54: LEXER: Found symbol: '#51' with value: '.'
+DEBUG - generator_C1.mj:27:55: LEXER: Found symbol: '#55' with value: 'a'
+DEBUG - generator_C1.mj:27:57: LEXER: Found symbol: '#21' with value: '='
+DEBUG - generator_C1.mj:27:59: LEXER: Found symbol: '#55' with value: 'a'
+DEBUG - generator_C1.mj:27:60: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - generator_C1.mj:27:62: LEXER: Found symbol: '#47' with value: '}'
+DEBUG - generator_C1.mj:28:9: LEXER: Found symbol: '#47' with value: '}'
+DEBUG - generator_C1.mj:29:5: LEXER: Found symbol: '#47' with value: '}'
+DEBUG - generator_C1.mj:30:1: LEXER: Found symbol: '#46' with value: '{'
+DEBUG - generator_C1.mj:31:5: LEXER: Found symbol: '#13' with value: 'void'
+DEBUG - generator_C1.mj:31:10: LEXER: Found symbol: '#55' with value: 'main'
+DEBUG - generator_C1.mj:31:14: LEXER: Found symbol: '#42' with value: '('
+DEBUG - generator_C1.mj:31:15: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - generator_C1.mj:32:9: LEXER: Found symbol: '#55' with value: 'TCalc'
+DEBUG - generator_C1.mj:32:15: LEXER: Found symbol: '#55' with value: 'c1'
+DEBUG - generator_C1.mj:32:17: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - generator_C1.mj:33:9: LEXER: Found symbol: '#55' with value: 'ATCalc'
+DEBUG - generator_C1.mj:33:16: LEXER: Found symbol: '#55' with value: 'c2'
+DEBUG - generator_C1.mj:33:18: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - generator_C1.mj:34:9: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - generator_C1.mj:34:13: LEXER: Found symbol: '#55' with value: 'cost'
+DEBUG - generator_C1.mj:34:17: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - generator_C1.mj:35:5: LEXER: Found symbol: '#46' with value: '{'
+DEBUG - generator_C1.mj:36:9: LEXER: Found symbol: '#55' with value: 'cost'
+DEBUG - generator_C1.mj:36:14: LEXER: Found symbol: '#21' with value: '='
+DEBUG - generator_C1.mj:36:16: LEXER: Found symbol: '#52' with value: '1000'
+DEBUG - generator_C1.mj:36:20: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - generator_C1.mj:37:9: LEXER: Found symbol: '#55' with value: 'c1'
+DEBUG - generator_C1.mj:37:12: LEXER: Found symbol: '#21' with value: '='
+DEBUG - generator_C1.mj:37:14: LEXER: Found symbol: '#9' with value: 'new'
+DEBUG - generator_C1.mj:37:18: LEXER: Found symbol: '#55' with value: 'TCalc'
+DEBUG - generator_C1.mj:37:23: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - generator_C1.mj:38:9: LEXER: Found symbol: '#55' with value: 'c1'
+DEBUG - generator_C1.mj:38:11: LEXER: Found symbol: '#51' with value: '.'
+DEBUG - generator_C1.mj:38:12: LEXER: Found symbol: '#55' with value: 'setTax'
+DEBUG - generator_C1.mj:38:18: LEXER: Found symbol: '#42' with value: '('
+DEBUG - generator_C1.mj:38:19: LEXER: Found symbol: '#52' with value: '10'
+DEBUG - generator_C1.mj:38:21: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - generator_C1.mj:38:22: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - generator_C1.mj:39:9: LEXER: Found symbol: '#55' with value: 'c2'
+DEBUG - generator_C1.mj:39:12: LEXER: Found symbol: '#21' with value: '='
+DEBUG - generator_C1.mj:39:14: LEXER: Found symbol: '#9' with value: 'new'
+DEBUG - generator_C1.mj:39:18: LEXER: Found symbol: '#55' with value: 'ATCalc'
+DEBUG - generator_C1.mj:39:24: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - generator_C1.mj:40:9: LEXER: Found symbol: '#55' with value: 'c2'
+DEBUG - generator_C1.mj:40:11: LEXER: Found symbol: '#51' with value: '.'
+DEBUG - generator_C1.mj:40:12: LEXER: Found symbol: '#55' with value: 'setTax'
+DEBUG - generator_C1.mj:40:18: LEXER: Found symbol: '#42' with value: '('
+DEBUG - generator_C1.mj:40:19: LEXER: Found symbol: '#52' with value: '18'
+DEBUG - generator_C1.mj:40:21: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - generator_C1.mj:40:22: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - generator_C1.mj:41:9: LEXER: Found symbol: '#55' with value: 'c2'
+DEBUG - generator_C1.mj:41:11: LEXER: Found symbol: '#51' with value: '.'
+DEBUG - generator_C1.mj:41:12: LEXER: Found symbol: '#55' with value: 'setAmortization'
+DEBUG - generator_C1.mj:41:27: LEXER: Found symbol: '#42' with value: '('
+DEBUG - generator_C1.mj:41:28: LEXER: Found symbol: '#52' with value: '2'
+DEBUG - generator_C1.mj:41:29: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - generator_C1.mj:41:30: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - generator_C1.mj:42:9: LEXER: Found symbol: '#10' with value: 'print'
+DEBUG - generator_C1.mj:42:14: LEXER: Found symbol: '#42' with value: '('
+DEBUG - generator_C1.mj:42:15: LEXER: Found symbol: '#55' with value: 'c1'
+DEBUG - generator_C1.mj:42:17: LEXER: Found symbol: '#51' with value: '.'
+DEBUG - generator_C1.mj:42:18: LEXER: Found symbol: '#55' with value: 'calc'
+DEBUG - generator_C1.mj:42:22: LEXER: Found symbol: '#42' with value: '('
+DEBUG - generator_C1.mj:42:23: LEXER: Found symbol: '#55' with value: 'cost'
+DEBUG - generator_C1.mj:42:27: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - generator_C1.mj:42:28: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - generator_C1.mj:42:29: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - generator_C1.mj:43:9: LEXER: Found symbol: '#10' with value: 'print'
+DEBUG - generator_C1.mj:43:14: LEXER: Found symbol: '#42' with value: '('
+DEBUG - generator_C1.mj:43:15: LEXER: Found symbol: '#55' with value: 'eol'
+DEBUG - generator_C1.mj:43:18: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - generator_C1.mj:43:19: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - generator_C1.mj:44:9: LEXER: Found symbol: '#10' with value: 'print'
+DEBUG - generator_C1.mj:44:14: LEXER: Found symbol: '#42' with value: '('
+DEBUG - generator_C1.mj:44:15: LEXER: Found symbol: '#55' with value: 'c2'
+DEBUG - generator_C1.mj:44:17: LEXER: Found symbol: '#51' with value: '.'
+DEBUG - generator_C1.mj:44:18: LEXER: Found symbol: '#55' with value: 'calc'
+DEBUG - generator_C1.mj:44:22: LEXER: Found symbol: '#42' with value: '('
+DEBUG - generator_C1.mj:44:23: LEXER: Found symbol: '#55' with value: 'cost'
+DEBUG - generator_C1.mj:44:27: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - generator_C1.mj:44:28: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - generator_C1.mj:44:29: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - generator_C1.mj:45:5: LEXER: Found symbol: '#47' with value: '}'
+DEBUG - generator_C1.mj:46:1: LEXER: Found symbol: '#47' with value: '}'
+DEBUG - generator_C1.mj:46:2: LEXER: Found symbol: '#0' with value: ''
+DEBUG - generator_C1.mj:46:2: LEXER: Found symbol: '#0' with value: ''
+INFO  - Abstract syntax tree: Program(
+  ProgramHeader(
+   level_c_code_generation_1
+  ) [ProgramHeader]
+  MultipleProgramDeclarations(
+    MultipleProgramDeclarations(
+      NoProgramDeclarations(
+      ) [NoProgramDeclarations]
+      ClassProgramDeclaration(
+        ClassDeclaration(
+          ClassHeader(
+           TCalc
+            NoClassBaseType(
+            ) [NoClassBaseType]
+          ) [ClassHeader]
+          MultipleClassVarDeclarations(
+            NoClassVarDeclarations(
+            ) [NoClassVarDeclarations]
+            ClassVarDeclaration(
+              ProtectedAccessModifier(
+              ) [ProtectedAccessModifier]
+              Type(
+               int
+              ) [Type]
+              SingleClassVariable(
+                ClassVariable(
+                 tax
+                  NoArrayBrackets(
+                  ) [NoArrayBrackets]
+                ) [ClassVariable]
+              ) [SingleClassVariable]
+            ) [ClassVarDeclaration]
+          ) [MultipleClassVarDeclarations]
+          ClassMethodDeclarations(
+            MultipleClassMethodDeclarations(
+              MultipleClassMethodDeclarations(
+                SingleClassMethodDeclaration(
+                  ClassMethodDeclaration(
+                    PublicAccessModifier(
+                    ) [PublicAccessModifier]
+                    MethodDeclaration(
+                      MethodHeader(
+                        ReturnType(
+                          Type(
+                           int
+                          ) [Type]
+                        ) [ReturnType]
+                       calc
+                      ) [MethodHeader]
+                      FormalParameters(
+                        SingleFormalParameter(
+                          FormalParameter(
+                            Type(
+                             int
+                            ) [Type]
+                           cost
+                            NoArrayBrackets(
+                            ) [NoArrayBrackets]
+                          ) [FormalParameter]
+                        ) [SingleFormalParameter]
+                      ) [FormalParameters]
+                      NoLocalVarDeclarations(
+                      ) [NoLocalVarDeclarations]
+                      MethodStatementListStart(
+                      ) [MethodStatementListStart]
+                      MultipleStatements(
+                        NoStatements(
+                        ) [NoStatements]
+                        ReturnStatement(
+                          ReturnValue(
+                            LeftExpression(
+                              SingleTermExpression(
+                                NoSign(
+                                ) [NoSign]
+                                MultipleFactorsTerm(
+                                  SingleFactorTerm(
+                                    DesignatorFactor(
+                                      IdentifierDesignator(
+                                       cost
+                                      ) [IdentifierDesignator]
+                                    ) [DesignatorFactor]
+                                  ) [SingleFactorTerm]
+                                  MulOperator(
+                                  ) [MulOperator]
+                                  InnerExpressionFactor(
+                                    LeftExpression(
+                                      MultipleTermsExpression(
+                                        SingleTermExpression(
+                                          NoSign(
+                                          ) [NoSign]
+                                          SingleFactorTerm(
+                                            ConstantFactor(
+                                              IntConstantFactor(
+                                               1
+                                              ) [IntConstantFactor]
+                                            ) [ConstantFactor]
+                                          ) [SingleFactorTerm]
+                                        ) [SingleTermExpression]
+                                        AddOperator(
+                                        ) [AddOperator]
+                                        SingleFactorTerm(
+                                          DesignatorFactor(
+                                            IdentifierDesignator(
+                                             tax
+                                            ) [IdentifierDesignator]
+                                          ) [DesignatorFactor]
+                                        ) [SingleFactorTerm]
+                                      ) [MultipleTermsExpression]
+                                    ) [LeftExpression]
+                                  ) [InnerExpressionFactor]
+                                ) [MultipleFactorsTerm]
+                              ) [SingleTermExpression]
+                            ) [LeftExpression]
+                          ) [ReturnValue]
+                        ) [ReturnStatement]
+                      ) [MultipleStatements]
+                    ) [MethodDeclaration]
+                  ) [ClassMethodDeclaration]
+                ) [SingleClassMethodDeclaration]
+                ClassMethodDeclaration(
+                  PublicAccessModifier(
+                  ) [PublicAccessModifier]
+                  MethodDeclaration(
+                    MethodHeader(
+                      ReturnType(
+                        Type(
+                         int
+                        ) [Type]
+                      ) [ReturnType]
+                     getTax
+                    ) [MethodHeader]
+                    NoFormalParameters(
+                    ) [NoFormalParameters]
+                    NoLocalVarDeclarations(
+                    ) [NoLocalVarDeclarations]
+                    MethodStatementListStart(
+                    ) [MethodStatementListStart]
+                    MultipleStatements(
+                      NoStatements(
+                      ) [NoStatements]
+                      ReturnStatement(
+                        ReturnValue(
+                          LeftExpression(
+                            SingleTermExpression(
+                              NoSign(
+                              ) [NoSign]
+                              SingleFactorTerm(
+                                DesignatorFactor(
+                                  IdentifierDesignator(
+                                   tax
+                                  ) [IdentifierDesignator]
+                                ) [DesignatorFactor]
+                              ) [SingleFactorTerm]
+                            ) [SingleTermExpression]
+                          ) [LeftExpression]
+                        ) [ReturnValue]
+                      ) [ReturnStatement]
+                    ) [MultipleStatements]
+                  ) [MethodDeclaration]
+                ) [ClassMethodDeclaration]
+              ) [MultipleClassMethodDeclarations]
+              ClassMethodDeclaration(
+                PublicAccessModifier(
+                ) [PublicAccessModifier]
+                MethodDeclaration(
+                  MethodHeader(
+                    ReturnVoid(
+                    ) [ReturnVoid]
+                   setTax
+                  ) [MethodHeader]
+                  FormalParameters(
+                    SingleFormalParameter(
+                      FormalParameter(
+                        Type(
+                         int
+                        ) [Type]
+                       tax
+                        NoArrayBrackets(
+                        ) [NoArrayBrackets]
+                      ) [FormalParameter]
+                    ) [SingleFormalParameter]
+                  ) [FormalParameters]
+                  NoLocalVarDeclarations(
+                  ) [NoLocalVarDeclarations]
+                  MethodStatementListStart(
+                  ) [MethodStatementListStart]
+                  MultipleStatements(
+                    NoStatements(
+                    ) [NoStatements]
+                    DesignatorBasedStatement(
+                      AssignmentDesignatorStatement(
+                        AssignmentHeader(
+                          MemberAccessDesignator(
+                            IdentifierDesignator(
+                             this
+                            ) [IdentifierDesignator]
+                           tax
+                          ) [MemberAccessDesignator]
+                        ) [AssignmentHeader]
+                        AssignmentFooter(
+                          AssignOperator(
+                          ) [AssignOperator]
+                          LeftExpression(
+                            SingleTermExpression(
+                              NoSign(
+                              ) [NoSign]
+                              SingleFactorTerm(
+                                DesignatorFactor(
+                                  IdentifierDesignator(
+                                   tax
+                                  ) [IdentifierDesignator]
+                                ) [DesignatorFactor]
+                              ) [SingleFactorTerm]
+                            ) [SingleTermExpression]
+                          ) [LeftExpression]
+                        ) [AssignmentFooter]
+                      ) [AssignmentDesignatorStatement]
+                    ) [DesignatorBasedStatement]
+                  ) [MultipleStatements]
+                ) [MethodDeclaration]
+              ) [ClassMethodDeclaration]
+            ) [MultipleClassMethodDeclarations]
+          ) [ClassMethodDeclarations]
+        ) [ClassDeclaration]
+      ) [ClassProgramDeclaration]
+    ) [MultipleProgramDeclarations]
+    ClassProgramDeclaration(
+      ClassDeclaration(
+        ClassHeader(
+         ATCalc
+          ClassBaseType(
+            Type(
+             TCalc
+            ) [Type]
+          ) [ClassBaseType]
+        ) [ClassHeader]
+        MultipleClassVarDeclarations(
+          NoClassVarDeclarations(
+          ) [NoClassVarDeclarations]
+          ClassVarDeclaration(
+            ProtectedAccessModifier(
+            ) [ProtectedAccessModifier]
+            Type(
+             int
+            ) [Type]
+            SingleClassVariable(
+              ClassVariable(
+               a
+                NoArrayBrackets(
+                ) [NoArrayBrackets]
+              ) [ClassVariable]
+            ) [SingleClassVariable]
+          ) [ClassVarDeclaration]
+        ) [MultipleClassVarDeclarations]
+        ClassMethodDeclarations(
+          MultipleClassMethodDeclarations(
+            MultipleClassMethodDeclarations(
+              SingleClassMethodDeclaration(
+                ClassMethodDeclaration(
+                  PublicAccessModifier(
+                  ) [PublicAccessModifier]
+                  MethodDeclaration(
+                    MethodHeader(
+                      ReturnType(
+                        Type(
+                         int
+                        ) [Type]
+                      ) [ReturnType]
+                     calc
+                    ) [MethodHeader]
+                    FormalParameters(
+                      SingleFormalParameter(
+                        FormalParameter(
+                          Type(
+                           int
+                          ) [Type]
+                         c
+                          NoArrayBrackets(
+                          ) [NoArrayBrackets]
+                        ) [FormalParameter]
+                      ) [SingleFormalParameter]
+                    ) [FormalParameters]
+                    NoLocalVarDeclarations(
+                    ) [NoLocalVarDeclarations]
+                    MethodStatementListStart(
+                    ) [MethodStatementListStart]
+                    MultipleStatements(
+                      NoStatements(
+                      ) [NoStatements]
+                      ReturnStatement(
+                        ReturnValue(
+                          LeftExpression(
+                            SingleTermExpression(
+                              NoSign(
+                              ) [NoSign]
+                              MultipleFactorsTerm(
+                                SingleFactorTerm(
+                                  InnerExpressionFactor(
+                                    LeftExpression(
+                                      SingleTermExpression(
+                                        NoSign(
+                                        ) [NoSign]
+                                        MultipleFactorsTerm(
+                                          SingleFactorTerm(
+                                            DesignatorFactor(
+                                              IdentifierDesignator(
+                                               c
+                                              ) [IdentifierDesignator]
+                                            ) [DesignatorFactor]
+                                          ) [SingleFactorTerm]
+                                          MulOperator(
+                                          ) [MulOperator]
+                                          DesignatorFactor(
+                                            IdentifierDesignator(
+                                             a
+                                            ) [IdentifierDesignator]
+                                          ) [DesignatorFactor]
+                                        ) [MultipleFactorsTerm]
+                                      ) [SingleTermExpression]
+                                    ) [LeftExpression]
+                                  ) [InnerExpressionFactor]
+                                ) [SingleFactorTerm]
+                                MulOperator(
+                                ) [MulOperator]
+                                InnerExpressionFactor(
+                                  LeftExpression(
+                                    SingleTermExpression(
+                                      NoSign(
+                                      ) [NoSign]
+                                      MultipleFactorsTerm(
+                                        SingleFactorTerm(
+                                          ConstantFactor(
+                                            IntConstantFactor(
+                                             1
+                                            ) [IntConstantFactor]
+                                          ) [ConstantFactor]
+                                        ) [SingleFactorTerm]
+                                        MulOperator(
+                                        ) [MulOperator]
+                                        DesignatorFactor(
+                                          IdentifierDesignator(
+                                           tax
+                                          ) [IdentifierDesignator]
+                                        ) [DesignatorFactor]
+                                      ) [MultipleFactorsTerm]
+                                    ) [SingleTermExpression]
+                                  ) [LeftExpression]
+                                ) [InnerExpressionFactor]
+                              ) [MultipleFactorsTerm]
+                            ) [SingleTermExpression]
+                          ) [LeftExpression]
+                        ) [ReturnValue]
+                      ) [ReturnStatement]
+                    ) [MultipleStatements]
+                  ) [MethodDeclaration]
+                ) [ClassMethodDeclaration]
+              ) [SingleClassMethodDeclaration]
+              ClassMethodDeclaration(
+                PublicAccessModifier(
+                ) [PublicAccessModifier]
+                MethodDeclaration(
+                  MethodHeader(
+                    ReturnType(
+                      Type(
+                       int
+                      ) [Type]
+                    ) [ReturnType]
+                   getAmortization
+                  ) [MethodHeader]
+                  NoFormalParameters(
+                  ) [NoFormalParameters]
+                  NoLocalVarDeclarations(
+                  ) [NoLocalVarDeclarations]
+                  MethodStatementListStart(
+                  ) [MethodStatementListStart]
+                  MultipleStatements(
+                    NoStatements(
+                    ) [NoStatements]
+                    ReturnStatement(
+                      ReturnValue(
+                        LeftExpression(
+                          SingleTermExpression(
+                            NoSign(
+                            ) [NoSign]
+                            SingleFactorTerm(
+                              DesignatorFactor(
+                                IdentifierDesignator(
+                                 a
+                                ) [IdentifierDesignator]
+                              ) [DesignatorFactor]
+                            ) [SingleFactorTerm]
+                          ) [SingleTermExpression]
+                        ) [LeftExpression]
+                      ) [ReturnValue]
+                    ) [ReturnStatement]
+                  ) [MultipleStatements]
+                ) [MethodDeclaration]
+              ) [ClassMethodDeclaration]
+            ) [MultipleClassMethodDeclarations]
+            ClassMethodDeclaration(
+              PublicAccessModifier(
+              ) [PublicAccessModifier]
+              MethodDeclaration(
+                MethodHeader(
+                  ReturnVoid(
+                  ) [ReturnVoid]
+                 setAmortization
+                ) [MethodHeader]
+                FormalParameters(
+                  SingleFormalParameter(
+                    FormalParameter(
+                      Type(
+                       int
+                      ) [Type]
+                     a
+                      NoArrayBrackets(
+                      ) [NoArrayBrackets]
+                    ) [FormalParameter]
+                  ) [SingleFormalParameter]
+                ) [FormalParameters]
+                NoLocalVarDeclarations(
+                ) [NoLocalVarDeclarations]
+                MethodStatementListStart(
+                ) [MethodStatementListStart]
+                MultipleStatements(
+                  NoStatements(
+                  ) [NoStatements]
+                  DesignatorBasedStatement(
+                    AssignmentDesignatorStatement(
+                      AssignmentHeader(
+                        MemberAccessDesignator(
+                          IdentifierDesignator(
+                           this
+                          ) [IdentifierDesignator]
+                         a
+                        ) [MemberAccessDesignator]
+                      ) [AssignmentHeader]
+                      AssignmentFooter(
+                        AssignOperator(
+                        ) [AssignOperator]
+                        LeftExpression(
+                          SingleTermExpression(
+                            NoSign(
+                            ) [NoSign]
+                            SingleFactorTerm(
+                              DesignatorFactor(
+                                IdentifierDesignator(
+                                 a
+                                ) [IdentifierDesignator]
+                              ) [DesignatorFactor]
+                            ) [SingleFactorTerm]
+                          ) [SingleTermExpression]
+                        ) [LeftExpression]
+                      ) [AssignmentFooter]
+                    ) [AssignmentDesignatorStatement]
+                  ) [DesignatorBasedStatement]
+                ) [MultipleStatements]
+              ) [MethodDeclaration]
+            ) [ClassMethodDeclaration]
+          ) [MultipleClassMethodDeclarations]
+        ) [ClassMethodDeclarations]
+      ) [ClassDeclaration]
+    ) [ClassProgramDeclaration]
+  ) [MultipleProgramDeclarations]
+  MultipleMethodDeclarations(
+    NoMethodDeclarations(
+    ) [NoMethodDeclarations]
+    MethodDeclaration(
+      MethodHeader(
+        ReturnVoid(
+        ) [ReturnVoid]
+       main
+      ) [MethodHeader]
+      NoFormalParameters(
+      ) [NoFormalParameters]
+      MultipleLocalVarDeclarations(
+        MultipleLocalVarDeclarations(
+          MultipleLocalVarDeclarations(
+            NoLocalVarDeclarations(
+            ) [NoLocalVarDeclarations]
+            LocalVarDeclaration(
+              Type(
+               TCalc
+              ) [Type]
+              SingleLocalVariable(
+                LocalVariable(
+                 c1
+                  NoArrayBrackets(
+                  ) [NoArrayBrackets]
+                ) [LocalVariable]
+              ) [SingleLocalVariable]
+            ) [LocalVarDeclaration]
+          ) [MultipleLocalVarDeclarations]
+          LocalVarDeclaration(
+            Type(
+             ATCalc
+            ) [Type]
+            SingleLocalVariable(
+              LocalVariable(
+               c2
+                NoArrayBrackets(
+                ) [NoArrayBrackets]
+              ) [LocalVariable]
+            ) [SingleLocalVariable]
+          ) [LocalVarDeclaration]
+        ) [MultipleLocalVarDeclarations]
+        LocalVarDeclaration(
+          Type(
+           int
+          ) [Type]
+          SingleLocalVariable(
+            LocalVariable(
+             cost
+              NoArrayBrackets(
+              ) [NoArrayBrackets]
+            ) [LocalVariable]
+          ) [SingleLocalVariable]
+        ) [LocalVarDeclaration]
+      ) [MultipleLocalVarDeclarations]
+      MethodStatementListStart(
+      ) [MethodStatementListStart]
+      MultipleStatements(
+        MultipleStatements(
+          MultipleStatements(
+            MultipleStatements(
+              MultipleStatements(
+                MultipleStatements(
+                  MultipleStatements(
+                    MultipleStatements(
+                      MultipleStatements(
+                        NoStatements(
+                        ) [NoStatements]
+                        DesignatorBasedStatement(
+                          AssignmentDesignatorStatement(
+                            AssignmentHeader(
+                              IdentifierDesignator(
+                               cost
+                              ) [IdentifierDesignator]
+                            ) [AssignmentHeader]
+                            AssignmentFooter(
+                              AssignOperator(
+                              ) [AssignOperator]
+                              LeftExpression(
+                                SingleTermExpression(
+                                  NoSign(
+                                  ) [NoSign]
+                                  SingleFactorTerm(
+                                    ConstantFactor(
+                                      IntConstantFactor(
+                                       1000
+                                      ) [IntConstantFactor]
+                                    ) [ConstantFactor]
+                                  ) [SingleFactorTerm]
+                                ) [SingleTermExpression]
+                              ) [LeftExpression]
+                            ) [AssignmentFooter]
+                          ) [AssignmentDesignatorStatement]
+                        ) [DesignatorBasedStatement]
+                      ) [MultipleStatements]
+                      DesignatorBasedStatement(
+                        AssignmentDesignatorStatement(
+                          AssignmentHeader(
+                            IdentifierDesignator(
+                             c1
+                            ) [IdentifierDesignator]
+                          ) [AssignmentHeader]
+                          AssignmentFooter(
+                            AssignOperator(
+                            ) [AssignOperator]
+                            LeftExpression(
+                              SingleTermExpression(
+                                NoSign(
+                                ) [NoSign]
+                                SingleFactorTerm(
+                                  AllocatorFactor(
+                                    Type(
+                                     TCalc
+                                    ) [Type]
+                                    NoArrayIndexer(
+                                    ) [NoArrayIndexer]
+                                  ) [AllocatorFactor]
+                                ) [SingleFactorTerm]
+                              ) [SingleTermExpression]
+                            ) [LeftExpression]
+                          ) [AssignmentFooter]
+                        ) [AssignmentDesignatorStatement]
+                      ) [DesignatorBasedStatement]
+                    ) [MultipleStatements]
+                    DesignatorBasedStatement(
+                      MethodCallDesignatorStatement(
+                        MethodCall(
+                          MethodCallHeader(
+                            MemberAccessDesignator(
+                              IdentifierDesignator(
+                               c1
+                              ) [IdentifierDesignator]
+                             setTax
+                            ) [MemberAccessDesignator]
+                          ) [MethodCallHeader]
+                          ActualParameters(
+                            SingleActualParameter(
+                              ActualParameter(
+                                LeftExpression(
+                                  SingleTermExpression(
+                                    NoSign(
+                                    ) [NoSign]
+                                    SingleFactorTerm(
+                                      ConstantFactor(
+                                        IntConstantFactor(
+                                         10
+                                        ) [IntConstantFactor]
+                                      ) [ConstantFactor]
+                                    ) [SingleFactorTerm]
+                                  ) [SingleTermExpression]
+                                ) [LeftExpression]
+                              ) [ActualParameter]
+                            ) [SingleActualParameter]
+                          ) [ActualParameters]
+                        ) [MethodCall]
+                      ) [MethodCallDesignatorStatement]
+                    ) [DesignatorBasedStatement]
+                  ) [MultipleStatements]
+                  DesignatorBasedStatement(
+                    AssignmentDesignatorStatement(
+                      AssignmentHeader(
+                        IdentifierDesignator(
+                         c2
+                        ) [IdentifierDesignator]
+                      ) [AssignmentHeader]
+                      AssignmentFooter(
+                        AssignOperator(
+                        ) [AssignOperator]
+                        LeftExpression(
+                          SingleTermExpression(
+                            NoSign(
+                            ) [NoSign]
+                            SingleFactorTerm(
+                              AllocatorFactor(
+                                Type(
+                                 ATCalc
+                                ) [Type]
+                                NoArrayIndexer(
+                                ) [NoArrayIndexer]
+                              ) [AllocatorFactor]
+                            ) [SingleFactorTerm]
+                          ) [SingleTermExpression]
+                        ) [LeftExpression]
+                      ) [AssignmentFooter]
+                    ) [AssignmentDesignatorStatement]
+                  ) [DesignatorBasedStatement]
+                ) [MultipleStatements]
+                DesignatorBasedStatement(
+                  MethodCallDesignatorStatement(
+                    MethodCall(
+                      MethodCallHeader(
+                        MemberAccessDesignator(
+                          IdentifierDesignator(
+                           c2
+                          ) [IdentifierDesignator]
+                         setTax
+                        ) [MemberAccessDesignator]
+                      ) [MethodCallHeader]
+                      ActualParameters(
+                        SingleActualParameter(
+                          ActualParameter(
+                            LeftExpression(
+                              SingleTermExpression(
+                                NoSign(
+                                ) [NoSign]
+                                SingleFactorTerm(
+                                  ConstantFactor(
+                                    IntConstantFactor(
+                                     18
+                                    ) [IntConstantFactor]
+                                  ) [ConstantFactor]
+                                ) [SingleFactorTerm]
+                              ) [SingleTermExpression]
+                            ) [LeftExpression]
+                          ) [ActualParameter]
+                        ) [SingleActualParameter]
+                      ) [ActualParameters]
+                    ) [MethodCall]
+                  ) [MethodCallDesignatorStatement]
+                ) [DesignatorBasedStatement]
+              ) [MultipleStatements]
+              DesignatorBasedStatement(
+                MethodCallDesignatorStatement(
+                  MethodCall(
+                    MethodCallHeader(
+                      MemberAccessDesignator(
+                        IdentifierDesignator(
+                         c2
+                        ) [IdentifierDesignator]
+                       setAmortization
+                      ) [MemberAccessDesignator]
+                    ) [MethodCallHeader]
+                    ActualParameters(
+                      SingleActualParameter(
+                        ActualParameter(
+                          LeftExpression(
+                            SingleTermExpression(
+                              NoSign(
+                              ) [NoSign]
+                              SingleFactorTerm(
+                                ConstantFactor(
+                                  IntConstantFactor(
+                                   2
+                                  ) [IntConstantFactor]
+                                ) [ConstantFactor]
+                              ) [SingleFactorTerm]
+                            ) [SingleTermExpression]
+                          ) [LeftExpression]
+                        ) [ActualParameter]
+                      ) [SingleActualParameter]
+                    ) [ActualParameters]
+                  ) [MethodCall]
+                ) [MethodCallDesignatorStatement]
+              ) [DesignatorBasedStatement]
+            ) [MultipleStatements]
+            PrintStatement(
+              LeftExpression(
+                SingleTermExpression(
+                  NoSign(
+                  ) [NoSign]
+                  SingleFactorTerm(
+                    MethodCallFactor(
+                      MethodCall(
+                        MethodCallHeader(
+                          MemberAccessDesignator(
+                            IdentifierDesignator(
+                             c1
+                            ) [IdentifierDesignator]
+                           calc
+                          ) [MemberAccessDesignator]
+                        ) [MethodCallHeader]
+                        ActualParameters(
+                          SingleActualParameter(
+                            ActualParameter(
+                              LeftExpression(
+                                SingleTermExpression(
+                                  NoSign(
+                                  ) [NoSign]
+                                  SingleFactorTerm(
+                                    DesignatorFactor(
+                                      IdentifierDesignator(
+                                       cost
+                                      ) [IdentifierDesignator]
+                                    ) [DesignatorFactor]
+                                  ) [SingleFactorTerm]
+                                ) [SingleTermExpression]
+                              ) [LeftExpression]
+                            ) [ActualParameter]
+                          ) [SingleActualParameter]
+                        ) [ActualParameters]
+                      ) [MethodCall]
+                    ) [MethodCallFactor]
+                  ) [SingleFactorTerm]
+                ) [SingleTermExpression]
+              ) [LeftExpression]
+              NoPrintWidth(
+              ) [NoPrintWidth]
+            ) [PrintStatement]
+          ) [MultipleStatements]
+          PrintStatement(
+            LeftExpression(
+              SingleTermExpression(
+                NoSign(
+                ) [NoSign]
+                SingleFactorTerm(
+                  DesignatorFactor(
+                    IdentifierDesignator(
+                     eol
+                    ) [IdentifierDesignator]
+                  ) [DesignatorFactor]
+                ) [SingleFactorTerm]
+              ) [SingleTermExpression]
+            ) [LeftExpression]
+            NoPrintWidth(
+            ) [NoPrintWidth]
+          ) [PrintStatement]
+        ) [MultipleStatements]
+        PrintStatement(
+          LeftExpression(
+            SingleTermExpression(
+              NoSign(
+              ) [NoSign]
+              SingleFactorTerm(
+                MethodCallFactor(
+                  MethodCall(
+                    MethodCallHeader(
+                      MemberAccessDesignator(
+                        IdentifierDesignator(
+                         c2
+                        ) [IdentifierDesignator]
+                       calc
+                      ) [MemberAccessDesignator]
+                    ) [MethodCallHeader]
+                    ActualParameters(
+                      SingleActualParameter(
+                        ActualParameter(
+                          LeftExpression(
+                            SingleTermExpression(
+                              NoSign(
+                              ) [NoSign]
+                              SingleFactorTerm(
+                                DesignatorFactor(
+                                  IdentifierDesignator(
+                                   cost
+                                  ) [IdentifierDesignator]
+                                ) [DesignatorFactor]
+                              ) [SingleFactorTerm]
+                            ) [SingleTermExpression]
+                          ) [LeftExpression]
+                        ) [ActualParameter]
+                      ) [SingleActualParameter]
+                    ) [ActualParameters]
+                  ) [MethodCall]
+                ) [MethodCallFactor]
+              ) [SingleFactorTerm]
+            ) [SingleTermExpression]
+          ) [LeftExpression]
+          NoPrintWidth(
+          ) [NoPrintWidth]
+        ) [PrintStatement]
+      ) [MultipleStatements]
+    ) [MethodDeclaration]
+  ) [MultipleMethodDeclarations]
+) [Program]
+DEBUG - generator_C1.mj:7: SEMANTIC ANALYZER: Visited node: 'ProgramHeader'.
+DEBUG - generator_C1.mj:8: SEMANTIC ANALYZER: Visited node: 'ClassHeader'.
+DEBUG - SEMANTIC ANALYZER: Visited node: 'ProtectedAccessModifier'.
+DEBUG - SEMANTIC ANALYZER: Current access modifier: PROTECTED.
+DEBUG - generator_C1.mj:9: SEMANTIC ANALYZER: Visited node: 'Type'.
+DEBUG - generator_C1.mj:9: SEMANTIC ANALYZER: Visited node: 'ClassVariable'.
+INFO  - generator_C1.mj:9: SEMANTIC ANALYZER: Defined int variable 'tax'. Symbol node: Field 'tax': type = 'int', adr = 1, level = 1, parent = 'TCalc', access modifier = protected
+DEBUG - SEMANTIC ANALYZER: Visited node: 'PublicAccessModifier'.
+DEBUG - SEMANTIC ANALYZER: Current access modifier: PUBLIC.
+DEBUG - generator_C1.mj:11: SEMANTIC ANALYZER: Visited node: 'Type'.
+DEBUG - generator_C1.mj:11: SEMANTIC ANALYZER: Visited node: 'ReturnType'.
+DEBUG - generator_C1.mj:11: SEMANTIC ANALYZER: Visited node: 'MethodHeader'.
+DEBUG - generator_C1.mj:11: SEMANTIC ANALYZER: Visited node: 'Type'.
+DEBUG - generator_C1.mj:11: SEMANTIC ANALYZER: Visited node: 'FormalParameter'.
+INFO  - generator_C1.mj:11: SEMANTIC ANALYZER: Defined int formal parameter 'cost'. Symbol node: Formal parameter 'cost': type = 'int', adr = 1, level = 1
+DEBUG - SEMANTIC ANALYZER: Visited node: 'MethodStatementListStart'.
+DEBUG - generator_C1.mj:12: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - generator_C1.mj:12: SEMANTIC ANALYZER: Found formal parameter usage 'cost'! Symbol node: Formal parameter 'cost': type = 'int', adr = 1, level = 1
+DEBUG - generator_C1.mj:12: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - generator_C1.mj:12: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - generator_C1.mj:12: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - generator_C1.mj:12: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - generator_C1.mj:31: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - generator_C1.mj:12: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - generator_C1.mj:12: SEMANTIC ANALYZER: Found class 'TCalc' field usage 'tax'! Symbol node: Field 'tax': type = 'int', adr = 1, level = 1, parent = 'TCalc', access modifier = protected
+DEBUG - generator_C1.mj:12: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - generator_C1.mj:12: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - generator_C1.mj:31: SEMANTIC ANALYZER: Visited node: 'MultipleTermsExpression'.
+DEBUG - generator_C1.mj:31: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - generator_C1.mj:31: SEMANTIC ANALYZER: Visited node: 'InnerExpressionFactor'.
+DEBUG - generator_C1.mj:12: SEMANTIC ANALYZER: Visited node: 'MultipleFactorsTerm'.
+DEBUG - generator_C1.mj:17: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - generator_C1.mj:17: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - generator_C1.mj:17: SEMANTIC ANALYZER: Visited node: 'ReturnStatement'.
+DEBUG - generator_C1.mj:11: SEMANTIC ANALYZER: Visited node: 'MethodDeclaration'.
+INFO  - generator_C1.mj:11: SEMANTIC ANALYZER: Defined method 'calc'. Symbol node: Method 'calc': type = 'int', adr = 0, level = 2, parent = 'TCalc', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 'cost': type = 'int', adr = 1, level = 1
+DEBUG - SEMANTIC ANALYZER: Visited node: 'PublicAccessModifier'.
+DEBUG - SEMANTIC ANALYZER: Current access modifier: PUBLIC.
+DEBUG - generator_C1.mj:14: SEMANTIC ANALYZER: Visited node: 'Type'.
+DEBUG - generator_C1.mj:14: SEMANTIC ANALYZER: Visited node: 'ReturnType'.
+DEBUG - generator_C1.mj:14: SEMANTIC ANALYZER: Visited node: 'MethodHeader'.
+DEBUG - SEMANTIC ANALYZER: Visited node: 'MethodStatementListStart'.
+DEBUG - generator_C1.mj:14: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - generator_C1.mj:14: SEMANTIC ANALYZER: Found class 'TCalc' field usage 'tax'! Symbol node: Field 'tax': type = 'int', adr = 1, level = 1, parent = 'TCalc', access modifier = protected
+DEBUG - generator_C1.mj:14: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - generator_C1.mj:14: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - generator_C1.mj:35: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - generator_C1.mj:35: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - generator_C1.mj:35: SEMANTIC ANALYZER: Visited node: 'ReturnStatement'.
+DEBUG - generator_C1.mj:14: SEMANTIC ANALYZER: Visited node: 'MethodDeclaration'.
+INFO  - generator_C1.mj:14: SEMANTIC ANALYZER: Defined method 'getTax'. Symbol node: Method 'getTax': type = 'int', adr = 0, level = 1, parent = 'TCalc', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+DEBUG - SEMANTIC ANALYZER: Visited node: 'PublicAccessModifier'.
+DEBUG - SEMANTIC ANALYZER: Current access modifier: PUBLIC.
+DEBUG - SEMANTIC ANALYZER: Visited node: 'ReturnVoid'.
+DEBUG - generator_C1.mj:15: SEMANTIC ANALYZER: Visited node: 'MethodHeader'.
+DEBUG - generator_C1.mj:15: SEMANTIC ANALYZER: Visited node: 'Type'.
+DEBUG - generator_C1.mj:15: SEMANTIC ANALYZER: Visited node: 'FormalParameter'.
+INFO  - generator_C1.mj:15: SEMANTIC ANALYZER: Defined int formal parameter 'tax'. Symbol node: Formal parameter 'tax': type = 'int', adr = 1, level = 1
+DEBUG - SEMANTIC ANALYZER: Visited node: 'MethodStatementListStart'.
+DEBUG - generator_C1.mj:15: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - generator_C1.mj:15: SEMANTIC ANALYZER: Found local variable usage 'this'! Symbol node: Variable 'this': , adr = 0, level = 1
+DEBUG - generator_C1.mj:15: SEMANTIC ANALYZER: Visited node: 'MemberAccessDesignator'.
+INFO  - generator_C1.mj:15: SEMANTIC ANALYZER: Found class 'TCalc' field usage 'tax'! Symbol node: Field 'tax': type = 'int', adr = 1, level = 1, parent = 'TCalc', access modifier = protected
+DEBUG - generator_C1.mj:15: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - generator_C1.mj:15: SEMANTIC ANALYZER: Found formal parameter usage 'tax'! Symbol node: Formal parameter 'tax': type = 'int', adr = 1, level = 1
+DEBUG - generator_C1.mj:15: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - generator_C1.mj:15: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - generator_C1.mj:52: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - generator_C1.mj:52: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - generator_C1.mj:15: SEMANTIC ANALYZER: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - generator_C1.mj:15: SEMANTIC ANALYZER: Visited node: 'MethodDeclaration'.
+INFO  - generator_C1.mj:15: SEMANTIC ANALYZER: Defined method 'setTax'. Symbol node: Method 'setTax': type = 'void', adr = 0, level = 2, parent = 'TCalc', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 'tax': type = 'int', adr = 1, level = 1
+DEBUG - generator_C1.mj:8: SEMANTIC ANALYZER: Visited node: 'ClassDeclaration'.
+INFO  - generator_C1.mj:8: SEMANTIC ANALYZER: Defined class 'TCalc'. Symbol node: Type 'TCalc': type = 'class', adr = 0, level = 0
+DEBUG - generator_C1.mj:18: SEMANTIC ANALYZER: Visited node: 'Type'.
+DEBUG - generator_C1.mj:18: SEMANTIC ANALYZER: Visited node: 'ClassHeader'.
+DEBUG - SEMANTIC ANALYZER: Visited node: 'ProtectedAccessModifier'.
+DEBUG - SEMANTIC ANALYZER: Current access modifier: PROTECTED.
+DEBUG - generator_C1.mj:20: SEMANTIC ANALYZER: Visited node: 'Type'.
+DEBUG - generator_C1.mj:20: SEMANTIC ANALYZER: Visited node: 'ClassVariable'.
+INFO  - generator_C1.mj:20: SEMANTIC ANALYZER: Defined int variable 'a'. Symbol node: Field 'a': type = 'int', adr = 2, level = 1, parent = 'ATCalc', access modifier = protected
+DEBUG - SEMANTIC ANALYZER: Visited node: 'PublicAccessModifier'.
+DEBUG - SEMANTIC ANALYZER: Current access modifier: PUBLIC.
+DEBUG - generator_C1.mj:23: SEMANTIC ANALYZER: Visited node: 'Type'.
+DEBUG - generator_C1.mj:23: SEMANTIC ANALYZER: Visited node: 'ReturnType'.
+DEBUG - generator_C1.mj:23: SEMANTIC ANALYZER: Visited node: 'MethodHeader'.
+DEBUG - generator_C1.mj:23: SEMANTIC ANALYZER: Visited node: 'Type'.
+DEBUG - generator_C1.mj:23: SEMANTIC ANALYZER: Visited node: 'FormalParameter'.
+INFO  - generator_C1.mj:23: SEMANTIC ANALYZER: Defined int formal parameter 'c'. Symbol node: Formal parameter 'c': type = 'int', adr = 1, level = 1
+DEBUG - SEMANTIC ANALYZER: Visited node: 'MethodStatementListStart'.
+DEBUG - generator_C1.mj:24: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - generator_C1.mj:24: SEMANTIC ANALYZER: Found formal parameter usage 'c'! Symbol node: Formal parameter 'c': type = 'int', adr = 1, level = 1
+DEBUG - generator_C1.mj:24: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - generator_C1.mj:24: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - generator_C1.mj:24: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - generator_C1.mj:24: SEMANTIC ANALYZER: Found class 'ATCalc' field usage 'a'! Symbol node: Field 'a': type = 'int', adr = 2, level = 1, parent = 'ATCalc', access modifier = protected
+DEBUG - generator_C1.mj:24: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - generator_C1.mj:24: SEMANTIC ANALYZER: Visited node: 'MultipleFactorsTerm'.
+DEBUG - generator_C1.mj:24: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - generator_C1.mj:24: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - generator_C1.mj:24: SEMANTIC ANALYZER: Visited node: 'InnerExpressionFactor'.
+DEBUG - generator_C1.mj:24: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - generator_C1.mj:24: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - generator_C1.mj:24: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - generator_C1.mj:24: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - generator_C1.mj:24: SEMANTIC ANALYZER: Found class 'TCalc' field usage 'tax'! Symbol node: Field 'tax': type = 'int', adr = 1, level = 1, parent = 'TCalc', access modifier = protected
+DEBUG - generator_C1.mj:24: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - generator_C1.mj:24: SEMANTIC ANALYZER: Visited node: 'MultipleFactorsTerm'.
+DEBUG - generator_C1.mj:34: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - generator_C1.mj:34: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - generator_C1.mj:34: SEMANTIC ANALYZER: Visited node: 'InnerExpressionFactor'.
+DEBUG - generator_C1.mj:24: SEMANTIC ANALYZER: Visited node: 'MultipleFactorsTerm'.
+DEBUG - generator_C1.mj:17: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - generator_C1.mj:17: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - generator_C1.mj:17: SEMANTIC ANALYZER: Visited node: 'ReturnStatement'.
+DEBUG - generator_C1.mj:23: SEMANTIC ANALYZER: Visited node: 'MethodDeclaration'.
+INFO  - generator_C1.mj:23: SEMANTIC ANALYZER: Defined method 'calc'. Symbol node: Method 'calc': type = 'int', adr = 0, level = 2, parent = 'ATCalc', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 'c': type = 'int', adr = 1, level = 1
+DEBUG - SEMANTIC ANALYZER: Visited node: 'PublicAccessModifier'.
+DEBUG - SEMANTIC ANALYZER: Current access modifier: PUBLIC.
+DEBUG - generator_C1.mj:26: SEMANTIC ANALYZER: Visited node: 'Type'.
+DEBUG - generator_C1.mj:26: SEMANTIC ANALYZER: Visited node: 'ReturnType'.
+DEBUG - generator_C1.mj:26: SEMANTIC ANALYZER: Visited node: 'MethodHeader'.
+DEBUG - SEMANTIC ANALYZER: Visited node: 'MethodStatementListStart'.
+DEBUG - generator_C1.mj:26: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - generator_C1.mj:26: SEMANTIC ANALYZER: Found class 'ATCalc' field usage 'a'! Symbol node: Field 'a': type = 'int', adr = 2, level = 1, parent = 'ATCalc', access modifier = protected
+DEBUG - generator_C1.mj:26: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - generator_C1.mj:26: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - generator_C1.mj:44: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - generator_C1.mj:44: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - generator_C1.mj:44: SEMANTIC ANALYZER: Visited node: 'ReturnStatement'.
+DEBUG - generator_C1.mj:26: SEMANTIC ANALYZER: Visited node: 'MethodDeclaration'.
+INFO  - generator_C1.mj:26: SEMANTIC ANALYZER: Defined method 'getAmortization'. Symbol node: Method 'getAmortization': type = 'int', adr = 0, level = 1, parent = 'ATCalc', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+DEBUG - SEMANTIC ANALYZER: Visited node: 'PublicAccessModifier'.
+DEBUG - SEMANTIC ANALYZER: Current access modifier: PUBLIC.
+DEBUG - SEMANTIC ANALYZER: Visited node: 'ReturnVoid'.
+DEBUG - generator_C1.mj:27: SEMANTIC ANALYZER: Visited node: 'MethodHeader'.
+DEBUG - generator_C1.mj:27: SEMANTIC ANALYZER: Visited node: 'Type'.
+DEBUG - generator_C1.mj:27: SEMANTIC ANALYZER: Visited node: 'FormalParameter'.
+INFO  - generator_C1.mj:27: SEMANTIC ANALYZER: Defined int formal parameter 'a'. Symbol node: Formal parameter 'a': type = 'int', adr = 1, level = 1
+DEBUG - SEMANTIC ANALYZER: Visited node: 'MethodStatementListStart'.
+DEBUG - generator_C1.mj:27: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - generator_C1.mj:27: SEMANTIC ANALYZER: Found local variable usage 'this'! Symbol node: Variable 'this': , adr = 0, level = 1
+DEBUG - generator_C1.mj:27: SEMANTIC ANALYZER: Visited node: 'MemberAccessDesignator'.
+INFO  - generator_C1.mj:27: SEMANTIC ANALYZER: Found class 'ATCalc' field usage 'a'! Symbol node: Field 'a': type = 'int', adr = 2, level = 1, parent = 'ATCalc', access modifier = protected
+DEBUG - generator_C1.mj:27: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - generator_C1.mj:27: SEMANTIC ANALYZER: Found formal parameter usage 'a'! Symbol node: Formal parameter 'a': type = 'int', adr = 1, level = 1
+DEBUG - generator_C1.mj:27: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - generator_C1.mj:27: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - generator_C1.mj:57: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - generator_C1.mj:57: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - generator_C1.mj:27: SEMANTIC ANALYZER: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - generator_C1.mj:27: SEMANTIC ANALYZER: Visited node: 'MethodDeclaration'.
+INFO  - generator_C1.mj:27: SEMANTIC ANALYZER: Defined method 'setAmortization'. Symbol node: Method 'setAmortization': type = 'void', adr = 0, level = 2, parent = 'ATCalc', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 'a': type = 'int', adr = 1, level = 1
+DEBUG - generator_C1.mj:18: SEMANTIC ANALYZER: Visited node: 'ClassDeclaration'.
+INFO  - generator_C1.mj:18: SEMANTIC ANALYZER: Defined class 'ATCalc'. Symbol node: Type 'ATCalc': type = 'class', adr = 0, level = 0
+DEBUG - SEMANTIC ANALYZER: Visited node: 'ReturnVoid'.
+DEBUG - generator_C1.mj:31: SEMANTIC ANALYZER: Visited node: 'MethodHeader'.
+DEBUG - generator_C1.mj:32: SEMANTIC ANALYZER: Visited node: 'Type'.
+DEBUG - generator_C1.mj:32: SEMANTIC ANALYZER: Visited node: 'LocalVariable'.
+INFO  - generator_C1.mj:32: SEMANTIC ANALYZER: Defined  variable 'c1'. Symbol node: Variable 'c1': type = 'class', adr = 0, level = 1
+DEBUG - generator_C1.mj:33: SEMANTIC ANALYZER: Visited node: 'Type'.
+DEBUG - generator_C1.mj:33: SEMANTIC ANALYZER: Visited node: 'LocalVariable'.
+INFO  - generator_C1.mj:33: SEMANTIC ANALYZER: Defined  variable 'c2'. Symbol node: Variable 'c2': type = 'class', adr = 1, level = 1
+DEBUG - generator_C1.mj:34: SEMANTIC ANALYZER: Visited node: 'Type'.
+DEBUG - generator_C1.mj:34: SEMANTIC ANALYZER: Visited node: 'LocalVariable'.
+INFO  - generator_C1.mj:34: SEMANTIC ANALYZER: Defined int variable 'cost'. Symbol node: Variable 'cost': type = 'int', adr = 2, level = 1
+DEBUG - SEMANTIC ANALYZER: Visited node: 'MethodStatementListStart'.
+DEBUG - generator_C1.mj:36: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - generator_C1.mj:36: SEMANTIC ANALYZER: Found local variable usage 'cost'! Symbol node: Variable 'cost': type = 'int', adr = 2, level = 1
+DEBUG - generator_C1.mj:36: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - generator_C1.mj:36: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - generator_C1.mj:14: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - generator_C1.mj:14: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - generator_C1.mj:36: SEMANTIC ANALYZER: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - generator_C1.mj:37: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - generator_C1.mj:37: SEMANTIC ANALYZER: Found local variable usage 'c1'! Symbol node: Variable 'c1': type = 'class', adr = 0, level = 1
+DEBUG - generator_C1.mj:37: SEMANTIC ANALYZER: Visited node: 'Type'.
+DEBUG - generator_C1.mj:37: SEMANTIC ANALYZER: Visited node: 'AllocatorFactor'.
+DEBUG - generator_C1.mj:37: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - generator_C1.mj:12: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - generator_C1.mj:12: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - generator_C1.mj:37: SEMANTIC ANALYZER: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - generator_C1.mj:38: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - generator_C1.mj:38: SEMANTIC ANALYZER: Found local variable usage 'c1'! Symbol node: Variable 'c1': type = 'class', adr = 0, level = 1
+DEBUG - generator_C1.mj:38: SEMANTIC ANALYZER: Visited node: 'MemberAccessDesignator'.
+INFO  - generator_C1.mj:38: SEMANTIC ANALYZER: Found class 'TCalc' field usage 'setTax'! Symbol node: Method 'setTax': type = 'void', adr = 0, level = 2, parent = 'TCalc', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 'tax': type = 'int', adr = 1, level = 1
+DEBUG - generator_C1.mj:38: SEMANTIC ANALYZER: Visited node: 'MethodCallHeader'.
+DEBUG - generator_C1.mj:38: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - generator_C1.mj:38: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - generator_C1.mj:18: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - generator_C1.mj:18: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - generator_C1.mj:18: SEMANTIC ANALYZER: Visited node: 'ActualParameter'.
+DEBUG - generator_C1.mj:38: SEMANTIC ANALYZER: Visited node: 'MethodCall'.
+DEBUG - generator_C1.mj:39: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - generator_C1.mj:39: SEMANTIC ANALYZER: Found local variable usage 'c2'! Symbol node: Variable 'c2': type = 'class', adr = 1, level = 1
+DEBUG - generator_C1.mj:39: SEMANTIC ANALYZER: Visited node: 'Type'.
+DEBUG - generator_C1.mj:39: SEMANTIC ANALYZER: Visited node: 'AllocatorFactor'.
+DEBUG - generator_C1.mj:39: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - generator_C1.mj:12: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - generator_C1.mj:12: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - generator_C1.mj:39: SEMANTIC ANALYZER: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - generator_C1.mj:40: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - generator_C1.mj:40: SEMANTIC ANALYZER: Found local variable usage 'c2'! Symbol node: Variable 'c2': type = 'class', adr = 1, level = 1
+DEBUG - generator_C1.mj:40: SEMANTIC ANALYZER: Visited node: 'MemberAccessDesignator'.
+INFO  - generator_C1.mj:40: SEMANTIC ANALYZER: Found class 'TCalc' field usage 'setTax'! Symbol node: Method 'setTax': type = 'void', adr = 0, level = 2, parent = 'TCalc', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 'tax': type = 'int', adr = 1, level = 1
+DEBUG - generator_C1.mj:40: SEMANTIC ANALYZER: Visited node: 'MethodCallHeader'.
+DEBUG - generator_C1.mj:40: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - generator_C1.mj:40: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - generator_C1.mj:18: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - generator_C1.mj:18: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - generator_C1.mj:18: SEMANTIC ANALYZER: Visited node: 'ActualParameter'.
+DEBUG - generator_C1.mj:40: SEMANTIC ANALYZER: Visited node: 'MethodCall'.
+DEBUG - generator_C1.mj:41: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - generator_C1.mj:41: SEMANTIC ANALYZER: Found local variable usage 'c2'! Symbol node: Variable 'c2': type = 'class', adr = 1, level = 1
+DEBUG - generator_C1.mj:41: SEMANTIC ANALYZER: Visited node: 'MemberAccessDesignator'.
+INFO  - generator_C1.mj:41: SEMANTIC ANALYZER: Found class 'ATCalc' field usage 'setAmortization'! Symbol node: Method 'setAmortization': type = 'void', adr = 0, level = 2, parent = 'ATCalc', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 'a': type = 'int', adr = 1, level = 1
+DEBUG - generator_C1.mj:41: SEMANTIC ANALYZER: Visited node: 'MethodCallHeader'.
+DEBUG - generator_C1.mj:41: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - generator_C1.mj:41: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - generator_C1.mj:27: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - generator_C1.mj:27: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - generator_C1.mj:27: SEMANTIC ANALYZER: Visited node: 'ActualParameter'.
+DEBUG - generator_C1.mj:41: SEMANTIC ANALYZER: Visited node: 'MethodCall'.
+DEBUG - generator_C1.mj:42: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - generator_C1.mj:42: SEMANTIC ANALYZER: Found local variable usage 'c1'! Symbol node: Variable 'c1': type = 'class', adr = 0, level = 1
+DEBUG - generator_C1.mj:42: SEMANTIC ANALYZER: Visited node: 'MemberAccessDesignator'.
+INFO  - generator_C1.mj:42: SEMANTIC ANALYZER: Found class 'TCalc' field usage 'calc'! Symbol node: Method 'calc': type = 'int', adr = 0, level = 2, parent = 'TCalc', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 'cost': type = 'int', adr = 1, level = 1
+DEBUG - generator_C1.mj:42: SEMANTIC ANALYZER: Visited node: 'MethodCallHeader'.
+DEBUG - generator_C1.mj:42: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - generator_C1.mj:42: SEMANTIC ANALYZER: Found local variable usage 'cost'! Symbol node: Variable 'cost': type = 'int', adr = 2, level = 1
+DEBUG - generator_C1.mj:42: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - generator_C1.mj:42: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - generator_C1.mj:22: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - generator_C1.mj:22: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - generator_C1.mj:22: SEMANTIC ANALYZER: Visited node: 'ActualParameter'.
+DEBUG - generator_C1.mj:42: SEMANTIC ANALYZER: Visited node: 'MethodCall'.
+DEBUG - generator_C1.mj:42: SEMANTIC ANALYZER: Visited node: 'MethodCallFactor'.
+DEBUG - generator_C1.mj:42: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - generator_C1.mj:14: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - generator_C1.mj:14: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - generator_C1.mj:14: SEMANTIC ANALYZER: Visited node: 'PrintStatement'.
+DEBUG - generator_C1.mj:43: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - generator_C1.mj:43: SEMANTIC ANALYZER: Found symbolic constant usage 'eol'! Symbol node: Constant 'eol': type = 'char', adr = 10, level = 0
+DEBUG - generator_C1.mj:43: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - generator_C1.mj:43: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - generator_C1.mj:14: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - generator_C1.mj:14: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - generator_C1.mj:14: SEMANTIC ANALYZER: Visited node: 'PrintStatement'.
+DEBUG - generator_C1.mj:44: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - generator_C1.mj:44: SEMANTIC ANALYZER: Found local variable usage 'c2'! Symbol node: Variable 'c2': type = 'class', adr = 1, level = 1
+DEBUG - generator_C1.mj:44: SEMANTIC ANALYZER: Visited node: 'MemberAccessDesignator'.
+INFO  - generator_C1.mj:44: SEMANTIC ANALYZER: Found class 'ATCalc' field usage 'calc'! Symbol node: Method 'calc': type = 'int', adr = 0, level = 2, parent = 'ATCalc', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 'c': type = 'int', adr = 1, level = 1
+DEBUG - generator_C1.mj:44: SEMANTIC ANALYZER: Visited node: 'MethodCallHeader'.
+DEBUG - generator_C1.mj:44: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - generator_C1.mj:44: SEMANTIC ANALYZER: Found local variable usage 'cost'! Symbol node: Variable 'cost': type = 'int', adr = 2, level = 1
+DEBUG - generator_C1.mj:44: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - generator_C1.mj:44: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - generator_C1.mj:22: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - generator_C1.mj:22: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - generator_C1.mj:22: SEMANTIC ANALYZER: Visited node: 'ActualParameter'.
+DEBUG - generator_C1.mj:44: SEMANTIC ANALYZER: Visited node: 'MethodCall'.
+DEBUG - generator_C1.mj:44: SEMANTIC ANALYZER: Visited node: 'MethodCallFactor'.
+DEBUG - generator_C1.mj:44: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - generator_C1.mj:14: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - generator_C1.mj:14: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - generator_C1.mj:14: SEMANTIC ANALYZER: Visited node: 'PrintStatement'.
+DEBUG - generator_C1.mj:31: SEMANTIC ANALYZER: Visited node: 'MethodDeclaration'.
+INFO  - generator_C1.mj:31: SEMANTIC ANALYZER: Defined method 'main'. Symbol node: Method 'main': type = 'void', adr = 0, level = 0
+  Variable 'c1': type = 'class', adr = 0, level = 1
+  Variable 'c2': type = 'class', adr = 1, level = 1
+  Variable 'cost': type = 'int', adr = 2, level = 1
+DEBUG - generator_C1.mj:7: SEMANTIC ANALYZER: Visited node: 'Program'.
+INFO  - generator_C1.mj:7: SEMANTIC ANALYZER: Defined program 'level_c_code_generation_1'. Symbol node: Program 'level_c_code_generation_1': type = 'none', adr = 0, level = 1
+  Type 'TCalc': type = 'class', adr = 0, level = 0
+  Type 'ATCalc': type = 'class', adr = 0, level = 0
+  Method 'main': type = 'void', adr = 0, level = 0
+    Variable 'c1': type = 'class', adr = 0, level = 1
+    Variable 'c2': type = 'class', adr = 1, level = 1
+    Variable 'cost': type = 'int', adr = 2, level = 1
+DEBUG - generator_C1.mj:7: CODE GENERATOR: Visited node: 'ProgramHeader'.
+DEBUG - generator_C1.mj:8: CODE GENERATOR: Visited node: 'ClassHeader'.
+DEBUG - generator_C1.mj:11: CODE GENERATOR: Visited node: 'MethodHeader'.
+DEBUG - generator_C1.mj:12: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - generator_C1.mj:12: CODE GENERATOR: Visited node: 'DesignatorFactor'.
+DEBUG - generator_C1.mj:12: CODE GENERATOR: Visited node: 'ConstantFactor'.
+DEBUG - generator_C1.mj:31: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - generator_C1.mj:12: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - generator_C1.mj:12: CODE GENERATOR: Visited node: 'DesignatorFactor'.
+DEBUG - generator_C1.mj:31: CODE GENERATOR: Visited node: 'MultipleTermsExpression'.
+DEBUG - generator_C1.mj:12: CODE GENERATOR: Visited node: 'MultipleFactorsTerm'.
+DEBUG - generator_C1.mj:17: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - generator_C1.mj:17: CODE GENERATOR: Visited node: 'ReturnStatement'.
+DEBUG - generator_C1.mj:11: CODE GENERATOR: Visited node: 'MethodDeclaration'.
+DEBUG - generator_C1.mj:14: CODE GENERATOR: Visited node: 'MethodHeader'.
+DEBUG - generator_C1.mj:14: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - generator_C1.mj:14: CODE GENERATOR: Visited node: 'DesignatorFactor'.
+DEBUG - generator_C1.mj:35: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - generator_C1.mj:35: CODE GENERATOR: Visited node: 'ReturnStatement'.
+DEBUG - generator_C1.mj:14: CODE GENERATOR: Visited node: 'MethodDeclaration'.
+DEBUG - generator_C1.mj:15: CODE GENERATOR: Visited node: 'MethodHeader'.
+DEBUG - generator_C1.mj:15: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - generator_C1.mj:15: CODE GENERATOR: Visited node: 'MemberAccessDesignator'.
+DEBUG - generator_C1.mj:15: CODE GENERATOR: Visited node: 'AssignmentHeader'.
+DEBUG - generator_C1.mj:15: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - generator_C1.mj:15: CODE GENERATOR: Visited node: 'DesignatorFactor'.
+DEBUG - generator_C1.mj:52: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - generator_C1.mj:15: CODE GENERATOR: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - generator_C1.mj:15: CODE GENERATOR: Visited node: 'MethodDeclaration'.
+DEBUG - generator_C1.mj:8: CODE GENERATOR: Visited node: 'ClassDeclaration'.
+DEBUG - generator_C1.mj:18: CODE GENERATOR: Visited node: 'ClassHeader'.
+DEBUG - generator_C1.mj:23: CODE GENERATOR: Visited node: 'MethodHeader'.
+DEBUG - generator_C1.mj:24: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - generator_C1.mj:24: CODE GENERATOR: Visited node: 'DesignatorFactor'.
+DEBUG - generator_C1.mj:24: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - generator_C1.mj:24: CODE GENERATOR: Visited node: 'DesignatorFactor'.
+DEBUG - generator_C1.mj:24: CODE GENERATOR: Visited node: 'MultipleFactorsTerm'.
+DEBUG - generator_C1.mj:24: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - generator_C1.mj:24: CODE GENERATOR: Visited node: 'ConstantFactor'.
+DEBUG - generator_C1.mj:24: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - generator_C1.mj:24: CODE GENERATOR: Visited node: 'DesignatorFactor'.
+DEBUG - generator_C1.mj:24: CODE GENERATOR: Visited node: 'MultipleFactorsTerm'.
+DEBUG - generator_C1.mj:34: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - generator_C1.mj:24: CODE GENERATOR: Visited node: 'MultipleFactorsTerm'.
+DEBUG - generator_C1.mj:17: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - generator_C1.mj:17: CODE GENERATOR: Visited node: 'ReturnStatement'.
+DEBUG - generator_C1.mj:23: CODE GENERATOR: Visited node: 'MethodDeclaration'.
+DEBUG - generator_C1.mj:26: CODE GENERATOR: Visited node: 'MethodHeader'.
+DEBUG - generator_C1.mj:26: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - generator_C1.mj:26: CODE GENERATOR: Visited node: 'DesignatorFactor'.
+DEBUG - generator_C1.mj:44: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - generator_C1.mj:44: CODE GENERATOR: Visited node: 'ReturnStatement'.
+DEBUG - generator_C1.mj:26: CODE GENERATOR: Visited node: 'MethodDeclaration'.
+DEBUG - generator_C1.mj:27: CODE GENERATOR: Visited node: 'MethodHeader'.
+DEBUG - generator_C1.mj:27: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - generator_C1.mj:27: CODE GENERATOR: Visited node: 'MemberAccessDesignator'.
+DEBUG - generator_C1.mj:27: CODE GENERATOR: Visited node: 'AssignmentHeader'.
+DEBUG - generator_C1.mj:27: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - generator_C1.mj:27: CODE GENERATOR: Visited node: 'DesignatorFactor'.
+DEBUG - generator_C1.mj:57: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - generator_C1.mj:27: CODE GENERATOR: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - generator_C1.mj:27: CODE GENERATOR: Visited node: 'MethodDeclaration'.
+DEBUG - generator_C1.mj:18: CODE GENERATOR: Visited node: 'ClassDeclaration'.
+DEBUG - generator_C1.mj:31: CODE GENERATOR: Visited node: 'MethodHeader'.
+DEBUG - generator_C1.mj:36: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - generator_C1.mj:36: CODE GENERATOR: Visited node: 'AssignmentHeader'.
+DEBUG - generator_C1.mj:36: CODE GENERATOR: Visited node: 'ConstantFactor'.
+DEBUG - generator_C1.mj:14: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - generator_C1.mj:36: CODE GENERATOR: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - generator_C1.mj:37: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - generator_C1.mj:37: CODE GENERATOR: Visited node: 'AssignmentHeader'.
+DEBUG - generator_C1.mj:37: CODE GENERATOR: Visited node: 'AllocatorFactor'.
+DEBUG - generator_C1.mj:12: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - generator_C1.mj:37: CODE GENERATOR: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - generator_C1.mj:38: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - generator_C1.mj:38: CODE GENERATOR: Visited node: 'MemberAccessDesignator'.
+DEBUG - generator_C1.mj:38: CODE GENERATOR: Visited node: 'ConstantFactor'.
+DEBUG - generator_C1.mj:18: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - generator_C1.mj:38: CODE GENERATOR: Visited node: 'MethodCall'.
+DEBUG - generator_C1.mj:38: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - generator_C1.mj:38: CODE GENERATOR: Visited node: 'MemberAccessDesignator'.
+DEBUG - generator_C1.mj:39: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - generator_C1.mj:39: CODE GENERATOR: Visited node: 'AssignmentHeader'.
+DEBUG - generator_C1.mj:39: CODE GENERATOR: Visited node: 'AllocatorFactor'.
+DEBUG - generator_C1.mj:12: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - generator_C1.mj:39: CODE GENERATOR: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - generator_C1.mj:40: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - generator_C1.mj:40: CODE GENERATOR: Visited node: 'MemberAccessDesignator'.
+DEBUG - generator_C1.mj:40: CODE GENERATOR: Visited node: 'ConstantFactor'.
+DEBUG - generator_C1.mj:18: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - generator_C1.mj:40: CODE GENERATOR: Visited node: 'MethodCall'.
+DEBUG - generator_C1.mj:40: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - generator_C1.mj:40: CODE GENERATOR: Visited node: 'MemberAccessDesignator'.
+DEBUG - generator_C1.mj:41: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - generator_C1.mj:41: CODE GENERATOR: Visited node: 'MemberAccessDesignator'.
+DEBUG - generator_C1.mj:41: CODE GENERATOR: Visited node: 'ConstantFactor'.
+DEBUG - generator_C1.mj:27: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - generator_C1.mj:41: CODE GENERATOR: Visited node: 'MethodCall'.
+DEBUG - generator_C1.mj:41: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - generator_C1.mj:41: CODE GENERATOR: Visited node: 'MemberAccessDesignator'.
+DEBUG - generator_C1.mj:42: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - generator_C1.mj:42: CODE GENERATOR: Visited node: 'MemberAccessDesignator'.
+DEBUG - generator_C1.mj:42: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - generator_C1.mj:42: CODE GENERATOR: Visited node: 'DesignatorFactor'.
+DEBUG - generator_C1.mj:22: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - generator_C1.mj:42: CODE GENERATOR: Visited node: 'MethodCall'.
+DEBUG - generator_C1.mj:42: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - generator_C1.mj:42: CODE GENERATOR: Visited node: 'MemberAccessDesignator'.
+DEBUG - generator_C1.mj:14: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - generator_C1.mj:14: CODE GENERATOR: Visited node: 'PrintStatement'.
+DEBUG - generator_C1.mj:43: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - generator_C1.mj:43: CODE GENERATOR: Visited node: 'DesignatorFactor'.
+DEBUG - generator_C1.mj:14: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - generator_C1.mj:14: CODE GENERATOR: Visited node: 'PrintStatement'.
+DEBUG - generator_C1.mj:44: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - generator_C1.mj:44: CODE GENERATOR: Visited node: 'MemberAccessDesignator'.
+DEBUG - generator_C1.mj:44: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - generator_C1.mj:44: CODE GENERATOR: Visited node: 'DesignatorFactor'.
+DEBUG - generator_C1.mj:22: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - generator_C1.mj:44: CODE GENERATOR: Visited node: 'MethodCall'.
+DEBUG - generator_C1.mj:44: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - generator_C1.mj:44: CODE GENERATOR: Visited node: 'MemberAccessDesignator'.
+DEBUG - generator_C1.mj:14: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - generator_C1.mj:14: CODE GENERATOR: Visited node: 'PrintStatement'.
+DEBUG - generator_C1.mj:31: CODE GENERATOR: Visited node: 'MethodDeclaration'.
+DEBUG - generator_C1.mj:7: CODE GENERATOR: Visited node: 'Program'.

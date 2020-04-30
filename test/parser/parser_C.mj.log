@@ -1,0 +1,2010 @@
+DEBUG - parser_C.mj:2:1: LEXER: Found symbol: '#2' with value: 'program'
+DEBUG - parser_C.mj:2:9: LEXER: Found symbol: '#55' with value: 'level_c_syntax_test'
+DEBUG - parser_C.mj:4:5: LEXER: Found symbol: '#7' with value: 'const'
+DEBUG - parser_C.mj:4:11: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - parser_C.mj:4:15: LEXER: Found symbol: '#55' with value: 'A'
+DEBUG - parser_C.mj:4:17: LEXER: Found symbol: '#21' with value: '='
+DEBUG - parser_C.mj:4:19: LEXER: Found symbol: '#52' with value: '1'
+DEBUG - parser_C.mj:4:20: LEXER: Found symbol: '#50' with value: ','
+DEBUG - parser_C.mj:4:22: LEXER: Found symbol: '#55' with value: 'B'
+DEBUG - parser_C.mj:4:24: LEXER: Found symbol: '#21' with value: '='
+DEBUG - parser_C.mj:4:26: LEXER: Found symbol: '#52' with value: '2'
+DEBUG - parser_C.mj:4:27: LEXER: Found symbol: '#50' with value: ','
+DEBUG - parser_C.mj:4:29: LEXER: Found symbol: '#55' with value: 'C'
+DEBUG - parser_C.mj:4:31: LEXER: Found symbol: '#21' with value: '='
+DEBUG - parser_C.mj:4:33: LEXER: Found symbol: '#52' with value: '3'
+DEBUG - parser_C.mj:4:34: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_C.mj:5:5: LEXER: Found symbol: '#7' with value: 'const'
+DEBUG - parser_C.mj:5:11: LEXER: Found symbol: '#55' with value: 'char'
+DEBUG - parser_C.mj:5:16: LEXER: Found symbol: '#55' with value: 'X'
+DEBUG - parser_C.mj:5:18: LEXER: Found symbol: '#21' with value: '='
+DEBUG - parser_C.mj:5:20: LEXER: Found symbol: '#53' with value: 'x'
+DEBUG - parser_C.mj:5:23: LEXER: Found symbol: '#50' with value: ','
+DEBUG - parser_C.mj:5:25: LEXER: Found symbol: '#55' with value: 'Y'
+DEBUG - parser_C.mj:5:27: LEXER: Found symbol: '#21' with value: '='
+DEBUG - parser_C.mj:5:29: LEXER: Found symbol: '#53' with value: 'y'
+DEBUG - parser_C.mj:5:32: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_C.mj:6:5: LEXER: Found symbol: '#7' with value: 'const'
+DEBUG - parser_C.mj:6:11: LEXER: Found symbol: '#55' with value: 'bool'
+DEBUG - parser_C.mj:6:16: LEXER: Found symbol: '#55' with value: 'VALID'
+DEBUG - parser_C.mj:6:22: LEXER: Found symbol: '#21' with value: '='
+DEBUG - parser_C.mj:6:24: LEXER: Found symbol: '#54' with value: 'true'
+DEBUG - parser_C.mj:6:28: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_C.mj:9:5: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - parser_C.mj:9:9: LEXER: Found symbol: '#55' with value: 'a'
+DEBUG - parser_C.mj:9:10: LEXER: Found symbol: '#50' with value: ','
+DEBUG - parser_C.mj:9:12: LEXER: Found symbol: '#55' with value: 'b'
+DEBUG - parser_C.mj:9:13: LEXER: Found symbol: '#44' with value: '['
+DEBUG - parser_C.mj:9:14: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - parser_C.mj:9:15: LEXER: Found symbol: '#50' with value: ','
+DEBUG - parser_C.mj:9:17: LEXER: Found symbol: '#55' with value: 'c'
+DEBUG - parser_C.mj:9:18: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_C.mj:10:5: LEXER: Found symbol: '#55' with value: 'Point'
+DEBUG - parser_C.mj:10:11: LEXER: Found symbol: '#55' with value: 'p1'
+DEBUG - parser_C.mj:10:13: LEXER: Found symbol: '#50' with value: ','
+DEBUG - parser_C.mj:10:15: LEXER: Found symbol: '#55' with value: 'p2'
+DEBUG - parser_C.mj:10:17: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_C.mj:13:5: LEXER: Found symbol: '#4' with value: 'class'
+DEBUG - parser_C.mj:13:11: LEXER: Found symbol: '#55' with value: 'Point'
+DEBUG - parser_C.mj:13:17: LEXER: Found symbol: '#15' with value: 'extends'
+DEBUG - parser_C.mj:13:25: LEXER: Found symbol: '#55' with value: 'IPoint'
+DEBUG - parser_C.mj:13:32: LEXER: Found symbol: '#46' with value: '{'
+DEBUG - parser_C.mj:14:9: LEXER: Found symbol: '#18' with value: 'public'
+DEBUG - parser_C.mj:14:16: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - parser_C.mj:14:20: LEXER: Found symbol: '#55' with value: 'x'
+DEBUG - parser_C.mj:14:21: LEXER: Found symbol: '#50' with value: ','
+DEBUG - parser_C.mj:14:23: LEXER: Found symbol: '#55' with value: 'y'
+DEBUG - parser_C.mj:14:24: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_C.mj:15:9: LEXER: Found symbol: '#46' with value: '{'
+DEBUG - parser_C.mj:16:13: LEXER: Found symbol: '#18' with value: 'public'
+DEBUG - parser_C.mj:16:20: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - parser_C.mj:16:24: LEXER: Found symbol: '#55' with value: 'get_x'
+DEBUG - parser_C.mj:16:29: LEXER: Found symbol: '#42' with value: '('
+DEBUG - parser_C.mj:16:30: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - parser_C.mj:16:32: LEXER: Found symbol: '#46' with value: '{'
+DEBUG - parser_C.mj:16:34: LEXER: Found symbol: '#12' with value: 'return'
+DEBUG - parser_C.mj:16:41: LEXER: Found symbol: '#55' with value: 'x'
+DEBUG - parser_C.mj:16:42: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_C.mj:16:44: LEXER: Found symbol: '#47' with value: '}'
+DEBUG - parser_C.mj:17:13: LEXER: Found symbol: '#18' with value: 'public'
+DEBUG - parser_C.mj:17:20: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - parser_C.mj:17:24: LEXER: Found symbol: '#55' with value: 'diff_x'
+DEBUG - parser_C.mj:17:30: LEXER: Found symbol: '#42' with value: '('
+DEBUG - parser_C.mj:17:31: LEXER: Found symbol: '#55' with value: 'IPoint'
+DEBUG - parser_C.mj:17:38: LEXER: Found symbol: '#55' with value: 'a'
+DEBUG - parser_C.mj:17:39: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - parser_C.mj:17:41: LEXER: Found symbol: '#46' with value: '{'
+DEBUG - parser_C.mj:17:43: LEXER: Found symbol: '#12' with value: 'return'
+DEBUG - parser_C.mj:17:50: LEXER: Found symbol: '#55' with value: 'a'
+DEBUG - parser_C.mj:17:51: LEXER: Found symbol: '#51' with value: '.'
+DEBUG - parser_C.mj:17:52: LEXER: Found symbol: '#55' with value: 'get_x'
+DEBUG - parser_C.mj:17:57: LEXER: Found symbol: '#42' with value: '('
+DEBUG - parser_C.mj:17:58: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - parser_C.mj:17:60: LEXER: Found symbol: '#23' with value: '-'
+DEBUG - parser_C.mj:17:62: LEXER: Found symbol: '#55' with value: 'x'
+DEBUG - parser_C.mj:17:63: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_C.mj:17:65: LEXER: Found symbol: '#47' with value: '}'
+DEBUG - parser_C.mj:18:9: LEXER: Found symbol: '#47' with value: '}'
+DEBUG - parser_C.mj:19:5: LEXER: Found symbol: '#47' with value: '}'
+DEBUG - parser_C.mj:22:5: LEXER: Found symbol: '#5' with value: 'abstract'
+DEBUG - parser_C.mj:22:14: LEXER: Found symbol: '#4' with value: 'class'
+DEBUG - parser_C.mj:22:20: LEXER: Found symbol: '#55' with value: 'IPoint'
+DEBUG - parser_C.mj:22:27: LEXER: Found symbol: '#46' with value: '{'
+DEBUG - parser_C.mj:23:9: LEXER: Found symbol: '#46' with value: '{'
+DEBUG - parser_C.mj:24:13: LEXER: Found symbol: '#18' with value: 'public'
+DEBUG - parser_C.mj:24:20: LEXER: Found symbol: '#5' with value: 'abstract'
+DEBUG - parser_C.mj:24:29: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - parser_C.mj:24:33: LEXER: Found symbol: '#55' with value: 'get_x'
+DEBUG - parser_C.mj:24:38: LEXER: Found symbol: '#42' with value: '('
+DEBUG - parser_C.mj:24:39: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - parser_C.mj:24:40: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_C.mj:25:13: LEXER: Found symbol: '#18' with value: 'public'
+DEBUG - parser_C.mj:25:20: LEXER: Found symbol: '#5' with value: 'abstract'
+DEBUG - parser_C.mj:25:29: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - parser_C.mj:25:33: LEXER: Found symbol: '#55' with value: 'diff_x'
+DEBUG - parser_C.mj:25:39: LEXER: Found symbol: '#42' with value: '('
+DEBUG - parser_C.mj:25:40: LEXER: Found symbol: '#55' with value: 'IPoint'
+DEBUG - parser_C.mj:25:47: LEXER: Found symbol: '#55' with value: 'a'
+DEBUG - parser_C.mj:25:48: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - parser_C.mj:25:49: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_C.mj:26:9: LEXER: Found symbol: '#47' with value: '}'
+DEBUG - parser_C.mj:27:5: LEXER: Found symbol: '#47' with value: '}'
+DEBUG - parser_C.mj:29:5: LEXER: Found symbol: '#7' with value: 'const'
+DEBUG - parser_C.mj:29:11: LEXER: Found symbol: '#55' with value: 'char'
+DEBUG - parser_C.mj:29:16: LEXER: Found symbol: '#55' with value: 'SPACE'
+DEBUG - parser_C.mj:29:22: LEXER: Found symbol: '#21' with value: '='
+DEBUG - parser_C.mj:29:24: LEXER: Found symbol: '#53' with value: ' '
+DEBUG - parser_C.mj:29:27: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_C.mj:31:5: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - parser_C.mj:31:9: LEXER: Found symbol: '#55' with value: 'x'
+DEBUG - parser_C.mj:31:10: LEXER: Found symbol: '#50' with value: ','
+DEBUG - parser_C.mj:31:12: LEXER: Found symbol: '#55' with value: 'y'
+DEBUG - parser_C.mj:31:13: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_C.mj:33:5: LEXER: Found symbol: '#5' with value: 'abstract'
+DEBUG - parser_C.mj:33:14: LEXER: Found symbol: '#4' with value: 'class'
+DEBUG - parser_C.mj:33:20: LEXER: Found symbol: '#55' with value: 'Object'
+DEBUG - parser_C.mj:33:27: LEXER: Found symbol: '#46' with value: '{'
+DEBUG - parser_C.mj:34:9: LEXER: Found symbol: '#46' with value: '{'
+DEBUG - parser_C.mj:35:13: LEXER: Found symbol: '#18' with value: 'public'
+DEBUG - parser_C.mj:35:20: LEXER: Found symbol: '#5' with value: 'abstract'
+DEBUG - parser_C.mj:35:29: LEXER: Found symbol: '#13' with value: 'void'
+DEBUG - parser_C.mj:35:34: LEXER: Found symbol: '#55' with value: 'println'
+DEBUG - parser_C.mj:35:41: LEXER: Found symbol: '#42' with value: '('
+DEBUG - parser_C.mj:35:42: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - parser_C.mj:35:43: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_C.mj:36:9: LEXER: Found symbol: '#47' with value: '}'
+DEBUG - parser_C.mj:37:5: LEXER: Found symbol: '#47' with value: '}'
+DEBUG - parser_C.mj:39:5: LEXER: Found symbol: '#4' with value: 'class'
+DEBUG - parser_C.mj:39:11: LEXER: Found symbol: '#55' with value: 'Point'
+DEBUG - parser_C.mj:39:17: LEXER: Found symbol: '#15' with value: 'extends'
+DEBUG - parser_C.mj:39:25: LEXER: Found symbol: '#55' with value: 'Object'
+DEBUG - parser_C.mj:40:5: LEXER: Found symbol: '#46' with value: '{'
+DEBUG - parser_C.mj:41:9: LEXER: Found symbol: '#20' with value: 'private'
+DEBUG - parser_C.mj:41:17: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - parser_C.mj:41:21: LEXER: Found symbol: '#55' with value: 'x'
+DEBUG - parser_C.mj:41:22: LEXER: Found symbol: '#50' with value: ','
+DEBUG - parser_C.mj:41:24: LEXER: Found symbol: '#55' with value: 'y'
+DEBUG - parser_C.mj:41:25: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_C.mj:42:9: LEXER: Found symbol: '#46' with value: '{'
+DEBUG - parser_C.mj:43:13: LEXER: Found symbol: '#18' with value: 'public'
+DEBUG - parser_C.mj:43:20: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - parser_C.mj:43:24: LEXER: Found symbol: '#55' with value: 'getX'
+DEBUG - parser_C.mj:43:28: LEXER: Found symbol: '#42' with value: '('
+DEBUG - parser_C.mj:43:29: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - parser_C.mj:43:31: LEXER: Found symbol: '#46' with value: '{'
+DEBUG - parser_C.mj:43:33: LEXER: Found symbol: '#12' with value: 'return'
+DEBUG - parser_C.mj:43:40: LEXER: Found symbol: '#55' with value: 'x'
+DEBUG - parser_C.mj:43:41: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_C.mj:43:43: LEXER: Found symbol: '#47' with value: '}'
+DEBUG - parser_C.mj:44:13: LEXER: Found symbol: '#18' with value: 'public'
+DEBUG - parser_C.mj:44:20: LEXER: Found symbol: '#13' with value: 'void'
+DEBUG - parser_C.mj:44:25: LEXER: Found symbol: '#55' with value: 'setX'
+DEBUG - parser_C.mj:44:29: LEXER: Found symbol: '#42' with value: '('
+DEBUG - parser_C.mj:44:30: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - parser_C.mj:44:34: LEXER: Found symbol: '#55' with value: 'x'
+DEBUG - parser_C.mj:44:35: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - parser_C.mj:44:37: LEXER: Found symbol: '#46' with value: '{'
+DEBUG - parser_C.mj:44:39: LEXER: Found symbol: '#55' with value: 'this'
+DEBUG - parser_C.mj:44:43: LEXER: Found symbol: '#51' with value: '.'
+DEBUG - parser_C.mj:44:44: LEXER: Found symbol: '#55' with value: 'x'
+DEBUG - parser_C.mj:44:46: LEXER: Found symbol: '#21' with value: '='
+DEBUG - parser_C.mj:44:48: LEXER: Found symbol: '#55' with value: 'x'
+DEBUG - parser_C.mj:44:49: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_C.mj:44:51: LEXER: Found symbol: '#47' with value: '}'
+DEBUG - parser_C.mj:46:13: LEXER: Found symbol: '#18' with value: 'public'
+DEBUG - parser_C.mj:46:20: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - parser_C.mj:46:24: LEXER: Found symbol: '#55' with value: 'getY'
+DEBUG - parser_C.mj:46:28: LEXER: Found symbol: '#42' with value: '('
+DEBUG - parser_C.mj:46:29: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - parser_C.mj:46:31: LEXER: Found symbol: '#46' with value: '{'
+DEBUG - parser_C.mj:46:33: LEXER: Found symbol: '#12' with value: 'return'
+DEBUG - parser_C.mj:46:40: LEXER: Found symbol: '#55' with value: 'y'
+DEBUG - parser_C.mj:46:41: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_C.mj:46:43: LEXER: Found symbol: '#47' with value: '}'
+DEBUG - parser_C.mj:47:13: LEXER: Found symbol: '#18' with value: 'public'
+DEBUG - parser_C.mj:47:20: LEXER: Found symbol: '#13' with value: 'void'
+DEBUG - parser_C.mj:47:25: LEXER: Found symbol: '#55' with value: 'setY'
+DEBUG - parser_C.mj:47:29: LEXER: Found symbol: '#42' with value: '('
+DEBUG - parser_C.mj:47:30: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - parser_C.mj:47:34: LEXER: Found symbol: '#55' with value: 'y'
+DEBUG - parser_C.mj:47:35: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - parser_C.mj:47:37: LEXER: Found symbol: '#46' with value: '{'
+DEBUG - parser_C.mj:47:39: LEXER: Found symbol: '#55' with value: 'this'
+DEBUG - parser_C.mj:47:43: LEXER: Found symbol: '#51' with value: '.'
+DEBUG - parser_C.mj:47:44: LEXER: Found symbol: '#55' with value: 'y'
+DEBUG - parser_C.mj:47:46: LEXER: Found symbol: '#21' with value: '='
+DEBUG - parser_C.mj:47:48: LEXER: Found symbol: '#55' with value: 'y'
+DEBUG - parser_C.mj:47:49: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_C.mj:47:51: LEXER: Found symbol: '#47' with value: '}'
+DEBUG - parser_C.mj:49:13: LEXER: Found symbol: '#18' with value: 'public'
+DEBUG - parser_C.mj:49:20: LEXER: Found symbol: '#13' with value: 'void'
+DEBUG - parser_C.mj:49:25: LEXER: Found symbol: '#55' with value: 'println'
+DEBUG - parser_C.mj:49:32: LEXER: Found symbol: '#42' with value: '('
+DEBUG - parser_C.mj:49:33: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - parser_C.mj:49:35: LEXER: Found symbol: '#46' with value: '{'
+DEBUG - parser_C.mj:50:17: LEXER: Found symbol: '#10' with value: 'print'
+DEBUG - parser_C.mj:50:22: LEXER: Found symbol: '#42' with value: '('
+DEBUG - parser_C.mj:50:23: LEXER: Found symbol: '#55' with value: 'x'
+DEBUG - parser_C.mj:50:24: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - parser_C.mj:50:25: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_C.mj:51:17: LEXER: Found symbol: '#10' with value: 'print'
+DEBUG - parser_C.mj:51:22: LEXER: Found symbol: '#42' with value: '('
+DEBUG - parser_C.mj:51:23: LEXER: Found symbol: '#55' with value: 'SPACE'
+DEBUG - parser_C.mj:51:28: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - parser_C.mj:51:29: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_C.mj:52:17: LEXER: Found symbol: '#10' with value: 'print'
+DEBUG - parser_C.mj:52:22: LEXER: Found symbol: '#42' with value: '('
+DEBUG - parser_C.mj:52:23: LEXER: Found symbol: '#55' with value: 'y'
+DEBUG - parser_C.mj:52:24: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - parser_C.mj:52:25: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_C.mj:53:17: LEXER: Found symbol: '#10' with value: 'print'
+DEBUG - parser_C.mj:53:22: LEXER: Found symbol: '#42' with value: '('
+DEBUG - parser_C.mj:53:23: LEXER: Found symbol: '#55' with value: 'eol'
+DEBUG - parser_C.mj:53:26: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - parser_C.mj:53:27: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_C.mj:54:13: LEXER: Found symbol: '#47' with value: '}'
+DEBUG - parser_C.mj:55:9: LEXER: Found symbol: '#47' with value: '}'
+DEBUG - parser_C.mj:56:5: LEXER: Found symbol: '#47' with value: '}'
+DEBUG - parser_C.mj:57:1: LEXER: Found symbol: '#46' with value: '{'
+DEBUG - parser_C.mj:58:5: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - parser_C.mj:58:9: LEXER: Found symbol: '#55' with value: 'k'
+DEBUG - parser_C.mj:58:10: LEXER: Found symbol: '#42' with value: '('
+DEBUG - parser_C.mj:58:11: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - parser_C.mj:59:9: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - parser_C.mj:59:13: LEXER: Found symbol: '#55' with value: 'c'
+DEBUG - parser_C.mj:59:14: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_C.mj:60:5: LEXER: Found symbol: '#46' with value: '{'
+DEBUG - parser_C.mj:61:9: LEXER: Found symbol: '#55' with value: 'c'
+DEBUG - parser_C.mj:61:11: LEXER: Found symbol: '#21' with value: '='
+DEBUG - parser_C.mj:61:13: LEXER: Found symbol: '#52' with value: '1'
+DEBUG - parser_C.mj:61:14: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_C.mj:62:9: LEXER: Found symbol: '#12' with value: 'return'
+DEBUG - parser_C.mj:62:16: LEXER: Found symbol: '#55' with value: 'c'
+DEBUG - parser_C.mj:62:18: LEXER: Found symbol: '#22' with value: '+'
+DEBUG - parser_C.mj:62:20: LEXER: Found symbol: '#52' with value: '2'
+DEBUG - parser_C.mj:62:21: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_C.mj:63:5: LEXER: Found symbol: '#47' with value: '}'
+DEBUG - parser_C.mj:65:5: LEXER: Found symbol: '#13' with value: 'void'
+DEBUG - parser_C.mj:65:10: LEXER: Found symbol: '#55' with value: 'printArray'
+DEBUG - parser_C.mj:65:20: LEXER: Found symbol: '#42' with value: '('
+DEBUG - parser_C.mj:65:21: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - parser_C.mj:65:25: LEXER: Found symbol: '#55' with value: 'arr'
+DEBUG - parser_C.mj:65:28: LEXER: Found symbol: '#44' with value: '['
+DEBUG - parser_C.mj:65:29: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - parser_C.mj:65:30: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - parser_C.mj:66:9: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - parser_C.mj:66:13: LEXER: Found symbol: '#55' with value: 'it'
+DEBUG - parser_C.mj:66:15: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_C.mj:67:5: LEXER: Found symbol: '#46' with value: '{'
+DEBUG - parser_C.mj:68:9: LEXER: Found symbol: '#17' with value: 'foreach'
+DEBUG - parser_C.mj:68:17: LEXER: Found symbol: '#42' with value: '('
+DEBUG - parser_C.mj:68:18: LEXER: Found symbol: '#55' with value: 'it'
+DEBUG - parser_C.mj:68:21: LEXER: Found symbol: '#48' with value: ':'
+DEBUG - parser_C.mj:68:23: LEXER: Found symbol: '#55' with value: 'arr'
+DEBUG - parser_C.mj:68:26: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - parser_C.mj:68:28: LEXER: Found symbol: '#46' with value: '{'
+DEBUG - parser_C.mj:69:13: LEXER: Found symbol: '#10' with value: 'print'
+DEBUG - parser_C.mj:69:18: LEXER: Found symbol: '#42' with value: '('
+DEBUG - parser_C.mj:69:19: LEXER: Found symbol: '#55' with value: 'it'
+DEBUG - parser_C.mj:69:21: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - parser_C.mj:69:22: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_C.mj:70:13: LEXER: Found symbol: '#10' with value: 'print'
+DEBUG - parser_C.mj:70:18: LEXER: Found symbol: '#42' with value: '('
+DEBUG - parser_C.mj:70:19: LEXER: Found symbol: '#55' with value: 'SPACE'
+DEBUG - parser_C.mj:70:24: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - parser_C.mj:70:25: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_C.mj:71:9: LEXER: Found symbol: '#47' with value: '}'
+DEBUG - parser_C.mj:72:9: LEXER: Found symbol: '#10' with value: 'print'
+DEBUG - parser_C.mj:72:14: LEXER: Found symbol: '#42' with value: '('
+DEBUG - parser_C.mj:72:15: LEXER: Found symbol: '#55' with value: 'eol'
+DEBUG - parser_C.mj:72:18: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - parser_C.mj:72:19: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_C.mj:73:5: LEXER: Found symbol: '#47' with value: '}'
+DEBUG - parser_C.mj:75:5: LEXER: Found symbol: '#13' with value: 'void'
+DEBUG - parser_C.mj:75:10: LEXER: Found symbol: '#55' with value: 'main'
+DEBUG - parser_C.mj:75:14: LEXER: Found symbol: '#42' with value: '('
+DEBUG - parser_C.mj:75:15: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - parser_C.mj:76:9: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - parser_C.mj:76:13: LEXER: Found symbol: '#55' with value: 'i'
+DEBUG - parser_C.mj:76:14: LEXER: Found symbol: '#50' with value: ','
+DEBUG - parser_C.mj:76:16: LEXER: Found symbol: '#55' with value: 'arr'
+DEBUG - parser_C.mj:76:19: LEXER: Found symbol: '#44' with value: '['
+DEBUG - parser_C.mj:76:20: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - parser_C.mj:76:21: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_C.mj:77:9: LEXER: Found symbol: '#55' with value: 'Point'
+DEBUG - parser_C.mj:77:15: LEXER: Found symbol: '#55' with value: 'p'
+DEBUG - parser_C.mj:77:16: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_C.mj:78:5: LEXER: Found symbol: '#46' with value: '{'
+DEBUG - parser_C.mj:79:9: LEXER: Found symbol: '#55' with value: 'y'
+DEBUG - parser_C.mj:79:11: LEXER: Found symbol: '#21' with value: '='
+DEBUG - parser_C.mj:79:13: LEXER: Found symbol: '#52' with value: '2'
+DEBUG - parser_C.mj:79:14: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_C.mj:80:9: LEXER: Found symbol: '#10' with value: 'print'
+DEBUG - parser_C.mj:80:14: LEXER: Found symbol: '#42' with value: '('
+DEBUG - parser_C.mj:80:15: LEXER: Found symbol: '#55' with value: 'y'
+DEBUG - parser_C.mj:80:16: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - parser_C.mj:80:17: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_C.mj:80:19: LEXER: Found symbol: '#10' with value: 'print'
+DEBUG - parser_C.mj:80:24: LEXER: Found symbol: '#42' with value: '('
+DEBUG - parser_C.mj:80:25: LEXER: Found symbol: '#55' with value: 'eol'
+DEBUG - parser_C.mj:80:28: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - parser_C.mj:80:29: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_C.mj:81:9: LEXER: Found symbol: '#55' with value: 'x'
+DEBUG - parser_C.mj:81:11: LEXER: Found symbol: '#21' with value: '='
+DEBUG - parser_C.mj:81:13: LEXER: Found symbol: '#55' with value: 'y'
+DEBUG - parser_C.mj:81:15: LEXER: Found symbol: '#22' with value: '+'
+DEBUG - parser_C.mj:81:17: LEXER: Found symbol: '#52' with value: '2'
+DEBUG - parser_C.mj:81:18: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_C.mj:82:9: LEXER: Found symbol: '#10' with value: 'print'
+DEBUG - parser_C.mj:82:14: LEXER: Found symbol: '#42' with value: '('
+DEBUG - parser_C.mj:82:15: LEXER: Found symbol: '#55' with value: 'x'
+DEBUG - parser_C.mj:82:16: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - parser_C.mj:82:17: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_C.mj:82:19: LEXER: Found symbol: '#10' with value: 'print'
+DEBUG - parser_C.mj:82:24: LEXER: Found symbol: '#42' with value: '('
+DEBUG - parser_C.mj:82:25: LEXER: Found symbol: '#55' with value: 'eol'
+DEBUG - parser_C.mj:82:28: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - parser_C.mj:82:29: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_C.mj:83:9: LEXER: Found symbol: '#55' with value: 'y'
+DEBUG - parser_C.mj:83:11: LEXER: Found symbol: '#21' with value: '='
+DEBUG - parser_C.mj:83:13: LEXER: Found symbol: '#55' with value: 'k'
+DEBUG - parser_C.mj:83:14: LEXER: Found symbol: '#42' with value: '('
+DEBUG - parser_C.mj:83:15: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - parser_C.mj:83:17: LEXER: Found symbol: '#22' with value: '+'
+DEBUG - parser_C.mj:83:19: LEXER: Found symbol: '#52' with value: '3'
+DEBUG - parser_C.mj:83:20: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_C.mj:84:9: LEXER: Found symbol: '#10' with value: 'print'
+DEBUG - parser_C.mj:84:14: LEXER: Found symbol: '#42' with value: '('
+DEBUG - parser_C.mj:84:15: LEXER: Found symbol: '#55' with value: 'y'
+DEBUG - parser_C.mj:84:16: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - parser_C.mj:84:17: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_C.mj:85:9: LEXER: Found symbol: '#55' with value: 'p'
+DEBUG - parser_C.mj:85:11: LEXER: Found symbol: '#21' with value: '='
+DEBUG - parser_C.mj:85:13: LEXER: Found symbol: '#9' with value: 'new'
+DEBUG - parser_C.mj:85:17: LEXER: Found symbol: '#55' with value: 'Point'
+DEBUG - parser_C.mj:85:22: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_C.mj:86:9: LEXER: Found symbol: '#55' with value: 'p'
+DEBUG - parser_C.mj:86:10: LEXER: Found symbol: '#51' with value: '.'
+DEBUG - parser_C.mj:86:11: LEXER: Found symbol: '#55' with value: 'x'
+DEBUG - parser_C.mj:86:13: LEXER: Found symbol: '#21' with value: '='
+DEBUG - parser_C.mj:86:15: LEXER: Found symbol: '#55' with value: 'x'
+DEBUG - parser_C.mj:86:16: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_C.mj:87:9: LEXER: Found symbol: '#55' with value: 'p'
+DEBUG - parser_C.mj:87:10: LEXER: Found symbol: '#51' with value: '.'
+DEBUG - parser_C.mj:87:11: LEXER: Found symbol: '#55' with value: 'y'
+DEBUG - parser_C.mj:87:13: LEXER: Found symbol: '#21' with value: '='
+DEBUG - parser_C.mj:87:15: LEXER: Found symbol: '#55' with value: 'y'
+DEBUG - parser_C.mj:87:16: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_C.mj:88:9: LEXER: Found symbol: '#55' with value: 'p'
+DEBUG - parser_C.mj:88:10: LEXER: Found symbol: '#51' with value: '.'
+DEBUG - parser_C.mj:88:11: LEXER: Found symbol: '#55' with value: 'printPoint'
+DEBUG - parser_C.mj:88:21: LEXER: Found symbol: '#42' with value: '('
+DEBUG - parser_C.mj:88:22: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - parser_C.mj:88:23: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_C.mj:89:9: LEXER: Found symbol: '#55' with value: 'arr'
+DEBUG - parser_C.mj:89:13: LEXER: Found symbol: '#21' with value: '='
+DEBUG - parser_C.mj:89:15: LEXER: Found symbol: '#9' with value: 'new'
+DEBUG - parser_C.mj:89:19: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - parser_C.mj:89:22: LEXER: Found symbol: '#44' with value: '['
+DEBUG - parser_C.mj:89:23: LEXER: Found symbol: '#52' with value: '6'
+DEBUG - parser_C.mj:89:24: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - parser_C.mj:89:25: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_C.mj:90:9: LEXER: Found symbol: '#14' with value: 'for'
+DEBUG - parser_C.mj:90:13: LEXER: Found symbol: '#42' with value: '('
+DEBUG - parser_C.mj:90:14: LEXER: Found symbol: '#55' with value: 'i'
+DEBUG - parser_C.mj:90:16: LEXER: Found symbol: '#21' with value: '='
+DEBUG - parser_C.mj:90:18: LEXER: Found symbol: '#52' with value: '0'
+DEBUG - parser_C.mj:90:19: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_C.mj:90:21: LEXER: Found symbol: '#55' with value: 'i'
+DEBUG - parser_C.mj:90:23: LEXER: Found symbol: '#33' with value: '<'
+DEBUG - parser_C.mj:90:25: LEXER: Found symbol: '#55' with value: 'len'
+DEBUG - parser_C.mj:90:28: LEXER: Found symbol: '#42' with value: '('
+DEBUG - parser_C.mj:90:29: LEXER: Found symbol: '#55' with value: 'arr'
+DEBUG - parser_C.mj:90:32: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - parser_C.mj:90:33: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_C.mj:90:35: LEXER: Found symbol: '#55' with value: 'i'
+DEBUG - parser_C.mj:90:36: LEXER: Found symbol: '#27' with value: '++'
+DEBUG - parser_C.mj:90:38: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - parser_C.mj:90:40: LEXER: Found symbol: '#46' with value: '{'
+DEBUG - parser_C.mj:91:13: LEXER: Found symbol: '#55' with value: 'arr'
+DEBUG - parser_C.mj:91:16: LEXER: Found symbol: '#44' with value: '['
+DEBUG - parser_C.mj:91:17: LEXER: Found symbol: '#55' with value: 'i'
+DEBUG - parser_C.mj:91:18: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - parser_C.mj:91:20: LEXER: Found symbol: '#21' with value: '='
+DEBUG - parser_C.mj:91:22: LEXER: Found symbol: '#55' with value: 'i'
+DEBUG - parser_C.mj:91:24: LEXER: Found symbol: '#24' with value: '*'
+DEBUG - parser_C.mj:91:26: LEXER: Found symbol: '#52' with value: '7'
+DEBUG - parser_C.mj:91:28: LEXER: Found symbol: '#23' with value: '-'
+DEBUG - parser_C.mj:91:30: LEXER: Found symbol: '#52' with value: '2'
+DEBUG - parser_C.mj:91:31: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_C.mj:92:9: LEXER: Found symbol: '#47' with value: '}'
+DEBUG - parser_C.mj:93:9: LEXER: Found symbol: '#55' with value: 'printArray'
+DEBUG - parser_C.mj:93:19: LEXER: Found symbol: '#42' with value: '('
+DEBUG - parser_C.mj:93:20: LEXER: Found symbol: '#55' with value: 'arr'
+DEBUG - parser_C.mj:93:23: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - parser_C.mj:93:24: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_C.mj:94:5: LEXER: Found symbol: '#47' with value: '}'
+DEBUG - parser_C.mj:95:1: LEXER: Found symbol: '#47' with value: '}'
+DEBUG - parser_C.mj:95:2: LEXER: Found symbol: '#0' with value: ''
+DEBUG - parser_C.mj:95:2: LEXER: Found symbol: '#0' with value: ''
+INFO  - Abstract syntax tree:
+Program(
+  ProgramHeader(
+   level_c_syntax_test
+  ) [ProgramHeader]
+  MultipleProgramDeclarations(
+    MultipleProgramDeclarations(
+      MultipleProgramDeclarations(
+        MultipleProgramDeclarations(
+          MultipleProgramDeclarations(
+            MultipleProgramDeclarations(
+              MultipleProgramDeclarations(
+                MultipleProgramDeclarations(
+                  MultipleProgramDeclarations(
+                    MultipleProgramDeclarations(
+                      MultipleProgramDeclarations(
+                        NoProgramDeclarations(
+                        ) [NoProgramDeclarations]
+                        ConstProgramDeclaration(
+                          ConstDeclaration(
+                            Type(
+                             int
+                            ) [Type]
+                            MultipleConstAssignments(
+                              MultipleConstAssignments(
+                                SingleConstAssignment(
+                                  ConstAssignment(
+                                   A
+                                    IntConst(
+                                      NoSign(
+                                      ) [NoSign]
+                                     1
+                                    ) [IntConst]
+                                  ) [ConstAssignment]
+                                ) [SingleConstAssignment]
+                                ConstAssignment(
+                                 B
+                                  IntConst(
+                                    NoSign(
+                                    ) [NoSign]
+                                   2
+                                  ) [IntConst]
+                                ) [ConstAssignment]
+                              ) [MultipleConstAssignments]
+                              ConstAssignment(
+                               C
+                                IntConst(
+                                  NoSign(
+                                  ) [NoSign]
+                                 3
+                                ) [IntConst]
+                              ) [ConstAssignment]
+                            ) [MultipleConstAssignments]
+                          ) [ConstDeclaration]
+                        ) [ConstProgramDeclaration]
+                      ) [MultipleProgramDeclarations]
+                      ConstProgramDeclaration(
+                        ConstDeclaration(
+                          Type(
+                           char
+                          ) [Type]
+                          MultipleConstAssignments(
+                            SingleConstAssignment(
+                              ConstAssignment(
+                               X
+                                CharConst(
+                                 x
+                                ) [CharConst]
+                              ) [ConstAssignment]
+                            ) [SingleConstAssignment]
+                            ConstAssignment(
+                             Y
+                              CharConst(
+                               y
+                              ) [CharConst]
+                            ) [ConstAssignment]
+                          ) [MultipleConstAssignments]
+                        ) [ConstDeclaration]
+                      ) [ConstProgramDeclaration]
+                    ) [MultipleProgramDeclarations]
+                    ConstProgramDeclaration(
+                      ConstDeclaration(
+                        Type(
+                         bool
+                        ) [Type]
+                        SingleConstAssignment(
+                          ConstAssignment(
+                           VALID
+                            BoolConst(
+                             true
+                            ) [BoolConst]
+                          ) [ConstAssignment]
+                        ) [SingleConstAssignment]
+                      ) [ConstDeclaration]
+                    ) [ConstProgramDeclaration]
+                  ) [MultipleProgramDeclarations]
+                  VarProgramDeclaration(
+                    VarDeclaration(
+                      Type(
+                       int
+                      ) [Type]
+                      MultipleVariables(
+                        MultipleVariables(
+                          SingleVariable(
+                            Variable(
+                             a
+                              NoArrayBrackets(
+                              ) [NoArrayBrackets]
+                            ) [Variable]
+                          ) [SingleVariable]
+                          Variable(
+                           b
+                            ArrayBrackets(
+                            ) [ArrayBrackets]
+                          ) [Variable]
+                        ) [MultipleVariables]
+                        Variable(
+                         c
+                          NoArrayBrackets(
+                          ) [NoArrayBrackets]
+                        ) [Variable]
+                      ) [MultipleVariables]
+                    ) [VarDeclaration]
+                  ) [VarProgramDeclaration]
+                ) [MultipleProgramDeclarations]
+                VarProgramDeclaration(
+                  VarDeclaration(
+                    Type(
+                     Point
+                    ) [Type]
+                    MultipleVariables(
+                      SingleVariable(
+                        Variable(
+                         p1
+                          NoArrayBrackets(
+                          ) [NoArrayBrackets]
+                        ) [Variable]
+                      ) [SingleVariable]
+                      Variable(
+                       p2
+                        NoArrayBrackets(
+                        ) [NoArrayBrackets]
+                      ) [Variable]
+                    ) [MultipleVariables]
+                  ) [VarDeclaration]
+                ) [VarProgramDeclaration]
+              ) [MultipleProgramDeclarations]
+              ClassProgramDeclaration(
+                ClassDeclaration(
+                  ClassHeader(
+                   Point
+                    ClassBaseType(
+                      Type(
+                       IPoint
+                      ) [Type]
+                    ) [ClassBaseType]
+                  ) [ClassHeader]
+                  MultipleClassVarDeclarations(
+                    NoClassVarDeclarations(
+                    ) [NoClassVarDeclarations]
+                    ClassVarDeclaration(
+                      PublicAccessModifier(
+                      ) [PublicAccessModifier]
+                      Type(
+                       int
+                      ) [Type]
+                      MultipleClassVariables(
+                        SingleClassVariable(
+                          ClassVariable(
+                           x
+                            NoArrayBrackets(
+                            ) [NoArrayBrackets]
+                          ) [ClassVariable]
+                        ) [SingleClassVariable]
+                        ClassVariable(
+                         y
+                          NoArrayBrackets(
+                          ) [NoArrayBrackets]
+                        ) [ClassVariable]
+                      ) [MultipleClassVariables]
+                    ) [ClassVarDeclaration]
+                  ) [MultipleClassVarDeclarations]
+                  ClassMethodDeclarations(
+                    MultipleClassMethodDeclarations(
+                      SingleClassMethodDeclaration(
+                        ClassMethodDeclaration(
+                          PublicAccessModifier(
+                          ) [PublicAccessModifier]
+                          MethodDeclaration(
+                            MethodHeader(
+                              ReturnType(
+                                Type(
+                                 int
+                                ) [Type]
+                              ) [ReturnType]
+                             get_x
+                            ) [MethodHeader]
+                            NoFormalParameters(
+                            ) [NoFormalParameters]
+                            NoLocalVarDeclarations(
+                            ) [NoLocalVarDeclarations]
+                            MethodStatementListStart(
+                            ) [MethodStatementListStart]
+                            MultipleStatements(
+                              NoStatements(
+                              ) [NoStatements]
+                              ReturnStatement(
+                                ReturnValue(
+                                  LeftExpression(
+                                    SingleTermExpression(
+                                      NoSign(
+                                      ) [NoSign]
+                                      SingleFactorTerm(
+                                        DesignatorFactor(
+                                          IdentifierDesignator(
+                                           x
+                                          ) [IdentifierDesignator]
+                                        ) [DesignatorFactor]
+                                      ) [SingleFactorTerm]
+                                    ) [SingleTermExpression]
+                                  ) [LeftExpression]
+                                ) [ReturnValue]
+                              ) [ReturnStatement]
+                            ) [MultipleStatements]
+                          ) [MethodDeclaration]
+                        ) [ClassMethodDeclaration]
+                      ) [SingleClassMethodDeclaration]
+                      ClassMethodDeclaration(
+                        PublicAccessModifier(
+                        ) [PublicAccessModifier]
+                        MethodDeclaration(
+                          MethodHeader(
+                            ReturnType(
+                              Type(
+                               int
+                              ) [Type]
+                            ) [ReturnType]
+                           diff_x
+                          ) [MethodHeader]
+                          FormalParameters(
+                            SingleFormalParameter(
+                              FormalParameter(
+                                Type(
+                                 IPoint
+                                ) [Type]
+                               a
+                                NoArrayBrackets(
+                                ) [NoArrayBrackets]
+                              ) [FormalParameter]
+                            ) [SingleFormalParameter]
+                          ) [FormalParameters]
+                          NoLocalVarDeclarations(
+                          ) [NoLocalVarDeclarations]
+                          MethodStatementListStart(
+                          ) [MethodStatementListStart]
+                          MultipleStatements(
+                            NoStatements(
+                            ) [NoStatements]
+                            ReturnStatement(
+                              ReturnValue(
+                                LeftExpression(
+                                  MultipleTermsExpression(
+                                    SingleTermExpression(
+                                      NoSign(
+                                      ) [NoSign]
+                                      SingleFactorTerm(
+                                        MethodCallFactor(
+                                          MethodCall(
+                                            MethodCallHeader(
+                                              MemberAccessDesignator(
+                                                IdentifierDesignator(
+                                                 a
+                                                ) [IdentifierDesignator]
+                                               get_x
+                                              ) [MemberAccessDesignator]
+                                            ) [MethodCallHeader]
+                                            NoActualParameters(
+                                            ) [NoActualParameters]
+                                          ) [MethodCall]
+                                        ) [MethodCallFactor]
+                                      ) [SingleFactorTerm]
+                                    ) [SingleTermExpression]
+                                    SubOperator(
+                                    ) [SubOperator]
+                                    SingleFactorTerm(
+                                      DesignatorFactor(
+                                        IdentifierDesignator(
+                                         x
+                                        ) [IdentifierDesignator]
+                                      ) [DesignatorFactor]
+                                    ) [SingleFactorTerm]
+                                  ) [MultipleTermsExpression]
+                                ) [LeftExpression]
+                              ) [ReturnValue]
+                            ) [ReturnStatement]
+                          ) [MultipleStatements]
+                        ) [MethodDeclaration]
+                      ) [ClassMethodDeclaration]
+                    ) [MultipleClassMethodDeclarations]
+                  ) [ClassMethodDeclarations]
+                ) [ClassDeclaration]
+              ) [ClassProgramDeclaration]
+            ) [MultipleProgramDeclarations]
+            AbstractClassProgramDeclaration(
+              AbstractClassDeclaration(
+                AbstractClassHeader(
+                 IPoint
+                  NoClassBaseType(
+                  ) [NoClassBaseType]
+                ) [AbstractClassHeader]
+                NoClassVarDeclarations(
+                ) [NoClassVarDeclarations]
+                AbstractClassMethods(
+                  MultipleAbstractClassMethods(
+                    SingleAbstractClassMethod(
+                      AbstractClassAbstractMethodDeclaration(
+                        PublicAccessModifier(
+                        ) [PublicAccessModifier]
+                        AbstractMethodDeclaration(
+                          AbstractMethodHeader(
+                            ReturnType(
+                              Type(
+                               int
+                              ) [Type]
+                            ) [ReturnType]
+                           get_x
+                          ) [AbstractMethodHeader]
+                          NoFormalParameters(
+                          ) [NoFormalParameters]
+                        ) [AbstractMethodDeclaration]
+                      ) [AbstractClassAbstractMethodDeclaration]
+                    ) [SingleAbstractClassMethod]
+                    AbstractClassAbstractMethodDeclaration(
+                      PublicAccessModifier(
+                      ) [PublicAccessModifier]
+                      AbstractMethodDeclaration(
+                        AbstractMethodHeader(
+                          ReturnType(
+                            Type(
+                             int
+                            ) [Type]
+                          ) [ReturnType]
+                         diff_x
+                        ) [AbstractMethodHeader]
+                        FormalParameters(
+                          SingleFormalParameter(
+                            FormalParameter(
+                              Type(
+                               IPoint
+                              ) [Type]
+                             a
+                              NoArrayBrackets(
+                              ) [NoArrayBrackets]
+                            ) [FormalParameter]
+                          ) [SingleFormalParameter]
+                        ) [FormalParameters]
+                      ) [AbstractMethodDeclaration]
+                    ) [AbstractClassAbstractMethodDeclaration]
+                  ) [MultipleAbstractClassMethods]
+                ) [AbstractClassMethods]
+              ) [AbstractClassDeclaration]
+            ) [AbstractClassProgramDeclaration]
+          ) [MultipleProgramDeclarations]
+          ConstProgramDeclaration(
+            ConstDeclaration(
+              Type(
+               char
+              ) [Type]
+              SingleConstAssignment(
+                ConstAssignment(
+                 SPACE
+                  CharConst(
+                    
+                  ) [CharConst]
+                ) [ConstAssignment]
+              ) [SingleConstAssignment]
+            ) [ConstDeclaration]
+          ) [ConstProgramDeclaration]
+        ) [MultipleProgramDeclarations]
+        VarProgramDeclaration(
+          VarDeclaration(
+            Type(
+             int
+            ) [Type]
+            MultipleVariables(
+              SingleVariable(
+                Variable(
+                 x
+                  NoArrayBrackets(
+                  ) [NoArrayBrackets]
+                ) [Variable]
+              ) [SingleVariable]
+              Variable(
+               y
+                NoArrayBrackets(
+                ) [NoArrayBrackets]
+              ) [Variable]
+            ) [MultipleVariables]
+          ) [VarDeclaration]
+        ) [VarProgramDeclaration]
+      ) [MultipleProgramDeclarations]
+      AbstractClassProgramDeclaration(
+        AbstractClassDeclaration(
+          AbstractClassHeader(
+           Object
+            NoClassBaseType(
+            ) [NoClassBaseType]
+          ) [AbstractClassHeader]
+          NoClassVarDeclarations(
+          ) [NoClassVarDeclarations]
+          AbstractClassMethods(
+            SingleAbstractClassMethod(
+              AbstractClassAbstractMethodDeclaration(
+                PublicAccessModifier(
+                ) [PublicAccessModifier]
+                AbstractMethodDeclaration(
+                  AbstractMethodHeader(
+                    ReturnVoid(
+                    ) [ReturnVoid]
+                   println
+                  ) [AbstractMethodHeader]
+                  NoFormalParameters(
+                  ) [NoFormalParameters]
+                ) [AbstractMethodDeclaration]
+              ) [AbstractClassAbstractMethodDeclaration]
+            ) [SingleAbstractClassMethod]
+          ) [AbstractClassMethods]
+        ) [AbstractClassDeclaration]
+      ) [AbstractClassProgramDeclaration]
+    ) [MultipleProgramDeclarations]
+    ClassProgramDeclaration(
+      ClassDeclaration(
+        ClassHeader(
+         Point
+          ClassBaseType(
+            Type(
+             Object
+            ) [Type]
+          ) [ClassBaseType]
+        ) [ClassHeader]
+        MultipleClassVarDeclarations(
+          NoClassVarDeclarations(
+          ) [NoClassVarDeclarations]
+          ClassVarDeclaration(
+            PrivateAccessModifier(
+            ) [PrivateAccessModifier]
+            Type(
+             int
+            ) [Type]
+            MultipleClassVariables(
+              SingleClassVariable(
+                ClassVariable(
+                 x
+                  NoArrayBrackets(
+                  ) [NoArrayBrackets]
+                ) [ClassVariable]
+              ) [SingleClassVariable]
+              ClassVariable(
+               y
+                NoArrayBrackets(
+                ) [NoArrayBrackets]
+              ) [ClassVariable]
+            ) [MultipleClassVariables]
+          ) [ClassVarDeclaration]
+        ) [MultipleClassVarDeclarations]
+        ClassMethodDeclarations(
+          MultipleClassMethodDeclarations(
+            MultipleClassMethodDeclarations(
+              MultipleClassMethodDeclarations(
+                MultipleClassMethodDeclarations(
+                  SingleClassMethodDeclaration(
+                    ClassMethodDeclaration(
+                      PublicAccessModifier(
+                      ) [PublicAccessModifier]
+                      MethodDeclaration(
+                        MethodHeader(
+                          ReturnType(
+                            Type(
+                             int
+                            ) [Type]
+                          ) [ReturnType]
+                         getX
+                        ) [MethodHeader]
+                        NoFormalParameters(
+                        ) [NoFormalParameters]
+                        NoLocalVarDeclarations(
+                        ) [NoLocalVarDeclarations]
+                        MethodStatementListStart(
+                        ) [MethodStatementListStart]
+                        MultipleStatements(
+                          NoStatements(
+                          ) [NoStatements]
+                          ReturnStatement(
+                            ReturnValue(
+                              LeftExpression(
+                                SingleTermExpression(
+                                  NoSign(
+                                  ) [NoSign]
+                                  SingleFactorTerm(
+                                    DesignatorFactor(
+                                      IdentifierDesignator(
+                                       x
+                                      ) [IdentifierDesignator]
+                                    ) [DesignatorFactor]
+                                  ) [SingleFactorTerm]
+                                ) [SingleTermExpression]
+                              ) [LeftExpression]
+                            ) [ReturnValue]
+                          ) [ReturnStatement]
+                        ) [MultipleStatements]
+                      ) [MethodDeclaration]
+                    ) [ClassMethodDeclaration]
+                  ) [SingleClassMethodDeclaration]
+                  ClassMethodDeclaration(
+                    PublicAccessModifier(
+                    ) [PublicAccessModifier]
+                    MethodDeclaration(
+                      MethodHeader(
+                        ReturnVoid(
+                        ) [ReturnVoid]
+                       setX
+                      ) [MethodHeader]
+                      FormalParameters(
+                        SingleFormalParameter(
+                          FormalParameter(
+                            Type(
+                             int
+                            ) [Type]
+                           x
+                            NoArrayBrackets(
+                            ) [NoArrayBrackets]
+                          ) [FormalParameter]
+                        ) [SingleFormalParameter]
+                      ) [FormalParameters]
+                      NoLocalVarDeclarations(
+                      ) [NoLocalVarDeclarations]
+                      MethodStatementListStart(
+                      ) [MethodStatementListStart]
+                      MultipleStatements(
+                        NoStatements(
+                        ) [NoStatements]
+                        DesignatorBasedStatement(
+                          AssignmentDesignatorStatement(
+                            AssignmentHeader(
+                              MemberAccessDesignator(
+                                IdentifierDesignator(
+                                 this
+                                ) [IdentifierDesignator]
+                               x
+                              ) [MemberAccessDesignator]
+                            ) [AssignmentHeader]
+                            AssignmentFooter(
+                              AssignOperator(
+                              ) [AssignOperator]
+                              LeftExpression(
+                                SingleTermExpression(
+                                  NoSign(
+                                  ) [NoSign]
+                                  SingleFactorTerm(
+                                    DesignatorFactor(
+                                      IdentifierDesignator(
+                                       x
+                                      ) [IdentifierDesignator]
+                                    ) [DesignatorFactor]
+                                  ) [SingleFactorTerm]
+                                ) [SingleTermExpression]
+                              ) [LeftExpression]
+                            ) [AssignmentFooter]
+                          ) [AssignmentDesignatorStatement]
+                        ) [DesignatorBasedStatement]
+                      ) [MultipleStatements]
+                    ) [MethodDeclaration]
+                  ) [ClassMethodDeclaration]
+                ) [MultipleClassMethodDeclarations]
+                ClassMethodDeclaration(
+                  PublicAccessModifier(
+                  ) [PublicAccessModifier]
+                  MethodDeclaration(
+                    MethodHeader(
+                      ReturnType(
+                        Type(
+                         int
+                        ) [Type]
+                      ) [ReturnType]
+                     getY
+                    ) [MethodHeader]
+                    NoFormalParameters(
+                    ) [NoFormalParameters]
+                    NoLocalVarDeclarations(
+                    ) [NoLocalVarDeclarations]
+                    MethodStatementListStart(
+                    ) [MethodStatementListStart]
+                    MultipleStatements(
+                      NoStatements(
+                      ) [NoStatements]
+                      ReturnStatement(
+                        ReturnValue(
+                          LeftExpression(
+                            SingleTermExpression(
+                              NoSign(
+                              ) [NoSign]
+                              SingleFactorTerm(
+                                DesignatorFactor(
+                                  IdentifierDesignator(
+                                   y
+                                  ) [IdentifierDesignator]
+                                ) [DesignatorFactor]
+                              ) [SingleFactorTerm]
+                            ) [SingleTermExpression]
+                          ) [LeftExpression]
+                        ) [ReturnValue]
+                      ) [ReturnStatement]
+                    ) [MultipleStatements]
+                  ) [MethodDeclaration]
+                ) [ClassMethodDeclaration]
+              ) [MultipleClassMethodDeclarations]
+              ClassMethodDeclaration(
+                PublicAccessModifier(
+                ) [PublicAccessModifier]
+                MethodDeclaration(
+                  MethodHeader(
+                    ReturnVoid(
+                    ) [ReturnVoid]
+                   setY
+                  ) [MethodHeader]
+                  FormalParameters(
+                    SingleFormalParameter(
+                      FormalParameter(
+                        Type(
+                         int
+                        ) [Type]
+                       y
+                        NoArrayBrackets(
+                        ) [NoArrayBrackets]
+                      ) [FormalParameter]
+                    ) [SingleFormalParameter]
+                  ) [FormalParameters]
+                  NoLocalVarDeclarations(
+                  ) [NoLocalVarDeclarations]
+                  MethodStatementListStart(
+                  ) [MethodStatementListStart]
+                  MultipleStatements(
+                    NoStatements(
+                    ) [NoStatements]
+                    DesignatorBasedStatement(
+                      AssignmentDesignatorStatement(
+                        AssignmentHeader(
+                          MemberAccessDesignator(
+                            IdentifierDesignator(
+                             this
+                            ) [IdentifierDesignator]
+                           y
+                          ) [MemberAccessDesignator]
+                        ) [AssignmentHeader]
+                        AssignmentFooter(
+                          AssignOperator(
+                          ) [AssignOperator]
+                          LeftExpression(
+                            SingleTermExpression(
+                              NoSign(
+                              ) [NoSign]
+                              SingleFactorTerm(
+                                DesignatorFactor(
+                                  IdentifierDesignator(
+                                   y
+                                  ) [IdentifierDesignator]
+                                ) [DesignatorFactor]
+                              ) [SingleFactorTerm]
+                            ) [SingleTermExpression]
+                          ) [LeftExpression]
+                        ) [AssignmentFooter]
+                      ) [AssignmentDesignatorStatement]
+                    ) [DesignatorBasedStatement]
+                  ) [MultipleStatements]
+                ) [MethodDeclaration]
+              ) [ClassMethodDeclaration]
+            ) [MultipleClassMethodDeclarations]
+            ClassMethodDeclaration(
+              PublicAccessModifier(
+              ) [PublicAccessModifier]
+              MethodDeclaration(
+                MethodHeader(
+                  ReturnVoid(
+                  ) [ReturnVoid]
+                 println
+                ) [MethodHeader]
+                NoFormalParameters(
+                ) [NoFormalParameters]
+                NoLocalVarDeclarations(
+                ) [NoLocalVarDeclarations]
+                MethodStatementListStart(
+                ) [MethodStatementListStart]
+                MultipleStatements(
+                  MultipleStatements(
+                    MultipleStatements(
+                      MultipleStatements(
+                        NoStatements(
+                        ) [NoStatements]
+                        PrintStatement(
+                          LeftExpression(
+                            SingleTermExpression(
+                              NoSign(
+                              ) [NoSign]
+                              SingleFactorTerm(
+                                DesignatorFactor(
+                                  IdentifierDesignator(
+                                   x
+                                  ) [IdentifierDesignator]
+                                ) [DesignatorFactor]
+                              ) [SingleFactorTerm]
+                            ) [SingleTermExpression]
+                          ) [LeftExpression]
+                          NoPrintWidth(
+                          ) [NoPrintWidth]
+                        ) [PrintStatement]
+                      ) [MultipleStatements]
+                      PrintStatement(
+                        LeftExpression(
+                          SingleTermExpression(
+                            NoSign(
+                            ) [NoSign]
+                            SingleFactorTerm(
+                              DesignatorFactor(
+                                IdentifierDesignator(
+                                 SPACE
+                                ) [IdentifierDesignator]
+                              ) [DesignatorFactor]
+                            ) [SingleFactorTerm]
+                          ) [SingleTermExpression]
+                        ) [LeftExpression]
+                        NoPrintWidth(
+                        ) [NoPrintWidth]
+                      ) [PrintStatement]
+                    ) [MultipleStatements]
+                    PrintStatement(
+                      LeftExpression(
+                        SingleTermExpression(
+                          NoSign(
+                          ) [NoSign]
+                          SingleFactorTerm(
+                            DesignatorFactor(
+                              IdentifierDesignator(
+                               y
+                              ) [IdentifierDesignator]
+                            ) [DesignatorFactor]
+                          ) [SingleFactorTerm]
+                        ) [SingleTermExpression]
+                      ) [LeftExpression]
+                      NoPrintWidth(
+                      ) [NoPrintWidth]
+                    ) [PrintStatement]
+                  ) [MultipleStatements]
+                  PrintStatement(
+                    LeftExpression(
+                      SingleTermExpression(
+                        NoSign(
+                        ) [NoSign]
+                        SingleFactorTerm(
+                          DesignatorFactor(
+                            IdentifierDesignator(
+                             eol
+                            ) [IdentifierDesignator]
+                          ) [DesignatorFactor]
+                        ) [SingleFactorTerm]
+                      ) [SingleTermExpression]
+                    ) [LeftExpression]
+                    NoPrintWidth(
+                    ) [NoPrintWidth]
+                  ) [PrintStatement]
+                ) [MultipleStatements]
+              ) [MethodDeclaration]
+            ) [ClassMethodDeclaration]
+          ) [MultipleClassMethodDeclarations]
+        ) [ClassMethodDeclarations]
+      ) [ClassDeclaration]
+    ) [ClassProgramDeclaration]
+  ) [MultipleProgramDeclarations]
+  MultipleMethodDeclarations(
+    MultipleMethodDeclarations(
+      MultipleMethodDeclarations(
+        NoMethodDeclarations(
+        ) [NoMethodDeclarations]
+        MethodDeclaration(
+          MethodHeader(
+            ReturnType(
+              Type(
+               int
+              ) [Type]
+            ) [ReturnType]
+           k
+          ) [MethodHeader]
+          NoFormalParameters(
+          ) [NoFormalParameters]
+          MultipleLocalVarDeclarations(
+            NoLocalVarDeclarations(
+            ) [NoLocalVarDeclarations]
+            LocalVarDeclaration(
+              Type(
+               int
+              ) [Type]
+              SingleLocalVariable(
+                LocalVariable(
+                 c
+                  NoArrayBrackets(
+                  ) [NoArrayBrackets]
+                ) [LocalVariable]
+              ) [SingleLocalVariable]
+            ) [LocalVarDeclaration]
+          ) [MultipleLocalVarDeclarations]
+          MethodStatementListStart(
+          ) [MethodStatementListStart]
+          MultipleStatements(
+            MultipleStatements(
+              NoStatements(
+              ) [NoStatements]
+              DesignatorBasedStatement(
+                AssignmentDesignatorStatement(
+                  AssignmentHeader(
+                    IdentifierDesignator(
+                     c
+                    ) [IdentifierDesignator]
+                  ) [AssignmentHeader]
+                  AssignmentFooter(
+                    AssignOperator(
+                    ) [AssignOperator]
+                    LeftExpression(
+                      SingleTermExpression(
+                        NoSign(
+                        ) [NoSign]
+                        SingleFactorTerm(
+                          ConstantFactor(
+                            IntConstantFactor(
+                             1
+                            ) [IntConstantFactor]
+                          ) [ConstantFactor]
+                        ) [SingleFactorTerm]
+                      ) [SingleTermExpression]
+                    ) [LeftExpression]
+                  ) [AssignmentFooter]
+                ) [AssignmentDesignatorStatement]
+              ) [DesignatorBasedStatement]
+            ) [MultipleStatements]
+            ReturnStatement(
+              ReturnValue(
+                LeftExpression(
+                  MultipleTermsExpression(
+                    SingleTermExpression(
+                      NoSign(
+                      ) [NoSign]
+                      SingleFactorTerm(
+                        DesignatorFactor(
+                          IdentifierDesignator(
+                           c
+                          ) [IdentifierDesignator]
+                        ) [DesignatorFactor]
+                      ) [SingleFactorTerm]
+                    ) [SingleTermExpression]
+                    AddOperator(
+                    ) [AddOperator]
+                    SingleFactorTerm(
+                      ConstantFactor(
+                        IntConstantFactor(
+                         2
+                        ) [IntConstantFactor]
+                      ) [ConstantFactor]
+                    ) [SingleFactorTerm]
+                  ) [MultipleTermsExpression]
+                ) [LeftExpression]
+              ) [ReturnValue]
+            ) [ReturnStatement]
+          ) [MultipleStatements]
+        ) [MethodDeclaration]
+      ) [MultipleMethodDeclarations]
+      MethodDeclaration(
+        MethodHeader(
+          ReturnVoid(
+          ) [ReturnVoid]
+         printArray
+        ) [MethodHeader]
+        FormalParameters(
+          SingleFormalParameter(
+            FormalParameter(
+              Type(
+               int
+              ) [Type]
+             arr
+              ArrayBrackets(
+              ) [ArrayBrackets]
+            ) [FormalParameter]
+          ) [SingleFormalParameter]
+        ) [FormalParameters]
+        MultipleLocalVarDeclarations(
+          NoLocalVarDeclarations(
+          ) [NoLocalVarDeclarations]
+          LocalVarDeclaration(
+            Type(
+             int
+            ) [Type]
+            SingleLocalVariable(
+              LocalVariable(
+               it
+                NoArrayBrackets(
+                ) [NoArrayBrackets]
+              ) [LocalVariable]
+            ) [SingleLocalVariable]
+          ) [LocalVarDeclaration]
+        ) [MultipleLocalVarDeclarations]
+        MethodStatementListStart(
+        ) [MethodStatementListStart]
+        MultipleStatements(
+          MultipleStatements(
+            NoStatements(
+            ) [NoStatements]
+            ForEachStatement(
+              ForEachStatementHeader(
+                ForEachStatementHeaderStart(
+                ) [ForEachStatementHeaderStart]
+               it
+                IdentifierDesignator(
+                 arr
+                ) [IdentifierDesignator]
+              ) [ForEachStatementHeader]
+              StatementBlock(
+                MultipleStatements(
+                  MultipleStatements(
+                    NoStatements(
+                    ) [NoStatements]
+                    PrintStatement(
+                      LeftExpression(
+                        SingleTermExpression(
+                          NoSign(
+                          ) [NoSign]
+                          SingleFactorTerm(
+                            DesignatorFactor(
+                              IdentifierDesignator(
+                               it
+                              ) [IdentifierDesignator]
+                            ) [DesignatorFactor]
+                          ) [SingleFactorTerm]
+                        ) [SingleTermExpression]
+                      ) [LeftExpression]
+                      NoPrintWidth(
+                      ) [NoPrintWidth]
+                    ) [PrintStatement]
+                  ) [MultipleStatements]
+                  PrintStatement(
+                    LeftExpression(
+                      SingleTermExpression(
+                        NoSign(
+                        ) [NoSign]
+                        SingleFactorTerm(
+                          DesignatorFactor(
+                            IdentifierDesignator(
+                             SPACE
+                            ) [IdentifierDesignator]
+                          ) [DesignatorFactor]
+                        ) [SingleFactorTerm]
+                      ) [SingleTermExpression]
+                    ) [LeftExpression]
+                    NoPrintWidth(
+                    ) [NoPrintWidth]
+                  ) [PrintStatement]
+                ) [MultipleStatements]
+              ) [StatementBlock]
+            ) [ForEachStatement]
+          ) [MultipleStatements]
+          PrintStatement(
+            LeftExpression(
+              SingleTermExpression(
+                NoSign(
+                ) [NoSign]
+                SingleFactorTerm(
+                  DesignatorFactor(
+                    IdentifierDesignator(
+                     eol
+                    ) [IdentifierDesignator]
+                  ) [DesignatorFactor]
+                ) [SingleFactorTerm]
+              ) [SingleTermExpression]
+            ) [LeftExpression]
+            NoPrintWidth(
+            ) [NoPrintWidth]
+          ) [PrintStatement]
+        ) [MultipleStatements]
+      ) [MethodDeclaration]
+    ) [MultipleMethodDeclarations]
+    MethodDeclaration(
+      MethodHeader(
+        ReturnVoid(
+        ) [ReturnVoid]
+       main
+      ) [MethodHeader]
+      NoFormalParameters(
+      ) [NoFormalParameters]
+      MultipleLocalVarDeclarations(
+        MultipleLocalVarDeclarations(
+          NoLocalVarDeclarations(
+          ) [NoLocalVarDeclarations]
+          LocalVarDeclaration(
+            Type(
+             int
+            ) [Type]
+            MultipleLocalVariables(
+              SingleLocalVariable(
+                LocalVariable(
+                 i
+                  NoArrayBrackets(
+                  ) [NoArrayBrackets]
+                ) [LocalVariable]
+              ) [SingleLocalVariable]
+              LocalVariable(
+               arr
+                ArrayBrackets(
+                ) [ArrayBrackets]
+              ) [LocalVariable]
+            ) [MultipleLocalVariables]
+          ) [LocalVarDeclaration]
+        ) [MultipleLocalVarDeclarations]
+        LocalVarDeclaration(
+          Type(
+           Point
+          ) [Type]
+          SingleLocalVariable(
+            LocalVariable(
+             p
+              NoArrayBrackets(
+              ) [NoArrayBrackets]
+            ) [LocalVariable]
+          ) [SingleLocalVariable]
+        ) [LocalVarDeclaration]
+      ) [MultipleLocalVarDeclarations]
+      MethodStatementListStart(
+      ) [MethodStatementListStart]
+      MultipleStatements(
+        MultipleStatements(
+          MultipleStatements(
+            MultipleStatements(
+              MultipleStatements(
+                MultipleStatements(
+                  MultipleStatements(
+                    MultipleStatements(
+                      MultipleStatements(
+                        MultipleStatements(
+                          MultipleStatements(
+                            MultipleStatements(
+                              MultipleStatements(
+                                MultipleStatements(
+                                  MultipleStatements(
+                                    NoStatements(
+                                    ) [NoStatements]
+                                    DesignatorBasedStatement(
+                                      AssignmentDesignatorStatement(
+                                        AssignmentHeader(
+                                          IdentifierDesignator(
+                                           y
+                                          ) [IdentifierDesignator]
+                                        ) [AssignmentHeader]
+                                        AssignmentFooter(
+                                          AssignOperator(
+                                          ) [AssignOperator]
+                                          LeftExpression(
+                                            SingleTermExpression(
+                                              NoSign(
+                                              ) [NoSign]
+                                              SingleFactorTerm(
+                                                ConstantFactor(
+                                                  IntConstantFactor(
+                                                   2
+                                                  ) [IntConstantFactor]
+                                                ) [ConstantFactor]
+                                              ) [SingleFactorTerm]
+                                            ) [SingleTermExpression]
+                                          ) [LeftExpression]
+                                        ) [AssignmentFooter]
+                                      ) [AssignmentDesignatorStatement]
+                                    ) [DesignatorBasedStatement]
+                                  ) [MultipleStatements]
+                                  PrintStatement(
+                                    LeftExpression(
+                                      SingleTermExpression(
+                                        NoSign(
+                                        ) [NoSign]
+                                        SingleFactorTerm(
+                                          DesignatorFactor(
+                                            IdentifierDesignator(
+                                             y
+                                            ) [IdentifierDesignator]
+                                          ) [DesignatorFactor]
+                                        ) [SingleFactorTerm]
+                                      ) [SingleTermExpression]
+                                    ) [LeftExpression]
+                                    NoPrintWidth(
+                                    ) [NoPrintWidth]
+                                  ) [PrintStatement]
+                                ) [MultipleStatements]
+                                PrintStatement(
+                                  LeftExpression(
+                                    SingleTermExpression(
+                                      NoSign(
+                                      ) [NoSign]
+                                      SingleFactorTerm(
+                                        DesignatorFactor(
+                                          IdentifierDesignator(
+                                           eol
+                                          ) [IdentifierDesignator]
+                                        ) [DesignatorFactor]
+                                      ) [SingleFactorTerm]
+                                    ) [SingleTermExpression]
+                                  ) [LeftExpression]
+                                  NoPrintWidth(
+                                  ) [NoPrintWidth]
+                                ) [PrintStatement]
+                              ) [MultipleStatements]
+                              DesignatorBasedStatement(
+                                AssignmentDesignatorStatement(
+                                  AssignmentHeader(
+                                    IdentifierDesignator(
+                                     x
+                                    ) [IdentifierDesignator]
+                                  ) [AssignmentHeader]
+                                  AssignmentFooter(
+                                    AssignOperator(
+                                    ) [AssignOperator]
+                                    LeftExpression(
+                                      MultipleTermsExpression(
+                                        SingleTermExpression(
+                                          NoSign(
+                                          ) [NoSign]
+                                          SingleFactorTerm(
+                                            DesignatorFactor(
+                                              IdentifierDesignator(
+                                               y
+                                              ) [IdentifierDesignator]
+                                            ) [DesignatorFactor]
+                                          ) [SingleFactorTerm]
+                                        ) [SingleTermExpression]
+                                        AddOperator(
+                                        ) [AddOperator]
+                                        SingleFactorTerm(
+                                          ConstantFactor(
+                                            IntConstantFactor(
+                                             2
+                                            ) [IntConstantFactor]
+                                          ) [ConstantFactor]
+                                        ) [SingleFactorTerm]
+                                      ) [MultipleTermsExpression]
+                                    ) [LeftExpression]
+                                  ) [AssignmentFooter]
+                                ) [AssignmentDesignatorStatement]
+                              ) [DesignatorBasedStatement]
+                            ) [MultipleStatements]
+                            PrintStatement(
+                              LeftExpression(
+                                SingleTermExpression(
+                                  NoSign(
+                                  ) [NoSign]
+                                  SingleFactorTerm(
+                                    DesignatorFactor(
+                                      IdentifierDesignator(
+                                       x
+                                      ) [IdentifierDesignator]
+                                    ) [DesignatorFactor]
+                                  ) [SingleFactorTerm]
+                                ) [SingleTermExpression]
+                              ) [LeftExpression]
+                              NoPrintWidth(
+                              ) [NoPrintWidth]
+                            ) [PrintStatement]
+                          ) [MultipleStatements]
+                          PrintStatement(
+                            LeftExpression(
+                              SingleTermExpression(
+                                NoSign(
+                                ) [NoSign]
+                                SingleFactorTerm(
+                                  DesignatorFactor(
+                                    IdentifierDesignator(
+                                     eol
+                                    ) [IdentifierDesignator]
+                                  ) [DesignatorFactor]
+                                ) [SingleFactorTerm]
+                              ) [SingleTermExpression]
+                            ) [LeftExpression]
+                            NoPrintWidth(
+                            ) [NoPrintWidth]
+                          ) [PrintStatement]
+                        ) [MultipleStatements]
+                        DesignatorBasedStatement(
+                          AssignmentDesignatorStatement(
+                            AssignmentHeader(
+                              IdentifierDesignator(
+                               y
+                              ) [IdentifierDesignator]
+                            ) [AssignmentHeader]
+                            AssignmentFooter(
+                              AssignOperator(
+                              ) [AssignOperator]
+                              LeftExpression(
+                                MultipleTermsExpression(
+                                  SingleTermExpression(
+                                    NoSign(
+                                    ) [NoSign]
+                                    SingleFactorTerm(
+                                      MethodCallFactor(
+                                        MethodCall(
+                                          MethodCallHeader(
+                                            IdentifierDesignator(
+                                             k
+                                            ) [IdentifierDesignator]
+                                          ) [MethodCallHeader]
+                                          NoActualParameters(
+                                          ) [NoActualParameters]
+                                        ) [MethodCall]
+                                      ) [MethodCallFactor]
+                                    ) [SingleFactorTerm]
+                                  ) [SingleTermExpression]
+                                  AddOperator(
+                                  ) [AddOperator]
+                                  SingleFactorTerm(
+                                    ConstantFactor(
+                                      IntConstantFactor(
+                                       3
+                                      ) [IntConstantFactor]
+                                    ) [ConstantFactor]
+                                  ) [SingleFactorTerm]
+                                ) [MultipleTermsExpression]
+                              ) [LeftExpression]
+                            ) [AssignmentFooter]
+                          ) [AssignmentDesignatorStatement]
+                        ) [DesignatorBasedStatement]
+                      ) [MultipleStatements]
+                      PrintStatement(
+                        LeftExpression(
+                          SingleTermExpression(
+                            NoSign(
+                            ) [NoSign]
+                            SingleFactorTerm(
+                              DesignatorFactor(
+                                IdentifierDesignator(
+                                 y
+                                ) [IdentifierDesignator]
+                              ) [DesignatorFactor]
+                            ) [SingleFactorTerm]
+                          ) [SingleTermExpression]
+                        ) [LeftExpression]
+                        NoPrintWidth(
+                        ) [NoPrintWidth]
+                      ) [PrintStatement]
+                    ) [MultipleStatements]
+                    DesignatorBasedStatement(
+                      AssignmentDesignatorStatement(
+                        AssignmentHeader(
+                          IdentifierDesignator(
+                           p
+                          ) [IdentifierDesignator]
+                        ) [AssignmentHeader]
+                        AssignmentFooter(
+                          AssignOperator(
+                          ) [AssignOperator]
+                          LeftExpression(
+                            SingleTermExpression(
+                              NoSign(
+                              ) [NoSign]
+                              SingleFactorTerm(
+                                AllocatorFactor(
+                                  Type(
+                                   Point
+                                  ) [Type]
+                                  NoArrayIndexer(
+                                  ) [NoArrayIndexer]
+                                ) [AllocatorFactor]
+                              ) [SingleFactorTerm]
+                            ) [SingleTermExpression]
+                          ) [LeftExpression]
+                        ) [AssignmentFooter]
+                      ) [AssignmentDesignatorStatement]
+                    ) [DesignatorBasedStatement]
+                  ) [MultipleStatements]
+                  DesignatorBasedStatement(
+                    AssignmentDesignatorStatement(
+                      AssignmentHeader(
+                        MemberAccessDesignator(
+                          IdentifierDesignator(
+                           p
+                          ) [IdentifierDesignator]
+                         x
+                        ) [MemberAccessDesignator]
+                      ) [AssignmentHeader]
+                      AssignmentFooter(
+                        AssignOperator(
+                        ) [AssignOperator]
+                        LeftExpression(
+                          SingleTermExpression(
+                            NoSign(
+                            ) [NoSign]
+                            SingleFactorTerm(
+                              DesignatorFactor(
+                                IdentifierDesignator(
+                                 x
+                                ) [IdentifierDesignator]
+                              ) [DesignatorFactor]
+                            ) [SingleFactorTerm]
+                          ) [SingleTermExpression]
+                        ) [LeftExpression]
+                      ) [AssignmentFooter]
+                    ) [AssignmentDesignatorStatement]
+                  ) [DesignatorBasedStatement]
+                ) [MultipleStatements]
+                DesignatorBasedStatement(
+                  AssignmentDesignatorStatement(
+                    AssignmentHeader(
+                      MemberAccessDesignator(
+                        IdentifierDesignator(
+                         p
+                        ) [IdentifierDesignator]
+                       y
+                      ) [MemberAccessDesignator]
+                    ) [AssignmentHeader]
+                    AssignmentFooter(
+                      AssignOperator(
+                      ) [AssignOperator]
+                      LeftExpression(
+                        SingleTermExpression(
+                          NoSign(
+                          ) [NoSign]
+                          SingleFactorTerm(
+                            DesignatorFactor(
+                              IdentifierDesignator(
+                               y
+                              ) [IdentifierDesignator]
+                            ) [DesignatorFactor]
+                          ) [SingleFactorTerm]
+                        ) [SingleTermExpression]
+                      ) [LeftExpression]
+                    ) [AssignmentFooter]
+                  ) [AssignmentDesignatorStatement]
+                ) [DesignatorBasedStatement]
+              ) [MultipleStatements]
+              DesignatorBasedStatement(
+                MethodCallDesignatorStatement(
+                  MethodCall(
+                    MethodCallHeader(
+                      MemberAccessDesignator(
+                        IdentifierDesignator(
+                         p
+                        ) [IdentifierDesignator]
+                       printPoint
+                      ) [MemberAccessDesignator]
+                    ) [MethodCallHeader]
+                    NoActualParameters(
+                    ) [NoActualParameters]
+                  ) [MethodCall]
+                ) [MethodCallDesignatorStatement]
+              ) [DesignatorBasedStatement]
+            ) [MultipleStatements]
+            DesignatorBasedStatement(
+              AssignmentDesignatorStatement(
+                AssignmentHeader(
+                  IdentifierDesignator(
+                   arr
+                  ) [IdentifierDesignator]
+                ) [AssignmentHeader]
+                AssignmentFooter(
+                  AssignOperator(
+                  ) [AssignOperator]
+                  LeftExpression(
+                    SingleTermExpression(
+                      NoSign(
+                      ) [NoSign]
+                      SingleFactorTerm(
+                        AllocatorFactor(
+                          Type(
+                           int
+                          ) [Type]
+                          SingleArrayIndexer(
+                            ArrayIndexer(
+                              LeftExpression(
+                                SingleTermExpression(
+                                  NoSign(
+                                  ) [NoSign]
+                                  SingleFactorTerm(
+                                    ConstantFactor(
+                                      IntConstantFactor(
+                                       6
+                                      ) [IntConstantFactor]
+                                    ) [ConstantFactor]
+                                  ) [SingleFactorTerm]
+                                ) [SingleTermExpression]
+                              ) [LeftExpression]
+                            ) [ArrayIndexer]
+                          ) [SingleArrayIndexer]
+                        ) [AllocatorFactor]
+                      ) [SingleFactorTerm]
+                    ) [SingleTermExpression]
+                  ) [LeftExpression]
+                ) [AssignmentFooter]
+              ) [AssignmentDesignatorStatement]
+            ) [DesignatorBasedStatement]
+          ) [MultipleStatements]
+          ForStatement(
+            ForStatementHeader(
+              ForStatementHeaderStart(
+              ) [ForStatementHeaderStart]
+              SingleDesignatorStatement(
+                AssignmentDesignatorStatement(
+                  AssignmentHeader(
+                    IdentifierDesignator(
+                     i
+                    ) [IdentifierDesignator]
+                  ) [AssignmentHeader]
+                  AssignmentFooter(
+                    AssignOperator(
+                    ) [AssignOperator]
+                    LeftExpression(
+                      SingleTermExpression(
+                        NoSign(
+                        ) [NoSign]
+                        SingleFactorTerm(
+                          ConstantFactor(
+                            IntConstantFactor(
+                             0
+                            ) [IntConstantFactor]
+                          ) [ConstantFactor]
+                        ) [SingleFactorTerm]
+                      ) [SingleTermExpression]
+                    ) [LeftExpression]
+                  ) [AssignmentFooter]
+                ) [AssignmentDesignatorStatement]
+              ) [SingleDesignatorStatement]
+              SingleCondition(
+                SingleTermCondition(
+                  SingleFactConditionTerm(
+                    ComplexConditionFact(
+                      LeftExpression(
+                        SingleTermExpression(
+                          NoSign(
+                          ) [NoSign]
+                          SingleFactorTerm(
+                            DesignatorFactor(
+                              IdentifierDesignator(
+                               i
+                              ) [IdentifierDesignator]
+                            ) [DesignatorFactor]
+                          ) [SingleFactorTerm]
+                        ) [SingleTermExpression]
+                      ) [LeftExpression]
+                      LssOperator(
+                      ) [LssOperator]
+                      LeftExpression(
+                        SingleTermExpression(
+                          NoSign(
+                          ) [NoSign]
+                          SingleFactorTerm(
+                            MethodCallFactor(
+                              MethodCall(
+                                MethodCallHeader(
+                                  IdentifierDesignator(
+                                   len
+                                  ) [IdentifierDesignator]
+                                ) [MethodCallHeader]
+                                ActualParameters(
+                                  SingleActualParameter(
+                                    ActualParameter(
+                                      LeftExpression(
+                                        SingleTermExpression(
+                                          NoSign(
+                                          ) [NoSign]
+                                          SingleFactorTerm(
+                                            DesignatorFactor(
+                                              IdentifierDesignator(
+                                               arr
+                                              ) [IdentifierDesignator]
+                                            ) [DesignatorFactor]
+                                          ) [SingleFactorTerm]
+                                        ) [SingleTermExpression]
+                                      ) [LeftExpression]
+                                    ) [ActualParameter]
+                                  ) [SingleActualParameter]
+                                ) [ActualParameters]
+                              ) [MethodCall]
+                            ) [MethodCallFactor]
+                          ) [SingleFactorTerm]
+                        ) [SingleTermExpression]
+                      ) [LeftExpression]
+                    ) [ComplexConditionFact]
+                  ) [SingleFactConditionTerm]
+                ) [SingleTermCondition]
+              ) [SingleCondition]
+              SingleDesignatorStatement(
+                IncrementDesignatorStatement(
+                  IdentifierDesignator(
+                   i
+                  ) [IdentifierDesignator]
+                ) [IncrementDesignatorStatement]
+              ) [SingleDesignatorStatement]
+            ) [ForStatementHeader]
+            StatementBlock(
+              MultipleStatements(
+                NoStatements(
+                ) [NoStatements]
+                DesignatorBasedStatement(
+                  AssignmentDesignatorStatement(
+                    AssignmentHeader(
+                      ElementAccessDesignator(
+                        IdentifierDesignator(
+                         arr
+                        ) [IdentifierDesignator]
+                        ArrayIndexer(
+                          LeftExpression(
+                            SingleTermExpression(
+                              NoSign(
+                              ) [NoSign]
+                              SingleFactorTerm(
+                                DesignatorFactor(
+                                  IdentifierDesignator(
+                                   i
+                                  ) [IdentifierDesignator]
+                                ) [DesignatorFactor]
+                              ) [SingleFactorTerm]
+                            ) [SingleTermExpression]
+                          ) [LeftExpression]
+                        ) [ArrayIndexer]
+                      ) [ElementAccessDesignator]
+                    ) [AssignmentHeader]
+                    AssignmentFooter(
+                      AssignOperator(
+                      ) [AssignOperator]
+                      LeftExpression(
+                        MultipleTermsExpression(
+                          SingleTermExpression(
+                            NoSign(
+                            ) [NoSign]
+                            MultipleFactorsTerm(
+                              SingleFactorTerm(
+                                DesignatorFactor(
+                                  IdentifierDesignator(
+                                   i
+                                  ) [IdentifierDesignator]
+                                ) [DesignatorFactor]
+                              ) [SingleFactorTerm]
+                              MulOperator(
+                              ) [MulOperator]
+                              ConstantFactor(
+                                IntConstantFactor(
+                                 7
+                                ) [IntConstantFactor]
+                              ) [ConstantFactor]
+                            ) [MultipleFactorsTerm]
+                          ) [SingleTermExpression]
+                          SubOperator(
+                          ) [SubOperator]
+                          SingleFactorTerm(
+                            ConstantFactor(
+                              IntConstantFactor(
+                               2
+                              ) [IntConstantFactor]
+                            ) [ConstantFactor]
+                          ) [SingleFactorTerm]
+                        ) [MultipleTermsExpression]
+                      ) [LeftExpression]
+                    ) [AssignmentFooter]
+                  ) [AssignmentDesignatorStatement]
+                ) [DesignatorBasedStatement]
+              ) [MultipleStatements]
+            ) [StatementBlock]
+          ) [ForStatement]
+        ) [MultipleStatements]
+        DesignatorBasedStatement(
+          MethodCallDesignatorStatement(
+            MethodCall(
+              MethodCallHeader(
+                IdentifierDesignator(
+                 printArray
+                ) [IdentifierDesignator]
+              ) [MethodCallHeader]
+              ActualParameters(
+                SingleActualParameter(
+                  ActualParameter(
+                    LeftExpression(
+                      SingleTermExpression(
+                        NoSign(
+                        ) [NoSign]
+                        SingleFactorTerm(
+                          DesignatorFactor(
+                            IdentifierDesignator(
+                             arr
+                            ) [IdentifierDesignator]
+                          ) [DesignatorFactor]
+                        ) [SingleFactorTerm]
+                      ) [SingleTermExpression]
+                    ) [LeftExpression]
+                  ) [ActualParameter]
+                ) [SingleActualParameter]
+              ) [ActualParameters]
+            ) [MethodCall]
+          ) [MethodCallDesignatorStatement]
+        ) [DesignatorBasedStatement]
+      ) [MultipleStatements]
+    ) [MethodDeclaration]
+  ) [MultipleMethodDeclarations]
+) [Program]

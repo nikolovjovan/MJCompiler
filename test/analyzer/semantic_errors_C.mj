@@ -1,0 +1,203 @@
+// level C semantic errors
+program level_c_semantic_errors
+    // constant declarations
+    const int a = 20, b = -1, c = +25;
+    const char d = 'a';
+    const bool e = true, f = false;
+    const int A = 1, B = 2, C = 3;
+    const char X = 'x', Y = 'y';
+    const bool VALID = true;
+
+    // variable declarations
+    int var_a, var_b[];
+    char var_c, var_d[], var_e;
+    bool var_f;
+    int a, b[], c;
+    Point p1, p2;
+
+    // class declarations
+    class Point extends IPoint {
+        public int x, y;
+        {
+            public int get_x() { return x; }
+            public int diff_x(IPoint a) { return a.get_x() - x; }
+        }
+    }
+
+    // abstract class declarations
+    abstract class IPoint {
+        private int d;
+        {
+            public abstract int get_x();
+            public abstract int diff_x(IPoint a);
+            private abstract void test(); // error: abstract method cannot be declared private
+        }
+    }
+
+    const char SPACE = ' ';
+
+    int x, y;
+
+    abstract class Object {
+        {
+            public abstract void println();
+        }
+    }
+
+    class Point extends Object
+    {
+        private int x, y;
+        {
+            public int getX() { return x; }
+            public void setX(int x) { this.x = x; }
+
+            public int getY() { return y; }
+            public void setY(int y) { this.y = y; }
+
+            public void println() {
+                print(d); // error: superclass private field access forbidden
+                print(x);
+                print(SPACE);
+                print(y);
+                print(eol);
+            }
+
+            private void test() {} // error: duplicate name, private inherited method cannot be overridden
+        }
+    }
+
+    abstract class abstract_class { // abstract inner class
+        public int abstract_class_public_field;
+        protected char abstract_class_protected_field;
+        private bool abstract_class_private_field;
+        {
+            public abstract void public_method(int a, int b);
+            protected abstract void protected_method(char a);
+            private abstract void private_method(bool ind); // error: abstract method cannot be declared private
+        }
+    }
+
+    class concrete_class extends abstract_class {
+        // class variables
+        public int class_var_a, class_var_b[];
+        protected char class_var_c;
+        private bool class_var_d;
+        {
+            // abstract method implementation
+            public void public_method(int a, int b)
+                int c;
+            {
+                abstract_class_public_field = 12; // superclass public field access
+                abstract_class_protected_field = 'c'; // superclass protected field access
+                abstract_class_private_field = false; // error: superclass private field access forbidden
+                class_var_a = 15; // this class public field access
+                class_var_c = 'd'; // this class protected field access
+                class_var_d = false; // this class private field access
+            }
+            // abstract method implementation
+            protected void protected_method(char a) {}
+            // This is invalid because a method declared as private in any subclass cannot be overridden!
+            private void private_method(bool ind) {}
+        }
+    }
+
+    class test_class {
+        // class variables
+        public int class_var_a, class_var_b[];
+        protected char class_var_c;
+        private bool class_var_d;
+        {
+            public void test_method() {}
+        }
+    }
+{
+    int k()
+        int c;
+    {
+        c = 1;
+        return c + 2;
+    }
+
+    void printArray(int arr[])
+        int it;
+    {
+        foreach (it : arr) {
+            print(it);
+            print(SPACE);
+        }
+        print(eol);
+    }
+
+    int calc(int a, int b, bool c) {
+        if (c) return a + b;
+        return a * b;
+    }
+
+    void test()
+        // local variables
+        int local_var_a, local_var_b[], i;
+        char local_var_c;
+        bool local_var_d, local_var_e[];
+        test_class local_var_obj;
+    {
+        local_var_a = a; // int const usage
+        local_var_b = new int[5]; // array instantiation
+        local_var_c = d; // char const usage
+        local_var_obj = new test_class;
+
+        local_var_a = local_var_obj.class_var_a; // class field access
+        local_var_b[3] = local_var_obj.class_var_b[5]; // class array field element access
+        local_var_c = local_var_obj.class_var_c; // error: protected field access
+        local_var_d = local_var_obj.class_var_d; // error: private field access
+        local_var_obj.test_method(); // class method call
+
+        local_var_a = calc(local_var_a, local_var_a, local_var_d); // test method call
+        calc(); // invalid parameter count
+        calc(local_var_a, local_var_d, local_var_a); // invalid argument type
+        local_var_b = new int[c - a]; // const expr
+        break; // break outside a loop
+        for (i = 0; i < c - a; i++) {
+            if (i % 2 == 0) local_var_c = true;
+            else local_var_c = false;
+            local_var_b[i] = calc(local_var_a, local_var_b[i], local_var_c); // invalid argument type
+            continue;
+        }
+    }
+
+    void main()
+        int i, arr[];
+        Point p;
+        int a, b;
+        char c;
+        bool ind;
+        abstract_class var;
+    {
+        a = 4;
+        b = 15;
+        c = 'b';
+        ind = false;
+        var = new concrete_class; // concrete class instantiation
+        var.class_var_a = 5; // error: cannot access subclass public field from a superclass pointer
+        var.abstract_class_public_field = -5; // superclass public field access
+        var.class_var_c = 'b'; // error: cannot access subclass protected field access forbidden
+        var.class_var_d = false; // error: cannot access subclass private field access forbidden
+        var.public_method(a, b); // public method call
+        var.protected_method(b); // error: protected method call forbidden
+        var.private_method(c); // error: private method call forbidden
+        y = 2;
+        print(y); print(eol);
+        x = y + 2;
+        print(x); print(eol);
+        y = k() + 3;
+        print(y);
+        p = new Point;
+        p.x = x;
+        p.y = y;
+        p.printPoint();
+        arr = new int[6];
+        for (i = 0; i < len(arr); i++) {
+            arr[i] = i * 7 - 2;
+        }
+        printArray(arr);
+    }
+}

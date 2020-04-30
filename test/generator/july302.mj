@@ -1,0 +1,13 @@
+program test302
+    int niz[];
+    int i;
+{
+    void main()
+    {
+        niz = new int[2];
+        niz[0] = 5;
+        niz[1] = 2;
+        foreach(i: niz)
+            print(i);
+    }
+}

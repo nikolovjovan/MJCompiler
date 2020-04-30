@@ -1,0 +1,2408 @@
+DEBUG - semantic_errors_A.mj:2:1: LEXER: Found symbol: '#2' with value: 'program'
+DEBUG - semantic_errors_A.mj:2:9: LEXER: Found symbol: '#55' with value: 'level_a_syntax_test'
+DEBUG - semantic_errors_A.mj:4:5: LEXER: Found symbol: '#7' with value: 'const'
+DEBUG - semantic_errors_A.mj:4:11: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - semantic_errors_A.mj:4:15: LEXER: Found symbol: '#55' with value: 'a'
+DEBUG - semantic_errors_A.mj:4:17: LEXER: Found symbol: '#21' with value: '='
+DEBUG - semantic_errors_A.mj:4:19: LEXER: Found symbol: '#52' with value: '20'
+DEBUG - semantic_errors_A.mj:4:21: LEXER: Found symbol: '#50' with value: ','
+DEBUG - semantic_errors_A.mj:4:23: LEXER: Found symbol: '#55' with value: 'b'
+DEBUG - semantic_errors_A.mj:4:25: LEXER: Found symbol: '#21' with value: '='
+DEBUG - semantic_errors_A.mj:4:27: LEXER: Found symbol: '#23' with value: '-'
+DEBUG - semantic_errors_A.mj:4:28: LEXER: Found symbol: '#52' with value: '1'
+DEBUG - semantic_errors_A.mj:4:29: LEXER: Found symbol: '#50' with value: ','
+DEBUG - semantic_errors_A.mj:4:31: LEXER: Found symbol: '#55' with value: 'c'
+DEBUG - semantic_errors_A.mj:4:33: LEXER: Found symbol: '#21' with value: '='
+DEBUG - semantic_errors_A.mj:4:35: LEXER: Found symbol: '#22' with value: '+'
+DEBUG - semantic_errors_A.mj:4:36: LEXER: Found symbol: '#52' with value: '25'
+DEBUG - semantic_errors_A.mj:4:38: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - semantic_errors_A.mj:5:5: LEXER: Found symbol: '#7' with value: 'const'
+DEBUG - semantic_errors_A.mj:5:11: LEXER: Found symbol: '#55' with value: 'char'
+DEBUG - semantic_errors_A.mj:5:16: LEXER: Found symbol: '#55' with value: 'd'
+DEBUG - semantic_errors_A.mj:5:18: LEXER: Found symbol: '#21' with value: '='
+DEBUG - semantic_errors_A.mj:5:20: LEXER: Found symbol: '#53' with value: 'a'
+DEBUG - semantic_errors_A.mj:5:23: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - semantic_errors_A.mj:6:5: LEXER: Found symbol: '#7' with value: 'const'
+DEBUG - semantic_errors_A.mj:6:11: LEXER: Found symbol: '#55' with value: 'bool'
+DEBUG - semantic_errors_A.mj:6:16: LEXER: Found symbol: '#55' with value: 'e'
+DEBUG - semantic_errors_A.mj:6:18: LEXER: Found symbol: '#21' with value: '='
+DEBUG - semantic_errors_A.mj:6:20: LEXER: Found symbol: '#54' with value: 'true'
+DEBUG - semantic_errors_A.mj:6:24: LEXER: Found symbol: '#50' with value: ','
+DEBUG - semantic_errors_A.mj:6:26: LEXER: Found symbol: '#55' with value: 'f'
+DEBUG - semantic_errors_A.mj:6:28: LEXER: Found symbol: '#21' with value: '='
+DEBUG - semantic_errors_A.mj:6:30: LEXER: Found symbol: '#54' with value: 'false'
+DEBUG - semantic_errors_A.mj:6:35: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - semantic_errors_A.mj:8:5: LEXER: Found symbol: '#7' with value: 'const'
+DEBUG - semantic_errors_A.mj:8:11: LEXER: Found symbol: '#55' with value: 'char'
+DEBUG - semantic_errors_A.mj:8:16: LEXER: Found symbol: '#55' with value: 'a'
+DEBUG - semantic_errors_A.mj:8:18: LEXER: Found symbol: '#21' with value: '='
+DEBUG - semantic_errors_A.mj:8:20: LEXER: Found symbol: '#53' with value: 'c'
+DEBUG - semantic_errors_A.mj:8:23: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - semantic_errors_A.mj:9:5: LEXER: Found symbol: '#7' with value: 'const'
+DEBUG - semantic_errors_A.mj:9:11: LEXER: Found symbol: '#55' with value: 'invalid_type'
+DEBUG - semantic_errors_A.mj:9:24: LEXER: Found symbol: '#55' with value: 'd'
+DEBUG - semantic_errors_A.mj:9:26: LEXER: Found symbol: '#21' with value: '='
+DEBUG - semantic_errors_A.mj:9:28: LEXER: Found symbol: '#52' with value: '3'
+DEBUG - semantic_errors_A.mj:9:29: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - semantic_errors_A.mj:10:5: LEXER: Found symbol: '#7' with value: 'const'
+DEBUG - semantic_errors_A.mj:10:11: LEXER: Found symbol: '#55' with value: 'a'
+DEBUG - semantic_errors_A.mj:10:13: LEXER: Found symbol: '#55' with value: 'e'
+DEBUG - semantic_errors_A.mj:10:15: LEXER: Found symbol: '#21' with value: '='
+DEBUG - semantic_errors_A.mj:10:17: LEXER: Found symbol: '#52' with value: '5'
+DEBUG - semantic_errors_A.mj:10:18: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - semantic_errors_A.mj:11:5: LEXER: Found symbol: '#7' with value: 'const'
+DEBUG - semantic_errors_A.mj:11:11: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - semantic_errors_A.mj:11:15: LEXER: Found symbol: '#55' with value: 'e'
+DEBUG - semantic_errors_A.mj:11:17: LEXER: Found symbol: '#21' with value: '='
+DEBUG - semantic_errors_A.mj:11:19: LEXER: Found symbol: '#53' with value: 'a'
+DEBUG - semantic_errors_A.mj:11:22: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - semantic_errors_A.mj:12:5: LEXER: Found symbol: '#7' with value: 'const'
+DEBUG - semantic_errors_A.mj:12:11: LEXER: Found symbol: '#55' with value: 'bool'
+DEBUG - semantic_errors_A.mj:12:16: LEXER: Found symbol: '#55' with value: 'm'
+DEBUG - semantic_errors_A.mj:12:18: LEXER: Found symbol: '#21' with value: '='
+DEBUG - semantic_errors_A.mj:12:20: LEXER: Found symbol: '#52' with value: '25'
+DEBUG - semantic_errors_A.mj:12:22: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - semantic_errors_A.mj:15:5: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - semantic_errors_A.mj:15:9: LEXER: Found symbol: '#55' with value: 'var_a'
+DEBUG - semantic_errors_A.mj:15:14: LEXER: Found symbol: '#50' with value: ','
+DEBUG - semantic_errors_A.mj:15:16: LEXER: Found symbol: '#55' with value: 'var_b'
+DEBUG - semantic_errors_A.mj:15:21: LEXER: Found symbol: '#44' with value: '['
+DEBUG - semantic_errors_A.mj:15:22: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - semantic_errors_A.mj:15:23: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - semantic_errors_A.mj:16:5: LEXER: Found symbol: '#55' with value: 'char'
+DEBUG - semantic_errors_A.mj:16:10: LEXER: Found symbol: '#55' with value: 'var_c'
+DEBUG - semantic_errors_A.mj:16:15: LEXER: Found symbol: '#50' with value: ','
+DEBUG - semantic_errors_A.mj:16:17: LEXER: Found symbol: '#55' with value: 'var_d'
+DEBUG - semantic_errors_A.mj:16:22: LEXER: Found symbol: '#44' with value: '['
+DEBUG - semantic_errors_A.mj:16:23: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - semantic_errors_A.mj:16:24: LEXER: Found symbol: '#50' with value: ','
+DEBUG - semantic_errors_A.mj:16:26: LEXER: Found symbol: '#55' with value: 'var_e'
+DEBUG - semantic_errors_A.mj:16:31: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - semantic_errors_A.mj:17:5: LEXER: Found symbol: '#55' with value: 'bool'
+DEBUG - semantic_errors_A.mj:17:10: LEXER: Found symbol: '#55' with value: 'var_f'
+DEBUG - semantic_errors_A.mj:17:15: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - semantic_errors_A.mj:19:5: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - semantic_errors_A.mj:19:9: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - semantic_errors_A.mj:19:12: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - semantic_errors_A.mj:21:5: LEXER: Found symbol: '#55' with value: 'type_x'
+DEBUG - semantic_errors_A.mj:21:12: LEXER: Found symbol: '#55' with value: 'var_g'
+DEBUG - semantic_errors_A.mj:21:17: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - semantic_errors_A.mj:22:5: LEXER: Found symbol: '#55' with value: 'var_a'
+DEBUG - semantic_errors_A.mj:22:11: LEXER: Found symbol: '#55' with value: 'var_g'
+DEBUG - semantic_errors_A.mj:22:16: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - semantic_errors_A.mj:24:5: LEXER: Found symbol: '#7' with value: 'const'
+DEBUG - semantic_errors_A.mj:24:11: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - semantic_errors_A.mj:24:15: LEXER: Found symbol: '#55' with value: 'ca'
+DEBUG - semantic_errors_A.mj:24:18: LEXER: Found symbol: '#21' with value: '='
+DEBUG - semantic_errors_A.mj:24:20: LEXER: Found symbol: '#52' with value: '1'
+DEBUG - semantic_errors_A.mj:24:21: LEXER: Found symbol: '#50' with value: ','
+DEBUG - semantic_errors_A.mj:24:23: LEXER: Found symbol: '#55' with value: 'cb'
+DEBUG - semantic_errors_A.mj:24:26: LEXER: Found symbol: '#21' with value: '='
+DEBUG - semantic_errors_A.mj:24:28: LEXER: Found symbol: '#52' with value: '6'
+DEBUG - semantic_errors_A.mj:24:29: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - semantic_errors_A.mj:25:5: LEXER: Found symbol: '#7' with value: 'const'
+DEBUG - semantic_errors_A.mj:25:11: LEXER: Found symbol: '#55' with value: 'char'
+DEBUG - semantic_errors_A.mj:25:16: LEXER: Found symbol: '#55' with value: 'cc'
+DEBUG - semantic_errors_A.mj:25:19: LEXER: Found symbol: '#21' with value: '='
+DEBUG - semantic_errors_A.mj:25:21: LEXER: Found symbol: '#53' with value: 's'
+DEBUG - semantic_errors_A.mj:25:24: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - semantic_errors_A.mj:26:5: LEXER: Found symbol: '#7' with value: 'const'
+DEBUG - semantic_errors_A.mj:26:11: LEXER: Found symbol: '#55' with value: 'bool'
+DEBUG - semantic_errors_A.mj:26:16: LEXER: Found symbol: '#55' with value: 'cd'
+DEBUG - semantic_errors_A.mj:26:19: LEXER: Found symbol: '#21' with value: '='
+DEBUG - semantic_errors_A.mj:26:21: LEXER: Found symbol: '#54' with value: 'true'
+DEBUG - semantic_errors_A.mj:26:25: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - semantic_errors_A.mj:28:5: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - semantic_errors_A.mj:28:9: LEXER: Found symbol: '#55' with value: 'ga'
+DEBUG - semantic_errors_A.mj:28:11: LEXER: Found symbol: '#50' with value: ','
+DEBUG - semantic_errors_A.mj:28:13: LEXER: Found symbol: '#55' with value: 'gb'
+DEBUG - semantic_errors_A.mj:28:15: LEXER: Found symbol: '#44' with value: '['
+DEBUG - semantic_errors_A.mj:28:16: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - semantic_errors_A.mj:28:17: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - semantic_errors_A.mj:29:5: LEXER: Found symbol: '#55' with value: 'char'
+DEBUG - semantic_errors_A.mj:29:10: LEXER: Found symbol: '#55' with value: 'gc'
+DEBUG - semantic_errors_A.mj:29:12: LEXER: Found symbol: '#50' with value: ','
+DEBUG - semantic_errors_A.mj:29:14: LEXER: Found symbol: '#55' with value: 'gd'
+DEBUG - semantic_errors_A.mj:29:16: LEXER: Found symbol: '#44' with value: '['
+DEBUG - semantic_errors_A.mj:29:17: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - semantic_errors_A.mj:29:18: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - semantic_errors_A.mj:30:5: LEXER: Found symbol: '#55' with value: 'bool'
+DEBUG - semantic_errors_A.mj:30:10: LEXER: Found symbol: '#55' with value: 'ge'
+DEBUG - semantic_errors_A.mj:30:12: LEXER: Found symbol: '#50' with value: ','
+DEBUG - semantic_errors_A.mj:30:14: LEXER: Found symbol: '#55' with value: 'gf'
+DEBUG - semantic_errors_A.mj:30:16: LEXER: Found symbol: '#44' with value: '['
+DEBUG - semantic_errors_A.mj:30:17: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - semantic_errors_A.mj:30:18: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - semantic_errors_A.mj:31:1: LEXER: Found symbol: '#46' with value: '{'
+DEBUG - semantic_errors_A.mj:32:5: LEXER: Found symbol: '#13' with value: 'void'
+DEBUG - semantic_errors_A.mj:32:10: LEXER: Found symbol: '#55' with value: 'main'
+DEBUG - semantic_errors_A.mj:32:14: LEXER: Found symbol: '#42' with value: '('
+DEBUG - semantic_errors_A.mj:32:15: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - semantic_errors_A.mj:33:9: LEXER: Found symbol: '#55' with value: 'bool'
+DEBUG - semantic_errors_A.mj:33:14: LEXER: Found symbol: '#55' with value: 'char'
+DEBUG - semantic_errors_A.mj:33:18: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - semantic_errors_A.mj:34:9: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - semantic_errors_A.mj:34:13: LEXER: Found symbol: '#55' with value: 'la'
+DEBUG - semantic_errors_A.mj:34:15: LEXER: Found symbol: '#50' with value: ','
+DEBUG - semantic_errors_A.mj:34:17: LEXER: Found symbol: '#55' with value: 'lb'
+DEBUG - semantic_errors_A.mj:34:19: LEXER: Found symbol: '#44' with value: '['
+DEBUG - semantic_errors_A.mj:34:20: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - semantic_errors_A.mj:34:21: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - semantic_errors_A.mj:35:9: LEXER: Found symbol: '#55' with value: 'char'
+DEBUG - semantic_errors_A.mj:35:14: LEXER: Found symbol: '#55' with value: 'lc'
+DEBUG - semantic_errors_A.mj:35:16: LEXER: Found symbol: '#50' with value: ','
+DEBUG - semantic_errors_A.mj:35:18: LEXER: Found symbol: '#55' with value: 'ld'
+DEBUG - semantic_errors_A.mj:35:20: LEXER: Found symbol: '#44' with value: '['
+DEBUG - semantic_errors_A.mj:35:21: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - semantic_errors_A.mj:35:22: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - semantic_errors_A.mj:36:9: LEXER: Found symbol: '#55' with value: 'bool'
+DEBUG - semantic_errors_A.mj:36:14: LEXER: Found symbol: '#55' with value: 'le'
+DEBUG - semantic_errors_A.mj:36:16: LEXER: Found symbol: '#50' with value: ','
+DEBUG - semantic_errors_A.mj:36:18: LEXER: Found symbol: '#55' with value: 'lf'
+DEBUG - semantic_errors_A.mj:36:20: LEXER: Found symbol: '#44' with value: '['
+DEBUG - semantic_errors_A.mj:36:21: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - semantic_errors_A.mj:36:22: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - semantic_errors_A.mj:37:5: LEXER: Found symbol: '#46' with value: '{'
+DEBUG - semantic_errors_A.mj:38:9: LEXER: Found symbol: '#55' with value: 'gb'
+DEBUG - semantic_errors_A.mj:38:12: LEXER: Found symbol: '#21' with value: '='
+DEBUG - semantic_errors_A.mj:38:14: LEXER: Found symbol: '#9' with value: 'new'
+DEBUG - semantic_errors_A.mj:38:18: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - semantic_errors_A.mj:38:21: LEXER: Found symbol: '#44' with value: '['
+DEBUG - semantic_errors_A.mj:38:22: LEXER: Found symbol: '#52' with value: '5'
+DEBUG - semantic_errors_A.mj:38:23: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - semantic_errors_A.mj:38:24: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - semantic_errors_A.mj:39:9: LEXER: Found symbol: '#55' with value: 'gd'
+DEBUG - semantic_errors_A.mj:39:12: LEXER: Found symbol: '#21' with value: '='
+DEBUG - semantic_errors_A.mj:39:14: LEXER: Found symbol: '#9' with value: 'new'
+DEBUG - semantic_errors_A.mj:39:18: LEXER: Found symbol: '#55' with value: 'char'
+DEBUG - semantic_errors_A.mj:39:22: LEXER: Found symbol: '#44' with value: '['
+DEBUG - semantic_errors_A.mj:39:23: LEXER: Found symbol: '#52' with value: '2'
+DEBUG - semantic_errors_A.mj:39:24: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - semantic_errors_A.mj:39:25: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - semantic_errors_A.mj:40:9: LEXER: Found symbol: '#55' with value: 'gf'
+DEBUG - semantic_errors_A.mj:40:12: LEXER: Found symbol: '#21' with value: '='
+DEBUG - semantic_errors_A.mj:40:14: LEXER: Found symbol: '#9' with value: 'new'
+DEBUG - semantic_errors_A.mj:40:18: LEXER: Found symbol: '#55' with value: 'bool'
+DEBUG - semantic_errors_A.mj:40:22: LEXER: Found symbol: '#44' with value: '['
+DEBUG - semantic_errors_A.mj:40:23: LEXER: Found symbol: '#52' with value: '6'
+DEBUG - semantic_errors_A.mj:40:24: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - semantic_errors_A.mj:40:25: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - semantic_errors_A.mj:41:9: LEXER: Found symbol: '#55' with value: 'lb'
+DEBUG - semantic_errors_A.mj:41:12: LEXER: Found symbol: '#21' with value: '='
+DEBUG - semantic_errors_A.mj:41:14: LEXER: Found symbol: '#9' with value: 'new'
+DEBUG - semantic_errors_A.mj:41:18: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - semantic_errors_A.mj:41:21: LEXER: Found symbol: '#44' with value: '['
+DEBUG - semantic_errors_A.mj:41:22: LEXER: Found symbol: '#52' with value: '4'
+DEBUG - semantic_errors_A.mj:41:23: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - semantic_errors_A.mj:41:24: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - semantic_errors_A.mj:42:9: LEXER: Found symbol: '#55' with value: 'ld'
+DEBUG - semantic_errors_A.mj:42:12: LEXER: Found symbol: '#21' with value: '='
+DEBUG - semantic_errors_A.mj:42:14: LEXER: Found symbol: '#9' with value: 'new'
+DEBUG - semantic_errors_A.mj:42:18: LEXER: Found symbol: '#55' with value: 'char'
+DEBUG - semantic_errors_A.mj:42:22: LEXER: Found symbol: '#44' with value: '['
+DEBUG - semantic_errors_A.mj:42:23: LEXER: Found symbol: '#52' with value: '2'
+DEBUG - semantic_errors_A.mj:42:24: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - semantic_errors_A.mj:42:25: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - semantic_errors_A.mj:43:9: LEXER: Found symbol: '#55' with value: 'lf'
+DEBUG - semantic_errors_A.mj:43:12: LEXER: Found symbol: '#21' with value: '='
+DEBUG - semantic_errors_A.mj:43:14: LEXER: Found symbol: '#9' with value: 'new'
+DEBUG - semantic_errors_A.mj:43:18: LEXER: Found symbol: '#55' with value: 'bool'
+DEBUG - semantic_errors_A.mj:43:22: LEXER: Found symbol: '#44' with value: '['
+DEBUG - semantic_errors_A.mj:43:23: LEXER: Found symbol: '#52' with value: '8'
+DEBUG - semantic_errors_A.mj:43:24: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - semantic_errors_A.mj:43:25: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - semantic_errors_A.mj:45:9: LEXER: Found symbol: '#55' with value: 'ga'
+DEBUG - semantic_errors_A.mj:45:12: LEXER: Found symbol: '#21' with value: '='
+DEBUG - semantic_errors_A.mj:45:14: LEXER: Found symbol: '#55' with value: 'ca'
+DEBUG - semantic_errors_A.mj:45:17: LEXER: Found symbol: '#22' with value: '+'
+DEBUG - semantic_errors_A.mj:45:19: LEXER: Found symbol: '#55' with value: 'cb'
+DEBUG - semantic_errors_A.mj:45:22: LEXER: Found symbol: '#24' with value: '*'
+DEBUG - semantic_errors_A.mj:45:24: LEXER: Found symbol: '#52' with value: '5'
+DEBUG - semantic_errors_A.mj:45:26: LEXER: Found symbol: '#23' with value: '-'
+DEBUG - semantic_errors_A.mj:45:28: LEXER: Found symbol: '#42' with value: '('
+DEBUG - semantic_errors_A.mj:45:29: LEXER: Found symbol: '#52' with value: '15'
+DEBUG - semantic_errors_A.mj:45:32: LEXER: Found symbol: '#23' with value: '-'
+DEBUG - semantic_errors_A.mj:45:34: LEXER: Found symbol: '#52' with value: '9'
+DEBUG - semantic_errors_A.mj:45:35: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - semantic_errors_A.mj:45:36: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - semantic_errors_A.mj:46:9: LEXER: Found symbol: '#55' with value: 'ga'
+DEBUG - semantic_errors_A.mj:46:11: LEXER: Found symbol: '#27' with value: '++'
+DEBUG - semantic_errors_A.mj:46:13: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - semantic_errors_A.mj:47:9: LEXER: Found symbol: '#10' with value: 'print'
+DEBUG - semantic_errors_A.mj:47:14: LEXER: Found symbol: '#42' with value: '('
+DEBUG - semantic_errors_A.mj:47:15: LEXER: Found symbol: '#55' with value: 'ga'
+DEBUG - semantic_errors_A.mj:47:17: LEXER: Found symbol: '#50' with value: ','
+DEBUG - semantic_errors_A.mj:47:19: LEXER: Found symbol: '#52' with value: '5'
+DEBUG - semantic_errors_A.mj:47:20: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - semantic_errors_A.mj:47:21: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - semantic_errors_A.mj:48:9: LEXER: Found symbol: '#55' with value: 'gb'
+DEBUG - semantic_errors_A.mj:48:11: LEXER: Found symbol: '#44' with value: '['
+DEBUG - semantic_errors_A.mj:48:12: LEXER: Found symbol: '#52' with value: '4'
+DEBUG - semantic_errors_A.mj:48:13: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - semantic_errors_A.mj:48:15: LEXER: Found symbol: '#21' with value: '='
+DEBUG - semantic_errors_A.mj:48:17: LEXER: Found symbol: '#52' with value: '6'
+DEBUG - semantic_errors_A.mj:48:19: LEXER: Found symbol: '#26' with value: '%'
+DEBUG - semantic_errors_A.mj:48:21: LEXER: Found symbol: '#52' with value: '2'
+DEBUG - semantic_errors_A.mj:48:23: LEXER: Found symbol: '#22' with value: '+'
+DEBUG - semantic_errors_A.mj:48:25: LEXER: Found symbol: '#42' with value: '('
+DEBUG - semantic_errors_A.mj:48:26: LEXER: Found symbol: '#52' with value: '27'
+DEBUG - semantic_errors_A.mj:48:29: LEXER: Found symbol: '#24' with value: '*'
+DEBUG - semantic_errors_A.mj:48:31: LEXER: Found symbol: '#42' with value: '('
+DEBUG - semantic_errors_A.mj:48:32: LEXER: Found symbol: '#52' with value: '5'
+DEBUG - semantic_errors_A.mj:48:34: LEXER: Found symbol: '#23' with value: '-'
+DEBUG - semantic_errors_A.mj:48:36: LEXER: Found symbol: '#52' with value: '7'
+DEBUG - semantic_errors_A.mj:48:37: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - semantic_errors_A.mj:48:38: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - semantic_errors_A.mj:48:39: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - semantic_errors_A.mj:49:9: LEXER: Found symbol: '#11' with value: 'read'
+DEBUG - semantic_errors_A.mj:49:13: LEXER: Found symbol: '#42' with value: '('
+DEBUG - semantic_errors_A.mj:49:14: LEXER: Found symbol: '#55' with value: 'gc'
+DEBUG - semantic_errors_A.mj:49:16: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - semantic_errors_A.mj:49:17: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - semantic_errors_A.mj:50:9: LEXER: Found symbol: '#55' with value: 'gd'
+DEBUG - semantic_errors_A.mj:50:11: LEXER: Found symbol: '#44' with value: '['
+DEBUG - semantic_errors_A.mj:50:12: LEXER: Found symbol: '#52' with value: '1'
+DEBUG - semantic_errors_A.mj:50:13: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - semantic_errors_A.mj:50:15: LEXER: Found symbol: '#21' with value: '='
+DEBUG - semantic_errors_A.mj:50:17: LEXER: Found symbol: '#53' with value: 'a'
+DEBUG - semantic_errors_A.mj:50:20: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - semantic_errors_A.mj:51:9: LEXER: Found symbol: '#11' with value: 'read'
+DEBUG - semantic_errors_A.mj:51:13: LEXER: Found symbol: '#42' with value: '('
+DEBUG - semantic_errors_A.mj:51:14: LEXER: Found symbol: '#55' with value: 'gd'
+DEBUG - semantic_errors_A.mj:51:16: LEXER: Found symbol: '#44' with value: '['
+DEBUG - semantic_errors_A.mj:51:17: LEXER: Found symbol: '#52' with value: '0'
+DEBUG - semantic_errors_A.mj:51:18: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - semantic_errors_A.mj:51:19: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - semantic_errors_A.mj:51:20: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - semantic_errors_A.mj:52:9: LEXER: Found symbol: '#55' with value: 'ge'
+DEBUG - semantic_errors_A.mj:52:12: LEXER: Found symbol: '#21' with value: '='
+DEBUG - semantic_errors_A.mj:52:14: LEXER: Found symbol: '#54' with value: 'false'
+DEBUG - semantic_errors_A.mj:52:19: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - semantic_errors_A.mj:53:9: LEXER: Found symbol: '#55' with value: 'gf'
+DEBUG - semantic_errors_A.mj:53:11: LEXER: Found symbol: '#44' with value: '['
+DEBUG - semantic_errors_A.mj:53:12: LEXER: Found symbol: '#52' with value: '0'
+DEBUG - semantic_errors_A.mj:53:13: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - semantic_errors_A.mj:53:15: LEXER: Found symbol: '#21' with value: '='
+DEBUG - semantic_errors_A.mj:53:17: LEXER: Found symbol: '#55' with value: 'cd'
+DEBUG - semantic_errors_A.mj:53:19: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - semantic_errors_A.mj:54:9: LEXER: Found symbol: '#55' with value: 'gf'
+DEBUG - semantic_errors_A.mj:54:11: LEXER: Found symbol: '#44' with value: '['
+DEBUG - semantic_errors_A.mj:54:12: LEXER: Found symbol: '#52' with value: '3'
+DEBUG - semantic_errors_A.mj:54:13: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - semantic_errors_A.mj:54:15: LEXER: Found symbol: '#21' with value: '='
+DEBUG - semantic_errors_A.mj:54:17: LEXER: Found symbol: '#55' with value: 'gf'
+DEBUG - semantic_errors_A.mj:54:19: LEXER: Found symbol: '#44' with value: '['
+DEBUG - semantic_errors_A.mj:54:20: LEXER: Found symbol: '#52' with value: '0'
+DEBUG - semantic_errors_A.mj:54:21: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - semantic_errors_A.mj:54:22: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - semantic_errors_A.mj:55:9: LEXER: Found symbol: '#11' with value: 'read'
+DEBUG - semantic_errors_A.mj:55:13: LEXER: Found symbol: '#42' with value: '('
+DEBUG - semantic_errors_A.mj:55:14: LEXER: Found symbol: '#55' with value: 'gf'
+DEBUG - semantic_errors_A.mj:55:16: LEXER: Found symbol: '#44' with value: '['
+DEBUG - semantic_errors_A.mj:55:17: LEXER: Found symbol: '#52' with value: '2'
+DEBUG - semantic_errors_A.mj:55:18: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - semantic_errors_A.mj:55:19: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - semantic_errors_A.mj:55:20: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - semantic_errors_A.mj:56:9: LEXER: Found symbol: '#10' with value: 'print'
+DEBUG - semantic_errors_A.mj:56:14: LEXER: Found symbol: '#42' with value: '('
+DEBUG - semantic_errors_A.mj:56:15: LEXER: Found symbol: '#55' with value: 'gf'
+DEBUG - semantic_errors_A.mj:56:17: LEXER: Found symbol: '#44' with value: '['
+DEBUG - semantic_errors_A.mj:56:18: LEXER: Found symbol: '#52' with value: '3'
+DEBUG - semantic_errors_A.mj:56:19: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - semantic_errors_A.mj:56:20: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - semantic_errors_A.mj:56:21: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - semantic_errors_A.mj:58:9: LEXER: Found symbol: '#55' with value: 'la'
+DEBUG - semantic_errors_A.mj:58:12: LEXER: Found symbol: '#21' with value: '='
+DEBUG - semantic_errors_A.mj:58:14: LEXER: Found symbol: '#55' with value: 'ga'
+DEBUG - semantic_errors_A.mj:58:17: LEXER: Found symbol: '#39' with value: '*='
+DEBUG - semantic_errors_A.mj:58:20: LEXER: Found symbol: '#52' with value: '5'
+DEBUG - semantic_errors_A.mj:58:21: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - semantic_errors_A.mj:59:9: LEXER: Found symbol: '#55' with value: 'la'
+DEBUG - semantic_errors_A.mj:59:11: LEXER: Found symbol: '#28' with value: '--'
+DEBUG - semantic_errors_A.mj:59:13: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - semantic_errors_A.mj:60:9: LEXER: Found symbol: '#55' with value: 'lb'
+DEBUG - semantic_errors_A.mj:60:11: LEXER: Found symbol: '#44' with value: '['
+DEBUG - semantic_errors_A.mj:60:12: LEXER: Found symbol: '#52' with value: '2'
+DEBUG - semantic_errors_A.mj:60:13: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - semantic_errors_A.mj:60:15: LEXER: Found symbol: '#21' with value: '='
+DEBUG - semantic_errors_A.mj:60:17: LEXER: Found symbol: '#52' with value: '8'
+DEBUG - semantic_errors_A.mj:60:19: LEXER: Found symbol: '#24' with value: '*'
+DEBUG - semantic_errors_A.mj:60:21: LEXER: Found symbol: '#55' with value: 'la'
+DEBUG - semantic_errors_A.mj:60:24: LEXER: Found symbol: '#23' with value: '-'
+DEBUG - semantic_errors_A.mj:60:26: LEXER: Found symbol: '#52' with value: '4'
+DEBUG - semantic_errors_A.mj:60:28: LEXER: Found symbol: '#39' with value: '*='
+DEBUG - semantic_errors_A.mj:60:31: LEXER: Found symbol: '#23' with value: '-'
+DEBUG - semantic_errors_A.mj:60:32: LEXER: Found symbol: '#52' with value: '4'
+DEBUG - semantic_errors_A.mj:60:34: LEXER: Found symbol: '#22' with value: '+'
+DEBUG - semantic_errors_A.mj:60:36: LEXER: Found symbol: '#52' with value: '6'
+DEBUG - semantic_errors_A.mj:60:38: LEXER: Found symbol: '#24' with value: '*'
+DEBUG - semantic_errors_A.mj:60:40: LEXER: Found symbol: '#52' with value: '2'
+DEBUG - semantic_errors_A.mj:60:41: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - semantic_errors_A.mj:61:9: LEXER: Found symbol: '#55' with value: 'lc'
+DEBUG - semantic_errors_A.mj:61:12: LEXER: Found symbol: '#21' with value: '='
+DEBUG - semantic_errors_A.mj:61:14: LEXER: Found symbol: '#55' with value: 'gc'
+DEBUG - semantic_errors_A.mj:61:16: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - semantic_errors_A.mj:62:9: LEXER: Found symbol: '#55' with value: 'ld'
+DEBUG - semantic_errors_A.mj:62:11: LEXER: Found symbol: '#44' with value: '['
+DEBUG - semantic_errors_A.mj:62:12: LEXER: Found symbol: '#52' with value: '1'
+DEBUG - semantic_errors_A.mj:62:13: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - semantic_errors_A.mj:62:15: LEXER: Found symbol: '#21' with value: '='
+DEBUG - semantic_errors_A.mj:62:17: LEXER: Found symbol: '#53' with value: 'F'
+DEBUG - semantic_errors_A.mj:62:20: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - semantic_errors_A.mj:63:9: LEXER: Found symbol: '#55' with value: 'le'
+DEBUG - semantic_errors_A.mj:63:12: LEXER: Found symbol: '#21' with value: '='
+DEBUG - semantic_errors_A.mj:63:14: LEXER: Found symbol: '#54' with value: 'false'
+DEBUG - semantic_errors_A.mj:63:19: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - semantic_errors_A.mj:64:9: LEXER: Found symbol: '#55' with value: 'lf'
+DEBUG - semantic_errors_A.mj:64:11: LEXER: Found symbol: '#44' with value: '['
+DEBUG - semantic_errors_A.mj:64:12: LEXER: Found symbol: '#52' with value: '2'
+DEBUG - semantic_errors_A.mj:64:13: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - semantic_errors_A.mj:64:15: LEXER: Found symbol: '#21' with value: '='
+DEBUG - semantic_errors_A.mj:64:17: LEXER: Found symbol: '#55' with value: 'cd'
+DEBUG - semantic_errors_A.mj:64:19: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - semantic_errors_A.mj:65:5: LEXER: Found symbol: '#47' with value: '}'
+DEBUG - semantic_errors_A.mj:66:1: LEXER: Found symbol: '#47' with value: '}'
+DEBUG - semantic_errors_A.mj:66:2: LEXER: Found symbol: '#0' with value: ''
+DEBUG - semantic_errors_A.mj:66:2: LEXER: Found symbol: '#0' with value: ''
+INFO  - Abstract syntax tree:
+Program(
+  ProgramHeader(
+   level_a_syntax_test
+  ) [ProgramHeader]
+  MultipleProgramDeclarations(
+    MultipleProgramDeclarations(
+      MultipleProgramDeclarations(
+        MultipleProgramDeclarations(
+          MultipleProgramDeclarations(
+            MultipleProgramDeclarations(
+              MultipleProgramDeclarations(
+                MultipleProgramDeclarations(
+                  MultipleProgramDeclarations(
+                    MultipleProgramDeclarations(
+                      MultipleProgramDeclarations(
+                        MultipleProgramDeclarations(
+                          MultipleProgramDeclarations(
+                            MultipleProgramDeclarations(
+                              MultipleProgramDeclarations(
+                                MultipleProgramDeclarations(
+                                  MultipleProgramDeclarations(
+                                    MultipleProgramDeclarations(
+                                      MultipleProgramDeclarations(
+                                        MultipleProgramDeclarations(
+                                          NoProgramDeclarations(
+                                          ) [NoProgramDeclarations]
+                                          ConstProgramDeclaration(
+                                            ConstDeclaration(
+                                              Type(
+                                               int
+                                              ) [Type]
+                                              MultipleConstAssignments(
+                                                MultipleConstAssignments(
+                                                  SingleConstAssignment(
+                                                    ConstAssignment(
+                                                     a
+                                                      IntConst(
+                                                        NoSign(
+                                                        ) [NoSign]
+                                                       20
+                                                      ) [IntConst]
+                                                    ) [ConstAssignment]
+                                                  ) [SingleConstAssignment]
+                                                  ConstAssignment(
+                                                   b
+                                                    IntConst(
+                                                      MinusSign(
+                                                      ) [MinusSign]
+                                                     1
+                                                    ) [IntConst]
+                                                  ) [ConstAssignment]
+                                                ) [MultipleConstAssignments]
+                                                ConstAssignment(
+                                                 c
+                                                  IntConst(
+                                                    PlusSign(
+                                                    ) [PlusSign]
+                                                   25
+                                                  ) [IntConst]
+                                                ) [ConstAssignment]
+                                              ) [MultipleConstAssignments]
+                                            ) [ConstDeclaration]
+                                          ) [ConstProgramDeclaration]
+                                        ) [MultipleProgramDeclarations]
+                                        ConstProgramDeclaration(
+                                          ConstDeclaration(
+                                            Type(
+                                             char
+                                            ) [Type]
+                                            SingleConstAssignment(
+                                              ConstAssignment(
+                                               d
+                                                CharConst(
+                                                 a
+                                                ) [CharConst]
+                                              ) [ConstAssignment]
+                                            ) [SingleConstAssignment]
+                                          ) [ConstDeclaration]
+                                        ) [ConstProgramDeclaration]
+                                      ) [MultipleProgramDeclarations]
+                                      ConstProgramDeclaration(
+                                        ConstDeclaration(
+                                          Type(
+                                           bool
+                                          ) [Type]
+                                          MultipleConstAssignments(
+                                            SingleConstAssignment(
+                                              ConstAssignment(
+                                               e
+                                                BoolConst(
+                                                 true
+                                                ) [BoolConst]
+                                              ) [ConstAssignment]
+                                            ) [SingleConstAssignment]
+                                            ConstAssignment(
+                                             f
+                                              BoolConst(
+                                               false
+                                              ) [BoolConst]
+                                            ) [ConstAssignment]
+                                          ) [MultipleConstAssignments]
+                                        ) [ConstDeclaration]
+                                      ) [ConstProgramDeclaration]
+                                    ) [MultipleProgramDeclarations]
+                                    ConstProgramDeclaration(
+                                      ConstDeclaration(
+                                        Type(
+                                         char
+                                        ) [Type]
+                                        SingleConstAssignment(
+                                          ConstAssignment(
+                                           a
+                                            CharConst(
+                                             c
+                                            ) [CharConst]
+                                          ) [ConstAssignment]
+                                        ) [SingleConstAssignment]
+                                      ) [ConstDeclaration]
+                                    ) [ConstProgramDeclaration]
+                                  ) [MultipleProgramDeclarations]
+                                  ConstProgramDeclaration(
+                                    ConstDeclaration(
+                                      Type(
+                                       invalid_type
+                                      ) [Type]
+                                      SingleConstAssignment(
+                                        ConstAssignment(
+                                         d
+                                          IntConst(
+                                            NoSign(
+                                            ) [NoSign]
+                                           3
+                                          ) [IntConst]
+                                        ) [ConstAssignment]
+                                      ) [SingleConstAssignment]
+                                    ) [ConstDeclaration]
+                                  ) [ConstProgramDeclaration]
+                                ) [MultipleProgramDeclarations]
+                                ConstProgramDeclaration(
+                                  ConstDeclaration(
+                                    Type(
+                                     a
+                                    ) [Type]
+                                    SingleConstAssignment(
+                                      ConstAssignment(
+                                       e
+                                        IntConst(
+                                          NoSign(
+                                          ) [NoSign]
+                                         5
+                                        ) [IntConst]
+                                      ) [ConstAssignment]
+                                    ) [SingleConstAssignment]
+                                  ) [ConstDeclaration]
+                                ) [ConstProgramDeclaration]
+                              ) [MultipleProgramDeclarations]
+                              ConstProgramDeclaration(
+                                ConstDeclaration(
+                                  Type(
+                                   int
+                                  ) [Type]
+                                  SingleConstAssignment(
+                                    ConstAssignment(
+                                     e
+                                      CharConst(
+                                       a
+                                      ) [CharConst]
+                                    ) [ConstAssignment]
+                                  ) [SingleConstAssignment]
+                                ) [ConstDeclaration]
+                              ) [ConstProgramDeclaration]
+                            ) [MultipleProgramDeclarations]
+                            ConstProgramDeclaration(
+                              ConstDeclaration(
+                                Type(
+                                 bool
+                                ) [Type]
+                                SingleConstAssignment(
+                                  ConstAssignment(
+                                   m
+                                    IntConst(
+                                      NoSign(
+                                      ) [NoSign]
+                                     25
+                                    ) [IntConst]
+                                  ) [ConstAssignment]
+                                ) [SingleConstAssignment]
+                              ) [ConstDeclaration]
+                            ) [ConstProgramDeclaration]
+                          ) [MultipleProgramDeclarations]
+                          VarProgramDeclaration(
+                            VarDeclaration(
+                              Type(
+                               int
+                              ) [Type]
+                              MultipleVariables(
+                                SingleVariable(
+                                  Variable(
+                                   var_a
+                                    NoArrayBrackets(
+                                    ) [NoArrayBrackets]
+                                  ) [Variable]
+                                ) [SingleVariable]
+                                Variable(
+                                 var_b
+                                  ArrayBrackets(
+                                  ) [ArrayBrackets]
+                                ) [Variable]
+                              ) [MultipleVariables]
+                            ) [VarDeclaration]
+                          ) [VarProgramDeclaration]
+                        ) [MultipleProgramDeclarations]
+                        VarProgramDeclaration(
+                          VarDeclaration(
+                            Type(
+                             char
+                            ) [Type]
+                            MultipleVariables(
+                              MultipleVariables(
+                                SingleVariable(
+                                  Variable(
+                                   var_c
+                                    NoArrayBrackets(
+                                    ) [NoArrayBrackets]
+                                  ) [Variable]
+                                ) [SingleVariable]
+                                Variable(
+                                 var_d
+                                  ArrayBrackets(
+                                  ) [ArrayBrackets]
+                                ) [Variable]
+                              ) [MultipleVariables]
+                              Variable(
+                               var_e
+                                NoArrayBrackets(
+                                ) [NoArrayBrackets]
+                              ) [Variable]
+                            ) [MultipleVariables]
+                          ) [VarDeclaration]
+                        ) [VarProgramDeclaration]
+                      ) [MultipleProgramDeclarations]
+                      VarProgramDeclaration(
+                        VarDeclaration(
+                          Type(
+                           bool
+                          ) [Type]
+                          SingleVariable(
+                            Variable(
+                             var_f
+                              NoArrayBrackets(
+                              ) [NoArrayBrackets]
+                            ) [Variable]
+                          ) [SingleVariable]
+                        ) [VarDeclaration]
+                      ) [VarProgramDeclaration]
+                    ) [MultipleProgramDeclarations]
+                    VarProgramDeclaration(
+                      VarDeclaration(
+                        Type(
+                         int
+                        ) [Type]
+                        SingleVariable(
+                          Variable(
+                           int
+                            NoArrayBrackets(
+                            ) [NoArrayBrackets]
+                          ) [Variable]
+                        ) [SingleVariable]
+                      ) [VarDeclaration]
+                    ) [VarProgramDeclaration]
+                  ) [MultipleProgramDeclarations]
+                  VarProgramDeclaration(
+                    VarDeclaration(
+                      Type(
+                       type_x
+                      ) [Type]
+                      SingleVariable(
+                        Variable(
+                         var_g
+                          NoArrayBrackets(
+                          ) [NoArrayBrackets]
+                        ) [Variable]
+                      ) [SingleVariable]
+                    ) [VarDeclaration]
+                  ) [VarProgramDeclaration]
+                ) [MultipleProgramDeclarations]
+                VarProgramDeclaration(
+                  VarDeclaration(
+                    Type(
+                     var_a
+                    ) [Type]
+                    SingleVariable(
+                      Variable(
+                       var_g
+                        NoArrayBrackets(
+                        ) [NoArrayBrackets]
+                      ) [Variable]
+                    ) [SingleVariable]
+                  ) [VarDeclaration]
+                ) [VarProgramDeclaration]
+              ) [MultipleProgramDeclarations]
+              ConstProgramDeclaration(
+                ConstDeclaration(
+                  Type(
+                   int
+                  ) [Type]
+                  MultipleConstAssignments(
+                    SingleConstAssignment(
+                      ConstAssignment(
+                       ca
+                        IntConst(
+                          NoSign(
+                          ) [NoSign]
+                         1
+                        ) [IntConst]
+                      ) [ConstAssignment]
+                    ) [SingleConstAssignment]
+                    ConstAssignment(
+                     cb
+                      IntConst(
+                        NoSign(
+                        ) [NoSign]
+                       6
+                      ) [IntConst]
+                    ) [ConstAssignment]
+                  ) [MultipleConstAssignments]
+                ) [ConstDeclaration]
+              ) [ConstProgramDeclaration]
+            ) [MultipleProgramDeclarations]
+            ConstProgramDeclaration(
+              ConstDeclaration(
+                Type(
+                 char
+                ) [Type]
+                SingleConstAssignment(
+                  ConstAssignment(
+                   cc
+                    CharConst(
+                     s
+                    ) [CharConst]
+                  ) [ConstAssignment]
+                ) [SingleConstAssignment]
+              ) [ConstDeclaration]
+            ) [ConstProgramDeclaration]
+          ) [MultipleProgramDeclarations]
+          ConstProgramDeclaration(
+            ConstDeclaration(
+              Type(
+               bool
+              ) [Type]
+              SingleConstAssignment(
+                ConstAssignment(
+                 cd
+                  BoolConst(
+                   true
+                  ) [BoolConst]
+                ) [ConstAssignment]
+              ) [SingleConstAssignment]
+            ) [ConstDeclaration]
+          ) [ConstProgramDeclaration]
+        ) [MultipleProgramDeclarations]
+        VarProgramDeclaration(
+          VarDeclaration(
+            Type(
+             int
+            ) [Type]
+            MultipleVariables(
+              SingleVariable(
+                Variable(
+                 ga
+                  NoArrayBrackets(
+                  ) [NoArrayBrackets]
+                ) [Variable]
+              ) [SingleVariable]
+              Variable(
+               gb
+                ArrayBrackets(
+                ) [ArrayBrackets]
+              ) [Variable]
+            ) [MultipleVariables]
+          ) [VarDeclaration]
+        ) [VarProgramDeclaration]
+      ) [MultipleProgramDeclarations]
+      VarProgramDeclaration(
+        VarDeclaration(
+          Type(
+           char
+          ) [Type]
+          MultipleVariables(
+            SingleVariable(
+              Variable(
+               gc
+                NoArrayBrackets(
+                ) [NoArrayBrackets]
+              ) [Variable]
+            ) [SingleVariable]
+            Variable(
+             gd
+              ArrayBrackets(
+              ) [ArrayBrackets]
+            ) [Variable]
+          ) [MultipleVariables]
+        ) [VarDeclaration]
+      ) [VarProgramDeclaration]
+    ) [MultipleProgramDeclarations]
+    VarProgramDeclaration(
+      VarDeclaration(
+        Type(
+         bool
+        ) [Type]
+        MultipleVariables(
+          SingleVariable(
+            Variable(
+             ge
+              NoArrayBrackets(
+              ) [NoArrayBrackets]
+            ) [Variable]
+          ) [SingleVariable]
+          Variable(
+           gf
+            ArrayBrackets(
+            ) [ArrayBrackets]
+          ) [Variable]
+        ) [MultipleVariables]
+      ) [VarDeclaration]
+    ) [VarProgramDeclaration]
+  ) [MultipleProgramDeclarations]
+  MultipleMethodDeclarations(
+    NoMethodDeclarations(
+    ) [NoMethodDeclarations]
+    MethodDeclaration(
+      MethodHeader(
+        ReturnVoid(
+        ) [ReturnVoid]
+       main
+      ) [MethodHeader]
+      NoFormalParameters(
+      ) [NoFormalParameters]
+      MultipleLocalVarDeclarations(
+        MultipleLocalVarDeclarations(
+          MultipleLocalVarDeclarations(
+            MultipleLocalVarDeclarations(
+              NoLocalVarDeclarations(
+              ) [NoLocalVarDeclarations]
+              LocalVarDeclaration(
+                Type(
+                 bool
+                ) [Type]
+                SingleLocalVariable(
+                  LocalVariable(
+                   char
+                    NoArrayBrackets(
+                    ) [NoArrayBrackets]
+                  ) [LocalVariable]
+                ) [SingleLocalVariable]
+              ) [LocalVarDeclaration]
+            ) [MultipleLocalVarDeclarations]
+            LocalVarDeclaration(
+              Type(
+               int
+              ) [Type]
+              MultipleLocalVariables(
+                SingleLocalVariable(
+                  LocalVariable(
+                   la
+                    NoArrayBrackets(
+                    ) [NoArrayBrackets]
+                  ) [LocalVariable]
+                ) [SingleLocalVariable]
+                LocalVariable(
+                 lb
+                  ArrayBrackets(
+                  ) [ArrayBrackets]
+                ) [LocalVariable]
+              ) [MultipleLocalVariables]
+            ) [LocalVarDeclaration]
+          ) [MultipleLocalVarDeclarations]
+          LocalVarDeclaration(
+            Type(
+             char
+            ) [Type]
+            MultipleLocalVariables(
+              SingleLocalVariable(
+                LocalVariable(
+                 lc
+                  NoArrayBrackets(
+                  ) [NoArrayBrackets]
+                ) [LocalVariable]
+              ) [SingleLocalVariable]
+              LocalVariable(
+               ld
+                ArrayBrackets(
+                ) [ArrayBrackets]
+              ) [LocalVariable]
+            ) [MultipleLocalVariables]
+          ) [LocalVarDeclaration]
+        ) [MultipleLocalVarDeclarations]
+        LocalVarDeclaration(
+          Type(
+           bool
+          ) [Type]
+          MultipleLocalVariables(
+            SingleLocalVariable(
+              LocalVariable(
+               le
+                NoArrayBrackets(
+                ) [NoArrayBrackets]
+              ) [LocalVariable]
+            ) [SingleLocalVariable]
+            LocalVariable(
+             lf
+              ArrayBrackets(
+              ) [ArrayBrackets]
+            ) [LocalVariable]
+          ) [MultipleLocalVariables]
+        ) [LocalVarDeclaration]
+      ) [MultipleLocalVarDeclarations]
+      MethodStatementListStart(
+      ) [MethodStatementListStart]
+      MultipleStatements(
+        MultipleStatements(
+          MultipleStatements(
+            MultipleStatements(
+              MultipleStatements(
+                MultipleStatements(
+                  MultipleStatements(
+                    MultipleStatements(
+                      MultipleStatements(
+                        MultipleStatements(
+                          MultipleStatements(
+                            MultipleStatements(
+                              MultipleStatements(
+                                MultipleStatements(
+                                  MultipleStatements(
+                                    MultipleStatements(
+                                      MultipleStatements(
+                                        MultipleStatements(
+                                          MultipleStatements(
+                                            MultipleStatements(
+                                              MultipleStatements(
+                                                MultipleStatements(
+                                                  MultipleStatements(
+                                                    MultipleStatements(
+                                                      MultipleStatements(
+                                                        NoStatements(
+                                                        ) [NoStatements]
+                                                        DesignatorBasedStatement(
+                                                          AssignmentDesignatorStatement(
+                                                            AssignmentHeader(
+                                                              IdentifierDesignator(
+                                                               gb
+                                                              ) [IdentifierDesignator]
+                                                            ) [AssignmentHeader]
+                                                            AssignmentFooter(
+                                                              AssignOperator(
+                                                              ) [AssignOperator]
+                                                              LeftExpression(
+                                                                SingleTermExpression(
+                                                                  NoSign(
+                                                                  ) [NoSign]
+                                                                  SingleFactorTerm(
+                                                                    AllocatorFactor(
+                                                                      Type(
+                                                                       int
+                                                                      ) [Type]
+                                                                      SingleArrayIndexer(
+                                                                        ArrayIndexer(
+                                                                          LeftExpression(
+                                                                            SingleTermExpression(
+                                                                              NoSign(
+                                                                              ) [NoSign]
+                                                                              SingleFactorTerm(
+                                                                                ConstantFactor(
+                                                                                  IntConstantFactor(
+                                                                                   5
+                                                                                  ) [IntConstantFactor]
+                                                                                ) [ConstantFactor]
+                                                                              ) [SingleFactorTerm]
+                                                                            ) [SingleTermExpression]
+                                                                          ) [LeftExpression]
+                                                                        ) [ArrayIndexer]
+                                                                      ) [SingleArrayIndexer]
+                                                                    ) [AllocatorFactor]
+                                                                  ) [SingleFactorTerm]
+                                                                ) [SingleTermExpression]
+                                                              ) [LeftExpression]
+                                                            ) [AssignmentFooter]
+                                                          ) [AssignmentDesignatorStatement]
+                                                        ) [DesignatorBasedStatement]
+                                                      ) [MultipleStatements]
+                                                      DesignatorBasedStatement(
+                                                        AssignmentDesignatorStatement(
+                                                          AssignmentHeader(
+                                                            IdentifierDesignator(
+                                                             gd
+                                                            ) [IdentifierDesignator]
+                                                          ) [AssignmentHeader]
+                                                          AssignmentFooter(
+                                                            AssignOperator(
+                                                            ) [AssignOperator]
+                                                            LeftExpression(
+                                                              SingleTermExpression(
+                                                                NoSign(
+                                                                ) [NoSign]
+                                                                SingleFactorTerm(
+                                                                  AllocatorFactor(
+                                                                    Type(
+                                                                     char
+                                                                    ) [Type]
+                                                                    SingleArrayIndexer(
+                                                                      ArrayIndexer(
+                                                                        LeftExpression(
+                                                                          SingleTermExpression(
+                                                                            NoSign(
+                                                                            ) [NoSign]
+                                                                            SingleFactorTerm(
+                                                                              ConstantFactor(
+                                                                                IntConstantFactor(
+                                                                                 2
+                                                                                ) [IntConstantFactor]
+                                                                              ) [ConstantFactor]
+                                                                            ) [SingleFactorTerm]
+                                                                          ) [SingleTermExpression]
+                                                                        ) [LeftExpression]
+                                                                      ) [ArrayIndexer]
+                                                                    ) [SingleArrayIndexer]
+                                                                  ) [AllocatorFactor]
+                                                                ) [SingleFactorTerm]
+                                                              ) [SingleTermExpression]
+                                                            ) [LeftExpression]
+                                                          ) [AssignmentFooter]
+                                                        ) [AssignmentDesignatorStatement]
+                                                      ) [DesignatorBasedStatement]
+                                                    ) [MultipleStatements]
+                                                    DesignatorBasedStatement(
+                                                      AssignmentDesignatorStatement(
+                                                        AssignmentHeader(
+                                                          IdentifierDesignator(
+                                                           gf
+                                                          ) [IdentifierDesignator]
+                                                        ) [AssignmentHeader]
+                                                        AssignmentFooter(
+                                                          AssignOperator(
+                                                          ) [AssignOperator]
+                                                          LeftExpression(
+                                                            SingleTermExpression(
+                                                              NoSign(
+                                                              ) [NoSign]
+                                                              SingleFactorTerm(
+                                                                AllocatorFactor(
+                                                                  Type(
+                                                                   bool
+                                                                  ) [Type]
+                                                                  SingleArrayIndexer(
+                                                                    ArrayIndexer(
+                                                                      LeftExpression(
+                                                                        SingleTermExpression(
+                                                                          NoSign(
+                                                                          ) [NoSign]
+                                                                          SingleFactorTerm(
+                                                                            ConstantFactor(
+                                                                              IntConstantFactor(
+                                                                               6
+                                                                              ) [IntConstantFactor]
+                                                                            ) [ConstantFactor]
+                                                                          ) [SingleFactorTerm]
+                                                                        ) [SingleTermExpression]
+                                                                      ) [LeftExpression]
+                                                                    ) [ArrayIndexer]
+                                                                  ) [SingleArrayIndexer]
+                                                                ) [AllocatorFactor]
+                                                              ) [SingleFactorTerm]
+                                                            ) [SingleTermExpression]
+                                                          ) [LeftExpression]
+                                                        ) [AssignmentFooter]
+                                                      ) [AssignmentDesignatorStatement]
+                                                    ) [DesignatorBasedStatement]
+                                                  ) [MultipleStatements]
+                                                  DesignatorBasedStatement(
+                                                    AssignmentDesignatorStatement(
+                                                      AssignmentHeader(
+                                                        IdentifierDesignator(
+                                                         lb
+                                                        ) [IdentifierDesignator]
+                                                      ) [AssignmentHeader]
+                                                      AssignmentFooter(
+                                                        AssignOperator(
+                                                        ) [AssignOperator]
+                                                        LeftExpression(
+                                                          SingleTermExpression(
+                                                            NoSign(
+                                                            ) [NoSign]
+                                                            SingleFactorTerm(
+                                                              AllocatorFactor(
+                                                                Type(
+                                                                 int
+                                                                ) [Type]
+                                                                SingleArrayIndexer(
+                                                                  ArrayIndexer(
+                                                                    LeftExpression(
+                                                                      SingleTermExpression(
+                                                                        NoSign(
+                                                                        ) [NoSign]
+                                                                        SingleFactorTerm(
+                                                                          ConstantFactor(
+                                                                            IntConstantFactor(
+                                                                             4
+                                                                            ) [IntConstantFactor]
+                                                                          ) [ConstantFactor]
+                                                                        ) [SingleFactorTerm]
+                                                                      ) [SingleTermExpression]
+                                                                    ) [LeftExpression]
+                                                                  ) [ArrayIndexer]
+                                                                ) [SingleArrayIndexer]
+                                                              ) [AllocatorFactor]
+                                                            ) [SingleFactorTerm]
+                                                          ) [SingleTermExpression]
+                                                        ) [LeftExpression]
+                                                      ) [AssignmentFooter]
+                                                    ) [AssignmentDesignatorStatement]
+                                                  ) [DesignatorBasedStatement]
+                                                ) [MultipleStatements]
+                                                DesignatorBasedStatement(
+                                                  AssignmentDesignatorStatement(
+                                                    AssignmentHeader(
+                                                      IdentifierDesignator(
+                                                       ld
+                                                      ) [IdentifierDesignator]
+                                                    ) [AssignmentHeader]
+                                                    AssignmentFooter(
+                                                      AssignOperator(
+                                                      ) [AssignOperator]
+                                                      LeftExpression(
+                                                        SingleTermExpression(
+                                                          NoSign(
+                                                          ) [NoSign]
+                                                          SingleFactorTerm(
+                                                            AllocatorFactor(
+                                                              Type(
+                                                               char
+                                                              ) [Type]
+                                                              SingleArrayIndexer(
+                                                                ArrayIndexer(
+                                                                  LeftExpression(
+                                                                    SingleTermExpression(
+                                                                      NoSign(
+                                                                      ) [NoSign]
+                                                                      SingleFactorTerm(
+                                                                        ConstantFactor(
+                                                                          IntConstantFactor(
+                                                                           2
+                                                                          ) [IntConstantFactor]
+                                                                        ) [ConstantFactor]
+                                                                      ) [SingleFactorTerm]
+                                                                    ) [SingleTermExpression]
+                                                                  ) [LeftExpression]
+                                                                ) [ArrayIndexer]
+                                                              ) [SingleArrayIndexer]
+                                                            ) [AllocatorFactor]
+                                                          ) [SingleFactorTerm]
+                                                        ) [SingleTermExpression]
+                                                      ) [LeftExpression]
+                                                    ) [AssignmentFooter]
+                                                  ) [AssignmentDesignatorStatement]
+                                                ) [DesignatorBasedStatement]
+                                              ) [MultipleStatements]
+                                              DesignatorBasedStatement(
+                                                AssignmentDesignatorStatement(
+                                                  AssignmentHeader(
+                                                    IdentifierDesignator(
+                                                     lf
+                                                    ) [IdentifierDesignator]
+                                                  ) [AssignmentHeader]
+                                                  AssignmentFooter(
+                                                    AssignOperator(
+                                                    ) [AssignOperator]
+                                                    LeftExpression(
+                                                      SingleTermExpression(
+                                                        NoSign(
+                                                        ) [NoSign]
+                                                        SingleFactorTerm(
+                                                          AllocatorFactor(
+                                                            Type(
+                                                             bool
+                                                            ) [Type]
+                                                            SingleArrayIndexer(
+                                                              ArrayIndexer(
+                                                                LeftExpression(
+                                                                  SingleTermExpression(
+                                                                    NoSign(
+                                                                    ) [NoSign]
+                                                                    SingleFactorTerm(
+                                                                      ConstantFactor(
+                                                                        IntConstantFactor(
+                                                                         8
+                                                                        ) [IntConstantFactor]
+                                                                      ) [ConstantFactor]
+                                                                    ) [SingleFactorTerm]
+                                                                  ) [SingleTermExpression]
+                                                                ) [LeftExpression]
+                                                              ) [ArrayIndexer]
+                                                            ) [SingleArrayIndexer]
+                                                          ) [AllocatorFactor]
+                                                        ) [SingleFactorTerm]
+                                                      ) [SingleTermExpression]
+                                                    ) [LeftExpression]
+                                                  ) [AssignmentFooter]
+                                                ) [AssignmentDesignatorStatement]
+                                              ) [DesignatorBasedStatement]
+                                            ) [MultipleStatements]
+                                            DesignatorBasedStatement(
+                                              AssignmentDesignatorStatement(
+                                                AssignmentHeader(
+                                                  IdentifierDesignator(
+                                                   ga
+                                                  ) [IdentifierDesignator]
+                                                ) [AssignmentHeader]
+                                                AssignmentFooter(
+                                                  AssignOperator(
+                                                  ) [AssignOperator]
+                                                  LeftExpression(
+                                                    MultipleTermsExpression(
+                                                      MultipleTermsExpression(
+                                                        SingleTermExpression(
+                                                          NoSign(
+                                                          ) [NoSign]
+                                                          SingleFactorTerm(
+                                                            DesignatorFactor(
+                                                              IdentifierDesignator(
+                                                               ca
+                                                              ) [IdentifierDesignator]
+                                                            ) [DesignatorFactor]
+                                                          ) [SingleFactorTerm]
+                                                        ) [SingleTermExpression]
+                                                        AddOperator(
+                                                        ) [AddOperator]
+                                                        MultipleFactorsTerm(
+                                                          SingleFactorTerm(
+                                                            DesignatorFactor(
+                                                              IdentifierDesignator(
+                                                               cb
+                                                              ) [IdentifierDesignator]
+                                                            ) [DesignatorFactor]
+                                                          ) [SingleFactorTerm]
+                                                          MulOperator(
+                                                          ) [MulOperator]
+                                                          ConstantFactor(
+                                                            IntConstantFactor(
+                                                             5
+                                                            ) [IntConstantFactor]
+                                                          ) [ConstantFactor]
+                                                        ) [MultipleFactorsTerm]
+                                                      ) [MultipleTermsExpression]
+                                                      SubOperator(
+                                                      ) [SubOperator]
+                                                      SingleFactorTerm(
+                                                        InnerExpressionFactor(
+                                                          LeftExpression(
+                                                            MultipleTermsExpression(
+                                                              SingleTermExpression(
+                                                                NoSign(
+                                                                ) [NoSign]
+                                                                SingleFactorTerm(
+                                                                  ConstantFactor(
+                                                                    IntConstantFactor(
+                                                                     15
+                                                                    ) [IntConstantFactor]
+                                                                  ) [ConstantFactor]
+                                                                ) [SingleFactorTerm]
+                                                              ) [SingleTermExpression]
+                                                              SubOperator(
+                                                              ) [SubOperator]
+                                                              SingleFactorTerm(
+                                                                ConstantFactor(
+                                                                  IntConstantFactor(
+                                                                   9
+                                                                  ) [IntConstantFactor]
+                                                                ) [ConstantFactor]
+                                                              ) [SingleFactorTerm]
+                                                            ) [MultipleTermsExpression]
+                                                          ) [LeftExpression]
+                                                        ) [InnerExpressionFactor]
+                                                      ) [SingleFactorTerm]
+                                                    ) [MultipleTermsExpression]
+                                                  ) [LeftExpression]
+                                                ) [AssignmentFooter]
+                                              ) [AssignmentDesignatorStatement]
+                                            ) [DesignatorBasedStatement]
+                                          ) [MultipleStatements]
+                                          DesignatorBasedStatement(
+                                            IncrementDesignatorStatement(
+                                              IdentifierDesignator(
+                                               ga
+                                              ) [IdentifierDesignator]
+                                            ) [IncrementDesignatorStatement]
+                                          ) [DesignatorBasedStatement]
+                                        ) [MultipleStatements]
+                                        PrintStatement(
+                                          LeftExpression(
+                                            SingleTermExpression(
+                                              NoSign(
+                                              ) [NoSign]
+                                              SingleFactorTerm(
+                                                DesignatorFactor(
+                                                  IdentifierDesignator(
+                                                   ga
+                                                  ) [IdentifierDesignator]
+                                                ) [DesignatorFactor]
+                                              ) [SingleFactorTerm]
+                                            ) [SingleTermExpression]
+                                          ) [LeftExpression]
+                                          PrintWidth(
+                                           5
+                                          ) [PrintWidth]
+                                        ) [PrintStatement]
+                                      ) [MultipleStatements]
+                                      DesignatorBasedStatement(
+                                        AssignmentDesignatorStatement(
+                                          AssignmentHeader(
+                                            ElementAccessDesignator(
+                                              IdentifierDesignator(
+                                               gb
+                                              ) [IdentifierDesignator]
+                                              ArrayIndexer(
+                                                LeftExpression(
+                                                  SingleTermExpression(
+                                                    NoSign(
+                                                    ) [NoSign]
+                                                    SingleFactorTerm(
+                                                      ConstantFactor(
+                                                        IntConstantFactor(
+                                                         4
+                                                        ) [IntConstantFactor]
+                                                      ) [ConstantFactor]
+                                                    ) [SingleFactorTerm]
+                                                  ) [SingleTermExpression]
+                                                ) [LeftExpression]
+                                              ) [ArrayIndexer]
+                                            ) [ElementAccessDesignator]
+                                          ) [AssignmentHeader]
+                                          AssignmentFooter(
+                                            AssignOperator(
+                                            ) [AssignOperator]
+                                            LeftExpression(
+                                              MultipleTermsExpression(
+                                                SingleTermExpression(
+                                                  NoSign(
+                                                  ) [NoSign]
+                                                  MultipleFactorsTerm(
+                                                    SingleFactorTerm(
+                                                      ConstantFactor(
+                                                        IntConstantFactor(
+                                                         6
+                                                        ) [IntConstantFactor]
+                                                      ) [ConstantFactor]
+                                                    ) [SingleFactorTerm]
+                                                    ModOperator(
+                                                    ) [ModOperator]
+                                                    ConstantFactor(
+                                                      IntConstantFactor(
+                                                       2
+                                                      ) [IntConstantFactor]
+                                                    ) [ConstantFactor]
+                                                  ) [MultipleFactorsTerm]
+                                                ) [SingleTermExpression]
+                                                AddOperator(
+                                                ) [AddOperator]
+                                                SingleFactorTerm(
+                                                  InnerExpressionFactor(
+                                                    LeftExpression(
+                                                      SingleTermExpression(
+                                                        NoSign(
+                                                        ) [NoSign]
+                                                        MultipleFactorsTerm(
+                                                          SingleFactorTerm(
+                                                            ConstantFactor(
+                                                              IntConstantFactor(
+                                                               27
+                                                              ) [IntConstantFactor]
+                                                            ) [ConstantFactor]
+                                                          ) [SingleFactorTerm]
+                                                          MulOperator(
+                                                          ) [MulOperator]
+                                                          InnerExpressionFactor(
+                                                            LeftExpression(
+                                                              MultipleTermsExpression(
+                                                                SingleTermExpression(
+                                                                  NoSign(
+                                                                  ) [NoSign]
+                                                                  SingleFactorTerm(
+                                                                    ConstantFactor(
+                                                                      IntConstantFactor(
+                                                                       5
+                                                                      ) [IntConstantFactor]
+                                                                    ) [ConstantFactor]
+                                                                  ) [SingleFactorTerm]
+                                                                ) [SingleTermExpression]
+                                                                SubOperator(
+                                                                ) [SubOperator]
+                                                                SingleFactorTerm(
+                                                                  ConstantFactor(
+                                                                    IntConstantFactor(
+                                                                     7
+                                                                    ) [IntConstantFactor]
+                                                                  ) [ConstantFactor]
+                                                                ) [SingleFactorTerm]
+                                                              ) [MultipleTermsExpression]
+                                                            ) [LeftExpression]
+                                                          ) [InnerExpressionFactor]
+                                                        ) [MultipleFactorsTerm]
+                                                      ) [SingleTermExpression]
+                                                    ) [LeftExpression]
+                                                  ) [InnerExpressionFactor]
+                                                ) [SingleFactorTerm]
+                                              ) [MultipleTermsExpression]
+                                            ) [LeftExpression]
+                                          ) [AssignmentFooter]
+                                        ) [AssignmentDesignatorStatement]
+                                      ) [DesignatorBasedStatement]
+                                    ) [MultipleStatements]
+                                    ReadStatement(
+                                      IdentifierDesignator(
+                                       gc
+                                      ) [IdentifierDesignator]
+                                    ) [ReadStatement]
+                                  ) [MultipleStatements]
+                                  DesignatorBasedStatement(
+                                    AssignmentDesignatorStatement(
+                                      AssignmentHeader(
+                                        ElementAccessDesignator(
+                                          IdentifierDesignator(
+                                           gd
+                                          ) [IdentifierDesignator]
+                                          ArrayIndexer(
+                                            LeftExpression(
+                                              SingleTermExpression(
+                                                NoSign(
+                                                ) [NoSign]
+                                                SingleFactorTerm(
+                                                  ConstantFactor(
+                                                    IntConstantFactor(
+                                                     1
+                                                    ) [IntConstantFactor]
+                                                  ) [ConstantFactor]
+                                                ) [SingleFactorTerm]
+                                              ) [SingleTermExpression]
+                                            ) [LeftExpression]
+                                          ) [ArrayIndexer]
+                                        ) [ElementAccessDesignator]
+                                      ) [AssignmentHeader]
+                                      AssignmentFooter(
+                                        AssignOperator(
+                                        ) [AssignOperator]
+                                        LeftExpression(
+                                          SingleTermExpression(
+                                            NoSign(
+                                            ) [NoSign]
+                                            SingleFactorTerm(
+                                              ConstantFactor(
+                                                CharConstantFactor(
+                                                 a
+                                                ) [CharConstantFactor]
+                                              ) [ConstantFactor]
+                                            ) [SingleFactorTerm]
+                                          ) [SingleTermExpression]
+                                        ) [LeftExpression]
+                                      ) [AssignmentFooter]
+                                    ) [AssignmentDesignatorStatement]
+                                  ) [DesignatorBasedStatement]
+                                ) [MultipleStatements]
+                                ReadStatement(
+                                  ElementAccessDesignator(
+                                    IdentifierDesignator(
+                                     gd
+                                    ) [IdentifierDesignator]
+                                    ArrayIndexer(
+                                      LeftExpression(
+                                        SingleTermExpression(
+                                          NoSign(
+                                          ) [NoSign]
+                                          SingleFactorTerm(
+                                            ConstantFactor(
+                                              IntConstantFactor(
+                                               0
+                                              ) [IntConstantFactor]
+                                            ) [ConstantFactor]
+                                          ) [SingleFactorTerm]
+                                        ) [SingleTermExpression]
+                                      ) [LeftExpression]
+                                    ) [ArrayIndexer]
+                                  ) [ElementAccessDesignator]
+                                ) [ReadStatement]
+                              ) [MultipleStatements]
+                              DesignatorBasedStatement(
+                                AssignmentDesignatorStatement(
+                                  AssignmentHeader(
+                                    IdentifierDesignator(
+                                     ge
+                                    ) [IdentifierDesignator]
+                                  ) [AssignmentHeader]
+                                  AssignmentFooter(
+                                    AssignOperator(
+                                    ) [AssignOperator]
+                                    LeftExpression(
+                                      SingleTermExpression(
+                                        NoSign(
+                                        ) [NoSign]
+                                        SingleFactorTerm(
+                                          ConstantFactor(
+                                            BoolConstantFactor(
+                                             false
+                                            ) [BoolConstantFactor]
+                                          ) [ConstantFactor]
+                                        ) [SingleFactorTerm]
+                                      ) [SingleTermExpression]
+                                    ) [LeftExpression]
+                                  ) [AssignmentFooter]
+                                ) [AssignmentDesignatorStatement]
+                              ) [DesignatorBasedStatement]
+                            ) [MultipleStatements]
+                            DesignatorBasedStatement(
+                              AssignmentDesignatorStatement(
+                                AssignmentHeader(
+                                  ElementAccessDesignator(
+                                    IdentifierDesignator(
+                                     gf
+                                    ) [IdentifierDesignator]
+                                    ArrayIndexer(
+                                      LeftExpression(
+                                        SingleTermExpression(
+                                          NoSign(
+                                          ) [NoSign]
+                                          SingleFactorTerm(
+                                            ConstantFactor(
+                                              IntConstantFactor(
+                                               0
+                                              ) [IntConstantFactor]
+                                            ) [ConstantFactor]
+                                          ) [SingleFactorTerm]
+                                        ) [SingleTermExpression]
+                                      ) [LeftExpression]
+                                    ) [ArrayIndexer]
+                                  ) [ElementAccessDesignator]
+                                ) [AssignmentHeader]
+                                AssignmentFooter(
+                                  AssignOperator(
+                                  ) [AssignOperator]
+                                  LeftExpression(
+                                    SingleTermExpression(
+                                      NoSign(
+                                      ) [NoSign]
+                                      SingleFactorTerm(
+                                        DesignatorFactor(
+                                          IdentifierDesignator(
+                                           cd
+                                          ) [IdentifierDesignator]
+                                        ) [DesignatorFactor]
+                                      ) [SingleFactorTerm]
+                                    ) [SingleTermExpression]
+                                  ) [LeftExpression]
+                                ) [AssignmentFooter]
+                              ) [AssignmentDesignatorStatement]
+                            ) [DesignatorBasedStatement]
+                          ) [MultipleStatements]
+                          DesignatorBasedStatement(
+                            AssignmentDesignatorStatement(
+                              AssignmentHeader(
+                                ElementAccessDesignator(
+                                  IdentifierDesignator(
+                                   gf
+                                  ) [IdentifierDesignator]
+                                  ArrayIndexer(
+                                    LeftExpression(
+                                      SingleTermExpression(
+                                        NoSign(
+                                        ) [NoSign]
+                                        SingleFactorTerm(
+                                          ConstantFactor(
+                                            IntConstantFactor(
+                                             3
+                                            ) [IntConstantFactor]
+                                          ) [ConstantFactor]
+                                        ) [SingleFactorTerm]
+                                      ) [SingleTermExpression]
+                                    ) [LeftExpression]
+                                  ) [ArrayIndexer]
+                                ) [ElementAccessDesignator]
+                              ) [AssignmentHeader]
+                              AssignmentFooter(
+                                AssignOperator(
+                                ) [AssignOperator]
+                                LeftExpression(
+                                  SingleTermExpression(
+                                    NoSign(
+                                    ) [NoSign]
+                                    SingleFactorTerm(
+                                      DesignatorFactor(
+                                        ElementAccessDesignator(
+                                          IdentifierDesignator(
+                                           gf
+                                          ) [IdentifierDesignator]
+                                          ArrayIndexer(
+                                            LeftExpression(
+                                              SingleTermExpression(
+                                                NoSign(
+                                                ) [NoSign]
+                                                SingleFactorTerm(
+                                                  ConstantFactor(
+                                                    IntConstantFactor(
+                                                     0
+                                                    ) [IntConstantFactor]
+                                                  ) [ConstantFactor]
+                                                ) [SingleFactorTerm]
+                                              ) [SingleTermExpression]
+                                            ) [LeftExpression]
+                                          ) [ArrayIndexer]
+                                        ) [ElementAccessDesignator]
+                                      ) [DesignatorFactor]
+                                    ) [SingleFactorTerm]
+                                  ) [SingleTermExpression]
+                                ) [LeftExpression]
+                              ) [AssignmentFooter]
+                            ) [AssignmentDesignatorStatement]
+                          ) [DesignatorBasedStatement]
+                        ) [MultipleStatements]
+                        ReadStatement(
+                          ElementAccessDesignator(
+                            IdentifierDesignator(
+                             gf
+                            ) [IdentifierDesignator]
+                            ArrayIndexer(
+                              LeftExpression(
+                                SingleTermExpression(
+                                  NoSign(
+                                  ) [NoSign]
+                                  SingleFactorTerm(
+                                    ConstantFactor(
+                                      IntConstantFactor(
+                                       2
+                                      ) [IntConstantFactor]
+                                    ) [ConstantFactor]
+                                  ) [SingleFactorTerm]
+                                ) [SingleTermExpression]
+                              ) [LeftExpression]
+                            ) [ArrayIndexer]
+                          ) [ElementAccessDesignator]
+                        ) [ReadStatement]
+                      ) [MultipleStatements]
+                      PrintStatement(
+                        LeftExpression(
+                          SingleTermExpression(
+                            NoSign(
+                            ) [NoSign]
+                            SingleFactorTerm(
+                              DesignatorFactor(
+                                ElementAccessDesignator(
+                                  IdentifierDesignator(
+                                   gf
+                                  ) [IdentifierDesignator]
+                                  ArrayIndexer(
+                                    LeftExpression(
+                                      SingleTermExpression(
+                                        NoSign(
+                                        ) [NoSign]
+                                        SingleFactorTerm(
+                                          ConstantFactor(
+                                            IntConstantFactor(
+                                             3
+                                            ) [IntConstantFactor]
+                                          ) [ConstantFactor]
+                                        ) [SingleFactorTerm]
+                                      ) [SingleTermExpression]
+                                    ) [LeftExpression]
+                                  ) [ArrayIndexer]
+                                ) [ElementAccessDesignator]
+                              ) [DesignatorFactor]
+                            ) [SingleFactorTerm]
+                          ) [SingleTermExpression]
+                        ) [LeftExpression]
+                        NoPrintWidth(
+                        ) [NoPrintWidth]
+                      ) [PrintStatement]
+                    ) [MultipleStatements]
+                    DesignatorBasedStatement(
+                      AssignmentDesignatorStatement(
+                        AssignmentHeader(
+                          IdentifierDesignator(
+                           la
+                          ) [IdentifierDesignator]
+                        ) [AssignmentHeader]
+                        AssignmentFooter(
+                          AssignOperator(
+                          ) [AssignOperator]
+                          AssignmentExpression(
+                            SingleTermExpression(
+                              NoSign(
+                              ) [NoSign]
+                              SingleFactorTerm(
+                                DesignatorFactor(
+                                  IdentifierDesignator(
+                                   ga
+                                  ) [IdentifierDesignator]
+                                ) [DesignatorFactor]
+                              ) [SingleFactorTerm]
+                            ) [SingleTermExpression]
+                            RightMulOperator(
+                              MulAssignOperator(
+                              ) [MulAssignOperator]
+                            ) [RightMulOperator]
+                            LeftExpression(
+                              SingleTermExpression(
+                                NoSign(
+                                ) [NoSign]
+                                SingleFactorTerm(
+                                  ConstantFactor(
+                                    IntConstantFactor(
+                                     5
+                                    ) [IntConstantFactor]
+                                  ) [ConstantFactor]
+                                ) [SingleFactorTerm]
+                              ) [SingleTermExpression]
+                            ) [LeftExpression]
+                          ) [AssignmentExpression]
+                        ) [AssignmentFooter]
+                      ) [AssignmentDesignatorStatement]
+                    ) [DesignatorBasedStatement]
+                  ) [MultipleStatements]
+                  DesignatorBasedStatement(
+                    DecrementDesignatorStatement(
+                      IdentifierDesignator(
+                       la
+                      ) [IdentifierDesignator]
+                    ) [DecrementDesignatorStatement]
+                  ) [DesignatorBasedStatement]
+                ) [MultipleStatements]
+                DesignatorBasedStatement(
+                  AssignmentDesignatorStatement(
+                    AssignmentHeader(
+                      ElementAccessDesignator(
+                        IdentifierDesignator(
+                         lb
+                        ) [IdentifierDesignator]
+                        ArrayIndexer(
+                          LeftExpression(
+                            SingleTermExpression(
+                              NoSign(
+                              ) [NoSign]
+                              SingleFactorTerm(
+                                ConstantFactor(
+                                  IntConstantFactor(
+                                   2
+                                  ) [IntConstantFactor]
+                                ) [ConstantFactor]
+                              ) [SingleFactorTerm]
+                            ) [SingleTermExpression]
+                          ) [LeftExpression]
+                        ) [ArrayIndexer]
+                      ) [ElementAccessDesignator]
+                    ) [AssignmentHeader]
+                    AssignmentFooter(
+                      AssignOperator(
+                      ) [AssignOperator]
+                      AssignmentExpression(
+                        MultipleTermsExpression(
+                          SingleTermExpression(
+                            NoSign(
+                            ) [NoSign]
+                            MultipleFactorsTerm(
+                              SingleFactorTerm(
+                                ConstantFactor(
+                                  IntConstantFactor(
+                                   8
+                                  ) [IntConstantFactor]
+                                ) [ConstantFactor]
+                              ) [SingleFactorTerm]
+                              MulOperator(
+                              ) [MulOperator]
+                              DesignatorFactor(
+                                IdentifierDesignator(
+                                 la
+                                ) [IdentifierDesignator]
+                              ) [DesignatorFactor]
+                            ) [MultipleFactorsTerm]
+                          ) [SingleTermExpression]
+                          SubOperator(
+                          ) [SubOperator]
+                          SingleFactorTerm(
+                            ConstantFactor(
+                              IntConstantFactor(
+                               4
+                              ) [IntConstantFactor]
+                            ) [ConstantFactor]
+                          ) [SingleFactorTerm]
+                        ) [MultipleTermsExpression]
+                        RightMulOperator(
+                          MulAssignOperator(
+                          ) [MulAssignOperator]
+                        ) [RightMulOperator]
+                        LeftExpression(
+                          MultipleTermsExpression(
+                            SingleTermExpression(
+                              MinusSign(
+                              ) [MinusSign]
+                              SingleFactorTerm(
+                                ConstantFactor(
+                                  IntConstantFactor(
+                                   4
+                                  ) [IntConstantFactor]
+                                ) [ConstantFactor]
+                              ) [SingleFactorTerm]
+                            ) [SingleTermExpression]
+                            AddOperator(
+                            ) [AddOperator]
+                            MultipleFactorsTerm(
+                              SingleFactorTerm(
+                                ConstantFactor(
+                                  IntConstantFactor(
+                                   6
+                                  ) [IntConstantFactor]
+                                ) [ConstantFactor]
+                              ) [SingleFactorTerm]
+                              MulOperator(
+                              ) [MulOperator]
+                              ConstantFactor(
+                                IntConstantFactor(
+                                 2
+                                ) [IntConstantFactor]
+                              ) [ConstantFactor]
+                            ) [MultipleFactorsTerm]
+                          ) [MultipleTermsExpression]
+                        ) [LeftExpression]
+                      ) [AssignmentExpression]
+                    ) [AssignmentFooter]
+                  ) [AssignmentDesignatorStatement]
+                ) [DesignatorBasedStatement]
+              ) [MultipleStatements]
+              DesignatorBasedStatement(
+                AssignmentDesignatorStatement(
+                  AssignmentHeader(
+                    IdentifierDesignator(
+                     lc
+                    ) [IdentifierDesignator]
+                  ) [AssignmentHeader]
+                  AssignmentFooter(
+                    AssignOperator(
+                    ) [AssignOperator]
+                    LeftExpression(
+                      SingleTermExpression(
+                        NoSign(
+                        ) [NoSign]
+                        SingleFactorTerm(
+                          DesignatorFactor(
+                            IdentifierDesignator(
+                             gc
+                            ) [IdentifierDesignator]
+                          ) [DesignatorFactor]
+                        ) [SingleFactorTerm]
+                      ) [SingleTermExpression]
+                    ) [LeftExpression]
+                  ) [AssignmentFooter]
+                ) [AssignmentDesignatorStatement]
+              ) [DesignatorBasedStatement]
+            ) [MultipleStatements]
+            DesignatorBasedStatement(
+              AssignmentDesignatorStatement(
+                AssignmentHeader(
+                  ElementAccessDesignator(
+                    IdentifierDesignator(
+                     ld
+                    ) [IdentifierDesignator]
+                    ArrayIndexer(
+                      LeftExpression(
+                        SingleTermExpression(
+                          NoSign(
+                          ) [NoSign]
+                          SingleFactorTerm(
+                            ConstantFactor(
+                              IntConstantFactor(
+                               1
+                              ) [IntConstantFactor]
+                            ) [ConstantFactor]
+                          ) [SingleFactorTerm]
+                        ) [SingleTermExpression]
+                      ) [LeftExpression]
+                    ) [ArrayIndexer]
+                  ) [ElementAccessDesignator]
+                ) [AssignmentHeader]
+                AssignmentFooter(
+                  AssignOperator(
+                  ) [AssignOperator]
+                  LeftExpression(
+                    SingleTermExpression(
+                      NoSign(
+                      ) [NoSign]
+                      SingleFactorTerm(
+                        ConstantFactor(
+                          CharConstantFactor(
+                           F
+                          ) [CharConstantFactor]
+                        ) [ConstantFactor]
+                      ) [SingleFactorTerm]
+                    ) [SingleTermExpression]
+                  ) [LeftExpression]
+                ) [AssignmentFooter]
+              ) [AssignmentDesignatorStatement]
+            ) [DesignatorBasedStatement]
+          ) [MultipleStatements]
+          DesignatorBasedStatement(
+            AssignmentDesignatorStatement(
+              AssignmentHeader(
+                IdentifierDesignator(
+                 le
+                ) [IdentifierDesignator]
+              ) [AssignmentHeader]
+              AssignmentFooter(
+                AssignOperator(
+                ) [AssignOperator]
+                LeftExpression(
+                  SingleTermExpression(
+                    NoSign(
+                    ) [NoSign]
+                    SingleFactorTerm(
+                      ConstantFactor(
+                        BoolConstantFactor(
+                         false
+                        ) [BoolConstantFactor]
+                      ) [ConstantFactor]
+                    ) [SingleFactorTerm]
+                  ) [SingleTermExpression]
+                ) [LeftExpression]
+              ) [AssignmentFooter]
+            ) [AssignmentDesignatorStatement]
+          ) [DesignatorBasedStatement]
+        ) [MultipleStatements]
+        DesignatorBasedStatement(
+          AssignmentDesignatorStatement(
+            AssignmentHeader(
+              ElementAccessDesignator(
+                IdentifierDesignator(
+                 lf
+                ) [IdentifierDesignator]
+                ArrayIndexer(
+                  LeftExpression(
+                    SingleTermExpression(
+                      NoSign(
+                      ) [NoSign]
+                      SingleFactorTerm(
+                        ConstantFactor(
+                          IntConstantFactor(
+                           2
+                          ) [IntConstantFactor]
+                        ) [ConstantFactor]
+                      ) [SingleFactorTerm]
+                    ) [SingleTermExpression]
+                  ) [LeftExpression]
+                ) [ArrayIndexer]
+              ) [ElementAccessDesignator]
+            ) [AssignmentHeader]
+            AssignmentFooter(
+              AssignOperator(
+              ) [AssignOperator]
+              LeftExpression(
+                SingleTermExpression(
+                  NoSign(
+                  ) [NoSign]
+                  SingleFactorTerm(
+                    DesignatorFactor(
+                      IdentifierDesignator(
+                       cd
+                      ) [IdentifierDesignator]
+                    ) [DesignatorFactor]
+                  ) [SingleFactorTerm]
+                ) [SingleTermExpression]
+              ) [LeftExpression]
+            ) [AssignmentFooter]
+          ) [AssignmentDesignatorStatement]
+        ) [DesignatorBasedStatement]
+      ) [MultipleStatements]
+    ) [MethodDeclaration]
+  ) [MultipleMethodDeclarations]
+) [Program]
+DEBUG - semantic_errors_A.mj:2: SEMANTIC ANALYZER: Visited node: 'ProgramHeader'.
+DEBUG - semantic_errors_A.mj:4: SEMANTIC ANALYZER: Visited node: 'Type'.
+DEBUG - semantic_errors_A.mj:4: SEMANTIC ANALYZER: Visited node: 'ConstAssignment'.
+INFO  - semantic_errors_A.mj:4: SEMANTIC ANALYZER: Defined int constant 'a'. Symbol node: Constant 'a': type = 'int', adr = 20, level = 0
+DEBUG - semantic_errors_A.mj:4: SEMANTIC ANALYZER: Visited node: 'ConstAssignment'.
+INFO  - semantic_errors_A.mj:4: SEMANTIC ANALYZER: Defined int constant 'b'. Symbol node: Constant 'b': type = 'int', adr = -1, level = 0
+DEBUG - semantic_errors_A.mj:4: SEMANTIC ANALYZER: Visited node: 'ConstAssignment'.
+INFO  - semantic_errors_A.mj:4: SEMANTIC ANALYZER: Defined int constant 'c'. Symbol node: Constant 'c': type = 'int', adr = 25, level = 0
+DEBUG - semantic_errors_A.mj:5: SEMANTIC ANALYZER: Visited node: 'Type'.
+DEBUG - semantic_errors_A.mj:5: SEMANTIC ANALYZER: Visited node: 'ConstAssignment'.
+INFO  - semantic_errors_A.mj:5: SEMANTIC ANALYZER: Defined char constant 'd'. Symbol node: Constant 'd': type = 'char', adr = 97, level = 0
+DEBUG - semantic_errors_A.mj:6: SEMANTIC ANALYZER: Visited node: 'Type'.
+DEBUG - semantic_errors_A.mj:6: SEMANTIC ANALYZER: Visited node: 'ConstAssignment'.
+INFO  - semantic_errors_A.mj:6: SEMANTIC ANALYZER: Defined bool constant 'e'. Symbol node: Constant 'e': type = 'bool', adr = 1, level = 0
+DEBUG - semantic_errors_A.mj:6: SEMANTIC ANALYZER: Visited node: 'ConstAssignment'.
+INFO  - semantic_errors_A.mj:6: SEMANTIC ANALYZER: Defined bool constant 'f'. Symbol node: Constant 'f': type = 'bool', adr = 0, level = 0
+DEBUG - semantic_errors_A.mj:8: SEMANTIC ANALYZER: Visited node: 'Type'.
+DEBUG - semantic_errors_A.mj:8: SEMANTIC ANALYZER: Visited node: 'ConstAssignment'.
+ERROR - semantic_errors_A.mj:8: SEMANTIC ANALYZER: 'a' is already in use!
+DEBUG - semantic_errors_A.mj:9: SEMANTIC ANALYZER: Visited node: 'Type'.
+ERROR - semantic_errors_A.mj:9: SEMANTIC ANALYZER: invalid_type is not defined!
+DEBUG - semantic_errors_A.mj:9: SEMANTIC ANALYZER: Visited node: 'ConstAssignment'.
+ERROR - semantic_errors_A.mj:9: SEMANTIC ANALYZER: 'd' is already in use!
+DEBUG - semantic_errors_A.mj:10: SEMANTIC ANALYZER: Visited node: 'Type'.
+ERROR - semantic_errors_A.mj:10: SEMANTIC ANALYZER: 'a' is not a type!
+DEBUG - semantic_errors_A.mj:10: SEMANTIC ANALYZER: Visited node: 'ConstAssignment'.
+ERROR - semantic_errors_A.mj:10: SEMANTIC ANALYZER: 'e' is already in use!
+DEBUG - semantic_errors_A.mj:11: SEMANTIC ANALYZER: Visited node: 'Type'.
+DEBUG - semantic_errors_A.mj:11: SEMANTIC ANALYZER: Visited node: 'ConstAssignment'.
+ERROR - semantic_errors_A.mj:11: SEMANTIC ANALYZER: 'e' is already in use!
+DEBUG - semantic_errors_A.mj:12: SEMANTIC ANALYZER: Visited node: 'Type'.
+DEBUG - semantic_errors_A.mj:12: SEMANTIC ANALYZER: Visited node: 'ConstAssignment'.
+ERROR - semantic_errors_A.mj:12: SEMANTIC ANALYZER: Constant type incompatible with type of initial value!
+DEBUG - semantic_errors_A.mj:15: SEMANTIC ANALYZER: Visited node: 'Type'.
+DEBUG - semantic_errors_A.mj:15: SEMANTIC ANALYZER: Visited node: 'Variable'.
+INFO  - semantic_errors_A.mj:15: SEMANTIC ANALYZER: Defined int variable 'var_a'. Symbol node: Variable 'var_a': type = 'int', adr = 0, level = 0
+DEBUG - semantic_errors_A.mj:15: SEMANTIC ANALYZER: Visited node: 'Variable'.
+INFO  - semantic_errors_A.mj:15: SEMANTIC ANALYZER: Defined int array variable 'var_b'. Symbol node: Variable 'var_b': type = 'array of int', adr = 1, level = 0
+DEBUG - semantic_errors_A.mj:16: SEMANTIC ANALYZER: Visited node: 'Type'.
+DEBUG - semantic_errors_A.mj:16: SEMANTIC ANALYZER: Visited node: 'Variable'.
+INFO  - semantic_errors_A.mj:16: SEMANTIC ANALYZER: Defined char variable 'var_c'. Symbol node: Variable 'var_c': type = 'char', adr = 2, level = 0
+DEBUG - semantic_errors_A.mj:16: SEMANTIC ANALYZER: Visited node: 'Variable'.
+INFO  - semantic_errors_A.mj:16: SEMANTIC ANALYZER: Defined char array variable 'var_d'. Symbol node: Variable 'var_d': type = 'array of char', adr = 3, level = 0
+DEBUG - semantic_errors_A.mj:16: SEMANTIC ANALYZER: Visited node: 'Variable'.
+INFO  - semantic_errors_A.mj:16: SEMANTIC ANALYZER: Defined char variable 'var_e'. Symbol node: Variable 'var_e': type = 'char', adr = 4, level = 0
+DEBUG - semantic_errors_A.mj:17: SEMANTIC ANALYZER: Visited node: 'Type'.
+DEBUG - semantic_errors_A.mj:17: SEMANTIC ANALYZER: Visited node: 'Variable'.
+INFO  - semantic_errors_A.mj:17: SEMANTIC ANALYZER: Defined bool variable 'var_f'. Symbol node: Variable 'var_f': type = 'bool', adr = 5, level = 0
+DEBUG - semantic_errors_A.mj:19: SEMANTIC ANALYZER: Visited node: 'Type'.
+DEBUG - semantic_errors_A.mj:19: SEMANTIC ANALYZER: Visited node: 'Variable'.
+WARN  - semantic_errors_A.mj:19: SEMANTIC ANALYZER: Variable 'int'  hides a reserved symbol!
+INFO  - semantic_errors_A.mj:19: SEMANTIC ANALYZER: Defined int variable 'int'. Symbol node: Variable 'int': type = 'int', adr = 6, level = 0
+DEBUG - semantic_errors_A.mj:21: SEMANTIC ANALYZER: Visited node: 'Type'.
+ERROR - semantic_errors_A.mj:21: SEMANTIC ANALYZER: type_x is not defined!
+DEBUG - semantic_errors_A.mj:21: SEMANTIC ANALYZER: Visited node: 'Variable'.
+DEBUG - semantic_errors_A.mj:22: SEMANTIC ANALYZER: Visited node: 'Type'.
+ERROR - semantic_errors_A.mj:22: SEMANTIC ANALYZER: 'var_a' is not a type!
+DEBUG - semantic_errors_A.mj:22: SEMANTIC ANALYZER: Visited node: 'Variable'.
+DEBUG - semantic_errors_A.mj:24: SEMANTIC ANALYZER: Visited node: 'Type'.
+ERROR - semantic_errors_A.mj:24: SEMANTIC ANALYZER: 'int' is not a type!
+DEBUG - semantic_errors_A.mj:24: SEMANTIC ANALYZER: Visited node: 'ConstAssignment'.
+ERROR - semantic_errors_A.mj:24: SEMANTIC ANALYZER: Constant type is invalid!
+DEBUG - semantic_errors_A.mj:24: SEMANTIC ANALYZER: Visited node: 'ConstAssignment'.
+ERROR - semantic_errors_A.mj:24: SEMANTIC ANALYZER: Constant type is invalid!
+DEBUG - semantic_errors_A.mj:25: SEMANTIC ANALYZER: Visited node: 'Type'.
+DEBUG - semantic_errors_A.mj:25: SEMANTIC ANALYZER: Visited node: 'ConstAssignment'.
+INFO  - semantic_errors_A.mj:25: SEMANTIC ANALYZER: Defined char constant 'cc'. Symbol node: Constant 'cc': type = 'char', adr = 115, level = 0
+DEBUG - semantic_errors_A.mj:26: SEMANTIC ANALYZER: Visited node: 'Type'.
+DEBUG - semantic_errors_A.mj:26: SEMANTIC ANALYZER: Visited node: 'ConstAssignment'.
+INFO  - semantic_errors_A.mj:26: SEMANTIC ANALYZER: Defined bool constant 'cd'. Symbol node: Constant 'cd': type = 'bool', adr = 1, level = 0
+DEBUG - semantic_errors_A.mj:28: SEMANTIC ANALYZER: Visited node: 'Type'.
+ERROR - semantic_errors_A.mj:28: SEMANTIC ANALYZER: 'int' is not a type!
+DEBUG - semantic_errors_A.mj:28: SEMANTIC ANALYZER: Visited node: 'Variable'.
+DEBUG - semantic_errors_A.mj:28: SEMANTIC ANALYZER: Visited node: 'Variable'.
+DEBUG - semantic_errors_A.mj:29: SEMANTIC ANALYZER: Visited node: 'Type'.
+DEBUG - semantic_errors_A.mj:29: SEMANTIC ANALYZER: Visited node: 'Variable'.
+INFO  - semantic_errors_A.mj:29: SEMANTIC ANALYZER: Defined char variable 'gc'. Symbol node: Variable 'gc': type = 'char', adr = 7, level = 0
+DEBUG - semantic_errors_A.mj:29: SEMANTIC ANALYZER: Visited node: 'Variable'.
+INFO  - semantic_errors_A.mj:29: SEMANTIC ANALYZER: Defined char array variable 'gd'. Symbol node: Variable 'gd': type = 'array of char', adr = 8, level = 0
+DEBUG - semantic_errors_A.mj:30: SEMANTIC ANALYZER: Visited node: 'Type'.
+DEBUG - semantic_errors_A.mj:30: SEMANTIC ANALYZER: Visited node: 'Variable'.
+INFO  - semantic_errors_A.mj:30: SEMANTIC ANALYZER: Defined bool variable 'ge'. Symbol node: Variable 'ge': type = 'bool', adr = 9, level = 0
+DEBUG - semantic_errors_A.mj:30: SEMANTIC ANALYZER: Visited node: 'Variable'.
+INFO  - semantic_errors_A.mj:30: SEMANTIC ANALYZER: Defined bool array variable 'gf'. Symbol node: Variable 'gf': type = 'array of bool', adr = 10, level = 0
+DEBUG - SEMANTIC ANALYZER: Visited node: 'ReturnVoid'.
+DEBUG - semantic_errors_A.mj:32: SEMANTIC ANALYZER: Visited node: 'MethodHeader'.
+DEBUG - semantic_errors_A.mj:33: SEMANTIC ANALYZER: Visited node: 'Type'.
+DEBUG - semantic_errors_A.mj:33: SEMANTIC ANALYZER: Visited node: 'LocalVariable'.
+WARN  - semantic_errors_A.mj:33: SEMANTIC ANALYZER: Variable 'char'  hides a reserved symbol!
+INFO  - semantic_errors_A.mj:33: SEMANTIC ANALYZER: Defined bool variable 'char'. Symbol node: Variable 'char': type = 'bool', adr = 0, level = 1
+DEBUG - semantic_errors_A.mj:34: SEMANTIC ANALYZER: Visited node: 'Type'.
+ERROR - semantic_errors_A.mj:34: SEMANTIC ANALYZER: 'int' is not a type!
+DEBUG - semantic_errors_A.mj:34: SEMANTIC ANALYZER: Visited node: 'LocalVariable'.
+DEBUG - semantic_errors_A.mj:34: SEMANTIC ANALYZER: Visited node: 'LocalVariable'.
+DEBUG - semantic_errors_A.mj:35: SEMANTIC ANALYZER: Visited node: 'Type'.
+ERROR - semantic_errors_A.mj:35: SEMANTIC ANALYZER: 'char' is not a type!
+DEBUG - semantic_errors_A.mj:35: SEMANTIC ANALYZER: Visited node: 'LocalVariable'.
+DEBUG - semantic_errors_A.mj:35: SEMANTIC ANALYZER: Visited node: 'LocalVariable'.
+DEBUG - semantic_errors_A.mj:36: SEMANTIC ANALYZER: Visited node: 'Type'.
+DEBUG - semantic_errors_A.mj:36: SEMANTIC ANALYZER: Visited node: 'LocalVariable'.
+INFO  - semantic_errors_A.mj:36: SEMANTIC ANALYZER: Defined bool variable 'le'. Symbol node: Variable 'le': type = 'bool', adr = 1, level = 1
+DEBUG - semantic_errors_A.mj:36: SEMANTIC ANALYZER: Visited node: 'LocalVariable'.
+INFO  - semantic_errors_A.mj:36: SEMANTIC ANALYZER: Defined bool array variable 'lf'. Symbol node: Variable 'lf': type = 'array of bool', adr = 2, level = 1
+DEBUG - SEMANTIC ANALYZER: Visited node: 'MethodStatementListStart'.
+DEBUG - semantic_errors_A.mj:38: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+ERROR - semantic_errors_A.mj:38: SEMANTIC ANALYZER: 'gb' is not defined!
+DEBUG - semantic_errors_A.mj:38: SEMANTIC ANALYZER: Visited node: 'Type'.
+ERROR - semantic_errors_A.mj:38: SEMANTIC ANALYZER: 'int' is not a type!
+DEBUG - semantic_errors_A.mj:38: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - semantic_errors_A.mj:38: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - semantic_errors_A.mj:21: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - semantic_errors_A.mj:21: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - semantic_errors_A.mj:38: SEMANTIC ANALYZER: Visited node: 'AllocatorFactor'.
+DEBUG - semantic_errors_A.mj:38: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - semantic_errors_A.mj:12: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - semantic_errors_A.mj:12: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - semantic_errors_A.mj:38: SEMANTIC ANALYZER: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - semantic_errors_A.mj:39: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - semantic_errors_A.mj:39: SEMANTIC ANALYZER: Found global variable usage 'gd'! Symbol node: Variable 'gd': type = 'array of char', adr = 8, level = 0
+DEBUG - semantic_errors_A.mj:39: SEMANTIC ANALYZER: Visited node: 'Type'.
+ERROR - semantic_errors_A.mj:39: SEMANTIC ANALYZER: 'char' is not a type!
+DEBUG - semantic_errors_A.mj:39: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - semantic_errors_A.mj:39: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - semantic_errors_A.mj:22: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - semantic_errors_A.mj:22: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - semantic_errors_A.mj:39: SEMANTIC ANALYZER: Visited node: 'AllocatorFactor'.
+DEBUG - semantic_errors_A.mj:39: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - semantic_errors_A.mj:12: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - semantic_errors_A.mj:12: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - semantic_errors_A.mj:39: SEMANTIC ANALYZER: Visited node: 'AssignmentDesignatorStatement'.
+ERROR - semantic_errors_A.mj:39: SEMANTIC ANALYZER: none array incompatible with char array!
+DEBUG - semantic_errors_A.mj:40: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - semantic_errors_A.mj:40: SEMANTIC ANALYZER: Found global variable usage 'gf'! Symbol node: Variable 'gf': type = 'array of bool', adr = 10, level = 0
+DEBUG - semantic_errors_A.mj:40: SEMANTIC ANALYZER: Visited node: 'Type'.
+DEBUG - semantic_errors_A.mj:40: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - semantic_errors_A.mj:40: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - semantic_errors_A.mj:22: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - semantic_errors_A.mj:22: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - semantic_errors_A.mj:40: SEMANTIC ANALYZER: Visited node: 'AllocatorFactor'.
+DEBUG - semantic_errors_A.mj:40: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - semantic_errors_A.mj:12: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - semantic_errors_A.mj:12: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - semantic_errors_A.mj:40: SEMANTIC ANALYZER: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - semantic_errors_A.mj:41: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+ERROR - semantic_errors_A.mj:41: SEMANTIC ANALYZER: 'lb' is not defined!
+DEBUG - semantic_errors_A.mj:41: SEMANTIC ANALYZER: Visited node: 'Type'.
+ERROR - semantic_errors_A.mj:41: SEMANTIC ANALYZER: 'int' is not a type!
+DEBUG - semantic_errors_A.mj:41: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - semantic_errors_A.mj:41: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - semantic_errors_A.mj:21: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - semantic_errors_A.mj:21: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - semantic_errors_A.mj:41: SEMANTIC ANALYZER: Visited node: 'AllocatorFactor'.
+DEBUG - semantic_errors_A.mj:41: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - semantic_errors_A.mj:12: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - semantic_errors_A.mj:12: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - semantic_errors_A.mj:41: SEMANTIC ANALYZER: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - semantic_errors_A.mj:42: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+ERROR - semantic_errors_A.mj:42: SEMANTIC ANALYZER: 'ld' is not defined!
+DEBUG - semantic_errors_A.mj:42: SEMANTIC ANALYZER: Visited node: 'Type'.
+ERROR - semantic_errors_A.mj:42: SEMANTIC ANALYZER: 'char' is not a type!
+DEBUG - semantic_errors_A.mj:42: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - semantic_errors_A.mj:42: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - semantic_errors_A.mj:22: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - semantic_errors_A.mj:22: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - semantic_errors_A.mj:42: SEMANTIC ANALYZER: Visited node: 'AllocatorFactor'.
+DEBUG - semantic_errors_A.mj:42: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - semantic_errors_A.mj:12: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - semantic_errors_A.mj:12: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - semantic_errors_A.mj:42: SEMANTIC ANALYZER: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - semantic_errors_A.mj:43: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - semantic_errors_A.mj:43: SEMANTIC ANALYZER: Found local variable usage 'lf'! Symbol node: Variable 'lf': type = 'array of bool', adr = 2, level = 1
+DEBUG - semantic_errors_A.mj:43: SEMANTIC ANALYZER: Visited node: 'Type'.
+DEBUG - semantic_errors_A.mj:43: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - semantic_errors_A.mj:43: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - semantic_errors_A.mj:22: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - semantic_errors_A.mj:22: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - semantic_errors_A.mj:43: SEMANTIC ANALYZER: Visited node: 'AllocatorFactor'.
+DEBUG - semantic_errors_A.mj:43: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - semantic_errors_A.mj:12: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - semantic_errors_A.mj:12: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - semantic_errors_A.mj:43: SEMANTIC ANALYZER: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - semantic_errors_A.mj:45: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+ERROR - semantic_errors_A.mj:45: SEMANTIC ANALYZER: 'ga' is not defined!
+DEBUG - semantic_errors_A.mj:45: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+ERROR - semantic_errors_A.mj:45: SEMANTIC ANALYZER: 'ca' is not defined!
+DEBUG - semantic_errors_A.mj:45: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - semantic_errors_A.mj:45: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - semantic_errors_A.mj:12: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - semantic_errors_A.mj:45: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+ERROR - semantic_errors_A.mj:45: SEMANTIC ANALYZER: 'cb' is not defined!
+DEBUG - semantic_errors_A.mj:45: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - semantic_errors_A.mj:45: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - semantic_errors_A.mj:45: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - semantic_errors_A.mj:45: SEMANTIC ANALYZER: Visited node: 'MultipleFactorsTerm'.
+ERROR - semantic_errors_A.mj:45: SEMANTIC ANALYZER: Left term is invalid!
+DEBUG - semantic_errors_A.mj:12: SEMANTIC ANALYZER: Visited node: 'MultipleTermsExpression'.
+ERROR - semantic_errors_A.mj:12: SEMANTIC ANALYZER: Left expression is invalid!
+DEBUG - semantic_errors_A.mj:45: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - semantic_errors_A.mj:45: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - semantic_errors_A.mj:28: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - semantic_errors_A.mj:45: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - semantic_errors_A.mj:45: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - semantic_errors_A.mj:28: SEMANTIC ANALYZER: Visited node: 'MultipleTermsExpression'.
+DEBUG - semantic_errors_A.mj:28: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - semantic_errors_A.mj:28: SEMANTIC ANALYZER: Visited node: 'InnerExpressionFactor'.
+DEBUG - semantic_errors_A.mj:45: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - semantic_errors_A.mj:12: SEMANTIC ANALYZER: Visited node: 'MultipleTermsExpression'.
+ERROR - semantic_errors_A.mj:12: SEMANTIC ANALYZER: Left expression is invalid!
+DEBUG - semantic_errors_A.mj:12: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - semantic_errors_A.mj:45: SEMANTIC ANALYZER: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - semantic_errors_A.mj:46: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+ERROR - semantic_errors_A.mj:46: SEMANTIC ANALYZER: 'ga' is not defined!
+DEBUG - semantic_errors_A.mj:46: SEMANTIC ANALYZER: Visited node: 'IncrementDesignatorStatement'.
+DEBUG - semantic_errors_A.mj:47: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+ERROR - semantic_errors_A.mj:47: SEMANTIC ANALYZER: 'ga' is not defined!
+DEBUG - semantic_errors_A.mj:47: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - semantic_errors_A.mj:47: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - semantic_errors_A.mj:14: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - semantic_errors_A.mj:14: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - semantic_errors_A.mj:14: SEMANTIC ANALYZER: Visited node: 'PrintStatement'.
+ERROR - semantic_errors_A.mj:14: SEMANTIC ANALYZER: Print statement parameter must be of basic type: int, char or bool!
+DEBUG - semantic_errors_A.mj:48: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+ERROR - semantic_errors_A.mj:48: SEMANTIC ANALYZER: 'gb' is not defined!
+DEBUG - semantic_errors_A.mj:48: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - semantic_errors_A.mj:48: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - semantic_errors_A.mj:11: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - semantic_errors_A.mj:11: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - semantic_errors_A.mj:48: SEMANTIC ANALYZER: Visited node: 'ElementAccessDesignator'.
+DEBUG - semantic_errors_A.mj:48: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - semantic_errors_A.mj:48: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - semantic_errors_A.mj:48: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - semantic_errors_A.mj:48: SEMANTIC ANALYZER: Visited node: 'MultipleFactorsTerm'.
+DEBUG - semantic_errors_A.mj:15: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - semantic_errors_A.mj:48: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - semantic_errors_A.mj:48: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - semantic_errors_A.mj:48: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - semantic_errors_A.mj:48: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - semantic_errors_A.mj:31: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - semantic_errors_A.mj:48: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - semantic_errors_A.mj:48: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - semantic_errors_A.mj:31: SEMANTIC ANALYZER: Visited node: 'MultipleTermsExpression'.
+DEBUG - semantic_errors_A.mj:31: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - semantic_errors_A.mj:31: SEMANTIC ANALYZER: Visited node: 'InnerExpressionFactor'.
+DEBUG - semantic_errors_A.mj:48: SEMANTIC ANALYZER: Visited node: 'MultipleFactorsTerm'.
+DEBUG - semantic_errors_A.mj:25: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - semantic_errors_A.mj:25: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - semantic_errors_A.mj:25: SEMANTIC ANALYZER: Visited node: 'InnerExpressionFactor'.
+DEBUG - semantic_errors_A.mj:48: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - semantic_errors_A.mj:15: SEMANTIC ANALYZER: Visited node: 'MultipleTermsExpression'.
+DEBUG - semantic_errors_A.mj:15: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - semantic_errors_A.mj:48: SEMANTIC ANALYZER: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - semantic_errors_A.mj:49: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - semantic_errors_A.mj:49: SEMANTIC ANALYZER: Found global variable usage 'gc'! Symbol node: Variable 'gc': type = 'char', adr = 7, level = 0
+DEBUG - semantic_errors_A.mj:49: SEMANTIC ANALYZER: Visited node: 'ReadStatement'.
+DEBUG - semantic_errors_A.mj:50: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - semantic_errors_A.mj:50: SEMANTIC ANALYZER: Found global variable usage 'gd'! Symbol node: Variable 'gd': type = 'array of char', adr = 8, level = 0
+DEBUG - semantic_errors_A.mj:50: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - semantic_errors_A.mj:50: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - semantic_errors_A.mj:11: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - semantic_errors_A.mj:11: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - semantic_errors_A.mj:50: SEMANTIC ANALYZER: Visited node: 'ElementAccessDesignator'.
+INFO  - semantic_errors_A.mj:50: SEMANTIC ANALYZER: Found array element access 'gd[1]'! Symbol node: Array element 'gd[1]': type = 'char', adr = -1, level = -1
+DEBUG - semantic_errors_A.mj:50: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - semantic_errors_A.mj:50: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - semantic_errors_A.mj:15: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - semantic_errors_A.mj:15: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - semantic_errors_A.mj:50: SEMANTIC ANALYZER: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - semantic_errors_A.mj:51: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - semantic_errors_A.mj:51: SEMANTIC ANALYZER: Found global variable usage 'gd'! Symbol node: Variable 'gd': type = 'array of char', adr = 8, level = 0
+DEBUG - semantic_errors_A.mj:51: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - semantic_errors_A.mj:51: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - semantic_errors_A.mj:16: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - semantic_errors_A.mj:16: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - semantic_errors_A.mj:51: SEMANTIC ANALYZER: Visited node: 'ElementAccessDesignator'.
+INFO  - semantic_errors_A.mj:51: SEMANTIC ANALYZER: Found array element access 'gd[0]'! Symbol node: Array element 'gd[0]': type = 'char', adr = -1, level = -1
+DEBUG - semantic_errors_A.mj:51: SEMANTIC ANALYZER: Visited node: 'ReadStatement'.
+DEBUG - semantic_errors_A.mj:52: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - semantic_errors_A.mj:52: SEMANTIC ANALYZER: Found global variable usage 'ge'! Symbol node: Variable 'ge': type = 'bool', adr = 9, level = 0
+DEBUG - semantic_errors_A.mj:52: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - semantic_errors_A.mj:52: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - semantic_errors_A.mj:12: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - semantic_errors_A.mj:12: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - semantic_errors_A.mj:52: SEMANTIC ANALYZER: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - semantic_errors_A.mj:53: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - semantic_errors_A.mj:53: SEMANTIC ANALYZER: Found global variable usage 'gf'! Symbol node: Variable 'gf': type = 'array of bool', adr = 10, level = 0
+DEBUG - semantic_errors_A.mj:53: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - semantic_errors_A.mj:53: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - semantic_errors_A.mj:11: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - semantic_errors_A.mj:11: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - semantic_errors_A.mj:53: SEMANTIC ANALYZER: Visited node: 'ElementAccessDesignator'.
+INFO  - semantic_errors_A.mj:53: SEMANTIC ANALYZER: Found array element access 'gf[0]'! Symbol node: Array element 'gf[0]': type = 'bool', adr = -1, level = -1
+DEBUG - semantic_errors_A.mj:53: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - semantic_errors_A.mj:53: SEMANTIC ANALYZER: Found symbolic constant usage 'cd'! Symbol node: Constant 'cd': type = 'bool', adr = 1, level = 0
+DEBUG - semantic_errors_A.mj:53: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - semantic_errors_A.mj:53: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - semantic_errors_A.mj:15: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - semantic_errors_A.mj:15: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - semantic_errors_A.mj:53: SEMANTIC ANALYZER: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - semantic_errors_A.mj:54: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - semantic_errors_A.mj:54: SEMANTIC ANALYZER: Found global variable usage 'gf'! Symbol node: Variable 'gf': type = 'array of bool', adr = 10, level = 0
+DEBUG - semantic_errors_A.mj:54: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - semantic_errors_A.mj:54: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - semantic_errors_A.mj:11: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - semantic_errors_A.mj:11: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - semantic_errors_A.mj:54: SEMANTIC ANALYZER: Visited node: 'ElementAccessDesignator'.
+INFO  - semantic_errors_A.mj:54: SEMANTIC ANALYZER: Found array element access 'gf[3]'! Symbol node: Array element 'gf[3]': type = 'bool', adr = -1, level = -1
+DEBUG - semantic_errors_A.mj:54: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - semantic_errors_A.mj:54: SEMANTIC ANALYZER: Found global variable usage 'gf'! Symbol node: Variable 'gf': type = 'array of bool', adr = 10, level = 0
+DEBUG - semantic_errors_A.mj:54: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - semantic_errors_A.mj:54: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - semantic_errors_A.mj:19: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - semantic_errors_A.mj:19: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - semantic_errors_A.mj:54: SEMANTIC ANALYZER: Visited node: 'ElementAccessDesignator'.
+INFO  - semantic_errors_A.mj:54: SEMANTIC ANALYZER: Found array element access 'gf[0]'! Symbol node: Array element 'gf[0]': type = 'bool', adr = -1, level = -1
+DEBUG - semantic_errors_A.mj:54: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - semantic_errors_A.mj:54: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - semantic_errors_A.mj:15: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - semantic_errors_A.mj:15: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - semantic_errors_A.mj:54: SEMANTIC ANALYZER: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - semantic_errors_A.mj:55: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - semantic_errors_A.mj:55: SEMANTIC ANALYZER: Found global variable usage 'gf'! Symbol node: Variable 'gf': type = 'array of bool', adr = 10, level = 0
+DEBUG - semantic_errors_A.mj:55: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - semantic_errors_A.mj:55: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - semantic_errors_A.mj:16: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - semantic_errors_A.mj:16: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - semantic_errors_A.mj:55: SEMANTIC ANALYZER: Visited node: 'ElementAccessDesignator'.
+INFO  - semantic_errors_A.mj:55: SEMANTIC ANALYZER: Found array element access 'gf[2]'! Symbol node: Array element 'gf[2]': type = 'bool', adr = -1, level = -1
+DEBUG - semantic_errors_A.mj:55: SEMANTIC ANALYZER: Visited node: 'ReadStatement'.
+DEBUG - semantic_errors_A.mj:56: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - semantic_errors_A.mj:56: SEMANTIC ANALYZER: Found global variable usage 'gf'! Symbol node: Variable 'gf': type = 'array of bool', adr = 10, level = 0
+DEBUG - semantic_errors_A.mj:56: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - semantic_errors_A.mj:56: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - semantic_errors_A.mj:17: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - semantic_errors_A.mj:17: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - semantic_errors_A.mj:56: SEMANTIC ANALYZER: Visited node: 'ElementAccessDesignator'.
+INFO  - semantic_errors_A.mj:56: SEMANTIC ANALYZER: Found array element access 'gf[3]'! Symbol node: Array element 'gf[3]': type = 'bool', adr = -1, level = -1
+DEBUG - semantic_errors_A.mj:56: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - semantic_errors_A.mj:56: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - semantic_errors_A.mj:14: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - semantic_errors_A.mj:14: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - semantic_errors_A.mj:14: SEMANTIC ANALYZER: Visited node: 'PrintStatement'.
+DEBUG - semantic_errors_A.mj:58: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+ERROR - semantic_errors_A.mj:58: SEMANTIC ANALYZER: 'la' is not defined!
+DEBUG - semantic_errors_A.mj:58: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+ERROR - semantic_errors_A.mj:58: SEMANTIC ANALYZER: 'ga' is not defined!
+DEBUG - semantic_errors_A.mj:58: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - semantic_errors_A.mj:58: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - semantic_errors_A.mj:12: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - semantic_errors_A.mj:58: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - semantic_errors_A.mj:58: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - semantic_errors_A.mj:17: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - semantic_errors_A.mj:17: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - semantic_errors_A.mj:12: SEMANTIC ANALYZER: Visited node: 'AssignmentExpression'.
+DEBUG - semantic_errors_A.mj:58: SEMANTIC ANALYZER: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - semantic_errors_A.mj:59: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+ERROR - semantic_errors_A.mj:59: SEMANTIC ANALYZER: 'la' is not defined!
+DEBUG - semantic_errors_A.mj:59: SEMANTIC ANALYZER: Visited node: 'DecrementDesignatorStatement'.
+DEBUG - semantic_errors_A.mj:60: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+ERROR - semantic_errors_A.mj:60: SEMANTIC ANALYZER: 'lb' is not defined!
+DEBUG - semantic_errors_A.mj:60: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - semantic_errors_A.mj:60: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - semantic_errors_A.mj:11: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - semantic_errors_A.mj:11: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - semantic_errors_A.mj:60: SEMANTIC ANALYZER: Visited node: 'ElementAccessDesignator'.
+DEBUG - semantic_errors_A.mj:60: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - semantic_errors_A.mj:60: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - semantic_errors_A.mj:60: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+ERROR - semantic_errors_A.mj:60: SEMANTIC ANALYZER: 'la' is not defined!
+DEBUG - semantic_errors_A.mj:60: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - semantic_errors_A.mj:60: SEMANTIC ANALYZER: Visited node: 'MultipleFactorsTerm'.
+ERROR - semantic_errors_A.mj:60: SEMANTIC ANALYZER: Right factor is invalid!
+DEBUG - semantic_errors_A.mj:15: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - semantic_errors_A.mj:60: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - semantic_errors_A.mj:60: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - semantic_errors_A.mj:15: SEMANTIC ANALYZER: Visited node: 'MultipleTermsExpression'.
+ERROR - semantic_errors_A.mj:15: SEMANTIC ANALYZER: Left expression is invalid!
+DEBUG - semantic_errors_A.mj:60: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - semantic_errors_A.mj:60: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - semantic_errors_A.mj:60: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - semantic_errors_A.mj:60: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - semantic_errors_A.mj:60: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - semantic_errors_A.mj:60: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - semantic_errors_A.mj:60: SEMANTIC ANALYZER: Visited node: 'MultipleFactorsTerm'.
+DEBUG - semantic_errors_A.mj:60: SEMANTIC ANALYZER: Visited node: 'MultipleTermsExpression'.
+DEBUG - semantic_errors_A.mj:60: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - semantic_errors_A.mj:15: SEMANTIC ANALYZER: Visited node: 'AssignmentExpression'.
+DEBUG - semantic_errors_A.mj:60: SEMANTIC ANALYZER: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - semantic_errors_A.mj:61: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+ERROR - semantic_errors_A.mj:61: SEMANTIC ANALYZER: 'lc' is not defined!
+DEBUG - semantic_errors_A.mj:61: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - semantic_errors_A.mj:61: SEMANTIC ANALYZER: Found global variable usage 'gc'! Symbol node: Variable 'gc': type = 'char', adr = 7, level = 0
+DEBUG - semantic_errors_A.mj:61: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - semantic_errors_A.mj:61: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - semantic_errors_A.mj:12: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - semantic_errors_A.mj:12: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - semantic_errors_A.mj:61: SEMANTIC ANALYZER: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - semantic_errors_A.mj:62: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+ERROR - semantic_errors_A.mj:62: SEMANTIC ANALYZER: 'ld' is not defined!
+DEBUG - semantic_errors_A.mj:62: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - semantic_errors_A.mj:62: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - semantic_errors_A.mj:11: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - semantic_errors_A.mj:11: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - semantic_errors_A.mj:62: SEMANTIC ANALYZER: Visited node: 'ElementAccessDesignator'.
+DEBUG - semantic_errors_A.mj:62: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - semantic_errors_A.mj:62: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - semantic_errors_A.mj:15: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - semantic_errors_A.mj:15: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - semantic_errors_A.mj:62: SEMANTIC ANALYZER: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - semantic_errors_A.mj:63: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - semantic_errors_A.mj:63: SEMANTIC ANALYZER: Found local variable usage 'le'! Symbol node: Variable 'le': type = 'bool', adr = 1, level = 1
+DEBUG - semantic_errors_A.mj:63: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - semantic_errors_A.mj:63: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - semantic_errors_A.mj:12: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - semantic_errors_A.mj:12: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - semantic_errors_A.mj:63: SEMANTIC ANALYZER: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - semantic_errors_A.mj:64: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - semantic_errors_A.mj:64: SEMANTIC ANALYZER: Found local variable usage 'lf'! Symbol node: Variable 'lf': type = 'array of bool', adr = 2, level = 1
+DEBUG - semantic_errors_A.mj:64: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - semantic_errors_A.mj:64: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - semantic_errors_A.mj:11: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - semantic_errors_A.mj:11: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - semantic_errors_A.mj:64: SEMANTIC ANALYZER: Visited node: 'ElementAccessDesignator'.
+INFO  - semantic_errors_A.mj:64: SEMANTIC ANALYZER: Found array element access 'lf[2]'! Symbol node: Array element 'lf[2]': type = 'bool', adr = -1, level = -1
+DEBUG - semantic_errors_A.mj:64: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - semantic_errors_A.mj:64: SEMANTIC ANALYZER: Found symbolic constant usage 'cd'! Symbol node: Constant 'cd': type = 'bool', adr = 1, level = 0
+DEBUG - semantic_errors_A.mj:64: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - semantic_errors_A.mj:64: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - semantic_errors_A.mj:15: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - semantic_errors_A.mj:15: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - semantic_errors_A.mj:64: SEMANTIC ANALYZER: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - semantic_errors_A.mj:32: SEMANTIC ANALYZER: Visited node: 'MethodDeclaration'.
+INFO  - semantic_errors_A.mj:32: SEMANTIC ANALYZER: Defined method 'main'. Symbol node: Method 'main': type = 'void', adr = 0, level = 0
+  Variable 'char': type = 'bool', adr = 0, level = 1
+  Variable 'le': type = 'bool', adr = 1, level = 1
+  Variable 'lf': type = 'array of bool', adr = 2, level = 1
+DEBUG - semantic_errors_A.mj:2: SEMANTIC ANALYZER: Visited node: 'Program'.
+INFO  - semantic_errors_A.mj:2: SEMANTIC ANALYZER: Defined program 'level_a_syntax_test'. Symbol node: Program 'level_a_syntax_test': type = 'none', adr = 0, level = 1
+  Constant 'a': type = 'int', adr = 20, level = 0
+  Constant 'b': type = 'int', adr = -1, level = 0
+  Constant 'c': type = 'int', adr = 25, level = 0
+  Constant 'd': type = 'char', adr = 97, level = 0
+  Constant 'e': type = 'bool', adr = 1, level = 0
+  Constant 'f': type = 'bool', adr = 0, level = 0
+  Variable 'var_a': type = 'int', adr = 0, level = 0
+  Variable 'var_b': type = 'array of int', adr = 1, level = 0
+  Variable 'var_c': type = 'char', adr = 2, level = 0
+  Variable 'var_d': type = 'array of char', adr = 3, level = 0
+  Variable 'var_e': type = 'char', adr = 4, level = 0
+  Variable 'var_f': type = 'bool', adr = 5, level = 0
+  Variable 'int': type = 'int', adr = 6, level = 0
+  Constant 'cc': type = 'char', adr = 115, level = 0
+  Constant 'cd': type = 'bool', adr = 1, level = 0
+  Variable 'gc': type = 'char', adr = 7, level = 0
+  Variable 'gd': type = 'array of char', adr = 8, level = 0
+  Variable 'ge': type = 'bool', adr = 9, level = 0
+  Variable 'gf': type = 'array of bool', adr = 10, level = 0
+  Method 'main': type = 'void', adr = 0, level = 0
+    Variable 'char': type = 'bool', adr = 0, level = 1
+    Variable 'le': type = 'bool', adr = 1, level = 1
+    Variable 'lf': type = 'array of bool', adr = 2, level = 1

@@ -1,0 +1,48 @@
+Syntax analysis completed without errors.
+Starting semantic analysis...
+Found formal parameter usage 'a' at line 9! Symbol node: Formal parameter 'a': type = 'int', adr = 0, level = 1
+Found formal parameter usage 'b' at line 9! Symbol node: Formal parameter 'b': type = 'int', adr = 1, level = 1
+Found local variable usage 'arr' at line 15! Symbol node: Variable 'arr': type = 'array of int', adr = 3, level = 1
+Found global variable usage 'a' at line 16! Symbol node: Variable 'a': type = 'int', adr = 0, level = 0
+Found global variable usage 'b' at line 17! Symbol node: Variable 'b': type = 'int', adr = 1, level = 0
+Found global variable usage 'c' at line 18! Symbol node: Variable 'c': type = 'int', adr = 2, level = 0
+Found global method call 'sum' at line 18! Symbol node: Method 'sum': type = 'int', adr = 0, level = 2
+  Formal parameter 'a': type = 'int', adr = 0, level = 1
+  Formal parameter 'b': type = 'int', adr = 1, level = 1
+Found global variable usage 'a' at line 18! Symbol node: Variable 'a': type = 'int', adr = 0, level = 0
+Found global variable usage 'b' at line 18! Symbol node: Variable 'b': type = 'int', adr = 1, level = 0
+Found local variable usage 'i' at line 19! Symbol node: Variable 'i': type = 'int', adr = 0, level = 1
+Found local variable usage 'i' at line 19! Symbol node: Variable 'i': type = 'int', adr = 0, level = 1
+Found global variable usage 'c' at line 19! Symbol node: Variable 'c': type = 'int', adr = 2, level = 0
+Found local variable usage 'i' at line 19! Symbol node: Variable 'i': type = 'int', adr = 0, level = 1
+Found for loop 'none' at line 19!
+Found global variable usage 'a' at line 20! Symbol node: Variable 'a': type = 'int', adr = 0, level = 0
+Found local variable usage 'arr' at line 22! Symbol node: Variable 'arr': type = 'array of int', adr = 3, level = 1
+Found local variable usage 'it' at line 23! Symbol node: Variable 'it': type = 'int', adr = 1, level = 1
+Found symbolic constant usage 'eol' at line 26! Symbol node: Constant 'eol': type = 'char', adr = 10, level = 0
+Semantic analysis completed without errors.
+======================================== SYMBOL TABLE DUMP =========================================
+Type 'int': type = 'int', adr = -1, level = -1
+Type 'char': type = 'char', adr = -1, level = -1
+Type 'bool': type = 'bool', adr = -1, level = -1
+Constant 'null': type = 'class', adr = 0, level = 0
+Constant 'eol': type = 'char', adr = 10, level = 0
+Method 'chr': type = 'char', adr = 0, level = 1
+  Formal parameter 'i': type = 'int', adr = 0, level = 1
+Method 'ord': type = 'int', adr = 0, level = 1
+  Formal parameter 'ch': type = 'char', adr = 0, level = 1
+Method 'len': type = 'int', adr = 0, level = 1
+  Formal parameter 'arr': type = 'array of none', adr = 0, level = 1
+Program 'level_b_symbol_detection': type = 'none', adr = 0, level = 1
+  Variable 'a': type = 'int', adr = 0, level = 0
+  Variable 'b': type = 'int', adr = 1, level = 0
+  Variable 'c': type = 'int', adr = 2, level = 0
+  Method 'sum': type = 'int', adr = 0, level = 2
+    Formal parameter 'a': type = 'int', adr = 0, level = 1
+    Formal parameter 'b': type = 'int', adr = 1, level = 1
+  Method 'main': type = 'void', adr = 0, level = 0
+    Variable 'i': type = 'int', adr = 0, level = 1
+    Variable 'it': type = 'int', adr = 1, level = 1
+    Variable 'it2': type = 'int', adr = 2, level = 1
+    Variable 'arr': type = 'array of int', adr = 3, level = 1
+

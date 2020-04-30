@@ -1,0 +1,8 @@
+DEBUG - lexer_C.mj:2:1: LEXER: Found symbol: '#4' with value: 'class'
+DEBUG - lexer_C.mj:3:1: LEXER: Found symbol: '#5' with value: 'abstract'
+DEBUG - lexer_C.mj:4:1: LEXER: Found symbol: '#15' with value: 'extends'
+DEBUG - lexer_C.mj:5:1: LEXER: Found symbol: '#18' with value: 'public'
+DEBUG - lexer_C.mj:6:1: LEXER: Found symbol: '#19' with value: 'protected'
+DEBUG - lexer_C.mj:7:1: LEXER: Found symbol: '#20' with value: 'private'
+DEBUG - lexer_C.mj:9:1: LEXER: Found symbol: '#51' with value: '.'
+DEBUG - lexer_C.mj:9:2: LEXER: Found symbol: '#0' with value: ''

@@ -1,0 +1,203 @@
+Compiling source file: D:\Documents\Fakultet\7. semestar\13E114PP1\Projekat\MJCompiler\test\generator\generator_A.mj
+Syntax analysis completed without errors!
+Starting semantic analysis...
+Found symbolic constant usage 'SPACE' at line 19! Symbol node: Constant 'SPACE': type = 'char', adr = 32, level = 0
+Found symbolic constant usage 'eol' at line 21! Symbol node: Constant 'eol': type = 'char', adr = 10, level = 0
+Found global variable usage 'x' at line 25! Symbol node: Variable 'x': type = 'int', adr = 0, level = 0
+Found global variable usage 'y' at line 25! Symbol node: Variable 'y': type = 'int', adr = 1, level = 0
+Found symbolic constant usage 'N' at line 25! Symbol node: Constant 'N': type = 'int', adr = 25, level = 0
+Found global variable usage 'z' at line 25! Symbol node: Variable 'z': type = 'array of int', adr = 2, level = 0
+Found symbolic constant usage 'N' at line 25! Symbol node: Constant 'N': type = 'int', adr = 25, level = 0
+Found array element access 'N[N - 1]' at line 25! Symbol node: Array element 'N[N - 1]': type = 'int', adr = -1, level = -1
+Found symbolic constant usage 'M' at line 25! Symbol node: Constant 'M': type = 'int', adr = 15, level = 0
+Found global method call 'printHello' at line 34! Symbol node: Method 'printHello': type = 'void', adr = 0, level = 0
+Found symbolic constant usage 'N' at line 37! Symbol node: Constant 'N': type = 'int', adr = 25, level = 0
+Found symbolic constant usage 'SPACE' at line 37! Symbol node: Constant 'SPACE': type = 'char', adr = 32, level = 0
+Found symbolic constant usage 'M' at line 37! Symbol node: Constant 'M': type = 'int', adr = 15, level = 0
+Found symbolic constant usage 'eol' at line 37! Symbol node: Constant 'eol': type = 'char', adr = 10, level = 0
+Found symbolic constant usage 'C' at line 38! Symbol node: Constant 'C': type = 'char', adr = 67, level = 0
+Found symbolic constant usage 'eol' at line 38! Symbol node: Constant 'eol': type = 'char', adr = 10, level = 0
+Found symbolic constant usage 'T' at line 39! Symbol node: Constant 'T': type = 'bool', adr = 1, level = 0
+Found symbolic constant usage 'SPACE' at line 39! Symbol node: Constant 'SPACE': type = 'char', adr = 32, level = 0
+Found symbolic constant usage 'F' at line 39! Symbol node: Constant 'F': type = 'bool', adr = 0, level = 0
+Found symbolic constant usage 'eol' at line 39! Symbol node: Constant 'eol': type = 'char', adr = 10, level = 0
+Found global variable usage 'x' at line 42! Symbol node: Variable 'x': type = 'int', adr = 0, level = 0
+Found global variable usage 'x' at line 43! Symbol node: Variable 'x': type = 'int', adr = 0, level = 0
+Found symbolic constant usage 'eol' at line 43! Symbol node: Constant 'eol': type = 'char', adr = 10, level = 0
+Found global variable usage 'y' at line 44! Symbol node: Variable 'y': type = 'int', adr = 1, level = 0
+Found global variable usage 'x' at line 44! Symbol node: Variable 'x': type = 'int', adr = 0, level = 0
+Found global variable usage 'y' at line 45! Symbol node: Variable 'y': type = 'int', adr = 1, level = 0
+Found global variable usage 'x' at line 46! Symbol node: Variable 'x': type = 'int', adr = 0, level = 0
+Found global variable usage 'x' at line 47! Symbol node: Variable 'x': type = 'int', adr = 0, level = 0
+Found symbolic constant usage 'SPACE' at line 47! Symbol node: Constant 'SPACE': type = 'char', adr = 32, level = 0
+Found global variable usage 'y' at line 47! Symbol node: Variable 'y': type = 'int', adr = 1, level = 0
+Found symbolic constant usage 'eol' at line 47! Symbol node: Constant 'eol': type = 'char', adr = 10, level = 0
+Found global variable usage 'z' at line 48! Symbol node: Variable 'z': type = 'array of int', adr = 2, level = 0
+Found symbolic constant usage 'N' at line 48! Symbol node: Constant 'N': type = 'int', adr = 25, level = 0
+Found global variable usage 'z' at line 49! Symbol node: Variable 'z': type = 'array of int', adr = 2, level = 0
+Found global variable usage 'x' at line 49! Symbol node: Variable 'x': type = 'int', adr = 0, level = 0
+Found array element access 'x[x]' at line 49! Symbol node: Array element 'x[x]': type = 'int', adr = -1, level = -1
+Found global variable usage 'x' at line 50! Symbol node: Variable 'x': type = 'int', adr = 0, level = 0
+Found global variable usage 'z' at line 50! Symbol node: Variable 'z': type = 'array of int', adr = 2, level = 0
+Found global variable usage 'x' at line 50! Symbol node: Variable 'x': type = 'int', adr = 0, level = 0
+Found array element access 'x[x]' at line 50! Symbol node: Array element 'x[x]': type = 'int', adr = -1, level = -1
+Found symbolic constant usage 'eol' at line 50! Symbol node: Constant 'eol': type = 'char', adr = 10, level = 0
+Found global variable usage 'c' at line 51! Symbol node: Variable 'c': type = 'char', adr = 3, level = 0
+Found global method call 'chr' at line 51! Symbol node: Method 'chr': type = 'char', adr = 0, level = 1
+  Formal parameter 'i': type = 'int', adr = 0, level = 1
+Found global variable usage 'c' at line 52! Symbol node: Variable 'c': type = 'char', adr = 3, level = 0
+Found symbolic constant usage 'eol' at line 52! Symbol node: Constant 'eol': type = 'char', adr = 10, level = 0
+Found global variable usage 'ind' at line 53! Symbol node: Variable 'ind': type = 'bool', adr = 4, level = 0
+Found symbolic constant usage 'T' at line 53! Symbol node: Constant 'T': type = 'bool', adr = 1, level = 0
+Found global variable usage 'ind' at line 54! Symbol node: Variable 'ind': type = 'bool', adr = 4, level = 0
+Found symbolic constant usage 'eol' at line 54! Symbol node: Constant 'eol': type = 'char', adr = 10, level = 0
+Found local variable usage 'a' at line 57! Symbol node: Variable 'a': type = 'int', adr = 0, level = 1
+Found global variable usage 'z' at line 57! Symbol node: Variable 'z': type = 'array of int', adr = 2, level = 0
+Found global variable usage 'x' at line 57! Symbol node: Variable 'x': type = 'int', adr = 0, level = 0
+Found array element access 'x[x]' at line 57! Symbol node: Array element 'x[x]': type = 'int', adr = -1, level = -1
+Found global variable usage 'x' at line 57! Symbol node: Variable 'x': type = 'int', adr = 0, level = 0
+Found symbolic constant usage 'N' at line 57! Symbol node: Constant 'N': type = 'int', adr = 25, level = 0
+Found symbolic constant usage 'M' at line 57! Symbol node: Constant 'M': type = 'int', adr = 15, level = 0
+Found symbolic constant usage 'M' at line 57! Symbol node: Constant 'M': type = 'int', adr = 15, level = 0
+Found global variable usage 'y' at line 57! Symbol node: Variable 'y': type = 'int', adr = 1, level = 0
+Found global variable usage 'x' at line 58! Symbol node: Variable 'x': type = 'int', adr = 0, level = 0
+Found global variable usage 'z' at line 58! Symbol node: Variable 'z': type = 'array of int', adr = 2, level = 0
+Found global variable usage 'x' at line 58! Symbol node: Variable 'x': type = 'int', adr = 0, level = 0
+Found array element access 'x[x]' at line 58! Symbol node: Array element 'x[x]': type = 'int', adr = -1, level = -1
+Found symbolic constant usage 'SPACE' at line 58! Symbol node: Constant 'SPACE': type = 'char', adr = 32, level = 0
+Found local variable usage 'a' at line 58! Symbol node: Variable 'a': type = 'int', adr = 0, level = 1
+Found symbolic constant usage 'eol' at line 58! Symbol node: Constant 'eol': type = 'char', adr = 10, level = 0
+Found local variable usage 'b' at line 59! Symbol node: Variable 'b': type = 'int', adr = 1, level = 1
+Found global method call 'ord' at line 59! Symbol node: Method 'ord': type = 'int', adr = 0, level = 1
+  Formal parameter 'ch': type = 'char', adr = 0, level = 1
+Found local variable usage 'b' at line 60! Symbol node: Variable 'b': type = 'int', adr = 1, level = 1
+Found symbolic constant usage 'SPACE' at line 60! Symbol node: Constant 'SPACE': type = 'char', adr = 32, level = 0
+Found local variable usage 'b' at line 61! Symbol node: Variable 'b': type = 'int', adr = 1, level = 1
+Found symbolic constant usage 'N' at line 61! Symbol node: Constant 'N': type = 'int', adr = 25, level = 0
+Found symbolic constant usage 'M' at line 61! Symbol node: Constant 'M': type = 'int', adr = 15, level = 0
+Found global variable usage 'y' at line 61! Symbol node: Variable 'y': type = 'int', adr = 1, level = 0
+Found local variable usage 'b' at line 62! Symbol node: Variable 'b': type = 'int', adr = 1, level = 1
+Found symbolic constant usage 'eol' at line 62! Symbol node: Constant 'eol': type = 'char', adr = 10, level = 0
+Found local variable usage 'arr' at line 63! Symbol node: Variable 'arr': type = 'array of int', adr = 2, level = 1
+Found symbolic constant usage 'M' at line 63! Symbol node: Constant 'M': type = 'int', adr = 15, level = 0
+Found global method call 'len' at line 64! Symbol node: Method 'len': type = 'int', adr = 0, level = 1
+  Formal parameter 'arr': type = 'array of none', adr = 0, level = 1
+Found local variable usage 'arr' at line 64! Symbol node: Variable 'arr': type = 'array of int', adr = 2, level = 1
+Found symbolic constant usage 'eol' at line 64! Symbol node: Constant 'eol': type = 'char', adr = 10, level = 0
+Found local variable usage 'msg' at line 65! Symbol node: Variable 'msg': type = 'array of char', adr = 3, level = 1
+Found local variable usage 'msg' at line 66! Symbol node: Variable 'msg': type = 'array of char', adr = 3, level = 1
+Found array element access 'msg[0]' at line 66! Symbol node: Array element 'msg[0]': type = 'char', adr = -1, level = -1
+Found local variable usage 'msg' at line 66! Symbol node: Variable 'msg': type = 'array of char', adr = 3, level = 1
+Found array element access 'msg[1]' at line 66! Symbol node: Array element 'msg[1]': type = 'char', adr = -1, level = -1
+Found local variable usage 'msg' at line 66! Symbol node: Variable 'msg': type = 'array of char', adr = 3, level = 1
+Found array element access 'msg[2]' at line 66! Symbol node: Array element 'msg[2]': type = 'char', adr = -1, level = -1
+Found local variable usage 'msg' at line 66! Symbol node: Variable 'msg': type = 'array of char', adr = 3, level = 1
+Found array element access 'msg[3]' at line 66! Symbol node: Array element 'msg[3]': type = 'char', adr = -1, level = -1
+Found local variable usage 'msg' at line 66! Symbol node: Variable 'msg': type = 'array of char', adr = 3, level = 1
+Found array element access 'msg[4]' at line 66! Symbol node: Array element 'msg[4]': type = 'char', adr = -1, level = -1
+Found local variable usage 'msg' at line 66! Symbol node: Variable 'msg': type = 'array of char', adr = 3, level = 1
+Found array element access 'msg[5]' at line 66! Symbol node: Array element 'msg[5]': type = 'char', adr = -1, level = -1
+Found local variable usage 'msg' at line 66! Symbol node: Variable 'msg': type = 'array of char', adr = 3, level = 1
+Found array element access 'msg[6]' at line 66! Symbol node: Array element 'msg[6]': type = 'char', adr = -1, level = -1
+Found local variable usage 'msg' at line 66! Symbol node: Variable 'msg': type = 'array of char', adr = 3, level = 1
+Found array element access 'msg[7]' at line 66! Symbol node: Array element 'msg[7]': type = 'char', adr = -1, level = -1
+Found symbolic constant usage 'eol' at line 66! Symbol node: Constant 'eol': type = 'char', adr = 10, level = 0
+Found local variable usage 'msg' at line 67! Symbol node: Variable 'msg': type = 'array of char', adr = 3, level = 1
+Found array element access 'msg[0]' at line 67! Symbol node: Array element 'msg[0]': type = 'char', adr = -1, level = -1
+Found local variable usage 'msg' at line 67! Symbol node: Variable 'msg': type = 'array of char', adr = 3, level = 1
+Found array element access 'msg[1]' at line 67! Symbol node: Array element 'msg[1]': type = 'char', adr = -1, level = -1
+Found local variable usage 'msg' at line 67! Symbol node: Variable 'msg': type = 'array of char', adr = 3, level = 1
+Found array element access 'msg[2]' at line 67! Symbol node: Array element 'msg[2]': type = 'char', adr = -1, level = -1
+Found local variable usage 'msg' at line 67! Symbol node: Variable 'msg': type = 'array of char', adr = 3, level = 1
+Found array element access 'msg[3]' at line 67! Symbol node: Array element 'msg[3]': type = 'char', adr = -1, level = -1
+Found local variable usage 'msg' at line 67! Symbol node: Variable 'msg': type = 'array of char', adr = 3, level = 1
+Found array element access 'msg[4]' at line 67! Symbol node: Array element 'msg[4]': type = 'char', adr = -1, level = -1
+Found local variable usage 'msg' at line 67! Symbol node: Variable 'msg': type = 'array of char', adr = 3, level = 1
+Found array element access 'msg[5]' at line 67! Symbol node: Array element 'msg[5]': type = 'char', adr = -1, level = -1
+Found local variable usage 'msg' at line 67! Symbol node: Variable 'msg': type = 'array of char', adr = 3, level = 1
+Found array element access 'msg[6]' at line 67! Symbol node: Array element 'msg[6]': type = 'char', adr = -1, level = -1
+Found local variable usage 'msg' at line 67! Symbol node: Variable 'msg': type = 'array of char', adr = 3, level = 1
+Found array element access 'msg[7]' at line 67! Symbol node: Array element 'msg[7]': type = 'char', adr = -1, level = -1
+Found local variable usage 'valid' at line 68! Symbol node: Variable 'valid': type = 'bool', adr = 4, level = 1
+Found local variable usage 'valid' at line 69! Symbol node: Variable 'valid': type = 'bool', adr = 4, level = 1
+Found symbolic constant usage 'eol' at line 69! Symbol node: Constant 'eol': type = 'char', adr = 10, level = 0
+Found global variable usage 'x' at line 72! Symbol node: Variable 'x': type = 'int', adr = 0, level = 0
+Found global variable usage 'x' at line 73! Symbol node: Variable 'x': type = 'int', adr = 0, level = 0
+Found symbolic constant usage 'eol' at line 73! Symbol node: Constant 'eol': type = 'char', adr = 10, level = 0
+Found global variable usage 'z' at line 74! Symbol node: Variable 'z': type = 'array of int', adr = 2, level = 0
+Found symbolic constant usage 'N' at line 74! Symbol node: Constant 'N': type = 'int', adr = 25, level = 0
+Found array element access 'N[N - 1]' at line 74! Symbol node: Array element 'N[N - 1]': type = 'int', adr = -1, level = -1
+Found symbolic constant usage 'N' at line 75! Symbol node: Constant 'N': type = 'int', adr = 25, level = 0
+Found global variable usage 'z' at line 75! Symbol node: Variable 'z': type = 'array of int', adr = 2, level = 0
+Found symbolic constant usage 'N' at line 75! Symbol node: Constant 'N': type = 'int', adr = 25, level = 0
+Found array element access 'N[N - 1]' at line 75! Symbol node: Array element 'N[N - 1]': type = 'int', adr = -1, level = -1
+Found symbolic constant usage 'eol' at line 75! Symbol node: Constant 'eol': type = 'char', adr = 10, level = 0
+Found global variable usage 'c' at line 76! Symbol node: Variable 'c': type = 'char', adr = 3, level = 0
+Found global variable usage 'c' at line 77! Symbol node: Variable 'c': type = 'char', adr = 3, level = 0
+Found symbolic constant usage 'eol' at line 77! Symbol node: Constant 'eol': type = 'char', adr = 10, level = 0
+Found global variable usage 'ind' at line 78! Symbol node: Variable 'ind': type = 'bool', adr = 4, level = 0
+Found global variable usage 'ind' at line 79! Symbol node: Variable 'ind': type = 'bool', adr = 4, level = 0
+Found symbolic constant usage 'eol' at line 79! Symbol node: Constant 'eol': type = 'char', adr = 10, level = 0
+Found local variable usage 'a' at line 82! Symbol node: Variable 'a': type = 'int', adr = 0, level = 1
+Found local variable usage 'a' at line 83! Symbol node: Variable 'a': type = 'int', adr = 0, level = 1
+Found symbolic constant usage 'eol' at line 83! Symbol node: Constant 'eol': type = 'char', adr = 10, level = 0
+Found local variable usage 'msg' at line 84! Symbol node: Variable 'msg': type = 'array of char', adr = 3, level = 1
+Found array element access 'msg[0]' at line 84! Symbol node: Array element 'msg[0]': type = 'char', adr = -1, level = -1
+Found local variable usage 'msg' at line 85! Symbol node: Variable 'msg': type = 'array of char', adr = 3, level = 1
+Found array element access 'msg[0]' at line 85! Symbol node: Array element 'msg[0]': type = 'char', adr = -1, level = -1
+Found symbolic constant usage 'eol' at line 85! Symbol node: Constant 'eol': type = 'char', adr = 10, level = 0
+Found local variable usage 'valid' at line 86! Symbol node: Variable 'valid': type = 'bool', adr = 4, level = 1
+Found local variable usage 'valid' at line 87! Symbol node: Variable 'valid': type = 'bool', adr = 4, level = 1
+Found symbolic constant usage 'eol' at line 87! Symbol node: Constant 'eol': type = 'char', adr = 10, level = 0
+Found global method call 'chr' at line 89! Symbol node: Method 'chr': type = 'char', adr = 0, level = 1
+  Formal parameter 'i': type = 'int', adr = 0, level = 1
+Found global method call 'ord' at line 89! Symbol node: Method 'ord': type = 'int', adr = 0, level = 1
+  Formal parameter 'ch': type = 'char', adr = 0, level = 1
+Found symbolic constant usage 'eol' at line 89! Symbol node: Constant 'eol': type = 'char', adr = 10, level = 0
+Found local variable usage 'a' at line 91! Symbol node: Variable 'a': type = 'int', adr = 0, level = 1
+Found symbolic constant usage 'SPACE' at line 91! Symbol node: Constant 'SPACE': type = 'char', adr = 32, level = 0
+Found local variable usage 'a' at line 92! Symbol node: Variable 'a': type = 'int', adr = 0, level = 1
+Found global method call 'getValue' at line 92! Symbol node: Method 'getValue': type = 'int', adr = 0, level = 0
+Found local variable usage 'a' at line 93! Symbol node: Variable 'a': type = 'int', adr = 0, level = 1
+Found symbolic constant usage 'eol' at line 93! Symbol node: Constant 'eol': type = 'char', adr = 10, level = 0
+Semantic analysis completed without errors!
+====================================================================================================
+    6 symbolic constant(s) defined
+    5 global variable(s) defined
+    0 class(es) defined
+    3 global method(s) defined
+======================================== SYMBOL TABLE DUMP =========================================
+Type 'int': type = 'int', adr = -1, level = -1
+Type 'char': type = 'char', adr = -1, level = -1
+Type 'bool': type = 'bool', adr = -1, level = -1
+Constant 'null': type = 'class', adr = 0, level = 0
+Constant 'eol': type = 'char', adr = 10, level = 0
+Method 'chr': type = 'char', adr = 0, level = 1
+  Formal parameter 'i': type = 'int', adr = 0, level = 1
+Method 'ord': type = 'int', adr = 0, level = 1
+  Formal parameter 'ch': type = 'char', adr = 0, level = 1
+Method 'len': type = 'int', adr = 0, level = 1
+  Formal parameter 'arr': type = 'array of none', adr = 0, level = 1
+Program 'level_a_code_generation': type = 'none', adr = 0, level = 1
+  Constant 'N': type = 'int', adr = 25, level = 0
+  Constant 'M': type = 'int', adr = 15, level = 0
+  Constant 'SPACE': type = 'char', adr = 32, level = 0
+  Constant 'C': type = 'char', adr = 67, level = 0
+  Constant 'T': type = 'bool', adr = 1, level = 0
+  Constant 'F': type = 'bool', adr = 0, level = 0
+  Variable 'x': type = 'int', adr = 0, level = 0
+  Variable 'y': type = 'int', adr = 1, level = 0
+  Variable 'z': type = 'array of int', adr = 2, level = 0
+  Variable 'c': type = 'char', adr = 3, level = 0
+  Variable 'ind': type = 'bool', adr = 4, level = 0
+  Method 'printHello': type = 'void', adr = 0, level = 0
+  Method 'getValue': type = 'int', adr = 0, level = 0
+  Method 'main': type = 'void', adr = 0, level = 0
+    Variable 'a': type = 'int', adr = 0, level = 1
+    Variable 'b': type = 'int', adr = 1, level = 1
+    Variable 'arr': type = 'array of int', adr = 2, level = 1
+    Variable 'msg': type = 'array of char', adr = 3, level = 1
+    Variable 'valid': type = 'bool', adr = 4, level = 1
+
+Generating bytecode file: D:\Documents\Fakultet\7. semestar\13E114PP1\Projekat\MJCompiler\test\generator_A.obj
+Compilation finished!

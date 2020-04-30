@@ -44,7 +44,7 @@ public class CodeGenerator extends VisitorAdaptor {
         MJCode.put(MJCode.load_n);
         MJCode.put(MJCode.exit);
         MJCode.put(MJCode.return_);
-        // Generate code for predeclared method: int ord(chr ch)
+        // Generate code for predeclared method: int ord(char ch)
         MJTable.ordMethodSym.setAdr(MJCode.pc);
         MJCode.put(MJCode.enter);
         MJCode.put(1);
@@ -335,11 +335,14 @@ public class CodeGenerator extends VisitorAdaptor {
             MJCode.load(arrayDesignator.mjsymbol);
             // Load array index (this variable will hold index inside the loop)
             MJCode.load(sym);
-            // Change this node's mjsymbol to treat this as an array element which it actually is
-            identifierDesignator.mjsymbol = new MJSymbol(MJSymbol.Elem, sym.getName(), sym.getType());
-            if (identifierDesignator.getParent() instanceof DesignatorFactor) {
-                // Change designator factor mjsymbol to this new one
-                ((DesignatorFactor) identifierDesignator.getParent()).mjsymbol = identifierDesignator.mjsymbol;
+            // prepareForNextDesignatorNode but only in this specific case, so the code is inline here
+            if (identifierDesignator.getParent() instanceof MemberAccessDesignator ||
+                    identifierDesignator.getParent() instanceof ElementAccessDesignator) {
+                // Class field access or method call so load object address now
+                MJCode.put(sym.getType() != MJTable.charType ? MJCode.aload : MJCode.baload);
+            } else { // No designator node afterwards
+                // Change this node's mjsymbol to make MJCode.load() generate array element load instructions
+                identifierDesignator.mjsymbol = new MJSymbol(MJSymbol.Elem, sym.getName(), sym.getType());
             }
         } else { // Normal identifier
             if (MJUtils.isSymbolValid(sym.getParent()) &&
@@ -623,24 +626,37 @@ public class CodeGenerator extends VisitorAdaptor {
         // Patch all false jumps (for condition false jump and break statements)
         patchJumpAddresses(false, false); // conditions
         patchJumpAddresses(true, false); // break statements
-        // Load current element value into iterator variable...
-        // - Load array address and index assuming it is in range
+        // Generate code to load current element value into iterator variable...
+        // - Prepare array address and index by...
+        //   ...generating required array designator parts, ...
+        arrayDesignatorStack.peek().traverseBottomUp(this);
+        //   ...loading array symbol and...
         MJCode.load(arraySym);
+        //   ...loading array iterator (index) symbol.
         MJCode.load(iteratorSym);
-        // - Check if index is outside the range
+        // - Check if index is outside the range by...
+        //   ...loading array iterator (index) symbol, ...
         MJCode.load(iteratorSym);
+        //   ...generating required array designator parts, ...
+        arrayDesignatorStack.peek().traverseBottomUp(this);
+        //   ...loading array symbol, ...
         MJCode.load(arraySym);
+        //   ...getting array length and finally...
         MJCode.put(MJCode.arraylength);
+        //   ...comparing index and array length.
         MJCode.putTrueJump(MJCode.lt, 0);
+        // - Store patch address.
         int patchAddress = MJCode.pc - 2;
-        // - If it is not decrement it by one (since it cannot be greater than len(arr) only equal to)
+        // - If index is equal to array length (cannot be greater only equal), decrement it by one by...
+        //   ...loading a constant with value 1 and...
         MJCode.loadConst(1);
+        //   ...subtracting it from existing index on the stack (stack only contains array address and array index).
         MJCode.put(MJCode.sub);
-        // - Fix jump address
+        // - Patch jump address.
         MJCode.fixup(patchAddress);
-        // - Load element value
-        MJCode.load(new MJSymbol(MJSymbol.Elem, null, arraySym.getType().getElemType()));
-        // - Store into iterator variable
+        // - Finally load element value and...
+        MJCode.put(arraySym.getType().getElemType() == MJTable.charType ? MJCode.baload : MJCode.aload);
+        //   ...store into iterator variable.
         MJCode.store(iteratorSym);
         // Now iterator variable has the value of current element when loop was exited
         jumpAddressStack.popJumpAddressList();
@@ -756,7 +772,8 @@ public class CodeGenerator extends VisitorAdaptor {
     @Override
     public void visit(DesignatorFactor designatorFactor) {
         if (!visitStart(designatorFactor)) return;
-        MJSymbol sym = designatorFactor.mjsymbol;
+        // Update this node's mjsymbol in case designator's mjsymbol is changed (foreach iterator)
+        MJSymbol sym = designatorFactor.mjsymbol = designatorFactor.getDesignator().mjsymbol;
         // If designator is a class field or an array element and it is on the right side of any assignment operator
         // (excluding '=' because expressions do not support this operator) it must be duplicated in order to preserve
         // the required address (and index for array element) to enable store instruction.

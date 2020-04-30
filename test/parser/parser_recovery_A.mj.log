@@ -1,0 +1,330 @@
+DEBUG - parser_recovery_A.mj:4:1: LEXER: Found symbol: '#2' with value: 'program'
+DEBUG - parser_recovery_A.mj:4:9: LEXER: Found symbol: '#55' with value: 'error_a'
+DEBUG - parser_recovery_A.mj:5:1: LEXER: Found symbol: '#46' with value: '{'
+DEBUG - parser_recovery_A.mj:6:5: LEXER: Found symbol: '#13' with value: 'void'
+DEBUG - parser_recovery_A.mj:6:10: LEXER: Found symbol: '#55' with value: 'main'
+DEBUG - parser_recovery_A.mj:6:14: LEXER: Found symbol: '#42' with value: '('
+DEBUG - parser_recovery_A.mj:6:15: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - parser_recovery_A.mj:7:9: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - parser_recovery_A.mj:7:13: LEXER: Found symbol: '#52' with value: '3'
+ERROR - parser_recovery_A.mj:7:13: PARSER: Syntax error!
+DEBUG - parser_recovery_A.mj:7:14: LEXER: Found symbol: '#55' with value: 'z'
+DEBUG - parser_recovery_A.mj:7:15: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_recovery_A.mj:8:9: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - parser_recovery_A.mj:8:13: LEXER: Found symbol: '#55' with value: 'p'
+DEBUG - parser_recovery_A.mj:8:14: LEXER: Found symbol: '#49' with value: ';'
+WARN  - parser_recovery_A.mj:7:13: PARSER: Invalid local variable declaration! Parsing continued...
+DEBUG - parser_recovery_A.mj:9:9: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - parser_recovery_A.mj:9:13: LEXER: Found symbol: '#55' with value: 'q'
+DEBUG - parser_recovery_A.mj:9:14: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_recovery_A.mj:10:9: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - parser_recovery_A.mj:10:13: LEXER: Found symbol: '#52' with value: '7'
+ERROR - parser_recovery_A.mj:10:13: PARSER: Syntax error!
+DEBUG - parser_recovery_A.mj:10:14: LEXER: Found symbol: '#55' with value: 'x'
+DEBUG - parser_recovery_A.mj:10:15: LEXER: Found symbol: '#50' with value: ','
+DEBUG - parser_recovery_A.mj:10:17: LEXER: Found symbol: '#55' with value: 'a'
+DEBUG - parser_recovery_A.mj:10:18: LEXER: Found symbol: '#50' with value: ','
+DEBUG - parser_recovery_A.mj:10:20: LEXER: Found symbol: '#55' with value: 'p'
+DEBUG - parser_recovery_A.mj:10:21: LEXER: Found symbol: '#50' with value: ','
+DEBUG - parser_recovery_A.mj:10:23: LEXER: Found symbol: '#52' with value: '4'
+DEBUG - parser_recovery_A.mj:10:24: LEXER: Found symbol: '#55' with value: 'v'
+DEBUG - parser_recovery_A.mj:10:25: LEXER: Found symbol: '#50' with value: ','
+DEBUG - parser_recovery_A.mj:10:27: LEXER: Found symbol: '#55' with value: 'g'
+DEBUG - parser_recovery_A.mj:10:28: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_recovery_A.mj:12:9: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - parser_recovery_A.mj:12:13: LEXER: Found symbol: '#55' with value: 'a'
+DEBUG - parser_recovery_A.mj:12:14: LEXER: Found symbol: '#50' with value: ','
+WARN  - parser_recovery_A.mj:10:13: PARSER: Invalid local variable declaration! Parsing continued...
+DEBUG - parser_recovery_A.mj:12:16: LEXER: Found symbol: '#52' with value: '3'
+ERROR - parser_recovery_A.mj:12:16: PARSER: Syntax error!
+DEBUG - parser_recovery_A.mj:12:17: LEXER: Found symbol: '#55' with value: 'x'
+DEBUG - parser_recovery_A.mj:12:18: LEXER: Found symbol: '#50' with value: ','
+DEBUG - parser_recovery_A.mj:12:20: LEXER: Found symbol: '#55' with value: 'b'
+DEBUG - parser_recovery_A.mj:12:21: LEXER: Found symbol: '#50' with value: ','
+DEBUG - parser_recovery_A.mj:12:23: LEXER: Found symbol: '#55' with value: 'd'
+WARN  - parser_recovery_A.mj:12:16: PARSER: Invalid class base type declaration! Parsing continued...
+DEBUG - parser_recovery_A.mj:12:24: LEXER: Found symbol: '#50' with value: ','
+DEBUG - parser_recovery_A.mj:12:26: LEXER: Found symbol: '#52' with value: '6'
+ERROR - parser_recovery_A.mj:12:26: PARSER: Syntax error!
+DEBUG - parser_recovery_A.mj:12:27: LEXER: Found symbol: '#55' with value: 'b'
+DEBUG - parser_recovery_A.mj:12:28: LEXER: Found symbol: '#50' with value: ','
+DEBUG - parser_recovery_A.mj:12:30: LEXER: Found symbol: '#55' with value: 'c'
+DEBUG - parser_recovery_A.mj:12:31: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_recovery_A.mj:13:9: LEXER: Found symbol: '#55' with value: 'int'
+WARN  - parser_recovery_A.mj:12:26: PARSER: Invalid class base type declaration! Parsing continued...
+DEBUG - parser_recovery_A.mj:13:13: LEXER: Found symbol: '#55' with value: 'c'
+DEBUG - parser_recovery_A.mj:13:14: LEXER: Found symbol: '#50' with value: ','
+DEBUG - parser_recovery_A.mj:13:16: LEXER: Found symbol: '#55' with value: 'd'
+DEBUG - parser_recovery_A.mj:13:17: LEXER: Found symbol: '#50' with value: ','
+DEBUG - parser_recovery_A.mj:13:19: LEXER: Found symbol: '#52' with value: '6'
+ERROR - parser_recovery_A.mj:13:19: PARSER: Syntax error!
+DEBUG - parser_recovery_A.mj:13:20: LEXER: Found symbol: '#55' with value: 'x'
+DEBUG - parser_recovery_A.mj:13:21: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_recovery_A.mj:14:9: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - parser_recovery_A.mj:14:13: LEXER: Found symbol: '#55' with value: 'x'
+DEBUG - parser_recovery_A.mj:14:14: LEXER: Found symbol: '#50' with value: ','
+WARN  - parser_recovery_A.mj:13:19: PARSER: Invalid class base type declaration! Parsing continued...
+DEBUG - parser_recovery_A.mj:14:16: LEXER: Found symbol: '#55' with value: 'y'
+DEBUG - parser_recovery_A.mj:14:17: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_recovery_A.mj:15:5: LEXER: Found symbol: '#46' with value: '{'
+DEBUG - parser_recovery_A.mj:16:9: LEXER: Found symbol: '#55' with value: 'x'
+DEBUG - parser_recovery_A.mj:16:11: LEXER: Found symbol: '#21' with value: '='
+DEBUG - parser_recovery_A.mj:16:13: LEXER: Found symbol: '#55' with value: 'x'
+DEBUG - parser_recovery_A.mj:16:15: LEXER: Found symbol: '#21' with value: '='
+ERROR - parser_recovery_A.mj:16:15: PARSER: Syntax error!
+DEBUG - parser_recovery_A.mj:16:17: LEXER: Found symbol: '#52' with value: '5'
+DEBUG - parser_recovery_A.mj:16:18: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_recovery_A.mj:17:9: LEXER: Found symbol: '#55' with value: 'x'
+DEBUG - parser_recovery_A.mj:17:11: LEXER: Found symbol: '#38' with value: '-='
+DEBUG - parser_recovery_A.mj:17:14: LEXER: Found symbol: '#55' with value: 'y'
+WARN  - parser_recovery_A.mj:16:15: PARSER: Invalid assignment statement! Parsing continued...
+DEBUG - parser_recovery_A.mj:17:16: LEXER: Found symbol: '#22' with value: '+'
+DEBUG - parser_recovery_A.mj:17:17: LEXER: Found symbol: '#49' with value: ';'
+ERROR - parser_recovery_A.mj:17:17: PARSER: Syntax error!
+DEBUG - parser_recovery_A.mj:18:9: LEXER: Found symbol: '#55' with value: 'x'
+DEBUG - parser_recovery_A.mj:18:11: LEXER: Found symbol: '#21' with value: '='
+DEBUG - parser_recovery_A.mj:18:13: LEXER: Found symbol: '#49' with value: ';'
+WARN  - parser_recovery_A.mj:17:17: PARSER: Invalid assignment statement! Parsing continued...
+ERROR - parser_recovery_A.mj:18:13: PARSER: Syntax error!
+DEBUG - parser_recovery_A.mj:19:9: LEXER: Found symbol: '#55' with value: 'x'
+DEBUG - parser_recovery_A.mj:19:11: LEXER: Found symbol: '#21' with value: '='
+DEBUG - parser_recovery_A.mj:19:13: LEXER: Found symbol: '#22' with value: '+'
+WARN  - parser_recovery_A.mj:18:13: PARSER: Invalid assignment statement! Parsing continued...
+DEBUG - parser_recovery_A.mj:19:14: LEXER: Found symbol: '#49' with value: ';'
+ERROR - parser_recovery_A.mj:19:14: PARSER: Syntax error!
+DEBUG - parser_recovery_A.mj:20:9: LEXER: Found symbol: '#55' with value: 'x'
+DEBUG - parser_recovery_A.mj:20:11: LEXER: Found symbol: '#21' with value: '='
+DEBUG - parser_recovery_A.mj:20:13: LEXER: Found symbol: '#8' with value: 'if'
+WARN  - parser_recovery_A.mj:19:14: PARSER: Invalid assignment statement! Parsing continued...
+ERROR - parser_recovery_A.mj:20:13: PARSER: Syntax error!
+DEBUG - parser_recovery_A.mj:20:16: LEXER: Found symbol: '#42' with value: '('
+DEBUG - parser_recovery_A.mj:20:17: LEXER: Found symbol: '#55' with value: 'x'
+DEBUG - parser_recovery_A.mj:20:19: LEXER: Found symbol: '#29' with value: '=='
+DEBUG - parser_recovery_A.mj:20:22: LEXER: Found symbol: '#55' with value: 'y'
+DEBUG - parser_recovery_A.mj:20:23: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - parser_recovery_A.mj:20:25: LEXER: Found symbol: '#55' with value: 'x'
+DEBUG - parser_recovery_A.mj:20:27: LEXER: Found symbol: '#21' with value: '='
+DEBUG - parser_recovery_A.mj:20:29: LEXER: Found symbol: '#52' with value: '2'
+DEBUG - parser_recovery_A.mj:20:30: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_recovery_A.mj:21:5: LEXER: Found symbol: '#47' with value: '}'
+DEBUG - parser_recovery_A.mj:22:1: LEXER: Found symbol: '#47' with value: '}'
+DEBUG - parser_recovery_A.mj:22:2: LEXER: Found symbol: '#0' with value: ''
+WARN  - parser_recovery_A.mj:20:13: PARSER: Invalid assignment statement! Parsing continued...
+DEBUG - parser_recovery_A.mj:22:2: LEXER: Found symbol: '#0' with value: ''
+INFO  - Abstract syntax tree:
+Program(
+  ProgramHeader(
+   error_a
+  ) [ProgramHeader]
+  NoProgramDeclarations(
+  ) [NoProgramDeclarations]
+  MultipleMethodDeclarations(
+    NoMethodDeclarations(
+    ) [NoMethodDeclarations]
+    MethodDeclaration(
+      MethodHeader(
+        ReturnVoid(
+        ) [ReturnVoid]
+       main
+      ) [MethodHeader]
+      NoFormalParameters(
+      ) [NoFormalParameters]
+      MultipleLocalVarDeclarations(
+        MultipleLocalVarDeclarations(
+          MultipleLocalVarDeclarations(
+            MultipleLocalVarDeclarations(
+              MultipleLocalVarDeclarations(
+                MultipleLocalVarDeclarations(
+                  MultipleLocalVarDeclarations(
+                    NoLocalVarDeclarations(
+                    ) [NoLocalVarDeclarations]
+                    ErrorLocalVarDeclaration(
+                    ) [ErrorLocalVarDeclaration]
+                  ) [MultipleLocalVarDeclarations]
+                  LocalVarDeclaration(
+                    Type(
+                     int
+                    ) [Type]
+                    SingleLocalVariable(
+                      LocalVariable(
+                       p
+                        NoArrayBrackets(
+                        ) [NoArrayBrackets]
+                      ) [LocalVariable]
+                    ) [SingleLocalVariable]
+                  ) [LocalVarDeclaration]
+                ) [MultipleLocalVarDeclarations]
+                LocalVarDeclaration(
+                  Type(
+                   int
+                  ) [Type]
+                  SingleLocalVariable(
+                    LocalVariable(
+                     q
+                      NoArrayBrackets(
+                      ) [NoArrayBrackets]
+                    ) [LocalVariable]
+                  ) [SingleLocalVariable]
+                ) [LocalVarDeclaration]
+              ) [MultipleLocalVarDeclarations]
+              ErrorLocalVarDeclaration(
+              ) [ErrorLocalVarDeclaration]
+            ) [MultipleLocalVarDeclarations]
+            LocalVarDeclaration(
+              Type(
+               int
+              ) [Type]
+              MultipleLocalVariables(
+                MultipleLocalVariables(
+                  MultipleLocalVariables(
+                    MultipleLocalVariables(
+                      MultipleLocalVariables(
+                        SingleLocalVariable(
+                          LocalVariable(
+                           a
+                            NoArrayBrackets(
+                            ) [NoArrayBrackets]
+                          ) [LocalVariable]
+                        ) [SingleLocalVariable]
+                        ErrorLocalVariable(
+                        ) [ErrorLocalVariable]
+                      ) [MultipleLocalVariables]
+                      LocalVariable(
+                       b
+                        NoArrayBrackets(
+                        ) [NoArrayBrackets]
+                      ) [LocalVariable]
+                    ) [MultipleLocalVariables]
+                    LocalVariable(
+                     d
+                      NoArrayBrackets(
+                      ) [NoArrayBrackets]
+                    ) [LocalVariable]
+                  ) [MultipleLocalVariables]
+                  ErrorLocalVariable(
+                  ) [ErrorLocalVariable]
+                ) [MultipleLocalVariables]
+                LocalVariable(
+                 c
+                  NoArrayBrackets(
+                  ) [NoArrayBrackets]
+                ) [LocalVariable]
+              ) [MultipleLocalVariables]
+            ) [LocalVarDeclaration]
+          ) [MultipleLocalVarDeclarations]
+          LocalVarDeclaration(
+            Type(
+             int
+            ) [Type]
+            MultipleLocalVariables(
+              MultipleLocalVariables(
+                SingleLocalVariable(
+                  LocalVariable(
+                   c
+                    NoArrayBrackets(
+                    ) [NoArrayBrackets]
+                  ) [LocalVariable]
+                ) [SingleLocalVariable]
+                LocalVariable(
+                 d
+                  NoArrayBrackets(
+                  ) [NoArrayBrackets]
+                ) [LocalVariable]
+              ) [MultipleLocalVariables]
+              ErrorLocalVariable(
+              ) [ErrorLocalVariable]
+            ) [MultipleLocalVariables]
+          ) [LocalVarDeclaration]
+        ) [MultipleLocalVarDeclarations]
+        LocalVarDeclaration(
+          Type(
+           int
+          ) [Type]
+          MultipleLocalVariables(
+            SingleLocalVariable(
+              LocalVariable(
+               x
+                NoArrayBrackets(
+                ) [NoArrayBrackets]
+              ) [LocalVariable]
+            ) [SingleLocalVariable]
+            LocalVariable(
+             y
+              NoArrayBrackets(
+              ) [NoArrayBrackets]
+            ) [LocalVariable]
+          ) [MultipleLocalVariables]
+        ) [LocalVarDeclaration]
+      ) [MultipleLocalVarDeclarations]
+      MethodStatementListStart(
+      ) [MethodStatementListStart]
+      MultipleStatements(
+        MultipleStatements(
+          MultipleStatements(
+            MultipleStatements(
+              MultipleStatements(
+                NoStatements(
+                ) [NoStatements]
+                DesignatorBasedStatement(
+                  AssignmentDesignatorStatement(
+                    AssignmentHeader(
+                      IdentifierDesignator(
+                       x
+                      ) [IdentifierDesignator]
+                    ) [AssignmentHeader]
+                    ErrorAssignmentFooter(
+                    ) [ErrorAssignmentFooter]
+                  ) [AssignmentDesignatorStatement]
+                ) [DesignatorBasedStatement]
+              ) [MultipleStatements]
+              DesignatorBasedStatement(
+                AssignmentDesignatorStatement(
+                  AssignmentHeader(
+                    IdentifierDesignator(
+                     x
+                    ) [IdentifierDesignator]
+                  ) [AssignmentHeader]
+                  ErrorAssignmentFooter(
+                  ) [ErrorAssignmentFooter]
+                ) [AssignmentDesignatorStatement]
+              ) [DesignatorBasedStatement]
+            ) [MultipleStatements]
+            DesignatorBasedStatement(
+              AssignmentDesignatorStatement(
+                AssignmentHeader(
+                  IdentifierDesignator(
+                   x
+                  ) [IdentifierDesignator]
+                ) [AssignmentHeader]
+                ErrorAssignmentFooter(
+                ) [ErrorAssignmentFooter]
+              ) [AssignmentDesignatorStatement]
+            ) [DesignatorBasedStatement]
+          ) [MultipleStatements]
+          DesignatorBasedStatement(
+            AssignmentDesignatorStatement(
+              AssignmentHeader(
+                IdentifierDesignator(
+                 x
+                ) [IdentifierDesignator]
+              ) [AssignmentHeader]
+              ErrorAssignmentFooter(
+              ) [ErrorAssignmentFooter]
+            ) [AssignmentDesignatorStatement]
+          ) [DesignatorBasedStatement]
+        ) [MultipleStatements]
+        DesignatorBasedStatement(
+          AssignmentDesignatorStatement(
+            AssignmentHeader(
+              IdentifierDesignator(
+               x
+              ) [IdentifierDesignator]
+            ) [AssignmentHeader]
+            ErrorAssignmentFooter(
+            ) [ErrorAssignmentFooter]
+          ) [AssignmentDesignatorStatement]
+        ) [DesignatorBasedStatement]
+      ) [MultipleStatements]
+    ) [MethodDeclaration]
+  ) [MultipleMethodDeclarations]
+) [Program]

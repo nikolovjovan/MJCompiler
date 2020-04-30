@@ -1,0 +1,14 @@
+Joe
+Baker: Meave
+Butcher: Eric
+Butcher: Samuel
+Baker: Miranda
+Good
+sw = Butcher: Samuel
+Joe
+Shop: Butter; Owner: Baker: Meave
+Butcher: Eric
+Shop: Meat; Owner: Butcher: Samuel; Helper: Butcher: Eric
+Shop: Bread; Owner: Baker: Miranda
+
+Completion took 0 ms

@@ -1,0 +1,382 @@
+DEBUG - july302.mj:1:1: LEXER: Found symbol: '#2' with value: 'program'
+DEBUG - july302.mj:1:9: LEXER: Found symbol: '#55' with value: 'test302'
+DEBUG - july302.mj:2:5: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - july302.mj:2:9: LEXER: Found symbol: '#55' with value: 'niz'
+DEBUG - july302.mj:2:12: LEXER: Found symbol: '#44' with value: '['
+DEBUG - july302.mj:2:13: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - july302.mj:2:14: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - july302.mj:3:5: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - july302.mj:3:9: LEXER: Found symbol: '#55' with value: 'i'
+DEBUG - july302.mj:3:10: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - july302.mj:4:1: LEXER: Found symbol: '#46' with value: '{'
+DEBUG - july302.mj:5:5: LEXER: Found symbol: '#13' with value: 'void'
+DEBUG - july302.mj:5:10: LEXER: Found symbol: '#55' with value: 'main'
+DEBUG - july302.mj:5:14: LEXER: Found symbol: '#42' with value: '('
+DEBUG - july302.mj:5:15: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - july302.mj:6:5: LEXER: Found symbol: '#46' with value: '{'
+DEBUG - july302.mj:7:9: LEXER: Found symbol: '#55' with value: 'niz'
+DEBUG - july302.mj:7:13: LEXER: Found symbol: '#21' with value: '='
+DEBUG - july302.mj:7:15: LEXER: Found symbol: '#9' with value: 'new'
+DEBUG - july302.mj:7:19: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - july302.mj:7:22: LEXER: Found symbol: '#44' with value: '['
+DEBUG - july302.mj:7:23: LEXER: Found symbol: '#52' with value: '2'
+DEBUG - july302.mj:7:24: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - july302.mj:7:25: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - july302.mj:8:9: LEXER: Found symbol: '#55' with value: 'niz'
+DEBUG - july302.mj:8:12: LEXER: Found symbol: '#44' with value: '['
+DEBUG - july302.mj:8:13: LEXER: Found symbol: '#52' with value: '0'
+DEBUG - july302.mj:8:14: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - july302.mj:8:16: LEXER: Found symbol: '#21' with value: '='
+DEBUG - july302.mj:8:18: LEXER: Found symbol: '#52' with value: '5'
+DEBUG - july302.mj:8:19: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - july302.mj:9:9: LEXER: Found symbol: '#55' with value: 'niz'
+DEBUG - july302.mj:9:12: LEXER: Found symbol: '#44' with value: '['
+DEBUG - july302.mj:9:13: LEXER: Found symbol: '#52' with value: '1'
+DEBUG - july302.mj:9:14: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - july302.mj:9:16: LEXER: Found symbol: '#21' with value: '='
+DEBUG - july302.mj:9:18: LEXER: Found symbol: '#52' with value: '2'
+DEBUG - july302.mj:9:19: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - july302.mj:10:9: LEXER: Found symbol: '#17' with value: 'foreach'
+DEBUG - july302.mj:10:16: LEXER: Found symbol: '#42' with value: '('
+DEBUG - july302.mj:10:17: LEXER: Found symbol: '#55' with value: 'i'
+DEBUG - july302.mj:10:18: LEXER: Found symbol: '#48' with value: ':'
+DEBUG - july302.mj:10:20: LEXER: Found symbol: '#55' with value: 'niz'
+DEBUG - july302.mj:10:23: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - july302.mj:11:13: LEXER: Found symbol: '#10' with value: 'print'
+DEBUG - july302.mj:11:18: LEXER: Found symbol: '#42' with value: '('
+DEBUG - july302.mj:11:19: LEXER: Found symbol: '#55' with value: 'i'
+DEBUG - july302.mj:11:20: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - july302.mj:11:21: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - july302.mj:12:5: LEXER: Found symbol: '#47' with value: '}'
+DEBUG - july302.mj:13:1: LEXER: Found symbol: '#47' with value: '}'
+DEBUG - july302.mj:13:2: LEXER: Found symbol: '#0' with value: ''
+DEBUG - july302.mj:13:2: LEXER: Found symbol: '#0' with value: ''
+INFO  - Abstract syntax tree: Program(
+  ProgramHeader(
+   test302
+  ) [ProgramHeader]
+  MultipleProgramDeclarations(
+    MultipleProgramDeclarations(
+      NoProgramDeclarations(
+      ) [NoProgramDeclarations]
+      VarProgramDeclaration(
+        VarDeclaration(
+          Type(
+           int
+          ) [Type]
+          SingleVariable(
+            Variable(
+             niz
+              ArrayBrackets(
+              ) [ArrayBrackets]
+            ) [Variable]
+          ) [SingleVariable]
+        ) [VarDeclaration]
+      ) [VarProgramDeclaration]
+    ) [MultipleProgramDeclarations]
+    VarProgramDeclaration(
+      VarDeclaration(
+        Type(
+         int
+        ) [Type]
+        SingleVariable(
+          Variable(
+           i
+            NoArrayBrackets(
+            ) [NoArrayBrackets]
+          ) [Variable]
+        ) [SingleVariable]
+      ) [VarDeclaration]
+    ) [VarProgramDeclaration]
+  ) [MultipleProgramDeclarations]
+  MultipleMethodDeclarations(
+    NoMethodDeclarations(
+    ) [NoMethodDeclarations]
+    MethodDeclaration(
+      MethodHeader(
+        ReturnVoid(
+        ) [ReturnVoid]
+       main
+      ) [MethodHeader]
+      NoFormalParameters(
+      ) [NoFormalParameters]
+      NoLocalVarDeclarations(
+      ) [NoLocalVarDeclarations]
+      MethodStatementListStart(
+      ) [MethodStatementListStart]
+      MultipleStatements(
+        MultipleStatements(
+          MultipleStatements(
+            MultipleStatements(
+              NoStatements(
+              ) [NoStatements]
+              DesignatorBasedStatement(
+                AssignmentDesignatorStatement(
+                  AssignmentHeader(
+                    IdentifierDesignator(
+                     niz
+                    ) [IdentifierDesignator]
+                  ) [AssignmentHeader]
+                  AssignmentFooter(
+                    AssignOperator(
+                    ) [AssignOperator]
+                    LeftExpression(
+                      SingleTermExpression(
+                        NoSign(
+                        ) [NoSign]
+                        SingleFactorTerm(
+                          AllocatorFactor(
+                            Type(
+                             int
+                            ) [Type]
+                            SingleArrayIndexer(
+                              ArrayIndexer(
+                                LeftExpression(
+                                  SingleTermExpression(
+                                    NoSign(
+                                    ) [NoSign]
+                                    SingleFactorTerm(
+                                      ConstantFactor(
+                                        IntConstantFactor(
+                                         2
+                                        ) [IntConstantFactor]
+                                      ) [ConstantFactor]
+                                    ) [SingleFactorTerm]
+                                  ) [SingleTermExpression]
+                                ) [LeftExpression]
+                              ) [ArrayIndexer]
+                            ) [SingleArrayIndexer]
+                          ) [AllocatorFactor]
+                        ) [SingleFactorTerm]
+                      ) [SingleTermExpression]
+                    ) [LeftExpression]
+                  ) [AssignmentFooter]
+                ) [AssignmentDesignatorStatement]
+              ) [DesignatorBasedStatement]
+            ) [MultipleStatements]
+            DesignatorBasedStatement(
+              AssignmentDesignatorStatement(
+                AssignmentHeader(
+                  ElementAccessDesignator(
+                    IdentifierDesignator(
+                     niz
+                    ) [IdentifierDesignator]
+                    ArrayIndexer(
+                      LeftExpression(
+                        SingleTermExpression(
+                          NoSign(
+                          ) [NoSign]
+                          SingleFactorTerm(
+                            ConstantFactor(
+                              IntConstantFactor(
+                               0
+                              ) [IntConstantFactor]
+                            ) [ConstantFactor]
+                          ) [SingleFactorTerm]
+                        ) [SingleTermExpression]
+                      ) [LeftExpression]
+                    ) [ArrayIndexer]
+                  ) [ElementAccessDesignator]
+                ) [AssignmentHeader]
+                AssignmentFooter(
+                  AssignOperator(
+                  ) [AssignOperator]
+                  LeftExpression(
+                    SingleTermExpression(
+                      NoSign(
+                      ) [NoSign]
+                      SingleFactorTerm(
+                        ConstantFactor(
+                          IntConstantFactor(
+                           5
+                          ) [IntConstantFactor]
+                        ) [ConstantFactor]
+                      ) [SingleFactorTerm]
+                    ) [SingleTermExpression]
+                  ) [LeftExpression]
+                ) [AssignmentFooter]
+              ) [AssignmentDesignatorStatement]
+            ) [DesignatorBasedStatement]
+          ) [MultipleStatements]
+          DesignatorBasedStatement(
+            AssignmentDesignatorStatement(
+              AssignmentHeader(
+                ElementAccessDesignator(
+                  IdentifierDesignator(
+                   niz
+                  ) [IdentifierDesignator]
+                  ArrayIndexer(
+                    LeftExpression(
+                      SingleTermExpression(
+                        NoSign(
+                        ) [NoSign]
+                        SingleFactorTerm(
+                          ConstantFactor(
+                            IntConstantFactor(
+                             1
+                            ) [IntConstantFactor]
+                          ) [ConstantFactor]
+                        ) [SingleFactorTerm]
+                      ) [SingleTermExpression]
+                    ) [LeftExpression]
+                  ) [ArrayIndexer]
+                ) [ElementAccessDesignator]
+              ) [AssignmentHeader]
+              AssignmentFooter(
+                AssignOperator(
+                ) [AssignOperator]
+                LeftExpression(
+                  SingleTermExpression(
+                    NoSign(
+                    ) [NoSign]
+                    SingleFactorTerm(
+                      ConstantFactor(
+                        IntConstantFactor(
+                         2
+                        ) [IntConstantFactor]
+                      ) [ConstantFactor]
+                    ) [SingleFactorTerm]
+                  ) [SingleTermExpression]
+                ) [LeftExpression]
+              ) [AssignmentFooter]
+            ) [AssignmentDesignatorStatement]
+          ) [DesignatorBasedStatement]
+        ) [MultipleStatements]
+        ForEachStatement(
+          ForEachStatementHeader(
+            ForEachStatementHeaderStart(
+            ) [ForEachStatementHeaderStart]
+           i
+            IdentifierDesignator(
+             niz
+            ) [IdentifierDesignator]
+          ) [ForEachStatementHeader]
+          PrintStatement(
+            LeftExpression(
+              SingleTermExpression(
+                NoSign(
+                ) [NoSign]
+                SingleFactorTerm(
+                  DesignatorFactor(
+                    IdentifierDesignator(
+                     i
+                    ) [IdentifierDesignator]
+                  ) [DesignatorFactor]
+                ) [SingleFactorTerm]
+              ) [SingleTermExpression]
+            ) [LeftExpression]
+            NoPrintWidth(
+            ) [NoPrintWidth]
+          ) [PrintStatement]
+        ) [ForEachStatement]
+      ) [MultipleStatements]
+    ) [MethodDeclaration]
+  ) [MultipleMethodDeclarations]
+) [Program]
+DEBUG - july302.mj:1: SEMANTIC ANALYZER: Visited node: 'ProgramHeader'.
+DEBUG - july302.mj:2: SEMANTIC ANALYZER: Visited node: 'Type'.
+DEBUG - july302.mj:2: SEMANTIC ANALYZER: Visited node: 'Variable'.
+INFO  - july302.mj:2: SEMANTIC ANALYZER: Defined int array variable 'niz'. Symbol node: Variable 'niz': type = 'array of int', adr = 0, level = 0
+DEBUG - july302.mj:3: SEMANTIC ANALYZER: Visited node: 'Type'.
+DEBUG - july302.mj:3: SEMANTIC ANALYZER: Visited node: 'Variable'.
+INFO  - july302.mj:3: SEMANTIC ANALYZER: Defined int variable 'i'. Symbol node: Variable 'i': type = 'int', adr = 1, level = 0
+DEBUG - SEMANTIC ANALYZER: Visited node: 'ReturnVoid'.
+DEBUG - july302.mj:5: SEMANTIC ANALYZER: Visited node: 'MethodHeader'.
+DEBUG - SEMANTIC ANALYZER: Visited node: 'MethodStatementListStart'.
+DEBUG - july302.mj:7: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - july302.mj:7: SEMANTIC ANALYZER: Found global variable usage 'niz'! Symbol node: Variable 'niz': type = 'array of int', adr = 0, level = 0
+DEBUG - july302.mj:7: SEMANTIC ANALYZER: Visited node: 'Type'.
+DEBUG - july302.mj:7: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - july302.mj:7: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - july302.mj:22: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - july302.mj:22: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - july302.mj:7: SEMANTIC ANALYZER: Visited node: 'AllocatorFactor'.
+DEBUG - july302.mj:7: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - july302.mj:13: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - july302.mj:13: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - july302.mj:7: SEMANTIC ANALYZER: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - july302.mj:8: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - july302.mj:8: SEMANTIC ANALYZER: Found global variable usage 'niz'! Symbol node: Variable 'niz': type = 'array of int', adr = 0, level = 0
+DEBUG - july302.mj:8: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - july302.mj:8: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - july302.mj:12: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - july302.mj:12: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - july302.mj:8: SEMANTIC ANALYZER: Visited node: 'ElementAccessDesignator'.
+INFO  - july302.mj:8: SEMANTIC ANALYZER: Found array element access 'niz[0]'! Symbol node: Array element 'niz[0]': type = 'int', adr = -1, level = -1
+DEBUG - july302.mj:8: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - july302.mj:8: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - july302.mj:16: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - july302.mj:16: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - july302.mj:8: SEMANTIC ANALYZER: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - july302.mj:9: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - july302.mj:9: SEMANTIC ANALYZER: Found global variable usage 'niz'! Symbol node: Variable 'niz': type = 'array of int', adr = 0, level = 0
+DEBUG - july302.mj:9: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - july302.mj:9: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - july302.mj:12: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - july302.mj:12: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - july302.mj:9: SEMANTIC ANALYZER: Visited node: 'ElementAccessDesignator'.
+INFO  - july302.mj:9: SEMANTIC ANALYZER: Found array element access 'niz[1]'! Symbol node: Array element 'niz[1]': type = 'int', adr = -1, level = -1
+DEBUG - july302.mj:9: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - july302.mj:9: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - july302.mj:16: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - july302.mj:16: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - july302.mj:9: SEMANTIC ANALYZER: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - july302.mj:10: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - july302.mj:10: SEMANTIC ANALYZER: Found global variable usage 'niz'! Symbol node: Variable 'niz': type = 'array of int', adr = 0, level = 0
+DEBUG - july302.mj:10: SEMANTIC ANALYZER: Visited node: 'ForEachStatementHeader'.
+DEBUG - july302.mj:11: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - july302.mj:11: SEMANTIC ANALYZER: Found global variable usage 'i'! Symbol node: Variable 'i': type = 'int', adr = 1, level = 0
+DEBUG - july302.mj:11: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - july302.mj:11: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - july302.mj:18: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - july302.mj:18: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - july302.mj:18: SEMANTIC ANALYZER: Visited node: 'PrintStatement'.
+DEBUG - july302.mj:10: SEMANTIC ANALYZER: Visited node: 'ForEachStatement'.
+DEBUG - july302.mj:5: SEMANTIC ANALYZER: Visited node: 'MethodDeclaration'.
+INFO  - july302.mj:5: SEMANTIC ANALYZER: Defined method 'main'. Symbol node: Method 'main': type = 'void', adr = 0, level = 0
+DEBUG - july302.mj:1: SEMANTIC ANALYZER: Visited node: 'Program'.
+INFO  - july302.mj:1: SEMANTIC ANALYZER: Defined program 'test302'. Symbol node: Program 'test302': type = 'none', adr = 0, level = 1
+  Variable 'niz': type = 'array of int', adr = 0, level = 0
+  Variable 'i': type = 'int', adr = 1, level = 0
+  Method 'main': type = 'void', adr = 0, level = 0
+DEBUG - july302.mj:1: CODE GENERATOR: Visited node: 'ProgramHeader'.
+DEBUG - july302.mj:2: CODE GENERATOR: Visited node: 'Variable'.
+DEBUG - july302.mj:3: CODE GENERATOR: Visited node: 'Variable'.
+DEBUG - july302.mj:5: CODE GENERATOR: Visited node: 'MethodHeader'.
+DEBUG - july302.mj:7: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - july302.mj:7: CODE GENERATOR: Visited node: 'AssignmentHeader'.
+DEBUG - july302.mj:7: CODE GENERATOR: Visited node: 'ConstantFactor'.
+DEBUG - july302.mj:22: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - july302.mj:7: CODE GENERATOR: Visited node: 'AllocatorFactor'.
+DEBUG - july302.mj:13: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - july302.mj:7: CODE GENERATOR: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - july302.mj:8: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - july302.mj:8: CODE GENERATOR: Visited node: 'ConstantFactor'.
+DEBUG - july302.mj:12: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - july302.mj:8: CODE GENERATOR: Visited node: 'ElementAccessDesignator'.
+DEBUG - july302.mj:8: CODE GENERATOR: Visited node: 'AssignmentHeader'.
+DEBUG - july302.mj:8: CODE GENERATOR: Visited node: 'ConstantFactor'.
+DEBUG - july302.mj:16: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - july302.mj:8: CODE GENERATOR: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - july302.mj:9: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - july302.mj:9: CODE GENERATOR: Visited node: 'ConstantFactor'.
+DEBUG - july302.mj:12: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - july302.mj:9: CODE GENERATOR: Visited node: 'ElementAccessDesignator'.
+DEBUG - july302.mj:9: CODE GENERATOR: Visited node: 'AssignmentHeader'.
+DEBUG - july302.mj:9: CODE GENERATOR: Visited node: 'ConstantFactor'.
+DEBUG - july302.mj:16: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - july302.mj:9: CODE GENERATOR: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - CODE GENERATOR: Visited node: 'ForEachStatementHeaderStart'.
+DEBUG - july302.mj:10: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - july302.mj:10: CODE GENERATOR: Visited node: 'ForEachStatementHeader'.
+DEBUG - july302.mj:10: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - july302.mj:11: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - july302.mj:10: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - july302.mj:11: CODE GENERATOR: Visited node: 'DesignatorFactor'.
+DEBUG - july302.mj:18: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - july302.mj:18: CODE GENERATOR: Visited node: 'PrintStatement'.
+DEBUG - july302.mj:10: CODE GENERATOR: Visited node: 'ForEachStatement'.
+DEBUG - july302.mj:10: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - july302.mj:10: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - july302.mj:5: CODE GENERATOR: Visited node: 'MethodDeclaration'.
+DEBUG - july302.mj:1: CODE GENERATOR: Visited node: 'Program'.

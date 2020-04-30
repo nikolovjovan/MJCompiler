@@ -1,0 +1,37 @@
+// initial grammar test
+program Program
+    abstract class A {
+        public int x[], y[];
+        { // this was missing in original example...
+            public abstract int getValue(int a);
+        }
+    }
+    const int pi = 3, e = 2;
+    class B extends A {
+        public int i;
+        {
+            public int getValue(int a) int b; bool c; {
+                return this.i + this.x[0] + a;
+            }
+            public void m() {}
+        }
+    }
+    class C extends B { public B theA; public int a; }
+{
+    void main() B b; C c; int i; int x[]; {
+        b = new B;
+        b.x = new int[5];
+        b.y = new int[5];
+        c = new C;
+        c.theA = b;
+        c.x = new int[5];
+        x = new int[3];
+        read(c.i);
+        for(i=0; i<5; i++) {
+            read(c.x[i]);
+            read(c.theA.x[i]);
+        }
+        print(c.getValue(c.theA.x[0]));
+        c.m();
+    }
+}

@@ -1,0 +1,82 @@
+Compiling source file: D:\Documents\Fakultet\7. semestar\13E114PP1\Projekat\MJCompiler\test\generator\generator_C3.mj
+Syntax analysis completed without errors!
+Starting semantic analysis...
+Found abstract class usage 'A' at line 10! Symbol node: Type 'A': type = 'abstract class', adr = 0, level = 0
+Found local variable usage 'this' at line 14! Symbol node: Variable 'this': , adr = 0, level = 1
+Found class 'B' field usage 'i' at line 14! Symbol node: Field 'i': type = 'int', adr = 3, level = 1, parent = 'B', access modifier = public
+Found local variable usage 'this' at line 14! Symbol node: Variable 'this': , adr = 0, level = 1
+Found class 'A' field usage 'x' at line 14! Symbol node: Field 'x': type = 'array of int', adr = 1, level = 1, parent = 'A', access modifier = public
+Found array element access 'this.x[0]' at line 14! Symbol node: Array element 'this.x[0]': type = 'int', adr = -1, level = -1
+Found formal parameter usage 'a' at line 14! Symbol node: Formal parameter 'a': type = 'int', adr = 1, level = 1
+Found local variable usage 'b' at line 22! Symbol node: Variable 'b': type = 'class', adr = 0, level = 1
+Found local variable usage 'b' at line 23! Symbol node: Variable 'b': type = 'class', adr = 0, level = 1
+Found class 'A' field usage 'x' at line 23! Symbol node: Field 'x': type = 'array of int', adr = 1, level = 1, parent = 'A', access modifier = public
+Found local variable usage 'b' at line 24! Symbol node: Variable 'b': type = 'class', adr = 0, level = 1
+Found class 'A' field usage 'y' at line 24! Symbol node: Field 'y': type = 'array of int', adr = 2, level = 1, parent = 'A', access modifier = public
+Found local variable usage 'c' at line 25! Symbol node: Variable 'c': type = 'class', adr = 1, level = 1
+Found local variable usage 'c' at line 26! Symbol node: Variable 'c': type = 'class', adr = 1, level = 1
+Found class 'C' field usage 'theA' at line 26! Symbol node: Field 'theA': type = 'class', adr = 4, level = 1, parent = 'C', access modifier = public
+Found local variable usage 'b' at line 26! Symbol node: Variable 'b': type = 'class', adr = 0, level = 1
+Found local variable usage 'c' at line 27! Symbol node: Variable 'c': type = 'class', adr = 1, level = 1
+Found class 'A' field usage 'x' at line 27! Symbol node: Field 'x': type = 'array of int', adr = 1, level = 1, parent = 'A', access modifier = public
+Found local variable usage 'x' at line 28! Symbol node: Variable 'x': type = 'array of int', adr = 3, level = 1
+Found local variable usage 'c' at line 29! Symbol node: Variable 'c': type = 'class', adr = 1, level = 1
+Found class 'B' field usage 'i' at line 29! Symbol node: Field 'i': type = 'int', adr = 3, level = 1, parent = 'B', access modifier = public
+Found local variable usage 'i' at line 30! Symbol node: Variable 'i': type = 'int', adr = 2, level = 1
+Found local variable usage 'i' at line 30! Symbol node: Variable 'i': type = 'int', adr = 2, level = 1
+Found local variable usage 'i' at line 30! Symbol node: Variable 'i': type = 'int', adr = 2, level = 1
+Found for loop 'none' at line 30!
+Found local variable usage 'c' at line 31! Symbol node: Variable 'c': type = 'class', adr = 1, level = 1
+Found class 'A' field usage 'x' at line 31! Symbol node: Field 'x': type = 'array of int', adr = 1, level = 1, parent = 'A', access modifier = public
+Found local variable usage 'i' at line 31! Symbol node: Variable 'i': type = 'int', adr = 2, level = 1
+Found array element access 'i[i]' at line 31! Symbol node: Array element 'i[i]': type = 'int', adr = -1, level = -1
+Found local variable usage 'c' at line 32! Symbol node: Variable 'c': type = 'class', adr = 1, level = 1
+Found class 'C' field usage 'theA' at line 32! Symbol node: Field 'theA': type = 'class', adr = 4, level = 1, parent = 'C', access modifier = public
+Found class 'A' field usage 'x' at line 32! Symbol node: Field 'x': type = 'array of int', adr = 1, level = 1, parent = 'A', access modifier = public
+Found local variable usage 'i' at line 32! Symbol node: Variable 'i': type = 'int', adr = 2, level = 1
+Found array element access 'i[i]' at line 32! Symbol node: Array element 'i[i]': type = 'int', adr = -1, level = -1
+Found local variable usage 'c' at line 34! Symbol node: Variable 'c': type = 'class', adr = 1, level = 1
+Found class 'B' field usage 'getValue' at line 34! Symbol node: Method 'getValue': type = 'int', adr = 0, level = 2, parent = 'B', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 'a': type = 'int', adr = 1, level = 1
+  Variable 'b': type = 'int', adr = 2, level = 2
+  Variable 'c': type = 'bool', adr = 3, level = 2
+Found local variable usage 'c' at line 34! Symbol node: Variable 'c': type = 'class', adr = 1, level = 1
+Found class 'C' field usage 'theA' at line 34! Symbol node: Field 'theA': type = 'class', adr = 4, level = 1, parent = 'C', access modifier = public
+Found class 'A' field usage 'x' at line 34! Symbol node: Field 'x': type = 'array of int', adr = 1, level = 1, parent = 'A', access modifier = public
+Found array element access 'c.theA.x[0]' at line 34! Symbol node: Array element 'c.theA.x[0]': type = 'int', adr = -1, level = -1
+Found local variable usage 'c' at line 35! Symbol node: Variable 'c': type = 'class', adr = 1, level = 1
+Found class 'B' field usage 'm' at line 35! Symbol node: Method 'm': type = 'void', adr = 0, level = 1, parent = 'B', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+Semantic analysis completed without errors!
+====================================================================================================
+    2 symbolic constant(s) defined
+    0 global variable(s) defined
+    3 class(es) defined
+    1 global method(s) defined
+======================================== SYMBOL TABLE DUMP =========================================
+Type 'int': type = 'int', adr = -1, level = -1
+Type 'char': type = 'char', adr = -1, level = -1
+Type 'bool': type = 'bool', adr = -1, level = -1
+Constant 'null': type = 'class', adr = 0, level = 0
+Constant 'eol': type = 'char', adr = 10, level = 0
+Method 'chr': type = 'char', adr = 0, level = 1
+  Formal parameter 'i': type = 'int', adr = 0, level = 1
+Method 'ord': type = 'int', adr = 0, level = 1
+  Formal parameter 'ch': type = 'char', adr = 0, level = 1
+Method 'len': type = 'int', adr = 0, level = 1
+  Formal parameter 'arr': type = 'array of none', adr = 0, level = 1
+Program 'Program': type = 'none', adr = 0, level = 1
+  Type 'A': type = 'abstract class', adr = 0, level = 0
+  Constant 'pi': type = 'int', adr = 3, level = 0
+  Constant 'e': type = 'int', adr = 2, level = 0
+  Type 'B': type = 'class', adr = 0, level = 0
+  Type 'C': type = 'class', adr = 0, level = 0
+  Method 'main': type = 'void', adr = 0, level = 0
+    Variable 'b': type = 'class', adr = 0, level = 1
+    Variable 'c': type = 'class', adr = 1, level = 1
+    Variable 'i': type = 'int', adr = 2, level = 1
+    Variable 'x': type = 'array of int', adr = 3, level = 1
+
+Generating bytecode file: D:\Documents\Fakultet\7. semestar\13E114PP1\Projekat\MJCompiler\test\generator_C3.obj
+Compilation finished!

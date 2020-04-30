@@ -20,7 +20,7 @@ public class MJParserTest extends MJTest {
         if (parser.getErrorCount() == 0) {
             System.out.println("Syntax analysis completed without errors.");
         } else {
-            System.out.println("Syntax analysis completed with " + parser.getErrorCount() + " error(s)!");
+            System.err.println("Syntax analysis completed with " + parser.getErrorCount() + " error(s)!");
         }
         return prog;
     }
@@ -29,7 +29,7 @@ public class MJParserTest extends MJTest {
     protected String testName() { return "parser"; }
 
     @Override
-    protected void processTestFile(Reader r) throws Exception {
+    protected void processTestInputFile(Reader r) throws Exception {
         parseTestFile(r);
     }
 }

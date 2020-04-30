@@ -1,0 +1,53 @@
+Syntax analysis completed without errors.
+Starting semantic analysis...
+Found global variable usage 'var_b' at line 22! Symbol node: Variable 'var_b': type = 'array of int', adr = 1, level = 0
+Found local variable usage 'local_var_b' at line 23! Symbol node: Variable 'local_var_b': type = 'array of int', adr = 1, level = 1
+Found global variable usage 'var_b' at line 25! Symbol node: Variable 'var_b': type = 'array of int', adr = 1, level = 0
+Found array element access 'var_b[4]' at line 25! Symbol node: Array element 'var_b[4]': type = 'int', adr = -1, level = -1
+Found local variable usage 'local_var_b' at line 26! Symbol node: Variable 'local_var_b': type = 'array of int', adr = 1, level = 1
+Found array element access 'local_var_b[6]' at line 26! Symbol node: Array element 'local_var_b[6]': type = 'int', adr = -1, level = -1
+Found global variable usage 'var_a' at line 28! Symbol node: Variable 'var_a': type = 'int', adr = 0, level = 0
+Found global variable usage 'var_b' at line 28! Symbol node: Variable 'var_b': type = 'array of int', adr = 1, level = 0
+Found array element access 'var_b[2]' at line 28! Symbol node: Array element 'var_b[2]': type = 'int', adr = -1, level = -1
+Found local variable usage 'local_var_a' at line 29! Symbol node: Variable 'local_var_a': type = 'int', adr = 0, level = 1
+Found local variable usage 'local_var_b' at line 29! Symbol node: Variable 'local_var_b': type = 'array of int', adr = 1, level = 1
+Found array element access 'local_var_b[0]' at line 29! Symbol node: Array element 'local_var_b[0]': type = 'int', adr = -1, level = -1
+Found local variable usage 'local_var_a' at line 31! Symbol node: Variable 'local_var_a': type = 'int', adr = 0, level = 1
+Found symbolic constant usage 'a' at line 31! Symbol node: Constant 'a': type = 'int', adr = 20, level = 0
+Found symbolic constant usage 'b' at line 31! Symbol node: Constant 'b': type = 'int', adr = -1, level = 0
+Found global method call 'ord' at line 31! Symbol node: Method 'ord': type = 'int', adr = 0, level = 1
+  Formal parameter 'ch': type = 'char', adr = 0, level = 1
+Found symbolic constant usage 'd' at line 31! Symbol node: Constant 'd': type = 'char', adr = 97, level = 0
+Semantic analysis completed without errors.
+======================================== SYMBOL TABLE DUMP =========================================
+Type 'int': type = 'int', adr = -1, level = -1
+Type 'char': type = 'char', adr = -1, level = -1
+Type 'bool': type = 'bool', adr = -1, level = -1
+Constant 'null': type = 'class', adr = 0, level = 0
+Constant 'eol': type = 'char', adr = 10, level = 0
+Method 'chr': type = 'char', adr = 0, level = 1
+  Formal parameter 'i': type = 'int', adr = 0, level = 1
+Method 'ord': type = 'int', adr = 0, level = 1
+  Formal parameter 'ch': type = 'char', adr = 0, level = 1
+Method 'len': type = 'int', adr = 0, level = 1
+  Formal parameter 'arr': type = 'array of none', adr = 0, level = 1
+Program 'level_a_symbol_detection': type = 'none', adr = 0, level = 1
+  Constant 'a': type = 'int', adr = 20, level = 0
+  Constant 'b': type = 'int', adr = -1, level = 0
+  Constant 'c': type = 'int', adr = 25, level = 0
+  Constant 'd': type = 'char', adr = 97, level = 0
+  Constant 'e': type = 'bool', adr = 1, level = 0
+  Constant 'f': type = 'bool', adr = 0, level = 0
+  Variable 'var_a': type = 'int', adr = 0, level = 0
+  Variable 'var_b': type = 'array of int', adr = 1, level = 0
+  Variable 'var_c': type = 'char', adr = 2, level = 0
+  Variable 'var_d': type = 'array of char', adr = 3, level = 0
+  Variable 'var_e': type = 'char', adr = 4, level = 0
+  Variable 'var_f': type = 'bool', adr = 5, level = 0
+  Method 'main': type = 'void', adr = 0, level = 0
+    Variable 'local_var_a': type = 'int', adr = 0, level = 1
+    Variable 'local_var_b': type = 'array of int', adr = 1, level = 1
+    Variable 'local_var_c': type = 'char', adr = 2, level = 1
+    Variable 'local_var_d': type = 'bool', adr = 3, level = 1
+    Variable 'local_var_e': type = 'array of bool', adr = 4, level = 1
+

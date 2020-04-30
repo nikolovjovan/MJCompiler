@@ -1,0 +1,2060 @@
+DEBUG - test301.mj:3:1: LEXER: Found symbol: '#2' with value: 'program'
+DEBUG - test301.mj:3:9: LEXER: Found symbol: '#55' with value: 'test301'
+DEBUG - test301.mj:5:2: LEXER: Found symbol: '#7' with value: 'const'
+DEBUG - test301.mj:5:8: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - test301.mj:5:12: LEXER: Found symbol: '#55' with value: 'nula'
+DEBUG - test301.mj:5:17: LEXER: Found symbol: '#21' with value: '='
+DEBUG - test301.mj:5:19: LEXER: Found symbol: '#52' with value: '0'
+DEBUG - test301.mj:5:20: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - test301.mj:6:2: LEXER: Found symbol: '#7' with value: 'const'
+DEBUG - test301.mj:6:8: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - test301.mj:6:12: LEXER: Found symbol: '#55' with value: 'jedan'
+DEBUG - test301.mj:6:18: LEXER: Found symbol: '#21' with value: '='
+DEBUG - test301.mj:6:20: LEXER: Found symbol: '#52' with value: '1'
+DEBUG - test301.mj:6:21: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - test301.mj:7:2: LEXER: Found symbol: '#7' with value: 'const'
+DEBUG - test301.mj:7:8: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - test301.mj:7:12: LEXER: Found symbol: '#55' with value: 'pet'
+DEBUG - test301.mj:7:16: LEXER: Found symbol: '#21' with value: '='
+DEBUG - test301.mj:7:18: LEXER: Found symbol: '#52' with value: '5'
+DEBUG - test301.mj:7:19: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - test301.mj:9:2: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - test301.mj:9:6: LEXER: Found symbol: '#55' with value: 'niz'
+DEBUG - test301.mj:9:9: LEXER: Found symbol: '#44' with value: '['
+DEBUG - test301.mj:9:10: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - test301.mj:9:11: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - test301.mj:10:2: LEXER: Found symbol: '#55' with value: 'char'
+DEBUG - test301.mj:10:7: LEXER: Found symbol: '#55' with value: 'nizch'
+DEBUG - test301.mj:10:12: LEXER: Found symbol: '#44' with value: '['
+DEBUG - test301.mj:10:13: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - test301.mj:10:14: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - test301.mj:12:1: LEXER: Found symbol: '#46' with value: '{'
+DEBUG - test301.mj:13:2: LEXER: Found symbol: '#13' with value: 'void'
+DEBUG - test301.mj:13:7: LEXER: Found symbol: '#55' with value: 'main'
+DEBUG - test301.mj:13:11: LEXER: Found symbol: '#42' with value: '('
+DEBUG - test301.mj:13:12: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - test301.mj:14:3: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - test301.mj:14:7: LEXER: Found symbol: '#55' with value: 'bodovi'
+DEBUG - test301.mj:14:13: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - test301.mj:15:2: LEXER: Found symbol: '#46' with value: '{'
+DEBUG - test301.mj:16:3: LEXER: Found symbol: '#55' with value: 'bodovi'
+DEBUG - test301.mj:16:10: LEXER: Found symbol: '#21' with value: '='
+DEBUG - test301.mj:16:12: LEXER: Found symbol: '#52' with value: '0'
+DEBUG - test301.mj:16:13: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - test301.mj:17:3: LEXER: Found symbol: '#55' with value: 'bodovi'
+DEBUG - test301.mj:17:9: LEXER: Found symbol: '#27' with value: '++'
+DEBUG - test301.mj:17:11: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - test301.mj:18:3: LEXER: Found symbol: '#55' with value: 'bodovi'
+DEBUG - test301.mj:18:10: LEXER: Found symbol: '#21' with value: '='
+DEBUG - test301.mj:18:12: LEXER: Found symbol: '#55' with value: 'bodovi'
+DEBUG - test301.mj:18:19: LEXER: Found symbol: '#22' with value: '+'
+DEBUG - test301.mj:18:21: LEXER: Found symbol: '#55' with value: 'jedan'
+DEBUG - test301.mj:18:26: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - test301.mj:19:3: LEXER: Found symbol: '#55' with value: 'bodovi'
+DEBUG - test301.mj:19:10: LEXER: Found symbol: '#21' with value: '='
+DEBUG - test301.mj:19:12: LEXER: Found symbol: '#55' with value: 'bodovi'
+DEBUG - test301.mj:19:19: LEXER: Found symbol: '#24' with value: '*'
+DEBUG - test301.mj:19:21: LEXER: Found symbol: '#55' with value: 'pet'
+DEBUG - test301.mj:19:24: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - test301.mj:20:3: LEXER: Found symbol: '#55' with value: 'bodovi'
+DEBUG - test301.mj:20:9: LEXER: Found symbol: '#28' with value: '--'
+DEBUG - test301.mj:20:11: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - test301.mj:21:3: LEXER: Found symbol: '#10' with value: 'print'
+DEBUG - test301.mj:21:8: LEXER: Found symbol: '#42' with value: '('
+DEBUG - test301.mj:21:9: LEXER: Found symbol: '#55' with value: 'bodovi'
+DEBUG - test301.mj:21:15: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - test301.mj:21:16: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - test301.mj:24:3: LEXER: Found symbol: '#55' with value: 'niz'
+DEBUG - test301.mj:24:7: LEXER: Found symbol: '#21' with value: '='
+DEBUG - test301.mj:24:9: LEXER: Found symbol: '#9' with value: 'new'
+DEBUG - test301.mj:24:13: LEXER: Found symbol: '#55' with value: 'int'
+DEBUG - test301.mj:24:16: LEXER: Found symbol: '#44' with value: '['
+DEBUG - test301.mj:24:17: LEXER: Found symbol: '#52' with value: '3'
+DEBUG - test301.mj:24:18: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - test301.mj:24:19: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - test301.mj:25:3: LEXER: Found symbol: '#55' with value: 'niz'
+DEBUG - test301.mj:25:6: LEXER: Found symbol: '#44' with value: '['
+DEBUG - test301.mj:25:7: LEXER: Found symbol: '#55' with value: 'nula'
+DEBUG - test301.mj:25:11: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - test301.mj:25:13: LEXER: Found symbol: '#21' with value: '='
+DEBUG - test301.mj:25:15: LEXER: Found symbol: '#55' with value: 'jedan'
+DEBUG - test301.mj:25:20: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - test301.mj:26:3: LEXER: Found symbol: '#55' with value: 'niz'
+DEBUG - test301.mj:26:6: LEXER: Found symbol: '#44' with value: '['
+DEBUG - test301.mj:26:7: LEXER: Found symbol: '#52' with value: '1'
+DEBUG - test301.mj:26:8: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - test301.mj:26:10: LEXER: Found symbol: '#21' with value: '='
+DEBUG - test301.mj:26:12: LEXER: Found symbol: '#52' with value: '2'
+DEBUG - test301.mj:26:13: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - test301.mj:27:3: LEXER: Found symbol: '#55' with value: 'niz'
+DEBUG - test301.mj:27:6: LEXER: Found symbol: '#44' with value: '['
+DEBUG - test301.mj:27:7: LEXER: Found symbol: '#55' with value: 'niz'
+DEBUG - test301.mj:27:10: LEXER: Found symbol: '#44' with value: '['
+DEBUG - test301.mj:27:11: LEXER: Found symbol: '#55' with value: 'jedan'
+DEBUG - test301.mj:27:16: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - test301.mj:27:17: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - test301.mj:27:19: LEXER: Found symbol: '#21' with value: '='
+DEBUG - test301.mj:27:21: LEXER: Found symbol: '#55' with value: 'niz'
+DEBUG - test301.mj:27:24: LEXER: Found symbol: '#44' with value: '['
+DEBUG - test301.mj:27:25: LEXER: Found symbol: '#55' with value: 'niz'
+DEBUG - test301.mj:27:28: LEXER: Found symbol: '#44' with value: '['
+DEBUG - test301.mj:27:29: LEXER: Found symbol: '#52' with value: '0'
+DEBUG - test301.mj:27:30: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - test301.mj:27:31: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - test301.mj:27:33: LEXER: Found symbol: '#24' with value: '*'
+DEBUG - test301.mj:27:35: LEXER: Found symbol: '#52' with value: '3'
+DEBUG - test301.mj:27:36: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - test301.mj:28:3: LEXER: Found symbol: '#55' with value: 'bodovi'
+DEBUG - test301.mj:28:10: LEXER: Found symbol: '#21' with value: '='
+DEBUG - test301.mj:28:12: LEXER: Found symbol: '#55' with value: 'niz'
+DEBUG - test301.mj:28:15: LEXER: Found symbol: '#44' with value: '['
+DEBUG - test301.mj:28:16: LEXER: Found symbol: '#52' with value: '2'
+DEBUG - test301.mj:28:17: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - test301.mj:28:18: LEXER: Found symbol: '#25' with value: '/'
+DEBUG - test301.mj:28:19: LEXER: Found symbol: '#55' with value: 'niz'
+DEBUG - test301.mj:28:22: LEXER: Found symbol: '#44' with value: '['
+DEBUG - test301.mj:28:23: LEXER: Found symbol: '#52' with value: '0'
+DEBUG - test301.mj:28:24: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - test301.mj:28:25: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - test301.mj:29:3: LEXER: Found symbol: '#10' with value: 'print'
+DEBUG - test301.mj:29:8: LEXER: Found symbol: '#42' with value: '('
+DEBUG - test301.mj:29:9: LEXER: Found symbol: '#55' with value: 'bodovi'
+DEBUG - test301.mj:29:15: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - test301.mj:29:16: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - test301.mj:30:3: LEXER: Found symbol: '#10' with value: 'print'
+DEBUG - test301.mj:30:8: LEXER: Found symbol: '#42' with value: '('
+DEBUG - test301.mj:30:9: LEXER: Found symbol: '#55' with value: 'niz'
+DEBUG - test301.mj:30:12: LEXER: Found symbol: '#44' with value: '['
+DEBUG - test301.mj:30:13: LEXER: Found symbol: '#52' with value: '2'
+DEBUG - test301.mj:30:14: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - test301.mj:30:15: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - test301.mj:30:16: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - test301.mj:32:3: LEXER: Found symbol: '#11' with value: 'read'
+DEBUG - test301.mj:32:7: LEXER: Found symbol: '#42' with value: '('
+DEBUG - test301.mj:32:8: LEXER: Found symbol: '#55' with value: 'bodovi'
+DEBUG - test301.mj:32:14: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - test301.mj:32:15: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - test301.mj:33:3: LEXER: Found symbol: '#55' with value: 'niz'
+DEBUG - test301.mj:33:6: LEXER: Found symbol: '#44' with value: '['
+DEBUG - test301.mj:33:7: LEXER: Found symbol: '#52' with value: '2'
+DEBUG - test301.mj:33:8: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - test301.mj:33:10: LEXER: Found symbol: '#37' with value: '+='
+DEBUG - test301.mj:33:13: LEXER: Found symbol: '#55' with value: 'bodovi'
+DEBUG - test301.mj:33:20: LEXER: Found symbol: '#39' with value: '*='
+DEBUG - test301.mj:33:23: LEXER: Found symbol: '#52' with value: '2'
+DEBUG - test301.mj:33:24: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - test301.mj:34:3: LEXER: Found symbol: '#55' with value: 'niz'
+DEBUG - test301.mj:34:6: LEXER: Found symbol: '#44' with value: '['
+DEBUG - test301.mj:34:7: LEXER: Found symbol: '#52' with value: '2'
+DEBUG - test301.mj:34:8: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - test301.mj:34:9: LEXER: Found symbol: '#27' with value: '++'
+DEBUG - test301.mj:34:11: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - test301.mj:35:3: LEXER: Found symbol: '#10' with value: 'print'
+DEBUG - test301.mj:35:8: LEXER: Found symbol: '#42' with value: '('
+DEBUG - test301.mj:35:9: LEXER: Found symbol: '#55' with value: 'niz'
+DEBUG - test301.mj:35:12: LEXER: Found symbol: '#44' with value: '['
+DEBUG - test301.mj:35:13: LEXER: Found symbol: '#52' with value: '2'
+DEBUG - test301.mj:35:14: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - test301.mj:35:15: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - test301.mj:35:16: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - test301.mj:38:3: LEXER: Found symbol: '#55' with value: 'nizch'
+DEBUG - test301.mj:38:9: LEXER: Found symbol: '#21' with value: '='
+DEBUG - test301.mj:38:11: LEXER: Found symbol: '#9' with value: 'new'
+DEBUG - test301.mj:38:15: LEXER: Found symbol: '#55' with value: 'char'
+DEBUG - test301.mj:38:19: LEXER: Found symbol: '#44' with value: '['
+DEBUG - test301.mj:38:20: LEXER: Found symbol: '#52' with value: '3'
+DEBUG - test301.mj:38:21: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - test301.mj:38:22: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - test301.mj:39:3: LEXER: Found symbol: '#55' with value: 'nizch'
+DEBUG - test301.mj:39:8: LEXER: Found symbol: '#44' with value: '['
+DEBUG - test301.mj:39:9: LEXER: Found symbol: '#52' with value: '0'
+DEBUG - test301.mj:39:10: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - test301.mj:39:12: LEXER: Found symbol: '#21' with value: '='
+DEBUG - test301.mj:39:14: LEXER: Found symbol: '#53' with value: 'a'
+DEBUG - test301.mj:39:17: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - test301.mj:40:3: LEXER: Found symbol: '#55' with value: 'nizch'
+DEBUG - test301.mj:40:8: LEXER: Found symbol: '#44' with value: '['
+DEBUG - test301.mj:40:9: LEXER: Found symbol: '#55' with value: 'jedan'
+DEBUG - test301.mj:40:14: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - test301.mj:40:16: LEXER: Found symbol: '#21' with value: '='
+DEBUG - test301.mj:40:18: LEXER: Found symbol: '#53' with value: 'b'
+DEBUG - test301.mj:40:21: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - test301.mj:41:3: LEXER: Found symbol: '#55' with value: 'nizch'
+DEBUG - test301.mj:41:8: LEXER: Found symbol: '#44' with value: '['
+DEBUG - test301.mj:41:9: LEXER: Found symbol: '#55' with value: 'pet'
+DEBUG - test301.mj:41:13: LEXER: Found symbol: '#23' with value: '-'
+DEBUG - test301.mj:41:15: LEXER: Found symbol: '#52' with value: '3'
+DEBUG - test301.mj:41:16: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - test301.mj:41:18: LEXER: Found symbol: '#21' with value: '='
+DEBUG - test301.mj:41:20: LEXER: Found symbol: '#53' with value: 'c'
+DEBUG - test301.mj:41:23: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - test301.mj:42:3: LEXER: Found symbol: '#10' with value: 'print'
+DEBUG - test301.mj:42:8: LEXER: Found symbol: '#42' with value: '('
+DEBUG - test301.mj:42:9: LEXER: Found symbol: '#55' with value: 'nizch'
+DEBUG - test301.mj:42:14: LEXER: Found symbol: '#44' with value: '['
+DEBUG - test301.mj:42:15: LEXER: Found symbol: '#52' with value: '1'
+DEBUG - test301.mj:42:16: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - test301.mj:42:17: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - test301.mj:42:18: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - test301.mj:43:3: LEXER: Found symbol: '#10' with value: 'print'
+DEBUG - test301.mj:43:8: LEXER: Found symbol: '#42' with value: '('
+DEBUG - test301.mj:43:9: LEXER: Found symbol: '#55' with value: 'nizch'
+DEBUG - test301.mj:43:14: LEXER: Found symbol: '#44' with value: '['
+DEBUG - test301.mj:43:15: LEXER: Found symbol: '#55' with value: 'jedan'
+DEBUG - test301.mj:43:21: LEXER: Found symbol: '#24' with value: '*'
+DEBUG - test301.mj:43:23: LEXER: Found symbol: '#52' with value: '2'
+DEBUG - test301.mj:43:24: LEXER: Found symbol: '#45' with value: ']'
+DEBUG - test301.mj:43:25: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - test301.mj:43:26: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - test301.mj:46:3: LEXER: Found symbol: '#55' with value: 'bodovi'
+DEBUG - test301.mj:46:10: LEXER: Found symbol: '#21' with value: '='
+DEBUG - test301.mj:46:12: LEXER: Found symbol: '#55' with value: 'bodovi'
+DEBUG - test301.mj:46:19: LEXER: Found symbol: '#22' with value: '+'
+DEBUG - test301.mj:46:21: LEXER: Found symbol: '#42' with value: '('
+DEBUG - test301.mj:46:22: LEXER: Found symbol: '#55' with value: 'pet'
+DEBUG - test301.mj:46:26: LEXER: Found symbol: '#24' with value: '*'
+DEBUG - test301.mj:46:28: LEXER: Found symbol: '#55' with value: 'jedan'
+DEBUG - test301.mj:46:34: LEXER: Found symbol: '#23' with value: '-'
+DEBUG - test301.mj:46:36: LEXER: Found symbol: '#52' with value: '1'
+DEBUG - test301.mj:46:37: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - test301.mj:46:39: LEXER: Found symbol: '#24' with value: '*'
+DEBUG - test301.mj:46:41: LEXER: Found symbol: '#55' with value: 'bodovi'
+DEBUG - test301.mj:46:48: LEXER: Found symbol: '#23' with value: '-'
+DEBUG - test301.mj:46:50: LEXER: Found symbol: '#42' with value: '('
+DEBUG - test301.mj:46:51: LEXER: Found symbol: '#52' with value: '3'
+DEBUG - test301.mj:46:53: LEXER: Found symbol: '#26' with value: '%'
+DEBUG - test301.mj:46:55: LEXER: Found symbol: '#52' with value: '2'
+DEBUG - test301.mj:46:57: LEXER: Found symbol: '#22' with value: '+'
+DEBUG - test301.mj:46:59: LEXER: Found symbol: '#52' with value: '3'
+DEBUG - test301.mj:46:61: LEXER: Found symbol: '#24' with value: '*'
+DEBUG - test301.mj:46:63: LEXER: Found symbol: '#52' with value: '2'
+DEBUG - test301.mj:46:65: LEXER: Found symbol: '#23' with value: '-'
+DEBUG - test301.mj:46:67: LEXER: Found symbol: '#52' with value: '3'
+DEBUG - test301.mj:46:68: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - test301.mj:46:69: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - test301.mj:47:3: LEXER: Found symbol: '#10' with value: 'print'
+DEBUG - test301.mj:47:8: LEXER: Found symbol: '#42' with value: '('
+DEBUG - test301.mj:47:9: LEXER: Found symbol: '#55' with value: 'bodovi'
+DEBUG - test301.mj:47:15: LEXER: Found symbol: '#43' with value: ')'
+DEBUG - test301.mj:47:16: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - test301.mj:48:2: LEXER: Found symbol: '#47' with value: '}'
+DEBUG - test301.mj:49:1: LEXER: Found symbol: '#47' with value: '}'
+DEBUG - test301.mj:52:1: LEXER: Found symbol: '#0' with value: ''
+DEBUG - test301.mj:52:1: LEXER: Found symbol: '#0' with value: ''
+INFO  - Abstract syntax tree: Program(
+  ProgramHeader(
+   test301
+  ) [ProgramHeader]
+  MultipleProgramDeclarations(
+    MultipleProgramDeclarations(
+      MultipleProgramDeclarations(
+        MultipleProgramDeclarations(
+          MultipleProgramDeclarations(
+            NoProgramDeclarations(
+            ) [NoProgramDeclarations]
+            ConstProgramDeclaration(
+              ConstDeclaration(
+                Type(
+                 int
+                ) [Type]
+                SingleConstAssignment(
+                  ConstAssignment(
+                   nula
+                    IntConst(
+                      NoSign(
+                      ) [NoSign]
+                     0
+                    ) [IntConst]
+                  ) [ConstAssignment]
+                ) [SingleConstAssignment]
+              ) [ConstDeclaration]
+            ) [ConstProgramDeclaration]
+          ) [MultipleProgramDeclarations]
+          ConstProgramDeclaration(
+            ConstDeclaration(
+              Type(
+               int
+              ) [Type]
+              SingleConstAssignment(
+                ConstAssignment(
+                 jedan
+                  IntConst(
+                    NoSign(
+                    ) [NoSign]
+                   1
+                  ) [IntConst]
+                ) [ConstAssignment]
+              ) [SingleConstAssignment]
+            ) [ConstDeclaration]
+          ) [ConstProgramDeclaration]
+        ) [MultipleProgramDeclarations]
+        ConstProgramDeclaration(
+          ConstDeclaration(
+            Type(
+             int
+            ) [Type]
+            SingleConstAssignment(
+              ConstAssignment(
+               pet
+                IntConst(
+                  NoSign(
+                  ) [NoSign]
+                 5
+                ) [IntConst]
+              ) [ConstAssignment]
+            ) [SingleConstAssignment]
+          ) [ConstDeclaration]
+        ) [ConstProgramDeclaration]
+      ) [MultipleProgramDeclarations]
+      VarProgramDeclaration(
+        VarDeclaration(
+          Type(
+           int
+          ) [Type]
+          SingleVariable(
+            Variable(
+             niz
+              ArrayBrackets(
+              ) [ArrayBrackets]
+            ) [Variable]
+          ) [SingleVariable]
+        ) [VarDeclaration]
+      ) [VarProgramDeclaration]
+    ) [MultipleProgramDeclarations]
+    VarProgramDeclaration(
+      VarDeclaration(
+        Type(
+         char
+        ) [Type]
+        SingleVariable(
+          Variable(
+           nizch
+            ArrayBrackets(
+            ) [ArrayBrackets]
+          ) [Variable]
+        ) [SingleVariable]
+      ) [VarDeclaration]
+    ) [VarProgramDeclaration]
+  ) [MultipleProgramDeclarations]
+  MultipleMethodDeclarations(
+    NoMethodDeclarations(
+    ) [NoMethodDeclarations]
+    MethodDeclaration(
+      MethodHeader(
+        ReturnVoid(
+        ) [ReturnVoid]
+       main
+      ) [MethodHeader]
+      NoFormalParameters(
+      ) [NoFormalParameters]
+      MultipleLocalVarDeclarations(
+        NoLocalVarDeclarations(
+        ) [NoLocalVarDeclarations]
+        LocalVarDeclaration(
+          Type(
+           int
+          ) [Type]
+          SingleLocalVariable(
+            LocalVariable(
+             bodovi
+              NoArrayBrackets(
+              ) [NoArrayBrackets]
+            ) [LocalVariable]
+          ) [SingleLocalVariable]
+        ) [LocalVarDeclaration]
+      ) [MultipleLocalVarDeclarations]
+      MethodStatementListStart(
+      ) [MethodStatementListStart]
+      MultipleStatements(
+        MultipleStatements(
+          MultipleStatements(
+            MultipleStatements(
+              MultipleStatements(
+                MultipleStatements(
+                  MultipleStatements(
+                    MultipleStatements(
+                      MultipleStatements(
+                        MultipleStatements(
+                          MultipleStatements(
+                            MultipleStatements(
+                              MultipleStatements(
+                                MultipleStatements(
+                                  MultipleStatements(
+                                    MultipleStatements(
+                                      MultipleStatements(
+                                        MultipleStatements(
+                                          MultipleStatements(
+                                            MultipleStatements(
+                                              MultipleStatements(
+                                                MultipleStatements(
+                                                  MultipleStatements(
+                                                    MultipleStatements(
+                                                      MultipleStatements(
+                                                        NoStatements(
+                                                        ) [NoStatements]
+                                                        DesignatorBasedStatement(
+                                                          AssignmentDesignatorStatement(
+                                                            AssignmentHeader(
+                                                              IdentifierDesignator(
+                                                               bodovi
+                                                              ) [IdentifierDesignator]
+                                                            ) [AssignmentHeader]
+                                                            AssignmentFooter(
+                                                              AssignOperator(
+                                                              ) [AssignOperator]
+                                                              LeftExpression(
+                                                                SingleTermExpression(
+                                                                  NoSign(
+                                                                  ) [NoSign]
+                                                                  SingleFactorTerm(
+                                                                    ConstantFactor(
+                                                                      IntConstantFactor(
+                                                                       0
+                                                                      ) [IntConstantFactor]
+                                                                    ) [ConstantFactor]
+                                                                  ) [SingleFactorTerm]
+                                                                ) [SingleTermExpression]
+                                                              ) [LeftExpression]
+                                                            ) [AssignmentFooter]
+                                                          ) [AssignmentDesignatorStatement]
+                                                        ) [DesignatorBasedStatement]
+                                                      ) [MultipleStatements]
+                                                      DesignatorBasedStatement(
+                                                        IncrementDesignatorStatement(
+                                                          IdentifierDesignator(
+                                                           bodovi
+                                                          ) [IdentifierDesignator]
+                                                        ) [IncrementDesignatorStatement]
+                                                      ) [DesignatorBasedStatement]
+                                                    ) [MultipleStatements]
+                                                    DesignatorBasedStatement(
+                                                      AssignmentDesignatorStatement(
+                                                        AssignmentHeader(
+                                                          IdentifierDesignator(
+                                                           bodovi
+                                                          ) [IdentifierDesignator]
+                                                        ) [AssignmentHeader]
+                                                        AssignmentFooter(
+                                                          AssignOperator(
+                                                          ) [AssignOperator]
+                                                          LeftExpression(
+                                                            MultipleTermsExpression(
+                                                              SingleTermExpression(
+                                                                NoSign(
+                                                                ) [NoSign]
+                                                                SingleFactorTerm(
+                                                                  DesignatorFactor(
+                                                                    IdentifierDesignator(
+                                                                     bodovi
+                                                                    ) [IdentifierDesignator]
+                                                                  ) [DesignatorFactor]
+                                                                ) [SingleFactorTerm]
+                                                              ) [SingleTermExpression]
+                                                              AddOperator(
+                                                              ) [AddOperator]
+                                                              SingleFactorTerm(
+                                                                DesignatorFactor(
+                                                                  IdentifierDesignator(
+                                                                   jedan
+                                                                  ) [IdentifierDesignator]
+                                                                ) [DesignatorFactor]
+                                                              ) [SingleFactorTerm]
+                                                            ) [MultipleTermsExpression]
+                                                          ) [LeftExpression]
+                                                        ) [AssignmentFooter]
+                                                      ) [AssignmentDesignatorStatement]
+                                                    ) [DesignatorBasedStatement]
+                                                  ) [MultipleStatements]
+                                                  DesignatorBasedStatement(
+                                                    AssignmentDesignatorStatement(
+                                                      AssignmentHeader(
+                                                        IdentifierDesignator(
+                                                         bodovi
+                                                        ) [IdentifierDesignator]
+                                                      ) [AssignmentHeader]
+                                                      AssignmentFooter(
+                                                        AssignOperator(
+                                                        ) [AssignOperator]
+                                                        LeftExpression(
+                                                          SingleTermExpression(
+                                                            NoSign(
+                                                            ) [NoSign]
+                                                            MultipleFactorsTerm(
+                                                              SingleFactorTerm(
+                                                                DesignatorFactor(
+                                                                  IdentifierDesignator(
+                                                                   bodovi
+                                                                  ) [IdentifierDesignator]
+                                                                ) [DesignatorFactor]
+                                                              ) [SingleFactorTerm]
+                                                              MulOperator(
+                                                              ) [MulOperator]
+                                                              DesignatorFactor(
+                                                                IdentifierDesignator(
+                                                                 pet
+                                                                ) [IdentifierDesignator]
+                                                              ) [DesignatorFactor]
+                                                            ) [MultipleFactorsTerm]
+                                                          ) [SingleTermExpression]
+                                                        ) [LeftExpression]
+                                                      ) [AssignmentFooter]
+                                                    ) [AssignmentDesignatorStatement]
+                                                  ) [DesignatorBasedStatement]
+                                                ) [MultipleStatements]
+                                                DesignatorBasedStatement(
+                                                  DecrementDesignatorStatement(
+                                                    IdentifierDesignator(
+                                                     bodovi
+                                                    ) [IdentifierDesignator]
+                                                  ) [DecrementDesignatorStatement]
+                                                ) [DesignatorBasedStatement]
+                                              ) [MultipleStatements]
+                                              PrintStatement(
+                                                LeftExpression(
+                                                  SingleTermExpression(
+                                                    NoSign(
+                                                    ) [NoSign]
+                                                    SingleFactorTerm(
+                                                      DesignatorFactor(
+                                                        IdentifierDesignator(
+                                                         bodovi
+                                                        ) [IdentifierDesignator]
+                                                      ) [DesignatorFactor]
+                                                    ) [SingleFactorTerm]
+                                                  ) [SingleTermExpression]
+                                                ) [LeftExpression]
+                                                NoPrintWidth(
+                                                ) [NoPrintWidth]
+                                              ) [PrintStatement]
+                                            ) [MultipleStatements]
+                                            DesignatorBasedStatement(
+                                              AssignmentDesignatorStatement(
+                                                AssignmentHeader(
+                                                  IdentifierDesignator(
+                                                   niz
+                                                  ) [IdentifierDesignator]
+                                                ) [AssignmentHeader]
+                                                AssignmentFooter(
+                                                  AssignOperator(
+                                                  ) [AssignOperator]
+                                                  LeftExpression(
+                                                    SingleTermExpression(
+                                                      NoSign(
+                                                      ) [NoSign]
+                                                      SingleFactorTerm(
+                                                        AllocatorFactor(
+                                                          Type(
+                                                           int
+                                                          ) [Type]
+                                                          SingleArrayIndexer(
+                                                            ArrayIndexer(
+                                                              LeftExpression(
+                                                                SingleTermExpression(
+                                                                  NoSign(
+                                                                  ) [NoSign]
+                                                                  SingleFactorTerm(
+                                                                    ConstantFactor(
+                                                                      IntConstantFactor(
+                                                                       3
+                                                                      ) [IntConstantFactor]
+                                                                    ) [ConstantFactor]
+                                                                  ) [SingleFactorTerm]
+                                                                ) [SingleTermExpression]
+                                                              ) [LeftExpression]
+                                                            ) [ArrayIndexer]
+                                                          ) [SingleArrayIndexer]
+                                                        ) [AllocatorFactor]
+                                                      ) [SingleFactorTerm]
+                                                    ) [SingleTermExpression]
+                                                  ) [LeftExpression]
+                                                ) [AssignmentFooter]
+                                              ) [AssignmentDesignatorStatement]
+                                            ) [DesignatorBasedStatement]
+                                          ) [MultipleStatements]
+                                          DesignatorBasedStatement(
+                                            AssignmentDesignatorStatement(
+                                              AssignmentHeader(
+                                                ElementAccessDesignator(
+                                                  IdentifierDesignator(
+                                                   niz
+                                                  ) [IdentifierDesignator]
+                                                  ArrayIndexer(
+                                                    LeftExpression(
+                                                      SingleTermExpression(
+                                                        NoSign(
+                                                        ) [NoSign]
+                                                        SingleFactorTerm(
+                                                          DesignatorFactor(
+                                                            IdentifierDesignator(
+                                                             nula
+                                                            ) [IdentifierDesignator]
+                                                          ) [DesignatorFactor]
+                                                        ) [SingleFactorTerm]
+                                                      ) [SingleTermExpression]
+                                                    ) [LeftExpression]
+                                                  ) [ArrayIndexer]
+                                                ) [ElementAccessDesignator]
+                                              ) [AssignmentHeader]
+                                              AssignmentFooter(
+                                                AssignOperator(
+                                                ) [AssignOperator]
+                                                LeftExpression(
+                                                  SingleTermExpression(
+                                                    NoSign(
+                                                    ) [NoSign]
+                                                    SingleFactorTerm(
+                                                      DesignatorFactor(
+                                                        IdentifierDesignator(
+                                                         jedan
+                                                        ) [IdentifierDesignator]
+                                                      ) [DesignatorFactor]
+                                                    ) [SingleFactorTerm]
+                                                  ) [SingleTermExpression]
+                                                ) [LeftExpression]
+                                              ) [AssignmentFooter]
+                                            ) [AssignmentDesignatorStatement]
+                                          ) [DesignatorBasedStatement]
+                                        ) [MultipleStatements]
+                                        DesignatorBasedStatement(
+                                          AssignmentDesignatorStatement(
+                                            AssignmentHeader(
+                                              ElementAccessDesignator(
+                                                IdentifierDesignator(
+                                                 niz
+                                                ) [IdentifierDesignator]
+                                                ArrayIndexer(
+                                                  LeftExpression(
+                                                    SingleTermExpression(
+                                                      NoSign(
+                                                      ) [NoSign]
+                                                      SingleFactorTerm(
+                                                        ConstantFactor(
+                                                          IntConstantFactor(
+                                                           1
+                                                          ) [IntConstantFactor]
+                                                        ) [ConstantFactor]
+                                                      ) [SingleFactorTerm]
+                                                    ) [SingleTermExpression]
+                                                  ) [LeftExpression]
+                                                ) [ArrayIndexer]
+                                              ) [ElementAccessDesignator]
+                                            ) [AssignmentHeader]
+                                            AssignmentFooter(
+                                              AssignOperator(
+                                              ) [AssignOperator]
+                                              LeftExpression(
+                                                SingleTermExpression(
+                                                  NoSign(
+                                                  ) [NoSign]
+                                                  SingleFactorTerm(
+                                                    ConstantFactor(
+                                                      IntConstantFactor(
+                                                       2
+                                                      ) [IntConstantFactor]
+                                                    ) [ConstantFactor]
+                                                  ) [SingleFactorTerm]
+                                                ) [SingleTermExpression]
+                                              ) [LeftExpression]
+                                            ) [AssignmentFooter]
+                                          ) [AssignmentDesignatorStatement]
+                                        ) [DesignatorBasedStatement]
+                                      ) [MultipleStatements]
+                                      DesignatorBasedStatement(
+                                        AssignmentDesignatorStatement(
+                                          AssignmentHeader(
+                                            ElementAccessDesignator(
+                                              IdentifierDesignator(
+                                               niz
+                                              ) [IdentifierDesignator]
+                                              ArrayIndexer(
+                                                LeftExpression(
+                                                  SingleTermExpression(
+                                                    NoSign(
+                                                    ) [NoSign]
+                                                    SingleFactorTerm(
+                                                      DesignatorFactor(
+                                                        ElementAccessDesignator(
+                                                          IdentifierDesignator(
+                                                           niz
+                                                          ) [IdentifierDesignator]
+                                                          ArrayIndexer(
+                                                            LeftExpression(
+                                                              SingleTermExpression(
+                                                                NoSign(
+                                                                ) [NoSign]
+                                                                SingleFactorTerm(
+                                                                  DesignatorFactor(
+                                                                    IdentifierDesignator(
+                                                                     jedan
+                                                                    ) [IdentifierDesignator]
+                                                                  ) [DesignatorFactor]
+                                                                ) [SingleFactorTerm]
+                                                              ) [SingleTermExpression]
+                                                            ) [LeftExpression]
+                                                          ) [ArrayIndexer]
+                                                        ) [ElementAccessDesignator]
+                                                      ) [DesignatorFactor]
+                                                    ) [SingleFactorTerm]
+                                                  ) [SingleTermExpression]
+                                                ) [LeftExpression]
+                                              ) [ArrayIndexer]
+                                            ) [ElementAccessDesignator]
+                                          ) [AssignmentHeader]
+                                          AssignmentFooter(
+                                            AssignOperator(
+                                            ) [AssignOperator]
+                                            LeftExpression(
+                                              SingleTermExpression(
+                                                NoSign(
+                                                ) [NoSign]
+                                                MultipleFactorsTerm(
+                                                  SingleFactorTerm(
+                                                    DesignatorFactor(
+                                                      ElementAccessDesignator(
+                                                        IdentifierDesignator(
+                                                         niz
+                                                        ) [IdentifierDesignator]
+                                                        ArrayIndexer(
+                                                          LeftExpression(
+                                                            SingleTermExpression(
+                                                              NoSign(
+                                                              ) [NoSign]
+                                                              SingleFactorTerm(
+                                                                DesignatorFactor(
+                                                                  ElementAccessDesignator(
+                                                                    IdentifierDesignator(
+                                                                     niz
+                                                                    ) [IdentifierDesignator]
+                                                                    ArrayIndexer(
+                                                                      LeftExpression(
+                                                                        SingleTermExpression(
+                                                                          NoSign(
+                                                                          ) [NoSign]
+                                                                          SingleFactorTerm(
+                                                                            ConstantFactor(
+                                                                              IntConstantFactor(
+                                                                               0
+                                                                              ) [IntConstantFactor]
+                                                                            ) [ConstantFactor]
+                                                                          ) [SingleFactorTerm]
+                                                                        ) [SingleTermExpression]
+                                                                      ) [LeftExpression]
+                                                                    ) [ArrayIndexer]
+                                                                  ) [ElementAccessDesignator]
+                                                                ) [DesignatorFactor]
+                                                              ) [SingleFactorTerm]
+                                                            ) [SingleTermExpression]
+                                                          ) [LeftExpression]
+                                                        ) [ArrayIndexer]
+                                                      ) [ElementAccessDesignator]
+                                                    ) [DesignatorFactor]
+                                                  ) [SingleFactorTerm]
+                                                  MulOperator(
+                                                  ) [MulOperator]
+                                                  ConstantFactor(
+                                                    IntConstantFactor(
+                                                     3
+                                                    ) [IntConstantFactor]
+                                                  ) [ConstantFactor]
+                                                ) [MultipleFactorsTerm]
+                                              ) [SingleTermExpression]
+                                            ) [LeftExpression]
+                                          ) [AssignmentFooter]
+                                        ) [AssignmentDesignatorStatement]
+                                      ) [DesignatorBasedStatement]
+                                    ) [MultipleStatements]
+                                    DesignatorBasedStatement(
+                                      AssignmentDesignatorStatement(
+                                        AssignmentHeader(
+                                          IdentifierDesignator(
+                                           bodovi
+                                          ) [IdentifierDesignator]
+                                        ) [AssignmentHeader]
+                                        AssignmentFooter(
+                                          AssignOperator(
+                                          ) [AssignOperator]
+                                          LeftExpression(
+                                            SingleTermExpression(
+                                              NoSign(
+                                              ) [NoSign]
+                                              MultipleFactorsTerm(
+                                                SingleFactorTerm(
+                                                  DesignatorFactor(
+                                                    ElementAccessDesignator(
+                                                      IdentifierDesignator(
+                                                       niz
+                                                      ) [IdentifierDesignator]
+                                                      ArrayIndexer(
+                                                        LeftExpression(
+                                                          SingleTermExpression(
+                                                            NoSign(
+                                                            ) [NoSign]
+                                                            SingleFactorTerm(
+                                                              ConstantFactor(
+                                                                IntConstantFactor(
+                                                                 2
+                                                                ) [IntConstantFactor]
+                                                              ) [ConstantFactor]
+                                                            ) [SingleFactorTerm]
+                                                          ) [SingleTermExpression]
+                                                        ) [LeftExpression]
+                                                      ) [ArrayIndexer]
+                                                    ) [ElementAccessDesignator]
+                                                  ) [DesignatorFactor]
+                                                ) [SingleFactorTerm]
+                                                DivOperator(
+                                                ) [DivOperator]
+                                                DesignatorFactor(
+                                                  ElementAccessDesignator(
+                                                    IdentifierDesignator(
+                                                     niz
+                                                    ) [IdentifierDesignator]
+                                                    ArrayIndexer(
+                                                      LeftExpression(
+                                                        SingleTermExpression(
+                                                          NoSign(
+                                                          ) [NoSign]
+                                                          SingleFactorTerm(
+                                                            ConstantFactor(
+                                                              IntConstantFactor(
+                                                               0
+                                                              ) [IntConstantFactor]
+                                                            ) [ConstantFactor]
+                                                          ) [SingleFactorTerm]
+                                                        ) [SingleTermExpression]
+                                                      ) [LeftExpression]
+                                                    ) [ArrayIndexer]
+                                                  ) [ElementAccessDesignator]
+                                                ) [DesignatorFactor]
+                                              ) [MultipleFactorsTerm]
+                                            ) [SingleTermExpression]
+                                          ) [LeftExpression]
+                                        ) [AssignmentFooter]
+                                      ) [AssignmentDesignatorStatement]
+                                    ) [DesignatorBasedStatement]
+                                  ) [MultipleStatements]
+                                  PrintStatement(
+                                    LeftExpression(
+                                      SingleTermExpression(
+                                        NoSign(
+                                        ) [NoSign]
+                                        SingleFactorTerm(
+                                          DesignatorFactor(
+                                            IdentifierDesignator(
+                                             bodovi
+                                            ) [IdentifierDesignator]
+                                          ) [DesignatorFactor]
+                                        ) [SingleFactorTerm]
+                                      ) [SingleTermExpression]
+                                    ) [LeftExpression]
+                                    NoPrintWidth(
+                                    ) [NoPrintWidth]
+                                  ) [PrintStatement]
+                                ) [MultipleStatements]
+                                PrintStatement(
+                                  LeftExpression(
+                                    SingleTermExpression(
+                                      NoSign(
+                                      ) [NoSign]
+                                      SingleFactorTerm(
+                                        DesignatorFactor(
+                                          ElementAccessDesignator(
+                                            IdentifierDesignator(
+                                             niz
+                                            ) [IdentifierDesignator]
+                                            ArrayIndexer(
+                                              LeftExpression(
+                                                SingleTermExpression(
+                                                  NoSign(
+                                                  ) [NoSign]
+                                                  SingleFactorTerm(
+                                                    ConstantFactor(
+                                                      IntConstantFactor(
+                                                       2
+                                                      ) [IntConstantFactor]
+                                                    ) [ConstantFactor]
+                                                  ) [SingleFactorTerm]
+                                                ) [SingleTermExpression]
+                                              ) [LeftExpression]
+                                            ) [ArrayIndexer]
+                                          ) [ElementAccessDesignator]
+                                        ) [DesignatorFactor]
+                                      ) [SingleFactorTerm]
+                                    ) [SingleTermExpression]
+                                  ) [LeftExpression]
+                                  NoPrintWidth(
+                                  ) [NoPrintWidth]
+                                ) [PrintStatement]
+                              ) [MultipleStatements]
+                              ReadStatement(
+                                IdentifierDesignator(
+                                 bodovi
+                                ) [IdentifierDesignator]
+                              ) [ReadStatement]
+                            ) [MultipleStatements]
+                            DesignatorBasedStatement(
+                              AssignmentDesignatorStatement(
+                                AssignmentHeader(
+                                  ElementAccessDesignator(
+                                    IdentifierDesignator(
+                                     niz
+                                    ) [IdentifierDesignator]
+                                    ArrayIndexer(
+                                      LeftExpression(
+                                        SingleTermExpression(
+                                          NoSign(
+                                          ) [NoSign]
+                                          SingleFactorTerm(
+                                            ConstantFactor(
+                                              IntConstantFactor(
+                                               2
+                                              ) [IntConstantFactor]
+                                            ) [ConstantFactor]
+                                          ) [SingleFactorTerm]
+                                        ) [SingleTermExpression]
+                                      ) [LeftExpression]
+                                    ) [ArrayIndexer]
+                                  ) [ElementAccessDesignator]
+                                ) [AssignmentHeader]
+                                AssignmentFooter(
+                                  RightOperator(
+                                    RightAddOperator(
+                                      AddAssignOperator(
+                                      ) [AddAssignOperator]
+                                    ) [RightAddOperator]
+                                  ) [RightOperator]
+                                  AssignmentExpression(
+                                    SingleTermExpression(
+                                      NoSign(
+                                      ) [NoSign]
+                                      SingleFactorTerm(
+                                        DesignatorFactor(
+                                          IdentifierDesignator(
+                                           bodovi
+                                          ) [IdentifierDesignator]
+                                        ) [DesignatorFactor]
+                                      ) [SingleFactorTerm]
+                                    ) [SingleTermExpression]
+                                    RightMulOperator(
+                                      MulAssignOperator(
+                                      ) [MulAssignOperator]
+                                    ) [RightMulOperator]
+                                    LeftExpression(
+                                      SingleTermExpression(
+                                        NoSign(
+                                        ) [NoSign]
+                                        SingleFactorTerm(
+                                          ConstantFactor(
+                                            IntConstantFactor(
+                                             2
+                                            ) [IntConstantFactor]
+                                          ) [ConstantFactor]
+                                        ) [SingleFactorTerm]
+                                      ) [SingleTermExpression]
+                                    ) [LeftExpression]
+                                  ) [AssignmentExpression]
+                                ) [AssignmentFooter]
+                              ) [AssignmentDesignatorStatement]
+                            ) [DesignatorBasedStatement]
+                          ) [MultipleStatements]
+                          DesignatorBasedStatement(
+                            IncrementDesignatorStatement(
+                              ElementAccessDesignator(
+                                IdentifierDesignator(
+                                 niz
+                                ) [IdentifierDesignator]
+                                ArrayIndexer(
+                                  LeftExpression(
+                                    SingleTermExpression(
+                                      NoSign(
+                                      ) [NoSign]
+                                      SingleFactorTerm(
+                                        ConstantFactor(
+                                          IntConstantFactor(
+                                           2
+                                          ) [IntConstantFactor]
+                                        ) [ConstantFactor]
+                                      ) [SingleFactorTerm]
+                                    ) [SingleTermExpression]
+                                  ) [LeftExpression]
+                                ) [ArrayIndexer]
+                              ) [ElementAccessDesignator]
+                            ) [IncrementDesignatorStatement]
+                          ) [DesignatorBasedStatement]
+                        ) [MultipleStatements]
+                        PrintStatement(
+                          LeftExpression(
+                            SingleTermExpression(
+                              NoSign(
+                              ) [NoSign]
+                              SingleFactorTerm(
+                                DesignatorFactor(
+                                  ElementAccessDesignator(
+                                    IdentifierDesignator(
+                                     niz
+                                    ) [IdentifierDesignator]
+                                    ArrayIndexer(
+                                      LeftExpression(
+                                        SingleTermExpression(
+                                          NoSign(
+                                          ) [NoSign]
+                                          SingleFactorTerm(
+                                            ConstantFactor(
+                                              IntConstantFactor(
+                                               2
+                                              ) [IntConstantFactor]
+                                            ) [ConstantFactor]
+                                          ) [SingleFactorTerm]
+                                        ) [SingleTermExpression]
+                                      ) [LeftExpression]
+                                    ) [ArrayIndexer]
+                                  ) [ElementAccessDesignator]
+                                ) [DesignatorFactor]
+                              ) [SingleFactorTerm]
+                            ) [SingleTermExpression]
+                          ) [LeftExpression]
+                          NoPrintWidth(
+                          ) [NoPrintWidth]
+                        ) [PrintStatement]
+                      ) [MultipleStatements]
+                      DesignatorBasedStatement(
+                        AssignmentDesignatorStatement(
+                          AssignmentHeader(
+                            IdentifierDesignator(
+                             nizch
+                            ) [IdentifierDesignator]
+                          ) [AssignmentHeader]
+                          AssignmentFooter(
+                            AssignOperator(
+                            ) [AssignOperator]
+                            LeftExpression(
+                              SingleTermExpression(
+                                NoSign(
+                                ) [NoSign]
+                                SingleFactorTerm(
+                                  AllocatorFactor(
+                                    Type(
+                                     char
+                                    ) [Type]
+                                    SingleArrayIndexer(
+                                      ArrayIndexer(
+                                        LeftExpression(
+                                          SingleTermExpression(
+                                            NoSign(
+                                            ) [NoSign]
+                                            SingleFactorTerm(
+                                              ConstantFactor(
+                                                IntConstantFactor(
+                                                 3
+                                                ) [IntConstantFactor]
+                                              ) [ConstantFactor]
+                                            ) [SingleFactorTerm]
+                                          ) [SingleTermExpression]
+                                        ) [LeftExpression]
+                                      ) [ArrayIndexer]
+                                    ) [SingleArrayIndexer]
+                                  ) [AllocatorFactor]
+                                ) [SingleFactorTerm]
+                              ) [SingleTermExpression]
+                            ) [LeftExpression]
+                          ) [AssignmentFooter]
+                        ) [AssignmentDesignatorStatement]
+                      ) [DesignatorBasedStatement]
+                    ) [MultipleStatements]
+                    DesignatorBasedStatement(
+                      AssignmentDesignatorStatement(
+                        AssignmentHeader(
+                          ElementAccessDesignator(
+                            IdentifierDesignator(
+                             nizch
+                            ) [IdentifierDesignator]
+                            ArrayIndexer(
+                              LeftExpression(
+                                SingleTermExpression(
+                                  NoSign(
+                                  ) [NoSign]
+                                  SingleFactorTerm(
+                                    ConstantFactor(
+                                      IntConstantFactor(
+                                       0
+                                      ) [IntConstantFactor]
+                                    ) [ConstantFactor]
+                                  ) [SingleFactorTerm]
+                                ) [SingleTermExpression]
+                              ) [LeftExpression]
+                            ) [ArrayIndexer]
+                          ) [ElementAccessDesignator]
+                        ) [AssignmentHeader]
+                        AssignmentFooter(
+                          AssignOperator(
+                          ) [AssignOperator]
+                          LeftExpression(
+                            SingleTermExpression(
+                              NoSign(
+                              ) [NoSign]
+                              SingleFactorTerm(
+                                ConstantFactor(
+                                  CharConstantFactor(
+                                   a
+                                  ) [CharConstantFactor]
+                                ) [ConstantFactor]
+                              ) [SingleFactorTerm]
+                            ) [SingleTermExpression]
+                          ) [LeftExpression]
+                        ) [AssignmentFooter]
+                      ) [AssignmentDesignatorStatement]
+                    ) [DesignatorBasedStatement]
+                  ) [MultipleStatements]
+                  DesignatorBasedStatement(
+                    AssignmentDesignatorStatement(
+                      AssignmentHeader(
+                        ElementAccessDesignator(
+                          IdentifierDesignator(
+                           nizch
+                          ) [IdentifierDesignator]
+                          ArrayIndexer(
+                            LeftExpression(
+                              SingleTermExpression(
+                                NoSign(
+                                ) [NoSign]
+                                SingleFactorTerm(
+                                  DesignatorFactor(
+                                    IdentifierDesignator(
+                                     jedan
+                                    ) [IdentifierDesignator]
+                                  ) [DesignatorFactor]
+                                ) [SingleFactorTerm]
+                              ) [SingleTermExpression]
+                            ) [LeftExpression]
+                          ) [ArrayIndexer]
+                        ) [ElementAccessDesignator]
+                      ) [AssignmentHeader]
+                      AssignmentFooter(
+                        AssignOperator(
+                        ) [AssignOperator]
+                        LeftExpression(
+                          SingleTermExpression(
+                            NoSign(
+                            ) [NoSign]
+                            SingleFactorTerm(
+                              ConstantFactor(
+                                CharConstantFactor(
+                                 b
+                                ) [CharConstantFactor]
+                              ) [ConstantFactor]
+                            ) [SingleFactorTerm]
+                          ) [SingleTermExpression]
+                        ) [LeftExpression]
+                      ) [AssignmentFooter]
+                    ) [AssignmentDesignatorStatement]
+                  ) [DesignatorBasedStatement]
+                ) [MultipleStatements]
+                DesignatorBasedStatement(
+                  AssignmentDesignatorStatement(
+                    AssignmentHeader(
+                      ElementAccessDesignator(
+                        IdentifierDesignator(
+                         nizch
+                        ) [IdentifierDesignator]
+                        ArrayIndexer(
+                          LeftExpression(
+                            MultipleTermsExpression(
+                              SingleTermExpression(
+                                NoSign(
+                                ) [NoSign]
+                                SingleFactorTerm(
+                                  DesignatorFactor(
+                                    IdentifierDesignator(
+                                     pet
+                                    ) [IdentifierDesignator]
+                                  ) [DesignatorFactor]
+                                ) [SingleFactorTerm]
+                              ) [SingleTermExpression]
+                              SubOperator(
+                              ) [SubOperator]
+                              SingleFactorTerm(
+                                ConstantFactor(
+                                  IntConstantFactor(
+                                   3
+                                  ) [IntConstantFactor]
+                                ) [ConstantFactor]
+                              ) [SingleFactorTerm]
+                            ) [MultipleTermsExpression]
+                          ) [LeftExpression]
+                        ) [ArrayIndexer]
+                      ) [ElementAccessDesignator]
+                    ) [AssignmentHeader]
+                    AssignmentFooter(
+                      AssignOperator(
+                      ) [AssignOperator]
+                      LeftExpression(
+                        SingleTermExpression(
+                          NoSign(
+                          ) [NoSign]
+                          SingleFactorTerm(
+                            ConstantFactor(
+                              CharConstantFactor(
+                               c
+                              ) [CharConstantFactor]
+                            ) [ConstantFactor]
+                          ) [SingleFactorTerm]
+                        ) [SingleTermExpression]
+                      ) [LeftExpression]
+                    ) [AssignmentFooter]
+                  ) [AssignmentDesignatorStatement]
+                ) [DesignatorBasedStatement]
+              ) [MultipleStatements]
+              PrintStatement(
+                LeftExpression(
+                  SingleTermExpression(
+                    NoSign(
+                    ) [NoSign]
+                    SingleFactorTerm(
+                      DesignatorFactor(
+                        ElementAccessDesignator(
+                          IdentifierDesignator(
+                           nizch
+                          ) [IdentifierDesignator]
+                          ArrayIndexer(
+                            LeftExpression(
+                              SingleTermExpression(
+                                NoSign(
+                                ) [NoSign]
+                                SingleFactorTerm(
+                                  ConstantFactor(
+                                    IntConstantFactor(
+                                     1
+                                    ) [IntConstantFactor]
+                                  ) [ConstantFactor]
+                                ) [SingleFactorTerm]
+                              ) [SingleTermExpression]
+                            ) [LeftExpression]
+                          ) [ArrayIndexer]
+                        ) [ElementAccessDesignator]
+                      ) [DesignatorFactor]
+                    ) [SingleFactorTerm]
+                  ) [SingleTermExpression]
+                ) [LeftExpression]
+                NoPrintWidth(
+                ) [NoPrintWidth]
+              ) [PrintStatement]
+            ) [MultipleStatements]
+            PrintStatement(
+              LeftExpression(
+                SingleTermExpression(
+                  NoSign(
+                  ) [NoSign]
+                  SingleFactorTerm(
+                    DesignatorFactor(
+                      ElementAccessDesignator(
+                        IdentifierDesignator(
+                         nizch
+                        ) [IdentifierDesignator]
+                        ArrayIndexer(
+                          LeftExpression(
+                            SingleTermExpression(
+                              NoSign(
+                              ) [NoSign]
+                              MultipleFactorsTerm(
+                                SingleFactorTerm(
+                                  DesignatorFactor(
+                                    IdentifierDesignator(
+                                     jedan
+                                    ) [IdentifierDesignator]
+                                  ) [DesignatorFactor]
+                                ) [SingleFactorTerm]
+                                MulOperator(
+                                ) [MulOperator]
+                                ConstantFactor(
+                                  IntConstantFactor(
+                                   2
+                                  ) [IntConstantFactor]
+                                ) [ConstantFactor]
+                              ) [MultipleFactorsTerm]
+                            ) [SingleTermExpression]
+                          ) [LeftExpression]
+                        ) [ArrayIndexer]
+                      ) [ElementAccessDesignator]
+                    ) [DesignatorFactor]
+                  ) [SingleFactorTerm]
+                ) [SingleTermExpression]
+              ) [LeftExpression]
+              NoPrintWidth(
+              ) [NoPrintWidth]
+            ) [PrintStatement]
+          ) [MultipleStatements]
+          DesignatorBasedStatement(
+            AssignmentDesignatorStatement(
+              AssignmentHeader(
+                IdentifierDesignator(
+                 bodovi
+                ) [IdentifierDesignator]
+              ) [AssignmentHeader]
+              AssignmentFooter(
+                AssignOperator(
+                ) [AssignOperator]
+                LeftExpression(
+                  MultipleTermsExpression(
+                    MultipleTermsExpression(
+                      SingleTermExpression(
+                        NoSign(
+                        ) [NoSign]
+                        SingleFactorTerm(
+                          DesignatorFactor(
+                            IdentifierDesignator(
+                             bodovi
+                            ) [IdentifierDesignator]
+                          ) [DesignatorFactor]
+                        ) [SingleFactorTerm]
+                      ) [SingleTermExpression]
+                      AddOperator(
+                      ) [AddOperator]
+                      MultipleFactorsTerm(
+                        SingleFactorTerm(
+                          InnerExpressionFactor(
+                            LeftExpression(
+                              MultipleTermsExpression(
+                                SingleTermExpression(
+                                  NoSign(
+                                  ) [NoSign]
+                                  MultipleFactorsTerm(
+                                    SingleFactorTerm(
+                                      DesignatorFactor(
+                                        IdentifierDesignator(
+                                         pet
+                                        ) [IdentifierDesignator]
+                                      ) [DesignatorFactor]
+                                    ) [SingleFactorTerm]
+                                    MulOperator(
+                                    ) [MulOperator]
+                                    DesignatorFactor(
+                                      IdentifierDesignator(
+                                       jedan
+                                      ) [IdentifierDesignator]
+                                    ) [DesignatorFactor]
+                                  ) [MultipleFactorsTerm]
+                                ) [SingleTermExpression]
+                                SubOperator(
+                                ) [SubOperator]
+                                SingleFactorTerm(
+                                  ConstantFactor(
+                                    IntConstantFactor(
+                                     1
+                                    ) [IntConstantFactor]
+                                  ) [ConstantFactor]
+                                ) [SingleFactorTerm]
+                              ) [MultipleTermsExpression]
+                            ) [LeftExpression]
+                          ) [InnerExpressionFactor]
+                        ) [SingleFactorTerm]
+                        MulOperator(
+                        ) [MulOperator]
+                        DesignatorFactor(
+                          IdentifierDesignator(
+                           bodovi
+                          ) [IdentifierDesignator]
+                        ) [DesignatorFactor]
+                      ) [MultipleFactorsTerm]
+                    ) [MultipleTermsExpression]
+                    SubOperator(
+                    ) [SubOperator]
+                    SingleFactorTerm(
+                      InnerExpressionFactor(
+                        LeftExpression(
+                          MultipleTermsExpression(
+                            MultipleTermsExpression(
+                              SingleTermExpression(
+                                NoSign(
+                                ) [NoSign]
+                                MultipleFactorsTerm(
+                                  SingleFactorTerm(
+                                    ConstantFactor(
+                                      IntConstantFactor(
+                                       3
+                                      ) [IntConstantFactor]
+                                    ) [ConstantFactor]
+                                  ) [SingleFactorTerm]
+                                  ModOperator(
+                                  ) [ModOperator]
+                                  ConstantFactor(
+                                    IntConstantFactor(
+                                     2
+                                    ) [IntConstantFactor]
+                                  ) [ConstantFactor]
+                                ) [MultipleFactorsTerm]
+                              ) [SingleTermExpression]
+                              AddOperator(
+                              ) [AddOperator]
+                              MultipleFactorsTerm(
+                                SingleFactorTerm(
+                                  ConstantFactor(
+                                    IntConstantFactor(
+                                     3
+                                    ) [IntConstantFactor]
+                                  ) [ConstantFactor]
+                                ) [SingleFactorTerm]
+                                MulOperator(
+                                ) [MulOperator]
+                                ConstantFactor(
+                                  IntConstantFactor(
+                                   2
+                                  ) [IntConstantFactor]
+                                ) [ConstantFactor]
+                              ) [MultipleFactorsTerm]
+                            ) [MultipleTermsExpression]
+                            SubOperator(
+                            ) [SubOperator]
+                            SingleFactorTerm(
+                              ConstantFactor(
+                                IntConstantFactor(
+                                 3
+                                ) [IntConstantFactor]
+                              ) [ConstantFactor]
+                            ) [SingleFactorTerm]
+                          ) [MultipleTermsExpression]
+                        ) [LeftExpression]
+                      ) [InnerExpressionFactor]
+                    ) [SingleFactorTerm]
+                  ) [MultipleTermsExpression]
+                ) [LeftExpression]
+              ) [AssignmentFooter]
+            ) [AssignmentDesignatorStatement]
+          ) [DesignatorBasedStatement]
+        ) [MultipleStatements]
+        PrintStatement(
+          LeftExpression(
+            SingleTermExpression(
+              NoSign(
+              ) [NoSign]
+              SingleFactorTerm(
+                DesignatorFactor(
+                  IdentifierDesignator(
+                   bodovi
+                  ) [IdentifierDesignator]
+                ) [DesignatorFactor]
+              ) [SingleFactorTerm]
+            ) [SingleTermExpression]
+          ) [LeftExpression]
+          NoPrintWidth(
+          ) [NoPrintWidth]
+        ) [PrintStatement]
+      ) [MultipleStatements]
+    ) [MethodDeclaration]
+  ) [MultipleMethodDeclarations]
+) [Program]
+DEBUG - test301.mj:3: SEMANTIC ANALYZER: Visited node: 'ProgramHeader'.
+DEBUG - test301.mj:5: SEMANTIC ANALYZER: Visited node: 'Type'.
+DEBUG - test301.mj:5: SEMANTIC ANALYZER: Visited node: 'ConstAssignment'.
+INFO  - test301.mj:5: SEMANTIC ANALYZER: Defined int constant 'nula'. Symbol node: Constant 'nula': type = 'int', adr = 0, level = 0
+DEBUG - test301.mj:6: SEMANTIC ANALYZER: Visited node: 'Type'.
+DEBUG - test301.mj:6: SEMANTIC ANALYZER: Visited node: 'ConstAssignment'.
+INFO  - test301.mj:6: SEMANTIC ANALYZER: Defined int constant 'jedan'. Symbol node: Constant 'jedan': type = 'int', adr = 1, level = 0
+DEBUG - test301.mj:7: SEMANTIC ANALYZER: Visited node: 'Type'.
+DEBUG - test301.mj:7: SEMANTIC ANALYZER: Visited node: 'ConstAssignment'.
+INFO  - test301.mj:7: SEMANTIC ANALYZER: Defined int constant 'pet'. Symbol node: Constant 'pet': type = 'int', adr = 5, level = 0
+DEBUG - test301.mj:9: SEMANTIC ANALYZER: Visited node: 'Type'.
+DEBUG - test301.mj:9: SEMANTIC ANALYZER: Visited node: 'Variable'.
+INFO  - test301.mj:9: SEMANTIC ANALYZER: Defined int array variable 'niz'. Symbol node: Variable 'niz': type = 'array of int', adr = 0, level = 0
+DEBUG - test301.mj:10: SEMANTIC ANALYZER: Visited node: 'Type'.
+DEBUG - test301.mj:10: SEMANTIC ANALYZER: Visited node: 'Variable'.
+INFO  - test301.mj:10: SEMANTIC ANALYZER: Defined char array variable 'nizch'. Symbol node: Variable 'nizch': type = 'array of char', adr = 1, level = 0
+DEBUG - SEMANTIC ANALYZER: Visited node: 'ReturnVoid'.
+DEBUG - test301.mj:13: SEMANTIC ANALYZER: Visited node: 'MethodHeader'.
+DEBUG - test301.mj:14: SEMANTIC ANALYZER: Visited node: 'Type'.
+DEBUG - test301.mj:14: SEMANTIC ANALYZER: Visited node: 'LocalVariable'.
+INFO  - test301.mj:14: SEMANTIC ANALYZER: Defined int variable 'bodovi'. Symbol node: Variable 'bodovi': type = 'int', adr = 0, level = 1
+DEBUG - SEMANTIC ANALYZER: Visited node: 'MethodStatementListStart'.
+DEBUG - test301.mj:16: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - test301.mj:16: SEMANTIC ANALYZER: Found local variable usage 'bodovi'! Symbol node: Variable 'bodovi': type = 'int', adr = 0, level = 1
+DEBUG - test301.mj:16: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:16: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - test301.mj:10: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:10: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - test301.mj:16: SEMANTIC ANALYZER: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - test301.mj:17: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - test301.mj:17: SEMANTIC ANALYZER: Found local variable usage 'bodovi'! Symbol node: Variable 'bodovi': type = 'int', adr = 0, level = 1
+DEBUG - test301.mj:17: SEMANTIC ANALYZER: Visited node: 'IncrementDesignatorStatement'.
+DEBUG - test301.mj:18: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - test301.mj:18: SEMANTIC ANALYZER: Found local variable usage 'bodovi'! Symbol node: Variable 'bodovi': type = 'int', adr = 0, level = 1
+DEBUG - test301.mj:18: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - test301.mj:18: SEMANTIC ANALYZER: Found local variable usage 'bodovi'! Symbol node: Variable 'bodovi': type = 'int', adr = 0, level = 1
+DEBUG - test301.mj:18: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:18: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - test301.mj:10: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:18: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - test301.mj:18: SEMANTIC ANALYZER: Found symbolic constant usage 'jedan'! Symbol node: Constant 'jedan': type = 'int', adr = 1, level = 0
+DEBUG - test301.mj:18: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:18: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - test301.mj:10: SEMANTIC ANALYZER: Visited node: 'MultipleTermsExpression'.
+DEBUG - test301.mj:10: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - test301.mj:18: SEMANTIC ANALYZER: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - test301.mj:19: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - test301.mj:19: SEMANTIC ANALYZER: Found local variable usage 'bodovi'! Symbol node: Variable 'bodovi': type = 'int', adr = 0, level = 1
+DEBUG - test301.mj:19: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - test301.mj:19: SEMANTIC ANALYZER: Found local variable usage 'bodovi'! Symbol node: Variable 'bodovi': type = 'int', adr = 0, level = 1
+DEBUG - test301.mj:19: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:19: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - test301.mj:19: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - test301.mj:19: SEMANTIC ANALYZER: Found symbolic constant usage 'pet'! Symbol node: Constant 'pet': type = 'int', adr = 5, level = 0
+DEBUG - test301.mj:19: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:19: SEMANTIC ANALYZER: Visited node: 'MultipleFactorsTerm'.
+DEBUG - test301.mj:10: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:10: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - test301.mj:19: SEMANTIC ANALYZER: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - test301.mj:20: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - test301.mj:20: SEMANTIC ANALYZER: Found local variable usage 'bodovi'! Symbol node: Variable 'bodovi': type = 'int', adr = 0, level = 1
+DEBUG - test301.mj:20: SEMANTIC ANALYZER: Visited node: 'DecrementDesignatorStatement'.
+DEBUG - test301.mj:21: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - test301.mj:21: SEMANTIC ANALYZER: Found local variable usage 'bodovi'! Symbol node: Variable 'bodovi': type = 'int', adr = 0, level = 1
+DEBUG - test301.mj:21: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:21: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - test301.mj:8: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:8: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - test301.mj:8: SEMANTIC ANALYZER: Visited node: 'PrintStatement'.
+DEBUG - test301.mj:24: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - test301.mj:24: SEMANTIC ANALYZER: Found global variable usage 'niz'! Symbol node: Variable 'niz': type = 'array of int', adr = 0, level = 0
+DEBUG - test301.mj:24: SEMANTIC ANALYZER: Visited node: 'Type'.
+DEBUG - test301.mj:24: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:24: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - test301.mj:16: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:16: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - test301.mj:24: SEMANTIC ANALYZER: Visited node: 'AllocatorFactor'.
+DEBUG - test301.mj:24: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - test301.mj:7: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:7: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - test301.mj:24: SEMANTIC ANALYZER: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - test301.mj:25: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - test301.mj:25: SEMANTIC ANALYZER: Found global variable usage 'niz'! Symbol node: Variable 'niz': type = 'array of int', adr = 0, level = 0
+DEBUG - test301.mj:25: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - test301.mj:25: SEMANTIC ANALYZER: Found symbolic constant usage 'nula'! Symbol node: Constant 'nula': type = 'int', adr = 0, level = 0
+DEBUG - test301.mj:25: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:25: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - test301.mj:6: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:6: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - test301.mj:25: SEMANTIC ANALYZER: Visited node: 'ElementAccessDesignator'.
+INFO  - test301.mj:25: SEMANTIC ANALYZER: Found array element access 'nula[nula]'! Symbol node: Array element 'nula[nula]': type = 'int', adr = -1, level = -1
+DEBUG - test301.mj:25: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - test301.mj:25: SEMANTIC ANALYZER: Found symbolic constant usage 'jedan'! Symbol node: Constant 'jedan': type = 'int', adr = 1, level = 0
+DEBUG - test301.mj:25: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:25: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - test301.mj:13: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:13: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - test301.mj:25: SEMANTIC ANALYZER: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - test301.mj:26: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - test301.mj:26: SEMANTIC ANALYZER: Found global variable usage 'niz'! Symbol node: Variable 'niz': type = 'array of int', adr = 0, level = 0
+DEBUG - test301.mj:26: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:26: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - test301.mj:6: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:6: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - test301.mj:26: SEMANTIC ANALYZER: Visited node: 'ElementAccessDesignator'.
+INFO  - test301.mj:26: SEMANTIC ANALYZER: Found array element access 'niz[1]'! Symbol node: Array element 'niz[1]': type = 'int', adr = -1, level = -1
+DEBUG - test301.mj:26: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:26: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - test301.mj:10: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:10: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - test301.mj:26: SEMANTIC ANALYZER: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - test301.mj:27: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - test301.mj:27: SEMANTIC ANALYZER: Found global variable usage 'niz'! Symbol node: Variable 'niz': type = 'array of int', adr = 0, level = 0
+DEBUG - test301.mj:27: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - test301.mj:27: SEMANTIC ANALYZER: Found global variable usage 'niz'! Symbol node: Variable 'niz': type = 'array of int', adr = 0, level = 0
+DEBUG - test301.mj:27: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - test301.mj:27: SEMANTIC ANALYZER: Found symbolic constant usage 'jedan'! Symbol node: Constant 'jedan': type = 'int', adr = 1, level = 0
+DEBUG - test301.mj:27: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:27: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - test301.mj:10: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:10: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - test301.mj:27: SEMANTIC ANALYZER: Visited node: 'ElementAccessDesignator'.
+INFO  - test301.mj:27: SEMANTIC ANALYZER: Found array element access 'jedan[jedan]'! Symbol node: Array element 'jedan[jedan]': type = 'int', adr = -1, level = -1
+DEBUG - test301.mj:27: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:27: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - test301.mj:6: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:6: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - test301.mj:27: SEMANTIC ANALYZER: Visited node: 'ElementAccessDesignator'.
+INFO  - test301.mj:27: SEMANTIC ANALYZER: Found array element access 'jedan[jedan][jedan[jedan]]'! Symbol node: Array element 'jedan[jedan][jedan[jedan]]': type = 'int', adr = -1, level = -1
+DEBUG - test301.mj:27: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - test301.mj:27: SEMANTIC ANALYZER: Found global variable usage 'niz'! Symbol node: Variable 'niz': type = 'array of int', adr = 0, level = 0
+DEBUG - test301.mj:27: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - test301.mj:27: SEMANTIC ANALYZER: Found global variable usage 'niz'! Symbol node: Variable 'niz': type = 'array of int', adr = 0, level = 0
+DEBUG - test301.mj:27: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:27: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - test301.mj:28: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:28: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - test301.mj:27: SEMANTIC ANALYZER: Visited node: 'ElementAccessDesignator'.
+INFO  - test301.mj:27: SEMANTIC ANALYZER: Found array element access 'niz[0]'! Symbol node: Array element 'niz[0]': type = 'int', adr = -1, level = -1
+DEBUG - test301.mj:27: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:27: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - test301.mj:24: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:24: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - test301.mj:27: SEMANTIC ANALYZER: Visited node: 'ElementAccessDesignator'.
+INFO  - test301.mj:27: SEMANTIC ANALYZER: Found array element access 'niz[0][niz[0]]'! Symbol node: Array element 'niz[0][niz[0]]': type = 'int', adr = -1, level = -1
+DEBUG - test301.mj:27: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:27: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - test301.mj:27: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:27: SEMANTIC ANALYZER: Visited node: 'MultipleFactorsTerm'.
+DEBUG - test301.mj:19: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:19: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - test301.mj:27: SEMANTIC ANALYZER: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - test301.mj:28: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - test301.mj:28: SEMANTIC ANALYZER: Found local variable usage 'bodovi'! Symbol node: Variable 'bodovi': type = 'int', adr = 0, level = 1
+DEBUG - test301.mj:28: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - test301.mj:28: SEMANTIC ANALYZER: Found global variable usage 'niz'! Symbol node: Variable 'niz': type = 'array of int', adr = 0, level = 0
+DEBUG - test301.mj:28: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:28: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - test301.mj:15: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:15: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - test301.mj:28: SEMANTIC ANALYZER: Visited node: 'ElementAccessDesignator'.
+INFO  - test301.mj:28: SEMANTIC ANALYZER: Found array element access 'niz[2]'! Symbol node: Array element 'niz[2]': type = 'int', adr = -1, level = -1
+DEBUG - test301.mj:28: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:28: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - test301.mj:28: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - test301.mj:28: SEMANTIC ANALYZER: Found global variable usage 'niz'! Symbol node: Variable 'niz': type = 'array of int', adr = 0, level = 0
+DEBUG - test301.mj:28: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:28: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - test301.mj:22: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:22: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - test301.mj:28: SEMANTIC ANALYZER: Visited node: 'ElementAccessDesignator'.
+INFO  - test301.mj:28: SEMANTIC ANALYZER: Found array element access 'niz[0]'! Symbol node: Array element 'niz[0]': type = 'int', adr = -1, level = -1
+DEBUG - test301.mj:28: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:28: SEMANTIC ANALYZER: Visited node: 'MultipleFactorsTerm'.
+DEBUG - test301.mj:10: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:10: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - test301.mj:28: SEMANTIC ANALYZER: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - test301.mj:29: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - test301.mj:29: SEMANTIC ANALYZER: Found local variable usage 'bodovi'! Symbol node: Variable 'bodovi': type = 'int', adr = 0, level = 1
+DEBUG - test301.mj:29: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:29: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - test301.mj:8: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:8: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - test301.mj:8: SEMANTIC ANALYZER: Visited node: 'PrintStatement'.
+DEBUG - test301.mj:30: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - test301.mj:30: SEMANTIC ANALYZER: Found global variable usage 'niz'! Symbol node: Variable 'niz': type = 'array of int', adr = 0, level = 0
+DEBUG - test301.mj:30: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:30: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - test301.mj:12: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:12: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - test301.mj:30: SEMANTIC ANALYZER: Visited node: 'ElementAccessDesignator'.
+INFO  - test301.mj:30: SEMANTIC ANALYZER: Found array element access 'niz[2]'! Symbol node: Array element 'niz[2]': type = 'int', adr = -1, level = -1
+DEBUG - test301.mj:30: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:30: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - test301.mj:8: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:8: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - test301.mj:8: SEMANTIC ANALYZER: Visited node: 'PrintStatement'.
+DEBUG - test301.mj:32: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - test301.mj:32: SEMANTIC ANALYZER: Found local variable usage 'bodovi'! Symbol node: Variable 'bodovi': type = 'int', adr = 0, level = 1
+DEBUG - test301.mj:32: SEMANTIC ANALYZER: Visited node: 'ReadStatement'.
+DEBUG - test301.mj:33: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - test301.mj:33: SEMANTIC ANALYZER: Found global variable usage 'niz'! Symbol node: Variable 'niz': type = 'array of int', adr = 0, level = 0
+DEBUG - test301.mj:33: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:33: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - test301.mj:6: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:6: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - test301.mj:33: SEMANTIC ANALYZER: Visited node: 'ElementAccessDesignator'.
+INFO  - test301.mj:33: SEMANTIC ANALYZER: Found array element access 'niz[2]'! Symbol node: Array element 'niz[2]': type = 'int', adr = -1, level = -1
+DEBUG - test301.mj:33: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - test301.mj:33: SEMANTIC ANALYZER: Found local variable usage 'bodovi'! Symbol node: Variable 'bodovi': type = 'int', adr = 0, level = 1
+DEBUG - test301.mj:33: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:33: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - test301.mj:10: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:33: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:33: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - test301.mj:20: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:20: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - test301.mj:10: SEMANTIC ANALYZER: Visited node: 'AssignmentExpression'.
+DEBUG - test301.mj:33: SEMANTIC ANALYZER: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - test301.mj:34: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - test301.mj:34: SEMANTIC ANALYZER: Found global variable usage 'niz'! Symbol node: Variable 'niz': type = 'array of int', adr = 0, level = 0
+DEBUG - test301.mj:34: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:34: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - test301.mj:6: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:6: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - test301.mj:34: SEMANTIC ANALYZER: Visited node: 'ElementAccessDesignator'.
+INFO  - test301.mj:34: SEMANTIC ANALYZER: Found array element access 'niz[2]'! Symbol node: Array element 'niz[2]': type = 'int', adr = -1, level = -1
+DEBUG - test301.mj:34: SEMANTIC ANALYZER: Visited node: 'IncrementDesignatorStatement'.
+DEBUG - test301.mj:35: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - test301.mj:35: SEMANTIC ANALYZER: Found global variable usage 'niz'! Symbol node: Variable 'niz': type = 'array of int', adr = 0, level = 0
+DEBUG - test301.mj:35: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:35: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - test301.mj:12: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:12: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - test301.mj:35: SEMANTIC ANALYZER: Visited node: 'ElementAccessDesignator'.
+INFO  - test301.mj:35: SEMANTIC ANALYZER: Found array element access 'niz[2]'! Symbol node: Array element 'niz[2]': type = 'int', adr = -1, level = -1
+DEBUG - test301.mj:35: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:35: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - test301.mj:8: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:8: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - test301.mj:8: SEMANTIC ANALYZER: Visited node: 'PrintStatement'.
+DEBUG - test301.mj:38: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - test301.mj:38: SEMANTIC ANALYZER: Found global variable usage 'nizch'! Symbol node: Variable 'nizch': type = 'array of char', adr = 1, level = 0
+DEBUG - test301.mj:38: SEMANTIC ANALYZER: Visited node: 'Type'.
+DEBUG - test301.mj:38: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:38: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - test301.mj:19: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:19: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - test301.mj:38: SEMANTIC ANALYZER: Visited node: 'AllocatorFactor'.
+DEBUG - test301.mj:38: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - test301.mj:9: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:9: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - test301.mj:38: SEMANTIC ANALYZER: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - test301.mj:39: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - test301.mj:39: SEMANTIC ANALYZER: Found global variable usage 'nizch'! Symbol node: Variable 'nizch': type = 'array of char', adr = 1, level = 0
+DEBUG - test301.mj:39: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:39: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - test301.mj:8: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:8: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - test301.mj:39: SEMANTIC ANALYZER: Visited node: 'ElementAccessDesignator'.
+INFO  - test301.mj:39: SEMANTIC ANALYZER: Found array element access 'nizch[0]'! Symbol node: Array element 'nizch[0]': type = 'char', adr = -1, level = -1
+DEBUG - test301.mj:39: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:39: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - test301.mj:12: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:12: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - test301.mj:39: SEMANTIC ANALYZER: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - test301.mj:40: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - test301.mj:40: SEMANTIC ANALYZER: Found global variable usage 'nizch'! Symbol node: Variable 'nizch': type = 'array of char', adr = 1, level = 0
+DEBUG - test301.mj:40: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - test301.mj:40: SEMANTIC ANALYZER: Found symbolic constant usage 'jedan'! Symbol node: Constant 'jedan': type = 'int', adr = 1, level = 0
+DEBUG - test301.mj:40: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:40: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - test301.mj:8: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:8: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - test301.mj:40: SEMANTIC ANALYZER: Visited node: 'ElementAccessDesignator'.
+INFO  - test301.mj:40: SEMANTIC ANALYZER: Found array element access 'jedan[jedan]'! Symbol node: Array element 'jedan[jedan]': type = 'char', adr = -1, level = -1
+DEBUG - test301.mj:40: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:40: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - test301.mj:16: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:16: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - test301.mj:40: SEMANTIC ANALYZER: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - test301.mj:41: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - test301.mj:41: SEMANTIC ANALYZER: Found global variable usage 'nizch'! Symbol node: Variable 'nizch': type = 'array of char', adr = 1, level = 0
+DEBUG - test301.mj:41: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - test301.mj:41: SEMANTIC ANALYZER: Found symbolic constant usage 'pet'! Symbol node: Constant 'pet': type = 'int', adr = 5, level = 0
+DEBUG - test301.mj:41: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:41: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - test301.mj:8: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:41: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:41: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - test301.mj:8: SEMANTIC ANALYZER: Visited node: 'MultipleTermsExpression'.
+DEBUG - test301.mj:8: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - test301.mj:41: SEMANTIC ANALYZER: Visited node: 'ElementAccessDesignator'.
+INFO  - test301.mj:41: SEMANTIC ANALYZER: Found array element access 'pet[pet - 3]'! Symbol node: Array element 'pet[pet - 3]': type = 'char', adr = -1, level = -1
+DEBUG - test301.mj:41: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:41: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - test301.mj:18: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:18: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - test301.mj:41: SEMANTIC ANALYZER: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - test301.mj:42: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - test301.mj:42: SEMANTIC ANALYZER: Found global variable usage 'nizch'! Symbol node: Variable 'nizch': type = 'array of char', adr = 1, level = 0
+DEBUG - test301.mj:42: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:42: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - test301.mj:14: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:14: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - test301.mj:42: SEMANTIC ANALYZER: Visited node: 'ElementAccessDesignator'.
+INFO  - test301.mj:42: SEMANTIC ANALYZER: Found array element access 'nizch[1]'! Symbol node: Array element 'nizch[1]': type = 'char', adr = -1, level = -1
+DEBUG - test301.mj:42: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:42: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - test301.mj:8: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:8: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - test301.mj:8: SEMANTIC ANALYZER: Visited node: 'PrintStatement'.
+DEBUG - test301.mj:43: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - test301.mj:43: SEMANTIC ANALYZER: Found global variable usage 'nizch'! Symbol node: Variable 'nizch': type = 'array of char', adr = 1, level = 0
+DEBUG - test301.mj:43: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - test301.mj:43: SEMANTIC ANALYZER: Found symbolic constant usage 'jedan'! Symbol node: Constant 'jedan': type = 'int', adr = 1, level = 0
+DEBUG - test301.mj:43: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:43: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - test301.mj:43: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:43: SEMANTIC ANALYZER: Visited node: 'MultipleFactorsTerm'.
+DEBUG - test301.mj:14: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:14: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - test301.mj:43: SEMANTIC ANALYZER: Visited node: 'ElementAccessDesignator'.
+INFO  - test301.mj:43: SEMANTIC ANALYZER: Found array element access 'jedan[jedan * 2]'! Symbol node: Array element 'jedan[jedan * 2]': type = 'char', adr = -1, level = -1
+DEBUG - test301.mj:43: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:43: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - test301.mj:8: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:8: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - test301.mj:8: SEMANTIC ANALYZER: Visited node: 'PrintStatement'.
+DEBUG - test301.mj:46: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - test301.mj:46: SEMANTIC ANALYZER: Found local variable usage 'bodovi'! Symbol node: Variable 'bodovi': type = 'int', adr = 0, level = 1
+DEBUG - test301.mj:46: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - test301.mj:46: SEMANTIC ANALYZER: Found local variable usage 'bodovi'! Symbol node: Variable 'bodovi': type = 'int', adr = 0, level = 1
+DEBUG - test301.mj:46: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:46: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - test301.mj:10: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:46: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - test301.mj:46: SEMANTIC ANALYZER: Found symbolic constant usage 'pet'! Symbol node: Constant 'pet': type = 'int', adr = 5, level = 0
+DEBUG - test301.mj:46: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:46: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - test301.mj:46: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - test301.mj:46: SEMANTIC ANALYZER: Found symbolic constant usage 'jedan'! Symbol node: Constant 'jedan': type = 'int', adr = 1, level = 0
+DEBUG - test301.mj:46: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:46: SEMANTIC ANALYZER: Visited node: 'MultipleFactorsTerm'.
+DEBUG - test301.mj:21: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:46: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:46: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - test301.mj:21: SEMANTIC ANALYZER: Visited node: 'MultipleTermsExpression'.
+DEBUG - test301.mj:21: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - test301.mj:21: SEMANTIC ANALYZER: Visited node: 'InnerExpressionFactor'.
+DEBUG - test301.mj:46: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - test301.mj:46: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - test301.mj:46: SEMANTIC ANALYZER: Found local variable usage 'bodovi'! Symbol node: Variable 'bodovi': type = 'int', adr = 0, level = 1
+DEBUG - test301.mj:46: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:46: SEMANTIC ANALYZER: Visited node: 'MultipleFactorsTerm'.
+DEBUG - test301.mj:10: SEMANTIC ANALYZER: Visited node: 'MultipleTermsExpression'.
+DEBUG - test301.mj:46: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:46: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - test301.mj:46: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:46: SEMANTIC ANALYZER: Visited node: 'MultipleFactorsTerm'.
+DEBUG - test301.mj:50: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:46: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:46: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - test301.mj:46: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:46: SEMANTIC ANALYZER: Visited node: 'MultipleFactorsTerm'.
+DEBUG - test301.mj:50: SEMANTIC ANALYZER: Visited node: 'MultipleTermsExpression'.
+DEBUG - test301.mj:46: SEMANTIC ANALYZER: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:46: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - test301.mj:50: SEMANTIC ANALYZER: Visited node: 'MultipleTermsExpression'.
+DEBUG - test301.mj:50: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - test301.mj:50: SEMANTIC ANALYZER: Visited node: 'InnerExpressionFactor'.
+DEBUG - test301.mj:46: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - test301.mj:10: SEMANTIC ANALYZER: Visited node: 'MultipleTermsExpression'.
+DEBUG - test301.mj:10: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - test301.mj:46: SEMANTIC ANALYZER: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - test301.mj:47: SEMANTIC ANALYZER: Visited node: 'IdentifierDesignator'.
+INFO  - test301.mj:47: SEMANTIC ANALYZER: Found local variable usage 'bodovi'! Symbol node: Variable 'bodovi': type = 'int', adr = 0, level = 1
+DEBUG - test301.mj:47: SEMANTIC ANALYZER: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:47: SEMANTIC ANALYZER: Visited node: 'SingleFactorTerm'.
+DEBUG - test301.mj:8: SEMANTIC ANALYZER: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:8: SEMANTIC ANALYZER: Visited node: 'LeftExpression'.
+DEBUG - test301.mj:8: SEMANTIC ANALYZER: Visited node: 'PrintStatement'.
+DEBUG - test301.mj:13: SEMANTIC ANALYZER: Visited node: 'MethodDeclaration'.
+INFO  - test301.mj:13: SEMANTIC ANALYZER: Defined method 'main'. Symbol node: Method 'main': type = 'void', adr = 0, level = 0
+  Variable 'bodovi': type = 'int', adr = 0, level = 1
+DEBUG - test301.mj:3: SEMANTIC ANALYZER: Visited node: 'Program'.
+INFO  - test301.mj:3: SEMANTIC ANALYZER: Defined program 'test301'. Symbol node: Program 'test301': type = 'none', adr = 0, level = 1
+  Constant 'nula': type = 'int', adr = 0, level = 0
+  Constant 'jedan': type = 'int', adr = 1, level = 0
+  Constant 'pet': type = 'int', adr = 5, level = 0
+  Variable 'niz': type = 'array of int', adr = 0, level = 0
+  Variable 'nizch': type = 'array of char', adr = 1, level = 0
+  Method 'main': type = 'void', adr = 0, level = 0
+    Variable 'bodovi': type = 'int', adr = 0, level = 1
+DEBUG - test301.mj:3: CODE GENERATOR: Visited node: 'ProgramHeader'.
+DEBUG - test301.mj:9: CODE GENERATOR: Visited node: 'Variable'.
+DEBUG - test301.mj:10: CODE GENERATOR: Visited node: 'Variable'.
+DEBUG - test301.mj:13: CODE GENERATOR: Visited node: 'MethodHeader'.
+DEBUG - test301.mj:16: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - test301.mj:16: CODE GENERATOR: Visited node: 'AssignmentHeader'.
+DEBUG - test301.mj:16: CODE GENERATOR: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:10: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:16: CODE GENERATOR: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - test301.mj:17: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - test301.mj:17: CODE GENERATOR: Visited node: 'IncrementDesignatorStatement'.
+DEBUG - test301.mj:18: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - test301.mj:18: CODE GENERATOR: Visited node: 'AssignmentHeader'.
+DEBUG - test301.mj:18: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - test301.mj:18: CODE GENERATOR: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:10: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:18: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - test301.mj:18: CODE GENERATOR: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:10: CODE GENERATOR: Visited node: 'MultipleTermsExpression'.
+DEBUG - test301.mj:18: CODE GENERATOR: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - test301.mj:19: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - test301.mj:19: CODE GENERATOR: Visited node: 'AssignmentHeader'.
+DEBUG - test301.mj:19: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - test301.mj:19: CODE GENERATOR: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:19: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - test301.mj:19: CODE GENERATOR: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:19: CODE GENERATOR: Visited node: 'MultipleFactorsTerm'.
+DEBUG - test301.mj:10: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:19: CODE GENERATOR: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - test301.mj:20: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - test301.mj:20: CODE GENERATOR: Visited node: 'DecrementDesignatorStatement'.
+DEBUG - test301.mj:21: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - test301.mj:21: CODE GENERATOR: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:8: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:8: CODE GENERATOR: Visited node: 'PrintStatement'.
+DEBUG - test301.mj:24: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - test301.mj:24: CODE GENERATOR: Visited node: 'AssignmentHeader'.
+DEBUG - test301.mj:24: CODE GENERATOR: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:16: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:24: CODE GENERATOR: Visited node: 'AllocatorFactor'.
+DEBUG - test301.mj:7: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:24: CODE GENERATOR: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - test301.mj:25: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - test301.mj:25: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - test301.mj:25: CODE GENERATOR: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:6: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:25: CODE GENERATOR: Visited node: 'ElementAccessDesignator'.
+DEBUG - test301.mj:25: CODE GENERATOR: Visited node: 'AssignmentHeader'.
+DEBUG - test301.mj:25: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - test301.mj:25: CODE GENERATOR: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:13: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:25: CODE GENERATOR: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - test301.mj:26: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - test301.mj:26: CODE GENERATOR: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:6: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:26: CODE GENERATOR: Visited node: 'ElementAccessDesignator'.
+DEBUG - test301.mj:26: CODE GENERATOR: Visited node: 'AssignmentHeader'.
+DEBUG - test301.mj:26: CODE GENERATOR: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:10: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:26: CODE GENERATOR: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - test301.mj:27: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - test301.mj:27: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - test301.mj:27: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - test301.mj:27: CODE GENERATOR: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:10: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:27: CODE GENERATOR: Visited node: 'ElementAccessDesignator'.
+DEBUG - test301.mj:27: CODE GENERATOR: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:6: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:27: CODE GENERATOR: Visited node: 'ElementAccessDesignator'.
+DEBUG - test301.mj:27: CODE GENERATOR: Visited node: 'AssignmentHeader'.
+DEBUG - test301.mj:27: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - test301.mj:27: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - test301.mj:27: CODE GENERATOR: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:28: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:27: CODE GENERATOR: Visited node: 'ElementAccessDesignator'.
+DEBUG - test301.mj:27: CODE GENERATOR: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:24: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:27: CODE GENERATOR: Visited node: 'ElementAccessDesignator'.
+DEBUG - test301.mj:27: CODE GENERATOR: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:27: CODE GENERATOR: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:27: CODE GENERATOR: Visited node: 'MultipleFactorsTerm'.
+DEBUG - test301.mj:19: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:27: CODE GENERATOR: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - test301.mj:28: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - test301.mj:28: CODE GENERATOR: Visited node: 'AssignmentHeader'.
+DEBUG - test301.mj:28: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - test301.mj:28: CODE GENERATOR: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:15: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:28: CODE GENERATOR: Visited node: 'ElementAccessDesignator'.
+DEBUG - test301.mj:28: CODE GENERATOR: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:28: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - test301.mj:28: CODE GENERATOR: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:22: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:28: CODE GENERATOR: Visited node: 'ElementAccessDesignator'.
+DEBUG - test301.mj:28: CODE GENERATOR: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:28: CODE GENERATOR: Visited node: 'MultipleFactorsTerm'.
+DEBUG - test301.mj:10: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:28: CODE GENERATOR: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - test301.mj:29: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - test301.mj:29: CODE GENERATOR: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:8: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:8: CODE GENERATOR: Visited node: 'PrintStatement'.
+DEBUG - test301.mj:30: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - test301.mj:30: CODE GENERATOR: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:12: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:30: CODE GENERATOR: Visited node: 'ElementAccessDesignator'.
+DEBUG - test301.mj:30: CODE GENERATOR: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:8: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:8: CODE GENERATOR: Visited node: 'PrintStatement'.
+DEBUG - test301.mj:32: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - test301.mj:32: CODE GENERATOR: Visited node: 'ReadStatement'.
+DEBUG - test301.mj:33: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - test301.mj:33: CODE GENERATOR: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:6: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:33: CODE GENERATOR: Visited node: 'ElementAccessDesignator'.
+DEBUG - test301.mj:33: CODE GENERATOR: Visited node: 'AssignmentHeader'.
+DEBUG - test301.mj:33: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - test301.mj:33: CODE GENERATOR: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:10: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:33: CODE GENERATOR: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:20: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:10: CODE GENERATOR: Visited node: 'AssignmentExpression'.
+DEBUG - test301.mj:33: CODE GENERATOR: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - test301.mj:34: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - test301.mj:34: CODE GENERATOR: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:6: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:34: CODE GENERATOR: Visited node: 'ElementAccessDesignator'.
+DEBUG - test301.mj:34: CODE GENERATOR: Visited node: 'IncrementDesignatorStatement'.
+DEBUG - test301.mj:35: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - test301.mj:35: CODE GENERATOR: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:12: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:35: CODE GENERATOR: Visited node: 'ElementAccessDesignator'.
+DEBUG - test301.mj:35: CODE GENERATOR: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:8: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:8: CODE GENERATOR: Visited node: 'PrintStatement'.
+DEBUG - test301.mj:38: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - test301.mj:38: CODE GENERATOR: Visited node: 'AssignmentHeader'.
+DEBUG - test301.mj:38: CODE GENERATOR: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:19: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:38: CODE GENERATOR: Visited node: 'AllocatorFactor'.
+DEBUG - test301.mj:9: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:38: CODE GENERATOR: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - test301.mj:39: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - test301.mj:39: CODE GENERATOR: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:8: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:39: CODE GENERATOR: Visited node: 'ElementAccessDesignator'.
+DEBUG - test301.mj:39: CODE GENERATOR: Visited node: 'AssignmentHeader'.
+DEBUG - test301.mj:39: CODE GENERATOR: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:12: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:39: CODE GENERATOR: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - test301.mj:40: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - test301.mj:40: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - test301.mj:40: CODE GENERATOR: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:8: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:40: CODE GENERATOR: Visited node: 'ElementAccessDesignator'.
+DEBUG - test301.mj:40: CODE GENERATOR: Visited node: 'AssignmentHeader'.
+DEBUG - test301.mj:40: CODE GENERATOR: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:16: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:40: CODE GENERATOR: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - test301.mj:41: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - test301.mj:41: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - test301.mj:41: CODE GENERATOR: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:8: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:41: CODE GENERATOR: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:8: CODE GENERATOR: Visited node: 'MultipleTermsExpression'.
+DEBUG - test301.mj:41: CODE GENERATOR: Visited node: 'ElementAccessDesignator'.
+DEBUG - test301.mj:41: CODE GENERATOR: Visited node: 'AssignmentHeader'.
+DEBUG - test301.mj:41: CODE GENERATOR: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:18: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:41: CODE GENERATOR: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - test301.mj:42: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - test301.mj:42: CODE GENERATOR: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:14: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:42: CODE GENERATOR: Visited node: 'ElementAccessDesignator'.
+DEBUG - test301.mj:42: CODE GENERATOR: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:8: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:8: CODE GENERATOR: Visited node: 'PrintStatement'.
+DEBUG - test301.mj:43: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - test301.mj:43: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - test301.mj:43: CODE GENERATOR: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:43: CODE GENERATOR: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:43: CODE GENERATOR: Visited node: 'MultipleFactorsTerm'.
+DEBUG - test301.mj:14: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:43: CODE GENERATOR: Visited node: 'ElementAccessDesignator'.
+DEBUG - test301.mj:43: CODE GENERATOR: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:8: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:8: CODE GENERATOR: Visited node: 'PrintStatement'.
+DEBUG - test301.mj:46: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - test301.mj:46: CODE GENERATOR: Visited node: 'AssignmentHeader'.
+DEBUG - test301.mj:46: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - test301.mj:46: CODE GENERATOR: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:10: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:46: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - test301.mj:46: CODE GENERATOR: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:46: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - test301.mj:46: CODE GENERATOR: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:46: CODE GENERATOR: Visited node: 'MultipleFactorsTerm'.
+DEBUG - test301.mj:21: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:46: CODE GENERATOR: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:21: CODE GENERATOR: Visited node: 'MultipleTermsExpression'.
+DEBUG - test301.mj:46: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - test301.mj:46: CODE GENERATOR: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:46: CODE GENERATOR: Visited node: 'MultipleFactorsTerm'.
+DEBUG - test301.mj:10: CODE GENERATOR: Visited node: 'MultipleTermsExpression'.
+DEBUG - test301.mj:46: CODE GENERATOR: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:46: CODE GENERATOR: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:46: CODE GENERATOR: Visited node: 'MultipleFactorsTerm'.
+DEBUG - test301.mj:50: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:46: CODE GENERATOR: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:46: CODE GENERATOR: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:46: CODE GENERATOR: Visited node: 'MultipleFactorsTerm'.
+DEBUG - test301.mj:50: CODE GENERATOR: Visited node: 'MultipleTermsExpression'.
+DEBUG - test301.mj:46: CODE GENERATOR: Visited node: 'ConstantFactor'.
+DEBUG - test301.mj:50: CODE GENERATOR: Visited node: 'MultipleTermsExpression'.
+DEBUG - test301.mj:10: CODE GENERATOR: Visited node: 'MultipleTermsExpression'.
+DEBUG - test301.mj:46: CODE GENERATOR: Visited node: 'AssignmentDesignatorStatement'.
+DEBUG - test301.mj:47: CODE GENERATOR: Visited node: 'IdentifierDesignator'.
+DEBUG - test301.mj:47: CODE GENERATOR: Visited node: 'DesignatorFactor'.
+DEBUG - test301.mj:8: CODE GENERATOR: Visited node: 'SingleTermExpression'.
+DEBUG - test301.mj:8: CODE GENERATOR: Visited node: 'PrintStatement'.
+DEBUG - test301.mj:13: CODE GENERATOR: Visited node: 'MethodDeclaration'.
+DEBUG - test301.mj:3: CODE GENERATOR: Visited node: 'Program'.

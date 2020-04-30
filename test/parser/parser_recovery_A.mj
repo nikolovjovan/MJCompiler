@@ -1,0 +1,22 @@
+// level A error recovery test
+// - local variable declaration (ignore until ',' or ';')
+// - assignment designator statement (ignore until ';')
+program error_a
+{
+    void main()
+        int 3z;
+        int p;
+        int q;
+        int 7x, a, p, 4v, g; // this will immediately stop processing other variables since the first one is invalid
+                             // while not the best, any other attempts resulted in CUP failing to generate parser...
+        int a, 3x, b, d, 6b, c;
+        int c, d, 6x;
+        int x, y;
+    {
+        x = x = 5;
+        x -= y +;
+        x = ;
+        x = +;
+        x = if (x == y) x = 2;
+    }
+}

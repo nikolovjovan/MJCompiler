@@ -1,0 +1,751 @@
+Compiling source file: D:\Documents\Fakultet\7. semestar\13E114PP1\Projekat\MJCompiler\test\generator\generator_C2.mj
+Syntax analysis completed without errors!
+Starting semantic analysis...
+Found class 'String' field usage 'arr' at line 13! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found symbolic constant usage 'null' at line 13! Symbol node: Constant 'null': type = 'class', adr = 0, level = 0
+Found global method call 'len' at line 14! Symbol node: Method 'len': type = 'int', adr = 0, level = 1
+  Formal parameter 'arr': type = 'array of none', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 14! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found class 'String' method call 'length' at line 18! Symbol node: Method 'length': type = 'int', adr = 0, level = 1, parent = 'String', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+Found formal parameter usage 's' at line 26! Symbol node: Formal parameter 's': type = 'class', adr = 1, level = 1
+Found symbolic constant usage 'null' at line 26! Symbol node: Constant 'null': type = 'class', adr = 0, level = 0
+Found formal parameter usage 's' at line 26! Symbol node: Formal parameter 's': type = 'class', adr = 1, level = 1
+Found class 'String' field usage 'isEmpty' at line 26! Symbol node: Method 'isEmpty': type = 'bool', adr = 0, level = 1, parent = 'String', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+Found local variable usage 'this' at line 26! Symbol node: Variable 'this': , adr = 0, level = 1
+Found class 'String' method call 'isEmpty' at line 27! Symbol node: Method 'isEmpty': type = 'bool', adr = 0, level = 1, parent = 'String', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+Found formal parameter usage 's' at line 27! Symbol node: Formal parameter 's': type = 'class', adr = 1, level = 1
+Found local variable usage 'result' at line 28! Symbol node: Variable 'result': type = 'class', adr = 2, level = 2
+Found local variable usage 'result' at line 29! Symbol node: Variable 'result': type = 'class', adr = 2, level = 2
+Found class 'String' field usage 'arr' at line 29! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found class 'String' method call 'length' at line 29! Symbol node: Method 'length': type = 'int', adr = 0, level = 1, parent = 'String', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+Found formal parameter usage 's' at line 29! Symbol node: Formal parameter 's': type = 'class', adr = 1, level = 1
+Found class 'String' field usage 'length' at line 29! Symbol node: Method 'length': type = 'int', adr = 0, level = 1, parent = 'String', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+Found local variable usage 'offset' at line 30! Symbol node: Variable 'offset': type = 'int', adr = 4, level = 2
+Found class 'String' method call 'length' at line 30! Symbol node: Method 'length': type = 'int', adr = 0, level = 1, parent = 'String', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+Found local variable usage 'i' at line 31! Symbol node: Variable 'i': type = 'int', adr = 3, level = 2
+Found local variable usage 'i' at line 31! Symbol node: Variable 'i': type = 'int', adr = 3, level = 2
+Found local variable usage 'offset' at line 31! Symbol node: Variable 'offset': type = 'int', adr = 4, level = 2
+Found local variable usage 'i' at line 31! Symbol node: Variable 'i': type = 'int', adr = 3, level = 2
+Found for loop 'none' at line 31!
+Found local variable usage 'result' at line 32! Symbol node: Variable 'result': type = 'class', adr = 2, level = 2
+Found class 'String' field usage 'arr' at line 32! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found local variable usage 'i' at line 32! Symbol node: Variable 'i': type = 'int', adr = 3, level = 2
+Found array element access 'i[i]' at line 32! Symbol node: Array element 'i[i]': type = 'char', adr = -1, level = -1
+Found class 'String' field usage 'arr' at line 32! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found local variable usage 'i' at line 32! Symbol node: Variable 'i': type = 'int', adr = 3, level = 2
+Found array element access 'i[i]' at line 32! Symbol node: Array element 'i[i]': type = 'char', adr = -1, level = -1
+Found local variable usage 'i' at line 34! Symbol node: Variable 'i': type = 'int', adr = 3, level = 2
+Found local variable usage 'i' at line 34! Symbol node: Variable 'i': type = 'int', adr = 3, level = 2
+Found formal parameter usage 's' at line 34! Symbol node: Formal parameter 's': type = 'class', adr = 1, level = 1
+Found class 'String' field usage 'length' at line 34! Symbol node: Method 'length': type = 'int', adr = 0, level = 1, parent = 'String', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+Found local variable usage 'i' at line 34! Symbol node: Variable 'i': type = 'int', adr = 3, level = 2
+Found for loop 'none' at line 34!
+Found local variable usage 'result' at line 35! Symbol node: Variable 'result': type = 'class', adr = 2, level = 2
+Found class 'String' field usage 'arr' at line 35! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found local variable usage 'offset' at line 35! Symbol node: Variable 'offset': type = 'int', adr = 4, level = 2
+Found local variable usage 'i' at line 35! Symbol node: Variable 'i': type = 'int', adr = 3, level = 2
+Found array element access 'i[offset + i]' at line 35! Symbol node: Array element 'i[offset + i]': type = 'char', adr = -1, level = -1
+Found formal parameter usage 's' at line 35! Symbol node: Formal parameter 's': type = 'class', adr = 1, level = 1
+Found class 'String' field usage 'arr' at line 35! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found local variable usage 'i' at line 35! Symbol node: Variable 'i': type = 'int', adr = 3, level = 2
+Found array element access 'i[i]' at line 35! Symbol node: Array element 'i[i]': type = 'char', adr = -1, level = -1
+Found local variable usage 'result' at line 37! Symbol node: Variable 'result': type = 'class', adr = 2, level = 2
+Found local variable usage 'this' at line 43! Symbol node: Variable 'this': , adr = 0, level = 1
+Found formal parameter usage 's' at line 43! Symbol node: Formal parameter 's': type = 'class', adr = 1, level = 1
+Found local variable usage 'this' at line 44! Symbol node: Variable 'this': , adr = 0, level = 1
+Found symbolic constant usage 'null' at line 44! Symbol node: Constant 'null': type = 'class', adr = 0, level = 0
+Found formal parameter usage 's' at line 44! Symbol node: Formal parameter 's': type = 'class', adr = 1, level = 1
+Found symbolic constant usage 'null' at line 44! Symbol node: Constant 'null': type = 'class', adr = 0, level = 0
+Found local variable usage 'l' at line 45! Symbol node: Variable 'l': type = 'int', adr = 3, level = 2
+Found class 'String' method call 'length' at line 45! Symbol node: Method 'length': type = 'int', adr = 0, level = 1, parent = 'String', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+Found local variable usage 'l' at line 46! Symbol node: Variable 'l': type = 'int', adr = 3, level = 2
+Found formal parameter usage 's' at line 46! Symbol node: Formal parameter 's': type = 'class', adr = 1, level = 1
+Found class 'String' field usage 'length' at line 46! Symbol node: Method 'length': type = 'int', adr = 0, level = 1, parent = 'String', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+Found local variable usage 'i' at line 47! Symbol node: Variable 'i': type = 'int', adr = 2, level = 2
+Found local variable usage 'i' at line 47! Symbol node: Variable 'i': type = 'int', adr = 2, level = 2
+Found local variable usage 'l' at line 47! Symbol node: Variable 'l': type = 'int', adr = 3, level = 2
+Found local variable usage 'i' at line 47! Symbol node: Variable 'i': type = 'int', adr = 2, level = 2
+Found for loop 'none' at line 47!
+Found class 'String' field usage 'arr' at line 48! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found local variable usage 'i' at line 48! Symbol node: Variable 'i': type = 'int', adr = 2, level = 2
+Found array element access 'i[i]' at line 48! Symbol node: Array element 'i[i]': type = 'char', adr = -1, level = -1
+Found formal parameter usage 's' at line 48! Symbol node: Formal parameter 's': type = 'class', adr = 1, level = 1
+Found class 'String' field usage 'arr' at line 48! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found local variable usage 'i' at line 48! Symbol node: Variable 'i': type = 'int', adr = 2, level = 2
+Found array element access 'i[i]' at line 48! Symbol node: Array element 'i[i]': type = 'char', adr = -1, level = -1
+Found class 'AbsWorker' field usage 'name' at line 61! Symbol node: Field 'name': type = 'class', adr = 1, level = 1, parent = 'AbsWorker', access modifier = protected
+Found local variable usage 'this' at line 62! Symbol node: Variable 'this': , adr = 0, level = 1
+Found class 'AbsWorker' field usage 'name' at line 62! Symbol node: Field 'name': type = 'class', adr = 1, level = 1, parent = 'AbsWorker', access modifier = protected
+Found formal parameter usage 'name' at line 62! Symbol node: Formal parameter 'name': type = 'class', adr = 1, level = 1
+Found class 'AbsWorker' field usage 'yearOfBirth' at line 64! Symbol node: Field 'yearOfBirth': type = 'int', adr = 2, level = 1, parent = 'AbsWorker', access modifier = protected
+Found local variable usage 'this' at line 65! Symbol node: Variable 'this': , adr = 0, level = 1
+Found class 'AbsWorker' field usage 'yearOfBirth' at line 65! Symbol node: Field 'yearOfBirth': type = 'int', adr = 2, level = 1, parent = 'AbsWorker', access modifier = protected
+Found formal parameter usage 'yearOfBirth' at line 65! Symbol node: Formal parameter 'yearOfBirth': type = 'int', adr = 1, level = 1
+Found abstract class usage 'AbsWorker' at line 71! Symbol node: Type 'AbsWorker': type = 'abstract class', adr = 0, level = 0
+Found class 'AbsWorker' field usage 'name' at line 74! Symbol node: Field 'name': type = 'class', adr = 1, level = 1, parent = 'AbsWorker', access modifier = protected
+Found abstract class usage 'AbsWorker' at line 78! Symbol node: Type 'AbsWorker': type = 'abstract class', adr = 0, level = 0
+Found class 'ShopOwner' field usage 'shopName' at line 81! Symbol node: Field 'shopName': type = 'class', adr = 3, level = 1, parent = 'ShopOwner', access modifier = protected
+Found global variable usage 'shopHeader' at line 83! Symbol node: Variable 'shopHeader': type = 'class', adr = 0, level = 0
+Found symbolic constant usage 'null' at line 83! Symbol node: Constant 'null': type = 'class', adr = 0, level = 0
+Found global variable usage 'shopHeader' at line 84! Symbol node: Variable 'shopHeader': type = 'class', adr = 0, level = 0
+Found global variable usage 'shopHeader' at line 85! Symbol node: Variable 'shopHeader': type = 'class', adr = 0, level = 0
+Found class 'String' field usage 'arr' at line 85! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found global variable usage 'shopHeader' at line 86! Symbol node: Variable 'shopHeader': type = 'class', adr = 0, level = 0
+Found class 'String' field usage 'arr' at line 86! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 'shopHeader.arr[0]' at line 86! Symbol node: Array element 'shopHeader.arr[0]': type = 'char', adr = -1, level = -1
+Found global variable usage 'shopHeader' at line 87! Symbol node: Variable 'shopHeader': type = 'class', adr = 0, level = 0
+Found class 'String' field usage 'arr' at line 87! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 'shopHeader.arr[1]' at line 87! Symbol node: Array element 'shopHeader.arr[1]': type = 'char', adr = -1, level = -1
+Found global variable usage 'shopHeader' at line 88! Symbol node: Variable 'shopHeader': type = 'class', adr = 0, level = 0
+Found class 'String' field usage 'arr' at line 88! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 'shopHeader.arr[2]' at line 88! Symbol node: Array element 'shopHeader.arr[2]': type = 'char', adr = -1, level = -1
+Found global variable usage 'shopHeader' at line 89! Symbol node: Variable 'shopHeader': type = 'class', adr = 0, level = 0
+Found class 'String' field usage 'arr' at line 89! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 'shopHeader.arr[3]' at line 89! Symbol node: Array element 'shopHeader.arr[3]': type = 'char', adr = -1, level = -1
+Found global variable usage 'shopHeader' at line 90! Symbol node: Variable 'shopHeader': type = 'class', adr = 0, level = 0
+Found class 'String' field usage 'arr' at line 90! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 'shopHeader.arr[4]' at line 90! Symbol node: Array element 'shopHeader.arr[4]': type = 'char', adr = -1, level = -1
+Found global variable usage 'shopHeader' at line 91! Symbol node: Variable 'shopHeader': type = 'class', adr = 0, level = 0
+Found class 'String' field usage 'arr' at line 91! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 'shopHeader.arr[5]' at line 91! Symbol node: Array element 'shopHeader.arr[5]': type = 'char', adr = -1, level = -1
+Found local variable usage 'this' at line 93! Symbol node: Variable 'this': , adr = 0, level = 1
+Found class 'ShopOwner' field usage 'shopName' at line 93! Symbol node: Field 'shopName': type = 'class', adr = 3, level = 1, parent = 'ShopOwner', access modifier = protected
+Found global variable usage 'shopHeader' at line 93! Symbol node: Variable 'shopHeader': type = 'class', adr = 0, level = 0
+Found class 'String' field usage 'concat' at line 93! Symbol node: Method 'concat': type = 'class', adr = 0, level = 2, parent = 'String', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 's': type = 'class', adr = 1, level = 1
+  Variable 'result': type = 'class', adr = 2, level = 2
+  Variable 'i': type = 'int', adr = 3, level = 2
+  Variable 'offset': type = 'int', adr = 4, level = 2
+Found formal parameter usage 'shopName' at line 93! Symbol node: Formal parameter 'shopName': type = 'class', adr = 1, level = 1
+Found global variable usage 'ownerHeader' at line 97! Symbol node: Variable 'ownerHeader': type = 'class', adr = 1, level = 0
+Found global variable usage 'ownerHeader' at line 98! Symbol node: Variable 'ownerHeader': type = 'class', adr = 1, level = 0
+Found class 'String' field usage 'arr' at line 98! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found global variable usage 'ownerHeader' at line 99! Symbol node: Variable 'ownerHeader': type = 'class', adr = 1, level = 0
+Found class 'String' field usage 'arr' at line 99! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 'ownerHeader.arr[0]' at line 99! Symbol node: Array element 'ownerHeader.arr[0]': type = 'char', adr = -1, level = -1
+Found global variable usage 'ownerHeader' at line 100! Symbol node: Variable 'ownerHeader': type = 'class', adr = 1, level = 0
+Found class 'String' field usage 'arr' at line 100! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 'ownerHeader.arr[1]' at line 100! Symbol node: Array element 'ownerHeader.arr[1]': type = 'char', adr = -1, level = -1
+Found global variable usage 'ownerHeader' at line 101! Symbol node: Variable 'ownerHeader': type = 'class', adr = 1, level = 0
+Found class 'String' field usage 'arr' at line 101! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 'ownerHeader.arr[2]' at line 101! Symbol node: Array element 'ownerHeader.arr[2]': type = 'char', adr = -1, level = -1
+Found global variable usage 'ownerHeader' at line 102! Symbol node: Variable 'ownerHeader': type = 'class', adr = 1, level = 0
+Found class 'String' field usage 'arr' at line 102! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 'ownerHeader.arr[3]' at line 102! Symbol node: Array element 'ownerHeader.arr[3]': type = 'char', adr = -1, level = -1
+Found global variable usage 'ownerHeader' at line 103! Symbol node: Variable 'ownerHeader': type = 'class', adr = 1, level = 0
+Found class 'String' field usage 'arr' at line 103! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 'ownerHeader.arr[4]' at line 103! Symbol node: Array element 'ownerHeader.arr[4]': type = 'char', adr = -1, level = -1
+Found global variable usage 'ownerHeader' at line 104! Symbol node: Variable 'ownerHeader': type = 'class', adr = 1, level = 0
+Found class 'String' field usage 'arr' at line 104! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 'ownerHeader.arr[5]' at line 104! Symbol node: Array element 'ownerHeader.arr[5]': type = 'char', adr = -1, level = -1
+Found global variable usage 'ownerHeader' at line 105! Symbol node: Variable 'ownerHeader': type = 'class', adr = 1, level = 0
+Found class 'String' field usage 'arr' at line 105! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 'ownerHeader.arr[6]' at line 105! Symbol node: Array element 'ownerHeader.arr[6]': type = 'char', adr = -1, level = -1
+Found global variable usage 'ownerHeader' at line 106! Symbol node: Variable 'ownerHeader': type = 'class', adr = 1, level = 0
+Found class 'String' field usage 'arr' at line 106! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 'ownerHeader.arr[7]' at line 106! Symbol node: Array element 'ownerHeader.arr[7]': type = 'char', adr = -1, level = -1
+Found global variable usage 'ownerHeader' at line 107! Symbol node: Variable 'ownerHeader': type = 'class', adr = 1, level = 0
+Found class 'String' field usage 'arr' at line 107! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 'ownerHeader.arr[8]' at line 107! Symbol node: Array element 'ownerHeader.arr[8]': type = 'char', adr = -1, level = -1
+Found global variable usage 'ownerHeader' at line 114! Symbol node: Variable 'ownerHeader': type = 'class', adr = 1, level = 0
+Found symbolic constant usage 'null' at line 114! Symbol node: Constant 'null': type = 'class', adr = 0, level = 0
+Found class 'ShopOwner' method call 'initOwnerHeader' at line 115! Symbol node: Method 'initOwnerHeader': type = 'void', adr = 0, level = 1, parent = 'ShopOwner', access modifier = protected
+  Variable 'this': , adr = 0, level = 1
+Found class 'ShopOwner' field usage 'shopName' at line 117! Symbol node: Field 'shopName': type = 'class', adr = 3, level = 1, parent = 'ShopOwner', access modifier = protected
+Found symbolic constant usage 'null' at line 117! Symbol node: Constant 'null': type = 'class', adr = 0, level = 0
+Found class 'AbsWorker' field usage 'name' at line 117! Symbol node: Field 'name': type = 'class', adr = 1, level = 1, parent = 'AbsWorker', access modifier = protected
+Found local variable usage 's' at line 118! Symbol node: Variable 's': type = 'class', adr = 1, level = 2
+Found class 'ShopOwner' field usage 'shopName' at line 118! Symbol node: Field 'shopName': type = 'class', adr = 3, level = 1, parent = 'ShopOwner', access modifier = protected
+Found class 'String' field usage 'concat' at line 118! Symbol node: Method 'concat': type = 'class', adr = 0, level = 2, parent = 'String', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 's': type = 'class', adr = 1, level = 1
+  Variable 'result': type = 'class', adr = 2, level = 2
+  Variable 'i': type = 'int', adr = 3, level = 2
+  Variable 'offset': type = 'int', adr = 4, level = 2
+Found global variable usage 'ownerHeader' at line 118! Symbol node: Variable 'ownerHeader': type = 'class', adr = 1, level = 0
+Found local variable usage 's' at line 119! Symbol node: Variable 's': type = 'class', adr = 1, level = 2
+Found class 'String' field usage 'concat' at line 119! Symbol node: Method 'concat': type = 'class', adr = 0, level = 2, parent = 'String', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 's': type = 'class', adr = 1, level = 1
+  Variable 'result': type = 'class', adr = 2, level = 2
+  Variable 'i': type = 'int', adr = 3, level = 2
+  Variable 'offset': type = 'int', adr = 4, level = 2
+Found class 'AbsWorker' field usage 'name' at line 119! Symbol node: Field 'name': type = 'class', adr = 1, level = 1, parent = 'AbsWorker', access modifier = protected
+Found global variable usage 'bakerHeader' at line 130! Symbol node: Variable 'bakerHeader': type = 'class', adr = 2, level = 0
+Found symbolic constant usage 'null' at line 130! Symbol node: Constant 'null': type = 'class', adr = 0, level = 0
+Found global variable usage 'bakerHeader' at line 131! Symbol node: Variable 'bakerHeader': type = 'class', adr = 2, level = 0
+Found global variable usage 'bakerHeader' at line 132! Symbol node: Variable 'bakerHeader': type = 'class', adr = 2, level = 0
+Found class 'String' field usage 'arr' at line 132! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found global variable usage 'bakerHeader' at line 133! Symbol node: Variable 'bakerHeader': type = 'class', adr = 2, level = 0
+Found class 'String' field usage 'arr' at line 133! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 'bakerHeader.arr[0]' at line 133! Symbol node: Array element 'bakerHeader.arr[0]': type = 'char', adr = -1, level = -1
+Found global variable usage 'bakerHeader' at line 134! Symbol node: Variable 'bakerHeader': type = 'class', adr = 2, level = 0
+Found class 'String' field usage 'arr' at line 134! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 'bakerHeader.arr[1]' at line 134! Symbol node: Array element 'bakerHeader.arr[1]': type = 'char', adr = -1, level = -1
+Found global variable usage 'bakerHeader' at line 135! Symbol node: Variable 'bakerHeader': type = 'class', adr = 2, level = 0
+Found class 'String' field usage 'arr' at line 135! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 'bakerHeader.arr[2]' at line 135! Symbol node: Array element 'bakerHeader.arr[2]': type = 'char', adr = -1, level = -1
+Found global variable usage 'bakerHeader' at line 136! Symbol node: Variable 'bakerHeader': type = 'class', adr = 2, level = 0
+Found class 'String' field usage 'arr' at line 136! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 'bakerHeader.arr[3]' at line 136! Symbol node: Array element 'bakerHeader.arr[3]': type = 'char', adr = -1, level = -1
+Found global variable usage 'bakerHeader' at line 137! Symbol node: Variable 'bakerHeader': type = 'class', adr = 2, level = 0
+Found class 'String' field usage 'arr' at line 137! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 'bakerHeader.arr[4]' at line 137! Symbol node: Array element 'bakerHeader.arr[4]': type = 'char', adr = -1, level = -1
+Found global variable usage 'bakerHeader' at line 138! Symbol node: Variable 'bakerHeader': type = 'class', adr = 2, level = 0
+Found class 'String' field usage 'arr' at line 138! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 'bakerHeader.arr[5]' at line 138! Symbol node: Array element 'bakerHeader.arr[5]': type = 'char', adr = -1, level = -1
+Found global variable usage 'bakerHeader' at line 139! Symbol node: Variable 'bakerHeader': type = 'class', adr = 2, level = 0
+Found class 'String' field usage 'arr' at line 139! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 'bakerHeader.arr[6]' at line 139! Symbol node: Array element 'bakerHeader.arr[6]': type = 'char', adr = -1, level = -1
+Found local variable usage 'this' at line 141! Symbol node: Variable 'this': , adr = 0, level = 1
+Found class 'AbsWorker' field usage 'name' at line 141! Symbol node: Field 'name': type = 'class', adr = 1, level = 1, parent = 'AbsWorker', access modifier = protected
+Found global variable usage 'bakerHeader' at line 141! Symbol node: Variable 'bakerHeader': type = 'class', adr = 2, level = 0
+Found class 'String' field usage 'concat' at line 141! Symbol node: Method 'concat': type = 'class', adr = 0, level = 2, parent = 'String', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 's': type = 'class', adr = 1, level = 1
+  Variable 'result': type = 'class', adr = 2, level = 2
+  Variable 'i': type = 'int', adr = 3, level = 2
+  Variable 'offset': type = 'int', adr = 4, level = 2
+Found formal parameter usage 'name' at line 141! Symbol node: Formal parameter 'name': type = 'class', adr = 1, level = 1
+Found abstract class usage 'AbsWorker' at line 147! Symbol node: Type 'AbsWorker': type = 'abstract class', adr = 0, level = 0
+Found global variable usage 'butcherHeader' at line 153! Symbol node: Variable 'butcherHeader': type = 'class', adr = 3, level = 0
+Found symbolic constant usage 'null' at line 153! Symbol node: Constant 'null': type = 'class', adr = 0, level = 0
+Found global variable usage 'butcherHeader' at line 154! Symbol node: Variable 'butcherHeader': type = 'class', adr = 3, level = 0
+Found global variable usage 'butcherHeader' at line 155! Symbol node: Variable 'butcherHeader': type = 'class', adr = 3, level = 0
+Found class 'String' field usage 'arr' at line 155! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found global variable usage 'butcherHeader' at line 156! Symbol node: Variable 'butcherHeader': type = 'class', adr = 3, level = 0
+Found class 'String' field usage 'arr' at line 156! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 'butcherHeader.arr[0]' at line 156! Symbol node: Array element 'butcherHeader.arr[0]': type = 'char', adr = -1, level = -1
+Found global variable usage 'butcherHeader' at line 157! Symbol node: Variable 'butcherHeader': type = 'class', adr = 3, level = 0
+Found class 'String' field usage 'arr' at line 157! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 'butcherHeader.arr[1]' at line 157! Symbol node: Array element 'butcherHeader.arr[1]': type = 'char', adr = -1, level = -1
+Found global variable usage 'butcherHeader' at line 158! Symbol node: Variable 'butcherHeader': type = 'class', adr = 3, level = 0
+Found class 'String' field usage 'arr' at line 158! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 'butcherHeader.arr[2]' at line 158! Symbol node: Array element 'butcherHeader.arr[2]': type = 'char', adr = -1, level = -1
+Found global variable usage 'butcherHeader' at line 159! Symbol node: Variable 'butcherHeader': type = 'class', adr = 3, level = 0
+Found class 'String' field usage 'arr' at line 159! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 'butcherHeader.arr[3]' at line 159! Symbol node: Array element 'butcherHeader.arr[3]': type = 'char', adr = -1, level = -1
+Found global variable usage 'butcherHeader' at line 160! Symbol node: Variable 'butcherHeader': type = 'class', adr = 3, level = 0
+Found class 'String' field usage 'arr' at line 160! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 'butcherHeader.arr[4]' at line 160! Symbol node: Array element 'butcherHeader.arr[4]': type = 'char', adr = -1, level = -1
+Found global variable usage 'butcherHeader' at line 161! Symbol node: Variable 'butcherHeader': type = 'class', adr = 3, level = 0
+Found class 'String' field usage 'arr' at line 161! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 'butcherHeader.arr[5]' at line 161! Symbol node: Array element 'butcherHeader.arr[5]': type = 'char', adr = -1, level = -1
+Found global variable usage 'butcherHeader' at line 162! Symbol node: Variable 'butcherHeader': type = 'class', adr = 3, level = 0
+Found class 'String' field usage 'arr' at line 162! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 'butcherHeader.arr[6]' at line 162! Symbol node: Array element 'butcherHeader.arr[6]': type = 'char', adr = -1, level = -1
+Found global variable usage 'butcherHeader' at line 163! Symbol node: Variable 'butcherHeader': type = 'class', adr = 3, level = 0
+Found class 'String' field usage 'arr' at line 163! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 'butcherHeader.arr[7]' at line 163! Symbol node: Array element 'butcherHeader.arr[7]': type = 'char', adr = -1, level = -1
+Found global variable usage 'butcherHeader' at line 164! Symbol node: Variable 'butcherHeader': type = 'class', adr = 3, level = 0
+Found class 'String' field usage 'arr' at line 164! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 'butcherHeader.arr[8]' at line 164! Symbol node: Array element 'butcherHeader.arr[8]': type = 'char', adr = -1, level = -1
+Found local variable usage 'this' at line 166! Symbol node: Variable 'this': , adr = 0, level = 1
+Found class 'AbsWorker' field usage 'name' at line 166! Symbol node: Field 'name': type = 'class', adr = 1, level = 1, parent = 'AbsWorker', access modifier = protected
+Found global variable usage 'butcherHeader' at line 166! Symbol node: Variable 'butcherHeader': type = 'class', adr = 3, level = 0
+Found class 'String' field usage 'concat' at line 166! Symbol node: Method 'concat': type = 'class', adr = 0, level = 2, parent = 'String', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 's': type = 'class', adr = 1, level = 1
+  Variable 'result': type = 'class', adr = 2, level = 2
+  Variable 'i': type = 'int', adr = 3, level = 2
+  Variable 'offset': type = 'int', adr = 4, level = 2
+Found formal parameter usage 'name' at line 166! Symbol node: Formal parameter 'name': type = 'class', adr = 1, level = 1
+Found global variable usage 'ownerHeader' at line 173! Symbol node: Variable 'ownerHeader': type = 'class', adr = 1, level = 0
+Found symbolic constant usage 'null' at line 173! Symbol node: Constant 'null': type = 'class', adr = 0, level = 0
+Found class 'ShopOwner' method call 'initOwnerHeader' at line 174! Symbol node: Method 'initOwnerHeader': type = 'void', adr = 0, level = 1, parent = 'ShopOwner', access modifier = protected
+  Variable 'this': , adr = 0, level = 1
+Found global variable usage 'helperHeader' at line 176! Symbol node: Variable 'helperHeader': type = 'class', adr = 4, level = 0
+Found symbolic constant usage 'null' at line 176! Symbol node: Constant 'null': type = 'class', adr = 0, level = 0
+Found global variable usage 'helperHeader' at line 177! Symbol node: Variable 'helperHeader': type = 'class', adr = 4, level = 0
+Found global variable usage 'helperHeader' at line 178! Symbol node: Variable 'helperHeader': type = 'class', adr = 4, level = 0
+Found class 'String' field usage 'arr' at line 178! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found global variable usage 'helperHeader' at line 179! Symbol node: Variable 'helperHeader': type = 'class', adr = 4, level = 0
+Found class 'String' field usage 'arr' at line 179! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 'helperHeader.arr[0]' at line 179! Symbol node: Array element 'helperHeader.arr[0]': type = 'char', adr = -1, level = -1
+Found global variable usage 'helperHeader' at line 180! Symbol node: Variable 'helperHeader': type = 'class', adr = 4, level = 0
+Found class 'String' field usage 'arr' at line 180! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 'helperHeader.arr[1]' at line 180! Symbol node: Array element 'helperHeader.arr[1]': type = 'char', adr = -1, level = -1
+Found global variable usage 'helperHeader' at line 181! Symbol node: Variable 'helperHeader': type = 'class', adr = 4, level = 0
+Found class 'String' field usage 'arr' at line 181! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 'helperHeader.arr[2]' at line 181! Symbol node: Array element 'helperHeader.arr[2]': type = 'char', adr = -1, level = -1
+Found global variable usage 'helperHeader' at line 182! Symbol node: Variable 'helperHeader': type = 'class', adr = 4, level = 0
+Found class 'String' field usage 'arr' at line 182! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 'helperHeader.arr[3]' at line 182! Symbol node: Array element 'helperHeader.arr[3]': type = 'char', adr = -1, level = -1
+Found global variable usage 'helperHeader' at line 183! Symbol node: Variable 'helperHeader': type = 'class', adr = 4, level = 0
+Found class 'String' field usage 'arr' at line 183! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 'helperHeader.arr[4]' at line 183! Symbol node: Array element 'helperHeader.arr[4]': type = 'char', adr = -1, level = -1
+Found global variable usage 'helperHeader' at line 184! Symbol node: Variable 'helperHeader': type = 'class', adr = 4, level = 0
+Found class 'String' field usage 'arr' at line 184! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 'helperHeader.arr[5]' at line 184! Symbol node: Array element 'helperHeader.arr[5]': type = 'char', adr = -1, level = -1
+Found global variable usage 'helperHeader' at line 185! Symbol node: Variable 'helperHeader': type = 'class', adr = 4, level = 0
+Found class 'String' field usage 'arr' at line 185! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 'helperHeader.arr[6]' at line 185! Symbol node: Array element 'helperHeader.arr[6]': type = 'char', adr = -1, level = -1
+Found global variable usage 'helperHeader' at line 186! Symbol node: Variable 'helperHeader': type = 'class', adr = 4, level = 0
+Found class 'String' field usage 'arr' at line 186! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 'helperHeader.arr[7]' at line 186! Symbol node: Array element 'helperHeader.arr[7]': type = 'char', adr = -1, level = -1
+Found global variable usage 'helperHeader' at line 187! Symbol node: Variable 'helperHeader': type = 'class', adr = 4, level = 0
+Found class 'String' field usage 'arr' at line 187! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 'helperHeader.arr[8]' at line 187! Symbol node: Array element 'helperHeader.arr[8]': type = 'char', adr = -1, level = -1
+Found global variable usage 'helperHeader' at line 188! Symbol node: Variable 'helperHeader': type = 'class', adr = 4, level = 0
+Found class 'String' field usage 'arr' at line 188! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 'helperHeader.arr[9]' at line 188! Symbol node: Array element 'helperHeader.arr[9]': type = 'char', adr = -1, level = -1
+Found class 'ShopOwner' field usage 'shopName' at line 190! Symbol node: Field 'shopName': type = 'class', adr = 3, level = 1, parent = 'ShopOwner', access modifier = protected
+Found symbolic constant usage 'null' at line 190! Symbol node: Constant 'null': type = 'class', adr = 0, level = 0
+Found class 'AbsWorker' field usage 'name' at line 190! Symbol node: Field 'name': type = 'class', adr = 1, level = 1, parent = 'AbsWorker', access modifier = protected
+Found local variable usage 's' at line 191! Symbol node: Variable 's': type = 'class', adr = 1, level = 2
+Found class 'ShopOwner' field usage 'shopName' at line 191! Symbol node: Field 'shopName': type = 'class', adr = 3, level = 1, parent = 'ShopOwner', access modifier = protected
+Found class 'String' field usage 'concat' at line 191! Symbol node: Method 'concat': type = 'class', adr = 0, level = 2, parent = 'String', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 's': type = 'class', adr = 1, level = 1
+  Variable 'result': type = 'class', adr = 2, level = 2
+  Variable 'i': type = 'int', adr = 3, level = 2
+  Variable 'offset': type = 'int', adr = 4, level = 2
+Found global variable usage 'ownerHeader' at line 191! Symbol node: Variable 'ownerHeader': type = 'class', adr = 1, level = 0
+Found local variable usage 's' at line 192! Symbol node: Variable 's': type = 'class', adr = 1, level = 2
+Found local variable usage 's' at line 192! Symbol node: Variable 's': type = 'class', adr = 1, level = 2
+Found class 'String' field usage 'concat' at line 192! Symbol node: Method 'concat': type = 'class', adr = 0, level = 2, parent = 'String', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 's': type = 'class', adr = 1, level = 1
+  Variable 'result': type = 'class', adr = 2, level = 2
+  Variable 'i': type = 'int', adr = 3, level = 2
+  Variable 'offset': type = 'int', adr = 4, level = 2
+Found class 'AbsWorker' field usage 'name' at line 192! Symbol node: Field 'name': type = 'class', adr = 1, level = 1, parent = 'AbsWorker', access modifier = protected
+Found class 'Butcher' field usage 'helper' at line 193! Symbol node: Field 'helper': type = 'class', adr = 4, level = 1, parent = 'Butcher', access modifier = public
+Found symbolic constant usage 'null' at line 193! Symbol node: Constant 'null': type = 'class', adr = 0, level = 0
+Found local variable usage 's' at line 193! Symbol node: Variable 's': type = 'class', adr = 1, level = 2
+Found local variable usage 's' at line 194! Symbol node: Variable 's': type = 'class', adr = 1, level = 2
+Found local variable usage 's' at line 194! Symbol node: Variable 's': type = 'class', adr = 1, level = 2
+Found class 'String' field usage 'concat' at line 194! Symbol node: Method 'concat': type = 'class', adr = 0, level = 2, parent = 'String', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 's': type = 'class', adr = 1, level = 1
+  Variable 'result': type = 'class', adr = 2, level = 2
+  Variable 'i': type = 'int', adr = 3, level = 2
+  Variable 'offset': type = 'int', adr = 4, level = 2
+Found global variable usage 'helperHeader' at line 194! Symbol node: Variable 'helperHeader': type = 'class', adr = 4, level = 0
+Found local variable usage 's' at line 195! Symbol node: Variable 's': type = 'class', adr = 1, level = 2
+Found local variable usage 's' at line 195! Symbol node: Variable 's': type = 'class', adr = 1, level = 2
+Found class 'String' field usage 'concat' at line 195! Symbol node: Method 'concat': type = 'class', adr = 0, level = 2, parent = 'String', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 's': type = 'class', adr = 1, level = 1
+  Variable 'result': type = 'class', adr = 2, level = 2
+  Variable 'i': type = 'int', adr = 3, level = 2
+  Variable 'offset': type = 'int', adr = 4, level = 2
+Found class 'Butcher' field usage 'helper' at line 195! Symbol node: Field 'helper': type = 'class', adr = 4, level = 1, parent = 'Butcher', access modifier = public
+Found class 'AbsWorker' field usage 'toString' at line 195! Symbol node: Abstract method 'toString': type = 'class', adr = 0, level = 1, parent = 'AbsWorker', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+Found local variable usage 's' at line 196! Symbol node: Variable 's': type = 'class', adr = 1, level = 2
+Found formal parameter usage 's' at line 205! Symbol node: Formal parameter 's': type = 'class', adr = 0, level = 1
+Found symbolic constant usage 'null' at line 205! Symbol node: Constant 'null': type = 'class', adr = 0, level = 0
+Found formal parameter usage 's' at line 205! Symbol node: Formal parameter 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'isEmpty' at line 205! Symbol node: Method 'isEmpty': type = 'bool', adr = 0, level = 1, parent = 'String', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+Found formal parameter usage 's' at line 206! Symbol node: Formal parameter 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 206! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found local variable usage 'c' at line 207! Symbol node: Variable 'c': type = 'char', adr = 1, level = 1
+Found global method call 'printString' at line 212! Symbol node: Method 'printString': type = 'void', adr = 0, level = 1
+  Formal parameter 's': type = 'class', adr = 0, level = 1
+  Variable 'c': type = 'char', adr = 1, level = 1
+Found formal parameter usage 's' at line 212! Symbol node: Formal parameter 's': type = 'class', adr = 0, level = 1
+Found symbolic constant usage 'eol' at line 213! Symbol node: Constant 'eol': type = 'char', adr = 10, level = 0
+Found abstract class usage 'AbsWorker' at line 219! Symbol node: Type 'AbsWorker': type = 'abstract class', adr = 0, level = 0
+Found local variable usage 'workers' at line 223! Symbol node: Variable 'workers': type = 'array of class', adr = 3, level = 1
+Found abstract class usage 'AbsWorker' at line 223! Symbol node: Type 'AbsWorker': type = 'abstract class', adr = 0, level = 0
+Found local variable usage 'worker' at line 226! Symbol node: Variable 'worker': type = 'class', adr = 4, level = 1
+Found local variable usage 's' at line 227! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found local variable usage 's' at line 228! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 228! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found local variable usage 's' at line 229! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 229! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[0]' at line 229! Symbol node: Array element 's.arr[0]': type = 'char', adr = -1, level = -1
+Found local variable usage 's' at line 229! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 229! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[1]' at line 229! Symbol node: Array element 's.arr[1]': type = 'char', adr = -1, level = -1
+Found local variable usage 's' at line 229! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 229! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[2]' at line 229! Symbol node: Array element 's.arr[2]': type = 'char', adr = -1, level = -1
+Found local variable usage 'worker' at line 230! Symbol node: Variable 'worker': type = 'class', adr = 4, level = 1
+Found class 'AbsWorker' field usage 'setName' at line 230! Symbol node: Method 'setName': type = 'void', adr = 0, level = 2, parent = 'AbsWorker', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 'name': type = 'class', adr = 1, level = 1
+Found local variable usage 's' at line 230! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found local variable usage 'worker' at line 231! Symbol node: Variable 'worker': type = 'class', adr = 4, level = 1
+Found class 'AbsWorker' field usage 'setYearOfBirth' at line 231! Symbol node: Method 'setYearOfBirth': type = 'void', adr = 0, level = 2, parent = 'AbsWorker', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 'yearOfBirth': type = 'int', adr = 1, level = 1
+Found local variable usage 'workers' at line 232! Symbol node: Variable 'workers': type = 'array of class', adr = 3, level = 1
+Found array element access 'workers[0]' at line 232! Symbol node: Array element 'workers[0]': type = 'class', adr = -1, level = -1
+Found local variable usage 'worker' at line 232! Symbol node: Variable 'worker': type = 'class', adr = 4, level = 1
+Found local variable usage 'baker' at line 235! Symbol node: Variable 'baker': type = 'class', adr = 5, level = 1
+Found local variable usage 's' at line 236! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found local variable usage 's' at line 237! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 237! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found local variable usage 's' at line 238! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 238! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[0]' at line 238! Symbol node: Array element 's.arr[0]': type = 'char', adr = -1, level = -1
+Found local variable usage 's' at line 238! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 238! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[1]' at line 238! Symbol node: Array element 's.arr[1]': type = 'char', adr = -1, level = -1
+Found local variable usage 's' at line 238! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 238! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[2]' at line 238! Symbol node: Array element 's.arr[2]': type = 'char', adr = -1, level = -1
+Found local variable usage 's' at line 238! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 238! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[3]' at line 238! Symbol node: Array element 's.arr[3]': type = 'char', adr = -1, level = -1
+Found local variable usage 's' at line 238! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 238! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[4]' at line 238! Symbol node: Array element 's.arr[4]': type = 'char', adr = -1, level = -1
+Found local variable usage 's' at line 238! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 238! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[5]' at line 238! Symbol node: Array element 's.arr[5]': type = 'char', adr = -1, level = -1
+Found local variable usage 'baker' at line 239! Symbol node: Variable 'baker': type = 'class', adr = 5, level = 1
+Found class 'ShopOwner' field usage 'setShopName' at line 239! Symbol node: Method 'setShopName': type = 'void', adr = 0, level = 2, parent = 'ShopOwner', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 'shopName': type = 'class', adr = 1, level = 1
+Found local variable usage 's' at line 239! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found local variable usage 's' at line 240! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found local variable usage 's' at line 241! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 241! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found local variable usage 's' at line 242! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 242! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[0]' at line 242! Symbol node: Array element 's.arr[0]': type = 'char', adr = -1, level = -1
+Found local variable usage 's' at line 242! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 242! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[1]' at line 242! Symbol node: Array element 's.arr[1]': type = 'char', adr = -1, level = -1
+Found local variable usage 's' at line 242! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 242! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[2]' at line 242! Symbol node: Array element 's.arr[2]': type = 'char', adr = -1, level = -1
+Found local variable usage 's' at line 242! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 242! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[3]' at line 242! Symbol node: Array element 's.arr[3]': type = 'char', adr = -1, level = -1
+Found local variable usage 's' at line 242! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 242! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[4]' at line 242! Symbol node: Array element 's.arr[4]': type = 'char', adr = -1, level = -1
+Found local variable usage 'baker' at line 243! Symbol node: Variable 'baker': type = 'class', adr = 5, level = 1
+Found class 'Baker' field usage 'setName' at line 243! Symbol node: Method 'setName': type = 'void', adr = 0, level = 2, parent = 'Baker', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 'name': type = 'class', adr = 1, level = 1
+  Variable 'i': type = 'int', adr = 2, level = 2
+Found local variable usage 's' at line 243! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found local variable usage 'baker' at line 244! Symbol node: Variable 'baker': type = 'class', adr = 5, level = 1
+Found class 'AbsWorker' field usage 'setYearOfBirth' at line 244! Symbol node: Method 'setYearOfBirth': type = 'void', adr = 0, level = 2, parent = 'AbsWorker', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 'yearOfBirth': type = 'int', adr = 1, level = 1
+Found local variable usage 'workers' at line 245! Symbol node: Variable 'workers': type = 'array of class', adr = 3, level = 1
+Found array element access 'workers[1]' at line 245! Symbol node: Array element 'workers[1]': type = 'class', adr = -1, level = -1
+Found local variable usage 'baker' at line 245! Symbol node: Variable 'baker': type = 'class', adr = 5, level = 1
+Found local variable usage 'butcher' at line 248! Symbol node: Variable 'butcher': type = 'class', adr = 6, level = 1
+Found local variable usage 's' at line 249! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found local variable usage 's' at line 250! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 250! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found local variable usage 's' at line 251! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 251! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[0]' at line 251! Symbol node: Array element 's.arr[0]': type = 'char', adr = -1, level = -1
+Found local variable usage 's' at line 251! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 251! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[1]' at line 251! Symbol node: Array element 's.arr[1]': type = 'char', adr = -1, level = -1
+Found local variable usage 's' at line 251! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 251! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[2]' at line 251! Symbol node: Array element 's.arr[2]': type = 'char', adr = -1, level = -1
+Found local variable usage 's' at line 251! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 251! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[3]' at line 251! Symbol node: Array element 's.arr[3]': type = 'char', adr = -1, level = -1
+Found local variable usage 'butcher' at line 252! Symbol node: Variable 'butcher': type = 'class', adr = 6, level = 1
+Found class 'Butcher' field usage 'setName' at line 252! Symbol node: Method 'setName': type = 'void', adr = 0, level = 2, parent = 'Butcher', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 'name': type = 'class', adr = 1, level = 1
+  Variable 'i': type = 'int', adr = 2, level = 2
+Found local variable usage 's' at line 252! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found local variable usage 'butcher' at line 253! Symbol node: Variable 'butcher': type = 'class', adr = 6, level = 1
+Found class 'AbsWorker' field usage 'setYearOfBirth' at line 253! Symbol node: Method 'setYearOfBirth': type = 'void', adr = 0, level = 2, parent = 'AbsWorker', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 'yearOfBirth': type = 'int', adr = 1, level = 1
+Found local variable usage 'workers' at line 254! Symbol node: Variable 'workers': type = 'array of class', adr = 3, level = 1
+Found array element access 'workers[2]' at line 254! Symbol node: Array element 'workers[2]': type = 'class', adr = -1, level = -1
+Found local variable usage 'butcher' at line 254! Symbol node: Variable 'butcher': type = 'class', adr = 6, level = 1
+Found local variable usage 'butcher' at line 257! Symbol node: Variable 'butcher': type = 'class', adr = 6, level = 1
+Found local variable usage 's' at line 258! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found local variable usage 's' at line 259! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 259! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found local variable usage 's' at line 260! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 260! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[0]' at line 260! Symbol node: Array element 's.arr[0]': type = 'char', adr = -1, level = -1
+Found local variable usage 's' at line 260! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 260! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[1]' at line 260! Symbol node: Array element 's.arr[1]': type = 'char', adr = -1, level = -1
+Found local variable usage 's' at line 260! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 260! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[2]' at line 260! Symbol node: Array element 's.arr[2]': type = 'char', adr = -1, level = -1
+Found local variable usage 's' at line 260! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 260! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[3]' at line 260! Symbol node: Array element 's.arr[3]': type = 'char', adr = -1, level = -1
+Found local variable usage 'butcher' at line 261! Symbol node: Variable 'butcher': type = 'class', adr = 6, level = 1
+Found class 'ShopOwner' field usage 'setShopName' at line 261! Symbol node: Method 'setShopName': type = 'void', adr = 0, level = 2, parent = 'ShopOwner', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 'shopName': type = 'class', adr = 1, level = 1
+Found local variable usage 's' at line 261! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found local variable usage 's' at line 262! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found local variable usage 's' at line 263! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 263! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found local variable usage 's' at line 264! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 264! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[0]' at line 264! Symbol node: Array element 's.arr[0]': type = 'char', adr = -1, level = -1
+Found local variable usage 's' at line 264! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 264! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[1]' at line 264! Symbol node: Array element 's.arr[1]': type = 'char', adr = -1, level = -1
+Found local variable usage 's' at line 264! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 264! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[2]' at line 264! Symbol node: Array element 's.arr[2]': type = 'char', adr = -1, level = -1
+Found local variable usage 's' at line 264! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 264! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[3]' at line 264! Symbol node: Array element 's.arr[3]': type = 'char', adr = -1, level = -1
+Found local variable usage 's' at line 264! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 264! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[4]' at line 264! Symbol node: Array element 's.arr[4]': type = 'char', adr = -1, level = -1
+Found local variable usage 's' at line 264! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 264! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[5]' at line 264! Symbol node: Array element 's.arr[5]': type = 'char', adr = -1, level = -1
+Found local variable usage 'butcher' at line 265! Symbol node: Variable 'butcher': type = 'class', adr = 6, level = 1
+Found class 'Butcher' field usage 'setName' at line 265! Symbol node: Method 'setName': type = 'void', adr = 0, level = 2, parent = 'Butcher', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 'name': type = 'class', adr = 1, level = 1
+  Variable 'i': type = 'int', adr = 2, level = 2
+Found local variable usage 's' at line 265! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found local variable usage 'butcher' at line 266! Symbol node: Variable 'butcher': type = 'class', adr = 6, level = 1
+Found class 'Butcher' field usage 'helper' at line 266! Symbol node: Field 'helper': type = 'class', adr = 4, level = 1, parent = 'Butcher', access modifier = public
+Found local variable usage 'workers' at line 266! Symbol node: Variable 'workers': type = 'array of class', adr = 3, level = 1
+Found array element access 'workers[2]' at line 266! Symbol node: Array element 'workers[2]': type = 'class', adr = -1, level = -1
+Found local variable usage 'butcher' at line 267! Symbol node: Variable 'butcher': type = 'class', adr = 6, level = 1
+Found class 'AbsWorker' field usage 'setYearOfBirth' at line 267! Symbol node: Method 'setYearOfBirth': type = 'void', adr = 0, level = 2, parent = 'AbsWorker', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 'yearOfBirth': type = 'int', adr = 1, level = 1
+Found local variable usage 'workers' at line 268! Symbol node: Variable 'workers': type = 'array of class', adr = 3, level = 1
+Found array element access 'workers[3]' at line 268! Symbol node: Array element 'workers[3]': type = 'class', adr = -1, level = -1
+Found local variable usage 'butcher' at line 268! Symbol node: Variable 'butcher': type = 'class', adr = 6, level = 1
+Found local variable usage 'baker' at line 271! Symbol node: Variable 'baker': type = 'class', adr = 5, level = 1
+Found local variable usage 's' at line 272! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found local variable usage 's' at line 273! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 273! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found local variable usage 's' at line 274! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 274! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[0]' at line 274! Symbol node: Array element 's.arr[0]': type = 'char', adr = -1, level = -1
+Found local variable usage 's' at line 274! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 274! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[1]' at line 274! Symbol node: Array element 's.arr[1]': type = 'char', adr = -1, level = -1
+Found local variable usage 's' at line 274! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 274! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[2]' at line 274! Symbol node: Array element 's.arr[2]': type = 'char', adr = -1, level = -1
+Found local variable usage 's' at line 274! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 274! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[3]' at line 274! Symbol node: Array element 's.arr[3]': type = 'char', adr = -1, level = -1
+Found local variable usage 's' at line 274! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 274! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[4]' at line 274! Symbol node: Array element 's.arr[4]': type = 'char', adr = -1, level = -1
+Found local variable usage 'baker' at line 275! Symbol node: Variable 'baker': type = 'class', adr = 5, level = 1
+Found class 'ShopOwner' field usage 'setShopName' at line 275! Symbol node: Method 'setShopName': type = 'void', adr = 0, level = 2, parent = 'ShopOwner', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 'shopName': type = 'class', adr = 1, level = 1
+Found local variable usage 's' at line 275! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found local variable usage 's' at line 276! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found local variable usage 's' at line 277! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 277! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found local variable usage 's' at line 278! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 278! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[0]' at line 278! Symbol node: Array element 's.arr[0]': type = 'char', adr = -1, level = -1
+Found local variable usage 's' at line 278! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 278! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[1]' at line 278! Symbol node: Array element 's.arr[1]': type = 'char', adr = -1, level = -1
+Found local variable usage 's' at line 278! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 278! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[2]' at line 278! Symbol node: Array element 's.arr[2]': type = 'char', adr = -1, level = -1
+Found local variable usage 's' at line 278! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 278! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[3]' at line 278! Symbol node: Array element 's.arr[3]': type = 'char', adr = -1, level = -1
+Found local variable usage 's' at line 278! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 278! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[4]' at line 278! Symbol node: Array element 's.arr[4]': type = 'char', adr = -1, level = -1
+Found local variable usage 's' at line 278! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 278! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[5]' at line 278! Symbol node: Array element 's.arr[5]': type = 'char', adr = -1, level = -1
+Found local variable usage 's' at line 278! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 278! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[6]' at line 278! Symbol node: Array element 's.arr[6]': type = 'char', adr = -1, level = -1
+Found local variable usage 'baker' at line 279! Symbol node: Variable 'baker': type = 'class', adr = 5, level = 1
+Found class 'Baker' field usage 'setName' at line 279! Symbol node: Method 'setName': type = 'void', adr = 0, level = 2, parent = 'Baker', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 'name': type = 'class', adr = 1, level = 1
+  Variable 'i': type = 'int', adr = 2, level = 2
+Found local variable usage 's' at line 279! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found local variable usage 'baker' at line 280! Symbol node: Variable 'baker': type = 'class', adr = 5, level = 1
+Found class 'AbsWorker' field usage 'setYearOfBirth' at line 280! Symbol node: Method 'setYearOfBirth': type = 'void', adr = 0, level = 2, parent = 'AbsWorker', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 'yearOfBirth': type = 'int', adr = 1, level = 1
+Found local variable usage 'workers' at line 281! Symbol node: Variable 'workers': type = 'array of class', adr = 3, level = 1
+Found array element access 'workers[4]' at line 281! Symbol node: Array element 'workers[4]': type = 'class', adr = -1, level = -1
+Found local variable usage 'baker' at line 281! Symbol node: Variable 'baker': type = 'class', adr = 5, level = 1
+Found local variable usage 's' at line 284! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found local variable usage 's' at line 285! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 285! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found local variable usage 's' at line 286! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 286! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[0]' at line 286! Symbol node: Array element 's.arr[0]': type = 'char', adr = -1, level = -1
+Found local variable usage 's' at line 286! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 286! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[1]' at line 286! Symbol node: Array element 's.arr[1]': type = 'char', adr = -1, level = -1
+Found local variable usage 's' at line 286! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 286! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[2]' at line 286! Symbol node: Array element 's.arr[2]': type = 'char', adr = -1, level = -1
+Found local variable usage 's' at line 286! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 286! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[3]' at line 286! Symbol node: Array element 's.arr[3]': type = 'char', adr = -1, level = -1
+Found local variable usage 'butcher' at line 287! Symbol node: Variable 'butcher': type = 'class', adr = 6, level = 1
+Found class 'Butcher' field usage 'helper' at line 287! Symbol node: Field 'helper': type = 'class', adr = 4, level = 1, parent = 'Butcher', access modifier = public
+Found class 'AbsWorker' field usage 'setName' at line 287! Symbol node: Method 'setName': type = 'void', adr = 0, level = 2, parent = 'AbsWorker', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 'name': type = 'class', adr = 1, level = 1
+Found local variable usage 's' at line 287! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found local variable usage 'workers' at line 290! Symbol node: Variable 'workers': type = 'array of class', adr = 3, level = 1
+Found global method call 'printlnString' at line 291! Symbol node: Method 'printlnString': type = 'void', adr = 0, level = 1
+  Formal parameter 's': type = 'class', adr = 0, level = 1
+Found local variable usage 'worker' at line 291! Symbol node: Variable 'worker': type = 'class', adr = 4, level = 1
+Found class 'AbsWorker' field usage 'getName' at line 291! Symbol node: Method 'getName': type = 'class', adr = 0, level = 1, parent = 'AbsWorker', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+Found local variable usage 's' at line 294! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found local variable usage 's2' at line 295! Symbol node: Variable 's2': type = 'class', adr = 1, level = 1
+Found local variable usage 'workers' at line 295! Symbol node: Variable 'workers': type = 'array of class', adr = 3, level = 1
+Found array element access 'workers[0]' at line 295! Symbol node: Array element 'workers[0]': type = 'class', adr = -1, level = -1
+Found class 'AbsWorker' field usage 'getName' at line 295! Symbol node: Method 'getName': type = 'class', adr = 0, level = 1, parent = 'AbsWorker', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+Found local variable usage 's2' at line 296! Symbol node: Variable 's2': type = 'class', adr = 1, level = 1
+Found class 'String' field usage 'equals' at line 296! Symbol node: Method 'equals': type = 'bool', adr = 0, level = 2, parent = 'String', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 's': type = 'class', adr = 1, level = 1
+  Variable 'i': type = 'int', adr = 2, level = 2
+  Variable 'l': type = 'int', adr = 3, level = 2
+Found local variable usage 'workers' at line 296! Symbol node: Variable 'workers': type = 'array of class', adr = 3, level = 1
+Found array element access 'workers[1]' at line 296! Symbol node: Array element 'workers[1]': type = 'class', adr = -1, level = -1
+Found class 'AbsWorker' field usage 'getName' at line 296! Symbol node: Method 'getName': type = 'class', adr = 0, level = 1, parent = 'AbsWorker', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+Found local variable usage 's' at line 297! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 297! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found local variable usage 's' at line 298! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 298! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[0]' at line 298! Symbol node: Array element 's.arr[0]': type = 'char', adr = -1, level = -1
+Found local variable usage 's' at line 298! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 298! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[1]' at line 298! Symbol node: Array element 's.arr[1]': type = 'char', adr = -1, level = -1
+Found local variable usage 's' at line 298! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 298! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[2]' at line 298! Symbol node: Array element 's.arr[2]': type = 'char', adr = -1, level = -1
+Found local variable usage 's' at line 300! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 300! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found local variable usage 's' at line 301! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 301! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[0]' at line 301! Symbol node: Array element 's.arr[0]': type = 'char', adr = -1, level = -1
+Found local variable usage 's' at line 301! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 301! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[1]' at line 301! Symbol node: Array element 's.arr[1]': type = 'char', adr = -1, level = -1
+Found local variable usage 's' at line 301! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 301! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[2]' at line 301! Symbol node: Array element 's.arr[2]': type = 'char', adr = -1, level = -1
+Found local variable usage 's' at line 301! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 301! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[3]' at line 301! Symbol node: Array element 's.arr[3]': type = 'char', adr = -1, level = -1
+Found global method call 'printlnString' at line 303! Symbol node: Method 'printlnString': type = 'void', adr = 0, level = 1
+  Formal parameter 's': type = 'class', adr = 0, level = 1
+Found local variable usage 's' at line 303! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found local variable usage 's' at line 305! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found local variable usage 's' at line 306! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 306! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found local variable usage 's' at line 307! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 307! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[0]' at line 307! Symbol node: Array element 's.arr[0]': type = 'char', adr = -1, level = -1
+Found local variable usage 's' at line 307! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 307! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[1]' at line 307! Symbol node: Array element 's.arr[1]': type = 'char', adr = -1, level = -1
+Found local variable usage 's' at line 307! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 307! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[2]' at line 307! Symbol node: Array element 's.arr[2]': type = 'char', adr = -1, level = -1
+Found local variable usage 's' at line 307! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 307! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[3]' at line 307! Symbol node: Array element 's.arr[3]': type = 'char', adr = -1, level = -1
+Found local variable usage 's' at line 307! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found class 'String' field usage 'arr' at line 307! Symbol node: Field 'arr': type = 'array of char', adr = 1, level = 1, parent = 'String', access modifier = public
+Found array element access 's.arr[4]' at line 307! Symbol node: Array element 's.arr[4]': type = 'char', adr = -1, level = -1
+Found global method call 'printString' at line 308! Symbol node: Method 'printString': type = 'void', adr = 0, level = 1
+  Formal parameter 's': type = 'class', adr = 0, level = 1
+  Variable 'c': type = 'char', adr = 1, level = 1
+Found local variable usage 's' at line 308! Symbol node: Variable 's': type = 'class', adr = 0, level = 1
+Found local variable usage 'sw' at line 309! Symbol node: Variable 'sw': type = 'int', adr = 2, level = 1
+Found local variable usage 'sw' at line 310! Symbol node: Variable 'sw': type = 'int', adr = 2, level = 1
+Found global method call 'printlnString' at line 311! Symbol node: Method 'printlnString': type = 'void', adr = 0, level = 1
+  Formal parameter 's': type = 'class', adr = 0, level = 1
+Found local variable usage 'baker' at line 311! Symbol node: Variable 'baker': type = 'class', adr = 5, level = 1
+Found class 'AbsWorker' field usage 'getName' at line 311! Symbol node: Method 'getName': type = 'class', adr = 0, level = 1, parent = 'AbsWorker', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+Found global method call 'printlnString' at line 313! Symbol node: Method 'printlnString': type = 'void', adr = 0, level = 1
+  Formal parameter 's': type = 'class', adr = 0, level = 1
+Found local variable usage 'butcher' at line 313! Symbol node: Variable 'butcher': type = 'class', adr = 6, level = 1
+Found class 'AbsWorker' field usage 'getName' at line 313! Symbol node: Method 'getName': type = 'class', adr = 0, level = 1, parent = 'AbsWorker', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+Found local variable usage 'workers' at line 316! Symbol node: Variable 'workers': type = 'array of class', adr = 3, level = 1
+Found global method call 'printlnString' at line 317! Symbol node: Method 'printlnString': type = 'void', adr = 0, level = 1
+  Formal parameter 's': type = 'class', adr = 0, level = 1
+Found local variable usage 'worker' at line 317! Symbol node: Variable 'worker': type = 'class', adr = 4, level = 1
+Found class 'AbsWorker' field usage 'toString' at line 317! Symbol node: Abstract method 'toString': type = 'class', adr = 0, level = 1, parent = 'AbsWorker', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+Semantic analysis completed without errors!
+====================================================================================================
+    0 symbolic constant(s) defined
+    5 global variable(s) defined
+    6 class(es) defined
+    3 global method(s) defined
+======================================== SYMBOL TABLE DUMP =========================================
+Type 'int': type = 'int', adr = -1, level = -1
+Type 'char': type = 'char', adr = -1, level = -1
+Type 'bool': type = 'bool', adr = -1, level = -1
+Constant 'null': type = 'class', adr = 0, level = 0
+Constant 'eol': type = 'char', adr = 10, level = 0
+Method 'chr': type = 'char', adr = 0, level = 1
+  Formal parameter 'i': type = 'int', adr = 0, level = 1
+Method 'ord': type = 'int', adr = 0, level = 1
+  Formal parameter 'ch': type = 'char', adr = 0, level = 1
+Method 'len': type = 'int', adr = 0, level = 1
+  Formal parameter 'arr': type = 'array of none', adr = 0, level = 1
+Program 'level_c_code_generation_2': type = 'none', adr = 0, level = 1
+  Type 'String': type = 'class', adr = 0, level = 0
+  Variable 'shopHeader': type = 'class', adr = 0, level = 0
+  Variable 'ownerHeader': type = 'class', adr = 1, level = 0
+  Variable 'bakerHeader': type = 'class', adr = 2, level = 0
+  Variable 'butcherHeader': type = 'class', adr = 3, level = 0
+  Variable 'helperHeader': type = 'class', adr = 4, level = 0
+  Type 'AbsWorker': type = 'abstract class', adr = 0, level = 0
+  Type 'Worker': type = 'class', adr = 0, level = 0
+  Type 'ShopOwner': type = 'class', adr = 0, level = 0
+  Type 'Baker': type = 'class', adr = 0, level = 0
+  Type 'Butcher': type = 'class', adr = 0, level = 0
+  Method 'printString': type = 'void', adr = 0, level = 1
+    Formal parameter 's': type = 'class', adr = 0, level = 1
+    Variable 'c': type = 'char', adr = 1, level = 1
+  Method 'printlnString': type = 'void', adr = 0, level = 1
+    Formal parameter 's': type = 'class', adr = 0, level = 1
+  Method 'main': type = 'void', adr = 0, level = 0
+    Variable 's': type = 'class', adr = 0, level = 1
+    Variable 's2': type = 'class', adr = 1, level = 1
+    Variable 'sw': type = 'int', adr = 2, level = 1
+    Variable 'workers': type = 'array of class', adr = 3, level = 1
+    Variable 'worker': type = 'class', adr = 4, level = 1
+    Variable 'baker': type = 'class', adr = 5, level = 1
+    Variable 'butcher': type = 'class', adr = 6, level = 1
+
+Generating bytecode file: D:\Documents\Fakultet\7. semestar\13E114PP1\Projekat\MJCompiler\test\generator_C2.obj
+Compilation finished!

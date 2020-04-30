@@ -1,0 +1,70 @@
+Compiling source file: D:\Documents\Fakultet\7. semestar\13E114PP1\Projekat\MJCompiler\test\generator\generator_C1.mj
+Syntax analysis completed without errors!
+Starting semantic analysis...
+Found formal parameter usage 'cost' at line 12! Symbol node: Formal parameter 'cost': type = 'int', adr = 1, level = 1
+Found class 'TCalc' field usage 'tax' at line 12! Symbol node: Field 'tax': type = 'int', adr = 1, level = 1, parent = 'TCalc', access modifier = protected
+Found class 'TCalc' field usage 'tax' at line 14! Symbol node: Field 'tax': type = 'int', adr = 1, level = 1, parent = 'TCalc', access modifier = protected
+Found local variable usage 'this' at line 15! Symbol node: Variable 'this': , adr = 0, level = 1
+Found class 'TCalc' field usage 'tax' at line 15! Symbol node: Field 'tax': type = 'int', adr = 1, level = 1, parent = 'TCalc', access modifier = protected
+Found formal parameter usage 'tax' at line 15! Symbol node: Formal parameter 'tax': type = 'int', adr = 1, level = 1
+Found formal parameter usage 'c' at line 24! Symbol node: Formal parameter 'c': type = 'int', adr = 1, level = 1
+Found class 'ATCalc' field usage 'a' at line 24! Symbol node: Field 'a': type = 'int', adr = 2, level = 1, parent = 'ATCalc', access modifier = protected
+Found class 'TCalc' field usage 'tax' at line 24! Symbol node: Field 'tax': type = 'int', adr = 1, level = 1, parent = 'TCalc', access modifier = protected
+Found class 'ATCalc' field usage 'a' at line 26! Symbol node: Field 'a': type = 'int', adr = 2, level = 1, parent = 'ATCalc', access modifier = protected
+Found local variable usage 'this' at line 27! Symbol node: Variable 'this': , adr = 0, level = 1
+Found class 'ATCalc' field usage 'a' at line 27! Symbol node: Field 'a': type = 'int', adr = 2, level = 1, parent = 'ATCalc', access modifier = protected
+Found formal parameter usage 'a' at line 27! Symbol node: Formal parameter 'a': type = 'int', adr = 1, level = 1
+Found local variable usage 'cost' at line 36! Symbol node: Variable 'cost': type = 'int', adr = 2, level = 1
+Found local variable usage 'c1' at line 37! Symbol node: Variable 'c1': type = 'class', adr = 0, level = 1
+Found local variable usage 'c1' at line 38! Symbol node: Variable 'c1': type = 'class', adr = 0, level = 1
+Found class 'TCalc' field usage 'setTax' at line 38! Symbol node: Method 'setTax': type = 'void', adr = 0, level = 2, parent = 'TCalc', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 'tax': type = 'int', adr = 1, level = 1
+Found local variable usage 'c2' at line 39! Symbol node: Variable 'c2': type = 'class', adr = 1, level = 1
+Found local variable usage 'c2' at line 40! Symbol node: Variable 'c2': type = 'class', adr = 1, level = 1
+Found class 'TCalc' field usage 'setTax' at line 40! Symbol node: Method 'setTax': type = 'void', adr = 0, level = 2, parent = 'TCalc', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 'tax': type = 'int', adr = 1, level = 1
+Found local variable usage 'c2' at line 41! Symbol node: Variable 'c2': type = 'class', adr = 1, level = 1
+Found class 'ATCalc' field usage 'setAmortization' at line 41! Symbol node: Method 'setAmortization': type = 'void', adr = 0, level = 2, parent = 'ATCalc', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 'a': type = 'int', adr = 1, level = 1
+Found local variable usage 'c1' at line 42! Symbol node: Variable 'c1': type = 'class', adr = 0, level = 1
+Found class 'TCalc' field usage 'calc' at line 42! Symbol node: Method 'calc': type = 'int', adr = 0, level = 2, parent = 'TCalc', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 'cost': type = 'int', adr = 1, level = 1
+Found local variable usage 'cost' at line 42! Symbol node: Variable 'cost': type = 'int', adr = 2, level = 1
+Found symbolic constant usage 'eol' at line 43! Symbol node: Constant 'eol': type = 'char', adr = 10, level = 0
+Found local variable usage 'c2' at line 44! Symbol node: Variable 'c2': type = 'class', adr = 1, level = 1
+Found class 'ATCalc' field usage 'calc' at line 44! Symbol node: Method 'calc': type = 'int', adr = 0, level = 2, parent = 'ATCalc', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 'c': type = 'int', adr = 1, level = 1
+Found local variable usage 'cost' at line 44! Symbol node: Variable 'cost': type = 'int', adr = 2, level = 1
+Semantic analysis completed without errors!
+====================================================================================================
+    0 symbolic constant(s) defined
+    0 global variable(s) defined
+    2 class(es) defined
+    1 global method(s) defined
+======================================== SYMBOL TABLE DUMP =========================================
+Type 'int': type = 'int', adr = -1, level = -1
+Type 'char': type = 'char', adr = -1, level = -1
+Type 'bool': type = 'bool', adr = -1, level = -1
+Constant 'null': type = 'class', adr = 0, level = 0
+Constant 'eol': type = 'char', adr = 10, level = 0
+Method 'chr': type = 'char', adr = 0, level = 1
+  Formal parameter 'i': type = 'int', adr = 0, level = 1
+Method 'ord': type = 'int', adr = 0, level = 1
+  Formal parameter 'ch': type = 'char', adr = 0, level = 1
+Method 'len': type = 'int', adr = 0, level = 1
+  Formal parameter 'arr': type = 'array of none', adr = 0, level = 1
+Program 'level_c_code_generation_1': type = 'none', adr = 0, level = 1
+  Type 'TCalc': type = 'class', adr = 0, level = 0
+  Type 'ATCalc': type = 'class', adr = 0, level = 0
+  Method 'main': type = 'void', adr = 0, level = 0
+    Variable 'c1': type = 'class', adr = 0, level = 1
+    Variable 'c2': type = 'class', adr = 1, level = 1
+    Variable 'cost': type = 'int', adr = 2, level = 1
+
+Generating bytecode file: D:\Documents\Fakultet\7. semestar\13E114PP1\Projekat\MJCompiler\test\generator_C1.obj
+Compilation finished!

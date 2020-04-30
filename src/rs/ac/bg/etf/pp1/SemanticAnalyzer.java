@@ -1212,7 +1212,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         // Check if type is boolean
         if (!expressionSym.getType().equals(MJTable.boolType)) {
             logError(simpleConditionFact, MessageType.INCOMPATIBLE_TYPES,
-                    MJType.getTypeName(simpleConditionFact.mjsymbol.getType()), MJType.getTypeName(MJTable.boolType));
+                    MJType.getTypeName(expressionSym.getType()), MJType.getTypeName(MJTable.boolType));
         }
     }
 }

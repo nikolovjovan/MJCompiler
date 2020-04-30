@@ -1,0 +1,94 @@
+Compiling source file: D:\Documents\Fakultet\7. semestar\13E114PP1\Projekat\MJCompiler\test\generator\test301.mj
+Syntax analysis completed without errors!
+Starting semantic analysis...
+Found local variable usage 'bodovi' at line 16! Symbol node: Variable 'bodovi': type = 'int', adr = 0, level = 1
+Found local variable usage 'bodovi' at line 17! Symbol node: Variable 'bodovi': type = 'int', adr = 0, level = 1
+Found local variable usage 'bodovi' at line 18! Symbol node: Variable 'bodovi': type = 'int', adr = 0, level = 1
+Found local variable usage 'bodovi' at line 18! Symbol node: Variable 'bodovi': type = 'int', adr = 0, level = 1
+Found symbolic constant usage 'jedan' at line 18! Symbol node: Constant 'jedan': type = 'int', adr = 1, level = 0
+Found local variable usage 'bodovi' at line 19! Symbol node: Variable 'bodovi': type = 'int', adr = 0, level = 1
+Found local variable usage 'bodovi' at line 19! Symbol node: Variable 'bodovi': type = 'int', adr = 0, level = 1
+Found symbolic constant usage 'pet' at line 19! Symbol node: Constant 'pet': type = 'int', adr = 5, level = 0
+Found local variable usage 'bodovi' at line 20! Symbol node: Variable 'bodovi': type = 'int', adr = 0, level = 1
+Found local variable usage 'bodovi' at line 21! Symbol node: Variable 'bodovi': type = 'int', adr = 0, level = 1
+Found global variable usage 'niz' at line 24! Symbol node: Variable 'niz': type = 'array of int', adr = 0, level = 0
+Found global variable usage 'niz' at line 25! Symbol node: Variable 'niz': type = 'array of int', adr = 0, level = 0
+Found symbolic constant usage 'nula' at line 25! Symbol node: Constant 'nula': type = 'int', adr = 0, level = 0
+Found array element access 'nula[nula]' at line 25! Symbol node: Array element 'nula[nula]': type = 'int', adr = -1, level = -1
+Found symbolic constant usage 'jedan' at line 25! Symbol node: Constant 'jedan': type = 'int', adr = 1, level = 0
+Found global variable usage 'niz' at line 26! Symbol node: Variable 'niz': type = 'array of int', adr = 0, level = 0
+Found array element access 'niz[1]' at line 26! Symbol node: Array element 'niz[1]': type = 'int', adr = -1, level = -1
+Found global variable usage 'niz' at line 27! Symbol node: Variable 'niz': type = 'array of int', adr = 0, level = 0
+Found global variable usage 'niz' at line 27! Symbol node: Variable 'niz': type = 'array of int', adr = 0, level = 0
+Found symbolic constant usage 'jedan' at line 27! Symbol node: Constant 'jedan': type = 'int', adr = 1, level = 0
+Found array element access 'jedan[jedan]' at line 27! Symbol node: Array element 'jedan[jedan]': type = 'int', adr = -1, level = -1
+Found array element access 'jedan[jedan][jedan[jedan]]' at line 27! Symbol node: Array element 'jedan[jedan][jedan[jedan]]': type = 'int', adr = -1, level = -1
+Found global variable usage 'niz' at line 27! Symbol node: Variable 'niz': type = 'array of int', adr = 0, level = 0
+Found global variable usage 'niz' at line 27! Symbol node: Variable 'niz': type = 'array of int', adr = 0, level = 0
+Found array element access 'niz[0]' at line 27! Symbol node: Array element 'niz[0]': type = 'int', adr = -1, level = -1
+Found array element access 'niz[0][niz[0]]' at line 27! Symbol node: Array element 'niz[0][niz[0]]': type = 'int', adr = -1, level = -1
+Found local variable usage 'bodovi' at line 28! Symbol node: Variable 'bodovi': type = 'int', adr = 0, level = 1
+Found global variable usage 'niz' at line 28! Symbol node: Variable 'niz': type = 'array of int', adr = 0, level = 0
+Found array element access 'niz[2]' at line 28! Symbol node: Array element 'niz[2]': type = 'int', adr = -1, level = -1
+Found global variable usage 'niz' at line 28! Symbol node: Variable 'niz': type = 'array of int', adr = 0, level = 0
+Found array element access 'niz[0]' at line 28! Symbol node: Array element 'niz[0]': type = 'int', adr = -1, level = -1
+Found local variable usage 'bodovi' at line 29! Symbol node: Variable 'bodovi': type = 'int', adr = 0, level = 1
+Found global variable usage 'niz' at line 30! Symbol node: Variable 'niz': type = 'array of int', adr = 0, level = 0
+Found array element access 'niz[2]' at line 30! Symbol node: Array element 'niz[2]': type = 'int', adr = -1, level = -1
+Found local variable usage 'bodovi' at line 32! Symbol node: Variable 'bodovi': type = 'int', adr = 0, level = 1
+Found global variable usage 'niz' at line 33! Symbol node: Variable 'niz': type = 'array of int', adr = 0, level = 0
+Found array element access 'niz[2]' at line 33! Symbol node: Array element 'niz[2]': type = 'int', adr = -1, level = -1
+Found local variable usage 'bodovi' at line 33! Symbol node: Variable 'bodovi': type = 'int', adr = 0, level = 1
+Found global variable usage 'niz' at line 34! Symbol node: Variable 'niz': type = 'array of int', adr = 0, level = 0
+Found array element access 'niz[2]' at line 34! Symbol node: Array element 'niz[2]': type = 'int', adr = -1, level = -1
+Found global variable usage 'niz' at line 35! Symbol node: Variable 'niz': type = 'array of int', adr = 0, level = 0
+Found array element access 'niz[2]' at line 35! Symbol node: Array element 'niz[2]': type = 'int', adr = -1, level = -1
+Found global variable usage 'nizch' at line 38! Symbol node: Variable 'nizch': type = 'array of char', adr = 1, level = 0
+Found global variable usage 'nizch' at line 39! Symbol node: Variable 'nizch': type = 'array of char', adr = 1, level = 0
+Found array element access 'nizch[0]' at line 39! Symbol node: Array element 'nizch[0]': type = 'char', adr = -1, level = -1
+Found global variable usage 'nizch' at line 40! Symbol node: Variable 'nizch': type = 'array of char', adr = 1, level = 0
+Found symbolic constant usage 'jedan' at line 40! Symbol node: Constant 'jedan': type = 'int', adr = 1, level = 0
+Found array element access 'jedan[jedan]' at line 40! Symbol node: Array element 'jedan[jedan]': type = 'char', adr = -1, level = -1
+Found global variable usage 'nizch' at line 41! Symbol node: Variable 'nizch': type = 'array of char', adr = 1, level = 0
+Found symbolic constant usage 'pet' at line 41! Symbol node: Constant 'pet': type = 'int', adr = 5, level = 0
+Found array element access 'pet[pet - 3]' at line 41! Symbol node: Array element 'pet[pet - 3]': type = 'char', adr = -1, level = -1
+Found global variable usage 'nizch' at line 42! Symbol node: Variable 'nizch': type = 'array of char', adr = 1, level = 0
+Found array element access 'nizch[1]' at line 42! Symbol node: Array element 'nizch[1]': type = 'char', adr = -1, level = -1
+Found global variable usage 'nizch' at line 43! Symbol node: Variable 'nizch': type = 'array of char', adr = 1, level = 0
+Found symbolic constant usage 'jedan' at line 43! Symbol node: Constant 'jedan': type = 'int', adr = 1, level = 0
+Found array element access 'jedan[jedan * 2]' at line 43! Symbol node: Array element 'jedan[jedan * 2]': type = 'char', adr = -1, level = -1
+Found local variable usage 'bodovi' at line 46! Symbol node: Variable 'bodovi': type = 'int', adr = 0, level = 1
+Found local variable usage 'bodovi' at line 46! Symbol node: Variable 'bodovi': type = 'int', adr = 0, level = 1
+Found symbolic constant usage 'pet' at line 46! Symbol node: Constant 'pet': type = 'int', adr = 5, level = 0
+Found symbolic constant usage 'jedan' at line 46! Symbol node: Constant 'jedan': type = 'int', adr = 1, level = 0
+Found local variable usage 'bodovi' at line 46! Symbol node: Variable 'bodovi': type = 'int', adr = 0, level = 1
+Found local variable usage 'bodovi' at line 47! Symbol node: Variable 'bodovi': type = 'int', adr = 0, level = 1
+Semantic analysis completed without errors!
+====================================================================================================
+    3 symbolic constant(s) defined
+    2 global variable(s) defined
+    0 class(es) defined
+    1 global method(s) defined
+======================================== SYMBOL TABLE DUMP =========================================
+Type 'int': type = 'int', adr = -1, level = -1
+Type 'char': type = 'char', adr = -1, level = -1
+Type 'bool': type = 'bool', adr = -1, level = -1
+Constant 'null': type = 'class', adr = 0, level = 0
+Constant 'eol': type = 'char', adr = 10, level = 0
+Method 'chr': type = 'char', adr = 0, level = 1
+  Formal parameter 'i': type = 'int', adr = 0, level = 1
+Method 'ord': type = 'int', adr = 0, level = 1
+  Formal parameter 'ch': type = 'char', adr = 0, level = 1
+Method 'len': type = 'int', adr = 0, level = 1
+  Formal parameter 'arr': type = 'array of none', adr = 0, level = 1
+Program 'test301': type = 'none', adr = 0, level = 1
+  Constant 'nula': type = 'int', adr = 0, level = 0
+  Constant 'jedan': type = 'int', adr = 1, level = 0
+  Constant 'pet': type = 'int', adr = 5, level = 0
+  Variable 'niz': type = 'array of int', adr = 0, level = 0
+  Variable 'nizch': type = 'array of char', adr = 1, level = 0
+  Method 'main': type = 'void', adr = 0, level = 0
+    Variable 'bodovi': type = 'int', adr = 0, level = 1
+
+Generating bytecode file: D:\Documents\Fakultet\7. semestar\13E114PP1\Projekat\MJCompiler\test\test301.obj
+Compilation finished!

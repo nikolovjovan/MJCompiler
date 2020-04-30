@@ -1,0 +1,109 @@
+Starting semantic analysis...
+Found formal parameter usage 'a' at line 11! Symbol node: Formal parameter 'a': type = 'int', adr = 0, level = 1
+Found formal parameter usage 'b' at line 11! Symbol node: Formal parameter 'b': type = 'int', adr = 1, level = 1
+Found formal parameter usage 'a' at line 15! Symbol node: Formal parameter 'a': type = 'int', adr = 0, level = 1
+Found formal parameter usage 'b' at line 15! Symbol node: Formal parameter 'b': type = 'int', adr = 1, level = 1
+Found global variable usage 'arr' at line 22! Symbol node: Variable 'arr': type = 'array of int', adr = 0, level = 0
+Found local variable usage 'it' at line 23! Symbol node: Variable 'it': type = 'int', adr = 0, level = 1
+Found symbolic constant usage 'eol' at line 23! Symbol node: Constant 'eol': type = 'char', adr = 10, level = 0
+Found local variable usage 'it' at line 25! Symbol node: Variable 'it': type = 'int', adr = 0, level = 1
+Found global variable usage 'arr' at line 26! Symbol node: Variable 'arr': type = 'array of int', adr = 0, level = 0
+Found local variable usage 'it2' at line 28! Symbol node: Variable 'it2': type = 'int', adr = 1, level = 1
+Found local variable usage 'it' at line 28! Symbol node: Variable 'it': type = 'int', adr = 0, level = 1
+Found local variable usage 'y' at line 60! Symbol node: Variable 'y': type = 'int', adr = 7, level = 1
+Found local variable usage 'z' at line 61! Symbol node: Variable 'z': type = 'int', adr = 8, level = 1
+Found local variable usage 'arr' at line 62! Symbol node: Variable 'arr': type = 'array of char', adr = 10, level = 1
+Found local variable usage 'arr' at line 65! Symbol node: Variable 'arr': type = 'array of char', adr = 10, level = 1
+Found local variable usage 'z' at line 65! Symbol node: Variable 'z': type = 'int', adr = 8, level = 1
+Found array element access 'z[3 + 1 + z]' at line 65! Symbol node: Array element 'z[3 + 1 + z]': type = 'char', adr = -1, level = -1
+Found local variable usage 'z' at line 68! Symbol node: Variable 'z': type = 'int', adr = 8, level = 1
+Found local variable usage 'y' at line 68! Symbol node: Variable 'y': type = 'int', adr = 7, level = 1
+Found local variable usage 'z' at line 69! Symbol node: Variable 'z': type = 'int', adr = 8, level = 1
+Found local variable usage 'y' at line 69! Symbol node: Variable 'y': type = 'int', adr = 7, level = 1
+Found local variable usage 'z' at line 70! Symbol node: Variable 'z': type = 'int', adr = 8, level = 1
+Found local variable usage 'y' at line 70! Symbol node: Variable 'y': type = 'int', adr = 7, level = 1
+Found local variable usage 'z' at line 71! Symbol node: Variable 'z': type = 'int', adr = 8, level = 1
+Found local variable usage 'y' at line 71! Symbol node: Variable 'y': type = 'int', adr = 7, level = 1
+Found local variable usage 'z' at line 72! Symbol node: Variable 'z': type = 'int', adr = 8, level = 1
+Found local variable usage 'y' at line 72! Symbol node: Variable 'y': type = 'int', adr = 7, level = 1
+Found local variable usage 'z' at line 75! Symbol node: Variable 'z': type = 'int', adr = 8, level = 1
+Found local variable usage 'y' at line 75! Symbol node: Variable 'y': type = 'int', adr = 7, level = 1
+Found local variable usage 'z' at line 75! Symbol node: Variable 'z': type = 'int', adr = 8, level = 1
+Found local variable usage 'y' at line 79! Symbol node: Variable 'y': type = 'int', adr = 7, level = 1
+Found local variable usage 'z' at line 82! Symbol node: Variable 'z': type = 'int', adr = 8, level = 1
+Found local variable usage 'z' at line 83! Symbol node: Variable 'z': type = 'int', adr = 8, level = 1
+Found local variable usage 'z' at line 84! Symbol node: Variable 'z': type = 'int', adr = 8, level = 1
+Found local variable usage 'y' at line 84! Symbol node: Variable 'y': type = 'int', adr = 7, level = 1
+Found local variable usage 'z' at line 85! Symbol node: Variable 'z': type = 'int', adr = 8, level = 1
+Found local variable usage 'z' at line 86! Symbol node: Variable 'z': type = 'int', adr = 8, level = 1
+Found local variable usage 'y' at line 86! Symbol node: Variable 'y': type = 'int', adr = 7, level = 1
+Found local variable usage 'z' at line 89! Symbol node: Variable 'z': type = 'int', adr = 8, level = 1
+Found local variable usage 'y' at line 93! Symbol node: Variable 'y': type = 'int', adr = 7, level = 1
+Found local variable usage 'y' at line 96! Symbol node: Variable 'y': type = 'int', adr = 7, level = 1
+Found local variable usage 'y' at line 99! Symbol node: Variable 'y': type = 'int', adr = 7, level = 1
+Found local variable usage 'z' at line 99! Symbol node: Variable 'z': type = 'int', adr = 8, level = 1
+Found local variable usage 'z' at line 100! Symbol node: Variable 'z': type = 'int', adr = 8, level = 1
+Found local variable usage 'y' at line 102! Symbol node: Variable 'y': type = 'int', adr = 7, level = 1
+Found local variable usage 'i' at line 106! Symbol node: Variable 'i': type = 'int', adr = 9, level = 1
+Found local variable usage 'i' at line 106! Symbol node: Variable 'i': type = 'int', adr = 9, level = 1
+Found local variable usage 'i' at line 106! Symbol node: Variable 'i': type = 'int', adr = 9, level = 1
+Found local variable usage 'z' at line 106! Symbol node: Variable 'z': type = 'int', adr = 8, level = 1
+Found local variable usage 'i' at line 106! Symbol node: Variable 'i': type = 'int', adr = 9, level = 1
+Found for loop 'none' at line 106!
+Found local variable usage 'i' at line 107! Symbol node: Variable 'i': type = 'int', adr = 9, level = 1
+Found local variable usage 'y' at line 110! Symbol node: Variable 'y': type = 'int', adr = 7, level = 1
+Found local variable usage 'arr' at line 114! Symbol node: Variable 'arr': type = 'array of char', adr = 10, level = 1
+Found global variable usage 'arr' at line 130! Symbol node: Variable 'arr': type = 'array of int', adr = 0, level = 0
+Found global variable usage 'arr' at line 131! Symbol node: Variable 'arr': type = 'array of int', adr = 0, level = 0
+Found array element access 'arr[0]' at line 131! Symbol node: Array element 'arr[0]': type = 'int', adr = -1, level = -1
+Found global variable usage 'arr' at line 132! Symbol node: Variable 'arr': type = 'array of int', adr = 0, level = 0
+Found array element access 'arr[1]' at line 132! Symbol node: Array element 'arr[1]': type = 'int', adr = -1, level = -1
+Found local variable usage 'x' at line 133! Symbol node: Variable 'x': type = 'int', adr = 0, level = 1
+Found local variable usage 'x' at line 135! Symbol node: Variable 'x': type = 'int', adr = 0, level = 1
+Found global variable usage 'arr' at line 136! Symbol node: Variable 'arr': type = 'array of int', adr = 0, level = 0
+Found array element access 'arr[0]' at line 136! Symbol node: Array element 'arr[0]': type = 'int', adr = -1, level = -1
+Found local variable usage 'x' at line 136! Symbol node: Variable 'x': type = 'int', adr = 0, level = 1
+Found global variable usage 'arr' at line 138! Symbol node: Variable 'arr': type = 'array of int', adr = 0, level = 0
+Found local variable usage 'i' at line 138! Symbol node: Variable 'i': type = 'int', adr = 1, level = 1
+======================================== SYMBOL TABLE DUMP =========================================
+Type 'int': type = 'int', adr = -1, level = -1
+Type 'char': type = 'char', adr = -1, level = -1
+Type 'bool': type = 'bool', adr = -1, level = -1
+Constant 'null': type = 'class', adr = 0, level = 0
+Constant 'eol': type = 'char', adr = 10, level = 0
+Method 'chr': type = 'char', adr = 0, level = 1
+  Formal parameter 'i': type = 'int', adr = 0, level = 1
+Method 'ord': type = 'int', adr = 0, level = 1
+  Formal parameter 'ch': type = 'char', adr = 0, level = 1
+Method 'len': type = 'int', adr = 0, level = 1
+  Formal parameter 'arr': type = 'array of none', adr = 0, level = 1
+Program 'level_b_semantic_errors': type = 'none', adr = 0, level = 1
+  Variable 'arr': type = 'array of int', adr = 0, level = 0
+  Method 'f1': type = 'int', adr = 0, level = 0
+  Method 'f2': type = 'char', adr = 0, level = 2
+    Formal parameter 'a': type = 'int', adr = 0, level = 1
+    Formal parameter 'b': type = 'int', adr = 1, level = 1
+  Method 'f3': type = 'bool', adr = 0, level = 2
+    Formal parameter 'a': type = 'int', adr = 0, level = 1
+    Formal parameter 'b': type = 'int', adr = 1, level = 1
+  Method 'f4': type = 'void', adr = 0, level = 0
+    Variable 'it': type = 'int', adr = 0, level = 1
+    Variable 'it2': type = 'int', adr = 1, level = 1
+  Method 'f5': type = 'char', adr = 0, level = 1
+    Formal parameter 'p1': type = 'int', adr = 0, level = 1
+    Variable 'var1': type = 'array of int', adr = 1, level = 1
+    Variable 'var2': type = 'char', adr = 2, level = 1
+  Method 'f6': type = 'void', adr = 0, level = 2
+    Formal parameter 'p1': type = 'int', adr = 0, level = 1
+    Formal parameter 'p2': type = 'char', adr = 1, level = 1
+    Variable 'var1': type = 'int', adr = 2, level = 1
+    Variable 'var2': type = 'int', adr = 3, level = 1
+    Variable 'var3': type = 'char', adr = 4, level = 1
+    Variable 'var4': type = 'array of char', adr = 5, level = 1
+    Variable 'var5': type = 'bool', adr = 6, level = 1
+    Variable 'y': type = 'int', adr = 7, level = 1
+    Variable 'z': type = 'int', adr = 8, level = 1
+    Variable 'i': type = 'int', adr = 9, level = 1
+    Variable 'arr': type = 'array of char', adr = 10, level = 1
+  Method 'main': type = 'int', adr = 0, level = 0
+

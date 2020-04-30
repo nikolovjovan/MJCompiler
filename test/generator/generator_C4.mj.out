@@ -1,0 +1,143 @@
+Compiling source file: D:\Documents\Fakultet\7. semestar\13E114PP1\Projekat\MJCompiler\test\generator\generator_C4.mj
+Syntax analysis completed without errors!
+Starting semantic analysis...
+Found class 'Tab' field usage 'size' at line 10! Symbol node: Field 'size': type = 'int', adr = 1, level = 1, parent = 'Tab', access modifier = private
+Found abstract class usage 'Tab' at line 14! Symbol node: Type 'Tab': type = 'abstract class', adr = 0, level = 0
+Found local variable usage 'this' at line 17! Symbol node: Variable 'this': , adr = 0, level = 1
+Found class 'Table' field usage 'pos' at line 17! Symbol node: Field 'pos': type = 'array of int', adr = 2, level = 1, parent = 'Table', access modifier = public
+Found formal parameter usage 'idx' at line 17! Symbol node: Formal parameter 'idx': type = 'int', adr = 2, level = 1
+Found array element access 'idx[idx]' at line 17! Symbol node: Array element 'idx[idx]': type = 'int', adr = -1, level = -1
+Found formal parameter usage 'a' at line 17! Symbol node: Formal parameter 'a': type = 'int', adr = 1, level = 1
+Found local variable usage 'this' at line 18! Symbol node: Variable 'this': , adr = 0, level = 1
+Found class 'Table' field usage 'neg' at line 18! Symbol node: Field 'neg': type = 'array of int', adr = 3, level = 1, parent = 'Table', access modifier = public
+Found formal parameter usage 'idx' at line 18! Symbol node: Formal parameter 'idx': type = 'int', adr = 2, level = 1
+Found array element access 'idx[idx]' at line 18! Symbol node: Array element 'idx[idx]': type = 'int', adr = -1, level = -1
+Found formal parameter usage 'a' at line 18! Symbol node: Formal parameter 'a': type = 'int', adr = 1, level = 1
+Found class 'Table' field usage 'pos' at line 19! Symbol node: Field 'pos': type = 'array of int', adr = 2, level = 1, parent = 'Table', access modifier = public
+Found formal parameter usage 'idx' at line 19! Symbol node: Formal parameter 'idx': type = 'int', adr = 1, level = 1
+Found array element access 'idx[idx]' at line 19! Symbol node: Array element 'idx[idx]': type = 'int', adr = -1, level = -1
+Found class 'Table' field usage 'neg' at line 20! Symbol node: Field 'neg': type = 'array of int', adr = 3, level = 1, parent = 'Table', access modifier = public
+Found formal parameter usage 'idx' at line 20! Symbol node: Formal parameter 'idx': type = 'int', adr = 1, level = 1
+Found array element access 'idx[idx]' at line 20! Symbol node: Array element 'idx[idx]': type = 'int', adr = -1, level = -1
+Found local variable usage 'x' at line 27! Symbol node: Variable 'x': type = 'int', adr = 3, level = 1
+Found formal parameter usage 'arg' at line 27! Symbol node: Formal parameter 'arg': type = 'int', adr = 2, level = 1
+Found global variable usage 'val' at line 32! Symbol node: Variable 'val': type = 'class', adr = 0, level = 0
+Found global variable usage 'val' at line 33! Symbol node: Variable 'val': type = 'class', adr = 0, level = 0
+Found class 'Table' field usage 'pos' at line 33! Symbol node: Field 'pos': type = 'array of int', adr = 2, level = 1, parent = 'Table', access modifier = public
+Found symbolic constant usage 'size' at line 33! Symbol node: Constant 'size': type = 'int', adr = 10, level = 0
+Found global variable usage 'val' at line 34! Symbol node: Variable 'val': type = 'class', adr = 0, level = 0
+Found class 'Table' field usage 'neg' at line 34! Symbol node: Field 'neg': type = 'array of int', adr = 3, level = 1, parent = 'Table', access modifier = public
+Found symbolic constant usage 'size' at line 34! Symbol node: Constant 'size': type = 'int', adr = 10, level = 0
+Found local variable usage 'i' at line 35! Symbol node: Variable 'i': type = 'int', adr = 1, level = 1
+Found local variable usage 'i' at line 35! Symbol node: Variable 'i': type = 'int', adr = 1, level = 1
+Found symbolic constant usage 'size' at line 35! Symbol node: Constant 'size': type = 'int', adr = 10, level = 0
+Found local variable usage 'i' at line 35! Symbol node: Variable 'i': type = 'int', adr = 1, level = 1
+Found for loop 'none' at line 35!
+Found global variable usage 'val' at line 37! Symbol node: Variable 'val': type = 'class', adr = 0, level = 0
+Found class 'Table' field usage 'putp' at line 37! Symbol node: Method 'putp': type = 'void', adr = 0, level = 3, parent = 'Table', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 'a': type = 'int', adr = 1, level = 1
+  Formal parameter 'idx': type = 'int', adr = 2, level = 1
+Found local variable usage 'i' at line 37! Symbol node: Variable 'i': type = 'int', adr = 1, level = 1
+Found global variable usage 'val' at line 38! Symbol node: Variable 'val': type = 'class', adr = 0, level = 0
+Found class 'Table' field usage 'putn' at line 38! Symbol node: Method 'putn': type = 'void', adr = 0, level = 3, parent = 'Table', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 'a': type = 'int', adr = 1, level = 1
+  Formal parameter 'idx': type = 'int', adr = 2, level = 1
+Found local variable usage 'i' at line 38! Symbol node: Variable 'i': type = 'int', adr = 1, level = 1
+Found global method call 'f' at line 40! Symbol node: Method 'f': type = 'void', adr = 0, level = 3
+  Formal parameter 'ch': type = 'char', adr = 0, level = 1
+  Formal parameter 'a': type = 'int', adr = 1, level = 1
+  Formal parameter 'arg': type = 'int', adr = 2, level = 1
+  Variable 'x': type = 'int', adr = 3, level = 1
+Found local variable usage 'c' at line 40! Symbol node: Variable 'c': type = 'char', adr = 2, level = 1
+Found local variable usage 'x' at line 40! Symbol node: Variable 'x': type = 'int', adr = 0, level = 1
+Found local variable usage 'i' at line 40! Symbol node: Variable 'i': type = 'int', adr = 1, level = 1
+Found local variable usage 'x' at line 42! Symbol node: Variable 'x': type = 'int', adr = 0, level = 1
+Found symbolic constant usage 'size' at line 43! Symbol node: Constant 'size': type = 'int', adr = 10, level = 0
+Found local variable usage 'x' at line 43! Symbol node: Variable 'x': type = 'int', adr = 0, level = 1
+Found local variable usage 'x' at line 43! Symbol node: Variable 'x': type = 'int', adr = 0, level = 1
+Found symbolic constant usage 'size' at line 43! Symbol node: Constant 'size': type = 'int', adr = 10, level = 0
+Found for loop 'none' at line 43!
+Found local variable usage 'x' at line 44! Symbol node: Variable 'x': type = 'int', adr = 0, level = 1
+Found local variable usage 'x' at line 44! Symbol node: Variable 'x': type = 'int', adr = 0, level = 1
+Found symbolic constant usage 'size' at line 44! Symbol node: Constant 'size': type = 'int', adr = 10, level = 0
+Found global variable usage 'val' at line 45! Symbol node: Variable 'val': type = 'class', adr = 0, level = 0
+Found class 'Table' field usage 'putp' at line 45! Symbol node: Method 'putp': type = 'void', adr = 0, level = 3, parent = 'Table', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 'a': type = 'int', adr = 1, level = 1
+  Formal parameter 'idx': type = 'int', adr = 2, level = 1
+Found global variable usage 'val' at line 45! Symbol node: Variable 'val': type = 'class', adr = 0, level = 0
+Found class 'Table' field usage 'getp' at line 45! Symbol node: Method 'getp': type = 'int', adr = 0, level = 2, parent = 'Table', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 'idx': type = 'int', adr = 1, level = 1
+Found local variable usage 'x' at line 45! Symbol node: Variable 'x': type = 'int', adr = 0, level = 1
+Found local variable usage 'x' at line 45! Symbol node: Variable 'x': type = 'int', adr = 0, level = 1
+Found symbolic constant usage 'size' at line 46! Symbol node: Constant 'size': type = 'int', adr = 10, level = 0
+Found local variable usage 'x' at line 46! Symbol node: Variable 'x': type = 'int', adr = 0, level = 1
+Found local variable usage 'x' at line 46! Symbol node: Variable 'x': type = 'int', adr = 0, level = 1
+Found global variable usage 'val' at line 47! Symbol node: Variable 'val': type = 'class', adr = 0, level = 0
+Found class 'Table' field usage 'putn' at line 47! Symbol node: Method 'putn': type = 'void', adr = 0, level = 3, parent = 'Table', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 'a': type = 'int', adr = 1, level = 1
+  Formal parameter 'idx': type = 'int', adr = 2, level = 1
+Found global variable usage 'val' at line 47! Symbol node: Variable 'val': type = 'class', adr = 0, level = 0
+Found class 'Table' field usage 'getn' at line 47! Symbol node: Method 'getn': type = 'int', adr = 0, level = 2, parent = 'Table', access modifier = public
+  Variable 'this': , adr = 0, level = 1
+  Formal parameter 'idx': type = 'int', adr = 1, level = 1
+Found local variable usage 'x' at line 47! Symbol node: Variable 'x': type = 'int', adr = 0, level = 1
+Found local variable usage 'x' at line 47! Symbol node: Variable 'x': type = 'int', adr = 0, level = 1
+Found local variable usage 'x' at line 49! Symbol node: Variable 'x': type = 'int', adr = 0, level = 1
+Found local variable usage 'i' at line 52! Symbol node: Variable 'i': type = 'int', adr = 1, level = 1
+Found symbolic constant usage 'size' at line 52! Symbol node: Constant 'size': type = 'int', adr = 10, level = 0
+Found local variable usage 'i' at line 52! Symbol node: Variable 'i': type = 'int', adr = 1, level = 1
+Found symbolic constant usage 'size' at line 52! Symbol node: Constant 'size': type = 'int', adr = 10, level = 0
+Found local variable usage 'i' at line 52! Symbol node: Variable 'i': type = 'int', adr = 1, level = 1
+Found for loop 'none' at line 52!
+Found local variable usage 'i' at line 53! Symbol node: Variable 'i': type = 'int', adr = 1, level = 1
+Found symbolic constant usage 'eol' at line 55! Symbol node: Constant 'eol': type = 'char', adr = 10, level = 0
+Found global variable usage 'val' at line 56! Symbol node: Variable 'val': type = 'class', adr = 0, level = 0
+Found class 'Table' field usage 'neg' at line 56! Symbol node: Field 'neg': type = 'array of int', adr = 3, level = 1, parent = 'Table', access modifier = public
+Found local variable usage 'x' at line 57! Symbol node: Variable 'x': type = 'int', adr = 0, level = 1
+Found local variable usage 'i' at line 59! Symbol node: Variable 'i': type = 'int', adr = 1, level = 1
+Found global variable usage 'val' at line 60! Symbol node: Variable 'val': type = 'class', adr = 0, level = 0
+Found class 'Table' field usage 'pos' at line 60! Symbol node: Field 'pos': type = 'array of int', adr = 2, level = 1, parent = 'Table', access modifier = public
+Found local variable usage 'i' at line 61! Symbol node: Variable 'i': type = 'int', adr = 1, level = 1
+Found local variable usage 'i' at line 62! Symbol node: Variable 'i': type = 'int', adr = 1, level = 1
+Found symbolic constant usage 'size' at line 62! Symbol node: Constant 'size': type = 'int', adr = 10, level = 0
+Found local variable usage 'x' at line 63! Symbol node: Variable 'x': type = 'int', adr = 0, level = 1
+Semantic analysis completed without errors!
+====================================================================================================
+    1 symbolic constant(s) defined
+    1 global variable(s) defined
+    2 class(es) defined
+    2 global method(s) defined
+======================================== SYMBOL TABLE DUMP =========================================
+Type 'int': type = 'int', adr = -1, level = -1
+Type 'char': type = 'char', adr = -1, level = -1
+Type 'bool': type = 'bool', adr = -1, level = -1
+Constant 'null': type = 'class', adr = 0, level = 0
+Constant 'eol': type = 'char', adr = 10, level = 0
+Method 'chr': type = 'char', adr = 0, level = 1
+  Formal parameter 'i': type = 'int', adr = 0, level = 1
+Method 'ord': type = 'int', adr = 0, level = 1
+  Formal parameter 'ch': type = 'char', adr = 0, level = 1
+Method 'len': type = 'int', adr = 0, level = 1
+  Formal parameter 'arr': type = 'array of none', adr = 0, level = 1
+Program 'P': type = 'none', adr = 0, level = 1
+  Constant 'size': type = 'int', adr = 10, level = 0
+  Type 'Tab': type = 'abstract class', adr = 0, level = 0
+  Type 'Table': type = 'class', adr = 0, level = 0
+  Variable 'val': type = 'class', adr = 0, level = 0
+  Method 'f': type = 'void', adr = 0, level = 3
+    Formal parameter 'ch': type = 'char', adr = 0, level = 1
+    Formal parameter 'a': type = 'int', adr = 1, level = 1
+    Formal parameter 'arg': type = 'int', adr = 2, level = 1
+    Variable 'x': type = 'int', adr = 3, level = 1
+  Method 'main': type = 'void', adr = 0, level = 0
+    Variable 'x': type = 'int', adr = 0, level = 1
+    Variable 'i': type = 'int', adr = 1, level = 1
+    Variable 'c': type = 'char', adr = 2, level = 1
+
+Generating bytecode file: D:\Documents\Fakultet\7. semestar\13E114PP1\Projekat\MJCompiler\test\generator_C4.obj
+Compilation finished!

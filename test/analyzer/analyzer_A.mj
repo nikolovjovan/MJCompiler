@@ -1,0 +1,33 @@
+// level A symbol detection:
+// - constants
+// - global variables
+// - array element access
+program level_a_symbol_detection
+    // const declarations
+    const int a = 20, b = -1, c = +25;
+    const char d = 'a';
+    const bool e = true, f = false;
+
+    // global variables
+    int var_a, var_b[];
+    char var_c, var_d[], var_e;
+    bool var_f;
+{
+    void main()
+        // local variables
+        int local_var_a, local_var_b[];
+        char local_var_c;
+        bool local_var_d, local_var_e[];
+    {
+        var_b = new int[6];
+        local_var_b = new int[15];
+
+        var_b[4] = 15; // global array access
+        local_var_b[6] = 12; // local array access
+
+        var_a = var_b[2]; // global array access
+        local_var_a = local_var_b[0]; // local array access
+
+        local_var_a += a * b - ord(d);
+    }
+}

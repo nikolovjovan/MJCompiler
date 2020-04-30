@@ -1,0 +1,20 @@
+// keywords
+break
+else
+if
+return
+for
+continue
+foreach
+// relational operators
+==
+!=
+>
+>=
+<
+<=
+// boolean operators
+&&
+||
+// parentheses, brackets, braces, etc.
+:

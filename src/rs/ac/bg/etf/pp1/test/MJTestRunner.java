@@ -1,12 +1,8 @@
 package rs.ac.bg.etf.pp1.test;
 
-import org.apache.log4j.xml.DOMConfigurator;
-import rs.ac.bg.etf.pp1.util.Log4JUtils;
-
 public class MJTestRunner {
 
     public static void main(String[] args) {
-        DOMConfigurator.configure(Log4JUtils.getLoggerConfigFileName());
         if (args.length > 2) {
             System.err.println("Invalid number of arguments: " + args.length + "!");
             return;
@@ -15,7 +11,7 @@ public class MJTestRunner {
             switch (args[0]) {
                 case "lexer": {
                     if (args.length > 1) {
-                        MJLexerTest.INSTANCE.runTest(args[1]);
+                        MJLexerTest.INSTANCE.runSingle(args[1]);
                     } else {
                         MJLexerTest.INSTANCE.runAll();
                     }
@@ -23,25 +19,25 @@ public class MJTestRunner {
                 }
                 case "parser": {
                     if (args.length > 1) {
-                        MJParserTest.INSTANCE.runTest(args[1]);
+                        MJParserTest.INSTANCE.runSingle(args[1]);
                     } else {
                         MJParserTest.INSTANCE.runAll();
                     }
                     break;
                 }
-                case "semantic": {
+                case "analyzer": {
                     if (args.length > 1) {
-                        MJSemanticTest.INSTANCE.runTest(args[1]);
+                        MJAnalyzerTest.INSTANCE.runSingle(args[1]);
                     } else {
-                        MJSemanticTest.INSTANCE.runAll();
+                        MJAnalyzerTest.INSTANCE.runAll();
                     }
                     break;
                 }
-                case "codegen": {
+                case "generator": {
                     if (args.length > 1) {
-                        MJCodeGenTest.INSTANCE.runTest(args[1]);
+                        MJGeneratorTest.INSTANCE.runSingle(args[1]);
                     } else {
-                        MJCodeGenTest.INSTANCE.runAll();
+                        MJGeneratorTest.INSTANCE.runAll();
                     }
                     break;
                 }
@@ -53,9 +49,8 @@ public class MJTestRunner {
         } else { // run all tests
             MJLexerTest.INSTANCE.runAll();
             MJParserTest.INSTANCE.runAll();
-            MJSemanticTest.INSTANCE.runAll();
-            MJCodeGenTest.INSTANCE.runAll();
+            MJAnalyzerTest.INSTANCE.runAll();
+            MJGeneratorTest.INSTANCE.runAll();
         }
     }
-
 }

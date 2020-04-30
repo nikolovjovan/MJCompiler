@@ -1,0 +1,66 @@
+// level A syntax test
+program level_a_syntax_test
+    // const declarations
+    const int a = 20, b = -1, c = +25;
+    const char d = 'a';
+    const bool e = true, f = false;
+
+    const char a = 'c'; // symbol a already in use
+    const invalid_type d = 3; // type not defined
+    const a e = 5; // 'a' is not a type
+    const int e = 'a'; // wrong type for init value
+    const bool m = 25; // wrong type for init value for m
+
+    // global variables
+    int var_a, var_b[];
+    char var_c, var_d[], var_e;
+    bool var_f;
+
+    int int; // warn: variable int hides reserved symbol
+
+    type_x var_g; // type 'type_x' not defined
+    var_a var_g; // 'var_a' is not a type
+
+    const int ca = 1, cb = 6;
+    const char cc = 's';
+    const bool cd = true;
+
+    int ga, gb[];
+    char gc, gd[];
+    bool ge, gf[];
+{
+    void main()
+        bool char; // warn: variable char hides reserved symbol
+        int la, lb[];
+        char lc, ld[]; // error: char is not a type
+        bool le, lf[];
+    {
+        gb = new int[5];
+        gd = new char[2];
+        gf = new bool[6];
+        lb = new int[4];
+        ld = new char[2];
+        lf = new bool[8];
+
+        ga = ca + cb * 5 - (15 - 9);
+        ga++;
+        print(ga, 5);
+        gb[4] = 6 % 2 + (27 * (5 - 7));
+        read(gc);
+        gd[1] = 'a';
+        read(gd[0]);
+        ge = false;
+        gf[0] = cd;
+        gf[3] = gf[0];
+        read(gf[2]);
+        print(gf[3]);
+
+        la = ga *= 5;
+        la--;
+        lb[2] = 8 * la - 4 *= -4 + 6 * 2;
+        lc = gc;
+        ld[1] = 'F';
+        le = false;
+        lf[2] = cd;
+    }
+}
