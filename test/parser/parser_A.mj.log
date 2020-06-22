@@ -232,15 +232,19 @@ DEBUG - parser_A.mj:38:11: LEXER: Found symbol: '#44' with value: '['
 DEBUG - parser_A.mj:38:12: LEXER: Found symbol: '#52' with value: '2'
 DEBUG - parser_A.mj:38:13: LEXER: Found symbol: '#45' with value: ']'
 DEBUG - parser_A.mj:38:15: LEXER: Found symbol: '#21' with value: '='
-DEBUG - parser_A.mj:38:17: LEXER: Found symbol: '#55' with value: 'la'
-DEBUG - parser_A.mj:38:20: LEXER: Found symbol: '#39' with value: '*='
-DEBUG - parser_A.mj:38:23: LEXER: Found symbol: '#23' with value: '-'
-DEBUG - parser_A.mj:38:24: LEXER: Found symbol: '#52' with value: '4'
-DEBUG - parser_A.mj:38:26: LEXER: Found symbol: '#22' with value: '+'
-DEBUG - parser_A.mj:38:28: LEXER: Found symbol: '#52' with value: '6'
-DEBUG - parser_A.mj:38:30: LEXER: Found symbol: '#24' with value: '*'
-DEBUG - parser_A.mj:38:32: LEXER: Found symbol: '#52' with value: '2'
-DEBUG - parser_A.mj:38:33: LEXER: Found symbol: '#49' with value: ';'
+DEBUG - parser_A.mj:38:17: LEXER: Found symbol: '#52' with value: '8'
+DEBUG - parser_A.mj:38:19: LEXER: Found symbol: '#24' with value: '*'
+DEBUG - parser_A.mj:38:21: LEXER: Found symbol: '#55' with value: 'la'
+DEBUG - parser_A.mj:38:24: LEXER: Found symbol: '#23' with value: '-'
+DEBUG - parser_A.mj:38:26: LEXER: Found symbol: '#52' with value: '4'
+DEBUG - parser_A.mj:38:28: LEXER: Found symbol: '#39' with value: '*='
+DEBUG - parser_A.mj:38:31: LEXER: Found symbol: '#23' with value: '-'
+DEBUG - parser_A.mj:38:32: LEXER: Found symbol: '#52' with value: '4'
+DEBUG - parser_A.mj:38:34: LEXER: Found symbol: '#22' with value: '+'
+DEBUG - parser_A.mj:38:36: LEXER: Found symbol: '#52' with value: '6'
+DEBUG - parser_A.mj:38:38: LEXER: Found symbol: '#24' with value: '*'
+DEBUG - parser_A.mj:38:40: LEXER: Found symbol: '#52' with value: '2'
+DEBUG - parser_A.mj:38:41: LEXER: Found symbol: '#49' with value: ';'
 DEBUG - parser_A.mj:39:9: LEXER: Found symbol: '#55' with value: 'lc'
 DEBUG - parser_A.mj:39:12: LEXER: Found symbol: '#21' with value: '='
 DEBUG - parser_A.mj:39:14: LEXER: Found symbol: '#55' with value: 'gc'
@@ -1328,17 +1332,37 @@ Program(
                       AssignOperator(
                       ) [AssignOperator]
                       AssignmentExpression(
-                        SingleTermExpression(
-                          NoSign(
-                          ) [NoSign]
+                        MultipleTermsExpression(
+                          SingleTermExpression(
+                            NoSign(
+                            ) [NoSign]
+                            MultipleFactorsTerm(
+                              SingleFactorTerm(
+                                ConstantFactor(
+                                  IntConstantFactor(
+                                   8
+                                  ) [IntConstantFactor]
+                                ) [ConstantFactor]
+                              ) [SingleFactorTerm]
+                              MulOperator(
+                              ) [MulOperator]
+                              DesignatorFactor(
+                                IdentifierDesignator(
+                                 la
+                                ) [IdentifierDesignator]
+                              ) [DesignatorFactor]
+                            ) [MultipleFactorsTerm]
+                          ) [SingleTermExpression]
+                          SubOperator(
+                          ) [SubOperator]
                           SingleFactorTerm(
-                            DesignatorFactor(
-                              IdentifierDesignator(
-                               la
-                              ) [IdentifierDesignator]
-                            ) [DesignatorFactor]
+                            ConstantFactor(
+                              IntConstantFactor(
+                               4
+                              ) [IntConstantFactor]
+                            ) [ConstantFactor]
                           ) [SingleFactorTerm]
-                        ) [SingleTermExpression]
+                        ) [MultipleTermsExpression]
                         RightMulOperator(
                           MulAssignOperator(
                           ) [MulAssignOperator]
