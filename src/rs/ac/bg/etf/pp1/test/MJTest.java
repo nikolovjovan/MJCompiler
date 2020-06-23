@@ -49,12 +49,19 @@ public abstract class MJTest {
             boolean identical = true;
             while ((expectedLine = ebr.readLine()) != null && (actualLine = abr.readLine()) != null) {
                 if (!actualLine.equals(expectedLine)) {
-                    String regex = "^Completion took \\d+ ms$";
-                    if (ebr.readLine() != null || abr.readLine() != null ||
-                            !expectedLine.matches(regex) || !actualLine.matches(regex)) {
-                        identical = false;
+                    String regex = "^Compiling source file: .*$";
+                    if (!expectedLine.matches(regex) || !actualLine.matches(regex)) {
+                        regex = "^Generating bytecode file: .*$";
+                        if (!expectedLine.matches(regex) || !actualLine.matches(regex)) {
+                            regex = "^Completion took \\d+ ms$";
+                            if (ebr.readLine() != null || abr.readLine() != null ||
+                                    !expectedLine.matches(regex) || !actualLine.matches(regex)) {
+                                System.out.println("Expected: '" + expectedLine + "' actual: '" + actualLine + "'.");
+                                identical = false;
+                                break;
+                            }
+                        }
                     }
-                    break;
                 }
             }
             if (identical && ebr.readLine() == null && abr.readLine() == null) {
